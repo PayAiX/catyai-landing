@@ -169,7 +169,13 @@ function Hero() {
                   </div>
                 </div>
               </div>
-              <p className="text-center text-gray-400 text-sm mt-4">Try the real widget <span className="text-primary-400 font-medium">in the bottom right corner</span></p>
+              {/* Floating indicator arrow pointing to widget */}
+              <div className="flex items-center justify-end gap-2 mt-4 mr-[-20px]">
+                <span className="text-primary-400 text-sm font-medium animate-pulse">Try the real widget</span>
+                <svg className="w-6 h-6 text-primary-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -274,7 +280,7 @@ function HowItWorks() {
       number: '02',
       title: 'Train Your AI',
       description: 'Upload your FAQs, docs, and product info. Caty learns your business in minutes, not days.',
-      image: '/images/caty.png'
+      image: '/images/logo.png'
     },
     {
       number: '03',
@@ -579,6 +585,20 @@ function Footer() {
   )
 }
 
+// Floating Widget Indicator
+function FloatingWidgetIndicator() {
+  return (
+    <div className="fixed bottom-24 right-6 z-40 flex items-center gap-2 animate-bounce">
+      <div className="bg-primary-500 text-white px-3 py-2 rounded-lg shadow-lg text-sm font-medium">
+        Try me!
+      </div>
+      <svg className="w-6 h-6 text-primary-500 rotate-[-45deg]" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+      </svg>
+    </div>
+  )
+}
+
 // Main App
 function App() {
   return (
@@ -593,6 +613,7 @@ function App() {
         <CTA />
       </main>
       <Footer />
+      <FloatingWidgetIndicator />
     </div>
   )
 }
