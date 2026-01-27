@@ -274,7 +274,7 @@ function HowItWorks() {
       number: '02',
       title: 'Train Your AI',
       description: 'Upload your FAQs, docs, and product info. Caty learns your business in minutes, not days.',
-      image: '/images/caty 34.png'
+      image: '/images/caty.png'
     },
     {
       number: '03',
