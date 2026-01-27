@@ -22,7 +22,7 @@ function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <img src="/images/caty 1.png" alt="Caty.AI" className="h-10 w-10" />
+            <img src="/images/logo1.png" alt="Caty.AI" className="h-10 w-10 rounded-full" />
             <span className="text-xl font-bold">Caty.AI</span>
           </div>
 
@@ -119,14 +119,19 @@ function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10"></div>
           <div className="card p-8 max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
-              <img src="/images/caty 1.png" alt="Caty" className="w-12 h-12 animate-float" />
+              <img src="/images/logo1.png" alt="Caty" className="w-12 h-12 animate-float rounded-full" />
               <div>
                 <h3 className="font-semibold text-white">Try Me Now!</h3>
                 <p className="text-sm text-gray-400">Click the chat icon in the bottom right corner</p>
               </div>
             </div>
-            <div className="aspect-video bg-gray-800/50 rounded-lg flex items-center justify-center border border-gray-700">
-              <p className="text-gray-500">Live demo widget is active on this page</p>
+            <div className="aspect-video bg-gray-800/50 rounded-lg flex flex-col items-center justify-center border border-gray-700 gap-4">
+              <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center animate-pulse-glow">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </div>
+              <p className="text-gray-400 text-center px-4">Our live AI assistant is ready to help!<br/><span className="text-primary-400 font-medium">Click the chat icon in the bottom right corner</span></p>
             </div>
           </div>
         </div>
@@ -237,7 +242,7 @@ function HowItWorks() {
       number: '03',
       title: 'Start Converting',
       description: 'Watch as Caty engages visitors, answers questions, captures leads, and drives sales 24/7.',
-      image: '/images/caty 1.png'
+      image: '/images/logo1.png'
     }
   ]
 
@@ -481,7 +486,7 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/images/caty 1.png" alt="Caty.AI" className="h-8 w-8" />
+              <img src="/images/logo1.png" alt="Caty.AI" className="h-8 w-8 rounded-full" />
               <span className="text-lg font-bold">Caty.AI</span>
             </div>
             <p className="text-gray-400 text-sm">
