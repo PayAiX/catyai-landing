@@ -125,13 +125,51 @@ function Hero() {
                 <p className="text-sm text-gray-400">Click the chat icon in the bottom right corner</p>
               </div>
             </div>
-            <div className="aspect-video bg-gray-800/50 rounded-lg flex flex-col items-center justify-center border border-gray-700 gap-4">
-              <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center animate-pulse-glow">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
+            <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-4 max-w-md mx-auto">
+              {/* Chat Widget Mockup */}
+              <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                {/* Header */}
+                <div className="bg-primary-600 px-4 py-3 flex items-center gap-3">
+                  <img src="/images/logo1.png" alt="Caty" className="w-8 h-8 rounded-full" />
+                  <div>
+                    <p className="text-white font-medium text-sm">Caty.AI</p>
+                    <p className="text-primary-200 text-xs flex items-center gap-1">
+                      <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                      Online
+                    </p>
+                  </div>
+                </div>
+                {/* Messages */}
+                <div className="p-4 space-y-3 min-h-[200px]">
+                  <div className="flex gap-2">
+                    <img src="/images/logo1.png" alt="Caty" className="w-6 h-6 rounded-full" />
+                    <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[80%]">
+                      <p className="text-gray-200 text-sm">Hi! I'm Caty, your AI assistant. How can I help you today?</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-end">
+                    <div className="bg-primary-600 rounded-lg rounded-tr-none px-3 py-2 max-w-[80%]">
+                      <p className="text-white text-sm">What pricing plans do you offer?</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <img src="/images/logo1.png" alt="Caty" className="w-6 h-6 rounded-full" />
+                    <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[80%]">
+                      <p className="text-gray-200 text-sm">We have 3 plans: Starter at €49/mo, Growth at €149/mo, and Business at €349/mo. Would you like details on any specific plan?</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Input */}
+                <div className="px-4 pb-4">
+                  <div className="bg-gray-800 rounded-lg px-4 py-2 flex items-center gap-2">
+                    <span className="text-gray-500 text-sm flex-1">Type a message...</span>
+                    <svg className="w-5 h-5 text-primary-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <p className="text-gray-400 text-center px-4">Our live AI assistant is ready to help!<br/><span className="text-primary-400 font-medium">Click the chat icon in the bottom right corner</span></p>
+              <p className="text-center text-gray-400 text-sm mt-4">Try the real widget <span className="text-primary-400 font-medium">in the bottom right corner</span></p>
             </div>
           </div>
         </div>
