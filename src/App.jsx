@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import GDPRPolicy from './pages/GDPRPolicy'
 
 // Icons
 const CheckIcon = () => (
@@ -558,9 +562,9 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Legal</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="/gdpr" className="hover:text-white transition-colors">GDPR</a></li>
+              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/gdpr" className="hover:text-white transition-colors">GDPR</Link></li>
             </ul>
           </div>
         </div>
@@ -599,21 +603,35 @@ function FloatingWidgetIndicator() {
   )
 }
 
+// Home Page
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <Pricing />
+      <FAQ />
+      <CTA />
+      <FloatingWidgetIndicator />
+    </>
+  )
+}
+
 // Main App
 function App() {
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <Pricing />
-        <FAQ />
-        <CTA />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/gdpr" element={<GDPRPolicy />} />
+        </Routes>
       </main>
       <Footer />
-      <FloatingWidgetIndicator />
     </div>
   )
 }
