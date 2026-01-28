@@ -195,10 +195,9 @@ function PrivacyPolicy() {
                 <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.3 AI Service Providers</h3>
                   <p className="text-gray-300">
-                    We use OpenAI's GPT models to power our conversational AI. Conversation data may be processed
-                    by OpenAI to generate responses. OpenAI's data processing is governed by their privacy policy
-                    and our data processing agreement with them. We have opted out of having conversation data
-                    used to train OpenAI's models.
+                    We use advanced AI models to power our conversational AI. Conversation data may be processed
+                    by our AI providers to generate responses. All AI data processing is governed by strict privacy
+                    policies and data processing agreements. We do not use your conversation data to train AI models.
                   </p>
                 </div>
 

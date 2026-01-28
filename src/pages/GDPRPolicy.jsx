@@ -637,7 +637,7 @@ function GDPRPolicy() {
                         <td className="py-3 px-4">EU/US (SCCs)</td>
                       </tr>
                       <tr className="border-b border-gray-800">
-                        <td className="py-3 px-4">AI Processing (OpenAI)</td>
+                        <td className="py-3 px-4">AI Processing</td>
                         <td className="py-3 px-4">Natural language processing</td>
                         <td className="py-3 px-4">US (SCCs + DPA)</td>
                       </tr>

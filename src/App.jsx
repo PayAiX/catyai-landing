@@ -82,7 +82,7 @@ function Hero() {
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-8">
             <span className="w-2 h-2 bg-primary-400 rounded-full animate-pulse"></span>
-            Powered by GPT-4o
+            AI-Powered Chatbot
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance">
@@ -446,7 +446,7 @@ function FAQ() {
   const faqs = [
     {
       question: 'How does Caty.AI work?',
-      answer: 'Caty.AI is a smart chatbot widget that you embed on your website. It uses GPT-4o to understand visitor questions and respond intelligently. You can train it on your specific products, FAQs, and documentation so it gives accurate answers about your business.'
+      answer: 'Caty.AI is a smart chatbot widget that you embed on your website. It uses advanced AI to understand visitor questions and respond intelligently. You can train it on your specific products, FAQs, and documentation so it gives accurate answers about your business.'
     },
     {
       question: 'How long does setup take?',

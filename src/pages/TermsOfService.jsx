@@ -410,7 +410,7 @@ function TermsOfService() {
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <p className="text-gray-300 mb-4">Our Services may integrate with or link to third-party services, including:</p>
                 <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
-                  <li>OpenAI for AI language models</li>
+                  <li>AI language model providers</li>
                   <li>Payment processors (e.g., Stripe)</li>
                   <li>Analytics services</li>
                   <li>CRM integrations</li>
