@@ -339,53 +339,87 @@ function HowItWorks() {
 function Pricing() {
   const plans = [
     {
-      name: 'Starter',
-      price: '49',
-      description: 'Perfect for small businesses just getting started',
+      id: 'free',
+      name: 'Free',
+      price: '0',
+      setupFee: null,
+      sessions: '100',
+      widgets: '1',
       features: [
-        '500 conversations/month',
-        '1 widget',
-        'Basic analytics',
-        'Email support',
-        'Knowledge base (25 docs)',
-        'Intent detection'
+        'Basic chat',
+        'Lead capture',
+        'Email support'
       ],
-      cta: 'Start Free Trial',
+      cta: 'Start Free',
+      ctaLink: 'https://app.catyai.io/signup?plan=free',
       popular: false
     },
     {
-      name: 'Growth',
+      id: 'starter',
+      name: 'Starter',
       price: '149',
-      description: 'For growing businesses that need more power',
+      setupFee: '499',
+      sessions: '1,000',
+      widgets: '1',
       features: [
-        '2,000 conversations/month',
-        '3 widgets',
-        'Advanced analytics',
-        'Priority support',
-        'Knowledge base (100 docs)',
-        'Lead scoring',
-        'Human handoff',
-        'Custom branding'
+        'Everything in Free',
+        'Behavioral tracking',
+        'Proactive messages',
+        'Priority support'
       ],
-      cta: 'Start Free Trial',
+      cta: 'Get Started',
+      ctaLink: 'https://app.catyai.io/signup?plan=starter',
+      popular: false
+    },
+    {
+      id: 'growth',
+      name: 'Growth',
+      price: '299',
+      setupFee: '999',
+      sessions: '5,000',
+      widgets: '3',
+      features: [
+        'Everything in Starter',
+        'CRM integrations',
+        'Live handoff',
+        'Advanced analytics'
+      ],
+      cta: 'Get Started',
+      ctaLink: 'https://app.catyai.io/signup?plan=growth',
       popular: true
     },
     {
+      id: 'business',
       name: 'Business',
-      price: '349',
-      description: 'For businesses that need unlimited scale',
+      price: '499',
+      setupFee: '1,999',
+      sessions: '20,000',
+      widgets: 'Unlimited',
       features: [
-        '10,000 conversations/month',
-        'Unlimited widgets',
-        'Enterprise analytics',
-        'Dedicated support',
-        'Unlimited knowledge base',
+        'Everything in Growth',
+        'White-label',
         'API access',
-        'CRM integrations',
-        'Custom AI training',
-        'SLA guarantee'
+        'Account manager'
+      ],
+      cta: 'Get Started',
+      ctaLink: 'https://app.catyai.io/signup?plan=business',
+      popular: false
+    },
+    {
+      id: 'enterprise',
+      name: 'Enterprise',
+      price: '800+',
+      setupFee: '3,800',
+      sessions: 'Unlimited',
+      widgets: 'Unlimited',
+      features: [
+        'Everything in Business',
+        'SSO / SAML',
+        'SLA guarantee',
+        'Dedicated support'
       ],
       cta: 'Contact Sales',
+      ctaLink: 'mailto:contact@payai-x.com?subject=Enterprise%20Plan%20Inquiry',
       popular: false
     }
   ]
@@ -395,45 +429,72 @@ function Pricing() {
       <div className="max-w-7xl mx-auto">
         <h2 className="section-title">Simple, Transparent <span className="gradient-text">Pricing</span></h2>
         <p className="section-subtitle">
-          Start free, upgrade when you need. No hidden fees.
+          Simple, transparent pricing for every business
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`card relative ${plan.popular ? 'border-primary-500 scale-105' : ''}`}
+              className={`card relative flex flex-col ${plan.popular ? 'border-primary-500 lg:scale-105 z-10' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-500 rounded-full text-sm font-medium">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-500 rounded-full text-xs font-medium whitespace-nowrap">
                   Most Popular
                 </div>
               )}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-semibold text-white mb-3">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl font-bold text-white">€{plan.price}</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-3xl font-bold text-white">€{plan.price}</span>
+                  <span className="text-gray-400 text-sm">/mo</span>
+                </div>
+                {plan.setupFee && (
+                  <p className="text-gray-500 text-xs mt-1">+€{plan.setupFee} setup</p>
+                )}
+              </div>
+
+              <div className="border-t border-gray-800 pt-4 mb-4">
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between text-gray-400">
+                    <span>Sessions</span>
+                    <span className="text-white font-medium">{plan.sessions}</span>
+                  </div>
+                  <div className="flex justify-between text-gray-400">
+                    <span>Widgets</span>
+                    <span className="text-white font-medium">{plan.widgets}</span>
+                  </div>
                 </div>
               </div>
-              <ul className="space-y-3 mb-8">
+
+              <ul className="space-y-2 mb-6 flex-grow">
                 {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center gap-3 text-gray-300">
+                  <li key={featureIndex} className="flex items-start gap-2 text-gray-300 text-sm">
                     <CheckIcon />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
+
               <a
-                href="https://app.catyai.io/signup"
-                className={`w-full block text-center ${plan.popular ? 'btn-primary' : 'btn-secondary'}`}
+                href={plan.ctaLink}
+                className={`w-full block text-center py-2.5 rounded-lg font-medium transition-all ${
+                  plan.popular
+                    ? 'btn-primary'
+                    : plan.id === 'free'
+                      ? 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+                      : 'btn-secondary'
+                }`}
               >
                 {plan.cta}
               </a>
             </div>
           ))}
         </div>
+
+        <p className="text-center text-gray-500 text-sm mt-8">
+          All paid plans include a 14-day free trial. No credit card required.
+        </p>
       </div>
     </section>
   )
