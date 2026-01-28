@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import GDPRPolicy from './pages/GDPRPolicy'
@@ -25,16 +25,17 @@ function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img src="/images/logo1.png" alt="Caty.AI" className="h-10 w-10 rounded-full" />
             <span className="text-xl font-bold">Caty.AI</span>
-          </div>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How it Works</a>
-            <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-            <a href="#faq" className="text-gray-300 hover:text-white transition-colors">FAQ</a>
+            <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
+            <Link to="/#features" className="text-gray-300 hover:text-white transition-colors">Features</Link>
+            <Link to="/#how-it-works" className="text-gray-300 hover:text-white transition-colors">How it Works</Link>
+            <Link to="/#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</Link>
+            <Link to="/#faq" className="text-gray-300 hover:text-white transition-colors">FAQ</Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -55,10 +56,11 @@ function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-800">
             <div className="flex flex-col gap-4">
-              <a href="#features" className="text-gray-300 hover:text-white">Features</a>
-              <a href="#how-it-works" className="text-gray-300 hover:text-white">How it Works</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white">Pricing</a>
-              <a href="#faq" className="text-gray-300 hover:text-white">FAQ</a>
+              <Link to="/" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link to="/#features" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Features</Link>
+              <Link to="/#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>How it Works</Link>
+              <Link to="/#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
+              <Link to="/#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
               <hr className="border-gray-800" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">Login</a>
               <a href="https://app.catyai.io/signup" className="btn-primary text-center">Get Started Free</a>
@@ -533,10 +535,10 @@ function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
               <img src="/images/logo1.png" alt="Caty.AI" className="h-8 w-8 rounded-full" />
               <span className="text-lg font-bold">Caty.AI</span>
-            </div>
+            </Link>
             <p className="text-gray-400 text-sm">
               The AI chatbot that actually converts. Built for businesses that want results.
             </p>
@@ -618,10 +620,31 @@ function HomePage() {
   )
 }
 
+// Scroll to hash handler
+function ScrollToHash() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    } else if (location.pathname !== window.location.pathname) {
+      window.scrollTo(0, 0)
+    }
+  }, [location])
+
+  return null
+}
+
 // Main App
 function App() {
   return (
     <div className="min-h-screen">
+      <ScrollToHash />
       <Header />
       <main>
         <Routes>
