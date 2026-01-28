@@ -74,12 +74,13 @@ function GDPRPolicy() {
                     For the purposes of the GDPR, the data controller is:
                   </p>
                   <div className="p-4 bg-gray-800/50 rounded-lg">
-                    <p className="text-white font-semibold">Caty.AI</p>
-                    <p className="text-gray-300">[Company Registration Number]</p>
-                    <p className="text-gray-300">[Registered Address]</p>
-                    <p className="text-gray-300">[City, Country, Postal Code]</p>
+                    <p className="text-white font-semibold">PayAi-X FZE (Caty.AI)</p>
+                    <p className="text-gray-300">License Number: L-3702</p>
+                    <p className="text-gray-300">Dedicated Desk #23-DARTX, Floor 19</p>
+                    <p className="text-gray-300">Sheikh Rashid Tower, Dubai World Trade Centre</p>
+                    <p className="text-gray-300">Dubai, United Arab Emirates</p>
                     <p className="text-gray-300 mt-2">
-                      Website: <a href="https://catyai.io" className="text-primary-400 hover:text-primary-300">https://catyai.io</a>
+                      Website: <a href="https://caty.ai" className="text-primary-400 hover:text-primary-300">https://caty.ai</a>
                     </p>
                   </div>
                 </div>
@@ -431,8 +432,8 @@ function GDPRPolicy() {
                   <h4 className="font-semibold text-white mb-2">How to Exercise Your Rights</h4>
                   <p className="text-gray-300 text-sm mb-2">To exercise any of these rights, contact us at:</p>
                   <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
-                    <li>Email: <a href="mailto:privacy@catyai.io" className="text-primary-400 hover:text-primary-300">privacy@catyai.io</a></li>
-                    <li>DPO: <a href="mailto:dpo@catyai.io" className="text-primary-400 hover:text-primary-300">dpo@catyai.io</a></li>
+                    <li>Email: <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a></li>
+                    <li>DPO: <a href="mailto:dpo@payai-x.com" className="text-primary-400 hover:text-primary-300">dpo@payai-x.com</a></li>
                     <li>Account dashboard privacy settings</li>
                   </ul>
                   <p className="text-gray-400 text-xs mt-3">
@@ -541,7 +542,7 @@ function GDPRPolicy() {
                   <p className="text-gray-300">
                     For customers requiring EU data residency, we offer the option to store and process data
                     exclusively within EU-based data centers. Please contact us at
-                    <a href="mailto:enterprise@catyai.io" className="text-primary-400 hover:text-primary-300 ml-1">enterprise@catyai.io</a> for
+                    <a href="mailto:enterprise@payai-x.com" className="text-primary-400 hover:text-primary-300 ml-1">enterprise@payai-x.com</a> for
                     more information about EU-only hosting options.
                   </p>
                 </div>
@@ -742,13 +743,14 @@ function GDPRPolicy() {
                   <div className="space-y-2 text-gray-300">
                     <p>
                       <span className="text-gray-400">Email:</span>
-                      <a href="mailto:dpo@catyai.io" className="text-primary-400 hover:text-primary-300 ml-2">dpo@catyai.io</a>
+                      <a href="mailto:dpo@payai-x.com" className="text-primary-400 hover:text-primary-300 ml-2">dpo@payai-x.com</a>
                     </p>
                     <p>
                       <span className="text-gray-400">Address:</span>
-                      <span className="ml-2">Caty.AI, Attn: Data Protection Officer<br />
-                        <span className="ml-[4.5rem]">[Company Address]</span><br />
-                        <span className="ml-[4.5rem]">[City, Country, Postal Code]</span>
+                      <span className="ml-2">PayAi-X FZE, Attn: Data Protection Officer<br />
+                        <span className="ml-[4.5rem]">Dedicated Desk #23-DARTX, Floor 19</span><br />
+                        <span className="ml-[4.5rem]">Sheikh Rashid Tower, Dubai World Trade Centre</span><br />
+                        <span className="ml-[4.5rem]">Dubai, United Arab Emirates</span>
                       </span>
                     </p>
                   </div>
@@ -778,10 +780,10 @@ function GDPRPolicy() {
                 <div className="p-4 bg-gray-800/50 rounded-lg mb-4">
                   <h4 className="font-semibold text-white mb-2">Our Lead Supervisory Authority</h4>
                   <p className="text-gray-300 text-sm">
-                    [Name of Supervisory Authority]<br />
-                    [Address]<br />
-                    [Website]<br />
-                    [Contact Information]
+                    Dubai World Trade Centre Authority<br />
+                    Sheikh Rashid Tower, Dubai World Trade Centre<br />
+                    Dubai, United Arab Emirates<br />
+                    <a href="https://www.dwtc.com" className="text-primary-400 hover:text-primary-300">www.dwtc.com</a>
                   </p>
                 </div>
 
@@ -825,7 +827,7 @@ function GDPRPolicy() {
                 <div className="p-4 bg-primary-500/10 border border-primary-500/20 rounded-lg">
                   <p className="text-primary-300 text-sm">
                     <strong>Request a DPA:</strong> Business customers can request a signed Data Processing
-                    Agreement by contacting <a href="mailto:legal@catyai.io" className="text-primary-400 hover:text-primary-300">legal@catyai.io</a> or
+                    Agreement by contacting <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a> or
                     through the account settings in your dashboard.
                   </p>
                 </div>
@@ -873,30 +875,31 @@ function GDPRPolicy() {
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Privacy Inquiries</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:privacy@catyai.io" className="text-primary-400 hover:text-primary-300">privacy@catyai.io</a>
+                      Email: <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Data Protection Officer</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:dpo@catyai.io" className="text-primary-400 hover:text-primary-300">dpo@catyai.io</a>
+                      Email: <a href="mailto:dpo@payai-x.com" className="text-primary-400 hover:text-primary-300">dpo@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Legal Department</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:legal@catyai.io" className="text-primary-400 hover:text-primary-300">legal@catyai.io</a>
+                      Email: <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Mailing Address</h4>
                     <p className="text-gray-300 text-sm">
-                      Caty.AI<br />
-                      [Company Address]<br />
-                      [City, Country, Postal Code]
+                      PayAi-X FZE<br />
+                      Dedicated Desk #23-DARTX, Floor 19<br />
+                      Sheikh Rashid Tower, Dubai World Trade Centre<br />
+                      Dubai, United Arab Emirates
                     </p>
                   </div>
                 </div>

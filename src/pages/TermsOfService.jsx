@@ -20,8 +20,8 @@ function TermsOfService() {
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
                   Welcome to Caty.AI. These Terms of Service ("Terms") govern your access to and use of the
-                  Caty.AI website (catyai.io), AI chatbot widget services, dashboard, APIs, and all related
-                  services (collectively, the "Services") provided by Caty.AI ("Company," "we," "our," or "us").
+                  Caty.AI website (caty.ai), AI chatbot widget services, dashboard, APIs, and all related
+                  services (collectively, the "Services") provided by PayAi-X FZE ("Company," "we," "our," or "us").
                 </p>
                 <p className="text-gray-300 leading-relaxed mt-4">
                   By accessing or using our Services, you agree to be bound by these Terms. If you do not agree
@@ -102,6 +102,17 @@ function TermsOfService() {
                     use of the Services. Continued use of the Services after such modifications constitutes
                     acceptance of the changes.
                   </p>
+                </div>
+
+                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                  <h3 className="text-xl font-semibold text-white mb-4">1.4 Software Licensing</h3>
+                  <p className="text-gray-300 mb-4">
+                    Caty.AI software is available under a dual licensing model:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-gray-300">
+                    <li><strong className="text-white">Community License (AGPL-3.0):</strong> The community edition is available under the GNU Affero General Public License v3.0, which allows free use, modification, and distribution under the terms of AGPL-3.0</li>
+                    <li><strong className="text-white">Enterprise License:</strong> Commercial enterprises requiring additional features, support, or licensing terms not covered by AGPL-3.0 may obtain an Enterprise License by contacting us at <a href="mailto:enterprise@payai-x.com" className="text-primary-400 hover:text-primary-300">enterprise@payai-x.com</a></li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -623,7 +634,7 @@ function TermsOfService() {
                   <h3 className="text-xl font-semibold text-white mb-4">13.1 Informal Resolution</h3>
                   <p className="text-gray-300">
                     Before initiating any formal dispute resolution, you agree to first contact us at
-                    <a href="mailto:legal@catyai.io" className="text-primary-400 hover:text-primary-300 ml-1">legal@catyai.io</a> and
+                    <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300 ml-1">legal@payai-x.com</a> and
                     attempt to resolve the dispute informally for at least 30 days.
                   </p>
                 </div>
@@ -662,7 +673,7 @@ function TermsOfService() {
 
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
-                  These Terms shall be governed by and construed in accordance with the laws of [Jurisdiction],
+                  These Terms shall be governed by and construed in accordance with the laws of the United Arab Emirates,
                   without regard to its conflict of laws principles.
                 </p>
                 <p className="text-gray-300">
@@ -728,7 +739,7 @@ function TermsOfService() {
                   <h3 className="text-xl font-semibold text-white mb-4">15.6 Notices</h3>
                   <p className="text-gray-300">
                     Notices to you may be sent to the email address associated with your account. Notices
-                    to us should be sent to <a href="mailto:legal@catyai.io" className="text-primary-400 hover:text-primary-300">legal@catyai.io</a>.
+                    to us should be sent to <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a>.
                   </p>
                 </div>
 
@@ -759,30 +770,31 @@ function TermsOfService() {
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Legal Inquiries</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:legal@catyai.io" className="text-primary-400 hover:text-primary-300">legal@catyai.io</a>
+                      Email: <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">General Support</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:support@catyai.io" className="text-primary-400 hover:text-primary-300">support@catyai.io</a>
+                      Email: <a href="mailto:contact@payai-x.com" className="text-primary-400 hover:text-primary-300">contact@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Website</h4>
                     <p className="text-gray-300 text-sm">
-                      <a href="https://catyai.io" className="text-primary-400 hover:text-primary-300">https://catyai.io</a>
+                      <a href="https://caty.ai" className="text-primary-400 hover:text-primary-300">https://caty.ai</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Mailing Address</h4>
                     <p className="text-gray-300 text-sm">
-                      Caty.AI<br />
-                      [Company Address]<br />
-                      [City, Country, Postal Code]
+                      PayAi-X FZE<br />
+                      Dedicated Desk #23-DARTX, Floor 19<br />
+                      Sheikh Rashid Tower, Dubai World Trade Centre<br />
+                      Dubai, United Arab Emirates
                     </p>
                   </div>
                 </div>

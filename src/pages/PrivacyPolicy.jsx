@@ -19,7 +19,7 @@ function PrivacyPolicy() {
             <section className="mb-12">
               <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
-                  Caty.AI ("we," "our," or "us") operates the website catyai.io and provides AI-powered
+                  Caty.AI, a product of PayAi-X FZE ("we," "our," or "us"), operates the website caty.ai and provides AI-powered
                   chatbot widget services for businesses. This Privacy Policy explains how we collect, use,
                   disclose, and safeguard your information when you visit our website or use our services.
                   Please read this Privacy Policy carefully. By using our services, you consent to the
@@ -357,7 +357,7 @@ function PrivacyPolicy() {
                   <h3 className="text-xl font-semibold text-white mb-4">5.4 How to Exercise Your Rights</h3>
                   <p className="text-gray-300 mb-4">To exercise any of these rights, you can:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
-                    <li>Email us at: <a href="mailto:privacy@catyai.io" className="text-primary-400 hover:text-primary-300">privacy@catyai.io</a></li>
+                    <li>Email us at: <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a></li>
                     <li>Use the privacy settings in your account dashboard</li>
                     <li>Submit a request through our support portal</li>
                   </ul>
@@ -512,7 +512,7 @@ function PrivacyPolicy() {
 
                 <p className="text-gray-400 mt-6 text-sm">
                   If you are a parent or guardian and you are aware that your child has provided us with personal
-                  information, please contact us at <a href="mailto:privacy@catyai.io" className="text-primary-400 hover:text-primary-300">privacy@catyai.io</a>.
+                  information, please contact us at <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a>.
                 </p>
               </div>
             </section>
@@ -602,30 +602,31 @@ function PrivacyPolicy() {
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Privacy Inquiries</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:privacy@catyai.io" className="text-primary-400 hover:text-primary-300">privacy@catyai.io</a>
+                      Email: <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Data Protection Officer</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:dpo@catyai.io" className="text-primary-400 hover:text-primary-300">dpo@catyai.io</a>
+                      Email: <a href="mailto:dpo@payai-x.com" className="text-primary-400 hover:text-primary-300">dpo@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">General Support</h4>
                     <p className="text-gray-300 text-sm">
-                      Email: <a href="mailto:support@catyai.io" className="text-primary-400 hover:text-primary-300">support@catyai.io</a>
+                      Email: <a href="mailto:contact@payai-x.com" className="text-primary-400 hover:text-primary-300">contact@payai-x.com</a>
                     </p>
                   </div>
 
                   <div className="p-4 bg-gray-800/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Mailing Address</h4>
                     <p className="text-gray-300 text-sm">
-                      Caty.AI<br />
-                      [Company Address]<br />
-                      [City, Country, Postal Code]
+                      PayAi-X FZE<br />
+                      Dedicated Desk #23-DARTX, Floor 19<br />
+                      Sheikh Rashid Tower, Dubai World Trade Centre<br />
+                      Dubai, United Arab Emirates
                     </p>
                   </div>
                 </div>
