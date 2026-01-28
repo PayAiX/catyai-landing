@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Licensing() {
   useEffect(() => {
@@ -79,17 +80,15 @@ function Licensing() {
                 </p>
               </div>
 
-              <a
-                href="https://www.gnu.org/licenses/agpl-3.0.html"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/license-agpl"
                 className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors mb-6"
               >
-                View License
+                View Full License Text
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
 
               <div>
                 <h4 className="text-white font-semibold mb-3">Features:</h4>

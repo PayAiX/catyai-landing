@@ -4,6 +4,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import GDPRPolicy from './pages/GDPRPolicy'
 import Licensing from './pages/Licensing'
+import LicenseAGPL from './pages/LicenseAGPL'
 
 // Icons
 const CheckIcon = () => (
@@ -678,6 +679,7 @@ function App() {
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/gdpr" element={<GDPRPolicy />} />
           <Route path="/licensing" element={<Licensing />} />
+          <Route path="/license-agpl" element={<LicenseAGPL />} />
         </Routes>
       </main>
       <Footer />
