@@ -570,9 +570,32 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        {/* Licensing Info */}
+        <div className="py-6 border-t border-gray-800 mb-2">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
+            <div className="flex items-center gap-2 text-gray-400">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
+              </svg>
+              <span>Licensing:</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 hover:bg-green-500/20 transition-colors">
+                <span className="font-medium">Community</span>
+                <span className="text-green-500/70">(AGPL-3.0)</span>
+              </a>
+              <span className="text-gray-600">+</span>
+              <a href="mailto:enterprise@payai-x.com" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
+                <span className="font-medium">Enterprise</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Caty.AI. All rights reserved.
+            © {new Date().getFullYear()} PayAi-X FZE (Caty.AI). All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a href="https://twitter.com/catyai" className="text-gray-400 hover:text-white transition-colors">
