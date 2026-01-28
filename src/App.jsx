@@ -620,12 +620,12 @@ function Footer() {
 // Floating Widget Indicator
 function FloatingWidgetIndicator() {
   return (
-    <div className="fixed bottom-24 right-6 z-40 flex items-center gap-2 animate-bounce">
+    <div className="fixed bottom-24 right-6 z-40 flex flex-col items-center gap-2 animate-bounce">
       <div className="bg-primary-500 text-white px-3 py-2 rounded-lg shadow-lg text-sm font-medium">
         Try me!
       </div>
-      <svg className="w-6 h-6 text-primary-500 rotate-[-45deg]" fill="currentColor" viewBox="0 0 20 20">
-        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+      <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
   )
