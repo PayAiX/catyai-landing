@@ -317,8 +317,8 @@ function HowItWorks() {
                 <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
                 <p className="text-gray-400 mb-4">{step.description}</p>
                 {step.code && (
-                  <div className="bg-gray-950 rounded-lg p-4 overflow-x-auto">
-                    <code className="text-sm text-primary-400 whitespace-nowrap">{step.code}</code>
+                  <div className="bg-gray-950 rounded-lg p-3 sm:p-4 overflow-x-auto">
+                    <code className="text-xs sm:text-sm text-primary-400 break-all sm:break-normal sm:whitespace-nowrap">{step.code}</code>
                   </div>
                 )}
                 {step.image && (
