@@ -6,27 +6,7 @@ function PrivacyPolicy() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-950">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <a href="/" className="flex items-center gap-2">
-              <img src="/images/logo1.png" alt="Caty.AI" className="h-10 w-10 rounded-full" />
-              <span className="text-xl font-bold text-white">Caty.AI</span>
-            </a>
-            <a href="/" className="text-gray-300 hover:text-white transition-colors flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Home
-            </a>
-          </div>
-        </nav>
-      </header>
-
-      {/* Content */}
-      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Privacy Policy</h1>
@@ -663,23 +643,7 @@ function PrivacyPolicy() {
             </section>
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <img src="/images/logo1.png" alt="Caty.AI" className="h-6 w-6 rounded-full" />
-            <span className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Caty.AI. All rights reserved.</span>
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <a href="/privacy" className="text-primary-400">Privacy Policy</a>
-            <a href="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-            <a href="/gdpr" className="text-gray-400 hover:text-white transition-colors">GDPR</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </section>
   )
 }
 
