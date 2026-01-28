@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import GDPRPolicy from './pages/GDPRPolicy'
+import Licensing from './pages/Licensing'
 
 // Icons
 const CheckIcon = () => (
@@ -567,6 +568,7 @@ function Footer() {
               <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
               <li><Link to="/gdpr" className="hover:text-white transition-colors">GDPR</Link></li>
+              <li><Link to="/licensing" className="hover:text-white transition-colors">Licensing</Link></li>
             </ul>
           </div>
         </div>
@@ -574,21 +576,21 @@ function Footer() {
         {/* Licensing Info */}
         <div className="py-6 border-t border-gray-800 mb-2">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
-            <div className="flex items-center gap-2 text-gray-400">
+            <Link to="/licensing" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
               </svg>
               <span>Licensing:</span>
-            </div>
+            </Link>
             <div className="flex items-center gap-3">
-              <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 hover:bg-green-500/20 transition-colors">
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 hover:bg-yellow-500/20 transition-colors">
                 <span className="font-medium">Community</span>
-                <span className="text-green-500/70">(AGPL-3.0)</span>
-              </a>
+                <span className="text-yellow-500/70">(AGPL-3.0)</span>
+              </Link>
               <span className="text-gray-600">+</span>
-              <a href="mailto:enterprise@payai-x.com" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 hover:bg-yellow-500/20 transition-colors">
                 <span className="font-medium">Enterprise</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -675,6 +677,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/gdpr" element={<GDPRPolicy />} />
+          <Route path="/licensing" element={<Licensing />} />
         </Routes>
       </main>
       <Footer />
