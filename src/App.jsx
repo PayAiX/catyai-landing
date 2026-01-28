@@ -584,12 +584,12 @@ function Footer() {
               <span>Licensing:</span>
             </Link>
             <div className="flex items-center gap-3">
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 hover:bg-yellow-500/20 transition-colors">
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
                 <span className="font-medium">Community</span>
-                <span className="text-yellow-500/70">(AGPL-3.0)</span>
+                <span className="text-primary-500/70">(AGPL-3.0)</span>
               </Link>
               <span className="text-gray-600">+</span>
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 hover:bg-yellow-500/20 transition-colors">
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
                 <span className="font-medium">Enterprise</span>
               </Link>
             </div>
