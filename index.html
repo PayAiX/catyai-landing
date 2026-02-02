@@ -2,27 +2,155 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="tVyoZDsE2ssgqqzyZs29AQjjLQNmdhAWPZ0y3-MpLiw" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7TM554RRZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D7TM554RRZ');
+      gtag('config', 'AW-8366622390');
+
+      // Conversion tracking - CatyAI
+      window.trackCatyConversion = function(eventName, eventParams) {
+        gtag('event', eventName, eventParams || {});
+        gtag('event', 'conversion', {
+          'send_to': 'AW-8366622390/' + eventName,
+          ...(eventParams || {})
+        });
+      };
+
+      window.trackSignUp = function() {
+        trackCatyConversion('sign_up', {
+          'event_category': 'Registration',
+          'event_label': 'CatyAI Account',
+          'value': 10
+        });
+      };
+
+      window.trackStartTrial = function() {
+        trackCatyConversion('start_trial', {
+          'event_category': 'Trial',
+          'event_label': 'CatyAI Trial',
+          'value': 25
+        });
+      };
+
+      window.trackPurchase = function(value, plan) {
+        trackCatyConversion('purchase', {
+          'event_category': 'Purchase',
+          'event_label': plan || 'CatyAI Subscription',
+          'value': value || 149,
+          'currency': 'EUR',
+          'transaction_id': Date.now().toString()
+        });
+      };
+
+      window.trackWidgetInstall = function() {
+        trackCatyConversion('widget_install', {
+          'event_category': 'Activation',
+          'event_label': 'Widget Installed',
+          'value': 50
+        });
+      };
+    </script>
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO -->
-    <title>Caty.AI - AI Chatbot That Actually Converts | 24/7 Customer Support</title>
-    <meta name="description" content="Transform your website visitors into customers with Caty.AI - the intelligent chatbot widget that understands intent, captures leads, and converts 24/7. Easy setup, powerful results." />
-    <meta name="keywords" content="AI chatbot, customer support, lead generation, conversational AI, website widget, chatbot for business" />
+    <!-- SEO Meta Tags -->
+    <title>CatyAI — E-commerce Conversion AI | Turn Traffic Into Sales</title>
+    <meta name="description" content="AI-powered sales conversion engine for e-commerce. Reduce abandoned carts, increase conversions, and turn visitors into paying customers. This doesn't answer questions. It makes money." />
+    <meta name="keywords" content="ecommerce conversion ai, sales conversion engine, abandoned cart recovery ai, increase ecommerce sales, shopify conversion ai, woocommerce sales automation, ai chatbot ecommerce, lead generation ai" />
+    <meta name="author" content="Ioan Adrian Vitan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://catyai.io/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://catyai.io/" />
-    <meta property="og:title" content="Caty.AI - AI Chatbot That Actually Converts" />
-    <meta property="og:description" content="Transform your website visitors into customers with intelligent AI that understands intent, captures leads, and converts 24/7." />
+    <meta property="og:title" content="CatyAI — E-commerce Conversion AI" />
+    <meta property="og:description" content="This doesn't answer questions. It makes money. AI sales assistant for e-commerce that converts visitors into buyers." />
     <meta property="og:image" content="https://catyai.io/images/og-image.png" />
+    <meta property="og:site_name" content="CatyAI" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Caty.AI - AI Chatbot That Actually Converts" />
-    <meta name="twitter:description" content="Transform your website visitors into customers with intelligent AI that understands intent, captures leads, and converts 24/7." />
+    <meta name="twitter:title" content="CatyAI — Turn Traffic Into Sales" />
+    <meta name="twitter:description" content="AI-powered e-commerce conversion. Reduce cart abandonment, increase sales automatically." />
     <meta name="twitter:image" content="https://catyai.io/images/og-image.png" />
+
+    <!-- Person Schema - Adrian Vitan Lopes -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.payai-x.com/#adrian-vitan",
+      "name": "Ioan Adrian Vitan",
+      "alternateName": ["Adrian Vitan", "Adrian Vitan Lopes", "Ioan Adrian Vitan Lopes"],
+      "jobTitle": "Founder & AI Architect",
+      "url": "https://www.payai-x.com/founder",
+      "sameAs": ["https://www.linkedin.com/in/adrian-vitan-lopes-35525a13/", "https://www.payai-x.com/founder"],
+      "worksFor": [
+        {"@type": "Organization", "name": "PayAi-X", "url": "https://www.payai-x.com"},
+        {"@type": "Organization", "name": "Ahauros", "url": "https://ahauros.io"},
+        {"@type": "Organization", "name": "CatyAI", "url": "https://catyai.io"}
+      ],
+      "knowsAbout": ["AI Systems", "E-commerce Automation", "Sales Conversion", "Chatbots"]
+    }
+    </script>
+
+    <!-- Product Schema - CatyAI -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://catyai.io/#product",
+      "name": "CatyAI",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "E-commerce",
+      "operatingSystem": "Cloud",
+      "description": "AI-powered sales conversion engine for e-commerce. Intelligent chatbot that understands customer intent, captures leads, creates urgency, shows social proof, and converts visitors into buyers automatically.",
+      "url": "https://catyai.io",
+      "creator": {"@id": "https://www.payai-x.com/#adrian-vitan"},
+      "provider": {
+        "@type": "Organization",
+        "name": "PayAi-X",
+        "url": "https://www.payai-x.com"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "0",
+        "highPrice": "800",
+        "offerCount": "5",
+        "offers": [
+          {"@type": "Offer", "name": "Free", "price": "0"},
+          {"@type": "Offer", "name": "Starter", "price": "149"},
+          {"@type": "Offer", "name": "Growth", "price": "299"},
+          {"@type": "Offer", "name": "Business", "price": "499"},
+          {"@type": "Offer", "name": "Enterprise", "price": "800"}
+        ]
+      },
+      "featureList": [
+        "AI Sales Conversations",
+        "Abandoned Cart Recovery",
+        "Lead Capture & Scoring",
+        "Customer Profiling",
+        "Social Proof Widgets",
+        "Urgency & Scarcity Triggers",
+        "Multi-language Support",
+        "Shopify Integration",
+        "WooCommerce Integration",
+        "WhatsApp Integration",
+        "Email & SMS Automation",
+        "Real-time Analytics"
+      ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +166,6 @@
     <script type="module" src="/src/main.jsx"></script>
 
     <!-- Caty Widget -->
-    <script src="https://api.catyai.io/widget.js" data-api-key="caty_c543fcb66bf040b8810ebda4fc6b826d"></script>
+    <script src="https://api.catyai.io/widget.js?v=20260202-1715" data-api-key="caty_61ce701f9a055750ea5b81f1ae05b3e3"></script>
   </body>
 </html>
