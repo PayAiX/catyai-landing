@@ -28,6 +28,8 @@
           'event_label': 'CatyAI Account',
           'value': 10
         });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration');
       };
 
       window.trackStartTrial = function() {
@@ -36,6 +38,8 @@
           'event_label': 'CatyAI Trial',
           'value': 25
         });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('track', 'StartTrial');
       };
 
       window.trackPurchase = function(value, plan) {
@@ -46,6 +50,12 @@
           'currency': 'EUR',
           'transaction_id': Date.now().toString()
         });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('track', 'Purchase', {
+          value: value || 149,
+          currency: 'EUR',
+          content_name: plan || 'CatyAI Subscription'
+        });
       };
 
       window.trackWidgetInstall = function() {
@@ -54,8 +64,49 @@
           'event_label': 'Widget Installed',
           'value': 50
         });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('trackCustom', 'WidgetInstall');
+      };
+
+      window.trackLead = function(leadData) {
+        trackCatyConversion('lead', {
+          'event_category': 'Lead',
+          'event_label': 'Lead Captured',
+          'value': 15
+        });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead', leadData || {});
+      };
+
+      window.trackContact = function() {
+        trackCatyConversion('contact', {
+          'event_category': 'Contact',
+          'event_label': 'Contact Form',
+          'value': 5
+        });
+        // Meta Pixel
+        if (typeof fbq !== 'undefined') fbq('track', 'Contact');
       };
     </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '25909673122033932');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=25909673122033932&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -166,6 +217,6 @@
     <script type="module" src="/src/main.jsx"></script>
 
     <!-- Caty Widget -->
-    <script src="https://api.catyai.io/widget.js?v=20260202-1715" data-api-key="caty_61ce701f9a055750ea5b81f1ae05b3e3"></script>
+    <script src="https://api.catyai.io/widget.js?v=20260203-1919" data-api-key="caty_61ce701f9a055750ea5b81f1ae05b3e3"></script>
   </body>
 </html>

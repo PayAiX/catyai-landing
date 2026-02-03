@@ -1,0 +1,5 @@
+# CatyAI Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://catyai.io/sitemap.xml
