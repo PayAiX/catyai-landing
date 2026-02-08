@@ -21,9 +21,9 @@ const translations = {
     nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Get Started Free' },
     hero: {
       badge: 'AI-Powered Chatbot',
-      title1: 'E-commerce AI Chatbot',
-      title2: 'That Converts',
-      subtitle: 'Transform your website visitors into paying customers with an intelligent chatbot that understands intent, captures leads, and works 24/7.',
+      title1: 'AI Chatbot for',
+      title2: 'Any Business',
+      subtitle: 'Transform your website visitors into paying customers with an intelligent chatbot that understands intent, captures leads, and works 24/7. Perfect for e-commerce, services, healthcare, real estate, and any industry.',
       cta1: 'Start Free Trial',
       cta2: 'See How It Works',
       analyzeLink: 'Analyze your website FREE - See AI insights in real-time',
@@ -55,6 +55,24 @@ const translations = {
       handoffDesc: 'Seamlessly transfer complex issues to your team. AI knows when to escalate.',
       analyticsTitle: 'Analytics Dashboard',
       analyticsDesc: 'Track conversations, conversion rates, and ROI. Know exactly whats working.'
+    },
+    intelligence: {
+      title: 'AI-Powered',
+      titleHighlight: 'Business Intelligence',
+      subtitle: 'Advanced analytics that turn conversations into actionable business insights',
+      productDemandTitle: 'Product Demand',
+      productDemandDesc: 'Discover what products customers are asking about most. Identify demand gaps and pricing sensitivity.',
+      customerProfilesTitle: 'Customer Profiles',
+      customerProfilesDesc: 'Understand your visitors\' buying stage - awareness, evaluation, or decision. See intent patterns by time.',
+      competitorTitle: 'Competitor Intelligence',
+      competitorDesc: 'Track competitor mentions and sentiment. Know what customers compare you against.',
+      benchmarksTitle: 'Industry Benchmarks',
+      benchmarksDesc: 'Compare your performance against industry standards. See where you rank.',
+      alertsTitle: 'Trend Alerts',
+      alertsDesc: 'Get notified of seasonal patterns and traffic spikes. Predictive forecasting included.',
+      weeklyCoachTitle: 'AI Weekly Coach',
+      weeklyCoachDesc: 'Personalized recommendations with estimated impact. Your AI business advisor.',
+      cta: 'Try Intelligence Free'
     },
     howItWorks: {
       title: 'Live in',
@@ -149,9 +167,9 @@ const translations = {
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
       badge: 'Chatbot cu AI',
-      title1: 'Chatbot AI E-commerce',
-      title2: 'Care Convertește',
-      subtitle: 'Transformă vizitatorii site-ului în clienți plătitori cu un chatbot inteligent care înțelege intenția, captează lead-uri și lucrează 24/7.',
+      title1: 'Chatbot AI pentru',
+      title2: 'Orice Afacere',
+      subtitle: 'Transformă vizitatorii site-ului în clienți plătitori cu un chatbot inteligent care înțelege intenția, captează lead-uri și lucrează 24/7. Perfect pentru e-commerce, servicii, sănătate, imobiliare și orice industrie.',
       cta1: 'Încearcă Gratuit',
       cta2: 'Vezi cum funcționează',
       analyzeLink: 'Analizează-ți site-ul GRATUIT - Vezi insight-uri AI în timp real',
@@ -183,6 +201,24 @@ const translations = {
       handoffDesc: 'Transferă fără probleme problemele complexe echipei tale. AI știe când să escaladeze.',
       analyticsTitle: 'Dashboard Analytics',
       analyticsDesc: 'Urmărește conversațiile, ratele de conversie și ROI. Știi exact ce funcționează.'
+    },
+    intelligence: {
+      title: 'Inteligență de Afaceri',
+      titleHighlight: 'Alimentată de AI',
+      subtitle: 'Analize avansate care transformă conversațiile în insight-uri acționabile',
+      productDemandTitle: 'Cerere Produse',
+      productDemandDesc: 'Descoperă ce produse sunt cele mai căutate. Identifică lacune de cerere și sensibilitatea la preț.',
+      customerProfilesTitle: 'Profiluri Clienți',
+      customerProfilesDesc: 'Înțelege stadiul de cumpărare al vizitatorilor - conștientizare, evaluare sau decizie. Vezi tiparele de intenție.',
+      competitorTitle: 'Inteligență Competitivă',
+      competitorDesc: 'Urmărește mențiunile competitorilor și sentimentul. Află cu cine te compară clienții.',
+      benchmarksTitle: 'Benchmark Industrial',
+      benchmarksDesc: 'Compară performanța ta cu standardele industriei. Vezi unde te clasezi.',
+      alertsTitle: 'Alerte de Tendințe',
+      alertsDesc: 'Primește notificări despre modele sezoniere și vârfuri de trafic. Include prognoze predictive.',
+      weeklyCoachTitle: 'Coach AI Săptămânal',
+      weeklyCoachDesc: 'Recomandări personalizate cu impact estimat. Consilierul tău AI de afaceri.',
+      cta: 'Încearcă Intelligence Gratuit'
     },
     howItWorks: {
       title: 'Live în',
@@ -277,9 +313,9 @@ const translations = {
     nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
       badge: 'Chatbot con IA',
-      title1: 'Chatbot IA E-commerce',
-      title2: 'Que Convierte',
-      subtitle: 'Transforma los visitantes de tu sitio web en clientes con un chatbot inteligente que entiende la intención, captura leads y trabaja 24/7.',
+      title1: 'Chatbot IA para',
+      title2: 'Cualquier Negocio',
+      subtitle: 'Transforma los visitantes de tu sitio web en clientes con un chatbot inteligente que entiende la intención, captura leads y trabaja 24/7. Perfecto para e-commerce, servicios, salud, inmobiliaria y cualquier industria.',
       cta1: 'Prueba Gratis',
       cta2: 'Ver cómo funciona',
       analyzeLink: 'Analiza tu sitio GRATIS - Ve insights de IA en tiempo real',
@@ -311,6 +347,24 @@ const translations = {
       handoffDesc: 'Transfiere problemas complejos a tu equipo sin problemas.',
       analyticsTitle: 'Panel de Analytics',
       analyticsDesc: 'Rastrea conversaciones, tasas de conversión y ROI.'
+    },
+    intelligence: {
+      title: 'Inteligencia de Negocios',
+      titleHighlight: 'Impulsada por IA',
+      subtitle: 'Análisis avanzados que convierten conversaciones en insights accionables',
+      productDemandTitle: 'Demanda de Productos',
+      productDemandDesc: 'Descubre qué productos buscan más los clientes. Identifica brechas de demanda y sensibilidad de precios.',
+      customerProfilesTitle: 'Perfiles de Clientes',
+      customerProfilesDesc: 'Entiende la etapa de compra de tus visitantes - conciencia, evaluación o decisión. Ve patrones de intención.',
+      competitorTitle: 'Inteligencia Competitiva',
+      competitorDesc: 'Rastrea menciones de competidores y sentimiento. Sabe con quién te comparan.',
+      benchmarksTitle: 'Benchmarks de Industria',
+      benchmarksDesc: 'Compara tu rendimiento con estándares de la industria. Ve dónde te posicionas.',
+      alertsTitle: 'Alertas de Tendencias',
+      alertsDesc: 'Recibe notificaciones de patrones estacionales y picos de tráfico. Pronóstico predictivo incluido.',
+      weeklyCoachTitle: 'Coach IA Semanal',
+      weeklyCoachDesc: 'Recomendaciones personalizadas con impacto estimado. Tu asesor de negocios con IA.',
+      cta: 'Prueba Intelligence Gratis'
     },
     howItWorks: {
       title: 'En vivo en',
@@ -405,9 +459,9 @@ const translations = {
     nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
       badge: 'Chatbot com IA',
-      title1: 'Chatbot IA E-commerce',
-      title2: 'Que Converte',
-      subtitle: 'Transforme os visitantes do seu site em clientes pagantes com um chatbot inteligente que entende a intenção, captura leads e trabalha 24/7.',
+      title1: 'Chatbot IA para',
+      title2: 'Qualquer Negócio',
+      subtitle: 'Transforme os visitantes do seu site em clientes pagantes com um chatbot inteligente que entende a intenção, captura leads e trabalha 24/7. Perfeito para e-commerce, serviços, saúde, imobiliário e qualquer indústria.',
       cta1: 'Teste Grátis',
       cta2: 'Veja como funciona',
       analyzeLink: 'Analise seu site GRÁTIS - Veja insights de IA em tempo real',
@@ -439,6 +493,24 @@ const translations = {
       handoffDesc: 'Transfira problemas complexos para sua equipe sem problemas.',
       analyticsTitle: 'Painel de Analytics',
       analyticsDesc: 'Acompanhe conversas, taxas de conversão e ROI.'
+    },
+    intelligence: {
+      title: 'Inteligência de Negócios',
+      titleHighlight: 'Alimentada por IA',
+      subtitle: 'Análises avançadas que transformam conversas em insights acionáveis',
+      productDemandTitle: 'Demanda de Produtos',
+      productDemandDesc: 'Descubra quais produtos os clientes mais procuram. Identifique lacunas de demanda e sensibilidade a preços.',
+      customerProfilesTitle: 'Perfis de Clientes',
+      customerProfilesDesc: 'Entenda a etapa de compra dos visitantes - conscientização, avaliação ou decisão. Veja padrões de intenção.',
+      competitorTitle: 'Inteligência Competitiva',
+      competitorDesc: 'Rastreie menções de concorrentes e sentimento. Saiba com quem te comparam.',
+      benchmarksTitle: 'Benchmarks da Indústria',
+      benchmarksDesc: 'Compare seu desempenho com padrões da indústria. Veja onde você se posiciona.',
+      alertsTitle: 'Alertas de Tendências',
+      alertsDesc: 'Receba notificações de padrões sazonais e picos de tráfego. Previsão preditiva incluída.',
+      weeklyCoachTitle: 'Coach IA Semanal',
+      weeklyCoachDesc: 'Recomendações personalizadas com impacto estimado. Seu consultor de negócios com IA.',
+      cta: 'Experimente Intelligence Grátis'
     },
     howItWorks: {
       title: 'Ao vivo em',
@@ -533,9 +605,9 @@ const translations = {
     nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
       badge: 'Chatbot IA',
-      title1: 'Chatbot IA E-commerce',
-      title2: 'Qui Convertit',
-      subtitle: 'Transformez les visiteurs de votre site en clients payants avec un chatbot intelligent qui comprend l\'intention, capture des leads et travaille 24/7.',
+      title1: 'Chatbot IA pour',
+      title2: 'Toute Entreprise',
+      subtitle: 'Transformez les visiteurs de votre site en clients payants avec un chatbot intelligent qui comprend l\'intention, capture des leads et travaille 24/7. Parfait pour e-commerce, services, santé, immobilier et toute industrie.',
       cta1: 'Essai Gratuit',
       cta2: 'Voir comment ça marche',
       analyzeLink: 'Analysez votre site GRATUITEMENT - Voyez les insights IA en temps réel',
@@ -567,6 +639,24 @@ const translations = {
       handoffDesc: 'Transférez les problèmes complexes à votre équipe sans problème.',
       analyticsTitle: 'Tableau de Bord Analytics',
       analyticsDesc: 'Suivez les conversations, taux de conversion et ROI.'
+    },
+    intelligence: {
+      title: 'Intelligence d\'Affaires',
+      titleHighlight: 'Alimentée par l\'IA',
+      subtitle: 'Des analyses avancées qui transforment les conversations en insights actionnables',
+      productDemandTitle: 'Demande Produits',
+      productDemandDesc: 'Découvrez quels produits les clients recherchent le plus. Identifiez les lacunes de demande et la sensibilité aux prix.',
+      customerProfilesTitle: 'Profils Clients',
+      customerProfilesDesc: 'Comprenez l\'étape d\'achat des visiteurs - sensibilisation, évaluation ou décision. Voyez les patterns d\'intention.',
+      competitorTitle: 'Intelligence Concurrentielle',
+      competitorDesc: 'Suivez les mentions des concurrents et le sentiment. Sachez à qui on vous compare.',
+      benchmarksTitle: 'Benchmarks Industrie',
+      benchmarksDesc: 'Comparez vos performances aux standards de l\'industrie. Voyez où vous vous situez.',
+      alertsTitle: 'Alertes de Tendances',
+      alertsDesc: 'Recevez des notifications sur les patterns saisonniers et pics de trafic. Prévisions prédictives incluses.',
+      weeklyCoachTitle: 'Coach IA Hebdomadaire',
+      weeklyCoachDesc: 'Recommandations personnalisées avec impact estimé. Votre conseiller d\'affaires IA.',
+      cta: 'Essayez Intelligence Gratuitement'
     },
     howItWorks: {
       title: 'En ligne en',
@@ -988,12 +1078,104 @@ function Features() {
   )
 }
 
+// AI Intelligence Section
+function Intelligence() {
+  const { t } = useLanguage()
+
+  const intelligenceFeatures = [
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
+      title: t.intelligence.productDemandTitle,
+      description: t.intelligence.productDemandDesc,
+      gradient: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
+      title: t.intelligence.customerProfilesTitle,
+      description: t.intelligence.customerProfilesDesc,
+      gradient: 'from-purple-500 to-pink-500'
+    },
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+      title: t.intelligence.competitorTitle,
+      description: t.intelligence.competitorDesc,
+      gradient: 'from-red-500 to-orange-500'
+    },
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+      title: t.intelligence.benchmarksTitle,
+      description: t.intelligence.benchmarksDesc,
+      gradient: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>,
+      title: t.intelligence.alertsTitle,
+      description: t.intelligence.alertsDesc,
+      gradient: 'from-amber-500 to-yellow-500'
+    },
+    {
+      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>,
+      title: t.intelligence.weeklyCoachTitle,
+      description: t.intelligence.weeklyCoachDesc,
+      gradient: 'from-indigo-500 to-violet-500'
+    }
+  ]
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            Intelligence v2
+          </span>
+        </div>
+        <h2 className="section-title">{t.intelligence.title} <span className="gradient-text">{t.intelligence.titleHighlight}</span></h2>
+        <p className="section-subtitle">{t.intelligence.subtitle}</p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {intelligenceFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className="card hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden"
+            >
+              {/* Gradient top bar */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`}></div>
+
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${feature.gradient} bg-opacity-10 text-white`}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-400">{feature.description}</p>
+
+              {/* Hover effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <a
+            href="https://app.catyai.io/signup"
+            className="inline-flex items-center gap-2 btn-primary text-lg px-8 py-4"
+          >
+            <span>{t.intelligence.cta}</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // How It Works Section
 function HowItWorks() {
   const { t } = useLanguage()
 
   const steps = [
-    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, code: '<script src="https://api.catyai.io/widget.js?v=20260203-1919" data-widget-id="YOUR_WIDGET_ID"></script>', image: '/images/caty-point-right.png' },
+    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, code: '<script src="https://api.catyai.io/widget.js?v=20260207-2056" data-widget-id="YOUR_WIDGET_ID"></script>', image: '/images/caty-point-right.png' },
     { number: '02', title: t.howItWorks.step2Title, description: t.howItWorks.step2Desc, image: '/images/caty-think.png' },
     { number: '03', title: t.howItWorks.step3Title, description: t.howItWorks.step3Desc, image: '/images/caty-happy.png' }
   ]
@@ -1321,6 +1503,42 @@ function CTA() {
   )
 }
 
+// Powered By Section
+function PoweredBy() {
+  const technologies = [
+    { name: 'AWS', icon: 'amazonaws', title: 'Amazon Web Services' },
+    { name: 'MongoDB', icon: 'mongodb', title: 'MongoDB Atlas' },
+    { name: 'OpenAI', icon: 'openai', title: 'OpenAI' },
+    { name: 'Supabase', icon: 'supabase', title: 'Supabase' },
+    { name: 'Redis', icon: 'redis', title: 'Redis' },
+    { name: 'Qdrant', icon: 'qdrant', title: 'Qdrant' },
+    { name: 'Stripe', icon: 'stripe', title: 'Stripe' },
+    { name: 'Node.js', icon: 'nodedotjs', title: 'Node.js' }
+  ]
+
+  return (
+    <section className="py-10 px-4 sm:px-6 lg:px-8 border-t border-gray-800/50">
+      <div className="max-w-4xl mx-auto text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-6">
+          Powered by
+        </p>
+        <div className="flex items-center justify-center flex-wrap gap-8 md:gap-10">
+          {technologies.map((tech) => (
+            <img
+              key={tech.name}
+              src={`https://cdn.simpleicons.org/${tech.icon}/6b7280`}
+              alt={tech.name}
+              title={tech.title}
+              className="h-6 md:h-7 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // Footer Component
 function Footer() {
   const { t } = useLanguage()
@@ -1372,6 +1590,28 @@ function Footer() {
           </div>
         </div>
 
+        {/* Featured Articles - SEO Backlinks */}
+        <div className="py-4 border-t border-gray-800">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <span className="text-gray-500">Featured Articles:</span>
+            <a href="https://medium.com/@adrianvitan/ahauros-aeos-catyai-inteligen%C8%9Ba-artificial%C4%83-economic%C4%83-pentru-rom%C3%A2nia-digital%C4%83-89108e433672"
+               target="_blank" rel="noopener noreferrer"
+               className="text-gray-400 hover:text-primary-400 transition-colors">
+              Ahauros AEOS & CatyAI — AI for Digital Romania
+            </a>
+            <a href="https://medium.com/@adrianvitan/building-ai-that-works-for-business-my-journey-creating-payai-x-ahauros-and-catyai-1f407e31e109"
+               target="_blank" rel="noopener noreferrer"
+               className="text-gray-400 hover:text-primary-400 transition-colors">
+              Building AI That Works for Business
+            </a>
+            <a href="https://medium.com/@adrianvitan"
+               target="_blank" rel="noopener noreferrer"
+               className="text-primary-400 hover:text-primary-300 transition-colors font-medium">
+              All articles on Medium →
+            </a>
+          </div>
+        </div>
+
         {/* Licensing Info */}
         <div className="py-6 border-t border-gray-800 mb-2">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
@@ -1399,14 +1639,17 @@ function Footer() {
             © {new Date().getFullYear()} {t.footer.copyright}
           </p>
           <div className="flex items-center gap-4">
-            <a href="https://twitter.com/catyai" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://twitter.com/catyai" className="text-gray-400 hover:text-white transition-colors" title="Twitter">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
             </a>
-            <a href="https://linkedin.com/company/catyai" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://linkedin.com/company/catyai" className="text-gray-400 hover:text-white transition-colors" title="LinkedIn">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="https://github.com/catyai" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://github.com/catyai" className="text-gray-400 hover:text-white transition-colors" title="GitHub">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://medium.com/@adrianvitan" className="text-gray-400 hover:text-white transition-colors" title="Medium" target="_blank" rel="noopener noreferrer">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
             </a>
           </div>
         </div>
@@ -1677,6 +1920,7 @@ function HomePage() {
     <>
       <Hero />
       <Features />
+      <Intelligence />
       <HowItWorks />
       <Integrations />
       <Pricing />
@@ -1710,6 +1954,30 @@ function ScrollToHash() {
 
 // Main App
 function AppContent() {
+  // Track referral code from URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const ref = params.get('ref')
+    if (ref) {
+      // Store in localStorage for signup flow
+      localStorage.setItem('catyai_ref', ref.toUpperCase())
+
+      // Track visit (optional)
+      fetch('https://api.catyai.io/api/public/track/referral', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: ref,
+          event: 'visit',
+          landing_page: window.location.pathname,
+          utm_source: params.get('utm_source'),
+          utm_medium: params.get('utm_medium'),
+          utm_campaign: params.get('utm_campaign')
+        })
+      }).catch(() => {}) // Ignore errors
+    }
+  }, [])
+
   return (
     <div className="min-h-screen">
       <ScrollToHash />
@@ -1731,6 +1999,7 @@ function AppContent() {
           <Route path="/blog/:slug" element={<BlogArticle />} />
         </Routes>
       </main>
+      <PoweredBy />
       <Footer />
     </div>
   )
