@@ -1506,7 +1506,7 @@ function CTA() {
 // Powered By Section
 function PoweredBy() {
   const technologies = [
-    { name: 'AWS', icon: 'amazonwebservices', title: 'Amazon Web Services' },
+    { name: 'AWS', svg: '/images/logos/aws.svg', title: 'Amazon Web Services' },
     { name: 'MongoDB', icon: 'mongodb', title: 'MongoDB Atlas' },
     { name: 'OpenAI', svg: '/images/logos/openai.svg', title: 'OpenAI' },
     { name: 'Supabase', icon: 'supabase', title: 'Supabase' },
