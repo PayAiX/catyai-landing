@@ -1506,12 +1506,12 @@ function CTA() {
 // Powered By Section
 function PoweredBy() {
   const technologies = [
-    { name: 'AWS', icon: 'amazonaws', title: 'Amazon Web Services' },
+    { name: 'AWS', icon: 'amazonwebservices', title: 'Amazon Web Services' },
     { name: 'MongoDB', icon: 'mongodb', title: 'MongoDB Atlas' },
-    { name: 'OpenAI', icon: 'openai', title: 'OpenAI' },
+    { name: 'OpenAI', svg: '/images/logos/openai.svg', title: 'OpenAI' },
     { name: 'Supabase', icon: 'supabase', title: 'Supabase' },
     { name: 'Redis', icon: 'redis', title: 'Redis' },
-    { name: 'Qdrant', icon: 'qdrant', title: 'Qdrant' },
+    { name: 'Qdrant', svg: '/images/logos/qdrant.svg', title: 'Qdrant' },
     { name: 'Stripe', icon: 'stripe', title: 'Stripe' },
     { name: 'Node.js', icon: 'nodedotjs', title: 'Node.js' }
   ]
@@ -1526,7 +1526,7 @@ function PoweredBy() {
           {technologies.map((tech) => (
             <img
               key={tech.name}
-              src={`https://cdn.simpleicons.org/${tech.icon}/6b7280`}
+              src={tech.svg || `https://cdn.simpleicons.org/${tech.icon}/6b7280`}
               alt={tech.name}
               title={tech.title}
               className="h-6 md:h-7 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
