@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const translations = {
   en: {
@@ -210,6 +211,11 @@ export default function Contact() {
 
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen">
+      <SEO
+        title="Contact CatyAI - Get in Touch"
+        description="Contact the CatyAI team for sales inquiries, technical support, or partnership opportunities. We're here to help."
+        url="https://catyai.io/contact"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

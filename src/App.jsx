@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import SEO from './components/SEO'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import GDPRPolicy from './pages/GDPRPolicy'
@@ -1175,7 +1176,7 @@ function HowItWorks() {
   const { t } = useLanguage()
 
   const steps = [
-    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, code: '<script src="https://api.catyai.io/widget.js?v=20260207-2056" data-widget-id="YOUR_WIDGET_ID"></script>', image: '/images/caty-point-right.png' },
+    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, code: '<script src="https://api.catyai.io/widget.js?v=20260303-2246" data-widget-id="YOUR_WIDGET_ID"></script>', image: '/images/caty-point-right.png' },
     { number: '02', title: t.howItWorks.step2Title, description: t.howItWorks.step2Desc, image: '/images/caty-think.png' },
     { number: '03', title: t.howItWorks.step3Title, description: t.howItWorks.step3Desc, image: '/images/caty-happy.png' }
   ]
@@ -1914,10 +1915,43 @@ function FloatingWidgetIndicator() {
   )
 }
 
-// Home Page
+// Home Page FAQ data for structured data
+const homepageFAQ = [
+  {
+    question: 'How does CatyAI work?',
+    answer: 'CatyAI is a smart chatbot widget that you embed on your website. It uses advanced AI to understand visitor questions and respond intelligently. You can train it on your specific products, FAQs, and documentation so it gives accurate answers about your business.'
+  },
+  {
+    question: 'How long does setup take?',
+    answer: 'Most customers are live in under 5 minutes. Just copy our script tag into your website, configure your widget in our dashboard, and you are ready to go. No coding required.'
+  },
+  {
+    question: 'Can I customize the appearance?',
+    answer: 'Absolutely! You can customize colors, position, greeting messages, avatar, and more to match your brand. The widget is designed to feel like a natural part of your website.'
+  },
+  {
+    question: 'What happens when CatyAI cannot answer a question?',
+    answer: 'CatyAI is smart about knowing its limits. When it cannot answer confidently, it can either collect the visitor info for follow-up, transfer to a human agent, or offer to create a support ticket.'
+  },
+  {
+    question: 'Is my data secure?',
+    answer: 'Yes. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We are GDPR compliant and never use your data to train AI models. Your business information stays yours.'
+  },
+  {
+    question: 'Can I cancel anytime?',
+    answer: 'Yes, you can cancel your subscription at any time. No long-term contracts, no cancellation fees. Your service continues until the end of your billing period.'
+  }
+];
+
 function HomePage() {
   return (
     <>
+      <SEO
+        title="E-Commerce Conversion AI & Business Intelligence"
+        description="CatyAI transforms visitors into customers with AI: intent detection, real-time lead scoring, Knowledge Base RAG, Business Intelligence, Competitor Intelligence. From free to enterprise."
+        url="https://catyai.io/"
+        faq={homepageFAQ}
+      />
       <Hero />
       <Features />
       <Intelligence />

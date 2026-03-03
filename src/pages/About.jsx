@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const translations = {
   en: {
@@ -174,6 +175,11 @@ export default function About() {
 
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen">
+      <SEO
+        title="About CatyAI - Our Mission & Team"
+        description="Learn about CatyAI, the AI-powered chatbot platform helping businesses convert more visitors into customers. Based in Dubai, UAE."
+        url="https://catyai.io/about"
+      />
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
