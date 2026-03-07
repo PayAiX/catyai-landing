@@ -1,0 +1,53 @@
+# llms.txt - CatyAI
+
+> CatyAI - AI-powered chatbot platform for converting website visitors into customers
+> Multilingual AI assistant that captures leads and provides instant support 24/7
+
+## Company
+- Name: CatyAI
+- Website: https://catyai.io
+- Dashboard: https://app.catyai.io
+
+## Product
+
+### CatyAI Chatbot
+- URL: https://catyai.io
+- Dashboard: https://app.catyai.io
+- Description: AI chatbot that engages website visitors, answers questions, and captures leads automatically
+- Features: Multilingual support, lead capture, CRM integration, custom branding, analytics
+- Target: E-commerce stores, SaaS companies, service businesses, agencies
+
+## Key Features
+1. **AI-Powered Conversations** - Natural language understanding for human-like interactions
+2. **Multilingual Support** - 50+ languages supported out of the box
+3. **Lead Capture** - Automatically collect visitor information and qualify leads
+4. **24/7 Availability** - Never miss a customer inquiry
+5. **Easy Integration** - One-line embed code for any website
+6. **Custom Branding** - Match your brand colors and personality
+7. **Analytics Dashboard** - Track conversations, conversions, and ROI
+8. **CRM Integration** - Connect with HubSpot, Salesforce, and more
+
+## Use Cases
+- E-commerce customer support
+- Lead qualification and capture
+- Product recommendations
+- FAQ automation
+- Appointment scheduling
+- Order status inquiries
+
+## Pricing
+- Starter: Free (100 conversations/month)
+- Growth: $49/month (1,000 conversations)
+- Pro: $149/month (unlimited conversations)
+- Enterprise: Custom pricing
+
+## Integrations
+- Shopify
+- WooCommerce
+- WordPress
+- Webflow
+- Custom websites (JavaScript embed)
+
+## Contact
+- Email: contact@catyai.io
+- Demo: https://calendly.com/adrian-payai-x/30min
