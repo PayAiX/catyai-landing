@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
-const API_BASE = 'https://api.ahauros.io';
-
-// Static articles (fallback + initial content)
-const staticArticles = [
+// Blog articles data
+export const blogArticles = [
   {
     slug: 'ai-chatbot-ecommerce-conversions',
     title: 'How AI Chatbots Increase E-commerce Conversions by 30%',
@@ -14,8 +11,7 @@ const staticArticles = [
     readTime: '8 min read',
     category: 'Conversion Optimization',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
-    keywords: ['ai chatbot', 'ecommerce conversion', 'sales optimization', 'customer engagement'],
-    isStatic: true,
+    keywords: ['ai chatbot', 'ecommerce conversion', 'sales optimization', 'customer engagement']
   },
   {
     slug: 'best-shopify-ai-chatbot-2025',
@@ -25,8 +21,7 @@ const staticArticles = [
     readTime: '10 min read',
     category: 'Shopify',
     image: 'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800',
-    keywords: ['shopify chatbot', 'best ai chatbot', 'shopify app', 'ecommerce ai'],
-    isStatic: true,
+    keywords: ['shopify chatbot', 'best ai chatbot', 'shopify app', 'ecommerce ai']
   },
   {
     slug: '24-7-customer-support-ai',
@@ -36,54 +31,31 @@ const staticArticles = [
     readTime: '7 min read',
     category: 'Customer Support',
     image: 'https://images.unsplash.com/photo-1553775927-a071d5a6a39a?w=800',
-    keywords: ['24/7 support', 'ai customer service', 'automation', 'cost savings'],
-    isStatic: true,
+    keywords: ['24/7 support', 'ai customer service', 'automation', 'cost savings']
   },
+  {
+    slug: 'woocommerce-ai-chatbot-setup',
+    title: 'WooCommerce AI Chatbot: Complete Setup Guide',
+    excerpt: 'Step-by-step tutorial to install and configure an AI chatbot on your WooCommerce store in under 10 minutes.',
+    date: 'February 24, 2025',
+    readTime: '12 min read',
+    category: 'WooCommerce',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
+    keywords: ['woocommerce chatbot', 'wordpress ai', 'chatbot setup', 'tutorial']
+  },
+  {
+    slug: 'why-stores-lose-sales-at-night',
+    title: 'Why Online Stores Lose Sales at Night (And How to Fix It)',
+    excerpt: '52% of online purchases happen outside business hours. Learn how to capture these sales with AI automation.',
+    date: 'March 3, 2025',
+    readTime: '6 min read',
+    category: 'Sales Strategy',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
+    keywords: ['night sales', 'cart abandonment', 'after hours', 'automation']
+  }
 ];
 
-// Export for use in BlogArticle.jsx
-export const blogArticles = staticArticles;
-
 export default function Blog() {
-  const [articles, setArticles] = useState(staticArticles);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        setLoading(true);
-        const res = await fetch(`${API_BASE}/api/public/blog/posts?site_url=https://catyai.io&limit=50`);
-        const data = await res.json();
-
-        if (data.success && data.posts?.length > 0) {
-          // Merge API articles with static ones (API first, then static)
-          const apiArticles = data.posts.map(p => ({
-            ...p,
-            isStatic: false,
-          }));
-
-          // Filter out duplicates by slug
-          const staticSlugs = new Set(apiArticles.map(a => a.slug));
-          const uniqueStatic = staticArticles.filter(a => !staticSlugs.has(a.slug));
-
-          setArticles([...apiArticles, ...uniqueStatic]);
-        }
-      } catch (err) {
-        console.error('Failed to fetch articles:', err);
-        setError(err.message);
-        // Keep static articles on error
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchArticles();
-  }, []);
-
-  const featuredArticle = articles[0];
-  const otherArticles = articles.slice(1);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <SEO
@@ -91,7 +63,6 @@ export default function Blog() {
         description="Learn how to boost your e-commerce sales with AI chatbots. Tutorials, case studies, and conversion optimization strategies."
         url="https://catyai.io/blog"
       />
-
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
@@ -104,103 +75,80 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Loading State */}
-      {loading && (
-        <div className="flex justify-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
-        </div>
-      )}
-
       {/* Featured Article */}
-      {!loading && featuredArticle && (
-        <section className="px-4 pb-12">
-          <div className="max-w-6xl mx-auto">
-            <Link
-              to={featuredArticle.isStatic ? `/blog/${featuredArticle.slug}` : `/blog/${featuredArticle.slug}`}
-              className="block group"
-            >
-              <div className="relative rounded-2xl overflow-hidden bg-gray-800/50 border border-gray-700 hover:border-indigo-500/50 transition-all">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="aspect-video md:aspect-auto">
-                    <img
-                      src={featuredArticle.image}
-                      alt={featuredArticle.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 md:p-8 flex flex-col justify-center">
-                    <span className="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-400 text-sm rounded-full w-fit mb-4">
-                      Featured
-                    </span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">
-                      {featuredArticle.title}
-                    </h2>
-                    <p className="text-gray-400 mb-4">
-                      {featuredArticle.excerpt}
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>{featuredArticle.date}</span>
-                      <span>•</span>
-                      <span>{featuredArticle.readTime}</span>
-                    </div>
+      <section className="px-4 pb-12">
+        <div className="max-w-6xl mx-auto">
+          <Link to={`/blog/${blogArticles[0].slug}`} className="block group">
+            <div className="relative rounded-2xl overflow-hidden bg-gray-800/50 border border-gray-700 hover:border-indigo-500/50 transition-all">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="aspect-video md:aspect-auto">
+                  <img
+                    src={blogArticles[0].image}
+                    alt={blogArticles[0].title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 md:p-8 flex flex-col justify-center">
+                  <span className="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-400 text-sm rounded-full w-fit mb-4">
+                    Featured
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">
+                    {blogArticles[0].title}
+                  </h2>
+                  <p className="text-gray-400 mb-4">
+                    {blogArticles[0].excerpt}
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <span>{blogArticles[0].date}</span>
+                    <span>•</span>
+                    <span>{blogArticles[0].readTime}</span>
                   </div>
                 </div>
               </div>
-            </Link>
-          </div>
-        </section>
-      )}
+            </div>
+          </Link>
+        </div>
+      </section>
 
       {/* Articles Grid */}
-      {!loading && otherArticles.length > 0 && (
-        <section className="px-4 pb-20">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8">Latest Articles</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherArticles.map((article) => (
-                <Link
-                  key={article.slug}
-                  to={`/blog/${article.slug}`}
-                  className="group block bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-indigo-500/50 transition-all hover:-translate-y-1"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+      <section className="px-4 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-8">Latest Articles</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {blogArticles.slice(1).map((article) => (
+              <Link
+                key={article.slug}
+                to={`/blog/${article.slug}`}
+                className="group block bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-indigo-500/50 transition-all hover:-translate-y-1"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="inline-block px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded mb-3">
+                    {article.category}
+                  </span>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                  <div className="flex items-center gap-3 text-xs text-gray-500">
+                    <span>{article.date}</span>
+                    <span>•</span>
+                    <span>{article.readTime}</span>
                   </div>
-                  <div className="p-5">
-                    <span className="inline-block px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded mb-3">
-                      {article.category}
-                    </span>
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center gap-3 text-xs text-gray-500">
-                      <span>{article.date}</span>
-                      <span>•</span>
-                      <span>{article.readTime}</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
-      )}
-
-      {/* Empty State */}
-      {!loading && articles.length === 0 && (
-        <section className="px-4 pb-20">
-          <div className="max-w-4xl mx-auto text-center py-16">
-            <p className="text-gray-400">No articles yet. Check back soon!</p>
-          </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="px-4 pb-20">

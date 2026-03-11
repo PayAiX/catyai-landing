@@ -1,6 +1,16 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import SEO from './components/SEO'
+import Testimonials from './components/Testimonials'
+import PartnersPress from './components/PartnersPress'
+import AurexPromo from './components/AurexPromo'
+import QRFirst from './components/QRFirst'
+import CaseStudies from './components/CaseStudies'
+import ROICalculator from './components/ROICalculator'
+import FraudShield from './components/FraudShield'
+import DocGenEngine from './components/DocGenEngine'
+import ComparisonTable from './components/ComparisonTable'
+import WhatsAppSecretary from './components/WhatsAppSecretary'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import GDPRPolicy from './pages/GDPRPolicy'
@@ -19,134 +29,158 @@ const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Get Started Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Start Free' },
     hero: {
-      badge: 'AI-Powered Chatbot',
-      title1: 'AI Chatbot for',
-      title2: 'Any Business',
-      subtitle: 'Transform your website visitors into paying customers with an intelligent chatbot that understands intent, captures leads, and works 24/7. Perfect for e-commerce, services, healthcare, real estate, and any industry.',
-      cta1: 'Start Free Trial',
-      cta2: 'See How It Works',
-      analyzeLink: 'Analyze your website FREE - See AI insights in real-time',
-      noCard: 'No credit card required',
-      fiveMin: '5-minute setup',
-      cancel: 'Cancel anytime',
-      tryMe: 'Try Me Now!',
-      tryMeDesc: 'Click the chat icon in the bottom right corner',
-      tryWidget: 'Try the real widget',
-      mockupOnline: 'Online',
-      mockupGreeting: "Hi! I'm Caty, your AI assistant. How can I help you today?",
-      mockupUserQ: 'What pricing plans do you offer?',
-      mockupBotA: 'We offer Free, Starter (€149/mo), Growth (€299/mo), Business (€499/mo), and Enterprise plans. Would you like details on any specific plan?',
+      badge: 'AI Chat Widget for Your Website',
+      title1: 'AI Chat Widget',
+      title2: 'for Your Website',
+      subtitle: 'Capture leads, answer questions, convert visitors 24/7. One line of code. Auto-learns your business. Works on any website.',
+      cta1: 'Start Free — €0/month',
+      cta2: 'Book Demo',
+      analyzeLink: 'Analyze your website for free',
+      noCard: '100 sessions/month FREE',
+      fiveMin: 'Setup in 5 min',
+      cancel: 'No credit card',
+      tryMe: 'Try CatyAI Now!',
+      tryMeDesc: 'Click the chat widget in the corner',
+      tryWidget: 'Or try the chat widget below',
+      mockupOnline: 'Online 24/7',
+      mockupGreeting: "Hi! I'm your AI assistant. How can I help?",
+      mockupUserQ: 'What services do you offer?',
+      mockupBotA: 'We offer web design, SEO, and digital marketing. Would you like a quote?',
       mockupPlaceholder: 'Type a message...'
     },
+    problem: {
+      title: 'Your Customers Message You.',
+      titleHighlight: 'Nobody Answers.',
+      stat1: '40% of customers call evenings/weekends',
+      stat2: '67% switch to competitor if no response in 1 hour',
+      stat3: 'A human receptionist costs €1,500/month',
+      solution: 'CatyAI responds instantly, 24/7, for €0.'
+    },
     features: {
-      title: 'Everything You Need to',
-      titleHighlight: 'Convert More',
-      subtitle: 'Powerful AI features that work together to turn visitors into customers',
-      intentTitle: 'Intent Detection',
-      intentDesc: 'AI understands what visitors want - ready to buy, need support, or just browsing. Responds appropriately every time.',
-      leadTitle: 'Lead Capture',
-      leadDesc: 'Automatically collect contact information at the right moment. Smart forms that dont feel pushy.',
-      kbTitle: 'Knowledge Base',
-      kbDesc: 'Train your AI on your products, FAQs, and docs. Answers questions accurately with your actual information.',
-      availTitle: '24/7 Availability',
-      availDesc: 'Never miss a lead again. Your AI assistant works around the clock, even when youre sleeping.',
-      handoffTitle: 'Human Handoff',
-      handoffDesc: 'Seamlessly transfer complex issues to your team. AI knows when to escalate.',
-      analyticsTitle: 'Analytics Dashboard',
-      analyticsDesc: 'Track conversations, conversion rates, and ROI. Know exactly whats working.'
+      title: 'Your Secretary',
+      titleHighlight: 'Never Sleeps',
+      subtitle: 'Everything a receptionist does, automated on WhatsApp',
+      feature1Title: 'Answers Customers 24/7',
+      feature1Desc: 'Responds instantly in natural language. Remembers conversation context. Speaks Romanian, English, Spanish, Portuguese, French, Arabic fluently with auto-detection.',
+      feature2Title: 'Books Appointments',
+      feature2Desc: 'Syncs with Google Calendar. Checks availability in real-time. Sends booking confirmations and 30-minute reminders directly on WhatsApp.',
+      feature3Title: 'Generates Documents',
+      feature3Desc: 'Creates quotes, invoices, booking confirmations, and receipts as PDF. Sends them directly in WhatsApp chat. Payment links included.',
+      feature4Title: 'Blocks Scams with FraudAI',
+      feature4Desc: 'FraudAI Shield with 8 detection modules: phishing links, fake urgency, impersonation, suspicious requests. Protects you before you even see the message.',
+      feature5Title: 'Extracts Tasks Automatically',
+      feature5Desc: '"Call Ion tomorrow at 10" becomes a task with reminder. "Order supplies" gets tracked. Daily digest email with everything extracted.',
+      feature6Title: 'Knows Your Business Inside Out',
+      feature6Desc: '12-domain Knowledge Base: services, pricing, hours, locations, team members, policies, FAQs, promotions, booking rules, payment methods, and more.'
     },
-    intelligence: {
-      title: 'AI-Powered',
-      titleHighlight: 'Business Intelligence',
-      subtitle: 'Advanced analytics that turn conversations into actionable business insights',
-      productDemandTitle: 'Product Demand',
-      productDemandDesc: 'Discover what products customers are asking about most. Identify demand gaps and pricing sensitivity.',
-      customerProfilesTitle: 'Customer Profiles',
-      customerProfilesDesc: 'Understand your visitors\' buying stage - awareness, evaluation, or decision. See intent patterns by time.',
-      competitorTitle: 'Competitor Intelligence',
-      competitorDesc: 'Track competitor mentions and sentiment. Know what customers compare you against.',
-      benchmarksTitle: 'Industry Benchmarks',
-      benchmarksDesc: 'Compare your performance against industry standards. See where you rank.',
-      alertsTitle: 'Trend Alerts',
-      alertsDesc: 'Get notified of seasonal patterns and traffic spikes. Predictive forecasting included.',
-      weeklyCoachTitle: 'AI Weekly Coach',
-      weeklyCoachDesc: 'Personalized recommendations with estimated impact. Your AI business advisor.',
-      cta: 'Try Intelligence Free'
-    },
-    howItWorks: {
-      title: 'Live in',
-      titleHighlight: '5 Minutes',
-      subtitle: 'No complex setup. No coding required. Just copy, paste, and convert.',
-      step1Title: 'Install Widget',
-      step1Desc: 'One-click integrations for WordPress, Shopify, WooCommerce. Or add one line of code to any website. Works everywhere.',
-      step2Title: 'Train Your AI',
-      step2Desc: 'Upload FAQs and docs, OR use Auto-Crawl to scan your entire website automatically. Caty learns your business in minutes.',
-      step3Title: 'Start Converting',
-      step3Desc: 'Watch as Caty engages visitors, answers questions, captures leads, and drives sales 24/7. Real-time analytics included.'
+    products: {
+      title: 'Two Ways to',
+      titleHighlight: 'Engage Customers',
+      subtitle: 'CatyAI works on your website AND on WhatsApp',
+      widget: {
+        title: 'Website Chat Widget',
+        desc: 'Embed on any website. Captures leads, answers questions, converts visitors 24/7.',
+        features: ['One-line embed code', 'Auto-Crawl Knowledge Base', 'Lead capture forms', 'Real-time analytics']
+      },
+      whatsapp: {
+        title: 'WhatsApp Secretary',
+        desc: 'Responds to customers on WhatsApp. Books appointments, generates documents, blocks scams.',
+        features: ['QR code setup', 'Calendar sync', 'Document generation', 'FraudAI Shield']
+      }
     },
     integrations: {
       title: 'Powerful',
       titleHighlight: 'Integrations',
-      subtitle: 'Connect your favorite platforms with one click. No technical skills required.',
-      wordpress: {
-        title: 'WordPress',
-        desc: 'One-click plugin installation. Sync your posts, products, and pages automatically. Works with WooCommerce.'
-      },
-      shopify: {
-        title: 'Shopify',
-        desc: 'Instant integration with your Shopify store. Auto-sync products, collections, and inventory in real-time.'
-      },
-      autoCrawl: {
-        title: 'Auto-Crawl',
-        desc: 'Let Caty scan your entire website automatically. Extract content, products, and FAQs without manual upload.'
-      }
+      subtitle: 'Connect your platforms with one click. Auto-Crawl learns your business automatically.',
+      wordpress: { title: 'WordPress', desc: 'One-click plugin. Syncs posts, products, pages automatically.' },
+      shopify: { title: 'Shopify', desc: 'Instant integration. Auto-sync products and inventory.' },
+      autoCrawl: { title: 'Auto-Crawl', desc: 'Scans your entire website. Extracts content, products, FAQs automatically.' },
+      calendar: { title: 'Google Calendar', desc: 'Real-time availability. Automatic booking and reminders.' }
+    },
+    verticals: {
+      title: 'Built for Businesses That',
+      titleHighlight: 'Live on WhatsApp',
+      industries: ['Dental Clinics', 'Hair Salons', 'Restaurants', 'Fitness', 'Real Estate', 'Services'],
+      trusted: 'Trusted by: Simple Smile, Digital Romania, D&S Gaz'
+    },
+    howItWorks: {
+      title: 'Live in',
+      titleHighlight: '5 Minutes',
+      subtitle: 'No app to install. No complex setup. Just connect and go.',
+      step1Title: 'Scan QR Code',
+      step1Desc: 'Connects your WhatsApp number instantly. Like WhatsApp Web.',
+      step2Title: 'Tell CatyAI About Your Business',
+      step2Desc: 'Services, prices, hours, team. CatyAI learns in minutes.',
+      step3Title: 'CatyAI Takes Over',
+      step3Desc: 'Check results in the morning. All conversations handled.'
     },
     pricing: {
-      title: 'Simple, Transparent',
+      title: 'Simple',
       titleHighlight: 'Pricing',
-      subtitle: 'Simple, transparent pricing for every business',
+      subtitle: 'Start free, upgrade when you need more',
       mostPopular: 'Most Popular',
-      sessions: 'Sessions',
-      widgets: 'Widgets',
       perMonth: '/mo',
-      setup: 'setup',
       startFree: 'Start Free',
       getStarted: 'Get Started',
       contactSales: 'Contact Sales',
-      trial: 'All paid plans include a 14-day free trial. No credit card required.',
-      free: { name: 'Free', features: ['Basic chat', 'Lead capture', 'Email support'] },
-      starter: { name: 'Starter', features: ['Everything in Free', 'Behavioral tracking', 'Proactive messages', 'Priority support'] },
-      growth: { name: 'Growth', features: ['Everything in Starter', 'CRM integrations', 'Live handoff', 'Advanced analytics'] },
-      business: { name: 'Business', features: ['Everything in Growth', 'White-label', 'API access', 'Account manager'] },
-      enterprise: { name: 'Enterprise', features: ['Everything in Business', 'SSO / SAML', 'SLA guarantee', 'Dedicated support'] }
+      setupFee: 'one-time setup',
+      free: {
+        name: 'FREE',
+        price: '€0',
+        features: ['100 sessions/month', '1 widget', '10 KB docs', 'Basic chat', 'Lead capture']
+      },
+      starter: {
+        name: 'STARTER',
+        price: '€149',
+        setup: '€499',
+        features: ['1,000 sessions/month', '1 widget', '50 KB docs', 'Behavioral tracking', 'Proactive messages', 'Email support']
+      },
+      growth: {
+        name: 'GROWTH',
+        price: '€299',
+        setup: '€999',
+        features: ['5,000 sessions/month', '3 widgets', '200 KB docs', 'CRM integrations', 'Live handoff', 'Analytics', 'Priority support']
+      },
+      business: {
+        name: 'BUSINESS',
+        price: '€499',
+        setup: '€1999',
+        features: ['20,000 sessions/month', 'Unlimited widgets', 'Unlimited KB docs', 'API access', 'Account manager', 'Custom integrations', 'Advanced analytics']
+      },
+      enterprise: {
+        name: 'ENTERPRISE',
+        price: '€800',
+        setup: '€3800',
+        features: ['Unlimited sessions', 'Unlimited widgets', 'Unlimited KB docs', 'White-label branding', 'SSO / SAML', 'Dedicated support', 'SLA guarantee', 'Custom development']
+      }
     },
     faq: {
-      title: 'Frequently Asked',
-      titleHighlight: 'Questions',
-      subtitle: 'Everything you need to know about Caty.AI',
-      q1: 'How does Caty.AI work?',
-      a1: 'Caty.AI is a smart chatbot widget that you embed on your website. It uses advanced AI to understand visitor questions and respond intelligently. You can train it on your specific products, FAQs, and documentation so it gives accurate answers about your business.',
-      q2: 'How long does setup take?',
-      a2: 'Most customers are live in under 5 minutes. Just copy our script tag into your website, configure your widget in our dashboard, and you are ready to go. No coding required.',
-      q3: 'Can I customize the appearance?',
-      a3: 'Absolutely! You can customize colors, position, greeting messages, avatar, and more to match your brand. The widget is designed to feel like a natural part of your website.',
-      q4: 'What happens when Caty cannot answer a question?',
-      a4: 'Caty is smart about knowing its limits. When it cannot answer confidently, it can either collect the visitors info for follow-up, transfer to a human agent, or offer to create a support ticket - whatever you configure.',
-      q5: 'Is my data secure?',
-      a5: 'Yes. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We are GDPR compliant and never use your data to train AI models. Your business information stays yours.',
-      q6: 'Can I cancel anytime?',
-      a6: 'Yes, you can cancel your subscription at any time. No long-term contracts, no cancellation fees. Your service continues until the end of your billing period.'
+      title: 'Questions',
+      titleHighlight: 'Answered',
+      subtitle: 'Everything you need to know about CatyAI',
+      q1: 'Is it really free?',
+      a1: 'Yes. 100 sessions per month, forever. No credit card required.',
+      q2: 'How does it connect to my WhatsApp?',
+      a2: 'Scan a QR code, like WhatsApp Web. Uses your existing business number. Takes 2 minutes.',
+      q3: 'Will customers know it\'s AI?',
+      a3: 'Only if you want them to. CatyAI responds as your business, with your style.',
+      q4: 'What if CatyAI can\'t answer a question?',
+      a4: 'It forwards the conversation to you with full context. You take over seamlessly.',
+      q5: 'Is my data safe?',
+      a5: 'GDPR compliant. AWS Ireland servers. You own your data. We never share or sell it.',
+      q6: 'Does it work in Romanian?',
+      a6: 'Fluently! Also English, Spanish, Portuguese, French, and Arabic with auto-detection.'
     },
     cta: {
-      title: 'Ready to Convert More Visitors?',
-      subtitle: 'Join thousands of businesses using Caty.AI to grow their revenue. Start your free trial today - no credit card required.',
-      btn1: 'Start Free Trial',
-      btn2: 'View Dashboard Demo'
+      title: 'Your Competitors Are Already Responding Faster.',
+      subtitle: 'Get CatyAI free. 100 sessions/month. Setup in 5 minutes.',
+      btn1: 'Get CatyAI Free',
+      btn2: 'Book Demo Call'
     },
     footer: {
-      tagline: 'The AI chatbot that actually converts. Built for businesses that want results.',
+      tagline: 'AI Secretary on WhatsApp. Responds 24/7. Books appointments. Blocks scams.',
       product: 'Product',
       company: 'Company',
       legal: 'Legal',
@@ -167,132 +201,156 @@ const translations = {
   ro: {
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
-      badge: 'Chatbot cu AI',
-      title1: 'Chatbot AI pentru',
-      title2: 'Orice Afacere',
-      subtitle: 'Transformă vizitatorii site-ului în clienți plătitori cu un chatbot inteligent care înțelege intenția, captează lead-uri și lucrează 24/7. Perfect pentru e-commerce, servicii, sănătate, imobiliare și orice industrie.',
-      cta1: 'Încearcă Gratuit',
-      cta2: 'Vezi cum funcționează',
-      analyzeLink: 'Analizează-ți site-ul GRATUIT - Vezi insight-uri AI în timp real',
-      noCard: 'Fără card bancar',
+      badge: 'Widget Chat AI pentru Site-ul Tău',
+      title1: 'Widget Chat AI',
+      title2: 'pentru Site-ul Tău',
+      subtitle: 'Captează lead-uri, răspunde la întrebări, convertește vizitatori 24/7. O singură linie de cod. Învață automat afacerea ta.',
+      cta1: 'Începe Gratuit — €0/lună',
+      cta2: 'Programează Demo',
+      analyzeLink: 'Analizează site-ul tău gratuit',
+      noCard: '100 sesiuni/lună GRATUIT',
       fiveMin: 'Setup în 5 minute',
-      cancel: 'Anulează oricând',
-      tryMe: 'Încearcă-mă!',
-      tryMeDesc: 'Click pe iconița de chat din colțul dreapta jos',
-      tryWidget: 'Încearcă widget-ul real',
-      mockupOnline: 'Online',
-      mockupGreeting: 'Bună! Sunt Caty, asistentul tău AI. Cu ce te pot ajuta astăzi?',
-      mockupUserQ: 'Ce planuri de prețuri aveți?',
-      mockupBotA: 'Oferim planurile Free, Starter (€149/lună), Growth (€299/lună), Business (€499/lună) și Enterprise. Dorești detalii despre un plan anume?',
+      cancel: 'Fără card bancar',
+      tryMe: 'Încearcă CatyAI Acum!',
+      tryMeDesc: 'Click pe widget-ul de chat din colț',
+      tryWidget: 'Sau încearcă widget-ul de chat mai jos',
+      mockupOnline: 'Online 24/7',
+      mockupGreeting: 'Bună! Sunt asistentul tău AI. Cu ce te pot ajuta?',
+      mockupUserQ: 'Ce servicii oferiți?',
+      mockupBotA: 'Oferim web design, SEO și marketing digital. Dorești o ofertă?',
       mockupPlaceholder: 'Scrie un mesaj...'
     },
+    problem: {
+      title: 'Clienții te contactează pe WhatsApp.',
+      titleHighlight: 'Nimeni nu răspunde.',
+      stat1: '40% din clienți scriu seara și în weekend',
+      stat2: '67% aleg competitorul dacă nu primesc răspuns în 1 oră',
+      stat3: 'O recepționeră umană costă €1.500/lună',
+      solution: 'CatyAI răspunde instant, 24/7, pentru €0.'
+    },
     features: {
-      title: 'Tot ce ai nevoie pentru a',
-      titleHighlight: 'Converti Mai Mult',
-      subtitle: 'Funcții AI puternice care lucrează împreună pentru a transforma vizitatorii în clienți',
-      intentTitle: 'Detectare Intenție',
-      intentDesc: 'AI înțelege ce vor vizitatorii - gata să cumpere, au nevoie de suport sau doar navighează.',
-      leadTitle: 'Captare Lead-uri',
-      leadDesc: 'Colectează automat informații de contact la momentul potrivit. Formulare smart care nu par insistente.',
-      kbTitle: 'Bază de Cunoștințe',
-      kbDesc: 'Antrenează AI pe produsele, FAQ-urile și documentația ta. Răspunde precis cu informațiile tale.',
-      availTitle: 'Disponibil 24/7',
-      availDesc: 'Nu mai pierde niciun lead. Asistentul tău AI lucrează non-stop, chiar și când dormi.',
-      handoffTitle: 'Transfer la Om',
-      handoffDesc: 'Transferă fără probleme problemele complexe echipei tale. AI știe când să escaladeze.',
-      analyticsTitle: 'Dashboard Analytics',
-      analyticsDesc: 'Urmărește conversațiile, ratele de conversie și ROI. Știi exact ce funcționează.'
+      title: 'Secretara ta',
+      titleHighlight: 'Nu Doarme Niciodată',
+      subtitle: 'Tot ce face o recepționeră, automatizat pe WhatsApp',
+      feature1Title: 'Răspunde Clienților 24/7',
+      feature1Desc: 'Răspunde instant în limbaj natural. Ține minte contextul conversației. Vorbește fluent română, engleză, spaniolă, portugheză, franceză, arabă cu auto-detectare.',
+      feature2Title: 'Programează Întâlniri',
+      feature2Desc: 'Sincronizare cu Google Calendar. Verifică disponibilitatea în timp real. Trimite confirmări și remindere la 30 minute direct pe WhatsApp.',
+      feature3Title: 'Generează Documente',
+      feature3Desc: 'Creează oferte, facturi, confirmări rezervări și chitanțe ca PDF. Le trimite direct în chat WhatsApp. Include link-uri de plată.',
+      feature4Title: 'Blochează Escrocherii cu FraudAI',
+      feature4Desc: 'FraudAI Shield cu 8 module de detecție: link-uri phishing, urgențe false, impersonare, cereri suspecte. Te protejează înainte să vezi mesajul.',
+      feature5Title: 'Extrage Sarcini Automat',
+      feature5Desc: '"Sună-l pe Ion mâine la 10" devine task cu reminder. "Comandă consumabile" e urmărit. Email zilnic cu tot ce a extras.',
+      feature6Title: 'Cunoaște Afacerea Ta în Detaliu',
+      feature6Desc: 'Knowledge Base cu 12 domenii: servicii, prețuri, program, locații, echipă, politici, FAQ, promoții, reguli rezervări, metode plată și mai mult.'
     },
-    intelligence: {
-      title: 'Inteligență de Afaceri',
-      titleHighlight: 'Alimentată de AI',
-      subtitle: 'Analize avansate care transformă conversațiile în insight-uri acționabile',
-      productDemandTitle: 'Cerere Produse',
-      productDemandDesc: 'Descoperă ce produse sunt cele mai căutate. Identifică lacune de cerere și sensibilitatea la preț.',
-      customerProfilesTitle: 'Profiluri Clienți',
-      customerProfilesDesc: 'Înțelege stadiul de cumpărare al vizitatorilor - conștientizare, evaluare sau decizie. Vezi tiparele de intenție.',
-      competitorTitle: 'Inteligență Competitivă',
-      competitorDesc: 'Urmărește mențiunile competitorilor și sentimentul. Află cu cine te compară clienții.',
-      benchmarksTitle: 'Benchmark Industrial',
-      benchmarksDesc: 'Compară performanța ta cu standardele industriei. Vezi unde te clasezi.',
-      alertsTitle: 'Alerte de Tendințe',
-      alertsDesc: 'Primește notificări despre modele sezoniere și vârfuri de trafic. Include prognoze predictive.',
-      weeklyCoachTitle: 'Coach AI Săptămânal',
-      weeklyCoachDesc: 'Recomandări personalizate cu impact estimat. Consilierul tău AI de afaceri.',
-      cta: 'Încearcă Intelligence Gratuit'
-    },
-    howItWorks: {
-      title: 'Live în',
-      titleHighlight: '5 Minute',
-      subtitle: 'Fără configurare complicată. Fără cod. Doar copiază, lipește și convertește.',
-      step1Title: 'Instalează Widget',
-      step1Desc: 'Integrări one-click pentru WordPress, Shopify, WooCommerce. Sau adaugă o linie de cod pe orice site. Funcționează peste tot.',
-      step2Title: 'Antrenează AI-ul',
-      step2Desc: 'Încarcă FAQ-uri și documente, SAU folosește Auto-Crawl să scaneze automat întreg site-ul. Caty învață business-ul tău în minute.',
-      step3Title: 'Începe să Convertești',
-      step3Desc: 'Privește cum Caty interacționează cu vizitatorii, răspunde la întrebări, captează lead-uri și generează vânzări 24/7. Analytics în timp real inclus.'
+    products: {
+      title: 'Două Moduri de a',
+      titleHighlight: 'Interacționa cu Clienții',
+      subtitle: 'CatyAI funcționează pe site-ul tău ȘI pe WhatsApp',
+      widget: {
+        title: 'Widget Chat pe Site',
+        desc: 'Se integrează pe orice site. Captează lead-uri, răspunde la întrebări, convertește vizitatori 24/7.',
+        features: ['O singură linie de cod', 'Auto-Crawl Knowledge Base', 'Formulare captare lead-uri', 'Analytics în timp real']
+      },
+      whatsapp: {
+        title: 'Secretară pe WhatsApp',
+        desc: 'Răspunde clienților pe WhatsApp. Programează întâlniri, generează documente, blochează escrocherii.',
+        features: ['Setup cu cod QR', 'Sincronizare calendar', 'Generare documente', 'FraudAI Shield']
+      }
     },
     integrations: {
       title: 'Integrări',
       titleHighlight: 'Puternice',
-      subtitle: 'Conectează platformele tale favorite cu un singur click. Fără cunoștințe tehnice necesare.',
-      wordpress: {
-        title: 'WordPress',
-        desc: 'Instalare plugin cu un click. Sincronizare automată a postărilor, produselor și paginilor. Funcționează cu WooCommerce.'
-      },
-      shopify: {
-        title: 'Shopify',
-        desc: 'Integrare instantanee cu magazinul tău Shopify. Auto-sincronizare produse, colecții și inventar în timp real.'
-      },
-      autoCrawl: {
-        title: 'Auto-Crawl',
-        desc: 'Lasă Caty să scaneze automat întreg site-ul tău. Extrage conținut, produse și FAQ-uri fără upload manual.'
-      }
+      subtitle: 'Conectează platformele tale cu un singur click. Auto-Crawl învață afacerea ta automat.',
+      wordpress: { title: 'WordPress', desc: 'Plugin cu un click. Sincronizează postări, produse, pagini automat.' },
+      shopify: { title: 'Shopify', desc: 'Integrare instantanee. Auto-sync produse și inventar.' },
+      autoCrawl: { title: 'Auto-Crawl', desc: 'Scanează întreg site-ul tău. Extrage conținut, produse, FAQ automat.' },
+      calendar: { title: 'Google Calendar', desc: 'Disponibilitate în timp real. Rezervări și remindere automate.' }
+    },
+    verticals: {
+      title: 'Creat pentru Afaceri Care',
+      titleHighlight: 'Trăiesc pe WhatsApp',
+      industries: ['Clinici Dentare', 'Saloane de Frumusețe', 'Restaurante', 'Fitness', 'Imobiliare', 'Servicii'],
+      trusted: 'De încredere: Simple Smile, Digital Romania, D&S Gaz'
+    },
+    howItWorks: {
+      title: 'Live în',
+      titleHighlight: '5 Minute',
+      subtitle: 'Nicio aplicație de instalat. Nicio configurare complicată. Conectezi și gata.',
+      step1Title: 'Scanezi Codul QR',
+      step1Desc: 'Îți conectează numărul de WhatsApp instant. Ca WhatsApp Web.',
+      step2Title: 'Spui CatyAI Despre Afacerea Ta',
+      step2Desc: 'Servicii, prețuri, orar, echipă. CatyAI învață în câteva minute.',
+      step3Title: 'CatyAI Preia Controlul',
+      step3Desc: 'Verifici rezultatele dimineața. Toate conversațiile gestionate.'
     },
     pricing: {
       title: 'Prețuri',
-      titleHighlight: 'Transparente',
-      subtitle: 'Prețuri simple și transparente pentru orice business',
+      titleHighlight: 'Simple',
+      subtitle: 'Începe gratuit, actualizează când ai nevoie de mai mult',
       mostPopular: 'Cel mai popular',
-      sessions: 'Sesiuni',
-      widgets: 'Widget-uri',
       perMonth: '/lună',
-      setup: 'setup',
       startFree: 'Începe Gratuit',
       getStarted: 'Începe',
       contactSales: 'Contactează Vânzări',
-      trial: 'Toate planurile includ 14 zile gratuit. Fără card bancar.',
-      free: { name: 'Gratuit', features: ['Chat de bază', 'Captare lead-uri', 'Suport email'] },
-      starter: { name: 'Starter', features: ['Tot din Gratuit', 'Tracking comportament', 'Mesaje proactive', 'Suport prioritar'] },
-      growth: { name: 'Growth', features: ['Tot din Starter', 'Integrări CRM', 'Transfer live', 'Analytics avansat'] },
-      business: { name: 'Business', features: ['Tot din Growth', 'White-label', 'Acces API', 'Account manager'] },
-      enterprise: { name: 'Enterprise', features: ['Tot din Business', 'SSO / SAML', 'Garanție SLA', 'Suport dedicat'] }
+      setupFee: 'setup unic',
+      free: {
+        name: 'GRATUIT',
+        price: '€0',
+        features: ['100 sesiuni/lună', '1 widget', '10 KB docs', 'Chat basic', 'Captare lead-uri']
+      },
+      starter: {
+        name: 'STARTER',
+        price: '€149',
+        setup: '€499',
+        features: ['1.000 sesiuni/lună', '1 widget', '50 KB docs', 'Tracking comportament', 'Mesaje proactive', 'Suport email']
+      },
+      growth: {
+        name: 'GROWTH',
+        price: '€299',
+        setup: '€999',
+        features: ['5.000 sesiuni/lună', '3 widget-uri', '200 KB docs', 'Integrări CRM', 'Handoff live', 'Analytics', 'Suport prioritar']
+      },
+      business: {
+        name: 'BUSINESS',
+        price: '€499',
+        setup: '€1999',
+        features: ['20.000 sesiuni/lună', 'Widget-uri nelimitate', 'KB docs nelimitate', 'Acces API', 'Manager cont', 'Integrări custom', 'Analytics avansat']
+      },
+      enterprise: {
+        name: 'ENTERPRISE',
+        price: '€800',
+        setup: '€3800',
+        features: ['Sesiuni nelimitate', 'Widget-uri nelimitate', 'KB docs nelimitate', 'White-label branding', 'SSO / SAML', 'Suport dedicat', 'Garanție SLA', 'Dezvoltare custom']
+      }
     },
     faq: {
       title: 'Întrebări',
       titleHighlight: 'Frecvente',
-      subtitle: 'Tot ce trebuie să știi despre Caty.AI',
-      q1: 'Cum funcționează Caty.AI?',
-      a1: 'Caty.AI este un widget chatbot inteligent pe care îl integrezi pe site. Folosește AI avansat pentru a înțelege întrebările vizitatorilor și a răspunde inteligent.',
-      q2: 'Cât durează configurarea?',
-      a2: 'Majoritatea clienților sunt live în sub 5 minute. Copiază tag-ul script pe site, configurează widget-ul în dashboard și ești gata.',
-      q3: 'Pot personaliza aspectul?',
-      a3: 'Absolut! Poți personaliza culorile, poziția, mesajele de salut, avatarul și multe altele pentru a se potrivi cu brandul tău.',
-      q4: 'Ce se întâmplă când Caty nu poate răspunde?',
-      a4: 'Caty știe când să-și recunoască limitele. Poate colecta info pentru follow-up, transfera la un agent uman sau crea un ticket de suport.',
-      q5: 'Datele mele sunt sigure?',
-      a5: 'Da. Toate datele sunt criptate în tranzit (TLS 1.3) și în repaus (AES-256). Suntem conformi GDPR și nu folosim datele tale pentru antrenament AI.',
-      q6: 'Pot anula oricând?',
-      a6: 'Da, poți anula abonamentul oricând. Fără contracte pe termen lung, fără taxe de anulare.'
+      subtitle: 'Tot ce trebuie să știi despre CatyAI',
+      q1: 'Este cu adevărat gratuit?',
+      a1: 'Da. 100 de sesiuni pe lună, pe viață. Fără card bancar.',
+      q2: 'Cum se conectează la WhatsApp-ul meu?',
+      a2: 'Scanezi un cod QR, ca la WhatsApp Web. Folosește numărul tău de business existent. Durează 2 minute.',
+      q3: 'Vor ști clienții că e AI?',
+      a3: 'Doar dacă vrei tu. CatyAI răspunde ca afacerea ta, cu stilul tău.',
+      q4: 'Ce se întâmplă dacă CatyAI nu poate răspunde?',
+      a4: 'Îți redirecționează conversația cu tot contextul. Preiei controlul fără probleme.',
+      q5: 'Datele mele sunt în siguranță?',
+      a5: 'Conform GDPR. Servere AWS Irlanda. Tu ești proprietarul datelor. Nu le împărtășim sau vindem.',
+      q6: 'Funcționează în română?',
+      a6: 'Fluent! De asemenea engleză, spaniolă, portugheză, franceză și arabă cu auto-detecție.'
     },
     cta: {
-      title: 'Gata să Convertești Mai Mulți Vizitatori?',
-      subtitle: 'Alătură-te miilor de business-uri care folosesc Caty.AI pentru a-și crește veniturile. Începe gratuit - fără card bancar.',
-      btn1: 'Încearcă Gratuit',
-      btn2: 'Vezi Demo Dashboard'
+      title: 'Competitorii Tăi Răspund Deja Mai Repede.',
+      subtitle: 'Obține CatyAI gratuit. 100 sesiuni/lună. Setup în 5 minute.',
+      btn1: 'Obține CatyAI Gratuit',
+      btn2: 'Programează Demo'
     },
     footer: {
-      tagline: 'Chatbot-ul AI care chiar convertește. Creat pentru business-uri care vor rezultate.',
+      tagline: 'Secretară AI pe WhatsApp. Răspunde 24/7. Programează întâlniri. Blochează escrocherii.',
       product: 'Produs',
       company: 'Companie',
       legal: 'Legal',
@@ -313,132 +371,156 @@ const translations = {
   es: {
     nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
-      badge: 'Chatbot con IA',
-      title1: 'Chatbot IA para',
-      title2: 'Cualquier Negocio',
-      subtitle: 'Transforma los visitantes de tu sitio web en clientes con un chatbot inteligente que entiende la intención, captura leads y trabaja 24/7. Perfecto para e-commerce, servicios, salud, inmobiliaria y cualquier industria.',
-      cta1: 'Prueba Gratis',
-      cta2: 'Ver cómo funciona',
-      analyzeLink: 'Analiza tu sitio GRATIS - Ve insights de IA en tiempo real',
-      noCard: 'Sin tarjeta de crédito',
+      badge: 'Widget Chat IA para Tu Sitio Web',
+      title1: 'Widget Chat IA',
+      title2: 'para Tu Sitio Web',
+      subtitle: 'Captura leads, responde preguntas, convierte visitantes 24/7. Una línea de código. Aprende tu negocio automáticamente.',
+      cta1: 'Empezar Gratis — €0/mes',
+      cta2: 'Reservar Demo',
+      analyzeLink: 'Analiza tu sitio web gratis',
+      noCard: '100 sesiones/mes GRATIS',
       fiveMin: 'Configuración en 5 min',
-      cancel: 'Cancela cuando quieras',
-      tryMe: '¡Pruébame!',
-      tryMeDesc: 'Haz clic en el icono de chat en la esquina inferior derecha',
-      tryWidget: 'Prueba el widget real',
-      mockupOnline: 'En línea',
-      mockupGreeting: '¡Hola! Soy Caty, tu asistente de IA. ¿Cómo puedo ayudarte hoy?',
-      mockupUserQ: '¿Qué planes de precios ofrecen?',
-      mockupBotA: 'Ofrecemos Free, Starter (€149/mes), Growth (€299/mes), Business (€499/mes) y Enterprise. ¿Te gustaría más detalles sobre algún plan?',
+      cancel: 'Sin tarjeta de crédito',
+      tryMe: '¡Prueba CatyAI Ahora!',
+      tryMeDesc: 'Haz clic en el widget de chat en la esquina',
+      tryWidget: 'O prueba el widget de chat abajo',
+      mockupOnline: 'En línea 24/7',
+      mockupGreeting: '¡Hola! Soy tu asistente IA. ¿Cómo puedo ayudarte?',
+      mockupUserQ: '¿Qué servicios ofrecéis?',
+      mockupBotA: 'Ofrecemos diseño web, SEO y marketing digital. ¿Te gustaría un presupuesto?',
       mockupPlaceholder: 'Escribe un mensaje...'
     },
+    problem: {
+      title: 'Tus clientes te escriben.',
+      titleHighlight: 'Nadie responde.',
+      stat1: 'El 40% de los clientes escribe por las noches y fines de semana',
+      stat2: 'El 67% elige a la competencia si no hay respuesta en 1 hora',
+      stat3: 'Una recepcionista humana cuesta €1.500/mes',
+      solution: 'CatyAI responde al instante, 24/7, por €0.'
+    },
     features: {
-      title: 'Todo lo que necesitas para',
-      titleHighlight: 'Convertir Más',
-      subtitle: 'Potentes funciones de IA que trabajan juntas para convertir visitantes en clientes',
-      intentTitle: 'Detección de Intención',
-      intentDesc: 'La IA entiende lo que quieren los visitantes - listos para comprar, necesitan soporte o solo navegan.',
-      leadTitle: 'Captura de Leads',
-      leadDesc: 'Recopila automáticamente información de contacto en el momento adecuado.',
-      kbTitle: 'Base de Conocimiento',
-      kbDesc: 'Entrena tu IA con tus productos, FAQs y documentación.',
-      availTitle: 'Disponible 24/7',
-      availDesc: 'Nunca pierdas un lead. Tu asistente de IA trabaja las 24 horas.',
-      handoffTitle: 'Transferencia Humana',
-      handoffDesc: 'Transfiere problemas complejos a tu equipo sin problemas.',
-      analyticsTitle: 'Panel de Analytics',
-      analyticsDesc: 'Rastrea conversaciones, tasas de conversión y ROI.'
+      title: 'Tu Secretaria',
+      titleHighlight: 'Nunca Duerme',
+      subtitle: 'Todo lo que hace una recepcionista, automatizado en WhatsApp',
+      feature1Title: 'Responde Clientes 24/7',
+      feature1Desc: 'Lenguaje natural, recuerda el contexto, habla 6+ idiomas con fluidez.',
+      feature2Title: 'Reserva Citas',
+      feature2Desc: 'Sincronización con Google Calendar. Envía confirmaciones y recordatorios 30 min antes.',
+      feature3Title: 'Genera Documentos',
+      feature3Desc: 'Presupuestos, facturas, confirmaciones en PDF. Enviados directamente en WhatsApp.',
+      feature4Title: 'Bloquea Estafas',
+      feature4Desc: 'FraudAI Shield con 8 módulos de detección. Detecta el phishing antes de que lo veas.',
+      feature5Title: 'Extrae Tareas',
+      feature5Desc: '"Llama a Juan mañana" se convierte en una tarea. Resumen diario de todo.',
+      feature6Title: 'Conoce Tu Negocio',
+      feature6Desc: 'Base de conocimiento de 12 dominios: precios, servicios, horarios, políticas, equipo, ubicaciones.'
     },
-    intelligence: {
-      title: 'Inteligencia de Negocios',
-      titleHighlight: 'Impulsada por IA',
-      subtitle: 'Análisis avanzados que convierten conversaciones en insights accionables',
-      productDemandTitle: 'Demanda de Productos',
-      productDemandDesc: 'Descubre qué productos buscan más los clientes. Identifica brechas de demanda y sensibilidad de precios.',
-      customerProfilesTitle: 'Perfiles de Clientes',
-      customerProfilesDesc: 'Entiende la etapa de compra de tus visitantes - conciencia, evaluación o decisión. Ve patrones de intención.',
-      competitorTitle: 'Inteligencia Competitiva',
-      competitorDesc: 'Rastrea menciones de competidores y sentimiento. Sabe con quién te comparan.',
-      benchmarksTitle: 'Benchmarks de Industria',
-      benchmarksDesc: 'Compara tu rendimiento con estándares de la industria. Ve dónde te posicionas.',
-      alertsTitle: 'Alertas de Tendencias',
-      alertsDesc: 'Recibe notificaciones de patrones estacionales y picos de tráfico. Pronóstico predictivo incluido.',
-      weeklyCoachTitle: 'Coach IA Semanal',
-      weeklyCoachDesc: 'Recomendaciones personalizadas con impacto estimado. Tu asesor de negocios con IA.',
-      cta: 'Prueba Intelligence Gratis'
-    },
-    howItWorks: {
-      title: 'En vivo en',
-      titleHighlight: '5 Minutos',
-      subtitle: 'Sin configuración compleja. Sin código. Solo copia, pega y convierte.',
-      step1Title: 'Instala el Widget',
-      step1Desc: 'Integraciones con un clic para WordPress, Shopify, WooCommerce. O añade una línea de código. Funciona en todas partes.',
-      step2Title: 'Entrena tu IA',
-      step2Desc: 'Sube FAQs y documentos, O usa Auto-Crawl para escanear tu sitio web automáticamente. Caty aprende tu negocio en minutos.',
-      step3Title: 'Empieza a Convertir',
-      step3Desc: 'Observa cómo Caty interactúa con visitantes, responde preguntas, captura leads y genera ventas 24/7. Analytics en tiempo real incluido.'
+    products: {
+      title: 'Dos Formas de',
+      titleHighlight: 'Conectar con Clientes',
+      subtitle: 'CatyAI funciona en tu sitio web Y en WhatsApp',
+      widget: {
+        title: 'Widget Chat Web',
+        desc: 'Incrusta en cualquier sitio. Captura leads, responde preguntas, convierte visitantes 24/7.',
+        features: ['Una línea de código', 'Auto-Crawl Base de Conocimiento', 'Formularios de captura', 'Analytics en tiempo real']
+      },
+      whatsapp: {
+        title: 'Secretaria WhatsApp',
+        desc: 'Responde clientes en WhatsApp. Reserva citas, genera documentos, bloquea estafas.',
+        features: ['Setup con código QR', 'Sincronización calendario', 'Generación de documentos', 'FraudAI Shield']
+      }
     },
     integrations: {
       title: 'Integraciones',
       titleHighlight: 'Potentes',
-      subtitle: 'Conecta tus plataformas favoritas con un solo clic. No se requieren habilidades técnicas.',
-      wordpress: {
-        title: 'WordPress',
-        desc: 'Instalación de plugin con un clic. Sincroniza tus publicaciones, productos y páginas automáticamente. Funciona con WooCommerce.'
-      },
-      shopify: {
-        title: 'Shopify',
-        desc: 'Integración instantánea con tu tienda Shopify. Auto-sincroniza productos, colecciones e inventario en tiempo real.'
-      },
-      autoCrawl: {
-        title: 'Auto-Crawl',
-        desc: 'Deja que Caty escanee tu sitio web completo automáticamente. Extrae contenido, productos y FAQs sin carga manual.'
-      }
+      subtitle: 'Conecta tus plataformas con un clic. Auto-Crawl aprende tu negocio automáticamente.',
+      wordpress: { title: 'WordPress', desc: 'Plugin con un clic. Sincroniza posts, productos, páginas.' },
+      shopify: { title: 'Shopify', desc: 'Integración instantánea. Auto-sync productos e inventario.' },
+      autoCrawl: { title: 'Auto-Crawl', desc: 'Escanea todo tu sitio. Extrae contenido, productos, FAQs.' },
+      calendar: { title: 'Google Calendar', desc: 'Disponibilidad en tiempo real. Reservas y recordatorios.' }
+    },
+    verticals: {
+      title: 'Creado para Negocios Que',
+      titleHighlight: 'Viven en WhatsApp',
+      industries: ['Clínicas Dentales', 'Salones de Belleza', 'Restaurantes', 'Fitness', 'Inmobiliaria', 'Servicios'],
+      trusted: 'De confianza: Simple Smile, Digital Romania, D&S Gaz'
+    },
+    howItWorks: {
+      title: 'En vivo en',
+      titleHighlight: '5 Minutos',
+      subtitle: 'Sin app que instalar. Sin configuración compleja. Solo conecta y listo.',
+      step1Title: 'Escanea el Código QR',
+      step1Desc: 'Conecta tu número de WhatsApp al instante. Como WhatsApp Web.',
+      step2Title: 'Cuéntale a CatyAI Sobre Tu Negocio',
+      step2Desc: 'Servicios, precios, horarios, equipo. CatyAI aprende en minutos.',
+      step3Title: 'CatyAI Toma el Control',
+      step3Desc: 'Revisa los resultados por la mañana. Todas las conversaciones gestionadas.'
     },
     pricing: {
       title: 'Precios',
-      titleHighlight: 'Transparentes',
-      subtitle: 'Precios simples y transparentes para cualquier negocio',
+      titleHighlight: 'Simples',
+      subtitle: 'Empieza gratis, actualiza cuando necesites más',
       mostPopular: 'Más Popular',
-      sessions: 'Sesiones',
-      widgets: 'Widgets',
       perMonth: '/mes',
-      setup: 'configuración',
       startFree: 'Empezar Gratis',
       getStarted: 'Empezar',
       contactSales: 'Contactar Ventas',
-      trial: 'Todos los planes incluyen 14 días gratis. Sin tarjeta de crédito.',
-      free: { name: 'Gratis', features: ['Chat básico', 'Captura de leads', 'Soporte email'] },
-      starter: { name: 'Starter', features: ['Todo en Gratis', 'Tracking comportamiento', 'Mensajes proactivos', 'Soporte prioritario'] },
-      growth: { name: 'Growth', features: ['Todo en Starter', 'Integraciones CRM', 'Transferencia en vivo', 'Analytics avanzado'] },
-      business: { name: 'Business', features: ['Todo en Growth', 'White-label', 'Acceso API', 'Account manager'] },
-      enterprise: { name: 'Enterprise', features: ['Todo en Business', 'SSO / SAML', 'Garantía SLA', 'Soporte dedicado'] }
+      setupFee: 'setup único',
+      free: {
+        name: 'GRATIS',
+        price: '€0',
+        features: ['100 sesiones/mes', '1 widget', '10 KB docs', 'Chat básico', 'Captura de leads']
+      },
+      starter: {
+        name: 'STARTER',
+        price: '€149',
+        setup: '€499',
+        features: ['1.000 sesiones/mes', '1 widget', '50 KB docs', 'Seguimiento de comportamiento', 'Mensajes proactivos', 'Soporte email']
+      },
+      growth: {
+        name: 'GROWTH',
+        price: '€299',
+        setup: '€999',
+        features: ['5.000 sesiones/mes', '3 widgets', '200 KB docs', 'Integraciones CRM', 'Handoff en vivo', 'Analytics', 'Soporte prioritario']
+      },
+      business: {
+        name: 'BUSINESS',
+        price: '€499',
+        setup: '€1999',
+        features: ['20.000 sesiones/mes', 'Widgets ilimitados', 'KB docs ilimitados', 'Acceso API', 'Gestor de cuenta', 'Integraciones custom', 'Analytics avanzado']
+      },
+      enterprise: {
+        name: 'ENTERPRISE',
+        price: '€800',
+        setup: '€3800',
+        features: ['Sesiones ilimitadas', 'Widgets ilimitados', 'KB docs ilimitados', 'White-label branding', 'SSO / SAML', 'Soporte dedicado', 'Garantía SLA', 'Desarrollo custom']
+      }
     },
     faq: {
       title: 'Preguntas',
-      titleHighlight: 'Frecuentes',
-      subtitle: 'Todo lo que necesitas saber sobre Caty.AI',
-      q1: '¿Cómo funciona Caty.AI?',
-      a1: 'Caty.AI es un widget de chatbot inteligente que integras en tu sitio. Usa IA avanzada para entender preguntas y responder inteligentemente.',
-      q2: '¿Cuánto tarda la configuración?',
-      a2: 'La mayoría de clientes están en vivo en menos de 5 minutos.',
-      q3: '¿Puedo personalizar la apariencia?',
-      a3: '¡Absolutamente! Puedes personalizar colores, posición, mensajes de saludo y más.',
-      q4: '¿Qué pasa cuando Caty no puede responder?',
-      a4: 'Caty sabe reconocer sus límites. Puede recopilar info para seguimiento o transferir a un agente humano.',
+      titleHighlight: 'Respondidas',
+      subtitle: 'Todo lo que necesitas saber sobre CatyAI',
+      q1: '¿Es realmente gratis?',
+      a1: 'Sí. 100 sesiones al mes, para siempre. Sin tarjeta de crédito.',
+      q2: '¿Cómo se conecta a mi WhatsApp?',
+      a2: 'Escaneas un código QR, como WhatsApp Web. Usa tu número de negocio existente. Tarda 2 minutos.',
+      q3: '¿Sabrán los clientes que es IA?',
+      a3: 'Solo si tú quieres. CatyAI responde como tu negocio, con tu estilo.',
+      q4: '¿Qué pasa si CatyAI no puede responder?',
+      a4: 'Te reenvía la conversación con todo el contexto. Tomas el control sin problemas.',
       q5: '¿Mis datos están seguros?',
-      a5: 'Sí. Todos los datos están encriptados. Somos compatibles con GDPR.',
-      q6: '¿Puedo cancelar en cualquier momento?',
-      a6: 'Sí, puedes cancelar tu suscripción en cualquier momento.'
+      a5: 'Cumple con el RGPD. Servidores AWS Irlanda. Tú eres dueño de tus datos. Nunca los compartimos ni vendemos.',
+      q6: '¿Funciona en español?',
+      a6: '¡Con fluidez! También inglés, rumano, portugués, francés y árabe con auto-detección.'
     },
     cta: {
-      title: '¿Listo para Convertir Más Visitantes?',
-      subtitle: 'Únete a miles de negocios usando Caty.AI. Empieza gratis - sin tarjeta de crédito.',
-      btn1: 'Prueba Gratis',
-      btn2: 'Ver Demo'
+      title: 'Tus Competidores Ya Responden Más Rápido.',
+      subtitle: 'Obtén CatyAI gratis. 100 sesiones/mes. Configuración en 5 minutos.',
+      btn1: 'Obtener CatyAI Gratis',
+      btn2: 'Reservar Demo'
     },
     footer: {
-      tagline: 'El chatbot de IA que realmente convierte. Creado para negocios que quieren resultados.',
+      tagline: 'Secretaria IA en WhatsApp. Responde 24/7. Reserva citas. Bloquea estafas.',
       product: 'Producto',
       company: 'Empresa',
       legal: 'Legal',
@@ -448,7 +530,7 @@ const translations = {
       contact: 'Contacto',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Servicio',
-      gdpr: 'GDPR',
+      gdpr: 'RGPD',
       licensing: 'Licencias',
       docs: 'Documentación',
       dashboard: 'Dashboard',
@@ -459,132 +541,156 @@ const translations = {
   pt: {
     nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
-      badge: 'Chatbot com IA',
-      title1: 'Chatbot IA para',
-      title2: 'Qualquer Negócio',
-      subtitle: 'Transforme os visitantes do seu site em clientes pagantes com um chatbot inteligente que entende a intenção, captura leads e trabalha 24/7. Perfeito para e-commerce, serviços, saúde, imobiliário e qualquer indústria.',
-      cta1: 'Teste Grátis',
-      cta2: 'Veja como funciona',
-      analyzeLink: 'Analise seu site GRÁTIS - Veja insights de IA em tempo real',
-      noCard: 'Sem cartão de crédito',
+      badge: 'Widget Chat IA para Seu Site',
+      title1: 'Widget Chat IA',
+      title2: 'para Seu Site',
+      subtitle: 'Capture leads, responda perguntas, converta visitantes 24/7. Uma linha de código. Aprende seu negócio automaticamente.',
+      cta1: 'Começar Grátis — €0/mês',
+      cta2: 'Agendar Demo',
+      analyzeLink: 'Analise seu site grátis',
+      noCard: '100 sessões/mês GRÁTIS',
       fiveMin: 'Configuração em 5 min',
-      cancel: 'Cancele quando quiser',
-      tryMe: 'Experimente!',
-      tryMeDesc: 'Clique no ícone de chat no canto inferior direito',
-      tryWidget: 'Experimente o widget real',
-      mockupOnline: 'Online',
-      mockupGreeting: 'Olá! Sou a Caty, sua assistente de IA. Como posso ajudá-lo hoje?',
-      mockupUserQ: 'Quais planos de preços vocês oferecem?',
-      mockupBotA: 'Oferecemos Free, Starter (€149/mês), Growth (€299/mês), Business (€499/mês) e Enterprise. Gostaria de mais detalhes sobre algum plano?',
+      cancel: 'Sem cartão de crédito',
+      tryMe: 'Experimente CatyAI Agora!',
+      tryMeDesc: 'Clique no widget de chat no canto',
+      tryWidget: 'Ou experimente o widget de chat abaixo',
+      mockupOnline: 'Online 24/7',
+      mockupGreeting: 'Olá! Sou seu assistente IA. Como posso ajudar?',
+      mockupUserQ: 'Quais serviços vocês oferecem?',
+      mockupBotA: 'Oferecemos web design, SEO e marketing digital. Gostaria de um orçamento?',
       mockupPlaceholder: 'Digite uma mensagem...'
     },
+    problem: {
+      title: 'Seus clientes te mandam mensagem.',
+      titleHighlight: 'Ninguém responde.',
+      stat1: '40% dos clientes escrevem à noite e nos fins de semana',
+      stat2: '67% escolhem o concorrente se não houver resposta em 1 hora',
+      stat3: 'Uma recepcionista humana custa €1.500/mês',
+      solution: 'CatyAI responde instantaneamente, 24/7, por €0.'
+    },
     features: {
-      title: 'Tudo que você precisa para',
-      titleHighlight: 'Converter Mais',
-      subtitle: 'Recursos de IA poderosos que trabalham juntos para converter visitantes em clientes',
-      intentTitle: 'Detecção de Intenção',
-      intentDesc: 'A IA entende o que os visitantes querem - prontos para comprar, precisam de suporte ou apenas navegando.',
-      leadTitle: 'Captura de Leads',
-      leadDesc: 'Colete automaticamente informações de contato no momento certo.',
-      kbTitle: 'Base de Conhecimento',
-      kbDesc: 'Treine sua IA com seus produtos, FAQs e documentação.',
-      availTitle: 'Disponível 24/7',
-      availDesc: 'Nunca perca um lead. Seu assistente de IA trabalha o tempo todo.',
-      handoffTitle: 'Transferência Humana',
-      handoffDesc: 'Transfira problemas complexos para sua equipe sem problemas.',
-      analyticsTitle: 'Painel de Analytics',
-      analyticsDesc: 'Acompanhe conversas, taxas de conversão e ROI.'
+      title: 'Sua Secretária',
+      titleHighlight: 'Nunca Dorme',
+      subtitle: 'Tudo que uma recepcionista faz, automatizado no WhatsApp',
+      feature1Title: 'Responde Clientes 24/7',
+      feature1Desc: 'Linguagem natural, lembra o contexto, fala 6+ idiomas com fluência.',
+      feature2Title: 'Agenda Consultas',
+      feature2Desc: 'Sincronização com Google Calendar. Envia confirmações e lembretes 30 min antes.',
+      feature3Title: 'Gera Documentos',
+      feature3Desc: 'Orçamentos, faturas, confirmações em PDF. Enviados diretamente no WhatsApp.',
+      feature4Title: 'Bloqueia Golpes',
+      feature4Desc: 'FraudAI Shield com 8 módulos de detecção. Detecta phishing antes de você ver.',
+      feature5Title: 'Extrai Tarefas',
+      feature5Desc: '"Liga para o João amanhã" vira uma tarefa. Resumo diário de tudo.',
+      feature6Title: 'Conhece Seu Negócio',
+      feature6Desc: 'Base de conhecimento de 12 domínios: preços, serviços, horários, políticas, equipe, localizações.'
     },
-    intelligence: {
-      title: 'Inteligência de Negócios',
-      titleHighlight: 'Alimentada por IA',
-      subtitle: 'Análises avançadas que transformam conversas em insights acionáveis',
-      productDemandTitle: 'Demanda de Produtos',
-      productDemandDesc: 'Descubra quais produtos os clientes mais procuram. Identifique lacunas de demanda e sensibilidade a preços.',
-      customerProfilesTitle: 'Perfis de Clientes',
-      customerProfilesDesc: 'Entenda a etapa de compra dos visitantes - conscientização, avaliação ou decisão. Veja padrões de intenção.',
-      competitorTitle: 'Inteligência Competitiva',
-      competitorDesc: 'Rastreie menções de concorrentes e sentimento. Saiba com quem te comparam.',
-      benchmarksTitle: 'Benchmarks da Indústria',
-      benchmarksDesc: 'Compare seu desempenho com padrões da indústria. Veja onde você se posiciona.',
-      alertsTitle: 'Alertas de Tendências',
-      alertsDesc: 'Receba notificações de padrões sazonais e picos de tráfego. Previsão preditiva incluída.',
-      weeklyCoachTitle: 'Coach IA Semanal',
-      weeklyCoachDesc: 'Recomendações personalizadas com impacto estimado. Seu consultor de negócios com IA.',
-      cta: 'Experimente Intelligence Grátis'
-    },
-    howItWorks: {
-      title: 'Ao vivo em',
-      titleHighlight: '5 Minutos',
-      subtitle: 'Sem configuração complexa. Sem código. Apenas copie, cole e converta.',
-      step1Title: 'Instale o Widget',
-      step1Desc: 'Integrações com um clique para WordPress, Shopify, WooCommerce. Ou adicione uma linha de código. Funciona em qualquer lugar.',
-      step2Title: 'Treine sua IA',
-      step2Desc: 'Faça upload de FAQs e documentos, OU use Auto-Crawl para escanear seu site automaticamente. Caty aprende seu negócio em minutos.',
-      step3Title: 'Comece a Converter',
-      step3Desc: 'Veja como Caty interage com visitantes, responde perguntas, captura leads e gera vendas 24/7. Analytics em tempo real incluído.'
+    products: {
+      title: 'Duas Formas de',
+      titleHighlight: 'Conectar com Clientes',
+      subtitle: 'CatyAI funciona no seu site E no WhatsApp',
+      widget: {
+        title: 'Widget Chat Web',
+        desc: 'Incorpore em qualquer site. Captura leads, responde perguntas, converte visitantes 24/7.',
+        features: ['Uma linha de código', 'Auto-Crawl Base de Conhecimento', 'Formulários de captura', 'Analytics em tempo real']
+      },
+      whatsapp: {
+        title: 'Secretária WhatsApp',
+        desc: 'Responde clientes no WhatsApp. Agenda consultas, gera documentos, bloqueia golpes.',
+        features: ['Setup com código QR', 'Sincronização calendário', 'Geração de documentos', 'FraudAI Shield']
+      }
     },
     integrations: {
       title: 'Integrações',
       titleHighlight: 'Poderosas',
-      subtitle: 'Conecte suas plataformas favoritas com um único clique. Nenhuma habilidade técnica necessária.',
-      wordpress: {
-        title: 'WordPress',
-        desc: 'Instalação de plugin com um clique. Sincronize suas postagens, produtos e páginas automaticamente. Funciona com WooCommerce.'
-      },
-      shopify: {
-        title: 'Shopify',
-        desc: 'Integração instantânea com sua loja Shopify. Auto-sincronize produtos, coleções e inventário em tempo real.'
-      },
-      autoCrawl: {
-        title: 'Auto-Crawl',
-        desc: 'Deixe Caty escanear todo o seu site automaticamente. Extraia conteúdo, produtos e FAQs sem upload manual.'
-      }
+      subtitle: 'Conecte suas plataformas com um clique. Auto-Crawl aprende seu negócio automaticamente.',
+      wordpress: { title: 'WordPress', desc: 'Plugin com um clique. Sincroniza posts, produtos, páginas.' },
+      shopify: { title: 'Shopify', desc: 'Integração instantânea. Auto-sync produtos e inventário.' },
+      autoCrawl: { title: 'Auto-Crawl', desc: 'Escaneia todo seu site. Extrai conteúdo, produtos, FAQs.' },
+      calendar: { title: 'Google Calendar', desc: 'Disponibilidade em tempo real. Agendamentos e lembretes.' }
+    },
+    verticals: {
+      title: 'Criado para Negócios Que',
+      titleHighlight: 'Vivem no WhatsApp',
+      industries: ['Clínicas Odontológicas', 'Salões de Beleza', 'Restaurantes', 'Fitness', 'Imóveis', 'Serviços'],
+      trusted: 'Confiado por: Simple Smile, Digital Romania, D&S Gaz'
+    },
+    howItWorks: {
+      title: 'Ao vivo em',
+      titleHighlight: '5 Minutos',
+      subtitle: 'Nenhum app para instalar. Sem configuração complexa. Só conectar e pronto.',
+      step1Title: 'Escaneie o Código QR',
+      step1Desc: 'Conecta seu número de WhatsApp instantaneamente. Como o WhatsApp Web.',
+      step2Title: 'Conte ao CatyAI Sobre Seu Negócio',
+      step2Desc: 'Serviços, preços, horários, equipe. CatyAI aprende em minutos.',
+      step3Title: 'CatyAI Assume o Controle',
+      step3Desc: 'Verifique os resultados de manhã. Todas as conversas tratadas.'
     },
     pricing: {
       title: 'Preços',
-      titleHighlight: 'Transparentes',
-      subtitle: 'Preços simples e transparentes para qualquer negócio',
+      titleHighlight: 'Simples',
+      subtitle: 'Comece grátis, atualize quando precisar de mais',
       mostPopular: 'Mais Popular',
-      sessions: 'Sessões',
-      widgets: 'Widgets',
       perMonth: '/mês',
-      setup: 'configuração',
       startFree: 'Começar Grátis',
       getStarted: 'Começar',
       contactSales: 'Contatar Vendas',
-      trial: 'Todos os planos incluem 14 dias grátis. Sem cartão de crédito.',
-      free: { name: 'Grátis', features: ['Chat básico', 'Captura de leads', 'Suporte email'] },
-      starter: { name: 'Starter', features: ['Tudo no Grátis', 'Tracking comportamento', 'Mensagens proativas', 'Suporte prioritário'] },
-      growth: { name: 'Growth', features: ['Tudo no Starter', 'Integrações CRM', 'Transferência ao vivo', 'Analytics avançado'] },
-      business: { name: 'Business', features: ['Tudo no Growth', 'White-label', 'Acesso API', 'Account manager'] },
-      enterprise: { name: 'Enterprise', features: ['Tudo no Business', 'SSO / SAML', 'Garantia SLA', 'Suporte dedicado'] }
+      setupFee: 'setup único',
+      free: {
+        name: 'GRÁTIS',
+        price: '€0',
+        features: ['100 sessões/mês', '1 widget', '10 KB docs', 'Chat básico', 'Captura de leads']
+      },
+      starter: {
+        name: 'STARTER',
+        price: '€149',
+        setup: '€499',
+        features: ['1.000 sessões/mês', '1 widget', '50 KB docs', 'Rastreamento de comportamento', 'Mensagens proativas', 'Suporte email']
+      },
+      growth: {
+        name: 'GROWTH',
+        price: '€299',
+        setup: '€999',
+        features: ['5.000 sessões/mês', '3 widgets', '200 KB docs', 'Integrações CRM', 'Handoff ao vivo', 'Analytics', 'Suporte prioritário']
+      },
+      business: {
+        name: 'BUSINESS',
+        price: '€499',
+        setup: '€1999',
+        features: ['20.000 sessões/mês', 'Widgets ilimitados', 'KB docs ilimitados', 'Acesso API', 'Gerente de conta', 'Integrações custom', 'Analytics avançado']
+      },
+      enterprise: {
+        name: 'ENTERPRISE',
+        price: '€800',
+        setup: '€3800',
+        features: ['Sessões ilimitadas', 'Widgets ilimitados', 'KB docs ilimitados', 'White-label branding', 'SSO / SAML', 'Suporte dedicado', 'Garantia SLA', 'Desenvolvimento custom']
+      }
     },
     faq: {
       title: 'Perguntas',
-      titleHighlight: 'Frequentes',
-      subtitle: 'Tudo que você precisa saber sobre Caty.AI',
-      q1: 'Como funciona Caty.AI?',
-      a1: 'Caty.AI é um widget de chatbot inteligente que você integra ao seu site. Usa IA avançada para entender perguntas e responder inteligentemente.',
-      q2: 'Quanto tempo leva a configuração?',
-      a2: 'A maioria dos clientes está ao vivo em menos de 5 minutos.',
-      q3: 'Posso personalizar a aparência?',
-      a3: 'Absolutamente! Você pode personalizar cores, posição, mensagens de saudação e mais.',
-      q4: 'O que acontece quando Caty não pode responder?',
-      a4: 'Caty sabe reconhecer seus limites. Pode coletar info para acompanhamento ou transferir para um agente humano.',
+      titleHighlight: 'Respondidas',
+      subtitle: 'Tudo que você precisa saber sobre CatyAI',
+      q1: 'É realmente grátis?',
+      a1: 'Sim. 100 sessões por mês, para sempre. Sem cartão de crédito.',
+      q2: 'Como se conecta ao meu WhatsApp?',
+      a2: 'Você escaneia um código QR, como o WhatsApp Web. Usa seu número de negócio existente. Leva 2 minutos.',
+      q3: 'Os clientes vão saber que é IA?',
+      a3: 'Só se você quiser. CatyAI responde como seu negócio, com seu estilo.',
+      q4: 'E se CatyAI não puder responder?',
+      a4: 'Ela encaminha a conversa para você com todo o contexto. Você assume sem problemas.',
       q5: 'Meus dados estão seguros?',
-      a5: 'Sim. Todos os dados são criptografados. Somos compatíveis com GDPR.',
-      q6: 'Posso cancelar a qualquer momento?',
-      a6: 'Sim, você pode cancelar sua assinatura a qualquer momento.'
+      a5: 'Em conformidade com LGPD/GDPR. Servidores AWS Irlanda. Você é dono dos seus dados. Nunca compartilhamos ou vendemos.',
+      q6: 'Funciona em português?',
+      a6: 'Com fluência! Também inglês, espanhol, romeno, francês e árabe com auto-detecção.'
     },
     cta: {
-      title: 'Pronto para Converter Mais Visitantes?',
-      subtitle: 'Junte-se a milhares de negócios usando Caty.AI. Comece grátis - sem cartão de crédito.',
-      btn1: 'Teste Grátis',
-      btn2: 'Ver Demo'
+      title: 'Seus Concorrentes Já Respondem Mais Rápido.',
+      subtitle: 'Obtenha CatyAI grátis. 100 sessões/mês. Configuração em 5 minutos.',
+      btn1: 'Obter CatyAI Grátis',
+      btn2: 'Agendar Demo'
     },
     footer: {
-      tagline: 'O chatbot de IA que realmente converte. Criado para negócios que querem resultados.',
+      tagline: 'Secretária IA no WhatsApp. Responde 24/7. Agenda consultas. Bloqueia golpes.',
       product: 'Produto',
       company: 'Empresa',
       legal: 'Legal',
@@ -594,7 +700,7 @@ const translations = {
       contact: 'Contato',
       privacy: 'Política de Privacidade',
       terms: 'Termos de Serviço',
-      gdpr: 'GDPR',
+      gdpr: 'LGPD/GDPR',
       licensing: 'Licenciamento',
       docs: 'Documentação',
       dashboard: 'Dashboard',
@@ -605,132 +711,156 @@ const translations = {
   fr: {
     nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
-      badge: 'Chatbot IA',
-      title1: 'Chatbot IA pour',
-      title2: 'Toute Entreprise',
-      subtitle: 'Transformez les visiteurs de votre site en clients payants avec un chatbot intelligent qui comprend l\'intention, capture des leads et travaille 24/7. Parfait pour e-commerce, services, santé, immobilier et toute industrie.',
-      cta1: 'Essai Gratuit',
-      cta2: 'Voir comment ça marche',
-      analyzeLink: 'Analysez votre site GRATUITEMENT - Voyez les insights IA en temps réel',
-      noCard: 'Sans carte bancaire',
+      badge: 'Widget Chat IA pour Votre Site',
+      title1: 'Widget Chat IA',
+      title2: 'pour Votre Site',
+      subtitle: 'Capturez des leads, répondez aux questions, convertissez des visiteurs 24/7. Une ligne de code. Apprend votre entreprise automatiquement.',
+      cta1: 'Commencer Gratuit — €0/mois',
+      cta2: 'Réserver une Démo',
+      analyzeLink: 'Analysez votre site gratuitement',
+      noCard: '100 sessions/mois GRATUIT',
       fiveMin: 'Configuration en 5 min',
-      cancel: 'Annulez quand vous voulez',
-      tryMe: 'Essayez-moi!',
-      tryMeDesc: 'Cliquez sur l\'icône de chat en bas à droite',
-      tryWidget: 'Essayez le vrai widget',
-      mockupOnline: 'En ligne',
-      mockupGreeting: 'Bonjour! Je suis Caty, votre assistant IA. Comment puis-je vous aider aujourd\'hui?',
-      mockupUserQ: 'Quels plans tarifaires proposez-vous?',
-      mockupBotA: 'Nous proposons Free, Starter (€149/mois), Growth (€299/mois), Business (€499/mois) et Enterprise. Voulez-vous plus de détails sur un plan?',
+      cancel: 'Sans carte bancaire',
+      tryMe: 'Essayez CatyAI Maintenant!',
+      tryMeDesc: 'Cliquez sur le widget de chat dans le coin',
+      tryWidget: 'Ou essayez le widget de chat ci-dessous',
+      mockupOnline: 'En ligne 24/7',
+      mockupGreeting: 'Bonjour! Je suis votre assistant IA. Comment puis-je vous aider?',
+      mockupUserQ: 'Quels services proposez-vous?',
+      mockupBotA: 'Nous proposons la conception web, le SEO et le marketing digital. Souhaitez-vous un devis?',
       mockupPlaceholder: 'Tapez un message...'
     },
+    problem: {
+      title: 'Vos clients vous écrivent.',
+      titleHighlight: 'Personne ne répond.',
+      stat1: '40% des clients écrivent le soir et le week-end',
+      stat2: '67% choisissent le concurrent sans réponse en 1 heure',
+      stat3: 'Une réceptionniste humaine coûte €1.500/mois',
+      solution: 'CatyAI répond instantanément, 24/7, pour €0.'
+    },
     features: {
-      title: 'Tout ce dont vous avez besoin pour',
-      titleHighlight: 'Convertir Plus',
-      subtitle: 'Des fonctionnalités IA puissantes qui travaillent ensemble pour convertir les visiteurs en clients',
-      intentTitle: 'Détection d\'Intention',
-      intentDesc: 'L\'IA comprend ce que veulent les visiteurs - prêts à acheter, besoin de support ou juste en navigation.',
-      leadTitle: 'Capture de Leads',
-      leadDesc: 'Collectez automatiquement les informations de contact au bon moment.',
-      kbTitle: 'Base de Connaissances',
-      kbDesc: 'Entraînez votre IA sur vos produits, FAQs et documentation.',
-      availTitle: 'Disponible 24/7',
-      availDesc: 'Ne manquez plus jamais un lead. Votre assistant IA travaille en permanence.',
-      handoffTitle: 'Transfert Humain',
-      handoffDesc: 'Transférez les problèmes complexes à votre équipe sans problème.',
-      analyticsTitle: 'Tableau de Bord Analytics',
-      analyticsDesc: 'Suivez les conversations, taux de conversion et ROI.'
+      title: 'Votre Secrétaire',
+      titleHighlight: 'Ne Dort Jamais',
+      subtitle: 'Tout ce que fait une réceptionniste, automatisé sur WhatsApp',
+      feature1Title: 'Répond aux Clients 24/7',
+      feature1Desc: 'Langage naturel, se souvient du contexte, parle couramment 6+ langues.',
+      feature2Title: 'Prend des Rendez-vous',
+      feature2Desc: 'Synchronisation Google Calendar. Envoie des confirmations et rappels 30 min avant.',
+      feature3Title: 'Génère des Documents',
+      feature3Desc: 'Devis, factures, confirmations en PDF. Envoyés directement dans WhatsApp.',
+      feature4Title: 'Bloque les Arnaques',
+      feature4Desc: 'FraudAI Shield avec 8 modules de détection. Détecte le phishing avant que vous le voyiez.',
+      feature5Title: 'Extrait des Tâches',
+      feature5Desc: '"Appelle Jean demain" devient une tâche. Résumé quotidien de tout.',
+      feature6Title: 'Connaît Votre Entreprise',
+      feature6Desc: 'Base de connaissances de 12 domaines: prix, services, horaires, politiques, équipe, lieux.'
     },
-    intelligence: {
-      title: 'Intelligence d\'Affaires',
-      titleHighlight: 'Alimentée par l\'IA',
-      subtitle: 'Des analyses avancées qui transforment les conversations en insights actionnables',
-      productDemandTitle: 'Demande Produits',
-      productDemandDesc: 'Découvrez quels produits les clients recherchent le plus. Identifiez les lacunes de demande et la sensibilité aux prix.',
-      customerProfilesTitle: 'Profils Clients',
-      customerProfilesDesc: 'Comprenez l\'étape d\'achat des visiteurs - sensibilisation, évaluation ou décision. Voyez les patterns d\'intention.',
-      competitorTitle: 'Intelligence Concurrentielle',
-      competitorDesc: 'Suivez les mentions des concurrents et le sentiment. Sachez à qui on vous compare.',
-      benchmarksTitle: 'Benchmarks Industrie',
-      benchmarksDesc: 'Comparez vos performances aux standards de l\'industrie. Voyez où vous vous situez.',
-      alertsTitle: 'Alertes de Tendances',
-      alertsDesc: 'Recevez des notifications sur les patterns saisonniers et pics de trafic. Prévisions prédictives incluses.',
-      weeklyCoachTitle: 'Coach IA Hebdomadaire',
-      weeklyCoachDesc: 'Recommandations personnalisées avec impact estimé. Votre conseiller d\'affaires IA.',
-      cta: 'Essayez Intelligence Gratuitement'
-    },
-    howItWorks: {
-      title: 'En ligne en',
-      titleHighlight: '5 Minutes',
-      subtitle: 'Pas de configuration complexe. Pas de code. Copiez, collez et convertissez.',
-      step1Title: 'Installez le Widget',
-      step1Desc: 'Intégrations en un clic pour WordPress, Shopify, WooCommerce. Ou ajoutez une ligne de code. Fonctionne partout.',
-      step2Title: 'Entraînez votre IA',
-      step2Desc: 'Téléchargez FAQs et documents, OU utilisez Auto-Crawl pour scanner votre site automatiquement. Caty apprend votre entreprise en minutes.',
-      step3Title: 'Commencez à Convertir',
-      step3Desc: 'Regardez Caty interagir avec les visiteurs, répondre aux questions, capturer des leads et générer des ventes 24/7. Analytics en temps réel inclus.'
+    products: {
+      title: 'Deux Façons de',
+      titleHighlight: 'Connecter avec les Clients',
+      subtitle: 'CatyAI fonctionne sur votre site web ET sur WhatsApp',
+      widget: {
+        title: 'Widget Chat Web',
+        desc: 'Intégrez sur tout site. Capture des leads, répond aux questions, convertit les visiteurs 24/7.',
+        features: ['Une ligne de code', 'Auto-Crawl Base de Connaissances', 'Formulaires de capture', 'Analytics en temps réel']
+      },
+      whatsapp: {
+        title: 'Secrétaire WhatsApp',
+        desc: 'Répond aux clients sur WhatsApp. Prend des rendez-vous, génère des documents, bloque les arnaques.',
+        features: ['Setup avec code QR', 'Synchronisation calendrier', 'Génération de documents', 'FraudAI Shield']
+      }
     },
     integrations: {
       title: 'Intégrations',
       titleHighlight: 'Puissantes',
-      subtitle: 'Connectez vos plateformes préférées en un clic. Aucune compétence technique requise.',
-      wordpress: {
-        title: 'WordPress',
-        desc: 'Installation de plugin en un clic. Synchronisez vos articles, produits et pages automatiquement. Fonctionne avec WooCommerce.'
-      },
-      shopify: {
-        title: 'Shopify',
-        desc: 'Intégration instantanée avec votre boutique Shopify. Auto-synchronisez produits, collections et inventaire en temps réel.'
-      },
-      autoCrawl: {
-        title: 'Auto-Crawl',
-        desc: 'Laissez Caty scanner automatiquement tout votre site. Extrayez contenu, produits et FAQs sans téléchargement manuel.'
-      }
+      subtitle: 'Connectez vos plateformes en un clic. Auto-Crawl apprend votre entreprise automatiquement.',
+      wordpress: { title: 'WordPress', desc: 'Plugin en un clic. Synchronise posts, produits, pages.' },
+      shopify: { title: 'Shopify', desc: 'Intégration instantanée. Auto-sync produits et inventaire.' },
+      autoCrawl: { title: 'Auto-Crawl', desc: 'Scanne tout votre site. Extrait contenu, produits, FAQs.' },
+      calendar: { title: 'Google Calendar', desc: 'Disponibilité en temps réel. Réservations et rappels.' }
+    },
+    verticals: {
+      title: 'Créé pour les Entreprises Qui',
+      titleHighlight: 'Vivent sur WhatsApp',
+      industries: ['Cabinets Dentaires', 'Salons de Beauté', 'Restaurants', 'Fitness', 'Immobilier', 'Services'],
+      trusted: 'Approuvé par: Simple Smile, Digital Romania, D&S Gaz'
+    },
+    howItWorks: {
+      title: 'En ligne en',
+      titleHighlight: '5 Minutes',
+      subtitle: 'Aucune appli à installer. Pas de configuration complexe. Connectez et c\'est parti.',
+      step1Title: 'Scannez le Code QR',
+      step1Desc: 'Connecte votre numéro WhatsApp instantanément. Comme WhatsApp Web.',
+      step2Title: 'Présentez Votre Entreprise à CatyAI',
+      step2Desc: 'Services, prix, horaires, équipe. CatyAI apprend en quelques minutes.',
+      step3Title: 'CatyAI Prend le Relais',
+      step3Desc: 'Vérifiez les résultats le matin. Toutes les conversations gérées.'
     },
     pricing: {
       title: 'Tarifs',
-      titleHighlight: 'Transparents',
-      subtitle: 'Des tarifs simples et transparents pour toute entreprise',
+      titleHighlight: 'Simples',
+      subtitle: 'Commencez gratuitement, passez à niveau quand vous en avez besoin',
       mostPopular: 'Le Plus Populaire',
-      sessions: 'Sessions',
-      widgets: 'Widgets',
       perMonth: '/mois',
-      setup: 'configuration',
       startFree: 'Commencer Gratuit',
       getStarted: 'Commencer',
-      contactSales: 'Contacter Ventes',
-      trial: 'Tous les plans incluent 14 jours gratuits. Sans carte bancaire.',
-      free: { name: 'Gratuit', features: ['Chat basique', 'Capture de leads', 'Support email'] },
-      starter: { name: 'Starter', features: ['Tout dans Gratuit', 'Tracking comportement', 'Messages proactifs', 'Support prioritaire'] },
-      growth: { name: 'Growth', features: ['Tout dans Starter', 'Intégrations CRM', 'Transfert en direct', 'Analytics avancé'] },
-      business: { name: 'Business', features: ['Tout dans Growth', 'White-label', 'Accès API', 'Account manager'] },
-      enterprise: { name: 'Enterprise', features: ['Tout dans Business', 'SSO / SAML', 'Garantie SLA', 'Support dédié'] }
+      contactSales: 'Contacter les Ventes',
+      setupFee: 'frais unique',
+      free: {
+        name: 'GRATUIT',
+        price: '€0',
+        features: ['100 sessions/mois', '1 widget', '10 KB docs', 'Chat basique', 'Capture de leads']
+      },
+      starter: {
+        name: 'STARTER',
+        price: '€149',
+        setup: '€499',
+        features: ['1.000 sessions/mois', '1 widget', '50 KB docs', 'Suivi comportemental', 'Messages proactifs', 'Support email']
+      },
+      growth: {
+        name: 'GROWTH',
+        price: '€299',
+        setup: '€999',
+        features: ['5.000 sessions/mois', '3 widgets', '200 KB docs', 'Intégrations CRM', 'Handoff en direct', 'Analytics', 'Support prioritaire']
+      },
+      business: {
+        name: 'BUSINESS',
+        price: '€499',
+        setup: '€1999',
+        features: ['20.000 sessions/mois', 'Widgets illimités', 'KB docs illimités', 'Accès API', 'Gestionnaire de compte', 'Intégrations custom', 'Analytics avancé']
+      },
+      enterprise: {
+        name: 'ENTERPRISE',
+        price: '€800',
+        setup: '€3800',
+        features: ['Sessions illimitées', 'Widgets illimités', 'KB docs illimités', 'White-label branding', 'SSO / SAML', 'Support dédié', 'Garantie SLA', 'Développement custom']
+      }
     },
     faq: {
       title: 'Questions',
-      titleHighlight: 'Fréquentes',
-      subtitle: 'Tout ce que vous devez savoir sur Caty.AI',
-      q1: 'Comment fonctionne Caty.AI?',
-      a1: 'Caty.AI est un widget chatbot intelligent que vous intégrez à votre site. Il utilise l\'IA avancée pour comprendre les questions et répondre intelligemment.',
-      q2: 'Combien de temps prend la configuration?',
-      a2: 'La plupart des clients sont en ligne en moins de 5 minutes.',
-      q3: 'Puis-je personnaliser l\'apparence?',
-      a3: 'Absolument! Vous pouvez personnaliser les couleurs, la position, les messages d\'accueil et plus.',
-      q4: 'Que se passe-t-il quand Caty ne peut pas répondre?',
-      a4: 'Caty sait reconnaître ses limites. Il peut collecter des infos pour un suivi ou transférer à un agent humain.',
+      titleHighlight: 'Répondues',
+      subtitle: 'Tout ce que vous devez savoir sur CatyAI',
+      q1: 'Est-ce vraiment gratuit?',
+      a1: 'Oui. 100 sessions par mois, pour toujours. Sans carte bancaire.',
+      q2: 'Comment se connecte-t-il à mon WhatsApp?',
+      a2: 'Vous scannez un code QR, comme WhatsApp Web. Utilise votre numéro professionnel existant. Prend 2 minutes.',
+      q3: 'Les clients sauront-ils que c\'est une IA?',
+      a3: 'Seulement si vous le souhaitez. CatyAI répond comme votre entreprise, avec votre style.',
+      q4: 'Que se passe-t-il si CatyAI ne peut pas répondre?',
+      a4: 'Elle vous transfère la conversation avec tout le contexte. Vous prenez le relais sans problème.',
       q5: 'Mes données sont-elles sécurisées?',
-      a5: 'Oui. Toutes les données sont chiffrées. Nous sommes conformes au RGPD.',
-      q6: 'Puis-je annuler à tout moment?',
-      a6: 'Oui, vous pouvez annuler votre abonnement à tout moment.'
+      a5: 'Conforme au RGPD. Serveurs AWS Irlande. Vous êtes propriétaire de vos données. Nous ne les partageons ni ne les vendons jamais.',
+      q6: 'Fonctionne-t-il en français?',
+      a6: 'Couramment! Aussi anglais, espagnol, roumain, portugais et arabe avec auto-détection.'
     },
     cta: {
-      title: 'Prêt à Convertir Plus de Visiteurs?',
-      subtitle: 'Rejoignez des milliers d\'entreprises utilisant Caty.AI. Commencez gratuitement - sans carte bancaire.',
-      btn1: 'Essai Gratuit',
-      btn2: 'Voir Démo'
+      title: 'Vos Concurrents Répondent Déjà Plus Vite.',
+      subtitle: 'Obtenez CatyAI gratuitement. 100 sessions/mois. Configuration en 5 minutes.',
+      btn1: 'Obtenir CatyAI Gratuit',
+      btn2: 'Réserver une Démo'
     },
     footer: {
-      tagline: 'Le chatbot IA qui convertit vraiment. Conçu pour les entreprises qui veulent des résultats.',
+      tagline: 'Secrétaire IA sur WhatsApp. Répond 24/7. Prend des rendez-vous. Bloque les arnaques.',
       product: 'Produit',
       company: 'Entreprise',
       legal: 'Légal',
@@ -848,11 +978,11 @@ function Header() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</Link>
-            <Link to="/#features" className="text-gray-300 hover:text-white transition-colors">{t.nav.features}</Link>
-            <Link to="/#how-it-works" className="text-gray-300 hover:text-white transition-colors">{t.nav.howItWorks}</Link>
-            <Link to="/#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</Link>
-            <Link to="/#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</Link>
+            <a href="#hero" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</a>
+            <a href="#features" className="text-gray-300 hover:text-white transition-colors">{t.nav.features}</a>
+            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">{t.nav.howItWorks}</a>
+            <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
+            <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -877,11 +1007,11 @@ function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-800">
             <div className="flex flex-col gap-4">
-              <Link to="/" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.home}</Link>
-              <Link to="/#features" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.features}</Link>
-              <Link to="/#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.howItWorks}</Link>
-              <Link to="/#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</Link>
-              <Link to="/#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</Link>
+              <a href="#hero" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.home}</a>
+              <a href="#features" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.features}</a>
+              <a href="#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.howItWorks}</a>
+              <a href="#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
+              <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
               <hr className="border-gray-800" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
               <a href="https://app.catyai.io/signup" className="btn-primary text-center">{t.nav.getStarted}</a>
@@ -898,22 +1028,21 @@ function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
-      {/* Background Image - Full cover, more faded, responsive */}
+    <section id="hero" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src="/images/caty-talk.png"
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center sm:object-top opacity-50"
         />
-        {/* Stronger dark overlay for readability - more on mobile */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950/85 via-gray-950/80 to-gray-950 sm:from-gray-950/80 sm:via-gray-950/75"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-primary-400 rounded-full animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-sm font-medium mb-8">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
             {t.hero.badge}
           </div>
 
@@ -927,22 +1056,21 @@ function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <a href="https://app.catyai.io/signup" className="btn-primary text-lg px-8 py-4">
+            <a href="https://app.catyai.io/signup" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-2xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-xl transform hover:scale-105">
               {t.hero.cta1}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-            <a href="#how-it-works" className="btn-secondary text-lg px-8 py-4">
+            <a href="https://calendly.com/adrian-payai-x/30min?month=2026-03" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold rounded-xl transition-all text-lg shadow-lg shadow-green-500/25">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
               {t.hero.cta2}
             </a>
           </div>
 
-          <div className="mb-16">
-            <Link to="/analyze" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-500/10 to-purple-500/10 border border-primary-500/30 text-primary-400 hover:text-primary-300 hover:border-primary-400/50 font-medium transition-all group">
-              <svg className="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+          <div className="mb-10">
+            <Link to="/analyze" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500/10 border border-primary-500/30 text-primary-400 hover:text-primary-300 hover:border-primary-400/50 font-medium transition-all group">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
               <span>{t.hero.analyzeLink}</span>
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -966,70 +1094,83 @@ function Hero() {
           </div>
         </div>
 
+        {/* WhatsApp Mockup */}
         <div className="mt-20 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10"></div>
-          <div className="card p-8 max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <img src="/images/caty-logo.png" alt="Caty" className="h-12 object-contain animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-primary-500/10 to-green-500/10 blur-3xl -z-10"></div>
+          <div className="card p-6 max-w-sm mx-auto">
+            {/* WhatsApp-style header */}
+            <div className="bg-[#075E54] rounded-t-xl px-4 py-3 flex items-center gap-3">
+              <img src="/images/caty-logo.png" alt="Caty" className="h-10 w-10 rounded-full object-contain bg-white p-1" />
               <div>
-                <h3 className="font-semibold text-white">{t.hero.tryMe}</h3>
-                <p className="text-sm text-gray-400">{t.hero.tryMeDesc}</p>
+                <p className="text-white font-semibold text-sm">CatyAI Secretary</p>
+                <p className="text-green-200 text-xs flex items-center gap-1">
+                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
+                  {t.hero.mockupOnline}
+                </p>
               </div>
             </div>
-            <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-4 max-w-md mx-auto">
-              {/* Chat Widget Mockup */}
-              <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
-                {/* Header */}
-                <div className="bg-primary-600 px-4 py-3 flex items-center gap-3">
-                  <img src="/images/caty-logo.png" alt="Caty" className="h-8 object-contain" />
-                  <div>
-                    <p className="text-white font-medium text-sm">Caty.AI</p>
-                    <p className="text-primary-200 text-xs flex items-center gap-1">
-                      <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                      {t.hero.mockupOnline}
-                    </p>
-                  </div>
-                </div>
-                {/* Messages */}
-                <div className="p-4 space-y-3 min-h-[200px]">
-                  <div className="flex gap-2">
-                    <img src="/images/caty-logo.png" alt="Caty" className="h-6 object-contain" />
-                    <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[80%]">
-                      <p className="text-gray-200 text-sm">{t.hero.mockupGreeting}</p>
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="bg-primary-600 rounded-lg rounded-tr-none px-3 py-2 max-w-[80%]">
-                      <p className="text-white text-sm">{t.hero.mockupUserQ}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <img src="/images/caty-logo.png" alt="Caty" className="h-6 object-contain" />
-                    <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[80%]">
-                      <p className="text-gray-200 text-sm">{t.hero.mockupBotA}</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Input */}
-                <div className="px-4 pb-4">
-                  <div className="bg-gray-800 rounded-lg px-4 py-2 flex items-center gap-2">
-                    <span className="text-gray-500 text-sm flex-1">{t.hero.mockupPlaceholder}</span>
-                    <svg className="w-5 h-5 text-primary-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                    </svg>
-                  </div>
+            {/* Chat bubbles */}
+            <div className="bg-[#ECE5DD] rounded-b-xl p-4 space-y-3 min-h-[200px]">
+              <div className="flex gap-2 items-end">
+                <div className="bg-white rounded-lg rounded-bl-none px-3 py-2 max-w-[80%] shadow-sm">
+                  <p className="text-gray-800 text-sm">{t.hero.mockupGreeting}</p>
+                  <p className="text-gray-400 text-xs text-right mt-1">09:00</p>
                 </div>
               </div>
-              {/* Floating indicator arrow pointing to widget */}
-              <div className="flex items-center justify-end gap-2 mt-4 mr-[-20px]">
-                <span className="text-primary-400 text-sm font-medium animate-pulse">{t.hero.tryWidget}</span>
-                <svg className="w-6 h-6 text-primary-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+              <div className="flex justify-end">
+                <div className="bg-[#DCF8C6] rounded-lg rounded-br-none px-3 py-2 max-w-[80%] shadow-sm">
+                  <p className="text-gray-800 text-sm">{t.hero.mockupUserQ}</p>
+                  <p className="text-gray-400 text-xs text-right mt-1">09:01</p>
+                </div>
+              </div>
+              <div className="flex gap-2 items-end">
+                <div className="bg-white rounded-lg rounded-bl-none px-3 py-2 max-w-[80%] shadow-sm">
+                  <p className="text-gray-800 text-sm">{t.hero.mockupBotA}</p>
+                  <p className="text-gray-400 text-xs text-right mt-1">09:01</p>
+                </div>
+              </div>
+            </div>
+            {/* Input bar */}
+            <div className="bg-[#F0F0F0] rounded-b-xl px-3 py-2 flex items-center gap-2 border-t border-gray-200">
+              <div className="bg-white rounded-full px-4 py-2 flex-1 text-gray-400 text-sm">{t.hero.mockupPlaceholder}</div>
+              <div className="w-8 h-8 bg-[#25D366] rounded-full flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                 </svg>
               </div>
             </div>
           </div>
+          <p className="text-center text-gray-500 text-sm mt-4">{t.hero.tryWidget}</p>
         </div>
+      </div>
+    </section>
+  )
+}
+
+// Problem Section
+function Problem() {
+  const { t } = useLanguage()
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">
+          {t.problem.title} <span className="text-red-400">{t.problem.titleHighlight}</span>
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="card">
+            <p className="text-3xl font-bold text-red-400 mb-2">40%</p>
+            <p className="text-gray-400">{t.problem.stat1}</p>
+          </div>
+          <div className="card">
+            <p className="text-3xl font-bold text-red-400 mb-2">67%</p>
+            <p className="text-gray-400">{t.problem.stat2}</p>
+          </div>
+          <div className="card">
+            <p className="text-3xl font-bold text-red-400 mb-2">€1,500</p>
+            <p className="text-gray-400">{t.problem.stat3}</p>
+          </div>
+        </div>
+        <p className="text-xl text-primary-400 font-semibold">{t.problem.solution}</p>
       </div>
     </section>
   )
@@ -1040,21 +1181,27 @@ function Features() {
   const { t } = useLanguage()
 
   const featureIcons = [
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>,
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
-    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+    // 24/7 chat
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
+    // calendar
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
+    // document
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
+    // shield fraud
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+    // tasks
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
+    // knowledge base
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
   ]
 
   const features = [
-    { icon: featureIcons[0], title: t.features.intentTitle, description: t.features.intentDesc },
-    { icon: featureIcons[1], title: t.features.leadTitle, description: t.features.leadDesc },
-    { icon: featureIcons[2], title: t.features.kbTitle, description: t.features.kbDesc },
-    { icon: featureIcons[3], title: t.features.availTitle, description: t.features.availDesc },
-    { icon: featureIcons[4], title: t.features.handoffTitle, description: t.features.handoffDesc },
-    { icon: featureIcons[5], title: t.features.analyticsTitle, description: t.features.analyticsDesc }
+    { icon: featureIcons[0], title: t.features.feature1Title, description: t.features.feature1Desc },
+    { icon: featureIcons[1], title: t.features.feature2Title, description: t.features.feature2Desc },
+    { icon: featureIcons[2], title: t.features.feature3Title, description: t.features.feature3Desc },
+    { icon: featureIcons[3], title: t.features.feature4Title, description: t.features.feature4Desc },
+    { icon: featureIcons[4], title: t.features.feature5Title, description: t.features.feature5Desc },
+    { icon: featureIcons[5], title: t.features.feature6Title, description: t.features.feature6Desc }
   ]
 
   return (
@@ -1079,106 +1226,147 @@ function Features() {
   )
 }
 
-// AI Intelligence Section
-function Intelligence() {
+// Products Section - Widget + WhatsApp
+function Products() {
   const { t } = useLanguage()
 
-  const intelligenceFeatures = [
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
-      title: t.intelligence.productDemandTitle,
-      description: t.intelligence.productDemandDesc,
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
-      title: t.intelligence.customerProfilesTitle,
-      description: t.intelligence.customerProfilesDesc,
-      gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-      title: t.intelligence.competitorTitle,
-      description: t.intelligence.competitorDesc,
-      gradient: 'from-red-500 to-orange-500'
-    },
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
-      title: t.intelligence.benchmarksTitle,
-      description: t.intelligence.benchmarksDesc,
-      gradient: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>,
-      title: t.intelligence.alertsTitle,
-      description: t.intelligence.alertsDesc,
-      gradient: 'from-amber-500 to-yellow-500'
-    },
-    {
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>,
-      title: t.intelligence.weeklyCoachTitle,
-      description: t.intelligence.weeklyCoachDesc,
-      gradient: 'from-indigo-500 to-violet-500'
-    }
-  ]
-
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-4">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            Intelligence v2
-          </span>
-        </div>
-        <h2 className="section-title">{t.intelligence.title} <span className="gradient-text">{t.intelligence.titleHighlight}</span></h2>
-        <p className="section-subtitle">{t.intelligence.subtitle}</p>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-950">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="section-title">{t.products.title} <span className="gradient-text">{t.products.titleHighlight}</span></h2>
+        <p className="section-subtitle">{t.products.subtitle}</p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {intelligenceFeatures.map((feature, index) => (
-            <div
-              key={index}
-              className="card hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden"
-            >
-              {/* Gradient top bar */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`}></div>
-
-              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br ${feature.gradient} bg-opacity-10 text-white`}>
-                {feature.icon}
+        <div className="grid md:grid-cols-2 gap-8 mt-12">
+          {/* Website Widget */}
+          <div className="card border-2 border-primary-500/30 hover:border-primary-500/60 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
-
-              {/* Hover effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
+              <h3 className="text-2xl font-bold text-white">{t.products.widget.title}</h3>
             </div>
-          ))}
-        </div>
+            <p className="text-gray-400 mb-6">{t.products.widget.desc}</p>
+            <ul className="space-y-2">
+              {t.products.widget.features.map((feature, i) => (
+                <li key={i} className="flex items-center gap-2 text-gray-300">
+                  <CheckIcon />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="https://app.catyai.io/signup" className="btn-primary mt-6 w-full justify-center">
+              Add Widget to Site
+            </a>
+          </div>
 
-        <div className="text-center mt-12">
-          <a
-            href="https://app.catyai.io/signup"
-            className="inline-flex items-center gap-2 btn-primary text-lg px-8 py-4"
-          >
-            <span>{t.intelligence.cta}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
+          {/* WhatsApp Secretary */}
+          <div className="card border-2 border-green-500/30 hover:border-green-500/60 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white">{t.products.whatsapp.title}</h3>
+            </div>
+            <p className="text-gray-400 mb-6">{t.products.whatsapp.desc}</p>
+            <ul className="space-y-2">
+              {t.products.whatsapp.features.map((feature, i) => (
+                <li key={i} className="flex items-center gap-2 text-gray-300">
+                  <CheckIcon />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="https://app.catyai.io/signup" className="inline-flex items-center justify-center gap-2 w-full mt-6 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl transition-all">
+              Connect WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
+// Integrations Section - Auto-Crawl, WordPress, Shopify, Calendar
+function Integrations() {
+  const { t } = useLanguage()
+
+  const integrations = [
+    { key: 'autoCrawl', icon: '🔍', color: 'from-purple-500 to-pink-500' },
+    { key: 'wordpress', icon: '📝', color: 'from-blue-500 to-cyan-500' },
+    { key: 'shopify', icon: '🛍️', color: 'from-green-500 to-emerald-500' },
+    { key: 'calendar', icon: '📅', color: 'from-orange-500 to-amber-500' }
+  ]
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="section-title">{t.integrations.title} <span className="gradient-text">{t.integrations.titleHighlight}</span></h2>
+        <p className="section-subtitle">{t.integrations.subtitle}</p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          {integrations.map((int) => (
+            <div key={int.key} className="card hover:border-primary-500/50 transition-all group relative overflow-hidden">
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${int.color}`}></div>
+              <span className="text-3xl mb-3 block">{int.icon}</span>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.integrations[int.key].title}</h3>
+              <p className="text-gray-400 text-sm">{t.integrations[int.key].desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link to="/analyze" className="inline-flex items-center gap-2 px-6 py-3 bg-purple-500/10 border border-purple-500/30 text-purple-400 hover:text-purple-300 hover:border-purple-400/50 font-medium rounded-xl transition-all">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            Try Auto-Crawl Free — Analyze Your Website
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Verticals Section
+function Verticals() {
+  const { t } = useLanguage()
+  const industryIcons = ['🦷', '💇', '🍽️', '🏋️', '🏠', '🔧']
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="section-title">
+          {t.verticals.title} <span className="gradient-text">{t.verticals.titleHighlight}</span>
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-12 mb-8">
+          {t.verticals.industries.map((industry, index) => (
+            <div key={index} className="card flex items-center gap-3 hover:border-primary-500/50 transition-colors">
+              <span className="text-2xl">{industryIcons[index]}</span>
+              <span className="text-white font-medium">{industry}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-500 text-sm">{t.verticals.trusted}</p>
+      </div>
+    </section>
+  )
+}
+
+// Intelligence section removed — replaced by Verticals
+
 // How It Works Section
 function HowItWorks() {
   const { t } = useLanguage()
 
+  const stepImages = ['/images/caty-point-right.png', '/images/caty-think.png', '/images/caty-happy.png']
+  const stepIcons = [
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>,
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+  ]
+
   const steps = [
-    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, code: '<script src="https://api.catyai.io/widget.js?v=20260303-2246" data-widget-id="YOUR_WIDGET_ID"></script>', image: '/images/caty-point-right.png' },
-    { number: '02', title: t.howItWorks.step2Title, description: t.howItWorks.step2Desc, image: '/images/caty-think.png' },
-    { number: '03', title: t.howItWorks.step3Title, description: t.howItWorks.step3Desc, image: '/images/caty-happy.png' }
+    { number: '01', title: t.howItWorks.step1Title, description: t.howItWorks.step1Desc, icon: stepIcons[0], image: stepImages[0] },
+    { number: '02', title: t.howItWorks.step2Title, description: t.howItWorks.step2Desc, icon: stepIcons[1], image: stepImages[1] },
+    { number: '03', title: t.howItWorks.step3Title, description: t.howItWorks.step3Desc, icon: stepIcons[2], image: stepImages[2] }
   ]
 
   return (
@@ -1194,19 +1382,17 @@ function HowItWorks() {
                 <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-primary-500 to-transparent -z-10"></div>
               )}
               <div className="card h-full">
-                <div className="text-5xl font-bold text-primary-500/20 mb-4">{step.number}</div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400">
+                    {step.icon}
+                  </div>
+                  <span className="text-4xl font-bold text-primary-500/20">{step.number}</span>
+                </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
                 <p className="text-gray-400 mb-4">{step.description}</p>
-                {step.image && (
-                  <div className="flex justify-center my-4">
-                    <img src={step.image} alt={step.title} className="h-32 object-contain" />
-                  </div>
-                )}
-                {step.code && (
-                  <div className="bg-gray-950 rounded-lg p-3 sm:p-4 overflow-x-auto mt-4">
-                    <code className="text-xs sm:text-sm text-primary-400 break-all sm:break-normal sm:whitespace-nowrap">{step.code}</code>
-                  </div>
-                )}
+                <div className="flex justify-center my-4">
+                  <img src={step.image} alt={step.title} className="h-32 object-contain" />
+                </div>
               </div>
             </div>
           ))}
@@ -1216,75 +1402,7 @@ function HowItWorks() {
   )
 }
 
-// Integrations Section
-function Integrations() {
-  const { t } = useLanguage()
-
-  const integrations = [
-    {
-      title: t.integrations.wordpress.title,
-      description: t.integrations.wordpress.desc,
-      image: '/images/caty-wave.png',
-      badge: 'Plugin',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: t.integrations.shopify.title,
-      description: t.integrations.shopify.desc,
-      image: '/images/caty-walk.png',
-      badge: 'App',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      title: t.integrations.autoCrawl.title,
-      description: t.integrations.autoCrawl.desc,
-      image: '/images/caty-point-left.png',
-      badge: 'AI-Powered',
-      color: 'from-purple-500 to-pink-500'
-    }
-  ]
-
-  return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="section-title">{t.integrations.title} <span className="gradient-text">{t.integrations.titleHighlight}</span></h2>
-        <p className="section-subtitle">{t.integrations.subtitle}</p>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
-          {integrations.map((integration, index) => (
-            <div key={index} className="card hover:border-primary-500/50 transition-all duration-300 group relative overflow-hidden">
-              {/* Gradient overlay */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${integration.color}`}></div>
-
-              {/* Badge */}
-              <div className="flex items-center justify-between mb-4">
-                <span className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${integration.color} text-white`}>
-                  {integration.badge}
-                </span>
-              </div>
-
-              {/* Image */}
-              <div className="flex justify-center mb-6">
-                <img
-                  src={integration.image}
-                  alt={integration.title}
-                  className="h-32 object-contain group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-2xl font-bold text-white mb-3 text-center">{integration.title}</h3>
-              <p className="text-gray-400 text-center">{integration.description}</p>
-
-              {/* Hover effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${integration.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+// Integrations section removed — replaced by Verticals
 
 // Pricing Section
 function Pricing() {
@@ -1294,10 +1412,8 @@ function Pricing() {
     {
       id: 'free',
       name: t.pricing.free.name,
-      price: '0',
-      setupFee: null,
-      sessions: '100',
-      widgets: '1',
+      price: t.pricing.free.price,
+      setup: null,
       features: t.pricing.free.features,
       cta: t.pricing.startFree,
       ctaLink: 'https://app.catyai.io/signup?plan=free',
@@ -1306,10 +1422,8 @@ function Pricing() {
     {
       id: 'starter',
       name: t.pricing.starter.name,
-      price: '149',
-      setupFee: '499',
-      sessions: '1,000',
-      widgets: '1',
+      price: t.pricing.starter.price,
+      setup: t.pricing.starter.setup,
       features: t.pricing.starter.features,
       cta: t.pricing.getStarted,
       ctaLink: 'https://app.catyai.io/signup?plan=starter',
@@ -1318,10 +1432,8 @@ function Pricing() {
     {
       id: 'growth',
       name: t.pricing.growth.name,
-      price: '299',
-      setupFee: '999',
-      sessions: '5,000',
-      widgets: '3',
+      price: t.pricing.growth.price,
+      setup: t.pricing.growth.setup,
       features: t.pricing.growth.features,
       cta: t.pricing.getStarted,
       ctaLink: 'https://app.catyai.io/signup?plan=growth',
@@ -1330,10 +1442,8 @@ function Pricing() {
     {
       id: 'business',
       name: t.pricing.business.name,
-      price: '499',
-      setupFee: '1,999',
-      sessions: '20,000',
-      widgets: 'Unlimited',
+      price: t.pricing.business.price,
+      setup: t.pricing.business.setup,
       features: t.pricing.business.features,
       cta: t.pricing.getStarted,
       ctaLink: 'https://app.catyai.io/signup?plan=business',
@@ -1342,10 +1452,8 @@ function Pricing() {
     {
       id: 'enterprise',
       name: t.pricing.enterprise.name,
-      price: '800+',
-      setupFee: '3,800',
-      sessions: 'Unlimited',
-      widgets: 'Unlimited',
+      price: t.pricing.enterprise.price,
+      setup: t.pricing.enterprise.setup,
       features: t.pricing.enterprise.features,
       cta: t.pricing.contactSales,
       ctaLink: 'mailto:contact@payai-x.com?subject=Enterprise%20Plan%20Inquiry',
@@ -1357,11 +1465,9 @@ function Pricing() {
     <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="section-title">{t.pricing.title} <span className="gradient-text">{t.pricing.titleHighlight}</span></h2>
-        <p className="section-subtitle">
-          {t.pricing.subtitle}
-        </p>
+        <p className="section-subtitle">{t.pricing.subtitle}</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-4">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -1373,32 +1479,19 @@ function Pricing() {
                 </div>
               )}
               <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold text-white mb-3">{plan.name}</h3>
+                <h3 className="text-sm font-bold text-gray-400 tracking-wider mb-2">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-3xl font-bold text-white">€{plan.price}</span>
+                  <span className="text-2xl font-bold text-white">{plan.price}</span>
                   <span className="text-gray-400 text-sm">{t.pricing.perMonth}</span>
                 </div>
-                {plan.setupFee && (
-                  <p className="text-gray-500 text-xs mt-1">+€{plan.setupFee} {t.pricing.setup}</p>
+                {plan.setup && (
+                  <div className="text-xs text-gray-500 mt-1">+ {plan.setup} {t.pricing.setupFee}</div>
                 )}
-              </div>
-
-              <div className="border-t border-gray-800 pt-4 mb-4">
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between text-gray-400">
-                    <span>{t.pricing.sessions}</span>
-                    <span className="text-white font-medium">{plan.sessions}</span>
-                  </div>
-                  <div className="flex justify-between text-gray-400">
-                    <span>{t.pricing.widgets}</span>
-                    <span className="text-white font-medium">{plan.widgets}</span>
-                  </div>
-                </div>
               </div>
 
               <ul className="space-y-2 mb-6 flex-grow">
                 {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-2 text-gray-300 text-sm">
+                  <li key={featureIndex} className="flex items-start gap-2 text-gray-300 text-xs">
                     <CheckIcon />
                     <span>{feature}</span>
                   </li>
@@ -1407,7 +1500,7 @@ function Pricing() {
 
               <a
                 href={plan.ctaLink}
-                className={`w-full block text-center py-2.5 rounded-lg font-medium transition-all ${
+                className={`w-full block text-center py-2.5 rounded-lg font-medium transition-all text-sm ${
                   plan.popular
                     ? 'btn-primary'
                     : plan.id === 'free'
@@ -1420,10 +1513,6 @@ function Pricing() {
             </div>
           ))}
         </div>
-
-        <p className="text-center text-gray-500 text-sm mt-8">
-          {t.pricing.trial}
-        </p>
       </div>
     </section>
   )
@@ -1483,7 +1572,7 @@ function CTA() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="card bg-gradient-to-br from-primary-500/10 to-purple-500/10 border-primary-500/30">
+        <div className="card bg-gradient-to-br from-green-500/10 to-primary-500/10 border-green-500/30">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.cta.title}
           </h2>
@@ -1494,7 +1583,7 @@ function CTA() {
             <a href="https://app.catyai.io/signup" className="btn-primary text-lg px-8 py-4">
               {t.cta.btn1}
             </a>
-            <a href="https://app.catyai.io" className="btn-secondary text-lg px-8 py-4">
+            <a href="https://calendly.com/adrian-payai-x/30min" target="_blank" rel="noopener noreferrer" className="btn-secondary text-lg px-8 py-4">
               {t.cta.btn2}
             </a>
           </div>
@@ -1689,7 +1778,7 @@ function PromotionalPopup() {
   }
 
   const handleAnalyze = () => {
-    window.location.href = '/analyze'
+    window.open('https://wa.me/40750195048?text=demo', '_blank')
   }
 
   if (!show || dismissed) return null
@@ -1744,7 +1833,7 @@ function PromotionalPopup() {
             margin: 0,
             fontWeight: 500
           }}>
-            🎯 <strong>Analyze your website FREE</strong> - See AI insights in real-time
+            <strong>Try CatyAI on WhatsApp</strong> — Send "demo" to +40 756 730 193
           </p>
 
           {/* Arrow pointing down to Caty */}
@@ -1918,28 +2007,28 @@ function FloatingWidgetIndicator() {
 // Home Page FAQ data for structured data
 const homepageFAQ = [
   {
-    question: 'How does CatyAI work?',
-    answer: 'CatyAI is a smart chatbot widget that you embed on your website. It uses advanced AI to understand visitor questions and respond intelligently. You can train it on your specific products, FAQs, and documentation so it gives accurate answers about your business.'
+    question: 'Is CatyAI really free?',
+    answer: 'Yes. 100 sessions per month, forever. No credit card required.'
   },
   {
-    question: 'How long does setup take?',
-    answer: 'Most customers are live in under 5 minutes. Just copy our script tag into your website, configure your widget in our dashboard, and you are ready to go. No coding required.'
+    question: 'What does CatyAI do?',
+    answer: 'CatyAI is an AI secretary on WhatsApp that responds to customers 24/7, books appointments, generates documents, and blocks scams with FraudAI Shield.'
   },
   {
-    question: 'Can I customize the appearance?',
-    answer: 'Absolutely! You can customize colors, position, greeting messages, avatar, and more to match your brand. The widget is designed to feel like a natural part of your website.'
+    question: 'How does CatyAI connect to WhatsApp?',
+    answer: 'Scan a QR code, like WhatsApp Web. Uses your existing business number. Takes 2 minutes.'
   },
   {
-    question: 'What happens when CatyAI cannot answer a question?',
-    answer: 'CatyAI is smart about knowing its limits. When it cannot answer confidently, it can either collect the visitor info for follow-up, transfer to a human agent, or offer to create a support ticket.'
+    question: 'Does CatyAI work in Romanian?',
+    answer: 'Fluently. Also English, Spanish, Portuguese, French, Arabic with auto-detection.'
   },
   {
-    question: 'Is my data secure?',
-    answer: 'Yes. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We are GDPR compliant and never use your data to train AI models. Your business information stays yours.'
+    question: 'Will customers know it\'s AI?',
+    answer: 'Only if you want them to. CatyAI can respond as your business, with your name and style.'
   },
   {
-    question: 'Can I cancel anytime?',
-    answer: 'Yes, you can cancel your subscription at any time. No long-term contracts, no cancellation fees. Your service continues until the end of your billing period.'
+    question: 'What if CatyAI can\'t answer?',
+    answer: 'It forwards the conversation to you with full context, so you can take over seamlessly.'
   }
 ];
 
@@ -1947,16 +2036,28 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="E-Commerce Conversion AI & Business Intelligence"
-        description="CatyAI transforms visitors into customers with AI: intent detection, real-time lead scoring, Knowledge Base RAG, Business Intelligence, Competitor Intelligence. From free to enterprise."
+        title="AI Secretary on WhatsApp | Free 500 Conversations/Month"
+        description="AI secretary that responds to your customers 24/7 on WhatsApp. Books appointments, generates documents, blocks scams. Free forever: 100 sessions/month."
         url="https://catyai.io/"
         faq={homepageFAQ}
       />
       <Hero />
+      <Problem />
+      <CaseStudies />
+      <ROICalculator />
+      <Products />
+      <WhatsAppSecretary />
+      <QRFirst />
       <Features />
-      <Intelligence />
-      <HowItWorks />
+      <FraudShield />
+      <DocGenEngine />
       <Integrations />
+      <Verticals />
+      <HowItWorks />
+      <ComparisonTable />
+      <AurexPromo />
+      <Testimonials />
+      <PartnersPress />
       <Pricing />
       <FAQ />
       <CTA />
@@ -2035,6 +2136,20 @@ function AppContent() {
       </main>
       <PoweredBy />
       <Footer />
+
+      {/* WhatsApp Direct Button - Left Side */}
+      <a
+        href="https://wa.me/40750195048?text=Salut! Vreau să aflu mai multe despre CatyAI"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        title="Chat on WhatsApp"
+      >
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span className="font-medium hidden sm:inline">WhatsApp</span>
+      </a>
     </div>
   )
 }

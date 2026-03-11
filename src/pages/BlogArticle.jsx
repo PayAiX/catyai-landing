@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { blogArticles } from './Blog';
 import SEO from '../components/SEO';
 
-const API_BASE = 'https://api.ahauros.io';
-
-// Full article content (static fallback for original articles)
+// Full article content
 const articleContent = {
   'ai-chatbot-ecommerce-conversions': {
     content: `
@@ -652,101 +649,16 @@ The stores that win in 2025 won't be the ones with the biggest teams. They'll be
 
 export default function BlogArticle() {
   const { slug } = useParams();
-  const [article, setArticle] = useState(null);
-  const [content, setContent] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isApiArticle, setIsApiArticle] = useState(false);
-  const [relatedArticles, setRelatedArticles] = useState([]);
+  const article = blogArticles.find(a => a.slug === slug);
+  const content = articleContent[slug];
 
-  useEffect(() => {
-    async function fetchArticle() {
-      setLoading(true);
-
-      // Check if it's a static article first
-      const staticArticle = blogArticles.find(a => a.slug === slug);
-      const staticContent = articleContent[slug];
-
-      if (staticArticle && staticContent) {
-        // Use static content
-        setArticle(staticArticle);
-        setContent(staticContent);
-        setIsApiArticle(false);
-        setRelatedArticles(blogArticles.filter(a => a.slug !== slug).slice(0, 3));
-        setLoading(false);
-        return;
-      }
-
-      // Try to fetch from API
-      try {
-        const res = await fetch(`${API_BASE}/api/public/blog/posts/${slug}?site_url=https://catyai.io`);
-        const data = await res.json();
-
-        if (data.success && data.article) {
-          const apiArticle = {
-            slug: data.article.slug,
-            title: data.article.title,
-            excerpt: data.article.excerpt,
-            date: data.article.date,
-            readTime: data.article.readTime,
-            category: data.article.category,
-            image: data.article.image,
-            keywords: data.article.keywords || [],
-          };
-
-          setArticle(apiArticle);
-          setContent({
-            content: data.article.content || '',
-            metaDescription: data.article.excerpt,
-            fullHtml: data.article.fullHtml,
-            schema: data.article.schema,
-            faqSchema: data.article.faqSchema,
-          });
-          setIsApiArticle(true);
-
-          // Fetch related articles
-          const relRes = await fetch(`${API_BASE}/api/public/blog/posts?site_url=https://catyai.io&limit=4`);
-          const relData = await relRes.json();
-          if (relData.success && relData.posts) {
-            setRelatedArticles(relData.posts.filter(a => a.slug !== slug).slice(0, 3));
-          }
-        } else {
-          // Article not found
-          setArticle(null);
-          setContent(null);
-        }
-      } catch (err) {
-        console.error('Failed to fetch article:', err);
-        // If API fails, check static again
-        if (staticArticle && staticContent) {
-          setArticle(staticArticle);
-          setContent(staticContent);
-          setIsApiArticle(false);
-          setRelatedArticles(blogArticles.filter(a => a.slug !== slug).slice(0, 3));
-        } else {
-          setArticle(null);
-          setContent(null);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchArticle();
-  }, [slug]);
-
-  // Loading state
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-      </div>
-    );
-  }
-
-  // Not found
   if (!article || !content) {
     return <Navigate to="/blog" replace />;
   }
+
+  // Find related articles (same category or next/prev)
+  const currentIndex = blogArticles.findIndex(a => a.slug === slug);
+  const relatedArticles = blogArticles.filter((a, i) => i !== currentIndex).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
@@ -814,23 +726,18 @@ export default function BlogArticle() {
                   [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-4 [&>ol>li]:mb-2
                   [&>blockquote]:border-l-4 [&>blockquote]:border-indigo-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-400
                   [&_strong]:text-white [&_strong]:font-semibold
-                  [&_a]:text-indigo-400 [&_a]:hover:text-indigo-300
-                  [&_section]:mb-8
-                  [&_.faq-item]:mb-6 [&_.faq-item]:bg-gray-800/30 [&_.faq-item]:p-4 [&_.faq-item]:rounded-lg
-                  [&_.cta-section]:bg-indigo-600/20 [&_.cta-section]:p-6 [&_.cta-section]:rounded-xl [&_.cta-section]:text-center"
+                  [&_a]:text-indigo-400 [&_a]:hover:text-indigo-300"
                 dangerouslySetInnerHTML={{
-                  __html: isApiArticle
-                    ? content.content // API content is already HTML
-                    : content.content // Static content needs markdown conversion
-                        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-                        .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                        .replace(/^\- (.*$)/gm, '<li>$1</li>')
-                        .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-                        .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
-                        .replace(/\n\n/g, '</p><p>')
-                        .replace(/^(?!<[hul])/gm, '<p>')
-                        .replace(/(?<![>])$/gm, '</p>')
+                  __html: content.content
+                    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+                    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^\- (.*$)/gm, '<li>$1</li>')
+                    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+                    .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^(?!<[hul])/gm, '<p>')
+                    .replace(/(?<![>])$/gm, '</p>')
                 }}
               />
             </article>
@@ -857,22 +764,7 @@ export default function BlogArticle() {
           </div>
         </section>
 
-        {/* Schema JSON-LD for API articles */}
-        {isApiArticle && content.schema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(content.schema) }}
-          />
-        )}
-        {isApiArticle && content.faqSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(content.faqSchema) }}
-          />
-        )}
-
         {/* Related Articles */}
-        {relatedArticles.length > 0 && (
         <section className="px-4 pb-20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-8">Related Articles</h2>
@@ -901,7 +793,6 @@ export default function BlogArticle() {
             </div>
           </div>
         </section>
-        )}
       </div>
     );
   }

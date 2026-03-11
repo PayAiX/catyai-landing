@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:seo": "vite build && npm run prerender",
+    "build": "vite build && npm run copy-cdn",
+    "build:seo": "vite build && npm run copy-cdn && npm run prerender",
+    "copy-cdn": "mkdir -p dist/cdn && cp ../src/widget/caty-widget.js dist/cdn/widget.js && cp ../src/widget/caty-commerce.js dist/cdn/commerce.js && cp ../src/widget/caty-leads-widget.js dist/cdn/leads.js && cp ../src/widget/caty-loader.js dist/cdn/loader.js",
     "prerender": "node scripts/prerender.mjs",
+    "deploy": "npm run build && aws s3 sync dist/ s3://catyai-landing --delete --exclude 'cdn/*' && aws s3 sync dist/cdn/ s3://catyai-landing/cdn/ && aws cloudfront create-invalidation --distribution-id E3EB3UPK5D8B1L --paths '/*'",
+    "deploy:seo": "npm run build:seo && aws s3 sync dist/ s3://catyai-landing --delete --exclude 'cdn/*' && aws s3 sync dist/cdn/ s3://catyai-landing/cdn/ && aws cloudfront create-invalidation --distribution-id E3EB3UPK5D8B1L --paths '/*'",
     "lint": "eslint .",
     "preview": "vite preview"
   },
