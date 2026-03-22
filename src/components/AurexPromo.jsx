@@ -97,7 +97,7 @@ export default function AurexPromo() {
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <img
-              src="/images/aurex-guardian-logo.png"
+              src="/images/aurex-guardian-logo.webp"
               alt="AUREX Guardian v3"
               className="h-32 w-auto"
             />

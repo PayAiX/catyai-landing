@@ -23,6 +23,7 @@ import Contact from './pages/Contact'
 import CommerceDemo from './pages/CommerceDemo'
 import Blog from './pages/Blog'
 import BlogArticle from './pages/BlogArticle'
+import WhatsAppAI from './pages/WhatsAppAI'
 
 // Language Context
 const LanguageContext = createContext()
@@ -2089,6 +2090,12 @@ function ScrollToHash() {
 
 // Main App
 function AppContent() {
+  const location = useLocation()
+
+  // Pages with their own layout (no shared Header/Footer)
+  const standalonePages = ['/whatsapp']
+  const isStandalonePage = standalonePages.includes(location.pathname)
+
   // Track referral code from URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -2112,6 +2119,18 @@ function AppContent() {
       }).catch(() => {}) // Ignore errors
     }
   }, [])
+
+  // Standalone pages render without shared layout
+  if (isStandalonePage) {
+    return (
+      <div className="min-h-screen">
+        <ScrollToHash />
+        <Routes>
+          <Route path="/whatsapp" element={<WhatsAppAI />} />
+        </Routes>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen">

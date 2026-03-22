@@ -237,17 +237,22 @@ export default function CaseStudies() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
-  // Detect language from URL or localStorage
+  // Detect language from localStorage and listen for changes
   const [lang, setLang] = useState('en');
   useEffect(() => {
-    const stored = localStorage.getItem('caty-lang');
-    if (stored && translations[stored]) {
-      setLang(stored);
-    } else {
-      // Detect from browser
-      const browserLang = navigator.language?.slice(0, 2);
-      if (translations[browserLang]) setLang(browserLang);
-    }
+    const updateLang = () => {
+      const stored = localStorage.getItem('caty-lang');
+      if (stored && translations[stored]) {
+        setLang(stored);
+      } else {
+        const browserLang = navigator.language?.slice(0, 2);
+        if (translations[browserLang]) setLang(browserLang);
+      }
+    };
+    updateLang();
+    // Listen for language changes
+    const interval = setInterval(updateLang, 500);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

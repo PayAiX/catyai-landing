@@ -93,13 +93,18 @@ export default function DocGenEngine() {
   const [lang, setLang] = useState('en')
 
   useEffect(() => {
-    const stored = localStorage.getItem('caty-lang')
-    if (stored && translations[stored]) {
-      setLang(stored)
-    } else {
-      const browserLang = navigator.language?.slice(0, 2)
-      if (translations[browserLang]) setLang(browserLang)
+    const updateLang = () => {
+      const stored = localStorage.getItem('caty-lang')
+      if (stored && translations[stored]) {
+        setLang(stored)
+      } else {
+        const browserLang = navigator.language?.slice(0, 2)
+        if (translations[browserLang]) setLang(browserLang)
+      }
     }
+    updateLang()
+    const interval = setInterval(updateLang, 500)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {

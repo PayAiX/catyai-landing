@@ -251,7 +251,7 @@ function DemoChat({ demo, businessName, t }) {
   return (
     <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl max-w-md mx-auto">
       <div className="bg-primary-600 px-4 py-3 flex items-center gap-3">
-        <img src="/images/logo1.png" alt="Caty" className="w-8 h-8 rounded-full" />
+        <img src="/images/logo1.webp" alt="Caty" className="w-8 h-8 rounded-full" />
         <div>
           <p className="text-white font-medium text-sm">Caty - {businessName}</p>
           <p className="text-primary-200 text-xs flex items-center gap-1">
@@ -263,7 +263,7 @@ function DemoChat({ demo, businessName, t }) {
 
       <div className="p-4 space-y-3 min-h-[250px]">
         <div className="flex gap-2">
-          <img src="/images/logo1.png" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
+          <img src="/images/logo1.webp" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
           <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
             <p className="text-gray-200 text-sm">{demo.greeting}</p>
           </div>
@@ -277,7 +277,7 @@ function DemoChat({ demo, businessName, t }) {
               </div>
             </div>
             <div className="flex gap-2">
-              <img src="/images/logo1.png" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
+              <img src="/images/logo1.webp" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
               <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
                 <p className="text-gray-200 text-sm">{conversations[currentIndex].assistant}</p>
               </div>

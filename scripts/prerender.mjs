@@ -2,19 +2,25 @@
 /**
  * Pre-render script for CatyAI Landing Page
  * Generates static HTML for each route to improve SEO
+ *
+ * Usage:
+ *   1. First run: npm run sync-blog (to fetch articles from Guardian)
+ *   2. Then run: npm run build:seo (which runs this script)
  */
 
 import puppeteer from 'puppeteer';
 import { spawn } from 'child_process';
-import { writeFile, mkdir } from 'fs/promises';
+import { writeFile, mkdir, readFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distPath = join(__dirname, '..', 'dist');
+const dataPath = join(__dirname, '..', 'src', 'data');
 
-// Routes to pre-render
-const routes = [
+// Default routes (used if prerenderRoutes.json doesn't exist)
+const defaultRoutes = [
   { path: '/', name: 'Homepage' },
   { path: '/blog', name: 'Blog' },
   { path: '/blog/ai-chatbot-ecommerce-conversions', name: 'Blog Article 1' },
@@ -28,9 +34,28 @@ const routes = [
   { path: '/terms', name: 'Terms' },
 ];
 
+async function loadRoutes() {
+  const routesFile = join(dataPath, 'prerenderRoutes.json');
+
+  if (existsSync(routesFile)) {
+    try {
+      const data = await readFile(routesFile, 'utf-8');
+      const routes = JSON.parse(data);
+      console.log(`📄 Loaded ${routes.length} routes from prerenderRoutes.json`);
+      return routes;
+    } catch (err) {
+      console.warn(`⚠️  Could not parse prerenderRoutes.json: ${err.message}`);
+    }
+  } else {
+    console.log('⚠️  prerenderRoutes.json not found, using default routes');
+    console.log('   Run "npm run sync-blog" first to sync articles from Guardian');
+  }
+
+  return defaultRoutes;
+}
+
 async function startServer() {
   return new Promise((resolve, reject) => {
-    // Use serve with -s flag for SPA mode (serves index.html for all routes)
     const server = spawn('npx', ['serve', '-s', distPath, '-l', '4173'], {
       stdio: ['ignore', 'pipe', 'pipe'],
       shell: true,
@@ -58,11 +83,10 @@ async function startServer() {
       }
     });
 
-    // Timeout after 10 seconds
     setTimeout(() => {
       if (!started) {
         started = true;
-        resolve(server); // Resolve anyway, server might be ready
+        resolve(server);
       }
     }, 5000);
 
@@ -73,12 +97,14 @@ async function startServer() {
 async function prerender() {
   console.log('🚀 Starting pre-render process...\n');
 
+  // Load routes
+  const routes = await loadRoutes();
+
   // Start serve with SPA mode
-  console.log('📦 Starting static server with SPA fallback...');
+  console.log('\n📦 Starting static server with SPA fallback...');
   const server = await startServer();
   const serverUrl = 'http://localhost:4173';
 
-  // Wait a bit for server to be fully ready
   await new Promise(resolve => setTimeout(resolve, 2000));
   console.log(`📦 Server running at ${serverUrl}\n`);
 
@@ -91,74 +117,77 @@ async function prerender() {
   let successCount = 0;
   let errorCount = 0;
 
-  for (const route of routes) {
-    try {
-      const page = await browser.newPage();
+  // Process routes in batches to avoid memory issues
+  const BATCH_SIZE = 10;
+  for (let i = 0; i < routes.length; i += BATCH_SIZE) {
+    const batch = routes.slice(i, i + BATCH_SIZE);
+    console.log(`\n📦 Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(routes.length / BATCH_SIZE)}...\n`);
 
-      // Block Facebook pixel to avoid errors
-      await page.setRequestInterception(true);
-      page.on('request', (req) => {
-        if (req.url().includes('facebook') || req.url().includes('fbevents')) {
-          req.abort();
+    for (const route of batch) {
+      try {
+        const page = await browser.newPage();
+
+        // Block external resources to speed up rendering
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+          const url = req.url();
+          if (
+            url.includes('facebook') ||
+            url.includes('fbevents') ||
+            url.includes('google-analytics') ||
+            url.includes('googletagmanager')
+          ) {
+            req.abort();
+          } else {
+            req.continue();
+          }
+        });
+
+        await page.setViewport({ width: 1280, height: 800 });
+
+        const url = `${serverUrl}${route.path}`;
+        console.log(`⏳ Rendering: ${route.path}`);
+
+        await page.goto(url, {
+          waitUntil: 'networkidle0',
+          timeout: 30000
+        });
+
+        await page.waitForSelector('#root', { timeout: 10000 });
+        await new Promise(resolve => setTimeout(resolve, 2500));
+
+        const pageTitle = await page.title();
+        let html = await page.content();
+
+        // Add prerender status meta tag
+        html = html.replace('</head>', '<meta name="prerender-status" content="200">\n</head>');
+
+        // Determine output path
+        let outputPath;
+        if (route.path === '/') {
+          outputPath = join(distPath, 'index.html');
         } else {
-          req.continue();
+          const routePath = route.path.endsWith('/') ? route.path.slice(0, -1) : route.path;
+          const dirPath = join(distPath, routePath);
+          await mkdir(dirPath, { recursive: true });
+          outputPath = join(dirPath, 'index.html');
         }
-      });
 
-      await page.setViewport({ width: 1280, height: 800 });
+        await writeFile(outputPath, html, 'utf-8');
 
-      const url = `${serverUrl}${route.path}`;
-      console.log(`⏳ Rendering: ${route.name} (${route.path})`);
+        const shortTitle = pageTitle.length > 50 ? pageTitle.substring(0, 50) + '...' : pageTitle;
+        console.log(`✅ ${route.path} → "${shortTitle}"`);
+        successCount++;
 
-      // Navigate and wait
-      await page.goto(url, {
-        waitUntil: 'networkidle0',
-        timeout: 30000
-      });
-
-      // Wait for React to fully render
-      await page.waitForSelector('#root', { timeout: 10000 });
-
-      // Wait extra time for content and React Helmet
-      await new Promise(resolve => setTimeout(resolve, 3500));
-
-      // Get the page title
-      const pageTitle = await page.title();
-
-      // Get the rendered HTML
-      let html = await page.content();
-
-      // Add prerender status meta tag
-      html = html.replace('</head>', '<meta name="prerender-status" content="200">\n</head>');
-
-      // Determine output path
-      let outputPath;
-      if (route.path === '/') {
-        outputPath = join(distPath, 'index.html');
-      } else {
-        const routePath = route.path.endsWith('/') ? route.path.slice(0, -1) : route.path;
-        const dirPath = join(distPath, routePath);
-        await mkdir(dirPath, { recursive: true });
-        outputPath = join(dirPath, 'index.html');
+        await page.close();
+      } catch (error) {
+        console.error(`❌ Error rendering ${route.path}:`, error.message);
+        errorCount++;
       }
-
-      await writeFile(outputPath, html, 'utf-8');
-
-      // Show title (truncated)
-      const shortTitle = pageTitle.length > 50 ? pageTitle.substring(0, 50) + '...' : pageTitle;
-      console.log(`✅ ${route.path} → "${shortTitle}"`);
-      successCount++;
-
-      await page.close();
-    } catch (error) {
-      console.error(`❌ Error rendering ${route.path}:`, error.message);
-      errorCount++;
     }
   }
 
   await browser.close();
-
-  // Kill the server
   server.kill('SIGTERM');
 
   console.log(`\n🎉 Pre-rendering complete!`);

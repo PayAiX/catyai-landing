@@ -2,116 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="tVyoZDsE2ssgqqzyZs29AQjjLQNmdhAWPZ0y3-MpLiw" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D7TM554RRZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D7TM554RRZ');
-      gtag('config', 'AW-8366622390');
-      gtag('config', 'AW-17985598124');
-
-      // Conversion tracking - CatyAI
-      window.trackCatyConversion = function(eventName, eventParams) {
-        gtag('event', eventName, eventParams || {});
-        gtag('event', 'conversion', {
-          'send_to': 'AW-8366622390/' + eventName,
-          ...(eventParams || {})
-        });
-      };
-
-      window.trackSignUp = function() {
-        trackCatyConversion('sign_up', {
-          'event_category': 'Registration',
-          'event_label': 'CatyAI Account',
-          'value': 10
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('track', 'CompleteRegistration');
-      };
-
-      window.trackStartTrial = function() {
-        trackCatyConversion('start_trial', {
-          'event_category': 'Trial',
-          'event_label': 'CatyAI Trial',
-          'value': 25
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('track', 'StartTrial');
-      };
-
-      window.trackPurchase = function(value, plan) {
-        trackCatyConversion('purchase', {
-          'event_category': 'Purchase',
-          'event_label': plan || 'CatyAI Subscription',
-          'value': value || 149,
-          'currency': 'EUR',
-          'transaction_id': Date.now().toString()
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('track', 'Purchase', {
-          value: value || 149,
-          currency: 'EUR',
-          content_name: plan || 'CatyAI Subscription'
-        });
-      };
-
-      window.trackWidgetInstall = function() {
-        trackCatyConversion('widget_install', {
-          'event_category': 'Activation',
-          'event_label': 'Widget Installed',
-          'value': 50
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('trackCustom', 'WidgetInstall');
-      };
-
-      window.trackLead = function(leadData) {
-        trackCatyConversion('lead', {
-          'event_category': 'Lead',
-          'event_label': 'Lead Captured',
-          'value': 15
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('track', 'Lead', leadData || {});
-      };
-
-      window.trackContact = function() {
-        trackCatyConversion('contact', {
-          'event_category': 'Contact',
-          'event_label': 'Contact Form',
-          'value': 5
-        });
-        // Meta Pixel
-        if (typeof fbq !== 'undefined') fbq('track', 'Contact');
-      };
-    </script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '25909673122033932');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=25909673122033932&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
-
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Critical: Favicon + Apple Touch Icon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO Meta Tags -->
     <title>CatyAI — AI Secretary on WhatsApp | Free 500 Conversations/Month</title>
@@ -227,10 +123,12 @@
     }
     </script>
 
-    <!-- Fonts -->
+    <!-- Fonts - optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
@@ -240,7 +138,53 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- Caty Widget -->
-    <script src="https://api.catyai.io/widget.js?v=20260311-2231" data-api-key="caty_61ce701f9a055750ea5b81f1ae05b3e3"></script>
+    <!-- Deferred Analytics - loaded after page render -->
+    <script>
+      // Load analytics after page is interactive
+      window.addEventListener('load', function() {
+        // Google Tag Manager
+        var gtmScript = document.createElement('script');
+        gtmScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-D7TM554RRZ';
+        gtmScript.async = true;
+        document.head.appendChild(gtmScript);
+
+        gtmScript.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-D7TM554RRZ');
+          gtag('config', 'AW-8366622390');
+          gtag('config', 'AW-17985598124');
+        };
+
+        // Meta Pixel
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+        (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '25909673122033932');
+        fbq('track', 'PageView');
+      });
+
+      // Conversion tracking functions (available immediately, queue until loaded)
+      window.trackCatyConversion = function(eventName, eventParams) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', eventName, eventParams || {});
+          gtag('event', 'conversion', {'send_to': 'AW-8366622390/' + eventName, ...(eventParams || {})});
+        }
+      };
+      window.trackSignUp = function() { trackCatyConversion('sign_up', {event_category:'Registration',event_label:'CatyAI Account',value:10}); if(typeof fbq!=='undefined')fbq('track','CompleteRegistration'); };
+      window.trackStartTrial = function() { trackCatyConversion('start_trial', {event_category:'Trial',event_label:'CatyAI Trial',value:25}); if(typeof fbq!=='undefined')fbq('track','StartTrial'); };
+      window.trackPurchase = function(v,p) { trackCatyConversion('purchase', {event_category:'Purchase',event_label:p||'CatyAI Subscription',value:v||149,currency:'EUR',transaction_id:Date.now().toString()}); if(typeof fbq!=='undefined')fbq('track','Purchase',{value:v||149,currency:'EUR',content_name:p||'CatyAI Subscription'}); };
+      window.trackWidgetInstall = function() { trackCatyConversion('widget_install', {event_category:'Activation',event_label:'Widget Installed',value:50}); if(typeof fbq!=='undefined')fbq('trackCustom','WidgetInstall'); };
+      window.trackLead = function(d) { trackCatyConversion('lead', {event_category:'Lead',event_label:'Lead Captured',value:15}); if(typeof fbq!=='undefined')fbq('track','Lead',d||{}); };
+      window.trackContact = function() { trackCatyConversion('contact', {event_category:'Contact',event_label:'Contact Form',value:5}); if(typeof fbq!=='undefined')fbq('track','Contact'); };
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=25909673122033932&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Caty Widget - deferred -->
+    <script defer src="https://api.catyai.io/widget.js?v=20260317-1542" data-api-key="caty_61ce701f9a055750ea5b81f1ae05b3e3"></script>
   </body>
 </html>

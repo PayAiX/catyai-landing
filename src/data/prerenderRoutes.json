@@ -1,0 +1,234 @@
+[
+  {
+    "path": "/",
+    "name": "Homepage"
+  },
+  {
+    "path": "/blog",
+    "name": "Blog"
+  },
+  {
+    "path": "/blog/understanding-marketing",
+    "name": "Blog: Understanding Marketing: A Comprehensive..."
+  },
+  {
+    "path": "/blog/understanding-seo-guide",
+    "name": "Blog: Understanding SEO: A Comprehensive Guide..."
+  },
+  {
+    "path": "/blog/understanding-marketing-ai-chatbots",
+    "name": "Blog: Understanding Marketing: Strategies for ..."
+  },
+  {
+    "path": "/blog/customer-support-automation",
+    "name": "Blog: Understanding Customer Support Automatio..."
+  },
+  {
+    "path": "/blog/digital-marketing-courses",
+    "name": "Blog: What are Digital Marketing Courses? Lear..."
+  },
+  {
+    "path": "/blog/digital-online-marketing",
+    "name": "Blog: Understanding Digital Online Marketing: ..."
+  },
+  {
+    "path": "/blog/digital-marketing-romania",
+    "name": "Blog: What is Digital Marketing in Romania? In..."
+  },
+  {
+    "path": "/blog/ecommerce-romania-reddit",
+    "name": "Blog: Ecommerce Romania Reddit: Insights for B..."
+  },
+  {
+    "path": "/blog/ecommerce-romania-discord",
+    "name": "Blog: Ecommerce Romania Discord: Boosting Enga..."
+  },
+  {
+    "path": "/blog/ecommerce-romania-2025",
+    "name": "Blog: Ecommerce Romania 2025: Trends and AI Ch..."
+  },
+  {
+    "path": "/blog/ecommerce-romania-2024",
+    "name": "Blog: Ecommerce in Romania 2024: Insights & AI..."
+  },
+  {
+    "path": "/blog/romania-ecommerce-websites-ai-chatbots",
+    "name": "Blog: How Romania Ecommerce Websites Benefit f..."
+  },
+  {
+    "path": "/blog/romania-ecommerce-market",
+    "name": "Blog: Exploring the Romania Ecommerce Market: ..."
+  },
+  {
+    "path": "/blog/ai-technology-company-share-price",
+    "name": "Blog: AI Technology Company Share Price Insigh..."
+  },
+  {
+    "path": "/blog/ai-economic-efficiency-system",
+    "name": "Blog: Enhancing Economic Efficiency with AI Sy..."
+  },
+  {
+    "path": "/blog/economic-intelligence-software-ai-customer-service",
+    "name": "Blog: Unlocking Economic Intelligence Software..."
+  },
+  {
+    "path": "/blog/ai-conversion-optimization",
+    "name": "Blog: AI Conversion Optimization: Boosting Cus..."
+  },
+  {
+    "path": "/blog/ecommerce-ai-tools-customer-service",
+    "name": "Blog: Harnessing E-commerce AI Tools for Custo..."
+  },
+  {
+    "path": "/blog/ecommerce-conversion-rate-services",
+    "name": "Blog: Boost E-commerce Conversion Rate with AI..."
+  },
+  {
+    "path": "/blog/conversion-rate-optimization-ai-customer-service",
+    "name": "Blog: Boost Your Business with Conversion Rate..."
+  },
+  {
+    "path": "/blog/lead-scoring-software-ai-customer-service",
+    "name": "Blog: Understanding Lead Scoring Software in A..."
+  },
+  {
+    "path": "/blog/ai-software-development-customer-service",
+    "name": "Blog: AI Software Development: Transforming Cu..."
+  },
+  {
+    "path": "/blog/marketing-online-ai-customer-service",
+    "name": "Blog: Mastering Online Marketing with AI Custo..."
+  },
+  {
+    "path": "/blog/understanding-marketing-dex-ai-customer-service",
+    "name": "Blog: Understanding Marketing Dex: Elevate You..."
+  },
+  {
+    "path": "/blog/olfactory-marketing-ai-customer-service",
+    "name": "Blog: Unlocking the Power of Olfactory Marketi..."
+  },
+  {
+    "path": "/blog/marketing-automation-ai-customer-service",
+    "name": "Blog: Marketing Automation: Transforming Custo..."
+  },
+  {
+    "path": "/blog/unlocking-future-ai-customer-service",
+    "name": "Blog: Unlocking the Future of AI Customer Serv..."
+  },
+  {
+    "path": "/blog/marketing-deck-ai-customer-service",
+    "name": "Blog: Creating an Effective Marketing Deck for..."
+  },
+  {
+    "path": "/blog/enhancing-customer-experience-with-ai-solutions",
+    "name": "Blog: Enhancing Customer Experience with AI So..."
+  },
+  {
+    "path": "/blog/technology-role-in-ai-customer-service",
+    "name": "Blog: Understanding Technology's Role in AI Cu..."
+  },
+  {
+    "path": "/blog/ce-este-marketingul-digital",
+    "name": "Blog: Ce Este Marketingul Digital? O Ghid Comp..."
+  },
+  {
+    "path": "/blog/digital-marketing-job-opportunities",
+    "name": "Blog: Unlocking Opportunities in Digital Marke..."
+  },
+  {
+    "path": "/blog/customer-support-airbnb-number",
+    "name": "Blog: Customer Support Airbnb Number: Everythi..."
+  },
+  {
+    "path": "/blog/customer-support-ai",
+    "name": "Blog: Enhancing Customer Support with AI: Tran..."
+  },
+  {
+    "path": "/blog/customer-support-air-france",
+    "name": "Blog: Enhancing Customer Support with Air Fran..."
+  },
+  {
+    "path": "/blog/understanding-ai-customer-support",
+    "name": "Blog: Understanding AI Customer Support: Revol..."
+  },
+  {
+    "path": "/blog/customer-support-airasia",
+    "name": "Blog: Customer Support with AirAsia: Enhancing..."
+  },
+  {
+    "path": "/blog/customer-support-air-canada",
+    "name": "Blog: Essential Guide to Customer Support at A..."
+  },
+  {
+    "path": "/blog/customer-support-air-india",
+    "name": "Blog: Customer Support Air India: Enhancing Yo..."
+  },
+  {
+    "path": "/blog/customer-support-airbnb",
+    "name": "Blog: Mastering Customer Support on Airbnb: Es..."
+  },
+  {
+    "path": "/blog/automated-customer-service-ecommerce",
+    "name": "Blog: Enhancing E-commerce with Automated Cust..."
+  },
+  {
+    "path": "/blog/chatbot-for-online-store",
+    "name": "Blog: Enhance Your E-Commerce with a Chatbot f..."
+  },
+  {
+    "path": "/blog/ai-sales-assistant",
+    "name": "Blog: Boost Your Sales with an AI Sales Assist..."
+  },
+  {
+    "path": "/blog/247-customer-support-ai",
+    "name": "Blog: 24/7 Customer Support AI: Revolutionizin..."
+  },
+  {
+    "path": "/blog/ecommerce-conversion-optimization",
+    "name": "Blog: Ecommerce Conversion Optimization: Boost..."
+  },
+  {
+    "path": "/blog/whatsapp-business-chatbot",
+    "name": "Blog: Optimize Your Business with a WhatsApp C..."
+  },
+  {
+    "path": "/blog/woocommerce-ai-chat",
+    "name": "Blog: Transform Your Store with WooCommerce AI..."
+  },
+  {
+    "path": "/blog/shopify-chatbot",
+    "name": "Blog: Enhance Your Shopify Store with a Smart ..."
+  },
+  {
+    "path": "/blog/ai-chatbot-for-ecommerce",
+    "name": "Blog: AI Chatbot for E-commerce: Transform You..."
+  },
+  {
+    "path": "/about",
+    "name": "About"
+  },
+  {
+    "path": "/contact",
+    "name": "Contact"
+  },
+  {
+    "path": "/privacy",
+    "name": "Privacy"
+  },
+  {
+    "path": "/terms",
+    "name": "Terms"
+  },
+  {
+    "path": "/gdpr",
+    "name": "GDPR"
+  },
+  {
+    "path": "/licensing",
+    "name": "Licensing"
+  },
+  {
+    "path": "/careers",
+    "name": "Careers"
+  }
+]

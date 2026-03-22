@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 
 const defaultMeta = {
-  title: 'CatyAI — E-Commerce Conversion AI & Business Intelligence',
-  description: 'Transform visitors into customers with AI: intent detection, real-time lead scoring, Knowledge Base RAG, Business Intelligence. From free to enterprise.',
+  title: 'CatyAI — AI Sales Engine for WhatsApp',
+  description: 'AI Sales Engine on WhatsApp. 37 new clients in 5 days. Responds, books, sells and blocks scams — 24/7, automatically. Free: 500 conversations/month.',
   image: 'https://catyai.io/og-image.png',
   url: 'https://catyai.io',
 };

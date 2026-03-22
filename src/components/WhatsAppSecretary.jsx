@@ -109,13 +109,18 @@ export default function WhatsAppSecretary() {
   const [lang, setLang] = useState('en')
 
   useEffect(() => {
-    const stored = localStorage.getItem('caty-lang')
-    if (stored && translations[stored]) {
-      setLang(stored)
-    } else {
-      const browserLang = navigator.language?.slice(0, 2)
-      if (translations[browserLang]) setLang(browserLang)
+    const updateLang = () => {
+      const stored = localStorage.getItem('caty-lang')
+      if (stored && translations[stored]) {
+        setLang(stored)
+      } else {
+        const browserLang = navigator.language?.slice(0, 2)
+        if (translations[browserLang]) setLang(browserLang)
+      }
     }
+    updateLang()
+    const interval = setInterval(updateLang, 500)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
@@ -193,7 +198,7 @@ export default function WhatsAppSecretary() {
                   {/* WhatsApp header */}
                   <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-                      <img src="/images/caty-logo.png" alt="Caty" className="w-7 h-7 object-contain" />
+                      <img src="/images/caty-logo.webp" alt="Caty" className="w-7 h-7 object-contain" />
                     </div>
                     <div className="flex-1">
                       <div className="text-white font-semibold text-sm">Caty Secretary</div>
