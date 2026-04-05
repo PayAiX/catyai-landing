@@ -183,8 +183,8 @@ const TrustCenter = () => {
   return (
     <>
       <SEO
-        title={language === 'ro' ? 'Trust Center - Arhitectură Tehnică & Securitate | CatyAI' : 'Trust Center - Technical Architecture & Security | CatyAI'}
-        description={language === 'ro'
+        title={lang === 'ro' ? 'Trust Center - Arhitectură Tehnică & Securitate | CatyAI' : 'Trust Center - Technical Architecture & Security | CatyAI'}
+        description={lang === 'ro'
           ? 'Transparență totală despre tehnologia CatyAI: WhatsApp Native Connect fără taxe Meta, securitate enterprise-grade, GDPR compliant. Arhitectură hibridă cu plan de continuitate.'
           : 'Full transparency on CatyAI technology: WhatsApp Native Connect without Meta fees, enterprise-grade security, GDPR compliant. Hybrid architecture with continuity plan.'}
         keywords="WhatsApp Native Connect, Baileys, WhatsApp Business API, FraudAI Shield, GDPR, securitate AI, arhitectură hibridă"
@@ -211,7 +211,7 @@ const TrustCenter = () => {
                   href="https://app.catyai.io"
                   className="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                 >
-                  {language === 'ro' ? 'Începe Gratis' : 'Start Free'}
+                  {lang === 'ro' ? 'Începe Gratis' : 'Start Free'}
                 </a>
               </div>
             </div>
