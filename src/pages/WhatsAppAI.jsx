@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import QRFirst from '../components/QRFirst'
+import Footer from '../components/Footer'
+import { useLanguage } from '../App'
 
 const translations = {
   en: {
@@ -13,6 +16,8 @@ const translations = {
     trustBadge1: '500 conversations/month FREE',
     trustBadge2: 'No credit card required',
     trustBadge3: 'Setup in 2 minutes',
+    trustCenterLink: 'WhatsApp Native Connect — No message fees',
+    trustCenterCta: 'Technical Specs',
 
     problemTitle: 'Your Customers Message You.',
     problemHighlight: 'Nobody Answers.',
@@ -133,6 +138,8 @@ const translations = {
     trustBadge1: '500 conversații/lună GRATUIT',
     trustBadge2: 'Fără card bancar',
     trustBadge3: 'Setup în 2 minute',
+    trustCenterLink: 'WhatsApp Native Connect — Fără taxe pe mesaj',
+    trustCenterCta: 'Specificații Tehnice',
 
     problemTitle: 'Clienții îți scriu pe WhatsApp.',
     problemHighlight: 'Nimeni nu răspunde.',
@@ -247,6 +254,7 @@ const translations = {
 
 export default function WhatsAppAI() {
   const [lang, setLang] = useState('en')
+  const { t: mainT } = useLanguage() // Main translations for shared Footer
 
   useEffect(() => {
     const updateLang = () => {
@@ -271,6 +279,12 @@ export default function WhatsAppAI() {
         title="WhatsApp AI Secretary | CatyAI"
         description="AI secretary on WhatsApp. Responds 24/7, books appointments, generates documents, blocks scams. Works on your existing number."
         url="https://catyai.io/whatsapp"
+        service={{
+          name: 'CatyAI WhatsApp Secretary',
+          description: 'AI secretary that works on your existing WhatsApp number. Responds to customers 24/7, books appointments via Google Calendar, generates PDF documents, and blocks scams with FraudAI Shield.',
+          price: '49',
+          features: ['24/7 AI responses', 'Google Calendar sync', 'PDF document generation', 'FraudAI Shield protection', 'Multi-language support', 'Admin takeover']
+        }}
       />
 
       {/* Header */}
@@ -359,6 +373,18 @@ export default function WhatsAppAI() {
                   {t.trustBadge3}
                 </span>
               </div>
+
+              {/* Trust Center Link */}
+              <Link
+                to="/trust-center"
+                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-green-400 transition-colors mt-4 group"
+              >
+                <span className="border-b border-dashed border-gray-600 group-hover:border-green-400">{t.trustCenterLink}</span>
+                <span className="text-green-500 font-medium">{t.trustCenterCta}</span>
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
 
             {/* Right - Phone Mockup */}
@@ -614,29 +640,6 @@ export default function WhatsAppAI() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 px-4 bg-gray-900/50">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.faqTitle}</h2>
-
-          <div className="space-y-4">
-            {t.faqs.map((faq, i) => (
-              <details key={i} className="group bg-gray-900 border border-gray-800 rounded-xl">
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <span className="font-semibold">{faq.q}</span>
-                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-gray-400">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
@@ -663,17 +666,34 @@ export default function WhatsAppAI() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">{t.footer.copyright}</p>
-          <div className="flex items-center gap-6 text-sm">
-            <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">{t.footer.privacy}</Link>
-            <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">{t.footer.terms}</Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t.footer.contact}</Link>
+      {/* No Website? No Problem */}
+      <QRFirst />
+
+      {/* FAQ */}
+      <section className="py-20 px-4 bg-gray-900/50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.faqTitle}</h2>
+
+          <div className="space-y-4">
+            {t.faqs.map((faq, i) => (
+              <details key={i} className="group bg-gray-900 border border-gray-800 rounded-xl">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <span className="font-semibold">{faq.q}</span>
+                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-gray-400">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Footer */}
+      <Footer t={mainT} />
     </div>
   )
 }

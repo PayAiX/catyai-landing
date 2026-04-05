@@ -256,6 +256,10 @@
     "name": "QR-First - No Website Needed"
   },
   {
+    "path": "/trust-center",
+    "name": "Trust Center - Technical Architecture & Security"
+  },
+  {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",
     "name": "Blog: CatyAI vs Chatbots Tradiționale - 8 Agenți AI"
   },

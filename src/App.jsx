@@ -31,6 +31,7 @@ const WhatsAppAI = lazy(() => import('./pages/WhatsAppAI'))
 const FraudAI = lazy(() => import('./pages/FraudAI'))
 const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
 const NoWebsite = lazy(() => import('./pages/NoWebsite'))
+const TrustCenter = lazy(() => import('./pages/TrustCenter'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -2003,7 +2004,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website']
+  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/trust-center']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -2041,6 +2042,7 @@ function AppContent() {
             <Route path="/fraud-shield" element={<FraudAI />} />
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
+            <Route path="/trust-center" element={<TrustCenter />} />
           </Routes>
         </Suspense>
       </div>
