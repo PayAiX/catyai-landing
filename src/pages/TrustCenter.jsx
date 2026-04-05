@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import Footer from '../components/Footer'
 import { useLanguage } from '../App'
 
 const TrustCenter = () => {
-  const { language } = useLanguage()
+  const { t: mainT } = useLanguage() || {} // Main translations for Footer
+  const [lang, setLang] = useState('ro')
   const [openFaq, setOpenFaq] = useState(0)
+
+  useEffect(() => {
+    const stored = localStorage.getItem('caty-lang')
+    if (stored) setLang(stored)
+  }, [])
 
   const content = {
     ro: {
@@ -163,7 +169,7 @@ const TrustCenter = () => {
     }
   }
 
-  const t = content[language] || content.ro
+  const t = content[lang] || content.ro
 
   const formatAnswer = (answer) => {
     // Convert **text** to <strong>text</strong>
@@ -370,7 +376,7 @@ const TrustCenter = () => {
           </div>
         </section>
 
-        <Footer />
+        <Footer t={mainT} />
       </div>
     </>
   )
