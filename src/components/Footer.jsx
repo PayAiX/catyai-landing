@@ -45,6 +45,7 @@ export default function Footer({ t }) {
               <li><Link to="/terms" className="hover:text-white transition-colors block py-1">{t.footer.terms}</Link></li>
               <li><Link to="/gdpr" className="hover:text-white transition-colors block py-1">{t.footer.gdpr}</Link></li>
               <li><Link to="/licensing" className="hover:text-white transition-colors block py-1">{t.footer.licensing}</Link></li>
+              <li><Link to="/trust-center" className="hover:text-white transition-colors block py-1">Trust Center</Link></li>
             </ul>
           </div>
         </div>
