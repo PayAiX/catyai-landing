@@ -198,7 +198,7 @@ export default function WhatsAppSecretary() {
                   {/* WhatsApp header */}
                   <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-                      <img src="/images/caty-logo.webp" alt="Caty" className="w-7 h-7 object-contain" />
+                      <img src="/images/caty-logo.webp" alt="Caty" className="w-7 h-7 object-contain" width="28" height="28" />
                     </div>
                     <div className="flex-1">
                       <div className="text-white font-semibold text-sm">Caty Secretary</div>

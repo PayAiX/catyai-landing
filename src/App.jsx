@@ -1,6 +1,7 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext, lazy, Suspense } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import SEO from './components/SEO'
+import FooterComponent from './components/Footer'
 import Testimonials from './components/Testimonials'
 import PartnersPress from './components/PartnersPress'
 import AurexPromo from './components/AurexPromo'
@@ -11,53 +12,73 @@ import FraudShield from './components/FraudShield'
 import DocGenEngine from './components/DocGenEngine'
 import ComparisonTable from './components/ComparisonTable'
 import WhatsAppSecretary from './components/WhatsAppSecretary'
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
-import GDPRPolicy from './pages/GDPRPolicy'
-import Licensing from './pages/Licensing'
-import LicenseAGPL from './pages/LicenseAGPL'
-import SiteAnalyzer from './pages/SiteAnalyzer'
-import About from './pages/About'
-import Careers from './pages/Careers'
-import Contact from './pages/Contact'
-import CommerceDemo from './pages/CommerceDemo'
-import Blog from './pages/Blog'
-import BlogArticle from './pages/BlogArticle'
-import WhatsAppAI from './pages/WhatsAppAI'
+import WhatsAppZeroMeta from './components/WhatsAppZeroMeta'
+
+// Lazy load pages for better performance (code splitting)
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const GDPRPolicy = lazy(() => import('./pages/GDPRPolicy'))
+const Licensing = lazy(() => import('./pages/Licensing'))
+const LicenseAGPL = lazy(() => import('./pages/LicenseAGPL'))
+const SiteAnalyzer = lazy(() => import('./pages/SiteAnalyzer'))
+const About = lazy(() => import('./pages/About'))
+const Careers = lazy(() => import('./pages/Careers'))
+const Contact = lazy(() => import('./pages/Contact'))
+const CommerceDemo = lazy(() => import('./pages/CommerceDemo'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogArticle = lazy(() => import('./pages/BlogArticle'))
+const WhatsAppAI = lazy(() => import('./pages/WhatsAppAI'))
+const FraudAI = lazy(() => import('./pages/FraudAI'))
+const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
+const NoWebsite = lazy(() => import('./pages/NoWebsite'))
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gray-950">
+    <div className="text-center">
+      <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-gray-400">Loading...</p>
+    </div>
+  </div>
+)
 
 // Language Context
 const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Start Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Login', getStarted: 'Start Free' },
     hero: {
-      badge: 'AI Chat Widget for Your Website',
-      title1: 'AI Chat Widget',
-      title2: 'for Your Website',
-      subtitle: 'Capture leads, answer questions, convert visitors 24/7. One line of code. Auto-learns your business. Works on any website.',
-      cta1: 'Start Free — €0/month',
-      cta2: 'Book Demo',
-      analyzeLink: 'Analyze your website for free',
-      noCard: '100 sessions/month FREE',
-      fiveMin: 'Setup in 5 min',
-      cancel: 'No credit card',
-      tryMe: 'Try CatyAI Now!',
-      tryMeDesc: 'Click the chat widget in the corner',
-      tryWidget: 'Or try the chat widget below',
-      mockupOnline: 'Online 24/7',
-      mockupGreeting: "Hi! I'm your AI assistant. How can I help?",
-      mockupUserQ: 'What services do you offer?',
-      mockupBotA: 'We offer web design, SEO, and digital marketing. Would you like a quote?',
-      mockupPlaceholder: 'Type a message...'
+      title1: 'Turn Conversations Into',
+      title2: 'Paying Customers',
+      subtitle: 'AI that responds, qualifies & converts — automatically, 24/7',
+      cta1: 'Book a Demo',
+      cta2: 'Get Started Free',
+      trust1: '500 conversations FREE',
+      trust2: 'No credit card',
+      trust3: 'Setup in 2 min'
     },
     problem: {
-      title: 'Your Customers Message You.',
-      titleHighlight: 'Nobody Answers.',
-      stat1: '40% of customers call evenings/weekends',
-      stat2: '67% switch to competitor if no response in 1 hour',
-      stat3: 'A human receptionist costs €1,500/month',
-      solution: 'CatyAI responds instantly, 24/7, for €0.'
+      title: "You're Losing Customers Every Day",
+      stats: [
+        { value: '40%', label: 'of messages come after hours' },
+        { value: '67%', label: 'leave if no reply in 1 hour' },
+        { value: '€0', label: 'revenue from missed leads' }
+      ]
+    },
+    solution: {
+      badge: 'THE SOLUTION',
+      title1: 'This Is Not a Chatbot.',
+      title2: 'This Is a Sales System.',
+      subtitle: 'CatyAI captures, qualifies & converts leads automatically'
+    },
+    coreFlow: {
+      title: 'How CatyAI Works',
+      steps: [
+        { name: 'CAPTURE', icon: '📥', title: '24/7 Response', desc: 'Never miss a lead. Instant replies any time.' },
+        { name: 'QUALIFY', icon: '🎯', title: 'AI Scoring', desc: 'Smart questions. Identifies hot prospects.' },
+        { name: 'CONVERT', icon: '💰', title: 'Book & Sell', desc: 'Schedules meetings. Closes deals.' }
+      ]
     },
     features: {
       title: 'Your Secretary',
@@ -126,7 +147,6 @@ const translations = {
       startFree: 'Start Free',
       getStarted: 'Get Started',
       contactSales: 'Contact Sales',
-      setupFee: 'one-time setup',
       free: {
         name: 'FREE',
         price: '€0',
@@ -134,26 +154,22 @@ const translations = {
       },
       starter: {
         name: 'STARTER',
-        price: '€149',
-        setup: '€499',
+        price: '€49',
         features: ['1,000 sessions/month', '1 widget', '50 KB docs', 'Behavioral tracking', 'Proactive messages', 'Email support']
       },
       growth: {
         name: 'GROWTH',
-        price: '€299',
-        setup: '€999',
+        price: '€99',
         features: ['5,000 sessions/month', '3 widgets', '200 KB docs', 'CRM integrations', 'Live handoff', 'Analytics', 'Priority support']
       },
       business: {
         name: 'BUSINESS',
-        price: '€499',
-        setup: '€1999',
+        price: '€199',
         features: ['20,000 sessions/month', 'Unlimited widgets', 'Unlimited KB docs', 'API access', 'Account manager', 'Custom integrations', 'Advanced analytics']
       },
       enterprise: {
         name: 'ENTERPRISE',
-        price: '€800',
-        setup: '€3800',
+        price: '€499',
         features: ['Unlimited sessions', 'Unlimited widgets', 'Unlimited KB docs', 'White-label branding', 'SSO / SAML', 'Dedicated support', 'SLA guarantee', 'Custom development']
       }
     },
@@ -200,34 +216,38 @@ const translations = {
     floatingIndicator: 'Try me!'
   },
   ro: {
-    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', login: 'Autentificare', getStarted: 'Începe Gratuit' },
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
-      badge: 'Widget Chat AI pentru Site-ul Tău',
-      title1: 'Widget Chat AI',
-      title2: 'pentru Site-ul Tău',
-      subtitle: 'Captează lead-uri, răspunde la întrebări, convertește vizitatori 24/7. O singură linie de cod. Învață automat afacerea ta.',
-      cta1: 'Începe Gratuit — €0/lună',
-      cta2: 'Programează Demo',
-      analyzeLink: 'Analizează site-ul tău gratuit',
-      noCard: '100 sesiuni/lună GRATUIT',
-      fiveMin: 'Setup în 5 minute',
-      cancel: 'Fără card bancar',
-      tryMe: 'Încearcă CatyAI Acum!',
-      tryMeDesc: 'Click pe widget-ul de chat din colț',
-      tryWidget: 'Sau încearcă widget-ul de chat mai jos',
-      mockupOnline: 'Online 24/7',
-      mockupGreeting: 'Bună! Sunt asistentul tău AI. Cu ce te pot ajuta?',
-      mockupUserQ: 'Ce servicii oferiți?',
-      mockupBotA: 'Oferim web design, SEO și marketing digital. Dorești o ofertă?',
-      mockupPlaceholder: 'Scrie un mesaj...'
+      title1: 'Transformă Conversațiile în',
+      title2: 'Clienți Plătitori',
+      subtitle: 'AI care răspunde, califică și convertește — automat, 24/7',
+      cta1: 'Programează Demo',
+      cta2: 'Începe Gratuit',
+      trust1: '500 conversații GRATUIT',
+      trust2: 'Fără card bancar',
+      trust3: 'Setup în 2 min'
     },
     problem: {
-      title: 'Clienții te contactează pe WhatsApp.',
-      titleHighlight: 'Nimeni nu răspunde.',
-      stat1: '40% din clienți scriu seara și în weekend',
-      stat2: '67% aleg competitorul dacă nu primesc răspuns în 1 oră',
-      stat3: 'O recepționeră umană costă €1.500/lună',
-      solution: 'CatyAI răspunde instant, 24/7, pentru €0.'
+      title: 'Pierzi Clienți în Fiecare Zi',
+      stats: [
+        { value: '40%', label: 'din mesaje vin după program' },
+        { value: '67%', label: 'pleacă dacă nu răspunzi în 1h' },
+        { value: '€0', label: 'venit din lead-uri pierdute' }
+      ]
+    },
+    solution: {
+      badge: 'SOLUȚIA',
+      title1: 'Nu Este un Chatbot.',
+      title2: 'Este un Sistem de Vânzări.',
+      subtitle: 'CatyAI captează, califică și convertește lead-uri automat'
+    },
+    coreFlow: {
+      title: 'Cum Funcționează CatyAI',
+      steps: [
+        { name: 'CAPTEAZĂ', icon: '📥', title: 'Răspuns 24/7', desc: 'Nu pierzi niciun lead. Răspunsuri instant.' },
+        { name: 'CALIFICĂ', icon: '🎯', title: 'Scorare AI', desc: 'Întrebări inteligente. Identifică prospecți fierbinți.' },
+        { name: 'CONVERTEȘTE', icon: '💰', title: 'Programează & Vinde', desc: 'Stabilește întâlniri. Închide vânzări.' }
+      ]
     },
     features: {
       title: 'Secretara ta',
@@ -296,7 +316,6 @@ const translations = {
       startFree: 'Începe Gratuit',
       getStarted: 'Începe',
       contactSales: 'Contactează Vânzări',
-      setupFee: 'setup unic',
       free: {
         name: 'GRATUIT',
         price: '€0',
@@ -304,26 +323,22 @@ const translations = {
       },
       starter: {
         name: 'STARTER',
-        price: '€149',
-        setup: '€499',
+        price: '€49',
         features: ['1.000 sesiuni/lună', '1 widget', '50 KB docs', 'Tracking comportament', 'Mesaje proactive', 'Suport email']
       },
       growth: {
         name: 'GROWTH',
-        price: '€299',
-        setup: '€999',
+        price: '€99',
         features: ['5.000 sesiuni/lună', '3 widget-uri', '200 KB docs', 'Integrări CRM', 'Handoff live', 'Analytics', 'Suport prioritar']
       },
       business: {
         name: 'BUSINESS',
-        price: '€499',
-        setup: '€1999',
+        price: '€199',
         features: ['20.000 sesiuni/lună', 'Widget-uri nelimitate', 'KB docs nelimitate', 'Acces API', 'Manager cont', 'Integrări custom', 'Analytics avansat']
       },
       enterprise: {
         name: 'ENTERPRISE',
-        price: '€800',
-        setup: '€3800',
+        price: '€499',
         features: ['Sesiuni nelimitate', 'Widget-uri nelimitate', 'KB docs nelimitate', 'White-label branding', 'SSO / SAML', 'Suport dedicat', 'Garanție SLA', 'Dezvoltare custom']
       }
     },
@@ -370,34 +385,38 @@ const translations = {
     floatingIndicator: 'Încearcă-mă!'
   },
   es: {
-    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
-      badge: 'Widget Chat IA para Tu Sitio Web',
-      title1: 'Widget Chat IA',
-      title2: 'para Tu Sitio Web',
-      subtitle: 'Captura leads, responde preguntas, convierte visitantes 24/7. Una línea de código. Aprende tu negocio automáticamente.',
-      cta1: 'Empezar Gratis — €0/mes',
-      cta2: 'Reservar Demo',
-      analyzeLink: 'Analiza tu sitio web gratis',
-      noCard: '100 sesiones/mes GRATIS',
-      fiveMin: 'Configuración en 5 min',
-      cancel: 'Sin tarjeta de crédito',
-      tryMe: '¡Prueba CatyAI Ahora!',
-      tryMeDesc: 'Haz clic en el widget de chat en la esquina',
-      tryWidget: 'O prueba el widget de chat abajo',
-      mockupOnline: 'En línea 24/7',
-      mockupGreeting: '¡Hola! Soy tu asistente IA. ¿Cómo puedo ayudarte?',
-      mockupUserQ: '¿Qué servicios ofrecéis?',
-      mockupBotA: 'Ofrecemos diseño web, SEO y marketing digital. ¿Te gustaría un presupuesto?',
-      mockupPlaceholder: 'Escribe un mensaje...'
+      title1: 'Convierte Conversaciones en',
+      title2: 'Clientes que Pagan',
+      subtitle: 'IA que responde, califica y convierte — automáticamente, 24/7',
+      cta1: 'Reservar Demo',
+      cta2: 'Empezar Gratis',
+      trust1: '500 conversaciones GRATIS',
+      trust2: 'Sin tarjeta de crédito',
+      trust3: 'Setup en 2 min'
     },
     problem: {
-      title: 'Tus clientes te escriben.',
-      titleHighlight: 'Nadie responde.',
-      stat1: 'El 40% de los clientes escribe por las noches y fines de semana',
-      stat2: 'El 67% elige a la competencia si no hay respuesta en 1 hora',
-      stat3: 'Una recepcionista humana cuesta €1.500/mes',
-      solution: 'CatyAI responde al instante, 24/7, por €0.'
+      title: 'Pierdes Clientes Cada Día',
+      stats: [
+        { value: '40%', label: 'de mensajes llegan fuera de horario' },
+        { value: '67%', label: 'se van si no respondes en 1h' },
+        { value: '€0', label: 'ingresos de leads perdidos' }
+      ]
+    },
+    solution: {
+      badge: 'LA SOLUCIÓN',
+      title1: 'Esto No Es un Chatbot.',
+      title2: 'Es un Sistema de Ventas.',
+      subtitle: 'CatyAI captura, califica y convierte leads automáticamente'
+    },
+    coreFlow: {
+      title: 'Cómo Funciona CatyAI',
+      steps: [
+        { name: 'CAPTURA', icon: '📥', title: 'Respuesta 24/7', desc: 'Nunca pierdas un lead. Respuestas al instante.' },
+        { name: 'CALIFICA', icon: '🎯', title: 'Scoring IA', desc: 'Preguntas inteligentes. Identifica prospectos.' },
+        { name: 'CONVIERTE', icon: '💰', title: 'Agenda & Vende', desc: 'Programa citas. Cierra ventas.' }
+      ]
     },
     features: {
       title: 'Tu Secretaria',
@@ -466,7 +485,6 @@ const translations = {
       startFree: 'Empezar Gratis',
       getStarted: 'Empezar',
       contactSales: 'Contactar Ventas',
-      setupFee: 'setup único',
       free: {
         name: 'GRATIS',
         price: '€0',
@@ -474,26 +492,22 @@ const translations = {
       },
       starter: {
         name: 'STARTER',
-        price: '€149',
-        setup: '€499',
+        price: '€49',
         features: ['1.000 sesiones/mes', '1 widget', '50 KB docs', 'Seguimiento de comportamiento', 'Mensajes proactivos', 'Soporte email']
       },
       growth: {
         name: 'GROWTH',
-        price: '€299',
-        setup: '€999',
+        price: '€99',
         features: ['5.000 sesiones/mes', '3 widgets', '200 KB docs', 'Integraciones CRM', 'Handoff en vivo', 'Analytics', 'Soporte prioritario']
       },
       business: {
         name: 'BUSINESS',
-        price: '€499',
-        setup: '€1999',
+        price: '€199',
         features: ['20.000 sesiones/mes', 'Widgets ilimitados', 'KB docs ilimitados', 'Acceso API', 'Gestor de cuenta', 'Integraciones custom', 'Analytics avanzado']
       },
       enterprise: {
         name: 'ENTERPRISE',
-        price: '€800',
-        setup: '€3800',
+        price: '€499',
         features: ['Sesiones ilimitadas', 'Widgets ilimitados', 'KB docs ilimitados', 'White-label branding', 'SSO / SAML', 'Soporte dedicado', 'Garantía SLA', 'Desarrollo custom']
       }
     },
@@ -540,34 +554,38 @@ const translations = {
     floatingIndicator: '¡Pruébame!'
   },
   pt: {
-    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar Grátis' },
+    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
-      badge: 'Widget Chat IA para Seu Site',
-      title1: 'Widget Chat IA',
-      title2: 'para Seu Site',
-      subtitle: 'Capture leads, responda perguntas, converta visitantes 24/7. Uma linha de código. Aprende seu negócio automaticamente.',
-      cta1: 'Começar Grátis — €0/mês',
-      cta2: 'Agendar Demo',
-      analyzeLink: 'Analise seu site grátis',
-      noCard: '100 sessões/mês GRÁTIS',
-      fiveMin: 'Configuração em 5 min',
-      cancel: 'Sem cartão de crédito',
-      tryMe: 'Experimente CatyAI Agora!',
-      tryMeDesc: 'Clique no widget de chat no canto',
-      tryWidget: 'Ou experimente o widget de chat abaixo',
-      mockupOnline: 'Online 24/7',
-      mockupGreeting: 'Olá! Sou seu assistente IA. Como posso ajudar?',
-      mockupUserQ: 'Quais serviços vocês oferecem?',
-      mockupBotA: 'Oferecemos web design, SEO e marketing digital. Gostaria de um orçamento?',
-      mockupPlaceholder: 'Digite uma mensagem...'
+      title1: 'Transforme Conversas em',
+      title2: 'Clientes Pagantes',
+      subtitle: 'IA que responde, qualifica e converte — automaticamente, 24/7',
+      cta1: 'Agendar Demo',
+      cta2: 'Começar Grátis',
+      trust1: '500 conversas GRÁTIS',
+      trust2: 'Sem cartão de crédito',
+      trust3: 'Setup em 2 min'
     },
     problem: {
-      title: 'Seus clientes te mandam mensagem.',
-      titleHighlight: 'Ninguém responde.',
-      stat1: '40% dos clientes escrevem à noite e nos fins de semana',
-      stat2: '67% escolhem o concorrente se não houver resposta em 1 hora',
-      stat3: 'Uma recepcionista humana custa €1.500/mês',
-      solution: 'CatyAI responde instantaneamente, 24/7, por €0.'
+      title: 'Você Perde Clientes Todo Dia',
+      stats: [
+        { value: '40%', label: 'das mensagens chegam fora do horário' },
+        { value: '67%', label: 'vão embora sem resposta em 1h' },
+        { value: '€0', label: 'receita de leads perdidos' }
+      ]
+    },
+    solution: {
+      badge: 'A SOLUÇÃO',
+      title1: 'Isso Não É um Chatbot.',
+      title2: 'É um Sistema de Vendas.',
+      subtitle: 'CatyAI captura, qualifica e converte leads automaticamente'
+    },
+    coreFlow: {
+      title: 'Como o CatyAI Funciona',
+      steps: [
+        { name: 'CAPTURA', icon: '📥', title: 'Resposta 24/7', desc: 'Nunca perca um lead. Respostas instantâneas.' },
+        { name: 'QUALIFICA', icon: '🎯', title: 'Scoring IA', desc: 'Perguntas inteligentes. Identifica prospectos.' },
+        { name: 'CONVERTE', icon: '💰', title: 'Agenda & Vende', desc: 'Marca reuniões. Fecha negócios.' }
+      ]
     },
     features: {
       title: 'Sua Secretária',
@@ -636,7 +654,6 @@ const translations = {
       startFree: 'Começar Grátis',
       getStarted: 'Começar',
       contactSales: 'Contatar Vendas',
-      setupFee: 'setup único',
       free: {
         name: 'GRÁTIS',
         price: '€0',
@@ -644,26 +661,22 @@ const translations = {
       },
       starter: {
         name: 'STARTER',
-        price: '€149',
-        setup: '€499',
+        price: '€49',
         features: ['1.000 sessões/mês', '1 widget', '50 KB docs', 'Rastreamento de comportamento', 'Mensagens proativas', 'Suporte email']
       },
       growth: {
         name: 'GROWTH',
-        price: '€299',
-        setup: '€999',
+        price: '€99',
         features: ['5.000 sessões/mês', '3 widgets', '200 KB docs', 'Integrações CRM', 'Handoff ao vivo', 'Analytics', 'Suporte prioritário']
       },
       business: {
         name: 'BUSINESS',
-        price: '€499',
-        setup: '€1999',
+        price: '€199',
         features: ['20.000 sessões/mês', 'Widgets ilimitados', 'KB docs ilimitados', 'Acesso API', 'Gerente de conta', 'Integrações custom', 'Analytics avançado']
       },
       enterprise: {
         name: 'ENTERPRISE',
-        price: '€800',
-        setup: '€3800',
+        price: '€499',
         features: ['Sessões ilimitadas', 'Widgets ilimitados', 'KB docs ilimitados', 'White-label branding', 'SSO / SAML', 'Suporte dedicado', 'Garantia SLA', 'Desenvolvimento custom']
       }
     },
@@ -710,34 +723,38 @@ const translations = {
     floatingIndicator: 'Experimente!'
   },
   fr: {
-    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer Gratuit' },
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
-      badge: 'Widget Chat IA pour Votre Site',
-      title1: 'Widget Chat IA',
-      title2: 'pour Votre Site',
-      subtitle: 'Capturez des leads, répondez aux questions, convertissez des visiteurs 24/7. Une ligne de code. Apprend votre entreprise automatiquement.',
-      cta1: 'Commencer Gratuit — €0/mois',
-      cta2: 'Réserver une Démo',
-      analyzeLink: 'Analysez votre site gratuitement',
-      noCard: '100 sessions/mois GRATUIT',
-      fiveMin: 'Configuration en 5 min',
-      cancel: 'Sans carte bancaire',
-      tryMe: 'Essayez CatyAI Maintenant!',
-      tryMeDesc: 'Cliquez sur le widget de chat dans le coin',
-      tryWidget: 'Ou essayez le widget de chat ci-dessous',
-      mockupOnline: 'En ligne 24/7',
-      mockupGreeting: 'Bonjour! Je suis votre assistant IA. Comment puis-je vous aider?',
-      mockupUserQ: 'Quels services proposez-vous?',
-      mockupBotA: 'Nous proposons la conception web, le SEO et le marketing digital. Souhaitez-vous un devis?',
-      mockupPlaceholder: 'Tapez un message...'
+      title1: 'Transformez les Conversations en',
+      title2: 'Clients Payants',
+      subtitle: 'IA qui répond, qualifie et convertit — automatiquement, 24/7',
+      cta1: 'Réserver une Démo',
+      cta2: 'Commencer Gratuit',
+      trust1: '500 conversations GRATUIT',
+      trust2: 'Sans carte bancaire',
+      trust3: 'Setup en 2 min'
     },
     problem: {
-      title: 'Vos clients vous écrivent.',
-      titleHighlight: 'Personne ne répond.',
-      stat1: '40% des clients écrivent le soir et le week-end',
-      stat2: '67% choisissent le concurrent sans réponse en 1 heure',
-      stat3: 'Une réceptionniste humaine coûte €1.500/mois',
-      solution: 'CatyAI répond instantanément, 24/7, pour €0.'
+      title: 'Vous Perdez des Clients Chaque Jour',
+      stats: [
+        { value: '40%', label: 'des messages arrivent hors horaires' },
+        { value: '67%', label: 'partent sans réponse en 1h' },
+        { value: '€0', label: 'revenus des leads perdus' }
+      ]
+    },
+    solution: {
+      badge: 'LA SOLUTION',
+      title1: "Ce N'est Pas un Chatbot.",
+      title2: "C'est un Système de Vente.",
+      subtitle: 'CatyAI capture, qualifie et convertit les leads automatiquement'
+    },
+    coreFlow: {
+      title: 'Comment CatyAI Fonctionne',
+      steps: [
+        { name: 'CAPTURE', icon: '📥', title: 'Réponse 24/7', desc: 'Ne manquez jamais un lead. Réponses instantanées.' },
+        { name: 'QUALIFIE', icon: '🎯', title: 'Scoring IA', desc: 'Questions intelligentes. Identifie les prospects.' },
+        { name: 'CONVERTIT', icon: '💰', title: 'Réserve & Vend', desc: 'Planifie des réunions. Conclut des ventes.' }
+      ]
     },
     features: {
       title: 'Votre Secrétaire',
@@ -806,7 +823,6 @@ const translations = {
       startFree: 'Commencer Gratuit',
       getStarted: 'Commencer',
       contactSales: 'Contacter les Ventes',
-      setupFee: 'frais unique',
       free: {
         name: 'GRATUIT',
         price: '€0',
@@ -814,26 +830,22 @@ const translations = {
       },
       starter: {
         name: 'STARTER',
-        price: '€149',
-        setup: '€499',
+        price: '€49',
         features: ['1.000 sessions/mois', '1 widget', '50 KB docs', 'Suivi comportemental', 'Messages proactifs', 'Support email']
       },
       growth: {
         name: 'GROWTH',
-        price: '€299',
-        setup: '€999',
+        price: '€99',
         features: ['5.000 sessions/mois', '3 widgets', '200 KB docs', 'Intégrations CRM', 'Handoff en direct', 'Analytics', 'Support prioritaire']
       },
       business: {
         name: 'BUSINESS',
-        price: '€499',
-        setup: '€1999',
+        price: '€199',
         features: ['20.000 sessions/mois', 'Widgets illimités', 'KB docs illimités', 'Accès API', 'Gestionnaire de compte', 'Intégrations custom', 'Analytics avancé']
       },
       enterprise: {
         name: 'ENTERPRISE',
-        price: '€800',
-        setup: '€3800',
+        price: '€499',
         features: ['Sessions illimitées', 'Widgets illimités', 'KB docs illimités', 'White-label branding', 'SSO / SAML', 'Support dédié', 'Garantie SLA', 'Développement custom']
       }
     },
@@ -908,7 +920,7 @@ function LanguageProvider({ children }) {
   )
 }
 
-function useLanguage() {
+export function useLanguage() {
   return useContext(LanguageContext)
 }
 
@@ -974,7 +986,7 @@ function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/images/caty-logo.png" alt="Caty.AI" className="h-10 animate-pulse" />
+            <img src="/images/caty-logo.webp" alt="Caty.AI" className="h-10 animate-pulse" width="40" height="40" />
             <span className="text-xl font-bold">Caty.AI</span>
           </Link>
 
@@ -984,6 +996,8 @@ function Header() {
             <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">{t.nav.howItWorks}</a>
             <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
+            <Link to="/whatsapp" className="text-green-400 hover:text-green-300 transition-colors font-medium">{t.nav.whatsapp}</Link>
+            <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 transition-colors font-medium">{t.nav.fraudai}</Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -1013,6 +1027,8 @@ function Header() {
               <a href="#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.howItWorks}</a>
               <a href="#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
+              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium" onClick={() => setMobileMenuOpen(false)}>{t.nav.whatsapp}</Link>
+              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium" onClick={() => setMobileMenuOpen(false)}>{t.nav.fraudai}</Link>
               <hr className="border-gray-800" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
               <a href="https://app.catyai.io/signup" className="btn-primary text-center">{t.nav.getStarted}</a>
@@ -1029,119 +1045,60 @@ function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
+    <section id="hero" className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-end pb-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/caty-talk.png"
+          src="/images/hero-showcase.webp"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center sm:object-top opacity-50"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
+          fetchpriority="high"
+          width="1920"
+          height="1080"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/85 via-gray-950/80 to-gray-950 sm:from-gray-950/80 sm:via-gray-950/75"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/60 to-gray-950"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-sm font-medium mb-8">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-            {t.hero.badge}
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance leading-tight">
             {t.hero.title1}
             <span className="gradient-text block mt-2">{t.hero.title2}</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+          <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-medium">
             {t.hero.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <a href="https://app.catyai.io/signup" className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-2xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-xl transform hover:scale-105">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <a href="https://calendly.com/adrian-payai-x/30min" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold rounded-xl transition-all text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
               {t.hero.cta1}
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            </a>
+            <a href="https://app.catyai.io/signup" className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-lg transform hover:scale-105">
+              {t.hero.cta2}
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-            <a href="https://calendly.com/adrian-payai-x/30min?month=2026-03" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold rounded-xl transition-all text-lg shadow-lg shadow-green-500/25">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-              {t.hero.cta2}
-            </a>
           </div>
 
-          <div className="mb-10">
-            <Link to="/analyze" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500/10 border border-primary-500/30 text-primary-400 hover:text-primary-300 hover:border-primary-400/50 font-medium transition-all group">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-              <span>{t.hero.analyzeLink}</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-8 text-gray-500 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-gray-500 text-sm">
             <div className="flex items-center gap-2">
               <CheckIcon />
-              <span>{t.hero.noCard}</span>
+              <span>{t.hero.trust1}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckIcon />
-              <span>{t.hero.fiveMin}</span>
+              <span>{t.hero.trust2}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckIcon />
-              <span>{t.hero.cancel}</span>
+              <span>{t.hero.trust3}</span>
             </div>
           </div>
-        </div>
-
-        {/* WhatsApp Mockup */}
-        <div className="mt-20 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-primary-500/10 to-green-500/10 blur-3xl -z-10"></div>
-          <div className="card p-6 max-w-sm mx-auto">
-            {/* WhatsApp-style header */}
-            <div className="bg-[#075E54] rounded-t-xl px-4 py-3 flex items-center gap-3">
-              <img src="/images/caty-logo.png" alt="Caty" className="h-10 w-10 rounded-full object-contain bg-white p-1" />
-              <div>
-                <p className="text-white font-semibold text-sm">CatyAI Secretary</p>
-                <p className="text-green-200 text-xs flex items-center gap-1">
-                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
-                  {t.hero.mockupOnline}
-                </p>
-              </div>
-            </div>
-            {/* Chat bubbles */}
-            <div className="bg-[#ECE5DD] rounded-b-xl p-4 space-y-3 min-h-[200px]">
-              <div className="flex gap-2 items-end">
-                <div className="bg-white rounded-lg rounded-bl-none px-3 py-2 max-w-[80%] shadow-sm">
-                  <p className="text-gray-800 text-sm">{t.hero.mockupGreeting}</p>
-                  <p className="text-gray-400 text-xs text-right mt-1">09:00</p>
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <div className="bg-[#DCF8C6] rounded-lg rounded-br-none px-3 py-2 max-w-[80%] shadow-sm">
-                  <p className="text-gray-800 text-sm">{t.hero.mockupUserQ}</p>
-                  <p className="text-gray-400 text-xs text-right mt-1">09:01</p>
-                </div>
-              </div>
-              <div className="flex gap-2 items-end">
-                <div className="bg-white rounded-lg rounded-bl-none px-3 py-2 max-w-[80%] shadow-sm">
-                  <p className="text-gray-800 text-sm">{t.hero.mockupBotA}</p>
-                  <p className="text-gray-400 text-xs text-right mt-1">09:01</p>
-                </div>
-              </div>
-            </div>
-            {/* Input bar */}
-            <div className="bg-[#F0F0F0] rounded-b-xl px-3 py-2 flex items-center gap-2 border-t border-gray-200">
-              <div className="bg-white rounded-full px-4 py-2 flex-1 text-gray-400 text-sm">{t.hero.mockupPlaceholder}</div>
-              <div className="w-8 h-8 bg-[#25D366] rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-gray-500 text-sm mt-4">{t.hero.tryWidget}</p>
         </div>
       </div>
     </section>
@@ -1152,26 +1109,74 @@ function Hero() {
 function Problem() {
   const { t } = useLanguage()
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          {t.problem.title} <span className="text-red-400">{t.problem.titleHighlight}</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-red-400 mb-12">
+          {t.problem.title}
         </h2>
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="card">
-            <p className="text-3xl font-bold text-red-400 mb-2">40%</p>
-            <p className="text-gray-400">{t.problem.stat1}</p>
-          </div>
-          <div className="card">
-            <p className="text-3xl font-bold text-red-400 mb-2">67%</p>
-            <p className="text-gray-400">{t.problem.stat2}</p>
-          </div>
-          <div className="card">
-            <p className="text-3xl font-bold text-red-400 mb-2">€1,500</p>
-            <p className="text-gray-400">{t.problem.stat3}</p>
-          </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {t.problem.stats.map((stat, i) => (
+            <div key={i} className="bg-gray-800/50 rounded-xl p-6 border border-red-500/20">
+              <div className="text-4xl md:text-5xl font-bold text-red-400 mb-2">{stat.value}</div>
+              <div className="text-gray-400 text-sm">{stat.label}</div>
+            </div>
+          ))}
         </div>
-        <p className="text-xl text-primary-400 font-semibold">{t.problem.solution}</p>
+      </div>
+    </section>
+  )
+}
+
+// Solution Section
+function Solution() {
+  const { t } = useLanguage()
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-6">
+          <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">{t.solution.badge}</span>
+        </div>
+
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <span className="text-white">{t.solution.title1}</span>
+          <span className="gradient-text block mt-2">{t.solution.title2}</span>
+        </h2>
+
+        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          {t.solution.subtitle}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// Core Flow Section
+function CoreFlow() {
+  const { t } = useLanguage()
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+      <div className="max-w-5xl mx-auto">
+        <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-12">
+          {t.coreFlow.title}
+        </h3>
+
+        <div className="grid md:grid-cols-3 gap-6 relative">
+          {/* Connecting arrows - desktop only */}
+          <div className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-0.5 bg-gradient-to-r from-primary-500/50 to-primary-500/50 -translate-y-1/2 z-0"></div>
+          <div className="hidden md:block absolute top-1/2 right-1/3 w-1/3 h-0.5 bg-gradient-to-r from-primary-500/50 to-primary-500/50 -translate-y-1/2 z-0"></div>
+
+          {t.coreFlow.steps.map((step, i) => (
+            <div key={i} className="relative z-10 bg-gray-800/80 rounded-2xl p-6 border border-gray-700 hover:border-primary-500/50 transition-colors text-center">
+              <div className="text-4xl mb-4">{step.icon}</div>
+              <div className="inline-block px-3 py-1 bg-primary-500/20 text-primary-400 text-xs font-bold rounded-full mb-3">
+                {step.name}
+              </div>
+              <h4 className="text-xl font-semibold text-white mb-2">{step.title}</h4>
+              <p className="text-gray-400 text-sm">{step.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -1357,7 +1362,7 @@ function Verticals() {
 function HowItWorks() {
   const { t } = useLanguage()
 
-  const stepImages = ['/images/caty-point-right.png', '/images/caty-think.png', '/images/caty-happy.png']
+  const stepImages = ['/images/caty-point-right.webp', '/images/caty-think.webp', '/images/caty-happy.webp']
   const stepIcons = [
     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>,
     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
@@ -1392,7 +1397,7 @@ function HowItWorks() {
                 <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
                 <p className="text-gray-400 mb-4">{step.description}</p>
                 <div className="flex justify-center my-4">
-                  <img src={step.image} alt={step.title} className="h-32 object-contain" />
+                  <img src={step.image} alt={step.title} className="h-32 object-contain" width="128" height="128" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -1596,33 +1601,50 @@ function CTA() {
 
 // Powered By Section
 function PoweredBy() {
-  const technologies = [
-    { name: 'AWS', svg: '/images/logos/aws.svg', title: 'Amazon Web Services' },
-    { name: 'MongoDB', icon: 'mongodb', title: 'MongoDB Atlas' },
-    { name: 'OpenAI', svg: '/images/logos/openai.svg', title: 'OpenAI' },
-    { name: 'Supabase', icon: 'supabase', title: 'Supabase' },
-    { name: 'Redis', icon: 'redis', title: 'Redis' },
-    { name: 'Qdrant', svg: '/images/logos/qdrant.svg', title: 'Qdrant' },
-    { name: 'Stripe', icon: 'stripe', title: 'Stripe' },
-    { name: 'Node.js', icon: 'nodedotjs', title: 'Node.js' }
-  ]
+  const { t } = useLanguage()
+
+  const features = {
+    en: [
+      { icon: '🧠', title: 'Contextual Memory', desc: 'Remembers conversations across sessions. Never asks the same question twice.' },
+      { icon: '👤', title: 'Visitor Recognition', desc: 'Returning visitors are recognized with their full history and preferences.' }
+    ],
+    ro: [
+      { icon: '🧠', title: 'Memorie Contextuală', desc: 'Ține minte conversațiile între sesiuni. Nu pune aceeași întrebare de două ori.' },
+      { icon: '👤', title: 'Recunoaștere Vizitatori', desc: 'Vizitatorii care revin sunt recunoscuți cu tot istoricul și preferințele lor.' }
+    ],
+    es: [
+      { icon: '🧠', title: 'Memoria Contextual', desc: 'Recuerda conversaciones entre sesiones. Nunca hace la misma pregunta dos veces.' },
+      { icon: '👤', title: 'Reconocimiento de Visitantes', desc: 'Los visitantes que regresan son reconocidos con todo su historial.' }
+    ],
+    pt: [
+      { icon: '🧠', title: 'Memória Contextual', desc: 'Lembra conversas entre sessões. Nunca faz a mesma pergunta duas vezes.' },
+      { icon: '👤', title: 'Reconhecimento de Visitantes', desc: 'Visitantes que retornam são reconhecidos com todo seu histórico.' }
+    ],
+    fr: [
+      { icon: '🧠', title: 'Mémoire Contextuelle', desc: 'Se souvient des conversations entre sessions. Ne pose jamais la même question deux fois.' },
+      { icon: '👤', title: 'Reconnaissance des Visiteurs', desc: 'Les visiteurs récurrents sont reconnus avec tout leur historique.' }
+    ]
+  }
+
+  const currentFeatures = features[t.nav?.home === 'Acasă' ? 'ro' : t.nav?.home === 'Inicio' ? 'es' : t.nav?.home === 'Início' ? 'pt' : t.nav?.home === 'Accueil' ? 'fr' : 'en']
 
   return (
-    <section className="py-10 px-4 sm:px-6 lg:px-8 border-t border-gray-800/50">
-      <div className="max-w-4xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-6">
-          Powered by
-        </p>
-        <div className="flex items-center justify-center flex-wrap gap-8 md:gap-10">
-          {technologies.map((tech) => (
-            <img
-              key={tech.name}
-              src={tech.svg || `https://cdn.simpleicons.org/${tech.icon}/6b7280`}
-              alt={tech.name}
-              title={tech.title}
-              className="h-6 md:h-7 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-              loading="lazy"
-            />
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-gray-950">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-4">
+            <span className="text-primary-400 text-sm font-semibold">AUREX v2</span>
+          </div>
+          <p className="text-gray-400">AI Memory Engine</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {currentFeatures.map((feature, i) => (
+            <div key={i} className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-primary-500/30 transition-colors">
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-400 text-sm">{feature.desc}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -1630,123 +1652,10 @@ function PoweredBy() {
   )
 }
 
-// Footer Component
+// Footer Component - uses shared Footer from components
 function Footer() {
   const { t } = useLanguage()
-
-  return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
-        {/* Grid: 2 cols on mobile, 4 cols on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
-          {/* Logo & Tagline - full width on mobile */}
-          <div className="col-span-2 md:col-span-1 mb-4 md:mb-0">
-            <Link to="/" className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.png" alt="Caty.AI" className="h-8 animate-pulse" />
-              <span className="text-lg font-bold text-white">Caty.AI</span>
-            </Link>
-            <p className="text-gray-300 text-sm">
-              {t.footer.tagline}
-            </p>
-          </div>
-          {/* Product */}
-          <div>
-            <h4 className="font-semibold text-white mb-3 md:mb-4 text-base">{t.footer.product}</h4>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><a href="#features" className="hover:text-white transition-colors block py-1">{t.nav.features}</a></li>
-              <li><a href="#pricing" className="hover:text-white transition-colors block py-1">{t.nav.pricing}</a></li>
-              <li><a href="https://app.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.dashboard}</a></li>
-              <li><a href="https://docs.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.docs}</a></li>
-            </ul>
-          </div>
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-white mb-3 md:mb-4 text-base">{t.footer.company}</h4>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link to="/about" className="hover:text-white transition-colors block py-1">{t.footer.about}</Link></li>
-              <li><Link to="/blog" className="hover:text-white transition-colors block py-1">{t.footer.blog}</Link></li>
-              <li><Link to="/careers" className="hover:text-white transition-colors block py-1">{t.footer.careers}</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors block py-1">{t.footer.contact}</Link></li>
-            </ul>
-          </div>
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold text-white mb-3 md:mb-4 text-base">{t.footer.legal}</h4>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link to="/privacy" className="hover:text-white transition-colors block py-1">{t.footer.privacy}</Link></li>
-              <li><Link to="/terms" className="hover:text-white transition-colors block py-1">{t.footer.terms}</Link></li>
-              <li><Link to="/gdpr" className="hover:text-white transition-colors block py-1">{t.footer.gdpr}</Link></li>
-              <li><Link to="/licensing" className="hover:text-white transition-colors block py-1">{t.footer.licensing}</Link></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Featured Articles - SEO Backlinks */}
-        <div className="py-4 border-t border-gray-800">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-            <span className="text-gray-500">Featured Articles:</span>
-            <a href="https://medium.com/@adrianvitan/ahauros-aeos-catyai-inteligen%C8%9Ba-artificial%C4%83-economic%C4%83-pentru-rom%C3%A2nia-digital%C4%83-89108e433672"
-               target="_blank" rel="noopener noreferrer"
-               className="text-gray-400 hover:text-primary-400 transition-colors">
-              Ahauros AEOS & CatyAI — AI for Digital Romania
-            </a>
-            <a href="https://medium.com/@adrianvitan/building-ai-that-works-for-business-my-journey-creating-payai-x-ahauros-and-catyai-1f407e31e109"
-               target="_blank" rel="noopener noreferrer"
-               className="text-gray-400 hover:text-primary-400 transition-colors">
-              Building AI That Works for Business
-            </a>
-            <a href="https://medium.com/@adrianvitan"
-               target="_blank" rel="noopener noreferrer"
-               className="text-primary-400 hover:text-primary-300 transition-colors font-medium">
-              All articles on Medium →
-            </a>
-          </div>
-        </div>
-
-        {/* Licensing Info */}
-        <div className="py-6 border-t border-gray-800 mb-2">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
-            <Link to="/licensing" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
-              </svg>
-              <span>{t.footer.licensing}:</span>
-            </Link>
-            <div className="flex items-center gap-3">
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
-                <span className="font-medium">Community</span>
-                <span className="text-primary-500/70">(AGPL-3.0)</span>
-              </Link>
-              <span className="text-gray-600">+</span>
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
-                <span className="font-medium">Enterprise</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} {t.footer.copyright}
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="https://twitter.com/catyai" className="text-gray-400 hover:text-white transition-colors" title="Twitter">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
-            </a>
-            <a href="https://linkedin.com/company/catyai" className="text-gray-400 hover:text-white transition-colors" title="LinkedIn">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://github.com/catyai" className="text-gray-400 hover:text-white transition-colors" title="GitHub">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="https://medium.com/@adrianvitan" className="text-gray-400 hover:text-white transition-colors" title="Medium" target="_blank" rel="noopener noreferrer">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
+  return <FooterComponent t={t} />
 }
 
 // Promotional Popup - appears after 3 seconds
@@ -2037,33 +1946,30 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="AI Secretary on WhatsApp | Free 500 Conversations/Month"
-        description="AI secretary that responds to your customers 24/7 on WhatsApp. Books appointments, generates documents, blocks scams. Free forever: 100 sessions/month."
+        title="AI Chatbot That Converts Visitors Into Customers"
+        description="CatyAI is an AI sales agent that responds, qualifies and converts your website visitors into real customers. 24/7 automation for WhatsApp and websites."
         url="https://catyai.io/"
         faq={homepageFAQ}
       />
       <Hero />
       <Problem />
+      <Solution />
+      <WhatsAppZeroMeta />
+      <CoreFlow />
       <CaseStudies />
       <ROICalculator />
       <Products />
-      <WhatsAppSecretary />
-      <QRFirst />
-      <Features />
-      <FraudShield />
       <DocGenEngine />
       <Integrations />
       <Verticals />
       <HowItWorks />
       <ComparisonTable />
-      <AurexPromo />
       <Testimonials />
       <PartnersPress />
       <Pricing />
       <FAQ />
       <CTA />
       <FloatingWidgetIndicator />
-      <PromotionalPopup />
     </>
   )
 }
@@ -2093,7 +1999,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp']
+  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -2125,9 +2031,14 @@ function AppContent() {
     return (
       <div className="min-h-screen">
         <ScrollToHash />
-        <Routes>
-          <Route path="/whatsapp" element={<WhatsAppAI />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/whatsapp" element={<WhatsAppAI />} />
+            <Route path="/fraud-shield" element={<FraudAI />} />
+            <Route path="/chatbot-romania" element={<ChatbotRomania />} />
+            <Route path="/no-website" element={<NoWebsite />} />
+          </Routes>
+        </Suspense>
       </div>
     )
   }
@@ -2137,21 +2048,23 @@ function AppContent() {
       <ScrollToHash />
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          <Route path="/gdpr" element={<GDPRPolicy />} />
-          <Route path="/licensing" element={<Licensing />} />
-          <Route path="/license-agpl" element={<LicenseAGPL />} />
-          <Route path="/analyze" element={<SiteAnalyzer />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/commerce" element={<CommerceDemo />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogArticle />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/gdpr" element={<GDPRPolicy />} />
+            <Route path="/licensing" element={<Licensing />} />
+            <Route path="/license-agpl" element={<LicenseAGPL />} />
+            <Route path="/analyze" element={<SiteAnalyzer />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/commerce" element={<CommerceDemo />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
+          </Routes>
+        </Suspense>
       </main>
       <PoweredBy />
       <Footer />
