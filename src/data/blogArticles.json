@@ -1,5 +1,326 @@
 [
   {
+    "slug": "catyai-sub-lupa-raspunsuri-tehnice",
+    "title": "CatyAI sub lupă: Răspunsuri tehnice la întrebări legitime",
+    "excerpt": "Un articol pentru cei care vor să înțeleagă, nu pentru cei care vor să atace. Baileys, FraudAI Shield, arhitectura SAG, și de ce nu suntem 'doar un AI wrapper'.",
+    "date": "April 5, 2026",
+    "readTime": "12 min read",
+    "category": "Technical",
+    "image": "/images/catyai-bridge-strategy.webp",
+    "keywords": [
+      "CatyAI tehnic",
+      "Baileys WhatsApp",
+      "FraudAI Shield",
+      "SAG architecture",
+      "WhatsApp API alternative",
+      "AI wrapper",
+      "prompt injection protection"
+    ]
+  },
+  {
+    "slug": "best-customer-service-ai-romania-2026",
+    "title": "Best Customer Service AI în România 2026 — Ghid Complet",
+    "excerpt": "Comparație completă a celor mai bune soluții AI pentru customer service în România. CatyAI: singurul cu FraudAI Shield, 14 limbi, și cost de 18x mai mic decât un angajat.",
+    "date": "April 4, 2026",
+    "readTime": "10 min read",
+    "category": "Customer Service",
+    "image": "/images/caty-ai-revolution-romania.webp",
+    "keywords": [
+      "best customer service AI",
+      "AI customer support romania",
+      "chatbot suport clienti",
+      "automatizare customer service",
+      "CatyAI review",
+      "cel mai bun chatbot romania"
+    ]
+  },
+  {
+    "slug": "chatbot-gratuit-site",
+    "title": "Chatbot gratuit pentru site — cum instalezi unul în 5 minute",
+    "excerpt": "Instalează un chatbot AI gratuit pe site-ul tău în mai puțin de 5 minute. Răspunde clienților non-stop, colectează lead-uri automat. Fără card, fără cod.",
+    "date": "April 3, 2026",
+    "readTime": "6 min read",
+    "category": "Chatbot",
+    "image": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800",
+    "keywords": [
+      "chatbot gratuit",
+      "chatbot site",
+      "chatbot romania",
+      "widget chat gratuit"
+    ]
+  },
+  {
+    "slug": "raspuns-automat-whatsapp-business",
+    "title": "Cum răspunzi clienților pe WhatsApp non-stop, fără angajați",
+    "excerpt": "Cum să răspunzi clienților pe WhatsApp 24/7 fără să angajezi pe nimeni. Asistent AI care știe ce vinzi și răspunde în locul tău.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "WhatsApp",
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c2a3a?w=800",
+    "keywords": [
+      "răspuns automat whatsapp",
+      "whatsapp business bot",
+      "asistent whatsapp",
+      "automatizare whatsapp"
+    ]
+  },
+  {
+    "slug": "alternativa-gratuita-tidio-intercom-respond-io",
+    "title": "Alternativă gratuită la Tidio, Intercom și respond.io în România",
+    "excerpt": "Cauți o alternativă la Tidio sau Intercom care funcționează în România, în limba română, cu WhatsApp inclus? CatyAI e gratuit.",
+    "date": "April 3, 2026",
+    "readTime": "6 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "keywords": [
+      "alternativă tidio",
+      "alternativă intercom",
+      "alternativă respond.io",
+      "chatbot gratuit romania"
+    ]
+  },
+  {
+    "slug": "captare-lead-uri-site-automat",
+    "title": "Cum captezi lead-uri de pe site automat — ghid complet 2026",
+    "excerpt": "Ghid pas cu pas pentru captarea automată de lead-uri de pe site. Fără formulare lungi, fără call center. Un asistent AI face totul.",
+    "date": "April 3, 2026",
+    "readTime": "8 min read",
+    "category": "Lead Generation",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+    "keywords": [
+      "captare lead-uri",
+      "lead generation site",
+      "generare lead-uri automat",
+      "conversie vizitatori"
+    ]
+  },
+  {
+    "slug": "widget-chat-wordpress",
+    "title": "Widget chat pentru site WordPress — instalare în 2 minute",
+    "excerpt": "Adaugă un widget de chat AI pe site-ul tău WordPress în 2 minute. Gratuit, în română, cu WhatsApp inclus. Ghid pas cu pas.",
+    "date": "April 3, 2026",
+    "readTime": "5 min read",
+    "category": "WordPress",
+    "image": "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?w=800",
+    "keywords": [
+      "widget chat wordpress",
+      "chatbot wordpress",
+      "plugin chat wordpress",
+      "live chat wordpress gratuit"
+    ]
+  },
+  {
+    "slug": "ce-este-chatbot-ai",
+    "title": "Ce este un chatbot AI și cum ajută o firmă mică",
+    "excerpt": "Află ce este un chatbot AI și cum poate ajuta o firmă mică din România. Explicații simple, exemple practice, plan gratuit disponibil.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "AI Chatbot",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    "keywords": [
+      "chatbot AI",
+      "ce este chatbot",
+      "chatbot firma mica",
+      "asistent virtual AI"
+    ]
+  },
+  {
+    "slug": "whatsapp-business-vs-whatsapp-api",
+    "title": "WhatsApp Business vs WhatsApp API — diferențe și costuri",
+    "excerpt": "Diferențe între WhatsApp Business, WhatsApp API și alternative gratuite. Comparație costuri și funcționalități pentru firme din România.",
+    "date": "April 3, 2026",
+    "readTime": "8 min read",
+    "category": "WhatsApp",
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c2a3a?w=800",
+    "keywords": [
+      "whatsapp business api",
+      "whatsapp api costuri",
+      "diferenta whatsapp business"
+    ]
+  },
+  {
+    "slug": "pierdere-clienti-noapte-weekend",
+    "title": "Cum să nu mai pierzi clienți noaptea și în weekend",
+    "excerpt": "Cum să nu mai pierzi clienți care îți scriu seara și în weekend. Soluție gratuită cu chatbot AI care răspunde non-stop.",
+    "date": "April 3, 2026",
+    "readTime": "6 min read",
+    "category": "Lead Generation",
+    "image": "https://images.unsplash.com/photo-1553775927-a071d5a6a39a?w=800",
+    "keywords": [
+      "pierdere clienti",
+      "raspuns clienti noapte",
+      "chatbot non-stop"
+    ]
+  },
+  {
+    "slug": "asistent-virtual-whatsapp-2026",
+    "title": "Asistent virtual pe WhatsApp — ce poate face în 2026",
+    "excerpt": "Ce poate face un asistent virtual pe WhatsApp în 2026. Funcții avansate: programări, documente, fraud detection. Instalare în 5 minute, gratuit.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "WhatsApp",
+    "image": "https://images.unsplash.com/photo-1611746872915-64382b5c2a3a?w=800",
+    "keywords": [
+      "asistent virtual whatsapp",
+      "bot whatsapp 2026",
+      "automatizare whatsapp"
+    ]
+  },
+  {
+    "slug": "cost-chatbot-romania",
+    "title": "Cât costă un chatbot în România — comparație completă",
+    "excerpt": "Cât costă un chatbot în România în 2026. Comparație completă: soluții gratuite vs plătite, costuri ascunse, calculație ROI pentru firme mici.",
+    "date": "April 3, 2026",
+    "readTime": "9 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "keywords": [
+      "cost chatbot romania",
+      "pret chatbot",
+      "chatbot gratuit vs platit"
+    ]
+  },
+  {
+    "slug": "chatbot-cabinet-stomatologic",
+    "title": "Chatbot pentru cabinet stomatologic — cum funcționează",
+    "excerpt": "Chatbot AI pentru cabinet stomatologic: programări automate, răspunsuri la întrebări frecvente, integrare Google Calendar. Gratuit pentru cabinete mici.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "Nișă",
+    "image": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800",
+    "keywords": [
+      "chatbot stomatologie",
+      "chatbot cabinet dentar",
+      "programari dentist automat"
+    ]
+  },
+  {
+    "slug": "asistent-ai-agentii-imobiliare",
+    "title": "Asistent AI pentru agenții imobiliare — lead-uri non-stop",
+    "excerpt": "Asistent AI pentru agenții imobiliare: răspuns instant, calificare lead-uri, programări vizionări. Non-stop, gratuit pentru volum mic.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "Nișă",
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
+    "keywords": [
+      "asistent AI imobiliare",
+      "chatbot agentie imobiliara",
+      "leaduri imobiliare"
+    ]
+  },
+  {
+    "slug": "chatbot-magazin-online",
+    "title": "Chatbot pentru magazin online — conversii mai mari cu AI",
+    "excerpt": "Chatbot AI pentru magazin online: crește conversiile, recuperează coșuri abandonate, suport clienți. Integrare Shopify, WooCommerce. Gratuit.",
+    "date": "April 3, 2026",
+    "readTime": "8 min read",
+    "category": "E-commerce",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
+    "keywords": [
+      "chatbot magazin online",
+      "chatbot ecommerce",
+      "conversii magazin online"
+    ]
+  },
+  {
+    "slug": "asistent-ai-clinici-medicale",
+    "title": "Asistent AI pentru clinici medicale — programări automate",
+    "excerpt": "Asistent AI pentru clinici medicale: programări automate, triaj inițial, răspunsuri pacienți. Conform GDPR, integrare calendar. Gratuit.",
+    "date": "April 3, 2026",
+    "readTime": "8 min read",
+    "category": "Nișă",
+    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
+    "keywords": [
+      "asistent AI clinica",
+      "chatbot medical",
+      "programari clinica automat"
+    ]
+  },
+  {
+    "slug": "chatbot-restaurant",
+    "title": "Chatbot pentru restaurante — comenzi și rezervări automate",
+    "excerpt": "Chatbot AI pentru restaurante: rezervări automate, comenzi delivery, informații meniu. Integrare WhatsApp și Google Calendar. Gratuit.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "Nișă",
+    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+    "keywords": [
+      "chatbot restaurant",
+      "rezervari restaurant automat",
+      "comenzi restaurant bot"
+    ]
+  },
+  {
+    "slug": "catyai-vs-tidio",
+    "title": "CatyAI vs Tidio — care e mai bun pentru firme din România",
+    "excerpt": "Comparație CatyAI vs Tidio pentru firme din România. Prețuri, funcții, WhatsApp, suport. Care e mai bun pentru tine?",
+    "date": "April 3, 2026",
+    "readTime": "6 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "keywords": [
+      "catyai vs tidio",
+      "alternativa tidio",
+      "tidio romania"
+    ]
+  },
+  {
+    "slug": "catyai-vs-intercom",
+    "title": "CatyAI vs Intercom — comparație prețuri și funcționalități",
+    "excerpt": "Comparație CatyAI vs Intercom: prețuri, funcții, ROI. Care e alegerea corectă pentru firme din România? Analiză detaliată.",
+    "date": "April 3, 2026",
+    "readTime": "7 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "keywords": [
+      "catyai vs intercom",
+      "alternativa intercom",
+      "intercom romania"
+    ]
+  },
+  {
+    "slug": "catyai-vs-respond-io",
+    "title": "CatyAI vs respond.io — de ce plătești mai mult fără motiv",
+    "excerpt": "Comparație CatyAI vs respond.io: prețuri, WhatsApp, funcții. De ce plătești mai mult fără motiv? Analiză pentru firme românești.",
+    "date": "April 3, 2026",
+    "readTime": "6 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "keywords": [
+      "catyai vs respond.io",
+      "alternativa respond.io",
+      "respond.io romania"
+    ]
+  },
+  {
+    "slug": "top-chatboturi-romania-2026",
+    "title": "Top 5 chatboturi pentru site-uri românești în 2026",
+    "excerpt": "Top 5 chatboturi pentru site-uri românești în 2026. Comparație prețuri, funcții, WhatsApp. Care e cel mai bun pentru tine?",
+    "date": "April 3, 2026",
+    "readTime": "9 min read",
+    "category": "Comparație",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    "keywords": [
+      "top chatbot romania",
+      "cel mai bun chatbot",
+      "chatbot romania 2026"
+    ]
+  },
+  {
+    "slug": "cum-alegi-chatbot-ai",
+    "title": "Cum alegi un chatbot AI pentru firma ta — ghid complet",
+    "excerpt": "Ghid complet pentru alegerea unui chatbot AI. Ce criterii contează, cum testezi, cum eviți costurile ascunse. Pentru firme din România.",
+    "date": "April 3, 2026",
+    "readTime": "10 min read",
+    "category": "Ghid",
+    "image": "https://images.unsplash.com/photo-1553775927-a071d5a6a39a?w=800",
+    "keywords": [
+      "cum alegi chatbot",
+      "ghid chatbot",
+      "alegere chatbot AI"
+    ]
+  },
+  {
     "slug": "understanding-marketing",
     "title": "Understanding Marketing: A Comprehensive Guide for Businesses",
     "excerpt": "Discover the essentials of marketing and how AI chatbots enhance lead generation strategies. Learn key definitions and practical tips.",
@@ -675,6 +996,56 @@
       "chatbot",
       "for",
       "ecommerce"
+    ]
+  },
+  {
+    "slug": "catyai-vs-chatbots-traditionale-8-agenti-ai",
+    "title": "CatyAI vs Chatbots Tradiționale: De Ce 8 Agenți AI Sunt Mai Buni Decât Unul",
+    "excerpt": "Comparație completă între arhitectura multi-agent CatyAI (8 agenți specializați + FraudAI Shield) și chatbot-urile tradiționale cu model unic. Află de ce viitorul AI Sales e multi-agent.",
+    "date": "March 26, 2026",
+    "readTime": "10 min read",
+    "category": "AI Architecture",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    "keywords": [
+      "multi-agent AI",
+      "8 agenti AI",
+      "FraudAI Shield",
+      "chatbot romania",
+      "arhitectura multi-agent",
+      "AI sales agent"
+    ]
+  },
+  {
+    "slug": "fraudai-shield-protectie-anti-frauda-romania",
+    "title": "FraudAI Shield: Singura Protecție Anti-Fraudă pentru AI Sales din România",
+    "excerpt": "Cum te protejează FraudAI Shield de phishing, scam-uri și fraude. 8 module de detecție: linkuri malițioase, urgență falsă, impersonare. Singurul AI cu protecție completă.",
+    "date": "March 26, 2026",
+    "readTime": "8 min read",
+    "category": "Security",
+    "image": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800",
+    "keywords": [
+      "FraudAI Shield",
+      "protectie frauda",
+      "anti-phishing AI",
+      "securitate chatbot",
+      "fraud detection romania"
+    ]
+  },
+  {
+    "slug": "cel-mai-bun-chatbot-magazin-online-2026",
+    "title": "Cel Mai Bun Chatbot pentru Magazinul Tău Online în 2026",
+    "excerpt": "Ghid complet pentru alegerea celui mai bun chatbot e-commerce în România. Comparație funcții, integrări Shopify/WooCommerce, și de ce arhitectura multi-agent face diferența.",
+    "date": "March 26, 2026",
+    "readTime": "12 min read",
+    "category": "E-commerce",
+    "image": "/images/chatbot-ecommerce-whatsapp.webp",
+    "keywords": [
+      "chatbot magazin online",
+      "cel mai bun chatbot ecommerce",
+      "chatbot romania",
+      "AI vanzari online",
+      "chatbot shopify",
+      "chatbot woocommerce"
     ]
   }
 ]
