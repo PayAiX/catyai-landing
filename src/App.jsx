@@ -986,7 +986,7 @@ function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/images/caty-logo.webp" alt="Caty.AI" className="h-10 animate-pulse" width="40" height="40" />
+            <img src="/images/caty-logo-96.webp" alt="Caty.AI" className="h-10 animate-pulse" width="40" height="40" />
             <span className="text-xl font-bold">Caty.AI</span>
           </Link>
 
@@ -1046,16 +1046,20 @@ function Hero() {
 
   return (
     <section id="hero" className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-end pb-32">
-      {/* Background Image */}
+      {/* Background Image - Responsive */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero-showcase.webp"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
-          fetchpriority="high"
-          width="1920"
-          height="1080"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/images/hero-showcase-mobile.webp" />
+          <source media="(min-width: 769px)" srcSet="/images/hero-showcase.webp" />
+          <img
+            src="/images/hero-showcase.webp"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-60"
+            fetchpriority="high"
+            width="1920"
+            height="1080"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/60 to-gray-950"></div>
       </div>
 

@@ -10,7 +10,7 @@ export default function Footer({ t }) {
           {/* Logo & Tagline - full width on mobile */}
           <div className="col-span-2 md:col-span-1 mb-4 md:mb-0">
             <Link to="/" className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.webp" alt="Caty.AI" className="h-8 animate-pulse" width="32" height="32" />
+              <img src="/images/caty-logo-96.webp" alt="Caty.AI" className="h-8 animate-pulse" width="32" height="32" />
               <span className="text-lg font-bold text-white">Caty.AI</span>
             </Link>
             <p className="text-gray-300 text-sm">
