@@ -1810,7 +1810,7 @@ function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="hero" className="relative px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[70vh] md:h-[85vh] flex items-center justify-center bg-slate-900 pt-16 pb-0">
+    <section id="hero" className="relative px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[60vh] md:h-[85vh] flex items-center justify-center bg-slate-900 pt-16 pb-0">
       {/* Animation keyframes */}
       <style>{`
         @keyframes slideFromRight {
@@ -1837,10 +1837,12 @@ function Hero() {
           loop
           muted
           playsInline
-          className="w-full h-full object-contain md:object-cover"
+          className="w-full h-full object-cover object-center"
         >
           <source src="/videos/AI_Replaces_Traditional_Websites.mp4" type="video/mp4" />
         </video>
+        {/* Dark overlay for text readability on mobile */}
+        <div className="absolute inset-0 bg-slate-900/60 md:bg-slate-900/40"></div>
         {/* Bottom fade overlay to blend seamlessly with next section */}
         <div className="absolute -bottom-1 left-0 right-0 h-64 bg-gradient-to-t from-slate-900 via-slate-900/90 to-transparent"></div>
       </div>
