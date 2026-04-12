@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, useMemo, createContext, useContext, lazy, Suspense } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import SEO from './components/SEO'
 import FooterComponent from './components/Footer'
@@ -9,10 +9,8 @@ import QRFirst from './components/QRFirst'
 import CaseStudies from './components/CaseStudies'
 import ROICalculator from './components/ROICalculator'
 import FraudShield from './components/FraudShield'
-import DocGenEngine from './components/DocGenEngine'
 import ComparisonTable from './components/ComparisonTable'
 import WhatsAppSecretary from './components/WhatsAppSecretary'
-import WhatsAppZeroMeta from './components/WhatsAppZeroMeta'
 
 // Lazy load pages for better performance (code splitting)
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -31,7 +29,7 @@ const WhatsAppAI = lazy(() => import('./pages/WhatsAppAI'))
 const FraudAI = lazy(() => import('./pages/FraudAI'))
 const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
 const NoWebsite = lazy(() => import('./pages/NoWebsite'))
-const TrustCenter = lazy(() => import('./pages/TrustCenter'))
+const CatyWidget = lazy(() => import('./pages/CatyWidget'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -48,8 +46,9 @@ const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Login', getStarted: 'Start Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', login: 'Login', getStarted: 'Start Free' },
     hero: {
+      tagline: 'The digital employee that sells for you',
       title1: 'Turn Conversations Into',
       title2: 'Paying Customers',
       subtitle: 'AI that responds, qualifies & converts — automatically, 24/7',
@@ -58,6 +57,22 @@ const translations = {
       trust1: '500 conversations FREE',
       trust2: 'No credit card',
       trust3: 'Setup in 2 min'
+    },
+    floatingMessages: {
+      msg1: "Do you have appointments available tomorrow?",
+      msg2: "Yes! We have 3 slots at 10:00, 14:00 and 16:00 ✓",
+      msg3: "What are your prices?",
+      msg4: "Our packages start at €49. Want details?",
+      msg5: "I want to book for Saturday",
+      msg6: "Done! Reservation confirmed for Saturday 😊",
+      msg7: "24/7 support 🤖",
+      msg8: "Send menu 📋"
+    },
+    mobileMessages: {
+      msg1: "Tomorrow free? 📅",
+      msg2: "Yes! 3 slots ✓",
+      msg3: "Book! 🎉",
+      msg4: "Confirmed! 😊"
     },
     problem: {
       title: "You're Losing Customers Every Day",
@@ -102,6 +117,8 @@ const translations = {
       title: 'Two Ways to',
       titleHighlight: 'Engage Customers',
       subtitle: 'CatyAI works on your website AND on WhatsApp',
+      widgetCta: 'Add Widget to Site',
+      whatsappCta: 'Connect WhatsApp',
       widget: {
         title: 'Website Chat Widget',
         desc: 'Embed on any website. Captures leads, answers questions, converts visitors 24/7.',
@@ -117,6 +134,7 @@ const translations = {
       title: 'Powerful',
       titleHighlight: 'Integrations',
       subtitle: 'Connect your platforms with one click. Auto-Crawl learns your business automatically.',
+      analyzeButton: 'Try Auto-Crawl Free — Analyze Your Website',
       wordpress: { title: 'WordPress', desc: 'One-click plugin. Syncs posts, products, pages automatically.' },
       shopify: { title: 'Shopify', desc: 'Instant integration. Auto-sync products and inventory.' },
       autoCrawl: { title: 'Auto-Crawl', desc: 'Scans your entire website. Extracts content, products, FAQs automatically.' },
@@ -214,11 +232,107 @@ const translations = {
       dashboard: 'Dashboard',
       copyright: 'PayAi-X FZE (Caty.AI). All rights reserved.'
     },
-    floatingIndicator: 'Try me!'
+    floatingIndicator: 'Try me!',
+    realitatea: {
+      title: 'Your Website Is Dead. You Just Haven\'t Buried It Yet.',
+      subtitle: 'Something no marketing agency, no web designer, and no Google Ads consultant will ever tell you.',
+      paragraph: 'In 2025, something unprecedented happened. Google search traffic to websites dropped by 33% globally. Not a small dip — a third of all traffic, gone.',
+      stat1Label: 'Google search traffic dropped globally in 2025',
+      stat2Label: 'of searches end without a single click',
+      stat3Label: 'Google Ads CTR — crashed from 11% in one month',
+      bullet1: 'Organic click-through rates dropped 61% on queries where AI Overviews appear.',
+      bullet2: 'Publishers lost 38% of their Google referral traffic year-over-year.',
+      bullet3: 'HubSpot — one of the best SEO teams in the world — lost nearly half their organic traffic.',
+      closing: 'AI is the new storefront. WhatsApp is the new channel. A QR code replaces a €5,000 website.'
+    },
+    products3: {
+      title: 'One AI.',
+      titleHighlight: 'Three ways to sell.',
+      subtitle: 'Choose the right solution for your business',
+      popular: 'Popular',
+      qrFirst: {
+        name: 'QR-First',
+        tagline: 'No website? No problem.',
+        price: '€10',
+        period: '/month',
+        features: ['QR code for WhatsApp', 'AI responds 24/7', 'Automatic appointments', 'Zero hosting costs'],
+        cta: 'Start with €10'
+      },
+      webWidget: {
+        name: 'Web Widget',
+        tagline: 'AI on your website',
+        price: '€49',
+        period: '/month',
+        features: ['Embed chat widget', 'Auto-Crawl site', 'Lead capture', 'Complete analytics'],
+        cta: 'Add to site'
+      },
+      fraudAI: {
+        name: 'FraudAI',
+        tagline: 'Anti-scam protection',
+        price: 'FREE',
+        period: 'forever',
+        features: ['8 detection modules', 'Blocks phishing', 'Real-time alert', 'Zero false positives'],
+        cta: 'Activate Free'
+      }
+    },
+    howItWorks2: {
+      title: 'Live in',
+      titleHighlight: '2 minutes',
+      subtitle: 'No installation. No code. No waiting.',
+      steps: [
+        { number: '01', title: 'Scan QR', desc: 'Like WhatsApp Web. 30 seconds.', icon: '📱' },
+        { number: '02', title: 'Connect WhatsApp', desc: 'Use your existing number.', icon: '💬' },
+        { number: '03', title: 'Tell about your business', desc: 'Services, prices, schedule.', icon: '📝' },
+        { number: '04', title: 'Start selling', desc: 'CatyAI takes over.', icon: '🚀' }
+      ],
+      cta: 'Start Now — Free'
+    },
+    industries2: {
+      title: 'For any',
+      titleHighlight: 'industry',
+      subtitle: 'CatyAI adapts to your business',
+      list: [
+        { icon: '💇', name: 'Salons', desc: '24/7 appointments' },
+        { icon: '🦷', name: 'Clinics', desc: 'Happy patients' },
+        { icon: '🍽️', name: 'Restaurants', desc: 'Instant reservations' },
+        { icon: '🔧', name: 'Mechanics', desc: 'Automatic quotes' },
+        { icon: '📸', name: 'Photographers', desc: 'Simple booking' },
+        { icon: '🏠', name: 'Real Estate', desc: 'Qualified leads' }
+      ],
+      trusted: 'Trusted by: Simple Smile, Digital Romania, D&S Gaz, INOTOOLS'
+    },
+    ctaFinal: {
+      title: 'Your competitors are already responding faster.',
+      subtitle: 'When do you start?',
+      cta: 'Start Free on WhatsApp',
+      trust1: 'Setup in 2 minutes',
+      trust2: 'No credit card',
+      trust3: 'Cancel anytime'
+    },
+    testimonials: {
+      title: 'What our',
+      titleHighlight: 'clients say',
+      subtitle: 'Companies from Romania using CatyAI to increase conversions and automate customer support.',
+      trustBadge: '6+ active companies',
+      metric1: 'more leads',
+      metric2: 'conversion',
+      metric3: 'less response time',
+      leaveReview: 'Leave a review',
+      seeAllReviews: 'See all reviews on Google',
+      companies: [
+        { company: 'INOTOOLS', industry: 'DIY E-commerce', quote: 'CatyAI instantly answers customer questions about products and availability. We reduced response time from hours to seconds.', metric: '+35%', metricLabel: 'conversions' },
+        { company: 'Simple Smile', industry: 'Dentistry', quote: 'Patients can schedule consultations 24/7 via chatbot. It freed up our time for what matters - patient treatment.', metric: '24/7', metricLabel: 'appointments' },
+        { company: 'D&S GAZ Services', industry: 'Gas Installation', quote: 'Clients get instant information about our services and can request quotes. Team efficiency increased significantly.', metric: '+50%', metricLabel: 'leads' },
+        { company: 'AiuDance', industry: 'Dance School', quote: 'Students quickly find course schedule info and can register directly. Less time on phone, more time for dancing!', metric: '3x', metricLabel: 'online signups' },
+        { company: 'Digital Romania', industry: 'IT Consulting', quote: 'CatyAI helps us qualify leads automatically. We know exactly what each client is looking for before we talk to them.', metric: '+40%', metricLabel: 'qualified leads' },
+        { company: 'VendX', industry: 'SaaS Platform', quote: 'Integration was simple and results came quickly. Our clients get instant support for product configuration.', metric: '-60%', metricLabel: 'support tickets' }
+      ]
+    }
   },
   ro: {
-    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Autentificare', getStarted: 'Începe Gratuit' },
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
+      tagline: 'Angajatul digital care vinde pentru tine',
       title1: 'Transformă Conversațiile în',
       title2: 'Clienți Plătitori',
       subtitle: 'AI care răspunde, califică și convertește — automat, 24/7',
@@ -227,6 +341,22 @@ const translations = {
       trust1: '500 conversații GRATUIT',
       trust2: 'Fără card bancar',
       trust3: 'Setup în 2 min'
+    },
+    floatingMessages: {
+      msg1: "Aveți programări disponibile mâine?",
+      msg2: "Da! Avem 3 locuri la 10:00, 14:00 și 16:00 ✓",
+      msg3: "Care sunt prețurile?",
+      msg4: "Pachetele încep de la 49€. Vrei detalii?",
+      msg5: "Vreau să rezerv pentru sâmbătă",
+      msg6: "Gata! Rezervare confirmată pentru sâmbătă 😊",
+      msg7: "Suport 24/7 🤖",
+      msg8: "Trimite meniul 📋"
+    },
+    mobileMessages: {
+      msg1: "Mâine liber? 📅",
+      msg2: "Da! 3 locuri ✓",
+      msg3: "Rezerv! 🎉",
+      msg4: "Confirmat! 😊"
     },
     problem: {
       title: 'Pierzi Clienți în Fiecare Zi',
@@ -271,6 +401,8 @@ const translations = {
       title: 'Două Moduri de a',
       titleHighlight: 'Interacționa cu Clienții',
       subtitle: 'CatyAI funcționează pe site-ul tău ȘI pe WhatsApp',
+      widgetCta: 'Adaugă Widget pe Site',
+      whatsappCta: 'Conectează WhatsApp',
       widget: {
         title: 'Widget Chat pe Site',
         desc: 'Se integrează pe orice site. Captează lead-uri, răspunde la întrebări, convertește vizitatori 24/7.',
@@ -286,6 +418,7 @@ const translations = {
       title: 'Integrări',
       titleHighlight: 'Puternice',
       subtitle: 'Conectează platformele tale cu un singur click. Auto-Crawl învață afacerea ta automat.',
+      analyzeButton: 'Încearcă Auto-Crawl Gratuit — Analizează-ți Site-ul',
       wordpress: { title: 'WordPress', desc: 'Plugin cu un click. Sincronizează postări, produse, pagini automat.' },
       shopify: { title: 'Shopify', desc: 'Integrare instantanee. Auto-sync produse și inventar.' },
       autoCrawl: { title: 'Auto-Crawl', desc: 'Scanează întreg site-ul tău. Extrage conținut, produse, FAQ automat.' },
@@ -383,11 +516,107 @@ const translations = {
       dashboard: 'Dashboard',
       copyright: 'PayAi-X FZE (Caty.AI). Toate drepturile rezervate.'
     },
-    floatingIndicator: 'Încearcă-mă!'
+    floatingIndicator: 'Încearcă-mă!',
+    realitatea: {
+      title: 'Site-ul Tău E Mort. Doar Nu L-ai Îngropat Încă.',
+      subtitle: 'Ceva ce nicio agenție de marketing, niciun web designer și niciun consultant Google Ads nu îți va spune vreodată.',
+      paragraph: 'În 2025, s-a întâmplat ceva fără precedent. Traficul de căutare Google către site-uri web a scăzut cu 33% la nivel global. Nu o scădere mică — o treime din tot traficul, dispărut.',
+      stat1Label: 'Traficul de căutare Google a scăzut global în 2025',
+      stat2Label: 'din căutări se termină fără niciun click',
+      stat3Label: 'CTR Google Ads — prăbușit de la 11% într-o lună',
+      bullet1: 'Rata de click organic a scăzut cu 61% pentru interogările unde apar AI Overviews.',
+      bullet2: 'Publisherii au pierdut 38% din traficul de referință Google de la an la an.',
+      bullet3: 'HubSpot — una dintre cele mai bune echipe SEO din lume — a pierdut aproape jumătate din traficul organic.',
+      closing: 'AI este noua vitrină. WhatsApp este noul canal. Un cod QR înlocuiește un site de €5,000.'
+    },
+    products3: {
+      title: 'Un singur AI.',
+      titleHighlight: 'Trei moduri de a vinde.',
+      subtitle: 'Alege soluția potrivită pentru afacerea ta',
+      popular: 'Popular',
+      qrFirst: {
+        name: 'QR-First',
+        tagline: 'Fără site web? Fără problemă.',
+        price: '€10',
+        period: '/lună',
+        features: ['Cod QR pentru WhatsApp', 'AI răspunde 24/7', 'Programări automate', 'Zero costuri hosting'],
+        cta: 'Începe cu €10'
+      },
+      webWidget: {
+        name: 'Web Widget',
+        tagline: 'AI pe site-ul tău',
+        price: '€49',
+        period: '/lună',
+        features: ['Widget chat embed', 'Auto-Crawl site', 'Lead capture', 'Analytics complete'],
+        cta: 'Adaugă pe site'
+      },
+      fraudAI: {
+        name: 'FraudAI',
+        tagline: 'Protecție anti-escrocherii',
+        price: 'GRATUIT',
+        period: 'pentru totdeauna',
+        features: ['8 module detecție', 'Blochează phishing', 'Alertă în timp real', 'Zero false positive'],
+        cta: 'Activează Gratuit'
+      }
+    },
+    howItWorks2: {
+      title: 'Live în',
+      titleHighlight: '2 minute',
+      subtitle: 'Fără instalare. Fără cod. Fără așteptare.',
+      steps: [
+        { number: '01', title: 'Scanează QR', desc: 'Ca WhatsApp Web. 30 secunde.', icon: '📱' },
+        { number: '02', title: 'Conectează WhatsApp', desc: 'Folosește numărul tău existent.', icon: '💬' },
+        { number: '03', title: 'Spune-i despre afacere', desc: 'Servicii, prețuri, program.', icon: '📝' },
+        { number: '04', title: 'Începe să vinzi', desc: 'CatyAI preia controlul.', icon: '🚀' }
+      ],
+      cta: 'Începe Acum — Gratuit'
+    },
+    industries2: {
+      title: 'Pentru orice',
+      titleHighlight: 'industrie',
+      subtitle: 'CatyAI se adaptează la afacerea ta',
+      list: [
+        { icon: '💇', name: 'Saloane', desc: 'Programări 24/7' },
+        { icon: '🦷', name: 'Cabinete', desc: 'Pacienți mulțumiți' },
+        { icon: '🍽️', name: 'Restaurante', desc: 'Rezervări instant' },
+        { icon: '🔧', name: 'Mecanici', desc: 'Oferte automate' },
+        { icon: '📸', name: 'Fotografi', desc: 'Booking simplu' },
+        { icon: '🏠', name: 'Imobiliare', desc: 'Lead-uri calificate' }
+      ],
+      trusted: 'Trusted by: Simple Smile, Digital Romania, D&S Gaz, INOTOOLS'
+    },
+    ctaFinal: {
+      title: 'Competitorii tăi răspund deja mai repede.',
+      subtitle: 'Tu când începi?',
+      cta: 'Începe Gratuit pe WhatsApp',
+      trust1: 'Setup în 2 minute',
+      trust2: 'Fără card bancar',
+      trust3: 'Cancel oricând'
+    },
+    testimonials: {
+      title: 'Ce spun',
+      titleHighlight: 'clienții noștri',
+      subtitle: 'Companii din România care folosesc CatyAI pentru a crește conversiile și a automatiza suportul clienți.',
+      trustBadge: '6+ companii active',
+      metric1: 'mai multe lead-uri',
+      metric2: 'conversie',
+      metric3: 'timp răspuns redus',
+      leaveReview: 'Lasă o recenzie',
+      seeAllReviews: 'Vezi toate recenziile pe Google',
+      companies: [
+        { company: 'INOTOOLS', industry: 'E-commerce Bricolaj', quote: 'CatyAI răspunde instant la întrebările clienților despre produse și disponibilitate. Am redus timpul de răspuns de la ore la secunde.', metric: '+35%', metricLabel: 'conversii' },
+        { company: 'Simple Smile', industry: 'Stomatologie', quote: 'Pacienții pot programa consultații 24/7 prin chatbot. Ne-a eliberat timpul pentru ceea ce contează - tratamentul pacienților.', metric: '24/7', metricLabel: 'programări' },
+        { company: 'D&S GAZ Services', industry: 'Instalații Gaz', quote: 'Clienții primesc instant informații despre serviciile noastre și pot solicita oferte. Eficiența echipei a crescut semnificativ.', metric: '+50%', metricLabel: 'lead-uri' },
+        { company: 'AiuDance', industry: 'Școală de Dans', quote: 'Cursanții găsesc rapid informații despre orarul cursurilor și se pot înscrie direct. Mai puțin timp la telefon, mai mult timp pentru dans!', metric: '3x', metricLabel: 'înscrieri online' },
+        { company: 'Digital Romania', industry: 'Consultanță IT', quote: 'CatyAI ne ajută să calificăm lead-urile automat. Știm exact ce caută fiecare client înainte să vorbim cu el.', metric: '+40%', metricLabel: 'lead-uri calificate' },
+        { company: 'VendX', industry: 'Platformă SaaS', quote: 'Integrarea a fost simplă, iar rezultatele au venit rapid. Clienții noștri primesc suport instant pentru configurarea produselor.', metric: '-60%', metricLabel: 'tichete suport' }
+      ]
+    }
   },
   es: {
-    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
+      tagline: 'El empleado digital que vende por ti',
       title1: 'Convierte Conversaciones en',
       title2: 'Clientes que Pagan',
       subtitle: 'IA que responde, califica y convierte — automáticamente, 24/7',
@@ -396,6 +625,22 @@ const translations = {
       trust1: '500 conversaciones GRATIS',
       trust2: 'Sin tarjeta de crédito',
       trust3: 'Setup en 2 min'
+    },
+    floatingMessages: {
+      msg1: "¿Tienen citas disponibles mañana?",
+      msg2: "¡Sí! Tenemos 3 horarios a las 10:00, 14:00 y 16:00 ✓",
+      msg3: "¿Cuáles son sus precios?",
+      msg4: "Nuestros paquetes empiezan desde €49. ¿Quieres detalles?",
+      msg5: "Quiero reservar para el sábado",
+      msg6: "¡Listo! Reserva confirmada para el sábado 😊",
+      msg7: "Soporte 24/7 🤖",
+      msg8: "Enviar menú 📋"
+    },
+    mobileMessages: {
+      msg1: "¿Mañana libre? 📅",
+      msg2: "¡Sí! 3 horarios ✓",
+      msg3: "¡Reservar! 🎉",
+      msg4: "¡Confirmado! 😊"
     },
     problem: {
       title: 'Pierdes Clientes Cada Día',
@@ -440,6 +685,8 @@ const translations = {
       title: 'Dos Formas de',
       titleHighlight: 'Conectar con Clientes',
       subtitle: 'CatyAI funciona en tu sitio web Y en WhatsApp',
+      widgetCta: 'Añadir Widget al Sitio',
+      whatsappCta: 'Conectar WhatsApp',
       widget: {
         title: 'Widget Chat Web',
         desc: 'Incrusta en cualquier sitio. Captura leads, responde preguntas, convierte visitantes 24/7.',
@@ -455,6 +702,7 @@ const translations = {
       title: 'Integraciones',
       titleHighlight: 'Potentes',
       subtitle: 'Conecta tus plataformas con un clic. Auto-Crawl aprende tu negocio automáticamente.',
+      analyzeButton: 'Prueba Auto-Crawl Gratis — Analiza Tu Sitio Web',
       wordpress: { title: 'WordPress', desc: 'Plugin con un clic. Sincroniza posts, productos, páginas.' },
       shopify: { title: 'Shopify', desc: 'Integración instantánea. Auto-sync productos e inventario.' },
       autoCrawl: { title: 'Auto-Crawl', desc: 'Escanea todo tu sitio. Extrae contenido, productos, FAQs.' },
@@ -552,11 +800,107 @@ const translations = {
       dashboard: 'Dashboard',
       copyright: 'PayAi-X FZE (Caty.AI). Todos los derechos reservados.'
     },
-    floatingIndicator: '¡Pruébame!'
+    floatingIndicator: '¡Pruébame!',
+    realitatea: {
+      title: 'Tu Sitio Web Está Muerto. Solo No Lo Has Enterrado Todavía.',
+      subtitle: 'Algo que ninguna agencia de marketing, ningún diseñador web y ningún consultor de Google Ads te dirá jamás.',
+      paragraph: 'En 2025, sucedió algo sin precedentes. El tráfico de búsqueda de Google a sitios web cayó un 33% a nivel mundial. No una pequeña caída — un tercio de todo el tráfico, desaparecido.',
+      stat1Label: 'El tráfico de búsqueda de Google cayó globalmente en 2025',
+      stat2Label: 'de las búsquedas terminan sin un solo clic',
+      stat3Label: 'CTR de Google Ads — se desplomó del 11% en un mes',
+      bullet1: 'Las tasas de clics orgánicos cayeron un 61% en consultas donde aparecen AI Overviews.',
+      bullet2: 'Los editores perdieron el 38% de su tráfico de referencia de Google año tras año.',
+      bullet3: 'HubSpot — uno de los mejores equipos de SEO del mundo — perdió casi la mitad de su tráfico orgánico.',
+      closing: 'La IA es el nuevo escaparate. WhatsApp es el nuevo canal. Un código QR reemplaza un sitio web de €5,000.'
+    },
+    products3: {
+      title: 'Una IA.',
+      titleHighlight: 'Tres formas de vender.',
+      subtitle: 'Elige la solución adecuada para tu negocio',
+      popular: 'Popular',
+      qrFirst: {
+        name: 'QR-First',
+        tagline: '¿Sin sitio web? Sin problema.',
+        price: '€10',
+        period: '/mes',
+        features: ['Código QR para WhatsApp', 'IA responde 24/7', 'Citas automáticas', 'Cero costes de hosting'],
+        cta: 'Empieza con €10'
+      },
+      webWidget: {
+        name: 'Web Widget',
+        tagline: 'IA en tu sitio web',
+        price: '€49',
+        period: '/mes',
+        features: ['Widget chat embebido', 'Auto-Crawl sitio', 'Captura de leads', 'Analytics completos'],
+        cta: 'Añadir al sitio'
+      },
+      fraudAI: {
+        name: 'FraudAI',
+        tagline: 'Protección anti-estafas',
+        price: 'GRATIS',
+        period: 'para siempre',
+        features: ['8 módulos de detección', 'Bloquea phishing', 'Alerta en tiempo real', 'Cero falsos positivos'],
+        cta: 'Activar Gratis'
+      }
+    },
+    howItWorks2: {
+      title: 'En vivo en',
+      titleHighlight: '2 minutos',
+      subtitle: 'Sin instalación. Sin código. Sin esperas.',
+      steps: [
+        { number: '01', title: 'Escanea QR', desc: 'Como WhatsApp Web. 30 segundos.', icon: '📱' },
+        { number: '02', title: 'Conecta WhatsApp', desc: 'Usa tu número existente.', icon: '💬' },
+        { number: '03', title: 'Cuéntale tu negocio', desc: 'Servicios, precios, horario.', icon: '📝' },
+        { number: '04', title: 'Empieza a vender', desc: 'CatyAI toma el control.', icon: '🚀' }
+      ],
+      cta: 'Empieza Ahora — Gratis'
+    },
+    industries2: {
+      title: 'Para cualquier',
+      titleHighlight: 'industria',
+      subtitle: 'CatyAI se adapta a tu negocio',
+      list: [
+        { icon: '💇', name: 'Salones', desc: 'Citas 24/7' },
+        { icon: '🦷', name: 'Clínicas', desc: 'Pacientes felices' },
+        { icon: '🍽️', name: 'Restaurantes', desc: 'Reservas instantáneas' },
+        { icon: '🔧', name: 'Mecánicos', desc: 'Presupuestos automáticos' },
+        { icon: '📸', name: 'Fotógrafos', desc: 'Reservas simples' },
+        { icon: '🏠', name: 'Inmobiliarias', desc: 'Leads cualificados' }
+      ],
+      trusted: 'De confianza: Simple Smile, Digital Romania, D&S Gaz, INOTOOLS'
+    },
+    ctaFinal: {
+      title: 'Tus competidores ya responden más rápido.',
+      subtitle: '¿Cuándo empiezas tú?',
+      cta: 'Empieza Gratis en WhatsApp',
+      trust1: 'Setup en 2 minutos',
+      trust2: 'Sin tarjeta de crédito',
+      trust3: 'Cancela cuando quieras'
+    },
+    testimonials: {
+      title: 'Lo que dicen',
+      titleHighlight: 'nuestros clientes',
+      subtitle: 'Empresas de Rumanía que usan CatyAI para aumentar conversiones y automatizar el soporte al cliente.',
+      trustBadge: '6+ empresas activas',
+      metric1: 'más leads',
+      metric2: 'conversión',
+      metric3: 'menos tiempo de respuesta',
+      leaveReview: 'Dejar una reseña',
+      seeAllReviews: 'Ver todas las reseñas en Google',
+      companies: [
+        { company: 'INOTOOLS', industry: 'E-commerce Bricolaje', quote: 'CatyAI responde instantáneamente a las preguntas de los clientes sobre productos y disponibilidad. Redujimos el tiempo de respuesta de horas a segundos.', metric: '+35%', metricLabel: 'conversiones' },
+        { company: 'Simple Smile', industry: 'Odontología', quote: 'Los pacientes pueden programar consultas 24/7 mediante chatbot. Nos liberó tiempo para lo que importa - el tratamiento de pacientes.', metric: '24/7', metricLabel: 'citas' },
+        { company: 'D&S GAZ Services', industry: 'Instalaciones de Gas', quote: 'Los clientes obtienen información instantánea sobre nuestros servicios y pueden solicitar presupuestos. La eficiencia del equipo aumentó significativamente.', metric: '+50%', metricLabel: 'leads' },
+        { company: 'AiuDance', industry: 'Escuela de Baile', quote: 'Los estudiantes encuentran rápidamente información sobre horarios y pueden inscribirse directamente. ¡Menos tiempo al teléfono, más tiempo para bailar!', metric: '3x', metricLabel: 'inscripciones online' },
+        { company: 'Digital Romania', industry: 'Consultoría IT', quote: 'CatyAI nos ayuda a calificar leads automáticamente. Sabemos exactamente qué busca cada cliente antes de hablar con él.', metric: '+40%', metricLabel: 'leads cualificados' },
+        { company: 'VendX', industry: 'Plataforma SaaS', quote: 'La integración fue simple y los resultados llegaron rápido. Nuestros clientes reciben soporte instantáneo para configurar productos.', metric: '-60%', metricLabel: 'tickets de soporte' }
+      ]
+    }
   },
   pt: {
-    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Entrar', getStarted: 'Começar Grátis' },
+    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
+      tagline: 'O funcionário digital que vende por você',
       title1: 'Transforme Conversas em',
       title2: 'Clientes Pagantes',
       subtitle: 'IA que responde, qualifica e converte — automaticamente, 24/7',
@@ -565,6 +909,22 @@ const translations = {
       trust1: '500 conversas GRÁTIS',
       trust2: 'Sem cartão de crédito',
       trust3: 'Setup em 2 min'
+    },
+    floatingMessages: {
+      msg1: "Vocês têm horários disponíveis amanhã?",
+      msg2: "Sim! Temos 3 horários às 10:00, 14:00 e 16:00 ✓",
+      msg3: "Quais são os preços?",
+      msg4: "Nossos pacotes começam em €49. Quer detalhes?",
+      msg5: "Quero reservar para sábado",
+      msg6: "Pronto! Reserva confirmada para sábado 😊",
+      msg7: "Suporte 24/7 🤖",
+      msg8: "Enviar menu 📋"
+    },
+    mobileMessages: {
+      msg1: "Amanhã livre? 📅",
+      msg2: "Sim! 3 horários ✓",
+      msg3: "Reservar! 🎉",
+      msg4: "Confirmado! 😊"
     },
     problem: {
       title: 'Você Perde Clientes Todo Dia',
@@ -609,6 +969,8 @@ const translations = {
       title: 'Duas Formas de',
       titleHighlight: 'Conectar com Clientes',
       subtitle: 'CatyAI funciona no seu site E no WhatsApp',
+      widgetCta: 'Adicionar Widget ao Site',
+      whatsappCta: 'Conectar WhatsApp',
       widget: {
         title: 'Widget Chat Web',
         desc: 'Incorpore em qualquer site. Captura leads, responde perguntas, converte visitantes 24/7.',
@@ -624,6 +986,7 @@ const translations = {
       title: 'Integrações',
       titleHighlight: 'Poderosas',
       subtitle: 'Conecte suas plataformas com um clique. Auto-Crawl aprende seu negócio automaticamente.',
+      analyzeButton: 'Experimente Auto-Crawl Grátis — Analise Seu Site',
       wordpress: { title: 'WordPress', desc: 'Plugin com um clique. Sincroniza posts, produtos, páginas.' },
       shopify: { title: 'Shopify', desc: 'Integração instantânea. Auto-sync produtos e inventário.' },
       autoCrawl: { title: 'Auto-Crawl', desc: 'Escaneia todo seu site. Extrai conteúdo, produtos, FAQs.' },
@@ -721,11 +1084,107 @@ const translations = {
       dashboard: 'Dashboard',
       copyright: 'PayAi-X FZE (Caty.AI). Todos os direitos reservados.'
     },
-    floatingIndicator: 'Experimente!'
+    floatingIndicator: 'Experimente!',
+    realitatea: {
+      title: 'Seu Site Está Morto. Você Só Não O Enterrou Ainda.',
+      subtitle: 'Algo que nenhuma agência de marketing, nenhum web designer e nenhum consultor de Google Ads jamais te dirá.',
+      paragraph: 'Em 2025, algo sem precedentes aconteceu. O tráfego de busca do Google para sites caiu 33% globalmente. Não uma pequena queda — um terço de todo o tráfego, desaparecido.',
+      stat1Label: 'O tráfego de busca do Google caiu globalmente em 2025',
+      stat2Label: 'das buscas terminam sem um único clique',
+      stat3Label: 'CTR do Google Ads — despencou de 11% em um mês',
+      bullet1: 'As taxas de cliques orgânicos caíram 61% em consultas onde aparecem AI Overviews.',
+      bullet2: 'Os editores perderam 38% do tráfego de referência do Google ano a ano.',
+      bullet3: 'HubSpot — uma das melhores equipes de SEO do mundo — perdeu quase metade do tráfego orgânico.',
+      closing: 'IA é a nova vitrine. WhatsApp é o novo canal. Um código QR substitui um site de €5.000.'
+    },
+    products3: {
+      title: 'Uma IA.',
+      titleHighlight: 'Três formas de vender.',
+      subtitle: 'Escolha a solução certa para o seu negócio',
+      popular: 'Popular',
+      qrFirst: {
+        name: 'QR-First',
+        tagline: 'Sem site? Sem problema.',
+        price: '€10',
+        period: '/mês',
+        features: ['Código QR para WhatsApp', 'IA responde 24/7', 'Agendamentos automáticos', 'Zero custos de hospedagem'],
+        cta: 'Comece com €10'
+      },
+      webWidget: {
+        name: 'Web Widget',
+        tagline: 'IA no seu site',
+        price: '€49',
+        period: '/mês',
+        features: ['Widget chat embarcado', 'Auto-Crawl site', 'Captura de leads', 'Analytics completo'],
+        cta: 'Adicionar ao site'
+      },
+      fraudAI: {
+        name: 'FraudAI',
+        tagline: 'Proteção anti-fraudes',
+        price: 'GRÁTIS',
+        period: 'para sempre',
+        features: ['8 módulos de detecção', 'Bloqueia phishing', 'Alerta em tempo real', 'Zero falsos positivos'],
+        cta: 'Ativar Grátis'
+      }
+    },
+    howItWorks2: {
+      title: 'Ao vivo em',
+      titleHighlight: '2 minutos',
+      subtitle: 'Sem instalação. Sem código. Sem espera.',
+      steps: [
+        { number: '01', title: 'Escaneie QR', desc: 'Como WhatsApp Web. 30 segundos.', icon: '📱' },
+        { number: '02', title: 'Conecte WhatsApp', desc: 'Use seu número existente.', icon: '💬' },
+        { number: '03', title: 'Conte sobre o negócio', desc: 'Serviços, preços, horário.', icon: '📝' },
+        { number: '04', title: 'Comece a vender', desc: 'CatyAI assume o controle.', icon: '🚀' }
+      ],
+      cta: 'Comece Agora — Grátis'
+    },
+    industries2: {
+      title: 'Para qualquer',
+      titleHighlight: 'indústria',
+      subtitle: 'CatyAI se adapta ao seu negócio',
+      list: [
+        { icon: '💇', name: 'Salões', desc: 'Agendamentos 24/7' },
+        { icon: '🦷', name: 'Clínicas', desc: 'Pacientes felizes' },
+        { icon: '🍽️', name: 'Restaurantes', desc: 'Reservas instantâneas' },
+        { icon: '🔧', name: 'Mecânicos', desc: 'Orçamentos automáticos' },
+        { icon: '📸', name: 'Fotógrafos', desc: 'Reservas simples' },
+        { icon: '🏠', name: 'Imobiliárias', desc: 'Leads qualificados' }
+      ],
+      trusted: 'Confiado por: Simple Smile, Digital Romania, D&S Gaz, INOTOOLS'
+    },
+    ctaFinal: {
+      title: 'Seus concorrentes já respondem mais rápido.',
+      subtitle: 'Quando você começa?',
+      cta: 'Comece Grátis no WhatsApp',
+      trust1: 'Setup em 2 minutos',
+      trust2: 'Sem cartão de crédito',
+      trust3: 'Cancele quando quiser'
+    },
+    testimonials: {
+      title: 'O que nossos',
+      titleHighlight: 'clientes dizem',
+      subtitle: 'Empresas da Romênia que usam CatyAI para aumentar conversões e automatizar o suporte ao cliente.',
+      trustBadge: '6+ empresas ativas',
+      metric1: 'mais leads',
+      metric2: 'conversão',
+      metric3: 'menos tempo de resposta',
+      leaveReview: 'Deixar uma avaliação',
+      seeAllReviews: 'Ver todas as avaliações no Google',
+      companies: [
+        { company: 'INOTOOLS', industry: 'E-commerce Bricolagem', quote: 'CatyAI responde instantaneamente às perguntas dos clientes sobre produtos e disponibilidade. Reduzimos o tempo de resposta de horas para segundos.', metric: '+35%', metricLabel: 'conversões' },
+        { company: 'Simple Smile', industry: 'Odontologia', quote: 'Pacientes podem agendar consultas 24/7 via chatbot. Liberou nosso tempo para o que importa - tratamento de pacientes.', metric: '24/7', metricLabel: 'agendamentos' },
+        { company: 'D&S GAZ Services', industry: 'Instalações de Gás', quote: 'Clientes obtêm informações instantâneas sobre nossos serviços e podem solicitar orçamentos. A eficiência da equipe aumentou significativamente.', metric: '+50%', metricLabel: 'leads' },
+        { company: 'AiuDance', industry: 'Escola de Dança', quote: 'Alunos encontram rapidamente informações sobre horários e podem se inscrever diretamente. Menos tempo no telefone, mais tempo para dançar!', metric: '3x', metricLabel: 'inscrições online' },
+        { company: 'Digital Romania', industry: 'Consultoria TI', quote: 'CatyAI nos ajuda a qualificar leads automaticamente. Sabemos exatamente o que cada cliente busca antes de falar com ele.', metric: '+40%', metricLabel: 'leads qualificados' },
+        { company: 'VendX', industry: 'Plataforma SaaS', quote: 'A integração foi simples e os resultados vieram rápido. Nossos clientes recebem suporte instantâneo para configurar produtos.', metric: '-60%', metricLabel: 'tickets de suporte' }
+      ]
+    }
   },
   fr: {
-    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', whatsapp: 'WhatsApp AI', fraudai: 'FraudAI', login: 'Connexion', getStarted: 'Commencer Gratuit' },
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
+      tagline: "L'employé digital qui vend pour vous",
       title1: 'Transformez les Conversations en',
       title2: 'Clients Payants',
       subtitle: 'IA qui répond, qualifie et convertit — automatiquement, 24/7',
@@ -734,6 +1193,22 @@ const translations = {
       trust1: '500 conversations GRATUIT',
       trust2: 'Sans carte bancaire',
       trust3: 'Setup en 2 min'
+    },
+    floatingMessages: {
+      msg1: "Avez-vous des rendez-vous disponibles demain ?",
+      msg2: "Oui ! Nous avons 3 créneaux à 10h, 14h et 16h ✓",
+      msg3: "Quels sont vos tarifs ?",
+      msg4: "Nos forfaits commencent à 49€. Voulez-vous des détails ?",
+      msg5: "Je veux réserver pour samedi",
+      msg6: "C'est fait ! Réservation confirmée pour samedi 😊",
+      msg7: "Support 24/7 🤖",
+      msg8: "Envoyer le menu 📋"
+    },
+    mobileMessages: {
+      msg1: "Demain libre ? 📅",
+      msg2: "Oui ! 3 créneaux ✓",
+      msg3: "Réserver ! 🎉",
+      msg4: "Confirmé ! 😊"
     },
     problem: {
       title: 'Vous Perdez des Clients Chaque Jour',
@@ -778,6 +1253,8 @@ const translations = {
       title: 'Deux Façons de',
       titleHighlight: 'Connecter avec les Clients',
       subtitle: 'CatyAI fonctionne sur votre site web ET sur WhatsApp',
+      widgetCta: 'Ajouter Widget au Site',
+      whatsappCta: 'Connecter WhatsApp',
       widget: {
         title: 'Widget Chat Web',
         desc: 'Intégrez sur tout site. Capture des leads, répond aux questions, convertit les visiteurs 24/7.',
@@ -793,6 +1270,7 @@ const translations = {
       title: 'Intégrations',
       titleHighlight: 'Puissantes',
       subtitle: 'Connectez vos plateformes en un clic. Auto-Crawl apprend votre entreprise automatiquement.',
+      analyzeButton: 'Essayez Auto-Crawl Gratuit — Analysez Votre Site Web',
       wordpress: { title: 'WordPress', desc: 'Plugin en un clic. Synchronise posts, produits, pages.' },
       shopify: { title: 'Shopify', desc: 'Intégration instantanée. Auto-sync produits et inventaire.' },
       autoCrawl: { title: 'Auto-Crawl', desc: 'Scanne tout votre site. Extrait contenu, produits, FAQs.' },
@@ -890,7 +1368,102 @@ const translations = {
       dashboard: 'Dashboard',
       copyright: 'PayAi-X FZE (Caty.AI). Tous droits réservés.'
     },
-    floatingIndicator: 'Essayez-moi!'
+    floatingIndicator: 'Essayez-moi!',
+    realitatea: {
+      title: 'Votre Site Web Est Mort. Vous Ne L\'avez Pas Encore Enterré.',
+      subtitle: 'Quelque chose qu\'aucune agence marketing, aucun web designer et aucun consultant Google Ads ne vous dira jamais.',
+      paragraph: 'En 2025, quelque chose de sans précédent s\'est produit. Le trafic de recherche Google vers les sites web a chuté de 33% à l\'échelle mondiale. Pas une petite baisse — un tiers de tout le trafic, disparu.',
+      stat1Label: 'Le trafic de recherche Google a chuté globalement en 2025',
+      stat2Label: 'des recherches se terminent sans un seul clic',
+      stat3Label: 'CTR Google Ads — effondré de 11% en un mois',
+      bullet1: 'Les taux de clics organiques ont chuté de 61% sur les requêtes où apparaissent les AI Overviews.',
+      bullet2: 'Les éditeurs ont perdu 38% de leur trafic de référence Google d\'une année sur l\'autre.',
+      bullet3: 'HubSpot — l\'une des meilleures équipes SEO au monde — a perdu près de la moitié de son trafic organique.',
+      closing: 'L\'IA est la nouvelle vitrine. WhatsApp est le nouveau canal. Un code QR remplace un site web à 5 000€.'
+    },
+    products3: {
+      title: 'Une IA.',
+      titleHighlight: 'Trois façons de vendre.',
+      subtitle: 'Choisissez la solution adaptée à votre entreprise',
+      popular: 'Populaire',
+      qrFirst: {
+        name: 'QR-First',
+        tagline: 'Pas de site web ? Pas de problème.',
+        price: '€10',
+        period: '/mois',
+        features: ['Code QR pour WhatsApp', 'IA répond 24/7', 'Rendez-vous automatiques', 'Zéro coût d\'hébergement'],
+        cta: 'Commencez avec €10'
+      },
+      webWidget: {
+        name: 'Web Widget',
+        tagline: 'IA sur votre site',
+        price: '€49',
+        period: '/mois',
+        features: ['Widget chat intégré', 'Auto-Crawl site', 'Capture de leads', 'Analytics complet'],
+        cta: 'Ajouter au site'
+      },
+      fraudAI: {
+        name: 'FraudAI',
+        tagline: 'Protection anti-arnaques',
+        price: 'GRATUIT',
+        period: 'pour toujours',
+        features: ['8 modules de détection', 'Bloque le phishing', 'Alerte en temps réel', 'Zéro faux positifs'],
+        cta: 'Activer Gratuit'
+      }
+    },
+    howItWorks2: {
+      title: 'En ligne en',
+      titleHighlight: '2 minutes',
+      subtitle: 'Sans installation. Sans code. Sans attente.',
+      steps: [
+        { number: '01', title: 'Scannez QR', desc: 'Comme WhatsApp Web. 30 secondes.', icon: '📱' },
+        { number: '02', title: 'Connectez WhatsApp', desc: 'Utilisez votre numéro existant.', icon: '💬' },
+        { number: '03', title: 'Parlez de votre entreprise', desc: 'Services, prix, horaires.', icon: '📝' },
+        { number: '04', title: 'Commencez à vendre', desc: 'CatyAI prend le relais.', icon: '🚀' }
+      ],
+      cta: 'Commencez Maintenant — Gratuit'
+    },
+    industries2: {
+      title: 'Pour toute',
+      titleHighlight: 'industrie',
+      subtitle: 'CatyAI s\'adapte à votre entreprise',
+      list: [
+        { icon: '💇', name: 'Salons', desc: 'Rendez-vous 24/7' },
+        { icon: '🦷', name: 'Cabinets', desc: 'Patients satisfaits' },
+        { icon: '🍽️', name: 'Restaurants', desc: 'Réservations instantanées' },
+        { icon: '🔧', name: 'Mécaniciens', desc: 'Devis automatiques' },
+        { icon: '📸', name: 'Photographes', desc: 'Réservations simples' },
+        { icon: '🏠', name: 'Immobilier', desc: 'Leads qualifiés' }
+      ],
+      trusted: 'Approuvé par: Simple Smile, Digital Romania, D&S Gaz, INOTOOLS'
+    },
+    testimonials: {
+      title: 'Ce que disent',
+      titleHighlight: 'nos clients',
+      subtitle: 'Entreprises qui utilisent CatyAI pour augmenter les conversions et automatiser le support client.',
+      trustBadge: '6+ entreprises actives',
+      metric1: 'plus de leads',
+      metric2: 'conversion',
+      metric3: 'temps de réponse réduit',
+      leaveReview: 'Laisser un avis',
+      seeAllReviews: 'Voir tous les avis sur Google',
+      companies: [
+        { company: 'INOTOOLS', industry: 'E-commerce Bricolage', quote: 'CatyAI répond instantanément aux questions des clients sur les produits et la disponibilité. Nous avons réduit le temps de réponse de plusieurs heures à quelques secondes.', metric: '+35%', metricLabel: 'conversions', color: 'from-orange-500 to-red-500' },
+        { company: 'Simple Smile', industry: 'Dentisterie', quote: 'Les patients peuvent prendre rendez-vous 24h/24 via le chatbot. Cela nous a libéré du temps pour ce qui compte vraiment — le traitement des patients.', metric: '24/7', metricLabel: 'rendez-vous', color: 'from-blue-500 to-cyan-500' },
+        { company: 'D&S GAZ Services', industry: 'Installations Gaz', quote: 'Les clients obtiennent instantanément des informations sur nos services et peuvent demander des devis. L\'efficacité de l\'équipe a considérablement augmenté.', metric: '+50%', metricLabel: 'leads', color: 'from-yellow-500 to-orange-500' },
+        { company: 'AiuDance', industry: 'École de Danse', quote: 'Les élèves trouvent rapidement les infos sur les horaires et peuvent s\'inscrire directement. Moins de temps au téléphone, plus de temps pour la danse!', metric: '3x', metricLabel: 'inscriptions en ligne', color: 'from-pink-500 to-purple-500' },
+        { company: 'Digital Romania', industry: 'Conseil IT', quote: 'CatyAI nous aide à qualifier les leads automatiquement. Nous savons exactement ce que recherche chaque client avant de lui parler.', metric: '+40%', metricLabel: 'leads qualifiés', color: 'from-indigo-500 to-blue-500' },
+        { company: 'VendX', industry: 'Plateforme SaaS', quote: 'L\'intégration a été simple et les résultats sont arrivés rapidement. Nos clients reçoivent un support instantané pour la configuration des produits.', metric: '-60%', metricLabel: 'tickets support', color: 'from-green-500 to-emerald-500' }
+      ]
+    },
+    ctaFinal: {
+      title: 'Vos concurrents répondent déjà plus vite.',
+      subtitle: 'Quand commencez-vous ?',
+      cta: 'Commencez Gratuit sur WhatsApp',
+      trust1: 'Setup en 2 minutes',
+      trust2: 'Sans carte bancaire',
+      trust3: 'Annulez quand vous voulez'
+    }
   }
 }
 
@@ -905,7 +1478,11 @@ const languages = [
 function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => {
     const saved = localStorage.getItem('caty-lang')
-    return saved || 'en'
+    if (saved) return saved
+    // Auto-detect browser language
+    const browserLang = navigator.language?.slice(0, 2) || 'en'
+    const supportedLangs = ['en', 'ro', 'es', 'pt', 'fr']
+    return supportedLangs.includes(browserLang) ? browserLang : 'en'
   })
 
   useEffect(() => {
@@ -980,10 +1557,21 @@ function LanguageSelector() {
 // Header Component
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
+  const productsTimeoutRef = useRef(null)
   const { t } = useLanguage()
 
+  const handleProductsEnter = () => {
+    clearTimeout(productsTimeoutRef.current)
+    setProductsOpen(true)
+  }
+
+  const handleProductsLeave = () => {
+    productsTimeoutRef.current = setTimeout(() => setProductsOpen(false), 300)
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/70 backdrop-blur-lg border-b border-slate-800/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -991,14 +1579,57 @@ function Header() {
             <span className="text-xl font-bold">Caty.AI</span>
           </Link>
 
+          {/* Simplified Nav: Logo │ Products │ Pricing │ FAQ │ Login │ [Start Free] */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#hero" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</a>
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">{t.nav.features}</a>
-            <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">{t.nav.howItWorks}</a>
+            {/* Products Dropdown */}
+            <div className="relative" onMouseEnter={handleProductsEnter} onMouseLeave={handleProductsLeave}>
+              <button className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors py-2">
+                {t.nav.products}
+                <svg className={`w-4 h-4 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {productsOpen && (
+                <>
+                  {/* Invisible bridge to cover gap */}
+                  <div className="absolute top-full left-0 w-64 h-2" />
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-gray-900 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
+                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">💬</span>
+                    <div>
+                      <div className="text-white font-medium">{t.nav.whatsappSecretary}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.whatsappDesc}</div>
+                    </div>
+                  </Link>
+                  <Link to="/no-website" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">📱</span>
+                    <div>
+                      <div className="text-white font-medium">{t.nav.qrFirst}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.qrFirstDesc}</div>
+                    </div>
+                  </Link>
+                  <hr className="border-gray-700" />
+                  <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">🛡️</span>
+                    <div>
+                      <div className="text-red-400 font-medium">{t.nav.fraudai}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.fraudaiDesc}</div>
+                    </div>
+                  </Link>
+                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">🌐</span>
+                    <div>
+                      <div className="text-cyan-400 font-medium">{t.nav.catyWidget}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.catyWidgetDesc}</div>
+                    </div>
+                  </Link>
+                </div>
+                </>
+              )}
+            </div>
+
             <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
-            <Link to="/whatsapp" className="text-green-400 hover:text-green-300 transition-colors font-medium">{t.nav.whatsapp}</Link>
-            <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 transition-colors font-medium">{t.nav.fraudai}</Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -1023,13 +1654,16 @@ function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-800">
             <div className="flex flex-col gap-4">
-              <a href="#hero" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.home}</a>
-              <a href="#features" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.features}</a>
-              <a href="#how-it-works" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.howItWorks}</a>
+              {/* Mobile Products Section */}
+              <div className="text-gray-500 text-xs uppercase tracking-wider">{t.nav.products}</div>
+              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
+              <Link to="/no-website" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
+              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
+              <Link to="/widget" className="text-cyan-400 hover:text-cyan-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌐 {t.nav.catyWidget}</Link>
+
+              <hr className="border-gray-800" />
               <a href="#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
-              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium" onClick={() => setMobileMenuOpen(false)}>{t.nav.whatsapp}</Link>
-              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium" onClick={() => setMobileMenuOpen(false)}>{t.nav.fraudai}</Link>
               <hr className="border-gray-800" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
               <a href="https://app.catyai.io/signup" className="btn-primary text-center">{t.nav.getStarted}</a>
@@ -1042,47 +1676,242 @@ function Header() {
 }
 
 // Hero Section
+// Floating Messages Component for Hero
+function FloatingBubbles() {
+  const { t } = useLanguage()
+  const [visibleIds, setVisibleIds] = useState(new Set())
+  const indexRef = useRef(0)
+
+  // Desktop bubbles - all 8
+  const desktopBubbles = useMemo(() => [
+    { id: 1, text: t.floatingMessages?.msg1 || "Appointments tomorrow?", type: 'client', style: { top: '12%', left: '5%' } },
+    { id: 2, text: t.floatingMessages?.msg2 || "3 slots available ✓", type: 'ai', style: { top: '8%', right: '8%' } },
+    { id: 3, text: t.floatingMessages?.msg3 || "What are your prices?", type: 'client', style: { top: '28%', left: '3%' } },
+    { id: 4, text: t.floatingMessages?.msg4 || "Starting at €49 💰", type: 'ai', style: { top: '22%', right: '5%' } },
+    { id: 5, text: t.floatingMessages?.msg5 || "Book for Saturday", type: 'client', style: { bottom: '28%', left: '4%' } },
+    { id: 6, text: t.floatingMessages?.msg6 || "Confirmed! 😊", type: 'ai', style: { bottom: '22%', right: '6%' } },
+    { id: 7, text: t.floatingMessages?.msg7 || "24/7 support 🤖", type: 'ai', style: { bottom: '38%', right: '3%' } },
+    { id: 8, text: t.floatingMessages?.msg8 || "Send menu 📋", type: 'client', style: { bottom: '15%', left: '6%' } },
+  ], [t])
+
+  // Mobile bubbles - only 4, positioned at corners to not overlap content
+  const mobileBubbles = useMemo(() => [
+    { id: 101, text: t.mobileMessages?.msg1 || "Tomorrow free? 📅", type: 'client', style: { top: '8%', left: '2%' } },
+    { id: 102, text: t.mobileMessages?.msg2 || "Yes! 3 slots ✓", type: 'ai', style: { top: '8%', right: '2%' } },
+    { id: 103, text: t.mobileMessages?.msg3 || "Book! 🎉", type: 'client', style: { bottom: '12%', left: '2%' } },
+    { id: 104, text: t.mobileMessages?.msg4 || "Confirmed! 😊", type: 'ai', style: { bottom: '12%', right: '2%' } },
+  ], [t])
+
+  useEffect(() => {
+    const showNextDesktop = () => {
+      const currentId = desktopBubbles[indexRef.current].id
+      setVisibleIds(prev => new Set([...prev, currentId]))
+
+      setTimeout(() => {
+        setVisibleIds(prev => {
+          const next = new Set(prev)
+          next.delete(currentId)
+          return next
+        })
+      }, 4000)
+
+      indexRef.current = (indexRef.current + 1) % desktopBubbles.length
+    }
+
+    showNextDesktop()
+    const interval = setInterval(showNextDesktop, 1500)
+    return () => clearInterval(interval)
+  }, [desktopBubbles])
+
+  // Separate effect for mobile bubbles
+  const mobileIndexRef = useRef(0)
+  useEffect(() => {
+    const showNextMobile = () => {
+      const currentId = mobileBubbles[mobileIndexRef.current].id
+      setVisibleIds(prev => new Set([...prev, currentId]))
+
+      setTimeout(() => {
+        setVisibleIds(prev => {
+          const next = new Set(prev)
+          next.delete(currentId)
+          return next
+        })
+      }, 3500)
+
+      mobileIndexRef.current = (mobileIndexRef.current + 1) % mobileBubbles.length
+    }
+
+    showNextMobile()
+    const interval = setInterval(showNextMobile, 2000)
+    return () => clearInterval(interval)
+  }, [mobileBubbles])
+
+  return (
+    <>
+      <style>{`
+        @keyframes floatBubble {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+        }
+      `}</style>
+
+      {/* Desktop bubbles - hidden on mobile */}
+      {desktopBubbles.map(bubble => (
+        <div
+          key={bubble.id}
+          className={`absolute z-20 hidden lg:block transition-all duration-500 ease-out ${
+            visibleIds.has(bubble.id)
+              ? 'opacity-100 scale-100'
+              : 'opacity-0 scale-90 pointer-events-none'
+          }`}
+          style={{
+            ...bubble.style,
+            animation: visibleIds.has(bubble.id) ? 'floatBubble 3s ease-in-out infinite' : 'none'
+          }}
+        >
+          <div className={`px-3 py-2 rounded-2xl text-xs shadow-lg backdrop-blur-md ${
+            bubble.type === 'client'
+              ? 'bg-white/90 text-gray-800 rounded-bl-sm'
+              : 'bg-primary-500/90 text-white rounded-br-sm'
+          }`}>
+            {bubble.text}
+          </div>
+        </div>
+      ))}
+
+      {/* Mobile bubbles - hidden on desktop */}
+      {mobileBubbles.map(bubble => (
+        <div
+          key={bubble.id}
+          className={`absolute z-20 lg:hidden transition-all duration-500 ease-out ${
+            visibleIds.has(bubble.id)
+              ? 'opacity-90 scale-100'
+              : 'opacity-0 scale-90 pointer-events-none'
+          }`}
+          style={{
+            ...bubble.style,
+            animation: visibleIds.has(bubble.id) ? 'floatBubble 3s ease-in-out infinite' : 'none'
+          }}
+        >
+          <div className={`px-2 py-1.5 rounded-xl text-[10px] shadow-lg backdrop-blur-md ${
+            bubble.type === 'client'
+              ? 'bg-white/85 text-gray-800 rounded-bl-sm'
+              : 'bg-primary-500/85 text-white rounded-br-sm'
+          }`}>
+            {bubble.text}
+          </div>
+        </div>
+      ))}
+    </>
+  )
+}
+
 function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="hero" className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-end pb-32">
-      {/* Background Image - Responsive */}
-      <div className="absolute inset-0 z-0">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/images/hero-showcase-mobile.webp" />
-          <source media="(min-width: 769px)" srcSet="/images/hero-showcase.webp" />
-          <img
-            src="/images/hero-showcase.webp"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-60"
-            fetchpriority="high"
-            width="1920"
-            height="1080"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/60 to-gray-950"></div>
+    <section id="hero" className="relative px-4 sm:px-6 lg:px-8 overflow-hidden h-[85vh] flex items-center justify-center bg-slate-900 pt-16 pb-0">
+      {/* Animation keyframes */}
+      <style>{`
+        @keyframes slideFromRight {
+          0% { opacity: 0; transform: translateX(100px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes surgeFromVideo {
+          0% { opacity: 0; transform: scale(0.8) translateY(20px); filter: blur(10px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+        @keyframes surgeButtons {
+          0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-slide-right { animation: slideFromRight 0.8s ease-out forwards; }
+        .animate-surge { animation: surgeFromVideo 0.9s ease-out forwards; }
+        .animate-surge-btn { animation: surgeButtons 0.7s ease-out forwards; }
+      `}</style>
+
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/videos/AI_Replaces_Traditional_Websites.mp4" type="video/mp4" />
+        </video>
+        {/* Bottom fade overlay to blend seamlessly with next section */}
+        <div className="absolute -bottom-1 left-0 right-0 h-64 bg-gradient-to-t from-slate-900 via-slate-900/90 to-transparent"></div>
+      </div>
+
+      {/* Robot mascot - positioned between hero and section 2 */}
+      <div className="absolute -bottom-16 sm:-bottom-20 md:-bottom-24 -right-20 sm:-right-24 md:-right-28 z-30">
+        <img
+          src="/images/caty-robot-wave.png"
+          alt="CatyAI Robot"
+          className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain drop-shadow-2xl"
+        />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance leading-tight">
-            {t.hero.title1}
-            <span className="gradient-text block mt-2">{t.hero.title2}</span>
+          {/* Gold tagline - slides from right */}
+          <p
+            className="text-sm sm:text-base md:text-lg mb-6 font-bold tracking-wide animate-slide-right opacity-0"
+            style={{
+              color: '#F59E0B',
+              fontFamily: "'Inter', 'Poppins', sans-serif",
+              textShadow: '2px 2px 8px rgba(0,0,0,0.9)',
+              animationDelay: '0.3s'
+            }}
+          >
+            {t.hero?.tagline || 'The digital employee that sells for you'}
+          </p>
+
+          {/* Main title - surges from video */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance leading-tight" style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}>
+            <span
+              className="block animate-surge opacity-0"
+              style={{ color: '#FFFFFF', textShadow: '2px 2px 8px rgba(0,0,0,0.9)', animationDelay: '0.6s' }}
+            >
+              {t.hero.title1}
+            </span>
+            <span
+              className="block mt-2 animate-surge opacity-0"
+              style={{ color: '#10B981', textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0 0 20px rgba(16,185,129,0.4)', animationDelay: '0.9s' }}
+            >
+              {t.hero.title2}
+            </span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto mb-12 font-medium">
+          {/* Subtitle - surges from video */}
+          <p
+            className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium animate-surge opacity-0"
+            style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.8)', animationDelay: '1.2s' }}
+          >
             {t.hero.subtitle}
           </p>
 
+          {/* Buttons - surge effect */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-            <a href="https://calendly.com/adrian-payai-x/30min" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold rounded-xl transition-all text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105">
+            <a
+              href="https://calendly.com/adrian-payai-x/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-bold rounded-xl transition-all text-lg shadow-xl shadow-black/50 hover:shadow-green-500/40 hover:scale-105 animate-surge-btn opacity-0 ring-2 ring-white/20"
+              style={{ animationDelay: '1.5s' }}
+            >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               {t.hero.cta1}
             </a>
-            <a href="https://app.catyai.io/signup" className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-lg transform hover:scale-105">
+            <a
+              href="https://app.catyai.io/signup"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-lg transform hover:scale-105 animate-surge-btn opacity-0"
+              style={{ animationDelay: '1.7s' }}
+            >
               {t.hero.cta2}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -1090,7 +1919,8 @@ function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-gray-500 text-sm">
+          {/* Trust badges - surge effect */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-white text-sm animate-surge opacity-0" style={{ animationDelay: '2s' }}>
             <div className="flex items-center gap-2">
               <CheckIcon />
               <span>{t.hero.trust1}</span>
@@ -1110,11 +1940,12 @@ function Hero() {
   )
 }
 
+
 // Problem Section
 function Problem() {
   const { t } = useLanguage()
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section className="relative -mt-16 pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 z-20">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-red-400 mb-12">
           {t.problem.title}
@@ -1160,7 +1991,7 @@ function Solution() {
 function CoreFlow() {
   const { t } = useLanguage()
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-5xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-12">
           {t.coreFlow.title}
@@ -1242,7 +2073,7 @@ function Products() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-950">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title">{t.products.title} <span className="gradient-text">{t.products.titleHighlight}</span></h2>
         <p className="section-subtitle">{t.products.subtitle}</p>
@@ -1266,7 +2097,7 @@ function Products() {
               ))}
             </ul>
             <a href="https://app.catyai.io/signup" className="btn-primary mt-6 w-full justify-center">
-              Add Widget to Site
+              {t.products?.widgetCta || 'Add Widget to Site'}
             </a>
           </div>
 
@@ -1288,7 +2119,7 @@ function Products() {
               ))}
             </ul>
             <a href="https://app.catyai.io/signup" className="inline-flex items-center justify-center gap-2 w-full mt-6 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl transition-all">
-              Connect WhatsApp
+              {t.products?.whatsappCta || 'Connect WhatsApp'}
             </a>
           </div>
         </div>
@@ -1328,7 +2159,7 @@ function Integrations() {
         <div className="text-center mt-10">
           <Link to="/analyze" className="inline-flex items-center gap-2 px-6 py-3 bg-purple-500/10 border border-purple-500/30 text-purple-400 hover:text-purple-300 hover:border-purple-400/50 font-medium rounded-xl transition-all">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            Try Auto-Crawl Free — Analyze Your Website
+            {t.integrations?.analyzeButton || 'Try Auto-Crawl Free — Analyze Your Website'}
           </Link>
         </div>
       </div>
@@ -1381,7 +2212,7 @@ function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-7xl mx-auto">
         <h2 className="section-title">{t.howItWorks.title} <span className="gradient-text">{t.howItWorks.titleHighlight}</span></h2>
         <p className="section-subtitle">{t.howItWorks.subtitle}</p>
@@ -1544,7 +2375,7 @@ function FAQ() {
   ]
 
   return (
-    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-3xl mx-auto">
         <h2 className="section-title">{t.faq.title} <span className="gradient-text">{t.faq.titleHighlight}</span></h2>
         <p className="section-subtitle">
@@ -1634,7 +2465,7 @@ function PoweredBy() {
   const currentFeatures = features[t.nav?.home === 'Acasă' ? 'ro' : t.nav?.home === 'Inicio' ? 'es' : t.nav?.home === 'Início' ? 'pt' : t.nav?.home === 'Accueil' ? 'fr' : 'en']
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900/50 to-gray-950">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-4">
@@ -1923,29 +2754,369 @@ function FloatingWidgetIndicator() {
 const homepageFAQ = [
   {
     question: 'Is CatyAI really free?',
-    answer: 'Yes. 100 sessions per month, forever. No credit card required.'
+    answer: 'Yes. QR-First starts at just €10/month. FraudAI Shield is FREE forever.'
   },
   {
     question: 'What does CatyAI do?',
-    answer: 'CatyAI is an AI secretary on WhatsApp that responds to customers 24/7, books appointments, generates documents, and blocks scams with FraudAI Shield.'
+    answer: 'CatyAI is an AI sales agent that responds to customers 24/7 on WhatsApp and websites, books appointments, and blocks scams.'
   },
   {
-    question: 'How does CatyAI connect to WhatsApp?',
-    answer: 'Scan a QR code, like WhatsApp Web. Uses your existing business number. Takes 2 minutes.'
+    question: 'How fast can I get started?',
+    answer: 'Live in 2 minutes. Scan QR, connect WhatsApp, start selling.'
   },
   {
     question: 'Does CatyAI work in Romanian?',
     answer: 'Fluently. Also English, Spanish, Portuguese, French, Arabic with auto-detection.'
-  },
-  {
-    question: 'Will customers know it\'s AI?',
-    answer: 'Only if you want them to. CatyAI can respond as your business, with your name and style.'
-  },
-  {
-    question: 'What if CatyAI can\'t answer?',
-    answer: 'It forwards the conversation to you with full context, so you can take over seamlessly.'
   }
 ];
+
+// SECTION 2: Realitatea - Your Website Is Dead
+function Realitatea() {
+  const { t } = useLanguage()
+  const [counts, setCounts] = useState({ google: 0, zero: 0, ctr: 0 })
+  const sectionRef = useRef(null)
+  const hasAnimated = useRef(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true
+          const duration = 2000
+          const steps = 60
+          const interval = duration / steps
+          let step = 0
+
+          const timer = setInterval(() => {
+            step++
+            const progress = step / steps
+            const eased = 1 - Math.pow(1 - progress, 3)
+
+            setCounts({
+              google: Math.round(33 * eased),
+              zero: Math.round(60 * eased),
+              ctr: Math.round(3 * eased)
+            })
+
+            if (step >= steps) clearInterval(timer)
+          }, interval)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="pt-0 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-5xl mx-auto">
+        {/* Main Headline */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-6">
+          {t.realitatea.title}
+        </h2>
+
+        {/* Italic Subtext */}
+        <p className="text-center text-lg md:text-xl italic mb-10 max-w-3xl mx-auto" style={{ color: '#A1A1AA' }}>
+          {t.realitatea.subtitle}
+        </p>
+
+        {/* Paragraph */}
+        <p className="text-white text-lg md:text-xl text-center mb-16 max-w-4xl mx-auto leading-relaxed">
+          {t.realitatea.paragraph}
+        </p>
+
+        {/* 3 Stats Cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {/* Card 1: -33% */}
+          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
+            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+              -{counts.google}%
+            </div>
+            <div className="text-white text-base">
+              {t.realitatea.stat1Label}
+            </div>
+          </div>
+
+          {/* Card 2: 60% */}
+          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
+            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+              {counts.zero}%
+            </div>
+            <div className="text-white text-base">
+              {t.realitatea.stat2Label}
+            </div>
+          </div>
+
+          {/* Card 3: 3% */}
+          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
+            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+              {counts.ctr}%
+            </div>
+            <div className="text-white text-base">
+              {t.realitatea.stat3Label}
+            </div>
+          </div>
+        </div>
+
+        {/* Bullet Points */}
+        <div className="max-w-3xl mx-auto mb-16 space-y-4">
+          <p className="text-white text-lg">
+            • {t.realitatea.bullet1}
+          </p>
+          <p className="text-white text-lg">
+            • {t.realitatea.bullet2}
+          </p>
+          <p className="text-white text-lg">
+            • {t.realitatea.bullet3}
+          </p>
+        </div>
+
+        {/* Green Closing Statement */}
+        <p className="text-center text-xl md:text-2xl font-bold" style={{ color: '#10B981' }}>
+          {t.realitatea.closing}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// SECTION 3: Produse - One AI. Three Ways to Sell.
+function ProduseNoi() {
+  const { t } = useLanguage()
+
+  const products = [
+    {
+      ...t.products3.qrFirst,
+      color: 'from-green-500 to-emerald-500',
+      borderColor: 'border-green-500/30 hover:border-green-500/60',
+      link: '/no-website',
+      icon: '📱'
+    },
+    {
+      ...t.products3.webWidget,
+      color: 'from-primary-500 to-cyan-500',
+      borderColor: 'border-primary-500/30 hover:border-primary-500/60',
+      link: '/widget',
+      icon: '🌐',
+      popular: true
+    },
+    {
+      ...t.products3.fraudAI,
+      color: 'from-red-500 to-orange-500',
+      borderColor: 'border-red-500/30 hover:border-red-500/60',
+      link: '/fraud-shield',
+      icon: '🛡️'
+    }
+  ]
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t.products3.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.products3.titleHighlight}</span>
+          </h2>
+          <p className="text-gray-400 text-lg">
+            {t.products3.subtitle}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {products.map((product, i) => (
+            <div
+              key={i}
+              className={`relative bg-gray-800/50 rounded-2xl p-8 border-2 ${product.borderColor} transition-all hover:shadow-xl hover:shadow-green-500/10 ${product.popular ? 'md:scale-105 z-10' : ''}`}
+            >
+              {product.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white text-sm font-bold">
+                  {t.products3.popular}
+                </div>
+              )}
+
+              <div className="text-4xl mb-4">{product.icon}</div>
+              <h3 className="text-2xl font-bold text-white mb-1">{product.name}</h3>
+              <p className="text-gray-400 text-sm mb-4">{product.tagline}</p>
+
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className={`text-4xl font-bold bg-gradient-to-r ${product.color} bg-clip-text text-transparent`}>
+                  {product.price}
+                </span>
+                <span className="text-gray-500 text-sm">{product.period}</span>
+              </div>
+
+              <ul className="space-y-3 mb-8">
+                {product.features.map((feature, j) => (
+                  <li key={j} className="flex items-center gap-2 text-gray-300">
+                    <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                to={product.link}
+                className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all ${
+                  product.popular
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg hover:shadow-green-500/30'
+                    : 'bg-gray-700 text-white hover:bg-gray-600'
+                }`}
+              >
+                {product.cta}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// SECTION 4: Cum Funcționează - Live in 2 Minutes
+function CumFunctioneaza() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t.howItWorks2.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.howItWorks2.titleHighlight}</span>
+          </h2>
+          <p className="text-gray-400 text-lg">
+            {t.howItWorks2.subtitle}
+          </p>
+        </div>
+
+        {/* Horizontal Timeline */}
+        <div className="relative">
+          {/* Connection Line - Desktop */}
+          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-1 bg-gradient-to-r from-green-500/50 via-emerald-500/50 to-green-500/50 rounded-full" />
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {t.howItWorks2.steps.map((step, i) => (
+              <div key={i} className="relative text-center">
+                {/* Step Circle */}
+                <div className="relative z-10 w-24 h-24 mx-auto mb-6 bg-gray-800 rounded-full border-4 border-green-500/50 flex items-center justify-center group hover:border-green-400 hover:scale-110 transition-all">
+                  <span className="text-4xl">{step.icon}</span>
+                </div>
+
+                {/* Step Number */}
+                <div className="text-green-400 text-sm font-mono mb-2">{step.number}</div>
+
+                {/* Title & Description */}
+                <h3 className="text-lg font-bold text-white mb-1">{step.title}</h3>
+                <p className="text-gray-400 text-sm">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12">
+          <a
+            href="https://app.catyai.io/signup"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-green-500/30 transition-all text-lg"
+          >
+            {t.howItWorks2.cta}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// SECTION 6: Industrii - 6 icons
+function IndustriiNoi() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          {t.industries2.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.industries2.titleHighlight}</span>
+        </h2>
+        <p className="text-gray-400 text-lg mb-12">
+          {t.industries2.subtitle}
+        </p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+          {t.industries2.list.map((industry, i) => (
+            <div
+              key={i}
+              className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-green-500/50 transition-all group cursor-pointer"
+            >
+              <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{industry.icon}</div>
+              <h3 className="text-lg font-bold text-white mb-1">{industry.name}</h3>
+              <p className="text-gray-500 text-sm">{industry.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-gray-500 text-sm mt-8">
+          {t.industries2.trusted}
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// SECTION 7: CTA Final
+function CTAFinal() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-3xl p-12 border border-green-500/30">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t.ctaFinal.title}
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            {t.ctaFinal.subtitle}
+          </p>
+
+          <a
+            href="https://app.catyai.io/signup"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/30 transition-all text-xl hover:scale-105"
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            {t.ctaFinal.cta}
+          </a>
+
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-gray-400 text-sm">
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{t.ctaFinal.trust1}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{t.ctaFinal.trust2}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{t.ctaFinal.trust3}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 function HomePage() {
   return (
@@ -1956,24 +3127,27 @@ function HomePage() {
         url="https://catyai.io/"
         faq={homepageFAQ}
       />
+      {/* SECTION 1: Hero - kept as-is */}
       <Hero />
-      <Problem />
-      <Solution />
-      <WhatsAppZeroMeta />
-      <CoreFlow />
-      <CaseStudies />
-      <ROICalculator />
-      <Products />
-      <DocGenEngine />
-      <Integrations />
-      <Verticals />
-      <HowItWorks />
-      <ComparisonTable />
+
+      {/* SECTION 2: Realitatea - Google traffic decline stats */}
+      <Realitatea />
+
+      {/* SECTION 3: Produse - 3 product cards */}
+      <ProduseNoi />
+
+      {/* SECTION 4: Cum Funcționează - 4 steps timeline */}
+      <CumFunctioneaza />
+
+      {/* SECTION 5: Ce spun clienții - Google Reviews carousel preserved */}
       <Testimonials />
-      <PartnersPress />
-      <Pricing />
-      <FAQ />
-      <CTA />
+
+      {/* SECTION 6: Industrii - 6 icons */}
+      <IndustriiNoi />
+
+      {/* SECTION 7: CTA Final */}
+      <CTAFinal />
+
       <FloatingWidgetIndicator />
     </>
   )
@@ -2004,7 +3178,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/trust-center']
+  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -2042,7 +3216,7 @@ function AppContent() {
             <Route path="/fraud-shield" element={<FraudAI />} />
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
-            <Route path="/trust-center" element={<TrustCenter />} />
+            <Route path="/widget" element={<CatyWidget />} />
           </Routes>
         </Suspense>
       </div>

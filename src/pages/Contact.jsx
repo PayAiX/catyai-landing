@@ -27,13 +27,20 @@ const translations = {
     ],
     info: {
       title: 'Other Ways to Reach Us',
-      email: { label: 'Email', value: 'contact@payai-x.com' },
-      sales: { label: 'Sales', value: 'contact@payai-x.com' },
-      support: { label: 'Support', value: 'contact@payai-x.com' },
-      address: {
-        label: 'Address',
-        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, UAE'
-      }
+      email: { label: 'Sales', value: 'sales@catyai.io' },
+      sales: { label: 'Sales', value: 'sales@catyai.io' },
+      support: { label: 'Support', value: 'support@catyai.io' },
+      addressRo: {
+        label: 'Romania Office',
+        value: 'PAYAI-X S.R.L.\nStr. TRAPEZULUI, Nr. 2, Bl. M6, Sc. C, Et. 6, Ap. 113\nSector 3, București, România',
+        mapUrl: 'https://maps.google.com/?q=Strada+Trapezului+2,+București,+Romania'
+      },
+      addressUae: {
+        label: 'UAE Office',
+        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, UAE',
+        mapUrl: 'https://maps.google.com/?q=Dubai+Silicon+Oasis,+Dubai,+UAE'
+      },
+      phone: { label: 'Phone', value: '+40 750 195 048 / +40 756 730 193' }
     },
     social: {
       title: 'Follow Us'
@@ -63,13 +70,20 @@ const translations = {
     ],
     info: {
       title: 'Alte Modalitati de Contact',
-      email: { label: 'Email', value: 'contact@payai-x.com' },
+      email: { label: 'Vanzari', value: 'sales@catyai.io' },
       sales: { label: 'Vanzari', value: 'sales@catyai.io' },
       support: { label: 'Suport', value: 'support@catyai.io' },
-      address: {
-        label: 'Adresa',
-        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, UAE'
-      }
+      addressRo: {
+        label: 'Sediu Romania',
+        value: 'PAYAI-X S.R.L.\nStr. TRAPEZULUI, Nr. 2, Bl. M6, Sc. C, Et. 6, Ap. 113\nSector 3, București, România',
+        mapUrl: 'https://maps.google.com/?q=Strada+Trapezului+2,+București,+Romania'
+      },
+      addressUae: {
+        label: 'Sediu UAE',
+        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, UAE',
+        mapUrl: 'https://maps.google.com/?q=Dubai+Silicon+Oasis,+Dubai,+UAE'
+      },
+      phone: { label: 'Telefon', value: '+40 750 195 048 / +40 756 730 193' }
     },
     social: {
       title: 'Urmareste-ne'
@@ -99,13 +113,20 @@ const translations = {
     ],
     info: {
       title: 'Otras Formas de Contactarnos',
-      email: { label: 'Correo', value: 'contact@payai-x.com' },
+      email: { label: 'Ventas', value: 'sales@catyai.io' },
       sales: { label: 'Ventas', value: 'sales@catyai.io' },
       support: { label: 'Soporte', value: 'support@catyai.io' },
-      address: {
-        label: 'Direccion',
-        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU'
-      }
+      addressRo: {
+        label: 'Oficina Rumania',
+        value: 'PAYAI-X S.R.L.\nStr. TRAPEZULUI, Nr. 2, Bl. M6, Sc. C, Et. 6, Ap. 113\nSector 3, Bucarest, Rumania',
+        mapUrl: 'https://maps.google.com/?q=Strada+Trapezului+2,+București,+Romania'
+      },
+      addressUae: {
+        label: 'Oficina EAU',
+        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU',
+        mapUrl: 'https://maps.google.com/?q=Dubai+Silicon+Oasis,+Dubai,+UAE'
+      },
+      phone: { label: 'Telefono', value: '+40 750 195 048 / +40 756 730 193' }
     },
     social: {
       title: 'Siguenos'
@@ -135,13 +156,20 @@ const translations = {
     ],
     info: {
       title: 'Outras Formas de Contato',
-      email: { label: 'Email', value: 'contact@payai-x.com' },
+      email: { label: 'Vendas', value: 'sales@catyai.io' },
       sales: { label: 'Vendas', value: 'sales@catyai.io' },
       support: { label: 'Suporte', value: 'support@catyai.io' },
-      address: {
-        label: 'Endereco',
-        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU'
-      }
+      addressRo: {
+        label: 'Escritorio Romenia',
+        value: 'PAYAI-X S.R.L.\nStr. TRAPEZULUI, Nr. 2, Bl. M6, Sc. C, Et. 6, Ap. 113\nSetor 3, Bucareste, Romenia',
+        mapUrl: 'https://maps.google.com/?q=Strada+Trapezului+2,+București,+Romania'
+      },
+      addressUae: {
+        label: 'Escritorio EAU',
+        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU',
+        mapUrl: 'https://maps.google.com/?q=Dubai+Silicon+Oasis,+Dubai,+UAE'
+      },
+      phone: { label: 'Telefone', value: '+40 750 195 048 / +40 756 730 193' }
     },
     social: {
       title: 'Siga-nos'
@@ -171,13 +199,20 @@ const translations = {
     ],
     info: {
       title: 'Autres Moyens de Nous Contacter',
-      email: { label: 'Email', value: 'contact@payai-x.com' },
+      email: { label: 'Ventes', value: 'sales@catyai.io' },
       sales: { label: 'Ventes', value: 'sales@catyai.io' },
       support: { label: 'Support', value: 'support@catyai.io' },
-      address: {
-        label: 'Adresse',
-        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU'
-      }
+      addressRo: {
+        label: 'Bureau Roumanie',
+        value: 'PAYAI-X S.R.L.\nStr. TRAPEZULUI, Nr. 2, Bl. M6, Sc. C, Et. 6, Ap. 113\nSecteur 3, Bucarest, Roumanie',
+        mapUrl: 'https://maps.google.com/?q=Strada+Trapezului+2,+București,+Romania'
+      },
+      addressUae: {
+        label: 'Bureau EAU',
+        value: 'PayAi-X FZE\nDubai Silicon Oasis\nDubai, EAU',
+        mapUrl: 'https://maps.google.com/?q=Dubai+Silicon+Oasis,+Dubai,+UAE'
+      },
+      phone: { label: 'Telephone', value: '+40 750 195 048 / +40 756 730 193' }
     },
     social: {
       title: 'Suivez-nous'
@@ -202,7 +237,7 @@ export default function Contact() {
     setStatus('sending')
 
     // For now, open mailto
-    const mailtoLink = `mailto:contact@payai-x.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`
+    const mailtoLink = `mailto:sales@catyai.io?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`
     window.location.href = mailtoLink
 
     setStatus('success')
@@ -369,6 +404,7 @@ export default function Contact() {
                   </div>
                 </div>
 
+                {/* Romania Office */}
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-purple-500/10 rounded-lg">
                     <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -377,10 +413,50 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400">{t.info.address.label}</p>
-                    <p className="text-white whitespace-pre-line">{t.info.address.value}</p>
+                    <p className="text-sm text-gray-400">{t.info.addressRo.label}</p>
+                    <p className="text-white whitespace-pre-line">{t.info.addressRo.value}</p>
+                    <a href={t.info.addressRo.mapUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 text-sm inline-flex items-center gap-1 mt-1">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Google Maps
+                    </a>
                   </div>
                 </div>
+
+                {/* UAE Office */}
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-orange-500/10 rounded-lg">
+                    <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400">{t.info.addressUae.label}</p>
+                    <p className="text-white whitespace-pre-line">{t.info.addressUae.value}</p>
+                    <a href={t.info.addressUae.mapUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 text-sm inline-flex items-center gap-1 mt-1">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Google Maps
+                    </a>
+                  </div>
+                </div>
+
+                {t.info.phone && (
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-blue-500/10 rounded-lg">
+                      <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400">{t.info.phone.label}</p>
+                      <p className="text-white">{t.info.phone.value}</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 

@@ -256,8 +256,12 @@
     "name": "QR-First - No Website Needed"
   },
   {
-    "path": "/trust-center",
-    "name": "Trust Center - Technical Architecture & Security"
+    "path": "/compare",
+    "name": "CatyAI vs Tidio vs Intercom"
+  },
+  {
+    "path": "/widget",
+    "name": "Caty Widget - AI Sales Agent for Websites"
   },
   {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",

@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  background-color: var(--color-gray-950);
+  background-color: #0F172A;
   color: var(--color-gray-100);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -147,4 +147,46 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Chat bubble appear animation */
+@keyframes bubble-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bubble-disappear {
+  0%, 70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+}
+
+.chat-bubble-appear {
+  opacity: 0;
+  animation: bubble-appear 0.4s ease-out forwards, bubble-disappear 8s ease-in-out forwards;
+}
+
+/* Typing dots animation */
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+.typing-dot {
+  animation: typing-bounce 1.4s infinite ease-in-out;
 }

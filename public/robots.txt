@@ -1,5 +1,33 @@
 # CatyAI Robots.txt
+
+# Allow all crawlers
 User-agent: *
 Allow: /
 
+# Explicitly allow AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
 Sitemap: https://catyai.io/sitemap.xml
+
+# LLMs.txt for AI crawlers
+# See: https://catyai.io/llms.txt

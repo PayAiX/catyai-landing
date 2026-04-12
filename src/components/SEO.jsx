@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 
 const defaultMeta = {
-  title: 'CatyAI — AI Sales Engine for WhatsApp',
-  description: 'AI Sales Engine on WhatsApp. 37 new clients in 5 days. Responds, books, sells and blocks scams — 24/7, automatically. Free: 500 conversations/month.',
+  title: 'Cea Mai Sigura Solutie AI Sales din Romania | CatyAI + FraudAI Shield',
+  description: 'CatyAI: singura platforma AI Sales din Romania cu 8 agenti AI specializati si FraudAI Shield anti-frauda. Arhitectura multi-agent unica: Sales, Support, Scheduler, DocGen, Fraud Detection, Lead Scoring. Protectie completa + conversii automate.',
   image: 'https://catyai.io/og-image.png',
   url: 'https://catyai.io',
+  keywords: 'AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania, arhitectura multi-agent',
 };
 
 export default function SEO({
@@ -15,7 +16,9 @@ export default function SEO({
   type = 'website',
   article = null,
   breadcrumbs = null,
-  faq = null
+  faq = null,
+  service = null,  // { name, description, price, features }
+  product = null   // { name, description, price, rating }
 }) {
   const seo = {
     title: title ? `${title} | CatyAI` : defaultMeta.title,
@@ -80,10 +83,93 @@ export default function SEO({
     }))
   } : null;
 
+  // Service JSON-LD Schema
+  const serviceSchema = service ? {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'CatyAI',
+      url: 'https://catyai.io'
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Romania'
+    },
+    ...(service.price && {
+      offers: {
+        '@type': 'Offer',
+        price: service.price,
+        priceCurrency: 'EUR'
+      }
+    }),
+    ...(service.features && {
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: service.name,
+        itemListElement: service.features.map((f, i) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: f
+          }
+        }))
+      }
+    })
+  } : null;
+
+  // Product/SoftwareApplication JSON-LD Schema
+  const productSchema = product ? {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: product.name,
+    description: product.description,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, WhatsApp',
+    url: seo.url,
+    ...(product.price && {
+      offers: {
+        '@type': 'Offer',
+        price: product.price,
+        priceCurrency: 'EUR'
+      }
+    }),
+    ...(product.rating && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: product.rating,
+        bestRating: '5',
+        ratingCount: product.ratingCount || '150'
+      }
+    })
+  } : null;
+
+  // WebPage JSON-LD Schema (always added)
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: seo.title,
+    description: seo.description,
+    url: seo.url,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'CatyAI',
+      url: 'https://catyai.io'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CatyAI',
+      url: 'https://catyai.io'
+    }
+  };
+
   return (
     <Helmet>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      <meta name="keywords" content={defaultMeta.keywords} />
       <link rel="canonical" href={seo.url} />
 
       {/* Open Graph */}
@@ -127,6 +213,20 @@ export default function SEO({
           {JSON.stringify(faqSchema)}
         </script>
       )}
+      {serviceSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      )}
+      {productSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
+      )}
+      {/* WebPage schema always included */}
+      <script type="application/ld+json">
+        {JSON.stringify(webPageSchema)}
+      </script>
     </Helmet>
   );
 }

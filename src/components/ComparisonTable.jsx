@@ -13,14 +13,14 @@ const translations = {
     cta: 'Start Free →',
     source: '* Prices verified on official Tidio and Intercom websites, March 2026. Tidio Lyro: €32.50/month for 50 conv. Tidio Flows: €24.17/month.',
     features: [
-      { name: 'Monthly price', caty: '€149', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
+      { name: 'Monthly price', caty: '€49', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
       { name: 'Conversational AI', caty: '✓ Included', tidio: '+€32/mo (Lyro)', intercom: '+$0.99/resolution' },
       { name: 'Automations', caty: '✓ Included', tidio: '+€24/mo (Flows)', intercom: '✓ Limited' },
       { name: 'Native WhatsApp', caty: '✓ Included', tidio: '✗ No', intercom: '✗ No' },
       { name: 'FraudAI (anti-scam)', caty: '✓ Included', tidio: '✗ Doesn\'t exist', intercom: '✗ Doesn\'t exist' },
       { name: 'Document generation', caty: '✓ Included', tidio: '✗ Doesn\'t exist', intercom: '✗ Doesn\'t exist' },
       { name: 'QR setup in 2 min', caty: '✓ Yes', tidio: '✗ No', intercom: '✗ No' },
-      { name: 'REAL cost/month', caty: '€149', tidio: '€205+', intercom: '$500+' }
+      { name: 'REAL cost/month', caty: '€49', tidio: '€205+', intercom: '$500+' }
     ]
   },
   ro: {
@@ -35,14 +35,14 @@ const translations = {
     cta: 'Începe Gratuit →',
     source: '* Prețuri verificate pe site-urile oficiale Tidio și Intercom, Martie 2026. Tidio Lyro: €32.50/lună pentru 50 conv. Tidio Flows: €24.17/lună.',
     features: [
-      { name: 'Preț lunar', caty: '€149', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
+      { name: 'Preț lunar', caty: '€49', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
       { name: 'AI conversațional', caty: '✓ Inclus', tidio: '+€32/lună (Lyro)', intercom: '+$0.99/rezoluție' },
       { name: 'Automatizări', caty: '✓ Inclus', tidio: '+€24/lună (Flows)', intercom: '✓ Limitat' },
       { name: 'WhatsApp nativ', caty: '✓ Inclus', tidio: '✗ Nu', intercom: '✗ Nu' },
       { name: 'FraudAI (anti-scam)', caty: '✓ Inclus', tidio: '✗ Nu există', intercom: '✗ Nu există' },
       { name: 'Generare documente', caty: '✓ Inclus', tidio: '✗ Nu există', intercom: '✗ Nu există' },
       { name: 'Setup QR în 2 min', caty: '✓ Da', tidio: '✗ Nu', intercom: '✗ Nu' },
-      { name: 'Cost REAL/lună', caty: '€149', tidio: '€205+', intercom: '$500+' }
+      { name: 'Cost REAL/lună', caty: '€49', tidio: '€205+', intercom: '$500+' }
     ]
   },
   es: {
@@ -57,14 +57,14 @@ const translations = {
     cta: 'Empieza Gratis →',
     source: '* Precios verificados en los sitios web oficiales de Tidio e Intercom, Marzo 2026. Tidio Lyro: €32.50/mes por 50 conv. Tidio Flows: €24.17/mes.',
     features: [
-      { name: 'Precio mensual', caty: '€149', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
+      { name: 'Precio mensual', caty: '€49', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
       { name: 'IA conversacional', caty: '✓ Incluido', tidio: '+€32/mes (Lyro)', intercom: '+$0.99/resolución' },
       { name: 'Automatizaciones', caty: '✓ Incluido', tidio: '+€24/mes (Flows)', intercom: '✓ Limitado' },
       { name: 'WhatsApp nativo', caty: '✓ Incluido', tidio: '✗ No', intercom: '✗ No' },
       { name: 'FraudAI (anti-estafa)', caty: '✓ Incluido', tidio: '✗ No existe', intercom: '✗ No existe' },
       { name: 'Generación documentos', caty: '✓ Incluido', tidio: '✗ No existe', intercom: '✗ No existe' },
       { name: 'Setup QR en 2 min', caty: '✓ Sí', tidio: '✗ No', intercom: '✗ No' },
-      { name: 'Costo REAL/mes', caty: '€149', tidio: '€205+', intercom: '$500+' }
+      { name: 'Costo REAL/mes', caty: '€49', tidio: '€205+', intercom: '$500+' }
     ]
   }
 };
@@ -125,7 +125,7 @@ export default function ComparisonTable() {
             <div className="p-4 text-gray-400 text-sm font-medium">{t.feature}</div>
             <div className="p-4 text-center">
               <div className="text-cyan-400 font-bold">CatyAI</div>
-              <div className="text-gray-500 text-xs">€149/mo</div>
+              <div className="text-gray-500 text-xs">€49/mo</div>
             </div>
             <div className="p-4 text-center">
               <div className="text-gray-300 font-medium">Tidio</div>

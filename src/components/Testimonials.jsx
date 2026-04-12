@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from '../App'
 
 // Inline SVG Icons
 const StarIcon = ({ filled }) => (
@@ -25,80 +26,28 @@ const ArrowIcon = () => (
   </svg>
 )
 
-const testimonials = [
-  {
-    id: 1,
-    company: 'INOTOOLS',
-    website: 'https://www.inotools.ro',
-    industry: 'E-commerce Bricolaj',
-    quote: 'CatyAI raspunde instant la intrebarile clientilor despre produse si disponibilitate. Am redus timpul de raspuns de la ore la secunde.',
-    metric: '+35%',
-    metricLabel: 'conversii',
-    color: 'from-orange-500 to-red-500'
-  },
-  {
-    id: 2,
-    company: 'Simple Smile',
-    website: 'https://simplesmile.ro',
-    industry: 'Stomatologie',
-    quote: 'Pacientii pot programa consultatii 24/7 prin chatbot. Ne-a eliberat timpul pentru ceea ce conteaza - tratamentul pacientilor.',
-    metric: '24/7',
-    metricLabel: 'programari',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    id: 3,
-    company: 'D&S GAZ Services',
-    website: 'https://dsgazservices.ro',
-    industry: 'Instalatii Gaz',
-    quote: 'Clientii primesc instant informatii despre serviciile noastre si pot solicita oferte. Eficienta echipei a crescut semnificativ.',
-    metric: '+50%',
-    metricLabel: 'lead-uri',
-    color: 'from-yellow-500 to-orange-500'
-  },
-  {
-    id: 4,
-    company: 'AiuDance',
-    website: 'https://aiudance.ro',
-    industry: 'Scoala de Dans',
-    quote: 'Cursantii gasesc rapid informatii despre orarul cursurilor si se pot inscrie direct. Mai putin timp la telefon, mai mult timp pentru dans!',
-    metric: '3x',
-    metricLabel: 'inscrieri online',
-    color: 'from-pink-500 to-purple-500'
-  },
-  {
-    id: 5,
-    company: 'Digital Romania',
-    website: 'https://www.digitalromania.ro',
-    industry: 'Consultanta IT',
-    quote: 'CatyAI ne ajuta sa calificam lead-urile automat. Stim exact ce cauta fiecare client inainte sa vorbim cu el.',
-    metric: '+40%',
-    metricLabel: 'lead-uri calificate',
-    color: 'from-indigo-500 to-blue-500'
-  },
-  {
-    id: 6,
-    company: 'VendX',
-    website: 'https://vendx.ro',
-    industry: 'SaaS Platform',
-    quote: 'Integrarea a fost simpla, iar rezultatele au venit rapid. Clientii nostri primesc suport instant pentru configurarea produselor.',
-    metric: '-60%',
-    metricLabel: 'tickete suport',
-    color: 'from-green-500 to-emerald-500'
-  }
-]
+// Static website URLs (not translated)
+const companyWebsites = {
+  'INOTOOLS': 'https://www.inotools.ro',
+  'Simple Smile': 'https://simplesmile.ro',
+  'D&S GAZ Services': 'https://dsgazservices.ro',
+  'AiuDance': 'https://aiudance.ro',
+  'Digital Romania': 'https://www.digitalromania.ro',
+  'VendX': 'https://vendx.ro'
+}
 
 export default function Testimonials() {
+  const { t } = useLanguage()
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900">
+    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ce spun <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">clientii nostri</span>
+            {t.testimonials.title} <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{t.testimonials.titleHighlight}</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Companii din Romania care folosesc CatyAI pentru a creste conversiile si a automatiza suportul clienti.
+            {t.testimonials.subtitle}
           </p>
           {/* Trust badge */}
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-full border border-gray-700">
@@ -107,7 +56,7 @@ export default function Testimonials() {
                 <StarIcon key={i} filled={true} />
               ))}
             </div>
-            <span className="text-gray-300 text-sm font-medium">6+ companii active</span>
+            <span className="text-gray-300 text-sm font-medium">{t.testimonials.trustBadge}</span>
           </div>
         </div>
 
@@ -115,23 +64,23 @@ export default function Testimonials() {
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           <div className="text-center">
             <div className="text-3xl font-bold text-green-400">+32%</div>
-            <div className="text-gray-400 text-sm mt-1">more leads</div>
+            <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric1}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-400">+18%</div>
-            <div className="text-gray-400 text-sm mt-1">conversion</div>
+            <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric2}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-400">50%</div>
-            <div className="text-gray-400 text-sm mt-1">less response time</div>
+            <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric3}</div>
           </div>
         </div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial) => (
+          {t.testimonials.companies.map((testimonial, index) => (
             <div
-              key={testimonial.id}
+              key={index}
               className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10"
             >
               {/* Quote icon */}
@@ -154,7 +103,7 @@ export default function Testimonials() {
               <div className="flex items-center justify-between pt-4 border-t border-gray-700/50">
                 <div>
                   <a
-                    href={testimonial.website}
+                    href={companyWebsites[testimonial.company]}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold text-white hover:text-indigo-400 transition-colors flex items-center gap-1"
@@ -206,7 +155,7 @@ export default function Testimonials() {
               <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
               </svg>
-              Lasa o recenzie
+              {t.testimonials.leaveReview}
             </a>
           </div>
 
@@ -373,7 +322,7 @@ export default function Testimonials() {
               rel="noopener noreferrer"
               className="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-2"
             >
-              Vezi toate recenziile pe Google
+              {t.testimonials.seeAllReviews}
               <ExternalLinkIcon />
             </a>
           </div>

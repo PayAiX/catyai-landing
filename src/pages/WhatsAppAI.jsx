@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
-import QRFirst from '../components/QRFirst'
 import Footer from '../components/Footer'
 import { useLanguage } from '../App'
 
@@ -95,7 +94,7 @@ const translations = {
 
     pricingTitle: 'Simple Pricing',
     pricingSubtitle: 'WhatsApp Secretary is an add-on to any CatyAI plan.',
-    pricingAddon: '+€49/month',
+    pricingAddon: '+€29/month',
     pricingBase: 'on top of your base plan',
     pricingFeatures: [
       'Unlimited WhatsApp messages',
@@ -217,7 +216,7 @@ const translations = {
 
     pricingTitle: 'Prețuri Simple',
     pricingSubtitle: 'Secretara WhatsApp e un add-on la orice plan CatyAI.',
-    pricingAddon: '+€49/lună',
+    pricingAddon: '+€29/lună',
     pricingBase: 'peste planul de bază',
     pricingFeatures: [
       'Mesaje WhatsApp nelimitate',
@@ -247,6 +246,372 @@ const translations = {
       copyright: '© 2026 PayAi-X FZE. Toate drepturile rezervate.',
       privacy: 'Confidențialitate',
       terms: 'Termeni',
+      contact: 'Contact'
+    }
+  },
+  es: {
+    badge: 'Secretaria AI en WhatsApp',
+    heroTitle1: 'Tu Secretaria AI',
+    heroTitle2: 'en WhatsApp',
+    heroSubtitle: 'Responde a clientes 24/7. Agenda citas. Genera documentos. Bloquea estafas. Funciona en tu número de WhatsApp existente — sin número nuevo.',
+    heroCta: 'Conectar WhatsApp Ahora',
+    heroCtaSecondary: 'Probar Demo Primero',
+    trustBadge1: '500 conversaciones/mes GRATIS',
+    trustBadge2: 'Sin tarjeta de crédito',
+    trustBadge3: 'Configuración en 2 minutos',
+    trustCenterLink: 'WhatsApp Native Connect — Sin tarifas por mensaje',
+    trustCenterCta: 'Especificaciones Técnicas',
+
+    problemTitle: 'Tus Clientes Te Escriben.',
+    problemHighlight: 'Nadie Responde.',
+    problemStats: [
+      { value: '40%', label: 'de clientes escriben fuera de horario' },
+      { value: '67%', label: 'cambian a la competencia si no hay respuesta en 1h' },
+      { value: '€1.500', label: 'costo mensual de una recepcionista' }
+    ],
+    problemSolution: 'CatyAI responde al instante, 24/7, por €0.',
+
+    howTitle: 'Cómo Funciona',
+    howSubtitle: 'Activo en 2 minutos. Sin app que instalar. Sin conocimientos técnicos.',
+    howSteps: [
+      { title: 'Escanea el Código QR', desc: 'Igual que WhatsApp Web. Usa tu número de negocio existente.', icon: '📱' },
+      { title: 'Cuéntale a Caty Sobre Tu Negocio', desc: 'Servicios, precios, horarios, equipo. Por voz o texto, toma 5 minutos.', icon: '💬' },
+      { title: 'Caty Toma el Control', desc: 'Responde 24/7. Agenda citas. Envía presupuestos. Tú descansas.', icon: '🚀' }
+    ],
+
+    featuresTitle: 'Todo Lo Que Hace Una Secretaria.',
+    featuresHighlight: 'Automatizado.',
+    features: [
+      {
+        icon: '💬',
+        title: 'Responde a Clientes 24/7',
+        desc: 'Respuestas instantáneas en lenguaje natural. Recuerda el contexto de la conversación. Habla rumano, inglés, español, portugués, francés y árabe con autodetección.',
+        highlight: '24/7'
+      },
+      {
+        icon: '📅',
+        title: 'Agenda Citas',
+        desc: 'Sincroniza con Google Calendar. Verifica disponibilidad en tiempo real. Envía confirmaciones y recordatorios de 30 minutos directamente en WhatsApp.',
+        highlight: 'Google Calendar'
+      },
+      {
+        icon: '📄',
+        title: 'Genera Documentos',
+        desc: 'Crea presupuestos, facturas, confirmaciones de reserva como PDF. Los envía directamente en el chat de WhatsApp. Tu logo, tus colores, tu marca.',
+        highlight: 'PDF'
+      },
+      {
+        icon: '🛡️',
+        title: 'Bloquea Estafas con FraudAI',
+        desc: '8 módulos de detección: enlaces de phishing, urgencias falsas, suplantación, solicitudes sospechosas. Te protege antes de que veas el mensaje peligroso.',
+        highlight: 'FraudAI Shield'
+      },
+      {
+        icon: '📋',
+        title: 'Extrae Tareas Automáticamente',
+        desc: '"Llama a Juan mañana a las 10" se convierte en tarea con recordatorio. "Pedir suministros" se rastrea. Email diario con todo lo extraído.',
+        highlight: 'Auto-extract'
+      },
+      {
+        icon: '🧠',
+        title: 'Conoce Tu Negocio',
+        desc: 'Base de conocimiento de 12 dominios: servicios, precios, horarios, ubicaciones, equipo, políticas, FAQs, promociones, reglas de reserva, métodos de pago y más.',
+        highlight: '12 dominios'
+      }
+    ],
+
+    demoTitle: 'Pruébalo Ahora',
+    demoSubtitle: 'Envía "demo" a nuestro WhatsApp y ve a Caty en acción.',
+    demoNumber: '+40 750 195 048',
+    demoInstructions: 'Abre WhatsApp, envía "demo" al número de arriba. Caty responde al instante.',
+    demoCta: 'Abrir Demo WhatsApp',
+
+    useCasesTitle: 'Perfecto Para',
+    useCases: [
+      { icon: '🦷', title: 'Clínicas Dentales', desc: 'Citas 24/7, recordatorios, gestión de cancelaciones' },
+      { icon: '💇', title: 'Salones de Belleza', desc: 'Gestión de reservas, sugerencias de servicios, confirmaciones' },
+      { icon: '🍽️', title: 'Restaurantes', desc: 'Reservas, preguntas del menú, solicitudes especiales' },
+      { icon: '🏋️', title: 'Gimnasios', desc: 'Reservas de clases, consultas de membresía, cambios de horario' },
+      { icon: '🏠', title: 'Inmobiliarias', desc: 'Consultas de propiedades, citas de visita, calificación de leads' },
+      { icon: '⚙️', title: 'Proveedores de Servicios', desc: 'Solicitudes de presupuesto, programación, soporte al cliente' }
+    ],
+
+    pricingTitle: 'Precios Simples',
+    pricingSubtitle: 'La Secretaria WhatsApp es un complemento de cualquier plan CatyAI.',
+    pricingAddon: '+€49/mes',
+    pricingBase: 'sobre tu plan base',
+    pricingFeatures: [
+      'Mensajes WhatsApp ilimitados',
+      'Sincronización Google Calendar',
+      'Generación de documentos (PDF)',
+      'Protección FraudAI Shield',
+      'Soporte multiidioma',
+      'Extracción de tareas y recordatorios'
+    ],
+    pricingCta: 'Empezar Ahora',
+
+    faqTitle: '¿Preguntas?',
+    faqs: [
+      { q: '¿Necesito un número nuevo de WhatsApp?', a: 'No. Caty se conecta a tu número existente mediante código QR, igual que WhatsApp Web.' },
+      { q: '¿Sabrán los clientes que es IA?', a: 'Solo si tú quieres. Caty responde como tu negocio, con tu nombre y estilo.' },
+      { q: '¿Qué pasa si Caty no puede responder?', a: 'Te reenvía la conversación con todo el contexto. Tú tomas el control en cualquier momento.' },
+      { q: '¿Puedo usarlo en múltiples dispositivos?', a: 'Sí. Caty funciona junto con tu teléfono. Puedes ver y responder cualquier conversación.' },
+      { q: '¿Mis datos están seguros?', a: 'Cumplimiento GDPR. Servidores AWS Irlanda. Cifrado de extremo a extremo. Tú eres dueño de tus datos.' }
+    ],
+
+    ctaTitle: '¿Listo Para No Perder Más Clientes?',
+    ctaSubtitle: 'Conecta tu WhatsApp en 2 minutos. Empieza a responder 24/7.',
+    ctaBtn: 'Conectar WhatsApp Ahora',
+    ctaDemo: 'O prueba el demo primero →',
+
+    footer: {
+      copyright: '© 2026 PayAi-X FZE. Todos los derechos reservados.',
+      privacy: 'Privacidad',
+      terms: 'Términos',
+      contact: 'Contacto'
+    }
+  },
+  pt: {
+    badge: 'Secretária AI no WhatsApp',
+    heroTitle1: 'Sua Secretária AI',
+    heroTitle2: 'no WhatsApp',
+    heroSubtitle: 'Responde aos clientes 24/7. Agenda compromissos. Gera documentos. Bloqueia golpes. Funciona no seu número de WhatsApp existente — sem número novo.',
+    heroCta: 'Conectar WhatsApp Agora',
+    heroCtaSecondary: 'Experimentar Demo Primeiro',
+    trustBadge1: '500 conversas/mês GRÁTIS',
+    trustBadge2: 'Sem cartão de crédito',
+    trustBadge3: 'Configuração em 2 minutos',
+    trustCenterLink: 'WhatsApp Native Connect — Sem taxas por mensagem',
+    trustCenterCta: 'Especificações Técnicas',
+
+    problemTitle: 'Seus Clientes Te Enviam Mensagem.',
+    problemHighlight: 'Ninguém Responde.',
+    problemStats: [
+      { value: '40%', label: 'dos clientes escrevem fora do horário' },
+      { value: '67%', label: 'mudam para o concorrente se não houver resposta em 1h' },
+      { value: '€1.500', label: 'custo mensal de uma recepcionista' }
+    ],
+    problemSolution: 'CatyAI responde instantaneamente, 24/7, por €0.',
+
+    howTitle: 'Como Funciona',
+    howSubtitle: 'Ativo em 2 minutos. Sem app para instalar. Sem conhecimentos técnicos.',
+    howSteps: [
+      { title: 'Escaneie o Código QR', desc: 'Igual ao WhatsApp Web. Use seu número de negócio existente.', icon: '📱' },
+      { title: 'Conte à Caty Sobre Seu Negócio', desc: 'Serviços, preços, horários, equipe. Por voz ou texto, leva 5 minutos.', icon: '💬' },
+      { title: 'Caty Assume o Controle', desc: 'Responde 24/7. Agenda compromissos. Envia orçamentos. Você relaxa.', icon: '🚀' }
+    ],
+
+    featuresTitle: 'Tudo Que Uma Secretária Faz.',
+    featuresHighlight: 'Automatizado.',
+    features: [
+      {
+        icon: '💬',
+        title: 'Responde Clientes 24/7',
+        desc: 'Respostas instantâneas em linguagem natural. Lembra o contexto da conversa. Fala romeno, inglês, espanhol, português, francês e árabe com autodetecção.',
+        highlight: '24/7'
+      },
+      {
+        icon: '📅',
+        title: 'Agenda Compromissos',
+        desc: 'Sincroniza com Google Calendar. Verifica disponibilidade em tempo real. Envia confirmações e lembretes de 30 minutos diretamente no WhatsApp.',
+        highlight: 'Google Calendar'
+      },
+      {
+        icon: '📄',
+        title: 'Gera Documentos',
+        desc: 'Cria orçamentos, faturas, confirmações de reserva como PDF. Envia diretamente no chat do WhatsApp. Seu logo, suas cores, sua marca.',
+        highlight: 'PDF'
+      },
+      {
+        icon: '🛡️',
+        title: 'Bloqueia Golpes com FraudAI',
+        desc: '8 módulos de detecção: links de phishing, urgências falsas, personificação, solicitações suspeitas. Protege você antes de ver a mensagem perigosa.',
+        highlight: 'FraudAI Shield'
+      },
+      {
+        icon: '📋',
+        title: 'Extrai Tarefas Automaticamente',
+        desc: '"Ligar para João amanhã às 10" vira tarefa com lembrete. "Pedir suprimentos" é rastreado. Email diário com tudo extraído.',
+        highlight: 'Auto-extract'
+      },
+      {
+        icon: '🧠',
+        title: 'Conhece Seu Negócio',
+        desc: 'Base de conhecimento de 12 domínios: serviços, preços, horários, localizações, equipe, políticas, FAQs, promoções, regras de reserva, métodos de pagamento e mais.',
+        highlight: '12 domínios'
+      }
+    ],
+
+    demoTitle: 'Experimente Agora',
+    demoSubtitle: 'Envie "demo" para nosso WhatsApp e veja Caty em ação.',
+    demoNumber: '+40 750 195 048',
+    demoInstructions: 'Abra o WhatsApp, envie "demo" para o número acima. Caty responde instantaneamente.',
+    demoCta: 'Abrir Demo WhatsApp',
+
+    useCasesTitle: 'Perfeito Para',
+    useCases: [
+      { icon: '🦷', title: 'Clínicas Dentárias', desc: 'Agendamentos 24/7, lembretes, gestão de cancelamentos' },
+      { icon: '💇', title: 'Salões de Beleza', desc: 'Gestão de reservas, sugestões de serviços, confirmações' },
+      { icon: '🍽️', title: 'Restaurantes', desc: 'Reservas, perguntas do cardápio, pedidos especiais' },
+      { icon: '🏋️', title: 'Academias', desc: 'Reservas de aulas, consultas de assinatura, alterações de horário' },
+      { icon: '🏠', title: 'Imobiliárias', desc: 'Consultas de imóveis, agendamento de visitas, qualificação de leads' },
+      { icon: '⚙️', title: 'Prestadores de Serviços', desc: 'Pedidos de orçamento, agendamento, suporte ao cliente' }
+    ],
+
+    pricingTitle: 'Preços Simples',
+    pricingSubtitle: 'A Secretária WhatsApp é um complemento de qualquer plano CatyAI.',
+    pricingAddon: '+€49/mês',
+    pricingBase: 'sobre seu plano base',
+    pricingFeatures: [
+      'Mensagens WhatsApp ilimitadas',
+      'Sincronização Google Calendar',
+      'Geração de documentos (PDF)',
+      'Proteção FraudAI Shield',
+      'Suporte multilíngue',
+      'Extração de tarefas e lembretes'
+    ],
+    pricingCta: 'Começar Agora',
+
+    faqTitle: 'Perguntas?',
+    faqs: [
+      { q: 'Preciso de um número novo de WhatsApp?', a: 'Não. Caty se conecta ao seu número existente via código QR, igual ao WhatsApp Web.' },
+      { q: 'Os clientes vão saber que é IA?', a: 'Só se você quiser. Caty responde como seu negócio, com seu nome e estilo.' },
+      { q: 'O que acontece se Caty não puder responder?', a: 'Encaminha a conversa para você com todo o contexto. Você assume a qualquer momento.' },
+      { q: 'Posso usar em múltiplos dispositivos?', a: 'Sim. Caty funciona junto com seu celular. Você pode ver e responder qualquer conversa.' },
+      { q: 'Meus dados estão seguros?', a: 'Conformidade GDPR. Servidores AWS Irlanda. Criptografia ponta a ponta. Você é dono dos seus dados.' }
+    ],
+
+    ctaTitle: 'Pronto Para Não Perder Mais Clientes?',
+    ctaSubtitle: 'Conecte seu WhatsApp em 2 minutos. Comece a responder 24/7.',
+    ctaBtn: 'Conectar WhatsApp Agora',
+    ctaDemo: 'Ou experimente o demo primeiro →',
+
+    footer: {
+      copyright: '© 2026 PayAi-X FZE. Todos os direitos reservados.',
+      privacy: 'Privacidade',
+      terms: 'Termos',
+      contact: 'Contato'
+    }
+  },
+  fr: {
+    badge: 'Secrétaire IA sur WhatsApp',
+    heroTitle1: 'Votre Secrétaire IA',
+    heroTitle2: 'sur WhatsApp',
+    heroSubtitle: 'Répond aux clients 24/7. Prend des rendez-vous. Génère des documents. Bloque les arnaques. Fonctionne sur votre numéro WhatsApp existant — pas de nouveau numéro nécessaire.',
+    heroCta: 'Connecter WhatsApp Maintenant',
+    heroCtaSecondary: 'Essayer la Démo D\'abord',
+    trustBadge1: '500 conversations/mois GRATUITES',
+    trustBadge2: 'Sans carte bancaire',
+    trustBadge3: 'Configuration en 2 minutes',
+    trustCenterLink: 'WhatsApp Native Connect — Sans frais de message',
+    trustCenterCta: 'Spécifications Techniques',
+
+    problemTitle: 'Vos Clients Vous Écrivent.',
+    problemHighlight: 'Personne Ne Répond.',
+    problemStats: [
+      { value: '40%', label: 'des clients écrivent en dehors des heures' },
+      { value: '67%', label: 'changent de concurrent sans réponse en 1h' },
+      { value: '€1.500', label: 'coût mensuel d\'une réceptionniste' }
+    ],
+    problemSolution: 'CatyAI répond instantanément, 24/7, pour €0.',
+
+    howTitle: 'Comment Ça Marche',
+    howSubtitle: 'Actif en 2 minutes. Pas d\'app à installer. Pas de compétences techniques nécessaires.',
+    howSteps: [
+      { title: 'Scannez le Code QR', desc: 'Comme WhatsApp Web. Utilisez votre numéro professionnel existant.', icon: '📱' },
+      { title: 'Parlez de Votre Entreprise à Caty', desc: 'Services, prix, horaires, équipe. Par voix ou texte, prend 5 minutes.', icon: '💬' },
+      { title: 'Caty Prend le Relais', desc: 'Répond 24/7. Prend des rendez-vous. Envoie des devis. Vous vous détendez.', icon: '🚀' }
+    ],
+
+    featuresTitle: 'Tout Ce Que Fait Une Secrétaire.',
+    featuresHighlight: 'Automatisé.',
+    features: [
+      {
+        icon: '💬',
+        title: 'Répond aux Clients 24/7',
+        desc: 'Réponses instantanées en langage naturel. Mémorise le contexte de la conversation. Parle roumain, anglais, espagnol, portugais, français et arabe avec détection automatique.',
+        highlight: '24/7'
+      },
+      {
+        icon: '📅',
+        title: 'Prend des Rendez-vous',
+        desc: 'Synchronise avec Google Calendar. Vérifie la disponibilité en temps réel. Envoie des confirmations et des rappels à 30 minutes directement sur WhatsApp.',
+        highlight: 'Google Calendar'
+      },
+      {
+        icon: '📄',
+        title: 'Génère des Documents',
+        desc: 'Crée devis, factures, confirmations de réservation en PDF. Les envoie directement dans le chat WhatsApp. Votre logo, vos couleurs, votre marque.',
+        highlight: 'PDF'
+      },
+      {
+        icon: '🛡️',
+        title: 'Bloque les Arnaques avec FraudAI',
+        desc: '8 modules de détection : liens de phishing, fausses urgences, usurpation d\'identité, demandes suspectes. Vous protège avant que vous voyiez le message dangereux.',
+        highlight: 'FraudAI Shield'
+      },
+      {
+        icon: '📋',
+        title: 'Extrait les Tâches Automatiquement',
+        desc: '"Appeler Jean demain à 10h" devient une tâche avec rappel. "Commander des fournitures" est suivi. Email quotidien avec tout ce qui a été extrait.',
+        highlight: 'Auto-extract'
+      },
+      {
+        icon: '🧠',
+        title: 'Connaît Votre Entreprise',
+        desc: 'Base de connaissances de 12 domaines : services, prix, horaires, emplacements, équipe, politiques, FAQs, promotions, règles de réservation, méthodes de paiement et plus.',
+        highlight: '12 domaines'
+      }
+    ],
+
+    demoTitle: 'Essayez Maintenant',
+    demoSubtitle: 'Envoyez "demo" sur notre WhatsApp et voyez Caty en action.',
+    demoNumber: '+40 750 195 048',
+    demoInstructions: 'Ouvrez WhatsApp, envoyez "demo" au numéro ci-dessus. Caty répond instantanément.',
+    demoCta: 'Ouvrir la Démo WhatsApp',
+
+    useCasesTitle: 'Parfait Pour',
+    useCases: [
+      { icon: '🦷', title: 'Cliniques Dentaires', desc: 'Rendez-vous 24/7, rappels, gestion des annulations' },
+      { icon: '💇', title: 'Salons de Coiffure', desc: 'Gestion des réservations, suggestions de services, confirmations' },
+      { icon: '🍽️', title: 'Restaurants', desc: 'Réservations, questions sur le menu, demandes spéciales' },
+      { icon: '🏋️', title: 'Salles de Sport', desc: 'Réservations de cours, questions d\'abonnement, changements d\'horaire' },
+      { icon: '🏠', title: 'Immobilier', desc: 'Questions sur les biens, rendez-vous de visite, qualification des prospects' },
+      { icon: '⚙️', title: 'Prestataires de Services', desc: 'Demandes de devis, planification, support client' }
+    ],
+
+    pricingTitle: 'Tarification Simple',
+    pricingSubtitle: 'La Secrétaire WhatsApp est un complément à tout plan CatyAI.',
+    pricingAddon: '+€49/mois',
+    pricingBase: 'en plus de votre plan de base',
+    pricingFeatures: [
+      'Messages WhatsApp illimités',
+      'Synchronisation Google Calendar',
+      'Génération de documents (PDF)',
+      'Protection FraudAI Shield',
+      'Support multilingue',
+      'Extraction de tâches et rappels'
+    ],
+    pricingCta: 'Commencer',
+
+    faqTitle: 'Questions ?',
+    faqs: [
+      { q: 'Ai-je besoin d\'un nouveau numéro WhatsApp ?', a: 'Non. Caty se connecte à votre numéro existant via code QR, comme WhatsApp Web.' },
+      { q: 'Les clients sauront-ils que c\'est une IA ?', a: 'Seulement si vous le souhaitez. Caty répond comme votre entreprise, avec votre nom et votre style.' },
+      { q: 'Que se passe-t-il si Caty ne peut pas répondre ?', a: 'Elle vous transfère la conversation avec tout le contexte. Vous reprenez la main à tout moment.' },
+      { q: 'Puis-je l\'utiliser sur plusieurs appareils ?', a: 'Oui. Caty fonctionne en parallèle avec votre téléphone. Vous pouvez voir et répondre à n\'importe quelle conversation.' },
+      { q: 'Mes données sont-elles sécurisées ?', a: 'Conforme RGPD. Serveurs AWS Irlande. Chiffrement de bout en bout. Vos données vous appartiennent.' }
+    ],
+
+    ctaTitle: 'Prêt à Ne Plus Perdre de Clients ?',
+    ctaSubtitle: 'Connectez votre WhatsApp en 2 minutes. Commencez à répondre 24/7.',
+    ctaBtn: 'Connecter WhatsApp Maintenant',
+    ctaDemo: 'Ou essayez la démo d\'abord →',
+
+    footer: {
+      copyright: '© 2026 PayAi-X FZE. Tous droits réservés.',
+      privacy: 'Confidentialité',
+      terms: 'Conditions',
       contact: 'Contact'
     }
   }
@@ -300,7 +665,7 @@ export default function WhatsAppAI() {
                 ← Back to Home
               </Link>
               <a
-                href="https://app.catyai.io/signup?addon=whatsapp"
+                href="https://app.catyai.io/secretary/dashboard"
                 className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
               >
                 {t.heroCta}
@@ -337,7 +702,7 @@ export default function WhatsAppAI() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="https://app.catyai.io/signup?addon=whatsapp"
+                  href="https://app.catyai.io/secretary/dashboard"
                   className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -374,17 +739,6 @@ export default function WhatsAppAI() {
                 </span>
               </div>
 
-              {/* Trust Center Link */}
-              <Link
-                to="/trust-center"
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-green-400 transition-colors mt-4 group"
-              >
-                <span className="border-b border-dashed border-gray-600 group-hover:border-green-400">{t.trustCenterLink}</span>
-                <span className="text-green-500 font-medium">{t.trustCenterCta}</span>
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
             </div>
 
             {/* Right - Phone Mockup */}
@@ -631,7 +985,7 @@ export default function WhatsAppAI() {
             </ul>
 
             <a
-              href="https://app.catyai.io/signup?addon=whatsapp"
+              href="https://app.catyai.io/secretary/dashboard"
               className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-xl inline-block w-full transition-colors"
             >
               {t.pricingCta}
@@ -648,7 +1002,7 @@ export default function WhatsAppAI() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://app.catyai.io/signup?addon=whatsapp"
+              href="https://app.catyai.io/secretary/dashboard"
               className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -666,8 +1020,6 @@ export default function WhatsAppAI() {
         </div>
       </section>
 
-      {/* No Website? No Problem */}
-      <QRFirst />
 
       {/* FAQ */}
       <section className="py-20 px-4 bg-gray-900/50">
