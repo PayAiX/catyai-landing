@@ -137,6 +137,15 @@ const translations = {
     ctaSubtitle: 'Scan. Setup. Start receiving customers.',
     ctaButton: 'Connect WhatsApp Now',
 
+    paymentMethodsTitle: 'Payment Methods',
+    paymentMethodsSubtitle: 'Your customers pay how they want. You decide which methods to accept.',
+    paymentMethods: [
+      { icon: '💵', title: 'Cash', desc: 'Customer pays in person when receiving the service.', badge: 'FREE', badgeColor: 'green' },
+      { icon: '🏦', title: 'Bank Transfer', desc: 'Caty sends your IBAN automatically. Customer pays via bank app.', badge: 'FREE', badgeColor: 'green' },
+      { icon: '🔄', title: 'Revolut', desc: 'Instant payment via Revolut link. Money arrives in seconds.', badge: 'FREE', badgeColor: 'green' },
+      { icon: '💳', title: 'Card Online', desc: 'Stripe integration for card payments. Professional checkout.', badge: '5%', badgeColor: 'gold' }
+    ],
+
     nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Get Started' },
     footer: {
       tagline: 'AI that works for your business.',
@@ -289,6 +298,15 @@ const translations = {
     ctaSubtitle: 'Scanează. Configurează. Începe să primești clienți.',
     ctaButton: 'Conectează WhatsApp Acum',
 
+    paymentMethodsTitle: 'Metode de Plată',
+    paymentMethodsSubtitle: 'Clienții tăi plătesc cum vor. Tu decizi ce metode accepți.',
+    paymentMethods: [
+      { icon: '💵', title: 'Cash', desc: 'Clientul plătește în persoană când primește serviciul.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '🏦', title: 'Transfer Bancar', desc: 'Caty trimite IBAN-ul tău automat. Clientul plătește din aplicația băncii.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '🔄', title: 'Revolut', desc: 'Plată instant prin link Revolut. Banii ajung în secunde.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '💳', title: 'Card Online', desc: 'Integrare Stripe pentru plăți cu cardul. Checkout profesional.', badge: '5%', badgeColor: 'gold' }
+    ],
+
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'FAQ', login: 'Autentificare', getStarted: 'Începe Acum' },
     footer: {
       tagline: 'AI care lucrează pentru afacerea ta.',
@@ -411,6 +429,15 @@ const translations = {
     ctaSubtitle: 'Escanea. Configura. Empieza a recibir clientes.',
     ctaButton: 'Conectar WhatsApp Ahora',
 
+    paymentMethodsTitle: 'Métodos de Pago',
+    paymentMethodsSubtitle: 'Tus clientes pagan como quieran. Tú decides qué métodos aceptar.',
+    paymentMethods: [
+      { icon: '💵', title: 'Efectivo', desc: 'El cliente paga en persona al recibir el servicio.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '🏦', title: 'Transferencia', desc: 'Caty envía tu IBAN automáticamente. El cliente paga desde su app bancaria.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '🔄', title: 'Revolut', desc: 'Pago instantáneo vía link Revolut. El dinero llega en segundos.', badge: 'GRATIS', badgeColor: 'green' },
+      { icon: '💳', title: 'Tarjeta Online', desc: 'Integración Stripe para pagos con tarjeta. Checkout profesional.', badge: '5%', badgeColor: 'gold' }
+    ],
+
     nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo Funciona', pricing: 'Precios', faq: 'FAQ', login: 'Entrar', getStarted: 'Empezar Ahora' },
     footer: {
       tagline: 'IA que trabaja para tu negocio.',
@@ -428,6 +455,268 @@ const translations = {
       gdpr: 'GDPR',
       copyright: '© 2024 PayAi-X FZE. Todos los derechos reservados.'
     }
+  },
+  pt: {
+    badge: 'Sem Website',
+    heroTitle1: 'Sem site?',
+    heroTitle2: 'Sem problema.',
+    heroSubtitle: 'Conecte seu WhatsApp em 2 minutos. Caty responde aos seus clientes instantaneamente. Perfeito para pequenos negócios, freelancers e serviços locais.',
+    heroCta: 'Conectar WhatsApp Agora',
+    heroCtaSecondary: 'Ver Como Funciona',
+    trustBadge1: 'Apenas €10/mês',
+    trustBadge2: 'Sem conhecimentos técnicos',
+    trustBadge3: 'Setup em 2 minutos',
+
+    problemTitle: 'Tem Clientes.',
+    problemHighlight: 'Não Conseguem Encontrá-lo.',
+    problemStats: [
+      { value: '73%', label: 'dos clientes preferem WhatsApp a ligar' },
+      { value: '45%', label: 'dos pequenos negócios não têm presença online' },
+      { value: '€10', label: 'por mês - tudo incluído' }
+    ],
+    problemSolution: 'O seu WhatsApp torna-se a sua recepção 24/7.',
+
+    howTitle: 'Como Funciona',
+    howSubtitle: 'Ao vivo em 2 minutos. Sem site. Sem app para instalar. Sem conhecimentos técnicos.',
+    howSteps: [
+      { title: 'Digitalize o Código QR', desc: 'Como no WhatsApp Web. Use o seu número de negócio existente. Não precisa de número novo.', icon: '📱' },
+      { title: 'Conte à Caty Sobre o Seu Negócio', desc: 'Serviços, preços, horários, localização. Voz ou texto — leva 5 minutos.', icon: '💬' },
+      { title: 'Está Online!', desc: 'Caty responde aos clientes 24/7. Marca consultas. Envia orçamentos. Você foca no seu trabalho.', icon: '🚀' }
+    ],
+
+    benefitsTitle: 'Tudo O Que Precisa.',
+    benefitsHighlight: 'Nada Que Não.',
+    benefits: [
+      { icon: '💬', title: 'Resposta Instantânea', desc: 'Os clientes escrevem no WhatsApp, Caty responde instantaneamente.', highlight: '24/7' },
+      { icon: '📅', title: 'Marcações Automáticas', desc: 'Caty marca consultas diretamente no seu calendário.', highlight: 'Google Calendar' },
+      { icon: '📄', title: 'Orçamentos em Segundos', desc: 'O cliente pergunta o preço? Caty gera um PDF profissional.', highlight: 'PDF' },
+      { icon: '🛡️', title: 'Proteção Anti-Fraude', desc: 'FraudAI Shield bloqueia phishing e mensagens suspeitas.', highlight: 'Protegido' },
+      { icon: '🌍', title: 'Multi-Idioma', desc: 'Caty fala português, inglês, espanhol, romeno, francês e árabe.', highlight: '6 Idiomas' },
+      { icon: '📊', title: 'Estatísticas', desc: 'Veja o que os clientes mais perguntam e as horas de pico.', highlight: 'Analytics' }
+    ],
+
+    useCasesTitle: 'Perfeito Para',
+    useCasesSubtitle: 'Pequenos negócios e freelancers que não precisam de site — apenas de clientes.',
+    useCases: [
+      { icon: '💇', title: 'Cabeleireiros', desc: 'Marque consultas enquanto corta. Nunca perca um cliente.' },
+      { icon: '🔧', title: 'Mecânicos', desc: 'Receba pedidos de reparação. Envie orçamentos.' },
+      { icon: '🔌', title: 'Eletricistas', desc: 'Receba trabalhos 24/7. Agende visitas automaticamente.' },
+      { icon: '🦷', title: 'Dentistas', desc: 'Marque consultas. Envie lembretes. Gerencie urgências.' },
+      { icon: '🏋️', title: 'Personal Trainers', desc: 'Agende sessões. Responda perguntas de fitness.' },
+      { icon: '📸', title: 'Fotógrafos', desc: 'Agende sessões. Partilhe pacotes. Confirme datas.' },
+      { icon: '🧹', title: 'Limpezas', desc: 'Receba reservas. Envie confirmações.' },
+      { icon: '🚗', title: 'Instrutores', desc: 'Agende aulas. Envie lembretes.' }
+    ],
+
+    comparisonTitle: 'Website vs. WhatsApp + Caty',
+    comparisonItems: [
+      { feature: 'Tempo setup', website: '2-4 semanas', caty: '2 minutos' },
+      { feature: 'Custo', website: '€500-5,000', caty: '€10/mês' },
+      { feature: 'Conhecimentos técnicos', website: 'Necessários', caty: 'Nenhum' },
+      { feature: 'Resposta clientes', website: 'Você manualmente', caty: 'AI 24/7' },
+      { feature: 'Marcações', website: 'Ferramenta externa', caty: 'Incluídas' },
+      { feature: 'Manutenção', website: 'Contínua', caty: 'Zero' }
+    ],
+
+    testimonialsTitle: 'O Que Dizem',
+    testimonials: [
+      { quote: 'Conectei em 2 minutos. Agora Caty marca as minhas consultas enquanto trabalho.', author: 'Carlos', role: 'Mecânico' },
+      { quote: 'Sem site, sem problema. Os meus clientes escrevem no WhatsApp e Caty trata de tudo.', author: 'Maria', role: 'Cabeleireira' },
+      { quote: 'Era cético com IA mas fala português perfeitamente.', author: 'João', role: 'Canalizador' }
+    ],
+
+    pricingTitle: 'Preço Simples',
+    pricingSubtitle: 'Um só plano. Tudo incluído. Cancele quando quiser.',
+    plans: [
+      {
+        name: 'WhatsApp AI',
+        price: '€10',
+        period: '/mês',
+        desc: 'Tudo o que precisa',
+        features: [
+          '500 conversas/mês',
+          'Respostas AI 24/7',
+          'Google Calendar sync',
+          'Orçamentos PDF',
+          'Proteção FraudAI',
+          'Suporte multi-idioma'
+        ],
+        cta: 'Começar Agora',
+        highlight: true
+      }
+    ],
+
+    faqTitle: 'Perguntas?',
+    faqs: [
+      { q: 'Realmente não preciso de site?', a: 'Correto. O seu WhatsApp torna-se o contacto do seu negócio.' },
+      { q: 'E se Caty não conseguir responder?', a: 'Caty envia-lhe a conversa com todo o contexto. Você assume o controlo.' },
+      { q: 'Os clientes saberão que é IA?', a: 'Só se você quiser. Caty pode responder como o seu negócio.' },
+      { q: 'Posso usar o meu número de WhatsApp?', a: 'Sim! Caty conecta-se ao seu WhatsApp de negócio existente.' },
+      { q: 'Que idiomas fala Caty?', a: 'Português, inglês, espanhol, romeno, francês e árabe. Deteta automaticamente.' },
+      { q: 'Como cancelo?', a: 'Cancele quando quiser no seu painel. Sem contratos.' }
+    ],
+
+    ctaTitle: 'Pronto em 2 Minutos',
+    ctaSubtitle: 'Digitalize. Configure. Comece a receber clientes.',
+    ctaButton: 'Conectar WhatsApp Agora',
+
+    paymentMethodsTitle: 'Métodos de Pagamento',
+    paymentMethodsSubtitle: 'Os seus clientes pagam como quiserem. Você decide que métodos aceitar.',
+    paymentMethods: [
+      { icon: '💵', title: 'Dinheiro', desc: 'O cliente paga presencialmente ao receber o serviço.', badge: 'GRÁTIS', badgeColor: 'green' },
+      { icon: '🏦', title: 'Transferência', desc: 'Caty envia o seu IBAN automaticamente. O cliente paga pela app do banco.', badge: 'GRÁTIS', badgeColor: 'green' },
+      { icon: '🔄', title: 'Revolut', desc: 'Pagamento instantâneo via link Revolut. O dinheiro chega em segundos.', badge: 'GRÁTIS', badgeColor: 'green' },
+      { icon: '💳', title: 'Cartão Online', desc: 'Integração Stripe para pagamentos com cartão. Checkout profissional.', badge: '5%', badgeColor: 'gold' }
+    ],
+
+    nav: { home: 'Início', features: 'Funcionalidades', howItWorks: 'Como Funciona', pricing: 'Preços', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar Agora' },
+    footer: {
+      tagline: 'IA que trabalha para o seu negócio.',
+      product: 'Produto',
+      company: 'Empresa',
+      legal: 'Legal',
+      features: 'Funcionalidades',
+      pricing: 'Preços',
+      whatsapp: 'WhatsApp AI',
+      about: 'Sobre',
+      blog: 'Blog',
+      contact: 'Contacto',
+      privacy: 'Privacidade',
+      terms: 'Termos',
+      gdpr: 'RGPD',
+      copyright: '© 2024 PayAi-X FZE. Todos os direitos reservados.'
+    }
+  },
+  fr: {
+    badge: 'Sans Site Web',
+    heroTitle1: 'Pas de site?',
+    heroTitle2: 'Pas de problème.',
+    heroSubtitle: 'Connectez votre WhatsApp en 2 minutes. Caty répond instantanément à vos clients. Parfait pour les petites entreprises, freelances et services locaux.',
+    heroCta: 'Connecter WhatsApp Maintenant',
+    heroCtaSecondary: 'Voir Comment Ça Marche',
+    trustBadge1: 'Seulement €10/mois',
+    trustBadge2: 'Aucune compétence technique',
+    trustBadge3: 'Setup en 2 minutes',
+
+    problemTitle: 'Vous Avez des Clients.',
+    problemHighlight: 'Ils Ne Peuvent Pas Vous Trouver.',
+    problemStats: [
+      { value: '73%', label: 'des clients préfèrent WhatsApp aux appels' },
+      { value: '45%', label: 'des petites entreprises n\'ont pas de présence en ligne' },
+      { value: '€10', label: 'par mois - tout inclus' }
+    ],
+    problemSolution: 'Votre WhatsApp devient votre réception 24/7.',
+
+    howTitle: 'Comment Ça Marche',
+    howSubtitle: 'En ligne en 2 minutes. Pas de site. Pas d\'app à installer. Pas de compétences techniques.',
+    howSteps: [
+      { title: 'Scannez le Code QR', desc: 'Comme WhatsApp Web. Utilisez votre numéro professionnel existant. Pas besoin de nouveau numéro.', icon: '📱' },
+      { title: 'Parlez de Votre Entreprise à Caty', desc: 'Services, prix, horaires, emplacement. Voix ou texte — prend 5 minutes.', icon: '💬' },
+      { title: 'Vous Êtes En Ligne!', desc: 'Caty répond aux clients 24/7. Prend des rendez-vous. Envoie des devis. Vous vous concentrez sur votre travail.', icon: '🚀' }
+    ],
+
+    benefitsTitle: 'Tout Ce Dont Vous Avez Besoin.',
+    benefitsHighlight: 'Rien de Plus.',
+    benefits: [
+      { icon: '💬', title: 'Réponse Instantanée', desc: 'Les clients vous écrivent sur WhatsApp, Caty répond instantanément.', highlight: '24/7' },
+      { icon: '📅', title: 'Rendez-vous Automatiques', desc: 'Caty prend les rendez-vous directement dans votre calendrier.', highlight: 'Google Calendar' },
+      { icon: '📄', title: 'Devis en Secondes', desc: 'Le client demande un prix? Caty génère un PDF professionnel.', highlight: 'PDF' },
+      { icon: '🛡️', title: 'Protection Anti-Fraude', desc: 'FraudAI Shield bloque le phishing et les messages suspects.', highlight: 'Protégé' },
+      { icon: '🌍', title: 'Multi-Langue', desc: 'Caty parle français, anglais, espagnol, portugais, roumain et arabe.', highlight: '6 Langues' },
+      { icon: '📊', title: 'Statistiques', desc: 'Voyez ce que les clients demandent le plus et les heures de pointe.', highlight: 'Analytics' }
+    ],
+
+    useCasesTitle: 'Parfait Pour',
+    useCasesSubtitle: 'Petites entreprises et freelances qui n\'ont pas besoin de site — juste de clients.',
+    useCases: [
+      { icon: '💇', title: 'Coiffeurs', desc: 'Prenez des rendez-vous pendant que vous coupez. Ne perdez jamais un client.' },
+      { icon: '🔧', title: 'Mécaniciens', desc: 'Recevez des demandes de réparation. Envoyez des devis.' },
+      { icon: '🔌', title: 'Électriciens', desc: 'Recevez des travaux 24/7. Planifiez les visites automatiquement.' },
+      { icon: '🦷', title: 'Dentistes', desc: 'Prenez des rendez-vous. Envoyez des rappels. Gérez les urgences.' },
+      { icon: '🏋️', title: 'Coachs Sportifs', desc: 'Planifiez des séances. Répondez aux questions fitness.' },
+      { icon: '📸', title: 'Photographes', desc: 'Planifiez des séances. Partagez vos forfaits. Confirmez les dates.' },
+      { icon: '🧹', title: 'Nettoyage', desc: 'Recevez des réservations. Envoyez des confirmations.' },
+      { icon: '🚗', title: 'Moniteurs', desc: 'Planifiez des leçons. Envoyez des rappels.' }
+    ],
+
+    comparisonTitle: 'Site Web vs. WhatsApp + Caty',
+    comparisonItems: [
+      { feature: 'Temps setup', website: '2-4 semaines', caty: '2 minutes' },
+      { feature: 'Coût', website: '€500-5,000', caty: '€10/mois' },
+      { feature: 'Compétences techniques', website: 'Nécessaires', caty: 'Aucune' },
+      { feature: 'Réponse clients', website: 'Vous manuellement', caty: 'IA 24/7' },
+      { feature: 'Rendez-vous', website: 'Outil externe', caty: 'Inclus' },
+      { feature: 'Maintenance', website: 'Continue', caty: 'Zéro' }
+    ],
+
+    testimonialsTitle: 'Ce Qu\'ils Disent',
+    testimonials: [
+      { quote: 'Je me suis connecté en 2 minutes. Maintenant Caty prend mes rendez-vous pendant que je travaille.', author: 'Pierre', role: 'Mécanicien' },
+      { quote: 'Pas de site, pas de problème. Mes clients écrivent sur WhatsApp et Caty gère tout.', author: 'Marie', role: 'Coiffeuse' },
+      { quote: 'J\'étais sceptique avec l\'IA mais elle parle français parfaitement.', author: 'Jean', role: 'Plombier' }
+    ],
+
+    pricingTitle: 'Prix Simple',
+    pricingSubtitle: 'Un seul plan. Tout inclus. Annulez quand vous voulez.',
+    plans: [
+      {
+        name: 'WhatsApp AI',
+        price: '€10',
+        period: '/mois',
+        desc: 'Tout ce dont vous avez besoin',
+        features: [
+          '500 conversations/mois',
+          'Réponses IA 24/7',
+          'Google Calendar sync',
+          'Devis PDF',
+          'Protection FraudAI',
+          'Support multi-langue'
+        ],
+        cta: 'Commencer Maintenant',
+        highlight: true
+      }
+    ],
+
+    faqTitle: 'Questions?',
+    faqs: [
+      { q: 'Je n\'ai vraiment pas besoin de site?', a: 'Correct. Votre WhatsApp devient le contact de votre entreprise.' },
+      { q: 'Et si Caty ne peut pas répondre?', a: 'Caty vous envoie la conversation avec tout le contexte. Vous prenez le relais.' },
+      { q: 'Les clients sauront que c\'est une IA?', a: 'Seulement si vous le voulez. Caty peut répondre comme votre entreprise.' },
+      { q: 'Puis-je utiliser mon numéro WhatsApp?', a: 'Oui! Caty se connecte à votre WhatsApp professionnel existant.' },
+      { q: 'Quelles langues parle Caty?', a: 'Français, anglais, espagnol, portugais, roumain et arabe. Détection automatique.' },
+      { q: 'Comment j\'annule?', a: 'Annulez quand vous voulez depuis votre tableau de bord. Sans contrat.' }
+    ],
+
+    ctaTitle: 'Prêt en 2 Minutes',
+    ctaSubtitle: 'Scannez. Configurez. Commencez à recevoir des clients.',
+    ctaButton: 'Connecter WhatsApp Maintenant',
+
+    paymentMethodsTitle: 'Méthodes de Paiement',
+    paymentMethodsSubtitle: 'Vos clients paient comme ils veulent. Vous décidez quelles méthodes accepter.',
+    paymentMethods: [
+      { icon: '💵', title: 'Espèces', desc: 'Le client paie en personne lors de la réception du service.', badge: 'GRATUIT', badgeColor: 'green' },
+      { icon: '🏦', title: 'Virement', desc: 'Caty envoie votre IBAN automatiquement. Le client paie via son app bancaire.', badge: 'GRATUIT', badgeColor: 'green' },
+      { icon: '🔄', title: 'Revolut', desc: 'Paiement instantané via lien Revolut. L\'argent arrive en secondes.', badge: 'GRATUIT', badgeColor: 'green' },
+      { icon: '💳', title: 'Carte en Ligne', desc: 'Intégration Stripe pour les paiements par carte. Checkout professionnel.', badge: '5%', badgeColor: 'gold' }
+    ],
+
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment Ça Marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer' },
+    footer: {
+      tagline: 'IA qui travaille pour votre entreprise.',
+      product: 'Produit',
+      company: 'Entreprise',
+      legal: 'Légal',
+      features: 'Fonctionnalités',
+      pricing: 'Tarifs',
+      whatsapp: 'WhatsApp AI',
+      about: 'À Propos',
+      blog: 'Blog',
+      contact: 'Contact',
+      privacy: 'Confidentialité',
+      terms: 'Conditions',
+      gdpr: 'RGPD',
+      copyright: '© 2024 PayAi-X FZE. Tous droits réservés.'
+    }
   }
 }
 
@@ -437,7 +726,9 @@ function LanguageSelector({ lang, setLang }) {
   const languages = [
     { code: 'en', flag: '🇬🇧', name: 'EN' },
     { code: 'ro', flag: '🇷🇴', name: 'RO' },
-    { code: 'es', flag: '🇪🇸', name: 'ES' }
+    { code: 'es', flag: '🇪🇸', name: 'ES' },
+    { code: 'pt', flag: '🇵🇹', name: 'PT' },
+    { code: 'fr', flag: '🇫🇷', name: 'FR' }
   ]
   const current = languages.find(l => l.code === lang) || languages[0]
 
@@ -799,6 +1090,33 @@ export default function NoWebsite() {
                   </div>
                   <p className="text-gray-400">{step.desc}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Methods */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.paymentMethodsTitle}</h2>
+            <p className="text-gray-400 text-lg">{t.paymentMethodsSubtitle}</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.paymentMethods.map((method, i) => (
+              <div key={i} className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50 text-center relative overflow-hidden">
+                {/* Badge */}
+                <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${
+                  method.badgeColor === 'green'
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                }`}>
+                  {method.badge}
+                </div>
+                <div className="text-5xl mb-4 mt-2">{method.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-2">{method.title}</h3>
+                <p className="text-gray-400 text-sm">{method.desc}</p>
               </div>
             ))}
           </div>

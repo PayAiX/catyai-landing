@@ -1594,11 +1594,11 @@ function Header() {
                   {/* Invisible bridge to cover gap */}
                   <div className="absolute top-full left-0 w-64 h-2" />
                   <div className="absolute top-full left-0 mt-2 w-64 bg-gray-900 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
-                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">💬</span>
+                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">🌐</span>
                     <div>
-                      <div className="text-white font-medium">{t.nav.whatsappSecretary}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.whatsappDesc}</div>
+                      <div className="text-cyan-400 font-medium">{t.nav.catyWidget}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.catyWidgetDesc}</div>
                     </div>
                   </Link>
                   <Link to="/no-website" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
@@ -1606,6 +1606,13 @@ function Header() {
                     <div>
                       <div className="text-white font-medium">{t.nav.qrFirst}</div>
                       <div className="text-gray-400 text-xs">{t.nav.qrFirstDesc}</div>
+                    </div>
+                  </Link>
+                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">💬</span>
+                    <div>
+                      <div className="text-white font-medium">{t.nav.whatsappSecretary}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.whatsappDesc}</div>
                     </div>
                   </Link>
                   <hr className="border-gray-700" />
@@ -1616,19 +1623,12 @@ function Header() {
                       <div className="text-gray-400 text-xs">{t.nav.fraudaiDesc}</div>
                     </div>
                   </Link>
-                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">🌐</span>
-                    <div>
-                      <div className="text-cyan-400 font-medium">{t.nav.catyWidget}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.catyWidgetDesc}</div>
-                    </div>
-                  </Link>
                 </div>
                 </>
               )}
             </div>
 
-            <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
+            <a href="#solutions" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
           </div>
 
@@ -1656,13 +1656,13 @@ function Header() {
             <div className="flex flex-col gap-4">
               {/* Mobile Products Section */}
               <div className="text-gray-500 text-xs uppercase tracking-wider">{t.nav.products}</div>
-              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
-              <Link to="/no-website" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
-              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
               <Link to="/widget" className="text-cyan-400 hover:text-cyan-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌐 {t.nav.catyWidget}</Link>
+              <Link to="/no-website" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
+              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
+              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
 
               <hr className="border-gray-800" />
-              <a href="#pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
+              <a href="#solutions" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
               <hr className="border-gray-800" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
@@ -2914,7 +2914,7 @@ function ProduseNoi() {
   ]
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="solutions" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

@@ -249,6 +249,39 @@ const translations = {
     ctaButton: 'Install Widget Free',
     ctaDemo: 'Or book a demo first →',
 
+    pricingTitle: 'Simple, Transparent',
+    pricingHighlight: 'Pricing',
+    pricingSubtitle: 'Start free, upgrade when you grow',
+    pricingPlans: [
+      {
+        name: 'FREE',
+        price: '€0',
+        period: '/month',
+        desc: 'Perfect to get started',
+        features: ['500 conversations/month', 'AI responses 24/7', 'Basic customization', 'Email support'],
+        cta: 'Start Free',
+        popular: false
+      },
+      {
+        name: 'PRO',
+        price: '€49',
+        period: '/month',
+        desc: 'For growing businesses',
+        features: ['Unlimited conversations', 'Full customization', 'Document generation', 'Priority support', 'Analytics dashboard', 'CRM integrations'],
+        cta: 'Get Pro',
+        popular: true
+      },
+      {
+        name: 'ENTERPRISE',
+        price: 'Custom',
+        period: '',
+        desc: 'For large teams',
+        features: ['Everything in Pro', 'Dedicated account manager', 'Custom integrations', 'SLA guarantee', 'On-premise option', 'Team training'],
+        cta: 'Contact Sales',
+        popular: false
+      }
+    ],
+
     nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Start Free' },
     footer: {
       tagline: 'AI that sells for your business.',
@@ -512,6 +545,39 @@ const translations = {
     ctaSubtitle: 'Instalează Caty Widget în 2 minute. Începe să convertești 24/7.',
     ctaButton: 'Instalează Widget Gratuit',
     ctaDemo: 'Sau programează un demo întâi →',
+
+    pricingTitle: 'Prețuri Simple,',
+    pricingHighlight: 'Transparente',
+    pricingSubtitle: 'Începi gratuit, faci upgrade când crești',
+    pricingPlans: [
+      {
+        name: 'GRATUIT',
+        price: '€0',
+        period: '/lună',
+        desc: 'Perfect pentru început',
+        features: ['500 conversații/lună', 'Răspunsuri AI 24/7', 'Personalizare de bază', 'Suport email'],
+        cta: 'Începe Gratuit',
+        popular: false
+      },
+      {
+        name: 'PRO',
+        price: '€49',
+        period: '/lună',
+        desc: 'Pentru afaceri în creștere',
+        features: ['Conversații nelimitate', 'Personalizare completă', 'Generare documente', 'Suport prioritar', 'Dashboard analitics', 'Integrări CRM'],
+        cta: 'Obține Pro',
+        popular: true
+      },
+      {
+        name: 'ENTERPRISE',
+        price: 'Personalizat',
+        period: '',
+        desc: 'Pentru echipe mari',
+        features: ['Tot din Pro', 'Manager de cont dedicat', 'Integrări custom', 'Garanție SLA', 'Opțiune on-premise', 'Training echipă'],
+        cta: 'Contactează Vânzări',
+        popular: false
+      }
+    ],
 
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'FAQ', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     footer: {
@@ -777,6 +843,39 @@ const translations = {
     ctaButton: 'Instalar Widget Gratis',
     ctaDemo: 'O agenda un demo primero →',
 
+    pricingTitle: 'Precios Simples,',
+    pricingHighlight: 'Transparentes',
+    pricingSubtitle: 'Empieza gratis, actualiza cuando crezcas',
+    pricingPlans: [
+      {
+        name: 'GRATIS',
+        price: '€0',
+        period: '/mes',
+        desc: 'Perfecto para empezar',
+        features: ['500 conversaciones/mes', 'Respuestas AI 24/7', 'Personalización básica', 'Soporte email'],
+        cta: 'Empezar Gratis',
+        popular: false
+      },
+      {
+        name: 'PRO',
+        price: '€49',
+        period: '/mes',
+        desc: 'Para negocios en crecimiento',
+        features: ['Conversaciones ilimitadas', 'Personalización completa', 'Generación de documentos', 'Soporte prioritario', 'Dashboard analítico', 'Integraciones CRM'],
+        cta: 'Obtener Pro',
+        popular: true
+      },
+      {
+        name: 'ENTERPRISE',
+        price: 'Personalizado',
+        period: '',
+        desc: 'Para equipos grandes',
+        features: ['Todo en Pro', 'Gestor de cuenta dedicado', 'Integraciones custom', 'Garantía SLA', 'Opción on-premise', 'Capacitación de equipo'],
+        cta: 'Contactar Ventas',
+        popular: false
+      }
+    ],
+
     nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo Funciona', pricing: 'Precios', faq: 'FAQ', login: 'Iniciar Sesión', getStarted: 'Empezar Gratis' },
     footer: {
       tagline: 'AI que vende para tu negocio.',
@@ -1016,6 +1115,39 @@ const translations = {
     ctaSubtitle: 'Instale Caty Widget em 2 minutos. Comece a converter 24/7.',
     ctaButton: 'Instalar Widget Grátis',
     ctaDemo: 'Ou agende uma demo primeiro →',
+
+    pricingTitle: 'Preços Simples,',
+    pricingHighlight: 'Transparentes',
+    pricingSubtitle: 'Comece grátis, faça upgrade quando crescer',
+    pricingPlans: [
+      {
+        name: 'GRÁTIS',
+        price: '€0',
+        period: '/mês',
+        desc: 'Perfeito para começar',
+        features: ['500 conversas/mês', 'Respostas IA 24/7', 'Personalização básica', 'Suporte por email'],
+        cta: 'Começar Grátis',
+        popular: false
+      },
+      {
+        name: 'PRO',
+        price: '€49',
+        period: '/mês',
+        desc: 'Para negócios em crescimento',
+        features: ['Conversas ilimitadas', 'Personalização completa', 'Geração de documentos', 'Suporte prioritário', 'Dashboard analítico', 'Integrações CRM'],
+        cta: 'Obter Pro',
+        popular: true
+      },
+      {
+        name: 'ENTERPRISE',
+        price: 'Personalizado',
+        period: '',
+        desc: 'Para grandes equipes',
+        features: ['Tudo no Pro', 'Gerente de conta dedicado', 'Integrações custom', 'Garantia SLA', 'Opção on-premise', 'Treinamento de equipe'],
+        cta: 'Contatar Vendas',
+        popular: false
+      }
+    ],
 
     nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como Funciona', pricing: 'Preços', faq: 'FAQ', login: 'Login', getStarted: 'Começar Grátis' },
     footer: {
@@ -1257,6 +1389,39 @@ const translations = {
     ctaButton: 'Installer Widget Gratuit',
     ctaDemo: 'Ou réservez une démo d\'abord →',
 
+    pricingTitle: 'Tarifs Simples,',
+    pricingHighlight: 'Transparents',
+    pricingSubtitle: 'Commencez gratuitement, passez au niveau supérieur quand vous grandissez',
+    pricingPlans: [
+      {
+        name: 'GRATUIT',
+        price: '€0',
+        period: '/mois',
+        desc: 'Parfait pour commencer',
+        features: ['500 conversations/mois', 'Réponses IA 24/7', 'Personnalisation de base', 'Support email'],
+        cta: 'Commencer Gratuit',
+        popular: false
+      },
+      {
+        name: 'PRO',
+        price: '€49',
+        period: '/mois',
+        desc: 'Pour les entreprises en croissance',
+        features: ['Conversations illimitées', 'Personnalisation complète', 'Génération de documents', 'Support prioritaire', 'Tableau de bord analytique', 'Intégrations CRM'],
+        cta: 'Obtenir Pro',
+        popular: true
+      },
+      {
+        name: 'ENTERPRISE',
+        price: 'Sur mesure',
+        period: '',
+        desc: 'Pour les grandes équipes',
+        features: ['Tout dans Pro', 'Gestionnaire de compte dédié', 'Intégrations personnalisées', 'Garantie SLA', 'Option on-premise', 'Formation équipe'],
+        cta: 'Contacter Ventes',
+        popular: false
+      }
+    ],
+
     nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça Marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     footer: {
       tagline: 'IA qui vend pour votre entreprise.',
@@ -1323,8 +1488,8 @@ export default function CatyWidget() {
               </Link>
               <div className="hidden md:flex items-center gap-6">
                 <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.home}</Link>
-                <Link to="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.features}</Link>
-                <Link to="/#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.pricing}</Link>
+                <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.features}</a>
+                <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.pricing}</a>
                 <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.faq}</a>
               </div>
               <div className="flex items-center gap-4">
@@ -1487,7 +1652,7 @@ export default function CatyWidget() {
         </section>
 
         {/* Complete Features List */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.featuresTitle}</h2>
@@ -1579,8 +1744,70 @@ export default function CatyWidget() {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                {t.pricingTitle} <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">{t.pricingHighlight}</span>
+              </h2>
+              <p className="text-gray-400 text-lg">{t.pricingSubtitle}</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {t.pricingPlans.map((plan, i) => (
+                <div
+                  key={i}
+                  className={`relative bg-gray-800/30 rounded-2xl p-8 border-2 transition-all hover:shadow-xl ${
+                    plan.popular
+                      ? 'border-cyan-500/60 shadow-cyan-500/20 md:scale-105 z-10'
+                      : 'border-gray-700/50 hover:border-cyan-500/30'
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full text-gray-900 text-sm font-bold">
+                      Popular
+                    </div>
+                  )}
+
+                  <div className="text-center mb-6">
+                    <h3 className="text-gray-400 font-bold text-sm tracking-wider mb-2">{plan.name}</h3>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-4xl font-bold text-white">{plan.price}</span>
+                      <span className="text-gray-500">{plan.period}</span>
+                    </div>
+                    <p className="text-gray-500 text-sm mt-2">{plan.desc}</p>
+                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, j) => (
+                      <li key={j} className="flex items-center gap-3 text-gray-300">
+                        <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={plan.name === 'ENTERPRISE' || plan.name === 'Personalizado' || plan.name === 'Sur mesure' ? 'mailto:contact@payai-x.com' : 'https://app.catyai.io'}
+                    className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 hover:opacity-90'
+                        : 'bg-gray-700 text-white hover:bg-gray-600'
+                    }`}
+                  >
+                    {plan.cta}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
-        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8">
+        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
 
