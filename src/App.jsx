@@ -3147,7 +3147,10 @@ function HomePage() {
       {/* SECTION 6: Industrii - 6 icons */}
       <IndustriiNoi />
 
-      {/* SECTION 7: CTA Final */}
+      {/* SECTION 7: FAQ */}
+      <FAQ />
+
+      {/* SECTION 8: CTA Final */}
       <CTAFinal />
 
       <FloatingWidgetIndicator />
