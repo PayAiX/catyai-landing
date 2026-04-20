@@ -532,8 +532,9 @@ export default function GeoGateway() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-[#1a2744]/50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="hover:opacity-80 transition-opacity">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
+              <span className="text-xl font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</Link>
@@ -800,8 +801,9 @@ export default function GeoGateway() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="inline-block mb-4">
+              <Link to="/" className="inline-flex items-center gap-2 mb-4">
                 <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
+                <span className="text-lg font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
               </Link>
               <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
             </div>
