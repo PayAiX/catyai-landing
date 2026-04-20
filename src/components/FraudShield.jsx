@@ -119,7 +119,7 @@ export default function FraudShield() {
           {t.threats.map((threat, i) => (
             <div
               key={i}
-              className={`bg-gray-800/50 backdrop-blur rounded-2xl p-6 border border-gray-700/50 hover:border-red-500/30 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`bg-[#0A1628]/50 backdrop-blur rounded-2xl p-6 border border-[#1a2744]/50 hover:border-red-500/30 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div

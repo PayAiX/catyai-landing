@@ -222,7 +222,7 @@ export default function Careers() {
             <div className="grid sm:grid-cols-2 gap-3">
               {t.perks.items.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-gray-300">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>{item}</span>
@@ -278,7 +278,7 @@ export default function Careers() {
       {/* Back link */}
       <Link
         to="/"
-        className="fixed bottom-6 left-6 z-40 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
+        className="fixed bottom-6 left-6 z-40 bg-[#0A1628] hover:bg-[#1a2744] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

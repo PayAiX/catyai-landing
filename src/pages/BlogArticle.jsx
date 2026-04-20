@@ -58,14 +58,14 @@ export default function BlogArticle() {
       {/* Hero */}
       <section className="pt-32 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <Link to="/blog" className="inline-flex items-center text-indigo-400 hover:text-indigo-300 mb-8">
+          <Link to="/blog" className="inline-flex items-center text-gold hover:text-gold/80 mb-8">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blog
           </Link>
 
-          <span className="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-400 text-sm rounded-full mb-4">
+          <span className="inline-block px-3 py-1 bg-gold/20 text-gold text-sm rounded-full mb-4">
             {article.category}
           </span>
 
@@ -93,7 +93,7 @@ export default function BlogArticle() {
       <section className="px-4 pb-16">
         <div className="max-w-4xl mx-auto">
           {hasContent ? (
-            <article className="prose prose-lg prose-invert prose-indigo max-w-none">
+            <article className="prose prose-lg prose-invert max-w-none">
               <div
                 className="text-gray-300 leading-relaxed
                   [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-12 [&>h2]:mb-6
@@ -101,16 +101,16 @@ export default function BlogArticle() {
                   [&>p]:mb-4
                   [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-4 [&>ul>li]:mb-2
                   [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-4 [&>ol>li]:mb-2
-                  [&>blockquote]:border-l-4 [&>blockquote]:border-indigo-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-400
+                  [&>blockquote]:border-l-4 [&>blockquote]:border-gold [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-400
                   [&_strong]:text-white [&_strong]:font-semibold
-                  [&_a]:text-indigo-400 [&_a]:hover:text-indigo-300"
+                  [&_a]:text-gold [&_a]:hover:text-gold/80"
                 dangerouslySetInnerHTML={{ __html: content.content }}
               />
             </article>
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-400 mb-4">This article is coming soon.</p>
-              <Link to="/blog" className="text-indigo-400 hover:text-indigo-300">
+              <Link to="/blog" className="text-gold hover:text-gold/80">
                 Browse other articles
               </Link>
             </div>
@@ -121,16 +121,16 @@ export default function BlogArticle() {
       {/* CTA */}
       <section className="px-4 pb-16">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <div className="bg-gradient-to-r from-gold to-[#D4B57A] rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Ready to Boost Your Conversions?
             </h2>
-            <p className="text-indigo-100 mb-6">
+            <p className="text-gray-800 mb-6">
               Join thousands of e-commerce stores using CatyAI to sell more, 24/7.
             </p>
             <a
               href="https://app.catyai.io/register"
-              className="inline-block px-8 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-block px-8 py-3 bg-[#010A1F] text-white font-semibold rounded-lg hover:bg-[#0A1628] transition-colors"
             >
               Start Free Trial
             </a>
@@ -148,7 +148,7 @@ export default function BlogArticle() {
                 <Link
                   key={relArticle.slug}
                   to={`/blog/${relArticle.slug}`}
-                  className="group block bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-indigo-500/50 transition-all"
+                  className="group block bg-[#0A1628]/50 rounded-xl overflow-hidden border border-[#1a2744] hover:border-gold/50 transition-all"
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
@@ -158,7 +158,7 @@ export default function BlogArticle() {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="text-white font-semibold group-hover:text-indigo-400 transition-colors line-clamp-2">
+                    <h3 className="text-white font-semibold group-hover:text-gold transition-colors line-clamp-2">
                       {relArticle.title}
                     </h3>
                     <p className="text-sm text-gray-500 mt-2">{relArticle.readTime}</p>

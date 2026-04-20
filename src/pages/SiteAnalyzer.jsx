@@ -221,7 +221,7 @@ const Spinner = () => (
 
 // Check icon
 const CheckIcon = () => (
-  <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+  <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
   </svg>
 )
@@ -249,7 +249,7 @@ function DemoChat({ demo, businessName, t }) {
   if (!demo) return null
 
   return (
-    <div className="bg-gray-900 rounded-xl overflow-hidden shadow-2xl max-w-md mx-auto">
+    <div className="bg-[#010A1F] rounded-xl overflow-hidden shadow-2xl max-w-md mx-auto">
       <div className="bg-primary-600 px-4 py-3 flex items-center gap-3">
         <img src="/images/logo1.webp" alt="Caty" className="w-8 h-8 rounded-full" />
         <div>
@@ -264,7 +264,7 @@ function DemoChat({ demo, businessName, t }) {
       <div className="p-4 space-y-3 min-h-[250px]">
         <div className="flex gap-2">
           <img src="/images/logo1.webp" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
-          <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
+          <div className="bg-[#0A1628] rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
             <p className="text-gray-200 text-sm">{demo.greeting}</p>
           </div>
         </div>
@@ -278,7 +278,7 @@ function DemoChat({ demo, businessName, t }) {
             </div>
             <div className="flex gap-2">
               <img src="/images/logo1.webp" alt="Caty" className="w-6 h-6 rounded-full flex-shrink-0" />
-              <div className="bg-gray-800 rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
+              <div className="bg-[#0A1628] rounded-lg rounded-tl-none px-3 py-2 max-w-[85%]">
                 <p className="text-gray-200 text-sm">{conversations[currentIndex].assistant}</p>
               </div>
             </div>
@@ -301,7 +301,7 @@ function DemoChat({ demo, businessName, t }) {
       )}
 
       <div className="px-4 pb-4">
-        <div className="bg-gray-800 rounded-lg px-4 py-2 flex items-center gap-2">
+        <div className="bg-[#0A1628] rounded-lg px-4 py-2 flex items-center gap-2">
           <span className="text-gray-500 text-sm flex-1">Type a message...</span>
           <svg className="w-5 h-5 text-primary-500" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
@@ -318,7 +318,7 @@ function ROICard({ title, current, improved, unit = '', icon }) {
   const percentIncrease = current > 0 ? Math.round((increase / current) * 100) : 0
 
   return (
-    <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+    <div className="bg-[#0A1628]/50 rounded-xl p-4 border border-[#1a2744]">
       <div className="flex items-center gap-2 mb-3">
         <span className="text-2xl">{icon}</span>
         <span className="text-gray-400 text-sm">{title}</span>
@@ -328,7 +328,7 @@ function ROICard({ title, current, improved, unit = '', icon }) {
           <p className="text-gray-500 text-xs line-through">{unit}{current.toLocaleString()}</p>
           <p className="text-2xl font-bold text-white">{unit}{improved.toLocaleString()}</p>
         </div>
-        <div className="text-green-400 text-sm font-medium bg-green-400/10 px-2 py-1 rounded-full">
+        <div className="text-gold text-sm font-medium bg-gold/10 px-2 py-1 rounded-full">
           +{percentIncrease}%
         </div>
       </div>
@@ -347,7 +347,7 @@ function LanguageSelector({ lang, setLang }) {
           className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
             lang === option.code
               ? 'bg-primary-500 text-white'
-              : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+              : 'bg-[#0A1628] text-gray-400 hover:bg-[#1a2744] hover:text-white'
           }`}
         >
           <span>{option.flag}</span>
@@ -458,7 +458,7 @@ export default function SiteAnalyzer() {
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder={t.placeholder}
                   disabled={loading}
-                  className="w-full px-4 py-4 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-50"
+                  className="w-full px-4 py-4 bg-[#0A1628] border border-[#1a2744] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-50"
                 />
               </div>
               <button
@@ -519,7 +519,7 @@ export default function SiteAnalyzer() {
 
             {/* Business Info Header */}
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-medium mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 text-gold text-sm font-medium mb-4">
                 <CheckIcon />
                 {t.analysisComplete} {result.domain}
               </div>
@@ -608,7 +608,7 @@ export default function SiteAnalyzer() {
                   <div className="space-y-3">
                     {(result.insights?.opportunities || []).slice(0, 4).map((opp, idx) => (
                       <div key={idx} className="flex items-start gap-3">
-                        <span className="text-green-400 text-lg">✓</span>
+                        <span className="text-gold text-lg">✓</span>
                         <span className="text-gray-300 text-sm">{opp}</span>
                       </div>
                     ))}
@@ -640,7 +640,7 @@ export default function SiteAnalyzer() {
                     {(result.insights?.key_questions || []).map((q, idx) => (
                       <div
                         key={idx}
-                        className="bg-gray-800/50 rounded-lg px-3 py-2 text-gray-300 text-sm border border-gray-700"
+                        className="bg-[#0A1628]/50 rounded-lg px-3 py-2 text-gray-300 text-sm border border-[#1a2744]"
                       >
                         "{q}"
                       </div>
@@ -714,7 +714,7 @@ export default function SiteAnalyzer() {
       {/* Floating back link */}
       <Link
         to="/"
-        className="fixed bottom-6 left-6 z-40 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
+        className="fixed bottom-6 left-6 z-40 bg-[#0A1628] hover:bg-[#1a2744] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

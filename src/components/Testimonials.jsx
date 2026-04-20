@@ -9,7 +9,7 @@ const StarIcon = ({ filled }) => (
 )
 
 const QuoteIcon = () => (
-  <svg className="w-8 h-8 text-gray-700 group-hover:text-indigo-500/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+  <svg className="w-8 h-8 text-gray-700 group-hover:text-gold/30 transition-colors" fill="currentColor" viewBox="0 0 24 24">
     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
   </svg>
 )
@@ -39,18 +39,18 @@ const companyWebsites = {
 export default function Testimonials() {
   const { t } = useLanguage()
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.testimonials.title} <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{t.testimonials.titleHighlight}</span>
+            {t.testimonials.title} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.testimonials.titleHighlight}</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             {t.testimonials.subtitle}
           </p>
           {/* Trust badge */}
-          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-full border border-gray-700">
+          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-[#0A1628]/50 rounded-full border border-[#1a2744]">
             <div className="flex -space-x-1">
               {[...Array(5)].map((_, i) => (
                 <StarIcon key={i} filled={true} />
@@ -63,15 +63,15 @@ export default function Testimonials() {
         {/* Metrics Row */}
         <div className="flex flex-wrap justify-center gap-8 mb-12">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-400">+32%</div>
+            <div className="text-3xl font-bold text-gold">+32%</div>
             <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric1}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400">+18%</div>
+            <div className="text-3xl font-bold text-gold">+18%</div>
             <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric2}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-400">50%</div>
+            <div className="text-3xl font-bold text-gold">50%</div>
             <div className="text-gray-400 text-sm mt-1">{t.testimonials.metric3}</div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function Testimonials() {
           {t.testimonials.companies.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-indigo-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10"
+              className="group relative bg-[#0A1628]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#1a2744]/50 hover:border-gold/50 transition-all duration-300 hover:shadow-lg hover:shadow-gold/10"
             >
               {/* Quote icon */}
               <div className="absolute top-4 right-4">
@@ -95,18 +95,18 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-gray-300 text-base leading-relaxed mb-6 min-h-[80px]">
+              <p className="text-white text-base leading-relaxed mb-6 min-h-[80px]">
                 "{testimonial.quote}"
               </p>
 
               {/* Company info */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-700/50">
+              <div className="flex items-center justify-between pt-4 border-t border-[#1a2744]/50">
                 <div>
                   <a
                     href={companyWebsites[testimonial.company]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-white hover:text-indigo-400 transition-colors flex items-center gap-1"
+                    className="font-semibold text-gold hover:text-[#D4B57A] transition-colors flex items-center gap-1"
                   >
                     {testimonial.company}
                     <ExternalLinkIcon />
@@ -121,7 +121,7 @@ export default function Testimonials() {
         </div>
 
         {/* Google Reviews Carousel */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-gray-800/80 to-gray-800/40 rounded-2xl border border-gray-700/50">
+        <div className="mt-16 p-8 bg-gradient-to-r from-[#0A1628]/80 to-[#0A1628]/40 rounded-2xl border border-[#1a2744]/50">
           {/* Header */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
@@ -134,7 +134,7 @@ export default function Testimonials() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white">Google Reviews</h3>
+                <h3 className="text-2xl font-bold text-gold">Google Reviews</h3>
                 <div className="flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -163,152 +163,152 @@ export default function Testimonials() {
           <div className="relative overflow-hidden">
             <div className="flex gap-6 animate-scroll-reviews hover:pause-animation">
               {/* Review 1 - Romanian */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg">M</div>
                   <div>
-                    <h4 className="font-bold text-white">Mihai D.</h4>
+                    <h4 className="font-bold text-gold">Mihai D.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"CatyAI ne-a transformat complet modul in care interactionam cu clientii. Raspunsuri instant 24/7, conversii crescute. Recomand cu incredere!"</p>
+                <p className="text-white text-sm leading-relaxed">"CatyAI ne-a transformat complet modul in care interactionam cu clientii. Raspunsuri instant 24/7, conversii crescute. Recomand cu incredere!"</p>
                 <p className="text-gray-500 text-xs mt-3">acum 2 saptamani</p>
               </div>
 
               {/* Review 2 - Spanish */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white font-bold text-lg">C</div>
                   <div>
-                    <h4 className="font-bold text-white">Carlos R.</h4>
+                    <h4 className="font-bold text-gold">Carlos R.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Excelente servicio! CatyAI ha revolucionado la atención al cliente en nuestra tienda online. Respuestas instantáneas y clientes muy satisfechos."</p>
+                <p className="text-white text-sm leading-relaxed">"Excelente servicio! CatyAI ha revolucionado la atención al cliente en nuestra tienda online. Respuestas instantáneas y clientes muy satisfechos."</p>
                 <p className="text-gray-500 text-xs mt-3">hace 1 semana</p>
               </div>
 
               {/* Review 3 - English */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold text-lg">J</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold to-[#D4B57A] flex items-center justify-center text-white font-bold text-lg">J</div>
                   <div>
-                    <h4 className="font-bold text-white">James T.</h4>
+                    <h4 className="font-bold text-gold">James T.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Outstanding AI chatbot! Easy integration and immediate results. Our conversion rate increased by 35% in the first month. Highly recommended!"</p>
+                <p className="text-white text-sm leading-relaxed">"Outstanding AI chatbot! Easy integration and immediate results. Our conversion rate increased by 35% in the first month. Highly recommended!"</p>
                 <p className="text-gray-500 text-xs mt-3">2 weeks ago</p>
               </div>
 
               {/* Review 4 - Portuguese */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-green-500 flex items-center justify-center text-white font-bold text-lg">P</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-gold flex items-center justify-center text-white font-bold text-lg">P</div>
                   <div>
-                    <h4 className="font-bold text-white">Pedro S.</h4>
+                    <h4 className="font-bold text-gold">Pedro S.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Ferramenta incrível! O chatbot CatyAI atende nossos clientes 24 horas por dia. A equipe de suporte é muito profissional e atenciosa."</p>
+                <p className="text-white text-sm leading-relaxed">"Ferramenta incrível! O chatbot CatyAI atende nossos clientes 24 horas por dia. A equipe de suporte é muito profissional e atenciosa."</p>
                 <p className="text-gray-500 text-xs mt-3">há 3 semanas</p>
               </div>
 
               {/* Review 5 - French */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-red-500 flex items-center justify-center text-white font-bold text-lg">M</div>
                   <div>
-                    <h4 className="font-bold text-white">Marie L.</h4>
+                    <h4 className="font-bold text-gold">Marie L.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Solution IA exceptionnelle! CatyAI a transformé notre service client. Intégration facile et résultats impressionnants dès le premier mois."</p>
+                <p className="text-white text-sm leading-relaxed">"Solution IA exceptionnelle! CatyAI a transformé notre service client. Intégration facile et résultats impressionnants dès le premier mois."</p>
                 <p className="text-gray-500 text-xs mt-3">il y a 1 mois</p>
               </div>
 
               {/* Review 6 - Spanish */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-lg">L</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold to-[#D4B57A] flex items-center justify-center text-gray-900 font-bold text-lg">L</div>
                   <div>
-                    <h4 className="font-bold text-white">Laura M.</h4>
+                    <h4 className="font-bold text-gold">Laura M.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Increíble plataforma de IA! Nuestros clientes reciben respuestas instantáneas y hemos reducido los tickets de soporte en un 60%."</p>
+                <p className="text-white text-sm leading-relaxed">"Increíble plataforma de IA! Nuestros clientes reciben respuestas instantáneas y hemos reducido los tickets de soporte en un 60%."</p>
                 <p className="text-gray-500 text-xs mt-3">hace 2 semanas</p>
               </div>
 
               {/* Review 7 - English */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">S</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1A3F7A] to-[#5B8DEF] flex items-center justify-center text-white font-bold text-lg">S</div>
                   <div>
-                    <h4 className="font-bold text-white">Sarah K.</h4>
+                    <h4 className="font-bold text-gold">Sarah K.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Best investment for our e-commerce! CatyAI handles customer inquiries perfectly. Professional team and excellent technology."</p>
+                <p className="text-white text-sm leading-relaxed">"Best investment for our e-commerce! CatyAI handles customer inquiries perfectly. Professional team and excellent technology."</p>
                 <p className="text-gray-500 text-xs mt-3">1 month ago</p>
               </div>
 
               {/* Review 8 - Portuguese */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-lg">A</div>
                   <div>
-                    <h4 className="font-bold text-white">Ana C.</h4>
+                    <h4 className="font-bold text-gold">Ana C.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Solução perfeita para nosso negócio! O CatyAI responde aos clientes instantaneamente e as vendas aumentaram significativamente."</p>
+                <p className="text-white text-sm leading-relaxed">"Solução perfeita para nosso negócio! O CatyAI responde aos clientes instantaneamente e as vendas aumentaram significativamente."</p>
                 <p className="text-gray-500 text-xs mt-3">há 2 meses</p>
               </div>
 
               {/* Review 9 - Romanian */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">I</div>
                   <div>
-                    <h4 className="font-bold text-white">Ionut T.</h4>
+                    <h4 className="font-bold text-gold">Ionut T.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"Am redus cu 60% ticketele de suport dupa implementarea CatyAI. Clientii primesc raspunsuri instant si suntem mult mai eficienti."</p>
+                <p className="text-white text-sm leading-relaxed">"Am redus cu 60% ticketele de suport dupa implementarea CatyAI. Clientii primesc raspunsuri instant si suntem mult mai eficienti."</p>
                 <p className="text-gray-500 text-xs mt-3">acum 2 luni</p>
               </div>
 
               {/* Duplicate for infinite scroll effect */}
-              <div className="flex-shrink-0 w-80 bg-gray-900/50 rounded-xl p-6 border border-gray-700/50">
+              <div className="flex-shrink-0 w-80 bg-[#010A1F]/50 rounded-xl p-6 border border-[#1a2744]/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-lg">M</div>
                   <div>
-                    <h4 className="font-bold text-white">Mihai D.</h4>
+                    <h4 className="font-bold text-gold">Mihai D.</h4>
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <StarIcon key={i} filled={true} />)}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">"CatyAI ne-a transformat complet modul in care interactionam cu clientii. Raspunsuri instant 24/7, conversii crescute. Recomand cu incredere!"</p>
+                <p className="text-white text-sm leading-relaxed">"CatyAI ne-a transformat complet modul in care interactionam cu clientii. Raspunsuri instant 24/7, conversii crescute. Recomand cu incredere!"</p>
                 <p className="text-gray-500 text-xs mt-3">acum 2 saptamani</p>
               </div>
             </div>
@@ -320,7 +320,7 @@ export default function Testimonials() {
               href="https://g.page/r/CcjJo1IOmRG8EBI/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-2"
+              className="text-gold hover:text-gold/80 font-medium inline-flex items-center gap-2"
             >
               {t.testimonials.seeAllReviews}
               <ExternalLinkIcon />

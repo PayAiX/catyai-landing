@@ -281,26 +281,26 @@ export default function QRFirst() {
   const t = translations[lang] || translations.en
 
   return (
-    <section ref={ref} id="qr-first" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-green-950/20 to-gray-900 relative overflow-hidden">
-      {/* WhatsApp pattern background */}
+    <section ref={ref} id="qr-first" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-[#1a1408]/20 to-gray-900 relative overflow-hidden">
+      {/* Pattern background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2325D366' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8A165' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-            <svg className="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <svg className="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+            <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-            {t.title1} <span className="text-green-400">{t.title2}</span>
+            {t.title1} <span className="text-gold">{t.title2}</span>
           </h2>
 
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -313,13 +313,13 @@ export default function QRFirst() {
           <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="relative mx-auto" style={{ width: '380px' }}>
               {/* Phone frame - realistic iPhone style */}
-              <div className="bg-gray-900 rounded-[3.5rem] p-4 shadow-2xl border-4 border-gray-700 relative">
+              <div className="bg-[#010A1F] rounded-[3.5rem] p-4 shadow-2xl border-4 border-[#1a2744] relative">
                 {/* Notch */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-full z-10"></div>
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#010A1F] rounded-full z-10"></div>
 
                 <div className="bg-black rounded-[2.8rem] overflow-hidden">
                   {/* Status bar */}
-                  <div className="bg-gray-900 px-8 py-3 flex justify-between items-center text-sm text-gray-300">
+                  <div className="bg-[#010A1F] px-8 py-3 flex justify-between items-center text-sm text-gray-300">
                     <span className="font-semibold">9:41</span>
                     <div className="flex gap-2 items-center">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3C7.46 3 3.34 4.78.29 7.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73 1.6 0 3.15.25 4.6.72v3.1c0 .39.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71C20.66 4.78 16.54 3 12 3z"/></svg>
@@ -328,7 +328,7 @@ export default function QRFirst() {
                   </div>
 
                   {/* WhatsApp header - business profile */}
-                  <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-5 py-5">
+                  <div className="bg-gradient-to-r from-gold to-[#D4B57A] px-5 py-5">
                     <div className="flex items-center gap-4 mb-3">
                       <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
                         <span className="text-3xl">💇‍♀️</span>
@@ -396,7 +396,7 @@ export default function QRFirst() {
                     <div className="flex-1 bg-[#2a3942] rounded-full px-4 py-2 text-gray-400 text-sm">
                       Type a message...
                     </div>
-                    <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                       </svg>
@@ -406,17 +406,17 @@ export default function QRFirst() {
               </div>
 
               {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-bounce">
+              <div className="absolute -top-4 -right-4 bg-gold text-[#010A1F] px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-bounce">
                 2 min setup!
               </div>
 
               {/* Results card */}
-              <div className="absolute -bottom-6 -left-6 bg-gray-800/95 backdrop-blur rounded-2xl p-4 border border-gray-700 shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-[#0A1628]/95 backdrop-blur rounded-2xl p-4 border border-[#1a2744] shadow-xl">
                 <p className="text-gray-400 text-xs mb-3 font-medium">{t.resultsTitle}</p>
                 <div className="flex gap-4">
                   {t.results.map((r, i) => (
                     <div key={i} className="text-center">
-                      <div className="text-green-400 text-xl font-bold">{r.value}</div>
+                      <div className="text-gold text-xl font-bold">{r.value}</div>
                       <div className="text-gray-500 text-[10px]">{r.label}</div>
                     </div>
                   ))}
@@ -425,9 +425,9 @@ export default function QRFirst() {
             </div>
 
             {/* Testimonial */}
-            <div className="mt-16 bg-gray-800/30 rounded-xl p-5 border border-gray-700/50 max-w-sm mx-auto">
+            <div className="mt-16 bg-[#0A1628]/30 rounded-xl p-5 border border-[#1a2744]/50 max-w-sm mx-auto">
               <p className="text-gray-300 text-sm italic">{t.testimonial}</p>
-              <p className="text-green-400 text-xs mt-2">{t.testimonialAuthor}</p>
+              <p className="text-gold text-xs mt-2">{t.testimonialAuthor}</p>
             </div>
           </div>
 
@@ -439,7 +439,7 @@ export default function QRFirst() {
               {t.benefits.map((benefit, i) => (
                 <div
                   key={i}
-                  className="p-5 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-green-500/30 transition-all hover:bg-gray-800/50"
+                  className="p-5 bg-[#0A1628]/30 rounded-xl border border-[#1a2744]/50 hover:border-gold/30 transition-all hover:bg-[#0A1628]/50"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   <div className="text-3xl mb-3">{benefit.icon}</div>
@@ -452,7 +452,7 @@ export default function QRFirst() {
             {/* CTA */}
             <a
               href="https://app.catyai.io/qr-first"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-[1.02] group w-full justify-center sm:w-auto"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-[#010A1F] font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02] group w-full justify-center sm:w-auto"
             >
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -469,7 +469,7 @@ export default function QRFirst() {
               <p className="text-gray-500 text-sm mb-3">{t.perfect}</p>
               <div className="flex flex-wrap gap-2">
                 {t.industries.map((industry, i) => (
-                  <span key={i} className="px-3 py-1 bg-gray-800/50 border border-gray-700/50 rounded-full text-gray-400 text-xs hover:border-green-500/30 hover:text-green-400 transition-colors cursor-default">
+                  <span key={i} className="px-3 py-1 bg-[#0A1628]/50 border border-[#1a2744]/50 rounded-full text-gray-400 text-xs hover:border-gold/30 hover:text-gold transition-colors cursor-default">
                     {industry}
                   </span>
                 ))}

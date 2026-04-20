@@ -33,7 +33,7 @@ const CatyWidget = lazy(() => import('./pages/CatyWidget'))
 
 // Loading fallback component
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-950">
+  <div className="min-h-screen flex items-center justify-center bg-[#010A1F]">
     <div className="text-center">
       <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
       <p className="text-gray-400">Loading...</p>
@@ -48,12 +48,12 @@ const translations = {
   en: {
     nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', login: 'Login', getStarted: 'Start Free' },
     hero: {
-      tagline: 'The digital employee that sells for you',
-      title1: 'Turn Conversations Into',
-      title2: 'Paying Customers',
-      subtitle: 'AI that responds, qualifies & converts — automatically, 24/7',
-      cta1: 'Book a Demo',
-      cta2: 'Get Started Free',
+      tagline: 'High-Performance Artificial Intelligence',
+      title1: 'We Grow Your Revenue with',
+      title2: 'Performance AI',
+      subtitle: 'Discover how our advanced AI optimizes conversions and reduces operational costs for your business.',
+      cta1: 'Get Started',
+      cta2: 'See How It Works',
       trust1: '500 conversations FREE',
       trust2: 'No credit card',
       trust3: 'Setup in 2 min'
@@ -332,12 +332,12 @@ const translations = {
   ro: {
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
-      tagline: 'Angajatul digital care vinde pentru tine',
-      title1: 'Transformă Conversațiile în',
-      title2: 'Clienți Plătitori',
-      subtitle: 'AI care răspunde, califică și convertește — automat, 24/7',
-      cta1: 'Programează Demo',
-      cta2: 'Începe Gratuit',
+      tagline: 'Inteligență Artificială de Performanță',
+      title1: 'Creștem Veniturile Tale cu',
+      title2: 'AI de Performanță',
+      subtitle: 'Descoperă cum AI-ul nostru avansat optimizează conversiile și reduce costurile operaționale pentru afacerea ta.',
+      cta1: 'Începe Acum',
+      cta2: 'Vezi Cum Funcționează',
       trust1: '500 conversații GRATUIT',
       trust2: 'Fără card bancar',
       trust3: 'Setup în 2 min'
@@ -1453,7 +1453,7 @@ const translations = {
         { company: 'D&S GAZ Services', industry: 'Installations Gaz', quote: 'Les clients obtiennent instantanément des informations sur nos services et peuvent demander des devis. L\'efficacité de l\'équipe a considérablement augmenté.', metric: '+50%', metricLabel: 'leads', color: 'from-yellow-500 to-orange-500' },
         { company: 'AiuDance', industry: 'École de Danse', quote: 'Les élèves trouvent rapidement les infos sur les horaires et peuvent s\'inscrire directement. Moins de temps au téléphone, plus de temps pour la danse!', metric: '3x', metricLabel: 'inscriptions en ligne', color: 'from-pink-500 to-purple-500' },
         { company: 'Digital Romania', industry: 'Conseil IT', quote: 'CatyAI nous aide à qualifier les leads automatiquement. Nous savons exactement ce que recherche chaque client avant de lui parler.', metric: '+40%', metricLabel: 'leads qualifiés', color: 'from-indigo-500 to-blue-500' },
-        { company: 'VendX', industry: 'Plateforme SaaS', quote: 'L\'intégration a été simple et les résultats sont arrivés rapidement. Nos clients reçoivent un support instantané pour la configuration des produits.', metric: '-60%', metricLabel: 'tickets support', color: 'from-green-500 to-emerald-500' }
+        { company: 'VendX', industry: 'Plateforme SaaS', quote: 'L\'intégration a été simple et les résultats sont arrivés rapidement. Nos clients reçoivent un support instantané pour la configuration des produits.', metric: '-60%', metricLabel: 'tickets support', color: 'from-gold to-[#D4B57A]' }
       ]
     },
     ctaFinal: {
@@ -1504,7 +1504,7 @@ export function useLanguage() {
 
 // Icons
 const CheckIcon = () => (
-  <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
+  <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
   </svg>
 )
@@ -1525,7 +1525,7 @@ function LanguageSelector() {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors text-sm"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm"
       >
         <span className="text-lg">{currentLang.flag}</span>
         <span className="hidden sm:inline text-gray-300">{currentLang.code.toUpperCase()}</span>
@@ -1536,12 +1536,12 @@ function LanguageSelector() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50 py-1 min-w-[140px]">
+          <div className="absolute right-0 top-full mt-2 bg-[#010A1F] border border-[#1a2744] rounded-lg shadow-xl z-50 py-1 min-w-[140px]">
             {languages.map((language) => (
               <button
                 key={language.code}
                 onClick={() => { setLang(language.code); setOpen(false); }}
-                className={`w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${lang === language.code ? 'text-primary-400 bg-gray-800/50' : 'text-gray-300'}`}
+                className={`w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-[#0A1628] transition-colors ${lang === language.code ? 'text-gold bg-[#0A1628]/50' : 'text-gray-300'}`}
               >
                 <span className="text-lg">{language.flag}</span>
                 <span>{language.name}</span>
@@ -1571,12 +1571,12 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/70 backdrop-blur-lg border-b border-slate-800/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#010A1F]/80 backdrop-blur-lg border-b border-[#1a2744]/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/images/caty-logo-96.webp" alt="Caty.AI" className="h-10 animate-pulse" width="40" height="40" />
-            <span className="text-xl font-bold">Caty.AI</span>
+            <img src="/images/caty-logo.png" alt="Caty.AI" className="h-10" width="40" height="40" />
+            <span className="text-xl font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
           </Link>
 
           {/* Simplified Nav: Logo │ Products │ Pricing │ FAQ │ Login │ [Start Free] */}
@@ -1593,33 +1593,33 @@ function Header() {
                 <>
                   {/* Invisible bridge to cover gap */}
                   <div className="absolute top-full left-0 w-64 h-2" />
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-gray-900 border border-gray-700 rounded-xl shadow-xl overflow-hidden">
-                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-[#010A1F] border border-[#1a2744] rounded-xl shadow-xl overflow-hidden">
+                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">🌐</span>
                     <div>
-                      <div className="text-cyan-400 font-medium">{t.nav.catyWidget}</div>
+                      <div className="text-gold font-medium">{t.nav.catyWidget}</div>
                       <div className="text-gray-400 text-xs">{t.nav.catyWidgetDesc}</div>
                     </div>
                   </Link>
-                  <Link to="/no-website" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                  <Link to="/no-website" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">📱</span>
                     <div>
                       <div className="text-white font-medium">{t.nav.qrFirst}</div>
                       <div className="text-gray-400 text-xs">{t.nav.qrFirstDesc}</div>
                     </div>
                   </Link>
-                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">💬</span>
                     <div>
-                      <div className="text-white font-medium">{t.nav.whatsappSecretary}</div>
+                      <div className="text-gold font-medium">{t.nav.whatsappSecretary}</div>
                       <div className="text-gray-400 text-xs">{t.nav.whatsappDesc}</div>
                     </div>
                   </Link>
-                  <hr className="border-gray-700" />
-                  <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-gray-800 transition-colors" onClick={() => setProductsOpen(false)}>
+                  <hr className="border-[#1a2744]" />
+                  <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">🛡️</span>
                     <div>
-                      <div className="text-red-400 font-medium">{t.nav.fraudai}</div>
+                      <div className="text-white font-medium">{t.nav.fraudai}</div>
                       <div className="text-gray-400 text-xs">{t.nav.fraudaiDesc}</div>
                     </div>
                   </Link>
@@ -1652,19 +1652,19 @@ function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
+          <div className="md:hidden py-4 border-t border-[#1a2744]">
             <div className="flex flex-col gap-4">
               {/* Mobile Products Section */}
               <div className="text-gray-500 text-xs uppercase tracking-wider">{t.nav.products}</div>
-              <Link to="/widget" className="text-cyan-400 hover:text-cyan-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌐 {t.nav.catyWidget}</Link>
-              <Link to="/no-website" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
-              <Link to="/whatsapp" className="text-green-400 hover:text-green-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
-              <Link to="/fraud-shield" className="text-red-400 hover:text-red-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
+              <Link to="/widget" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌐 {t.nav.catyWidget}</Link>
+              <Link to="/no-website" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
+              <Link to="/whatsapp" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
+              <Link to="/fraud-shield" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
 
-              <hr className="border-gray-800" />
+              <hr className="border-[#1a2744]" />
               <a href="#solutions" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
-              <hr className="border-gray-800" />
+              <hr className="border-[#1a2744]" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
               <a href="https://app.catyai.io/signup" className="btn-primary text-center">{t.nav.getStarted}</a>
             </div>
@@ -1810,7 +1810,7 @@ function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="hero" className="relative px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[60vh] md:h-[85vh] flex items-center justify-center bg-slate-900 pt-16 pb-0">
+    <section id="hero" className="relative px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[60vh] md:h-[85vh] flex items-center justify-center bg-[#010A1F] pt-16 pb-0">
       {/* Animation keyframes */}
       <style>{`
         @keyframes slideFromRight {
@@ -1830,45 +1830,40 @@ function Hero() {
         .animate-surge-btn { animation: surgeButtons 0.7s ease-out forwards; }
       `}</style>
 
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center"
-        >
-          <source src="/videos/AI_Replaces_Traditional_Websites.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay for text readability on mobile */}
-        <div className="absolute inset-0 bg-slate-900/60 md:bg-slate-900/40"></div>
-        {/* Bottom fade overlay to blend seamlessly with next section */}
-        <div className="absolute -bottom-1 left-0 right-0 h-64 bg-gradient-to-t from-slate-900 via-slate-900/90 to-transparent"></div>
-      </div>
-
-      {/* Robot mascot - positioned between hero and section 2 */}
-      <div className="absolute -bottom-16 sm:-bottom-20 md:-bottom-24 -right-20 sm:-right-24 md:-right-28 z-30">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#010A1F]">
+        {/* Desktop hero image */}
         <img
-          src="/images/caty-robot-wave.png"
-          alt="CatyAI Robot"
-          className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain drop-shadow-2xl"
+          src="/images/widget-hero.png"
+          alt="CatyAI Background"
+          className="hidden md:block w-full h-full object-cover object-center"
         />
+        {/* Mobile hero image */}
+        <img
+          src="/images/hero-mobile.png"
+          alt="CatyAI Mobile"
+          className="md:hidden w-full h-full object-cover object-top"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-[#010A1F]/70 md:bg-[#010A1F]/50"></div>
+        {/* Bottom fade overlay to blend seamlessly with next section */}
+        <div className="absolute -bottom-1 left-0 right-0 h-64 bg-gradient-to-t from-[#010A1F] via-[#010A1F]/90 to-transparent"></div>
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center">
           {/* Gold tagline - slides from right */}
           <p
-            className="text-sm sm:text-base md:text-lg mb-6 font-bold tracking-wide animate-slide-right opacity-0"
+            className="text-sm sm:text-base md:text-lg mb-6 font-bold tracking-widest uppercase animate-slide-right opacity-0"
             style={{
-              color: '#F59E0B',
+              color: '#C8A165',
               fontFamily: "'Inter', 'Poppins', sans-serif",
               textShadow: '2px 2px 8px rgba(0,0,0,0.9)',
-              animationDelay: '0.3s'
+              animationDelay: '0.3s',
+              letterSpacing: '0.2em'
             }}
           >
-            {t.hero?.tagline || 'The digital employee that sells for you'}
+            {t.hero?.tagline || 'High-Performance Artificial Intelligence'}
           </p>
 
           {/* Main title - surges from video */}
@@ -1881,7 +1876,15 @@ function Hero() {
             </span>
             <span
               className="block mt-2 animate-surge opacity-0"
-              style={{ color: '#10B981', textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0 0 20px rgba(16,185,129,0.4)', animationDelay: '0.9s' }}
+              style={{
+                background: 'linear-gradient(135deg, #C8A165 0%, #D4B57A 50%, #C8A165 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+                textShadow: 'none',
+                filter: 'drop-shadow(2px 2px 8px rgba(0,0,0,0.9)) drop-shadow(0 0 20px rgba(200,161,101,0.3))',
+                animationDelay: '0.9s'
+              }}
             >
               {t.hero.title2}
             </span>
@@ -1889,7 +1892,7 @@ function Hero() {
 
           {/* Subtitle - surges from video */}
           <p
-            className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium animate-surge opacity-0"
+            className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium animate-surge opacity-0"
             style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,0.8)', animationDelay: '1.2s' }}
           >
             {t.hero.subtitle}
@@ -1897,22 +1900,48 @@ function Hero() {
 
           {/* Buttons - surge effect */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            {/* Primary CTA - Gold gradient (Financial Success) */}
             <a
-              href="https://calendly.com/adrian-payai-x/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-bold rounded-xl transition-all text-lg shadow-xl shadow-black/50 hover:shadow-green-500/40 hover:scale-105 animate-surge-btn opacity-0 ring-2 ring-white/20"
-              style={{ animationDelay: '1.5s' }}
+              href="https://app.catyai.io/signup"
+              className="inline-flex items-center gap-2 px-10 py-4 font-bold rounded-xl transition-all text-lg transform hover:scale-105 animate-surge-btn opacity-0"
+              style={{
+                background: 'linear-gradient(135deg, #C8A165 0%, #D4B57A 100%)',
+                color: '#010A1F',
+                boxShadow: '0 4px 20px rgba(200, 161, 101, 0.4)',
+                animationDelay: '1.5s'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #D4B57A 0%, #C8A165 100%)'
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(200, 161, 101, 0.6)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #C8A165 0%, #D4B57A 100%)'
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(200, 161, 101, 0.4)'
+              }}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               {t.hero.cta1}
             </a>
+            {/* Secondary CTA - Royal Blue outline */}
             <a
-              href="https://app.catyai.io/signup"
-              className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl transition-all shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 text-lg transform hover:scale-105 animate-surge-btn opacity-0"
-              style={{ animationDelay: '1.7s' }}
+              href="#cum-functioneaza"
+              className="inline-flex items-center gap-2 px-10 py-4 font-bold rounded-xl transition-all text-lg transform hover:scale-105 animate-surge-btn opacity-0"
+              style={{
+                background: 'transparent',
+                color: '#FFFFFF',
+                border: '2px solid #1A3F7A',
+                animationDelay: '1.7s'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = '#1A3F7A'
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(26, 63, 122, 0.4)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
             >
               {t.hero.cta2}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1947,7 +1976,7 @@ function Hero() {
 function Problem() {
   const { t } = useLanguage()
   return (
-    <section className="relative -mt-16 pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 z-20">
+    <section className="relative -mt-16 pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-[#010A1F] z-20">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-red-400 mb-12">
           {t.problem.title}
@@ -1955,7 +1984,7 @@ function Problem() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {t.problem.stats.map((stat, i) => (
-            <div key={i} className="bg-gray-800/50 rounded-xl p-6 border border-red-500/20">
+            <div key={i} className="bg-[#0A1628]/50 rounded-xl p-6 border border-red-500/20">
               <div className="text-4xl md:text-5xl font-bold text-red-400 mb-2">{stat.value}</div>
               <div className="text-gray-400 text-sm">{stat.label}</div>
             </div>
@@ -1972,8 +2001,8 @@ function Solution() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-6">
-          <span className="text-primary-400 text-sm font-semibold uppercase tracking-wider">{t.solution.badge}</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+          <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.solution.badge}</span>
         </div>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -1981,7 +2010,7 @@ function Solution() {
           <span className="gradient-text block mt-2">{t.solution.title2}</span>
         </h2>
 
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p className="text-white text-lg max-w-2xl mx-auto">
           {t.solution.subtitle}
         </p>
       </div>
@@ -1993,7 +2022,7 @@ function Solution() {
 function CoreFlow() {
   const { t } = useLanguage()
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-5xl mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-12">
           {t.coreFlow.title}
@@ -2001,17 +2030,17 @@ function CoreFlow() {
 
         <div className="grid md:grid-cols-3 gap-6 relative">
           {/* Connecting arrows - desktop only */}
-          <div className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-0.5 bg-gradient-to-r from-primary-500/50 to-primary-500/50 -translate-y-1/2 z-0"></div>
-          <div className="hidden md:block absolute top-1/2 right-1/3 w-1/3 h-0.5 bg-gradient-to-r from-primary-500/50 to-primary-500/50 -translate-y-1/2 z-0"></div>
+          <div className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-0.5 bg-gradient-to-r from-gold/50 to-gold/50 -translate-y-1/2 z-0"></div>
+          <div className="hidden md:block absolute top-1/2 right-1/3 w-1/3 h-0.5 bg-gradient-to-r from-gold/50 to-gold/50 -translate-y-1/2 z-0"></div>
 
           {t.coreFlow.steps.map((step, i) => (
-            <div key={i} className="relative z-10 bg-gray-800/80 rounded-2xl p-6 border border-gray-700 hover:border-primary-500/50 transition-colors text-center">
+            <div key={i} className="relative z-10 bg-[#0A1628]/80 rounded-2xl p-6 border border-[#1a2744] hover:border-gold/50 transition-colors text-center">
               <div className="text-4xl mb-4">{step.icon}</div>
-              <div className="inline-block px-3 py-1 bg-primary-500/20 text-primary-400 text-xs font-bold rounded-full mb-3">
+              <div className="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-bold rounded-full mb-3">
                 {step.name}
               </div>
-              <h4 className="text-xl font-semibold text-white mb-2">{step.title}</h4>
-              <p className="text-gray-400 text-sm">{step.desc}</p>
+              <h4 className="text-xl font-semibold text-gold mb-2">{step.title}</h4>
+              <p className="text-white text-sm">{step.desc}</p>
             </div>
           ))}
         </div>
@@ -2056,12 +2085,12 @@ function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="card hover:border-primary-500/50 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-primary-500/10 rounded-xl flex items-center justify-center text-primary-400 mb-4 group-hover:bg-primary-500/20 transition-colors">
+            <div key={index} className="card hover:border-gold/50 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold/20 transition-colors">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
+              <h3 className="text-xl font-semibold text-gold mb-2">{feature.title}</h3>
+              <p className="text-white">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -2075,24 +2104,24 @@ function Products() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title">{t.products.title} <span className="gradient-text">{t.products.titleHighlight}</span></h2>
         <p className="section-subtitle">{t.products.subtitle}</p>
 
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {/* Website Widget */}
-          <div className="card border-2 border-primary-500/30 hover:border-primary-500/60 transition-all">
+          <div className="card border-2 border-gold/30 hover:border-gold/60 transition-all">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+              <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold text-white">{t.products.widget.title}</h3>
+              <h3 className="text-2xl font-bold text-gold">{t.products.widget.title}</h3>
             </div>
-            <p className="text-gray-400 mb-6">{t.products.widget.desc}</p>
+            <p className="text-white mb-6">{t.products.widget.desc}</p>
             <ul className="space-y-2">
               {t.products.widget.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-2 text-gray-300">
+                <li key={i} className="flex items-center gap-2 text-white">
                   <CheckIcon />
                   <span>{feature}</span>
                 </li>
@@ -2104,23 +2133,23 @@ function Products() {
           </div>
 
           {/* WhatsApp Secretary */}
-          <div className="card border-2 border-green-500/30 hover:border-green-500/60 transition-all">
+          <div className="card border-2 border-gold/30 hover:border-gold/60 transition-all">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
                 <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               </div>
-              <h3 className="text-2xl font-bold text-white">{t.products.whatsapp.title}</h3>
+              <h3 className="text-2xl font-bold text-gold">{t.products.whatsapp.title}</h3>
             </div>
-            <p className="text-gray-400 mb-6">{t.products.whatsapp.desc}</p>
+            <p className="text-white mb-6">{t.products.whatsapp.desc}</p>
             <ul className="space-y-2">
               {t.products.whatsapp.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-2 text-gray-300">
+                <li key={i} className="flex items-center gap-2 text-white">
                   <CheckIcon />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
-            <a href="https://app.catyai.io/signup" className="inline-flex items-center justify-center gap-2 w-full mt-6 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl transition-all">
+            <a href="https://app.catyai.io/signup" className="inline-flex items-center justify-center gap-2 w-full mt-6 px-6 py-3 bg-gold hover:bg-[#D4B57A] text-white font-semibold rounded-xl transition-all">
               {t.products?.whatsappCta || 'Connect WhatsApp'}
             </a>
           </div>
@@ -2149,11 +2178,11 @@ function Integrations() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {integrations.map((int) => (
-            <div key={int.key} className="card hover:border-primary-500/50 transition-all group relative overflow-hidden">
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${int.color}`}></div>
+            <div key={int.key} className="card hover:border-gold/50 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-[#D4B57A]"></div>
               <span className="text-3xl mb-3 block">{int.icon}</span>
-              <h3 className="text-lg font-semibold text-white mb-2">{t.integrations[int.key].title}</h3>
-              <p className="text-gray-400 text-sm">{t.integrations[int.key].desc}</p>
+              <h3 className="text-lg font-semibold text-gold mb-2">{t.integrations[int.key].title}</h3>
+              <p className="text-white text-sm">{t.integrations[int.key].desc}</p>
             </div>
           ))}
         </div>
@@ -2182,7 +2211,7 @@ function Verticals() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-12 mb-8">
           {t.verticals.industries.map((industry, index) => (
-            <div key={index} className="card flex items-center gap-3 hover:border-primary-500/50 transition-colors">
+            <div key={index} className="card flex items-center gap-3 hover:border-gold/50 transition-colors">
               <span className="text-2xl">{industryIcons[index]}</span>
               <span className="text-white font-medium">{industry}</span>
             </div>
@@ -2214,7 +2243,7 @@ function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-7xl mx-auto">
         <h2 className="section-title">{t.howItWorks.title} <span className="gradient-text">{t.howItWorks.titleHighlight}</span></h2>
         <p className="section-subtitle">{t.howItWorks.subtitle}</p>
@@ -2223,17 +2252,17 @@ function HowItWorks() {
           {steps.map((step, index) => (
             <div key={index} className="relative">
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-primary-500 to-transparent -z-10"></div>
+                <div className="hidden md:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-gold to-transparent -z-10"></div>
               )}
               <div className="card h-full">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center text-green-400">
+                  <div className="w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center text-gold">
                     {step.icon}
                   </div>
-                  <span className="text-4xl font-bold text-primary-500/20">{step.number}</span>
+                  <span className="text-4xl font-bold text-gold/20">{step.number}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                <p className="text-gray-400 mb-4">{step.description}</p>
+                <h3 className="text-xl font-semibold text-gold mb-3">{step.title}</h3>
+                <p className="text-white mb-4">{step.description}</p>
                 <div className="flex justify-center my-4">
                   <img src={step.image} alt={step.title} className="h-32 object-contain" width="128" height="128" loading="lazy" />
                 </div>
@@ -2315,15 +2344,15 @@ function Pricing() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`card relative flex flex-col ${plan.popular ? 'border-primary-500 lg:scale-105 z-10' : ''}`}
+              className={`card relative flex flex-col ${plan.popular ? 'border-gold lg:scale-105 z-10' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary-500 rounded-full text-xs font-medium whitespace-nowrap">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gold text-[#010A1F] rounded-full text-xs font-medium whitespace-nowrap">
                   {t.pricing.mostPopular}
                 </div>
               )}
               <div className="text-center mb-4">
-                <h3 className="text-sm font-bold text-gray-400 tracking-wider mb-2">{plan.name}</h3>
+                <h3 className="text-sm font-bold text-gold tracking-wider mb-2">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-2xl font-bold text-white">{plan.price}</span>
                   <span className="text-gray-400 text-sm">{t.pricing.perMonth}</span>
@@ -2348,7 +2377,7 @@ function Pricing() {
                   plan.popular
                     ? 'btn-primary'
                     : plan.id === 'free'
-                      ? 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+                      ? 'bg-[#0A1628]hover:bg-[#1a2744] text-white border border-[#1a2744]'
                       : 'btn-secondary'
                 }`}
               >
@@ -2377,7 +2406,7 @@ function FAQ() {
   ]
 
   return (
-    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-3xl mx-auto">
         <h2 className="section-title">{t.faq.title} <span className="gradient-text">{t.faq.titleHighlight}</span></h2>
         <p className="section-subtitle">
@@ -2391,13 +2420,13 @@ function FAQ() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between text-left"
               >
-                <span className="text-lg font-medium text-white">{faq.question}</span>
+                <span className="text-lg font-medium text-gold">{faq.question}</span>
                 <span className={`transform transition-transform ${openIndex === index ? 'rotate-180' : ''}`}>
                   <ChevronDownIcon />
                 </span>
               </button>
               {openIndex === index && (
-                <div className="mt-4 text-gray-400 border-t border-gray-800 pt-4">
+                <div className="mt-4 text-white border-t border-gold/30 pt-4">
                   {faq.answer}
                 </div>
               )}
@@ -2416,11 +2445,11 @@ function CTA() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="card bg-gradient-to-br from-green-500/10 to-primary-500/10 border-green-500/30">
+        <div className="card bg-gradient-to-br from-gold/10 to-[#D4B57A]/10 border-gold/30">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.cta.title}
           </h2>
-          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto">
             {t.cta.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -2467,21 +2496,21 @@ function PoweredBy() {
   const currentFeatures = features[t.nav?.home === 'Acasă' ? 'ro' : t.nav?.home === 'Inicio' ? 'es' : t.nav?.home === 'Início' ? 'pt' : t.nav?.home === 'Accueil' ? 'fr' : 'en']
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-4">
-            <span className="text-primary-400 text-sm font-semibold">AUREX v2</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-4">
+            <span className="text-gold text-sm font-semibold">AUREX v2</span>
           </div>
-          <p className="text-gray-400">AI Memory Engine</p>
+          <p className="text-white">AI Memory Engine</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {currentFeatures.map((feature, i) => (
-            <div key={i} className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-primary-500/30 transition-colors">
+            <div key={i} className="bg-[#0A1628]/50 rounded-2xl p-6 border border-gold/30 hover:border-gold/50 transition-colors">
               <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400 text-sm">{feature.desc}</p>
+              <h3 className="text-xl font-bold text-gold mb-2">{feature.title}</h3>
+              <p className="text-white text-sm">{feature.desc}</p>
             </div>
           ))}
         </div>
@@ -2547,7 +2576,7 @@ function PromotionalPopup() {
         {/* Close button */}
         <button
           onClick={handleDismiss}
-          className="absolute -top-2 -right-2 bg-gray-900 rounded-full p-1.5 text-gray-400 hover:text-white transition-colors z-10 shadow-lg border border-gray-700"
+          className="absolute -top-2 -right-2 bg-[#010A1F] rounded-full p-1.5 text-gray-400 hover:text-white transition-colors z-10 shadow-lg border border-[#1a2744]"
           style={{ zIndex: 2147483647 }}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2742,10 +2771,10 @@ function FloatingWidgetIndicator() {
 
   return (
     <div className="fixed bottom-24 right-6 z-40 flex flex-col items-center gap-2 animate-bounce">
-      <div className="bg-primary-500 text-white px-3 py-2 rounded-lg shadow-lg text-sm font-medium">
+      <div className="bg-gold text-white px-3 py-2 rounded-lg shadow-lg text-sm font-medium">
         {t.floatingIndicator}
       </div>
-      <svg className="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
@@ -2812,11 +2841,12 @@ function Realitatea() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="pt-0 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section ref={sectionRef} className="pt-0 pb-24 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-5xl mx-auto">
-        {/* Main Headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-6">
-          {t.realitatea.title}
+        {/* Main Headline - Half white, half gold */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6">
+          <span className="text-white">Your Website Is Dead.</span>{' '}
+          <span className="text-gold">You Just Haven't Buried It Yet.</span>
         </h2>
 
         {/* Italic Subtext */}
@@ -2832,8 +2862,8 @@ function Realitatea() {
         {/* 3 Stats Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {/* Card 1: -33% */}
-          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
-            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
+            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
               -{counts.google}%
             </div>
             <div className="text-white text-base">
@@ -2842,8 +2872,8 @@ function Realitatea() {
           </div>
 
           {/* Card 2: 60% */}
-          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
-            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
+            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
               {counts.zero}%
             </div>
             <div className="text-white text-base">
@@ -2852,8 +2882,8 @@ function Realitatea() {
           </div>
 
           {/* Card 3: 3% */}
-          <div className="bg-slate-900 rounded-2xl p-8 border border-gray-700/50 text-center">
-            <div className="font-bold mb-3" style={{ fontSize: '64px', color: '#F59E0B' }}>
+          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
+            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
               {counts.ctr}%
             </div>
             <div className="text-white text-base">
@@ -2875,8 +2905,8 @@ function Realitatea() {
           </p>
         </div>
 
-        {/* Green Closing Statement */}
-        <p className="text-center text-xl md:text-2xl font-bold" style={{ color: '#10B981' }}>
+        {/* Gold Closing Statement */}
+        <p className="text-center text-xl md:text-2xl font-bold text-gold">
           {t.realitatea.closing}
         </p>
       </div>
@@ -2891,36 +2921,36 @@ function ProduseNoi() {
   const products = [
     {
       ...t.products3.qrFirst,
-      color: 'from-green-500 to-emerald-500',
-      borderColor: 'border-green-500/30 hover:border-green-500/60',
+      color: 'from-gold to-[#D4B57A]',
+      borderColor: 'border-gold/30 hover:border-gold/60',
       link: '/no-website',
       icon: '📱'
     },
     {
       ...t.products3.webWidget,
-      color: 'from-primary-500 to-cyan-500',
-      borderColor: 'border-primary-500/30 hover:border-primary-500/60',
+      color: 'from-gold to-[#D4B57A]',
+      borderColor: 'border-gold/30 hover:border-gold/60',
       link: '/widget',
       icon: '🌐',
       popular: true
     },
     {
       ...t.products3.fraudAI,
-      color: 'from-red-500 to-orange-500',
-      borderColor: 'border-red-500/30 hover:border-red-500/60',
+      color: 'from-gold to-[#D4B57A]',
+      borderColor: 'border-gold/30 hover:border-gold/60',
       link: '/fraud-shield',
       icon: '🛡️'
     }
   ]
 
   return (
-    <section id="solutions" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="solutions" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.products3.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.products3.titleHighlight}</span>
+            {t.products3.title} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.products3.titleHighlight}</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-white text-lg">
             {t.products3.subtitle}
           </p>
         </div>
@@ -2929,17 +2959,17 @@ function ProduseNoi() {
           {products.map((product, i) => (
             <div
               key={i}
-              className={`relative bg-gray-800/50 rounded-2xl p-8 border-2 ${product.borderColor} transition-all hover:shadow-xl hover:shadow-green-500/10 ${product.popular ? 'md:scale-105 z-10' : ''}`}
+              className={`relative bg-[#0A1628]/50 rounded-2xl p-8 border-2 ${product.borderColor} transition-all hover:shadow-xl hover:shadow-gold/10 ${product.popular ? 'md:scale-105 z-10' : ''}`}
             >
               {product.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-gold to-[#D4B57A] rounded-full text-white text-sm font-bold">
                   {t.products3.popular}
                 </div>
               )}
 
               <div className="text-4xl mb-4">{product.icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-1">{product.name}</h3>
-              <p className="text-gray-400 text-sm mb-4">{product.tagline}</p>
+              <h3 className="text-2xl font-bold text-gold mb-1">{product.name}</h3>
+              <p className="text-white text-sm mb-4">{product.tagline}</p>
 
               <div className="flex items-baseline gap-1 mb-6">
                 <span className={`text-4xl font-bold bg-gradient-to-r ${product.color} bg-clip-text text-transparent`}>
@@ -2951,7 +2981,7 @@ function ProduseNoi() {
               <ul className="space-y-3 mb-8">
                 {product.features.map((feature, j) => (
                   <li key={j} className="flex items-center gap-2 text-gray-300">
-                    <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{feature}</span>
@@ -2963,7 +2993,7 @@ function ProduseNoi() {
                 to={product.link}
                 className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all ${
                   product.popular
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg hover:shadow-green-500/30'
+                    ? 'bg-gradient-to-r from-gold to-[#D4B57A] text-white hover:shadow-lg hover:shadow-gold/30'
                     : 'bg-gray-700 text-white hover:bg-gray-600'
                 }`}
               >
@@ -2982,13 +3012,13 @@ function CumFunctioneaza() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.howItWorks2.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.howItWorks2.titleHighlight}</span>
+            {t.howItWorks2.title} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.howItWorks2.titleHighlight}</span>
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-white text-lg">
             {t.howItWorks2.subtitle}
           </p>
         </div>
@@ -2996,22 +3026,22 @@ function CumFunctioneaza() {
         {/* Horizontal Timeline */}
         <div className="relative">
           {/* Connection Line - Desktop */}
-          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-1 bg-gradient-to-r from-green-500/50 via-emerald-500/50 to-green-500/50 rounded-full" />
+          <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-gold via-[#D4B57A] to-gold" />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {t.howItWorks2.steps.map((step, i) => (
-              <div key={i} className="relative text-center">
+              <div key={i} className="relative text-center group">
                 {/* Step Circle */}
-                <div className="relative z-10 w-24 h-24 mx-auto mb-6 bg-gray-800 rounded-full border-4 border-green-500/50 flex items-center justify-center group hover:border-green-400 hover:scale-110 transition-all">
-                  <span className="text-4xl">{step.icon}</span>
+                <div className="relative z-10 w-20 h-20 mx-auto mb-5 bg-[#0A1628] rounded-full border-2 border-gold flex items-center justify-center group-hover:bg-gold/10 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-gold/20">
+                  <span className="text-3xl">{step.icon}</span>
                 </div>
 
                 {/* Step Number */}
-                <div className="text-green-400 text-sm font-mono mb-2">{step.number}</div>
+                <div className="text-gold/80 text-xs font-mono tracking-widest mb-2">{step.number}</div>
 
                 {/* Title & Description */}
-                <h3 className="text-lg font-bold text-white mb-1">{step.title}</h3>
-                <p className="text-gray-400 text-sm">{step.desc}</p>
+                <h3 className="text-base font-bold text-gold mb-1">{step.title}</h3>
+                <p className="text-white text-sm">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -3021,7 +3051,7 @@ function CumFunctioneaza() {
         <div className="text-center mt-12">
           <a
             href="https://app.catyai.io/signup"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-green-500/30 transition-all text-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 transition-all text-lg"
           >
             {t.howItWorks2.cta}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3039,12 +3069,12 @@ function IndustriiNoi() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          {t.industries2.title} <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">{t.industries2.titleHighlight}</span>
+          {t.industries2.title} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.industries2.titleHighlight}</span>
         </h2>
-        <p className="text-gray-400 text-lg mb-12">
+        <p className="text-white text-lg mb-12">
           {t.industries2.subtitle}
         </p>
 
@@ -3052,11 +3082,11 @@ function IndustriiNoi() {
           {t.industries2.list.map((industry, i) => (
             <div
               key={i}
-              className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hover:border-green-500/50 transition-all group cursor-pointer"
+              className="bg-[#0A1628]/50 rounded-2xl p-6 border border-gold/30 hover:border-gold/50 transition-all group cursor-pointer"
             >
               <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{industry.icon}</div>
-              <h3 className="text-lg font-bold text-white mb-1">{industry.name}</h3>
-              <p className="text-gray-500 text-sm">{industry.desc}</p>
+              <h3 className="text-lg font-bold text-gold mb-1">{industry.name}</h3>
+              <p className="text-white text-sm">{industry.desc}</p>
             </div>
           ))}
         </div>
@@ -3074,9 +3104,9 @@ function CTAFinal() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-3xl p-12 border border-green-500/30">
+        <div className="bg-gradient-to-br from-gold/10 to-[#D4B57A]/10 rounded-3xl p-12 border border-gold/30">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.ctaFinal.title}
           </h2>
@@ -3086,7 +3116,7 @@ function CTAFinal() {
 
           <a
             href="https://app.catyai.io/signup"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/30 transition-all text-xl hover:scale-105"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold rounded-xl hover:shadow-xl hover:shadow-gold/30 transition-all text-xl hover:scale-105"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -3096,19 +3126,19 @@ function CTAFinal() {
 
           <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-gray-400 text-sm">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <span>{t.ctaFinal.trust1}</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <span>{t.ctaFinal.trust2}</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               <span>{t.ctaFinal.trust3}</span>
@@ -3259,7 +3289,7 @@ function AppContent() {
         href="https://wa.me/40750195048?text=Salut! Vreau să aflu mai multe despre CatyAI"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-gold hover:bg-[#D4B57A] text-[#010A1F] px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
         title="Chat on WhatsApp"
       >
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

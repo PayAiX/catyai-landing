@@ -257,8 +257,8 @@ function ProductCard({ product, onSelect, isSelected, cardRef }) {
     <div
       ref={cardRef}
       onClick={() => onSelect(product)}
-      className={`cursor-pointer rounded-xl overflow-hidden bg-gray-800/50 border-2 transition-all hover:scale-105 hover:shadow-xl ${
-        isSelected ? 'border-primary-500 shadow-lg shadow-primary-500/20' : 'border-gray-700 hover:border-gray-600'
+      className={`cursor-pointer rounded-xl overflow-hidden bg-[#0A1628]/50 border-2 transition-all hover:scale-105 hover:shadow-xl ${
+        isSelected ? 'border-primary-500 shadow-lg shadow-primary-500/20' : 'border-[#1a2744] hover:border-gray-600'
       }`}
       data-product-id={product.id}
     >
@@ -742,7 +742,7 @@ export default function CommerceDemo() {
       {/* Back link */}
       <Link
         to="/"
-        className="fixed bottom-6 left-6 z-40 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
+        className="fixed bottom-6 left-6 z-40 bg-[#0A1628] hover:bg-[#1a2744] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

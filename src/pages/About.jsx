@@ -241,7 +241,7 @@ export default function About() {
       {/* Back link */}
       <Link
         to="/"
-        className="fixed bottom-6 left-6 z-40 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
+        className="fixed bottom-6 left-6 z-40 bg-[#0A1628] hover:bg-[#1a2744] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

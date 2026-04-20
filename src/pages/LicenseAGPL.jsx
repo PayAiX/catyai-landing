@@ -29,26 +29,26 @@ function LicenseAGPL() {
         </div>
 
         {/* Section 1 - Proprietary License */}
-        <div className="bg-gray-900/50 border border-primary-500/50 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-primary-500/50 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
             <span className="flex items-center justify-center w-8 h-8 bg-primary-500/20 rounded-lg text-primary-400 text-sm font-bold">1</span>
             PROPRIETARY LICENSE
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Software:</span>
               <p className="text-white font-medium">Caty.AI Platform</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Owner:</span>
               <p className="text-white font-medium">PayAi-X FZE (Dubai, UAE)</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">License Type:</span>
               <p className="text-white">Proprietary / Closed Source</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Access:</span>
               <p className="text-white">SaaS Subscription</p>
             </div>
@@ -58,7 +58,7 @@ function LicenseAGPL() {
             Caty.AI is proprietary software owned by PayAi-X FZE. All rights reserved. The software, including its source code, algorithms, designs, and documentation, is protected by intellectual property laws and international treaties.
           </p>
 
-          <div className="bg-gray-800/30 rounded-lg p-4 mb-4">
+          <div className="bg-[#0A1628]/30 rounded-lg p-4 mb-4">
             <h3 className="text-white font-semibold mb-2">Usage Rights</h3>
             <p className="text-gray-400 text-sm">
               By subscribing to Caty.AI, you receive a non-exclusive, non-transferable license to use the platform according to your subscription plan. You may not copy, modify, distribute, sell, or sublicense the software.
@@ -67,26 +67,26 @@ function LicenseAGPL() {
         </div>
 
         {/* Section 2 - Enterprise License */}
-        <div className="bg-gray-900/50 border border-primary-500/50 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-primary-500/50 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
             <span className="flex items-center justify-center w-8 h-8 bg-primary-500/20 rounded-lg text-primary-400 text-sm font-bold">2</span>
             ENTERPRISE LICENSE
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Edition:</span>
               <p className="text-white font-medium">Caty.AI Enterprise</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Pricing:</span>
               <p className="text-white">Custom (annual contracts)</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">For:</span>
               <p className="text-white">Large organizations, custom deployments</p>
             </div>
-            <div className="p-3 bg-gray-800/50 rounded-lg">
+            <div className="p-3 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Contact:</span>
               <a href="mailto:enterprise@payai-x.com" className="text-primary-400 hover:text-primary-300">enterprise@payai-x.com</a>
             </div>
@@ -137,7 +137,7 @@ function LicenseAGPL() {
         </div>
 
         {/* Section 3 - Protected IP */}
-        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 mb-8">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
             <span className="flex items-center justify-center w-8 h-8 bg-primary-500/20 rounded-lg text-primary-400 text-sm font-bold">3</span>
             INTELLECTUAL PROPERTY
@@ -188,7 +188,7 @@ function LicenseAGPL() {
         </div>
 
         {/* Section 4 - Restrictions */}
-        <div className="bg-gray-900/50 border border-red-500/30 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-red-500/30 rounded-xl p-6 mb-8">
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
             <span className="flex items-center justify-center w-8 h-8 bg-red-500/20 rounded-lg text-red-400 text-sm font-bold">4</span>
             RESTRICTIONS
@@ -248,7 +248,7 @@ function LicenseAGPL() {
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 hover:border-gray-600 text-white font-medium rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-[#1a2744] hover:border-gray-600 text-white font-medium rounded-lg transition-colors"
             >
               Contact Sales
             </a>

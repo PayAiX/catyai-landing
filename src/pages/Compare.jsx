@@ -269,11 +269,11 @@ export default function Compare() {
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/50">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-[#1a2744]/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/images/caty-logo-96.webp" alt="CatyAI" className="h-8 w-8" />
+              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
               <span className="text-white font-bold text-lg">Caty.AI</span>
             </Link>
             <div className="hidden md:flex items-center gap-6">
@@ -291,13 +291,13 @@ export default function Compare() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             {t.heroTitle1}<br />
-            <span className="text-green-400">{t.heroTitle2}</span>
+            <span className="text-gold">{t.heroTitle2}</span>
           </h1>
 
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -307,7 +307,7 @@ export default function Compare() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <a
               href="https://app.catyai.io"
-              className="px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity text-lg"
+              className="px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity text-lg"
             >
               {t.heroCta}
             </a>
@@ -321,19 +321,19 @@ export default function Compare() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500">
             <span className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
               {t.trustBadge1}
             </span>
             <span className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
               {t.trustBadge2}
             </span>
             <span className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
               {t.trustBadge3}
@@ -345,12 +345,12 @@ export default function Compare() {
       {/* Comparison Table */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="bg-gray-800/30 backdrop-blur rounded-2xl border border-gray-700/50 overflow-hidden">
+          <div className="bg-[#0A1628]/30 backdrop-blur rounded-2xl border border-[#1a2744]/50 overflow-hidden">
             {/* Table Header */}
-            <div className="grid grid-cols-4 bg-gray-800/50 border-b border-gray-700/50">
+            <div className="grid grid-cols-4 bg-[#0A1628]/50 border-b border-[#1a2744]/50">
               <div className="p-4 text-gray-400 text-sm font-medium">{t.feature}</div>
               <div className="p-4 text-center">
-                <div className="text-cyan-400 font-bold text-lg">CatyAI</div>
+                <div className="text-gold font-bold text-lg">CatyAI</div>
                 <div className="text-gray-500 text-xs">€49/mo</div>
               </div>
               <div className="p-4 text-center">
@@ -367,13 +367,13 @@ export default function Compare() {
             {t.features.map((f, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-4 border-b border-gray-700/30 hover:bg-gray-800/30 transition-colors ${i === t.features.length - 1 ? 'bg-green-500/5' : ''}`}
+                className={`grid grid-cols-4 border-b border-[#1a2744]/30 hover:bg-[#0A1628]/30 transition-colors ${i === t.features.length - 1 ? 'bg-gold/5' : ''}`}
               >
                 <div className="p-4 text-gray-300 text-sm flex items-center">
                   {f.name}
-                  {i === t.features.length - 1 && <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded">{t.total}</span>}
+                  {i === t.features.length - 1 && <span className="ml-2 text-xs bg-gold/20 text-gold px-2 py-0.5 rounded">{t.total}</span>}
                 </div>
-                <div className={`p-4 text-center text-sm ${f.caty.includes('✓') || i === t.features.length - 1 ? 'text-green-400 font-semibold' : 'text-gray-400'}`}>
+                <div className={`p-4 text-center text-sm ${f.caty.includes('✓') || i === t.features.length - 1 ? 'text-gold font-semibold' : 'text-gray-400'}`}>
                   {f.caty}
                 </div>
                 <div className="p-4 text-center text-sm text-gray-500">
@@ -387,7 +387,7 @@ export default function Compare() {
           </div>
 
           {/* Callout */}
-          <div className="mt-8 bg-gradient-to-r from-cyan-500/10 to-green-500/10 rounded-2xl p-8 border border-cyan-500/20">
+          <div className="mt-8 bg-gradient-to-r from-gold/10 to-[#D4B57A]/10 rounded-2xl p-8 border border-gold/20">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">
@@ -399,7 +399,7 @@ export default function Compare() {
               </div>
               <a
                 href="https://app.catyai.io"
-                className="flex-shrink-0 px-6 py-3 bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity"
+                className="flex-shrink-0 px-6 py-3 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity"
               >
                 {t.cta}
               </a>

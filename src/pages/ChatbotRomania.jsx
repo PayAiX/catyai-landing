@@ -309,7 +309,7 @@ export default function ChatbotRomania() {
 
             <div className="overflow-x-auto">
               <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
-                <thead className="bg-gray-900 text-white">
+                <thead className="bg-[#010A1F] text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Platformă</th>
                     <th className="px-6 py-4 text-center font-semibold">Agenți AI</th>

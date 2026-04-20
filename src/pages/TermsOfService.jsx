@@ -17,7 +17,7 @@ function TermsOfService() {
           <div className="prose prose-invert prose-gray max-w-none">
             {/* Introduction */}
             <section className="mb-12">
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
                   Welcome to Caty.AI. These Terms of Service ("Terms") govern your access to and use of the
                   Caty.AI website (caty.ai), AI chatbot widget services, dashboard, APIs, and all related
@@ -41,7 +41,7 @@ function TermsOfService() {
             {/* Table of Contents */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-white mb-6">Table of Contents</h2>
-              <nav className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <nav className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <ol className="list-decimal list-inside space-y-2 text-primary-400">
                   <li><a href="#service-description" className="hover:text-primary-300 transition-colors">Service Description</a></li>
                   <li><a href="#account-terms" className="hover:text-primary-300 transition-colors">Account Terms</a></li>
@@ -71,7 +71,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.1 Overview</h3>
                   <p className="text-gray-300 mb-4">Caty.AI provides an AI-powered chatbot widget service that enables businesses to:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -84,7 +84,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.2 Service Availability</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>We strive to maintain 99.9% uptime for our Services</li>
@@ -94,7 +94,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.3 Service Modifications</h3>
                   <p className="text-gray-300">
                     We reserve the right to modify, suspend, or discontinue any aspect of the Services at any
@@ -104,7 +104,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.4 Software Licensing</h3>
                   <p className="text-gray-300 mb-4">
                     Caty.AI software is available under a dual licensing model:
@@ -125,7 +125,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">2.1 Eligibility</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>You must be at least 18 years old to create an account</li>
@@ -135,7 +135,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">2.2 Account Security</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>You are responsible for maintaining the security of your account credentials</li>
@@ -146,7 +146,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">2.3 Account Information</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>You must keep your account information accurate and up-to-date</li>
@@ -165,7 +165,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.1 Free Trial</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>We may offer a free trial period for new users</li>
@@ -175,7 +175,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.2 Pricing and Payment</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Subscription fees are charged in advance on a monthly or annual basis</li>
@@ -186,7 +186,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.3 Usage Limits</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Each subscription plan has defined conversation limits</li>
@@ -196,7 +196,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.4 Refunds</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Subscription fees are generally non-refundable</li>
@@ -206,7 +206,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">3.5 Taxes</h3>
                   <p className="text-gray-300">
                     All fees are exclusive of applicable taxes (including VAT, GST, or sales tax). You are
@@ -225,12 +225,12 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.1 Permitted Use</h3>
                   <p className="text-gray-300 mb-4">You may use our Services only for lawful business purposes in accordance with these Terms.</p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.2 Prohibited Activities</h3>
                   <p className="text-gray-300 mb-4">You agree NOT to use the Services to:</p>
 
@@ -279,7 +279,7 @@ function TermsOfService() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.3 Enforcement</h3>
                   <p className="text-gray-300">
                     We reserve the right to investigate and take appropriate action against violations of this
@@ -298,7 +298,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">5.1 Your Content</h3>
                   <p className="text-gray-300 mb-4">
                     "User Content" includes all data, text, documents, and other materials you upload, submit,
@@ -312,7 +312,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">5.2 License Grant</h3>
                   <p className="text-gray-300">
                     By submitting User Content, you grant Caty.AI a worldwide, non-exclusive, royalty-free
@@ -322,7 +322,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">5.3 End User Data</h3>
                   <p className="text-gray-300 mb-4">
                     When end users interact with your chatbot widget, we collect data on your behalf. You acknowledge that:
@@ -335,7 +335,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">5.4 Data Backup</h3>
                   <p className="text-gray-300">
                     While we maintain regular backups, you are responsible for maintaining your own backup
@@ -353,7 +353,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">6.1 Our Intellectual Property</h3>
                   <p className="text-gray-300 mb-4">
                     The Services and all associated intellectual property rights are owned by Caty.AI or our
@@ -368,7 +368,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">6.2 Limited License</h3>
                   <p className="text-gray-300">
                     We grant you a limited, non-exclusive, non-transferable, revocable license to access and
@@ -377,7 +377,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">6.3 Restrictions</h3>
                   <p className="text-gray-300 mb-4">You may not:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -389,7 +389,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">6.4 Feedback</h3>
                   <p className="text-gray-300">
                     If you provide feedback, suggestions, or ideas about the Services, you grant us a
@@ -407,7 +407,7 @@ function TermsOfService() {
                 Third-Party Services
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-4">Our Services may integrate with or link to third-party services, including:</p>
                 <ul className="list-disc list-inside space-y-2 text-gray-300 mb-4">
                   <li>AI language model providers</li>
@@ -432,7 +432,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">8.1 Definition</h3>
                   <p className="text-gray-300">
                     "Confidential Information" means any non-public information disclosed by either party,
@@ -442,7 +442,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">8.2 Obligations</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Both parties agree to protect Confidential Information with reasonable care</li>
@@ -452,7 +452,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">8.3 Exceptions</h3>
                   <p className="text-gray-300 mb-4">Confidentiality obligations do not apply to information that:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -473,7 +473,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">9.1 Our Warranties</h3>
                   <p className="text-gray-300 mb-4">We warrant that:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -484,7 +484,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">9.2 Disclaimer of Warranties</h3>
                   <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                     <p className="text-yellow-300 font-medium mb-4">IMPORTANT DISCLAIMER</p>
@@ -501,7 +501,7 @@ function TermsOfService() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">9.3 AI Limitations</h3>
                   <p className="text-gray-300">
                     You acknowledge that AI-generated responses may contain errors, inaccuracies, or
@@ -521,7 +521,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.1 Exclusion of Consequential Damages</h3>
                   <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -533,7 +533,7 @@ function TermsOfService() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.2 Liability Cap</h3>
                   <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -544,7 +544,7 @@ function TermsOfService() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.3 Exceptions</h3>
                   <p className="text-gray-300">
                     The limitations in this section do not apply to: (a) your breach of the Acceptable Use
@@ -562,7 +562,7 @@ function TermsOfService() {
                 Indemnification
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
                   You agree to indemnify, defend, and hold harmless Caty.AI, its officers, directors,
                   employees, agents, and affiliates from and against any and all claims, damages, losses,
@@ -588,7 +588,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">12.1 Termination by You</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>You may cancel your subscription at any time through your account dashboard</li>
@@ -598,7 +598,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">12.2 Termination by Us</h3>
                   <p className="text-gray-300 mb-4">We may suspend or terminate your access to the Services:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -609,7 +609,7 @@ function TermsOfService() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">12.3 Effect of Termination</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Your right to access and use the Services terminates immediately</li>
@@ -630,7 +630,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">13.1 Informal Resolution</h3>
                   <p className="text-gray-300">
                     Before initiating any formal dispute resolution, you agree to first contact us at
@@ -639,7 +639,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">13.2 Arbitration Agreement</h3>
                   <p className="text-gray-300 mb-4">
                     If informal resolution is unsuccessful, you agree that any dispute, claim, or controversy
@@ -653,7 +653,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">13.3 Class Action Waiver</h3>
                   <p className="text-gray-300">
                     To the extent permitted by law, you agree that any dispute resolution proceedings will
@@ -671,7 +671,7 @@ function TermsOfService() {
                 Governing Law
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
                   These Terms shall be governed by and construed in accordance with the laws of the United Arab Emirates,
                   without regard to its conflict of laws principles.
@@ -692,7 +692,7 @@ function TermsOfService() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.1 Entire Agreement</h3>
                   <p className="text-gray-300">
                     These Terms, together with our Privacy Policy and any other agreements expressly
@@ -701,7 +701,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.2 Severability</h3>
                   <p className="text-gray-300">
                     If any provision of these Terms is found to be unenforceable, the remaining provisions
@@ -709,7 +709,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.3 No Waiver</h3>
                   <p className="text-gray-300">
                     Our failure to enforce any right or provision of these Terms shall not be deemed a
@@ -717,7 +717,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.4 Assignment</h3>
                   <p className="text-gray-300">
                     You may not assign or transfer these Terms without our prior written consent. We may
@@ -725,7 +725,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.5 Force Majeure</h3>
                   <p className="text-gray-300">
                     Neither party shall be liable for any failure or delay in performance due to circumstances
@@ -735,7 +735,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.6 Notices</h3>
                   <p className="text-gray-300">
                     Notices to you may be sent to the email address associated with your account. Notices
@@ -743,7 +743,7 @@ function TermsOfService() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">15.7 Changes to Terms</h3>
                   <p className="text-gray-300">
                     We may modify these Terms at any time. Material changes will be notified via email or
@@ -761,34 +761,34 @@ function TermsOfService() {
                 Contact Information
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   If you have any questions about these Terms of Service, please contact us:
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Legal Inquiries</h4>
                     <p className="text-gray-300 text-sm">
                       Email: <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">General Support</h4>
                     <p className="text-gray-300 text-sm">
                       Email: <a href="mailto:contact@payai-x.com" className="text-primary-400 hover:text-primary-300">contact@payai-x.com</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Website</h4>
                     <p className="text-gray-300 text-sm">
                       <a href="https://caty.ai" className="text-primary-400 hover:text-primary-300">https://caty.ai</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Mailing Address</h4>
                     <p className="text-gray-300 text-sm">
                       PayAi-X FZE<br />
@@ -803,7 +803,7 @@ function TermsOfService() {
 
             {/* Disclaimer */}
             <section className="mt-12">
-              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <div className="bg-[#0A1628]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-400 text-sm italic">
                   <strong>Disclaimer:</strong> These Terms of Service are a template for informational purposes.
                   Consult with a qualified attorney for legal advice specific to your situation and jurisdiction.

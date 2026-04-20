@@ -1,17 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #4338ca;
-  --color-primary-800: #3730a3;
-  --color-primary-900: #312e81;
-  --color-primary-950: #1e1b4b;
+  /* CatyAI Brand Colors - Premium AI Performance */
+
+  /* Navy/Indigo Deep - Authority, Stability */
+  --color-navy: #010A1F;
+  --color-navy-light: #0A1628;
+  --color-navy-lighter: #1a2744;
+
+  /* Gold/Copper - Financial Success, Premium */
+  --color-gold: #C8A165;
+  --color-gold-light: #D4B57A;
+  --color-gold-dark: #A88A52;
+
+  /* Royal Blue - Technology, Professionalism (Primary) */
+  --color-primary-50: #e6eef8;
+  --color-primary-100: #ccddf1;
+  --color-primary-200: #99bbe3;
+  --color-primary-300: #6699d5;
+  --color-primary-400: #3377c7;
+  --color-primary-500: #1A3F7A;
+  --color-primary-600: #153262;
+  --color-primary-700: #10264a;
+  --color-primary-800: #0b1931;
+  --color-primary-900: #050d19;
+  --color-primary-950: #030810;
+
+  /* Text Colors */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-text-muted: #6B7280;
+
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
@@ -20,64 +39,127 @@ html {
 }
 
 body {
-  background-color: #0F172A;
+  background-color: #010A1F;
   color: var(--color-gray-100);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* CatyAI Brand Theme Colors */
+.bg-navy {
+  background-color: var(--color-navy);
+}
+.bg-navy-light {
+  background-color: var(--color-navy-light);
+}
+.border-navy-light {
+  border-color: var(--color-navy-lighter);
+}
+.text-gold {
+  color: var(--color-gold);
+}
+.bg-gold {
+  background-color: var(--color-gold);
+}
+.text-royal {
+  color: var(--color-primary-500);
+}
+.bg-royal {
+  background-color: var(--color-primary-500);
+}
+
+/* Primary Button - Gold (Financial Success) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
-  background-color: var(--color-primary-500);
+  color: var(--color-navy);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
   border-radius: 0.5rem;
-  transition: all 0.2s;
-  box-shadow: 0 10px 15px -3px rgb(99 102 241 / 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(200, 161, 101, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-600);
-  box-shadow: 0 20px 25px -5px rgb(99 102 241 / 0.3);
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
+  box-shadow: 0 8px 30px rgba(200, 161, 101, 0.45);
+  transform: translateY(-2px);
 }
 
+/* Secondary Button - Royal Blue outline */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-gray-100);
-  background-color: var(--color-gray-800);
-  border: 1px solid var(--color-gray-700);
+  color: var(--color-text-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-primary-500);
   border-radius: 0.5rem;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-gray-700);
-  border-color: var(--color-gray-600);
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-400);
+  box-shadow: 0 4px 20px rgba(26, 63, 122, 0.3);
 }
 
+/* Premium Gold Gradient Text */
 .gradient-text {
-  background: linear-gradient(to right, var(--color-primary-400), #a78bfa, #f472b6);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Royal Blue Gradient Text */
+.gradient-text-royal {
+  background: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-primary-500) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .card {
-  background-color: rgb(17 24 39 / 0.5);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--color-gray-800);
+  background-color: rgba(10, 22, 40, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-navy-lighter);
   border-radius: 1rem;
   padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(200, 161, 101, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Premium card with gold accent */
+.card-premium {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(1, 10, 31, 0.95) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 161, 101, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 }
 
 .section-title {
@@ -119,10 +201,19 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(200, 161, 101, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 40px rgba(200, 161, 101, 0.5);
+  }
+}
+
+@keyframes pulse-glow-royal {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(26, 63, 122, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(26, 63, 122, 0.5);
   }
 }
 

@@ -736,7 +736,7 @@ function LanguageSelector({ lang, setLang }) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 px-2 py-1 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors text-sm"
+        className="flex items-center gap-1 px-2 py-1 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm"
       >
         <span>{current.flag}</span>
         <span className="text-gray-300">{current.name}</span>
@@ -745,12 +745,12 @@ function LanguageSelector({ lang, setLang }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-24 bg-gray-800 rounded-lg shadow-xl border border-gray-700 z-50">
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#0A1628] rounded-lg shadow-xl border border-[#1a2744] z-50">
           {languages.map(l => (
             <button
               key={l.code}
               onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setIsOpen(false) }}
-              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-gray-700 ${lang === l.code ? 'text-green-400' : 'text-gray-300'}`}
+              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-[#1a2744] ${lang === l.code ? 'text-gold' : 'text-gray-300'}`}
             >
               <span>{l.flag}</span> {l.name}
             </button>
@@ -797,11 +797,11 @@ export default function NoWebsite() {
       />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-[#1a2744]/50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.webp" alt="CatyAI" className="h-20" width="80" height="80" />
+              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
             </Link>
 
             <div className="hidden md:flex items-center gap-8">
@@ -815,7 +815,7 @@ export default function NoWebsite() {
             <div className="hidden md:flex items-center gap-4">
               <LanguageSelector lang={lang} setLang={setLang} />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white transition-colors">{t.nav.login}</a>
-              <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
+              <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
             </div>
 
             <div className="flex md:hidden items-center gap-2">
@@ -830,14 +830,14 @@ export default function NoWebsite() {
 
           {/* Mobile menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-800/50">
+            <div className="md:hidden py-4 border-t border-[#1a2744]/50">
               <div className="flex flex-col gap-4">
                 <Link to="/" className="text-gray-300 hover:text-white">{t.nav.home}</Link>
                 <a href="#benefits" className="text-gray-300 hover:text-white">{t.nav.features}</a>
                 <a href="#how" className="text-gray-300 hover:text-white">{t.nav.howItWorks}</a>
                 <a href="#pricing" className="text-gray-300 hover:text-white">{t.nav.pricing}</a>
                 <a href="#faq" className="text-gray-300 hover:text-white">{t.nav.faq}</a>
-                <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-xl text-center">{t.nav.getStarted}</a>
+                <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-semibold rounded-xl text-center">{t.nav.getStarted}</a>
               </div>
             </div>
           )}
@@ -857,16 +857,16 @@ export default function NoWebsite() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-                <svg className="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+                <svg className="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
-                <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+                <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 {t.heroTitle1}<br />
-                <span className="text-green-400">{t.heroTitle2}</span>
+                <span className="text-gold">{t.heroTitle2}</span>
               </h1>
 
               <p className="text-gray-400 text-xl mb-8 leading-relaxed">
@@ -874,13 +874,13 @@ export default function NoWebsite() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-[1.02]">
+                <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]">
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                   {t.heroCta}
                 </a>
-                <a href="#how" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-800/50 text-white font-semibold text-lg rounded-2xl border border-gray-700 hover:bg-gray-700/50 transition-all">
+                <a href="#how" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0A1628]/50 text-white font-semibold text-lg rounded-2xl border border-[#1a2744] hover:bg-[#1a2744]/50 transition-all">
                   {t.heroCtaSecondary}
                 </a>
               </div>
@@ -889,7 +889,7 @@ export default function NoWebsite() {
               <div className="flex flex-wrap gap-4">
                 {[t.trustBadge1, t.trustBadge2, t.trustBadge3].map((badge, i) => (
                   <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
-                    <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     {badge}
@@ -1038,12 +1038,12 @@ export default function NoWebsite() {
               </div>
 
               {/* Floating badge */}
-              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-bounce z-10">
+              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-bounce z-10">
                 24/7 Active!
               </div>
 
               {/* Bottom badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 border border-gray-700 text-gray-300 px-3 py-1 rounded-full text-[10px] font-medium shadow-lg flex items-center gap-1 z-10 whitespace-nowrap">
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#010A1F] border border-[#1a2744] text-gray-300 px-3 py-1 rounded-full text-[10px] font-medium shadow-lg flex items-center gap-1 z-10 whitespace-nowrap">
                 <span className="w-[6px] h-[6px] bg-green-500 rounded-full animate-pulse"></span>
                 Powered by CatyAI
               </div>
@@ -1053,10 +1053,10 @@ export default function NoWebsite() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.problemTitle} <span className="text-red-400">{t.problemHighlight}</span>
+            {t.problemTitle} <span className="text-gold">{t.problemHighlight}</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-12 mb-12">
             {t.problemStats.map((stat, i) => (
@@ -1066,7 +1066,7 @@ export default function NoWebsite() {
               </div>
             ))}
           </div>
-          <p className="text-xl text-green-400 font-semibold">{t.problemSolution}</p>
+          <p className="text-xl text-gold font-semibold">{t.problemSolution}</p>
         </div>
       </section>
 
@@ -1079,13 +1079,13 @@ export default function NoWebsite() {
           </div>
           <div className="space-y-6">
             {t.howSteps.map((step, i) => (
-              <div key={i} className="flex items-start gap-6 p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
-                <div className="w-16 h-16 rounded-2xl bg-green-500/20 border border-green-500/30 flex items-center justify-center text-3xl flex-shrink-0">
+              <div key={i} className="flex items-start gap-6 p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
+                <div className="w-16 h-16 rounded-2xl bg-gold/20 border border-gold/30 flex items-center justify-center text-3xl flex-shrink-0">
                   {step.icon}
                 </div>
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="w-8 h-8 rounded-full bg-green-500 text-white font-bold flex items-center justify-center text-sm">{i + 1}</span>
+                    <span className="w-8 h-8 rounded-full bg-gold text-navy font-bold flex items-center justify-center text-sm">{i + 1}</span>
                     <h3 className="text-xl font-semibold text-white">{step.title}</h3>
                   </div>
                   <p className="text-gray-400">{step.desc}</p>
@@ -1105,11 +1105,11 @@ export default function NoWebsite() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.paymentMethods.map((method, i) => (
-              <div key={i} className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50 text-center relative overflow-hidden">
+              <div key={i} className="p-6 bg-[#0A1628]/50 rounded-2xl border border-[#1a2744]/50 text-center relative overflow-hidden">
                 {/* Badge */}
                 <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${
                   method.badgeColor === 'green'
-                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    ? 'bg-gold/20 text-gold border border-gold/30'
                     : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
                 }`}>
                   {method.badge}
@@ -1128,16 +1128,16 @@ export default function NoWebsite() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.benefitsTitle} <span className="text-green-400">{t.benefitsHighlight}</span>
+              {t.benefitsTitle} <span className="text-gold">{t.benefitsHighlight}</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.benefits.map((benefit, i) => (
-              <div key={i} className="p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-green-500/30 transition-colors">
+              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 hover:border-gold/30 transition-colors">
                 <div className="text-4xl mb-4">{benefit.icon}</div>
                 <div className="flex items-center gap-2 mb-2">
                   <h3 className="text-lg font-semibold text-white">{benefit.title}</h3>
-                  <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">{benefit.highlight}</span>
+                  <span className="px-2 py-0.5 bg-gold/20 text-gold text-xs rounded-full">{benefit.highlight}</span>
                 </div>
                 <p className="text-gray-400 text-sm">{benefit.desc}</p>
               </div>
@@ -1155,7 +1155,7 @@ export default function NoWebsite() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {t.useCases.map((useCase, i) => (
-              <div key={i} className="p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 text-center hover:border-green-500/30 transition-colors">
+              <div key={i} className="p-4 bg-[#0A1628]/30 rounded-xl border border-[#1a2744]/50 text-center hover:border-gold/30 transition-colors">
                 <div className="text-3xl mb-2">{useCase.icon}</div>
                 <h3 className="text-white font-semibold mb-1">{useCase.title}</h3>
                 <p className="text-gray-400 text-sm">{useCase.desc}</p>
@@ -1166,20 +1166,20 @@ export default function NoWebsite() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.comparisonTitle}</h2>
-          <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-hidden">
-            <div className="grid grid-cols-3 bg-gray-800/50 p-4">
+          <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-hidden">
+            <div className="grid grid-cols-3 bg-[#0A1628]/50 p-4">
               <div className="text-gray-400 font-medium"></div>
               <div className="text-center text-gray-400 font-medium">Website</div>
-              <div className="text-center text-green-400 font-bold">WhatsApp + Caty</div>
+              <div className="text-center text-gold font-bold">WhatsApp + Caty</div>
             </div>
             {t.comparisonItems.map((item, i) => (
-              <div key={i} className="grid grid-cols-3 p-4 border-t border-gray-700/50">
+              <div key={i} className="grid grid-cols-3 p-4 border-t border-[#1a2744]/50">
                 <div className="text-gray-300">{item.feature}</div>
                 <div className="text-center text-gray-400">{item.website}</div>
-                <div className="text-center text-green-400 font-semibold">{item.caty}</div>
+                <div className="text-center text-gold font-semibold">{item.caty}</div>
               </div>
             ))}
           </div>
@@ -1192,10 +1192,10 @@ export default function NoWebsite() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.testimonialsTitle}</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {t.testimonials.map((testimonial, i) => (
-              <div key={i} className="p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
+              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
                 <p className="text-gray-300 italic mb-4">"{testimonial.quote}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">
+                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold">
                     {testimonial.author[0]}
                   </div>
                   <div>
@@ -1218,8 +1218,8 @@ export default function NoWebsite() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {t.plans.map((plan, i) => (
-              <div key={i} className={`p-6 rounded-2xl border ${plan.highlight ? 'bg-gradient-to-b from-green-500/10 to-transparent border-green-500/30' : 'bg-gray-800/30 border-gray-700/50'}`}>
-                {plan.highlight && <div className="text-green-400 text-sm font-semibold mb-4">MOST POPULAR</div>}
+              <div key={i} className={`p-6 rounded-2xl border ${plan.highlight ? 'bg-gradient-to-b from-gold/10 to-transparent border-gold/30' : 'bg-[#0A1628]/30 border-[#1a2744]/50'}`}>
+                {plan.highlight && <div className="text-gold text-sm font-semibold mb-4">MOST POPULAR</div>}
                 <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
                 <p className="text-gray-400 text-sm mb-4">{plan.desc}</p>
                 <div className="mb-6">
@@ -1229,14 +1229,14 @@ export default function NoWebsite() {
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, j) => (
                     <li key={j} className="flex items-center gap-2 text-gray-300 text-sm">
-                      <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <a href="https://app.catyai.io/signup" className={`block w-full py-3 rounded-xl font-semibold text-center transition-opacity ${plan.highlight ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:opacity-90' : 'bg-gray-700 text-white hover:bg-gray-600'}`}>
+                <a href="https://app.catyai.io/signup" className={`block w-full py-3 rounded-xl font-semibold text-center transition-opacity ${plan.highlight ? 'bg-gradient-to-r from-gold to-[#D4B57A] text-white hover:opacity-90' : 'bg-gray-700 text-white hover:bg-gray-600'}`}>
                   {plan.cta}
                 </a>
               </div>
@@ -1251,7 +1251,7 @@ export default function NoWebsite() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
           <div className="space-y-4">
             {t.faqs.map((faq, i) => (
-              <details key={i} className="group p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
+              <details key={i} className="group p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
                 <summary className="flex items-center justify-between cursor-pointer text-white font-semibold list-none">
                   {faq.q}
                   <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1270,7 +1270,7 @@ export default function NoWebsite() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.ctaTitle}</h2>
           <p className="text-gray-400 text-lg mb-8">{t.ctaSubtitle}</p>
-          <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-xl rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-[1.02]">
+          <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold text-xl rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]">
             <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -1280,12 +1280,12 @@ export default function NoWebsite() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-gray-800/50">
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-[#1a2744]/50">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
               <Link to="/" className="inline-block mb-4">
-                <img src="/images/caty-logo.webp" alt="CatyAI" className="h-14" width="56" height="56" />
+                <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
               </Link>
               <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
             </div>
@@ -1314,7 +1314,7 @@ export default function NoWebsite() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-gray-800/50 text-center text-gray-400 text-sm">
+          <div className="pt-8 border-t border-[#1a2744]/50 text-center text-gray-400 text-sm">
             {t.footer.copyright}
           </div>
         </div>

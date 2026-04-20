@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- SEO Meta Tags -->
+  <title>GEO Gateway Architecture — CatyAI | First AI-to-AI Public API for Chat Widgets</title>
+  <meta name="description" content="CatyAI GEO Gateway: The first chat widget with public AI-to-AI API. Layer 3.1-3.6 architecture with SENTINEL Predictive Core. llms.txt compliant, 9 AI agents monitored, 100% visibility score." />
+  <meta name="keywords" content="GEO Gateway, AI-to-AI API, llms.txt, SENTINEL, AI crawler detection, generative engine optimization, CatyAI, AI visibility, bot-to-bot economy" />
+  <meta name="author" content="PayAi-X FZE" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://catyai.io/geo-gateway" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://catyai.io/geo-gateway" />
+  <meta property="og:title" content="GEO Gateway Architecture — First AI-to-AI Public API" />
+  <meta property="og:description" content="The first chat widget with public AI-to-AI API. Layer 3.1-3.6 architecture with SENTINEL Predictive Core." />
+  <meta property="og:image" content="https://catyai.io/geo-gateway-hero.png" />
+  <meta property="og:site_name" content="CatyAI" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GEO Gateway Architecture — CatyAI" />
+  <meta name="twitter:description" content="First chat widget with public AI-to-AI API. 9 AI agents, 100% visibility." />
+  <meta name="twitter:image" content="https://catyai.io/geo-gateway-hero.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #0a0a0f;
+      --color-bg-secondary: #12121a;
+      --color-bg-card: #1a1a24;
+      --color-border: #2a2a3a;
+      --color-text: #e4e4e7;
+      --color-text-muted: #a1a1aa;
+      --color-accent: #3b82f6;
+      --color-accent-glow: rgba(59, 130, 246, 0.3);
+      --color-purple: #8b5cf6;
+      --color-cyan: #06b6d4;
+      --color-green: #10b981;
+      --color-orange: #f97316;
+      --color-red: #ef4444;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .nav-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text);
+    }
+
+    .nav-cta {
+      background: var(--color-accent);
+      color: white !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      background: #2563eb;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      background: radial-gradient(ellipse at center top, var(--color-accent-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge span {
+      color: var(--color-green);
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 50%, var(--color-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 25px 80px -20px rgba(59, 130, 246, 0.3);
+      border: 1px solid var(--color-border);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--color-accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-purple));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Layer Cards */
+    .layers-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .layer-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .layer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -20px var(--color-accent-glow);
+    }
+
+    .layer-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-purple));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .layer-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+    }
+
+    .layer-content .layer-subtitle {
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .layer-content p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+    }
+
+    .layer-features {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .layer-feature {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .layer-feature::before {
+      content: '✓';
+      color: var(--color-green);
+      font-weight: 600;
+    }
+
+    /* SENTINEL Section */
+    .sentinel-section {
+      background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+      border-radius: 24px;
+      padding: 4rem;
+      margin: 4rem 0;
+      border: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sentinel-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .sentinel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sentinel-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .sentinel-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sentinel-card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* FraudAI Shield */
+    .fraudai-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .fraudai-item {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .fraudai-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--color-red), var(--color-orange));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .fraudai-item h5 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .fraudai-item p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Tech Architecture Table */
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background: var(--color-bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .tech-table th,
+    .tech-table td {
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .tech-table th {
+      background: var(--color-bg-secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .tech-table td {
+      font-size: 0.95rem;
+    }
+
+    .tech-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+      border-radius: 24px;
+      margin: 4rem 0;
+      border: 1px solid var(--color-border);
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--color-bg-card);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .layer-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .layer-number {
+        margin: 0 auto;
+      }
+
+      .sentinel-section {
+        padding: 2rem;
+      }
+
+      .hero-stats {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="/favicon-32x32.png" alt="CatyAI">
+        CatyAI
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/geo-gateway">GEO Gateway</a>
+        <a href="https://docs.catyai.io">Documentation</a>
+        <a href="https://app.catyai.io" class="nav-cta">Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>NEW</span> First AI-to-AI Public API for Chat Widgets
+    </div>
+    <h1>The GEO Gateway<br>Architecture</h1>
+    <p>Generative Engine Optimization for the Bot-to-Bot Economy. Make your content visible to AI crawlers with Layer 3.1-3.6 architecture and SENTINEL Predictive Core.</p>
+
+    <img src="/geo-gateway-hero.png" alt="CatyAI GEO Gateway Architecture - AI-to-AI Communication Flow" class="hero-image" loading="eager" fetchpriority="high" width="1200" height="675">
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-value">9</div>
+        <div class="stat-label">AI Agents Monitored</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Visibility Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Security Layers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">&lt;50ms</div>
+        <div class="stat-label">Response Time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Context Section -->
+  <section>
+    <div class="section-header">
+      <span class="section-badge">The Problem</span>
+      <h2>Why GEO Gateway?</h2>
+      <p>Modern JavaScript-based sites (React, Next.js, SPA) are often "opaque" to AI crawlers, causing latency or erroneous indexing. CatyAI GEO Gateway acts as an interoperability layer between your content and AI engines.</p>
+    </div>
+  </section>
+
+  <!-- Layer 3.1-3.5 -->
+  <section>
+    <div class="section-header">
+      <span class="section-badge">Architecture</span>
+      <h2>GEO Gateway Layers</h2>
+      <p>A complete 6-layer system for AI-to-AI communication</p>
+    </div>
+
+    <div class="layers-grid">
+      <!-- Layer 3.1 -->
+      <div class="layer-card">
+        <div class="layer-number">3.1</div>
+        <div class="layer-content">
+          <h3>Machine-Readable KB Index</h3>
+          <div class="layer-subtitle">/llms.txt</div>
+          <p>CatyAI automatically generates a standardized llms.txt file following emerging specifications for LLMs. This file serves a compressed Markdown index, optimized for the context window of GPT-4o, Claude 3.5, and Gemini Pro models.</p>
+          <div class="layer-features">
+            <span class="layer-feature">Auto-generated</span>
+            <span class="layer-feature">llms.txt compliant</span>
+            <span class="layer-feature">Context-optimized</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3.2 -->
+      <div class="layer-card">
+        <div class="layer-number">3.2</div>
+        <div class="layer-content">
+          <h3>AI Crawler Detection & Handshake</h3>
+          <div class="layer-subtitle">Real-time Bot Recognition</div>
+          <p>Our system identifies in real-time over 9 unique AI crawler signatures (OpenAI, Anthropic, Perplexity, Google, Microsoft, Meta, ByteDance, Cohere, Apple). Upon detection, the Gateway performs a digital "handshake", serving pre-rendered data and eliminating the need for heavy JS execution.</p>
+          <div class="layer-features">
+            <span class="layer-feature">9+ AI signatures</span>
+            <span class="layer-feature">Real-time detection</span>
+            <span class="layer-feature">Pre-rendered serving</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3.3 -->
+      <div class="layer-card">
+        <div class="layer-number">3.3</div>
+        <div class="layer-content">
+          <h3>The /answer Portal</h3>
+          <div class="layer-subtitle">/geo/v1/answer — AI-to-AI Public API</div>
+          <p>This is the direct access point. Instead of another AI "guessing" what's written on your site, it can query our /geo/v1/answer endpoint directly. Output: Structured JSON-LD + pure Markdown. Benefit: Zero hallucinations. The AI receives the truth directly from the source.</p>
+          <div class="layer-features">
+            <span class="layer-feature">Public API</span>
+            <span class="layer-feature">JSON-LD + Markdown</span>
+            <span class="layer-feature">Zero hallucinations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3.4 -->
+      <div class="layer-card">
+        <div class="layer-number">3.4</div>
+        <div class="layer-content">
+          <h3>Active Beacon</h3>
+          <div class="layer-subtitle">Real-time AI Ecosystem Signals</div>
+          <p>Real-time signals sent to the AI ecosystem about stock updates, price changes, or service modifications. Keep AI models informed with the latest accurate information about your business.</p>
+          <div class="layer-features">
+            <span class="layer-feature">Real-time updates</span>
+            <span class="layer-feature">Stock signals</span>
+            <span class="layer-feature">Price notifications</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3.5 -->
+      <div class="layer-card">
+        <div class="layer-number">3.5</div>
+        <div class="layer-content">
+          <h3>Smart Distribution</h3>
+          <div class="layer-subtitle">IndexNow + Dynamic Sitemaps</div>
+          <p>Integration with IndexNow protocol and dynamic sitemaps, forcing priority indexing in generative search engines. Ensure your content is discovered and indexed before competitors.</p>
+          <div class="layer-features">
+            <span class="layer-feature">IndexNow protocol</span>
+            <span class="layer-feature">Dynamic sitemaps</span>
+            <span class="layer-feature">Priority indexing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTINEL Section -->
+  <section>
+    <div class="sentinel-section">
+      <div class="section-header">
+        <span class="section-badge">Layer 3.6</span>
+        <h2>SENTINEL Predictive Core</h2>
+        <p>AI Ecosystem Monitoring & Integrity System</p>
+      </div>
+
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 800px; margin: 0 auto;">
+        SENTINEL is not a classic traffic log, but a predictive analysis engine that monitors how your brand is "consumed" by artificial intelligence.
+      </p>
+
+      <div class="sentinel-grid">
+        <div class="sentinel-card">
+          <h4>🎯 Alignment Check</h4>
+          <p>Ensures AI robots respect directives from robots.txt and llms.txt. Monitor compliance across all 9 tracked AI agents.</p>
+        </div>
+        <div class="sentinel-card">
+          <h4>🔐 Signal Integrity</h4>
+          <p>We generate integrity hashes for each served dataset. Confirm if an AI model has read an outdated or erroneous version of your data.</p>
+        </div>
+        <div class="sentinel-card">
+          <h4>📊 Predictive Analytics</h4>
+          <p>Track how AI models interpret and use your content over time. Predict visibility trends and optimize proactively.</p>
+        </div>
+        <div class="sentinel-card">
+          <h4>🚨 Real-time Alerts</h4>
+          <p>Instant notifications when AI crawlers access your content, with full request logging and analysis.</p>
+        </div>
+      </div>
+
+      <!-- FraudAI Shield -->
+      <div style="margin-top: 4rem;">
+        <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 0.5rem;">FraudAI Shield</h3>
+        <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 2rem;">Embedded in SENTINEL — 8 Active Security Modules</p>
+
+        <div class="fraudai-grid">
+          <div class="fraudai-item">
+            <div class="fraudai-icon">🛡️</div>
+            <div>
+              <h5>Prompt Injection Defense</h5>
+              <p>Block attempts to manipulate the bot into offering unauthorized discounts.</p>
+            </div>
+          </div>
+          <div class="fraudai-item">
+            <div class="fraudai-icon">🎣</div>
+            <div>
+              <h5>Phishing Detection</h5>
+              <p>Identify social engineering attack patterns in natural language.</p>
+            </div>
+          </div>
+          <div class="fraudai-item">
+            <div class="fraudai-icon">🔒</div>
+            <div>
+              <h5>Data Exfiltration Protection</h5>
+              <p>Prevent database extraction through interconnected questions.</p>
+            </div>
+          </div>
+          <div class="fraudai-item">
+            <div class="fraudai-icon">🤖</div>
+            <div>
+              <h5>Bot-to-Bot Verification</h5>
+              <p>Authenticate and validate AI-to-AI communications.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Architecture -->
+  <section>
+    <div class="section-header">
+      <span class="section-badge">For Developers</span>
+      <h2>Technical Architecture</h2>
+      <p>Built on enterprise-grade infrastructure</p>
+    </div>
+
+    <table class="tech-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Technology</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Engine</strong></td>
+          <td><span class="tech-tag">Hybrid RAG</span></td>
+          <td>Retrieval-Augmented Generation — Context processing on multiple vector databases</td>
+        </tr>
+        <tr>
+          <td><strong>Security</strong></td>
+          <td><span class="tech-tag">Cloudflare Turnstile</span> + <span class="tech-tag">FraudAI Shield</span></td>
+          <td>Malicious traffic filtering and bot-to-bot protection</td>
+        </tr>
+        <tr>
+          <td><strong>Integrations</strong></td>
+          <td><span class="tech-tag">Webhooks</span> + <span class="tech-tag">Direct API</span></td>
+          <td>Bidirectional business data sync (iStoma, Shopify, WooCommerce, Custom)</td>
+        </tr>
+        <tr>
+          <td><strong>Logic Layer</strong></td>
+          <td><span class="tech-tag">BANT Lead Scoring</span></td>
+          <td>Automatic lead qualification (Budget, Authority, Need, Timing)</td>
+        </tr>
+        <tr>
+          <td><strong>AI Agents</strong></td>
+          <td><span class="tech-tag">9 Monitored Agents</span></td>
+          <td>OpenAI, Anthropic, Perplexity, Google, Microsoft, Meta, ByteDance, Cohere, Apple</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CTA Section -->
+  <section>
+    <div class="cta-section">
+      <h2>Ready for the Bot-to-Bot Economy?</h2>
+      <p>Make your content visible to AI crawlers with GEO Gateway</p>
+      <div class="cta-buttons">
+        <a href="https://app.catyai.io/register" class="btn btn-primary">
+          Get Started Free →
+        </a>
+        <a href="https://docs.catyai.io/guide/geo-gateway" class="btn btn-secondary">
+          Read Documentation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 <a href="https://payai-x.com">PayAi-X FZE</a> (Dubai, UAE) — <a href="/">CatyAI</a> GEO Gateway</p>
+  </footer>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CatyAI GEO Gateway",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "AI Optimization",
+    "operatingSystem": "Web",
+    "description": "First chat widget with public AI-to-AI API. GEO Gateway provides Layer 3.1-3.6 architecture with SENTINEL Predictive Core for complete AI visibility.",
+    "url": "https://catyai.io/geo-gateway",
+    "author": {
+      "@type": "Organization",
+      "name": "PayAi-X FZE",
+      "url": "https://payai-x.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Free tier available"
+    },
+    "featureList": [
+      "Layer 3.1: Machine-Readable KB Index (/llms.txt)",
+      "Layer 3.2: AI Crawler Detection & Handshake",
+      "Layer 3.3: /answer Portal (AI-to-AI Public API)",
+      "Layer 3.4: Active Beacon",
+      "Layer 3.5: Smart Distribution (IndexNow)",
+      "Layer 3.6: SENTINEL Predictive Core",
+      "FraudAI Shield (8 security modules)",
+      "9 AI Agents Monitored",
+      "100% Visibility Score"
+    ]
+  }
+  </script>
+</body>
+</html>

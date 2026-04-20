@@ -22,7 +22,7 @@ function Licensing() {
         </div>
 
         {/* Company Information */}
-        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 mb-8">
           <div className="flex items-center gap-2 mb-6">
             <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
@@ -31,19 +31,19 @@ function Licensing() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <div className="p-4 bg-gray-800/50 rounded-lg">
+            <div className="p-4 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Company</span>
               <p className="text-white font-medium">PayAi-X FZE</p>
             </div>
-            <div className="p-4 bg-gray-800/50 rounded-lg">
+            <div className="p-4 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">CEO</span>
               <p className="text-white font-medium">Ioan Adrian Vitan</p>
             </div>
-            <div className="p-4 bg-gray-800/50 rounded-lg">
+            <div className="p-4 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Product</span>
               <p className="text-white font-medium">Caty.AI - AI Chatbot Platform</p>
             </div>
-            <div className="p-4 bg-gray-800/50 rounded-lg">
+            <div className="p-4 bg-[#0A1628]/50 rounded-lg">
               <span className="text-gray-400 text-sm">Licensing Model</span>
               <p className="text-primary-400 font-medium">DUAL LICENSE</p>
             </div>
@@ -63,7 +63,7 @@ function Licensing() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Community License */}
-            <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors">
+            <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 hover:border-[#1a2744] transition-colors">
               <h3 className="text-2xl font-bold text-white mb-4">Community</h3>
 
               <div className="space-y-3 mb-6">
@@ -122,7 +122,7 @@ function Licensing() {
             </div>
 
             {/* Enterprise License */}
-            <div className="bg-gray-900/50 border-2 border-primary-500 rounded-xl p-6 relative">
+            <div className="bg-[#010A1F]/50 border-2 border-primary-500 rounded-xl p-6 relative">
               <div className="absolute -top-3 right-4 px-3 py-1 bg-primary-500 rounded-full text-xs font-bold text-white flex items-center gap-1">
                 Most Popular
               </div>
@@ -200,7 +200,7 @@ function Licensing() {
         </div>
 
         {/* Protected Intellectual Property */}
-        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+        <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 mb-8">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
             <span className="flex items-center justify-center w-8 h-8 bg-primary-500/20 rounded-lg text-primary-400 text-sm font-bold">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,35 +211,35 @@ function Licensing() {
           </h2>
 
           <div className="space-y-4">
-            <div className="flex items-start gap-3 p-4 bg-gray-800/50 rounded-lg">
+            <div className="flex items-start gap-3 p-4 bg-[#0A1628]/50 rounded-lg">
               <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <span className="text-white font-medium">AI Intent Detection Engine:</span>
                 <span className="text-gray-400 ml-2">Proprietary algorithm for understanding visitor intent and buying signals</span>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-gray-800/50 rounded-lg">
+            <div className="flex items-start gap-3 p-4 bg-[#0A1628]/50 rounded-lg">
               <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <span className="text-white font-medium">Lead Capture System:</span>
                 <span className="text-gray-400 ml-2">Smart lead qualification and scoring methodology</span>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-gray-800/50 rounded-lg">
+            <div className="flex items-start gap-3 p-4 bg-[#0A1628]/50 rounded-lg">
               <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <span className="text-white font-medium">Knowledge Base Training:</span>
                 <span className="text-gray-400 ml-2">Custom AI fine-tuning for business-specific responses</span>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-gray-800/50 rounded-lg">
+            <div className="flex items-start gap-3 p-4 bg-[#0A1628]/50 rounded-lg">
               <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <span className="text-white font-medium">Conversation Analytics:</span>
                 <span className="text-gray-400 ml-2">Proprietary metrics for measuring engagement and conversion</span>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-gray-800/50 rounded-lg">
+            <div className="flex items-start gap-3 p-4 bg-[#0A1628]/50 rounded-lg">
               <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0"></div>
               <div>
                 <span className="text-white font-medium">Human Handoff Protocol:</span>

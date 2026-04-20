@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 // Footer Component - Accepts translations as prop
 export default function Footer({ t }) {
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800 bg-gray-950">
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gold/30 bg-[#010A1F]">
       <div className="max-w-7xl mx-auto">
         {/* Grid: 2 cols on mobile, 4 cols on desktop */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
           {/* Logo & Tagline - full width on mobile */}
           <div className="col-span-2 md:col-span-1 mb-4 md:mb-0">
             <Link to="/" className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo-96.webp" alt="Caty.AI" className="h-8 animate-pulse" width="32" height="32" />
-              <span className="text-lg font-bold text-white">Caty.AI</span>
+              <img src="/images/caty-logo.png" alt="Caty.AI" className="h-8" width="32" height="32" />
+              <span className="text-lg font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
             </Link>
             <p className="text-gray-300 text-sm">
               {t.footer.tagline}
@@ -50,19 +50,19 @@ export default function Footer({ t }) {
         </div>
 
         {/* Reviews & Social Proof */}
-        <div className="py-4 border-t border-gray-800">
+        <div className="py-4 border-t border-gold/30">
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm mb-4">
             <span className="text-gray-500">Reviews:</span>
             <a href="https://www.g2.com/products/catyai/reviews"
                target="_blank" rel="noopener noreferrer"
-               className="flex items-center gap-2 px-3 py-1 bg-gray-800 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-colors">
+               className="flex items-center gap-2 px-3 py-1 bg-[#0A1628] rounded-full text-gray-300 hover:text-white hover:bg-[#1a2744] transition-colors">
               <span className="text-orange-500 font-bold text-xs">G2</span>
               <span className="text-yellow-500 text-xs">★★★★★</span>
               <span>4.8/5</span>
             </a>
             <a href="https://www.producthunt.com/products/ai-sales-assistant-that-never-sleeps"
                target="_blank" rel="noopener noreferrer"
-               className="flex items-center gap-2 px-3 py-1 bg-gray-800 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-colors">
+               className="flex items-center gap-2 px-3 py-1 bg-[#0A1628] rounded-full text-gray-300 hover:text-white hover:bg-[#1a2744] transition-colors">
               <span>🚀</span>
               <span>Product Hunt</span>
             </a>
@@ -70,7 +70,7 @@ export default function Footer({ t }) {
         </div>
 
         {/* Featured Articles - SEO Backlinks */}
-        <div className="py-4 border-t border-gray-800">
+        <div className="py-4 border-t border-gold/30">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
             <span className="text-gray-500">Featured Articles:</span>
             <a href="https://medium.com/@adrianvitan/ahauros-aeos-catyai-inteligen%C8%9Ba-artificial%C4%83-economic%C4%83-pentru-rom%C3%A2nia-digital%C4%83-89108e433672"
@@ -125,14 +125,14 @@ export default function Footer({ t }) {
             </a>
             <a href="https://medium.com/@adrianvitan"
                target="_blank" rel="noopener noreferrer"
-               className="text-primary-400 hover:text-primary-300 transition-colors font-medium">
+               className="text-gold hover:text-[#D4B57A] transition-colors font-medium">
               All articles on Medium →
             </a>
           </div>
         </div>
 
         {/* Licensing Info */}
-        <div className="py-6 border-t border-gray-800 mb-2">
+        <div className="py-6 border-t border-gold/30 mb-2">
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-sm">
             <Link to="/licensing" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -141,19 +141,19 @@ export default function Footer({ t }) {
               <span>{t.footer.licensing}:</span>
             </Link>
             <div className="flex items-center gap-3">
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold hover:bg-gold/20 transition-colors">
                 <span className="font-medium">Proprietary</span>
               </Link>
-              <span className="text-gray-600">+</span>
-              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-500/10 border border-primary-500/30 rounded-full text-primary-400 hover:bg-primary-500/20 transition-colors">
+              <span className="text-gold/60">+</span>
+              <Link to="/licensing" className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold hover:bg-gold/20 transition-colors">
                 <span className="font-medium">Enterprise</span>
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+        <div className="pt-6 border-t border-gold/30 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white text-sm">
             © {new Date().getFullYear()} {t.footer.copyright}
           </p>
           <div className="flex items-center gap-4">

@@ -23,7 +23,7 @@ function GDPRPolicy() {
           <div className="prose prose-invert prose-gray max-w-none">
             {/* Introduction */}
             <section className="mb-12">
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6 mb-8">
                 <p className="text-gray-300 leading-relaxed">
                   Caty.AI is committed to protecting and respecting your privacy in accordance with the
                   General Data Protection Regulation (GDPR) (EU) 2016/679. This GDPR Policy explains how
@@ -40,7 +40,7 @@ function GDPRPolicy() {
             {/* Table of Contents */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-white mb-6">Table of Contents</h2>
-              <nav className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <nav className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <ol className="list-decimal list-inside space-y-2 text-primary-400">
                   <li><a href="#data-controller" className="hover:text-primary-300 transition-colors">Data Controller Information</a></li>
                   <li><a href="#legal-basis" className="hover:text-primary-300 transition-colors">Legal Basis for Processing</a></li>
@@ -68,12 +68,12 @@ function GDPRPolicy() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.1 Who We Are</h3>
                   <p className="text-gray-300 mb-4">
                     For the purposes of the GDPR, the data controller is:
                   </p>
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <p className="text-white font-semibold">PayAi-X FZE (Caty.AI)</p>
                     <p className="text-gray-300">License Number: L-3702</p>
                     <p className="text-gray-300">Dedicated Desk #23-DARTX, Floor 19</p>
@@ -85,7 +85,7 @@ function GDPRPolicy() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">1.2 Data Controller vs. Data Processor</h3>
 
                   <div className="space-y-4">
@@ -119,13 +119,13 @@ function GDPRPolicy() {
                 Legal Basis for Processing
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   Under Article 6 of the GDPR, we process personal data based on the following legal bases:
                 </p>
 
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-800/50 rounded-lg border-l-4 border-primary-500">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg border-l-4 border-primary-500">
                     <h4 className="font-semibold text-white mb-2">Contract Performance (Art. 6(1)(b))</h4>
                     <p className="text-gray-300 text-sm mb-2">Processing necessary for the performance of a contract:</p>
                     <ul className="list-disc list-inside space-y-1 text-gray-400 text-sm">
@@ -136,7 +136,7 @@ function GDPRPolicy() {
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg border-l-4 border-green-500">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg border-l-4 border-gold">
                     <h4 className="font-semibold text-white mb-2">Consent (Art. 6(1)(a))</h4>
                     <p className="text-gray-300 text-sm mb-2">Processing based on your explicit consent:</p>
                     <ul className="list-disc list-inside space-y-1 text-gray-400 text-sm">
@@ -147,7 +147,7 @@ function GDPRPolicy() {
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg border-l-4 border-yellow-500">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg border-l-4 border-yellow-500">
                     <h4 className="font-semibold text-white mb-2">Legitimate Interests (Art. 6(1)(f))</h4>
                     <p className="text-gray-300 text-sm mb-2">Processing necessary for our legitimate interests:</p>
                     <ul className="list-disc list-inside space-y-1 text-gray-400 text-sm">
@@ -161,7 +161,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg border-l-4 border-blue-500">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg border-l-4 border-blue-500">
                     <h4 className="font-semibold text-white mb-2">Legal Obligation (Art. 6(1)(c))</h4>
                     <p className="text-gray-300 text-sm mb-2">Processing required to comply with legal obligations:</p>
                     <ul className="list-disc list-inside space-y-1 text-gray-400 text-sm">
@@ -182,48 +182,48 @@ function GDPRPolicy() {
                 Categories of Personal Data
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
-                      <tr className="border-b border-gray-700">
+                      <tr className="border-b border-[#1a2744]">
                         <th className="py-3 px-4 text-white font-semibold">Category</th>
                         <th className="py-3 px-4 text-white font-semibold">Data Types</th>
                         <th className="py-3 px-4 text-white font-semibold">Legal Basis</th>
                       </tr>
                     </thead>
                     <tbody className="text-gray-300 text-sm">
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Identity Data</td>
                         <td className="py-3 px-4">Name, username, company name</td>
                         <td className="py-3 px-4">Contract</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Contact Data</td>
                         <td className="py-3 px-4">Email address, phone number, billing address</td>
                         <td className="py-3 px-4">Contract</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Financial Data</td>
                         <td className="py-3 px-4">Payment card details, billing history</td>
                         <td className="py-3 px-4">Contract</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Transaction Data</td>
                         <td className="py-3 px-4">Subscription details, payment records</td>
                         <td className="py-3 px-4">Contract / Legal</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Technical Data</td>
                         <td className="py-3 px-4">IP address, browser type, device information</td>
                         <td className="py-3 px-4">Legitimate Interest</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Usage Data</td>
                         <td className="py-3 px-4">Service usage, feature interactions, analytics</td>
                         <td className="py-3 px-4">Legitimate Interest</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4 font-medium text-white">Conversation Data</td>
                         <td className="py-3 px-4">Chat messages, AI interactions</td>
                         <td className="py-3 px-4">Contract</td>
@@ -257,7 +257,7 @@ function GDPRPolicy() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.1 Service Delivery</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Providing and maintaining our AI chatbot services</li>
@@ -268,7 +268,7 @@ function GDPRPolicy() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.2 AI Processing</h3>
                   <p className="text-gray-300 mb-4">We use artificial intelligence to:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -286,7 +286,7 @@ function GDPRPolicy() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">4.3 Automated Decision-Making</h3>
                   <p className="text-gray-300 mb-4">
                     Our service involves automated processing to provide AI-powered responses. However:
@@ -308,13 +308,13 @@ function GDPRPolicy() {
                 Data Subject Rights
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   Under the GDPR, you have the following rights regarding your personal data:
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,7 +329,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -343,7 +343,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -357,7 +357,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,7 +371,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -385,7 +385,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -399,7 +399,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -413,7 +413,7 @@ function GDPRPolicy() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-primary-500/20 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -450,7 +450,7 @@ function GDPRPolicy() {
                 Data Retention Periods
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   We retain personal data only for as long as necessary to fulfill the purposes for which
                   it was collected, including to satisfy legal, accounting, or reporting requirements.
@@ -459,34 +459,34 @@ function GDPRPolicy() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
-                      <tr className="border-b border-gray-700">
+                      <tr className="border-b border-[#1a2744]">
                         <th className="py-3 px-4 text-white font-semibold">Data Category</th>
                         <th className="py-3 px-4 text-white font-semibold">Retention Period</th>
                         <th className="py-3 px-4 text-white font-semibold">Justification</th>
                       </tr>
                     </thead>
                     <tbody className="text-gray-300 text-sm">
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Account Data</td>
                         <td className="py-3 px-4">Duration of account + 30 days</td>
                         <td className="py-3 px-4">Service provision</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Conversation Data</td>
                         <td className="py-3 px-4">90 days (configurable)</td>
                         <td className="py-3 px-4">Service provision</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Billing Records</td>
                         <td className="py-3 px-4">7 years</td>
                         <td className="py-3 px-4">Legal obligation (tax)</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Analytics Data</td>
                         <td className="py-3 px-4">24 months (anonymized)</td>
                         <td className="py-3 px-4">Legitimate interest</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Marketing Consents</td>
                         <td className="py-3 px-4">Duration of consent + 3 years</td>
                         <td className="py-3 px-4">Legal compliance</td>
@@ -515,7 +515,7 @@ function GDPRPolicy() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">7.1 Transfer Mechanisms</h3>
                   <p className="text-gray-300 mb-4">
                     When we transfer personal data outside the EU/EEA, we ensure adequate protection through:
@@ -528,7 +528,7 @@ function GDPRPolicy() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">7.2 Transfer Impact Assessments</h3>
                   <p className="text-gray-300">
                     We conduct Transfer Impact Assessments (TIAs) for transfers to third countries to evaluate
@@ -537,7 +537,7 @@ function GDPRPolicy() {
                   </p>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">7.3 EU Data Residency</h3>
                   <p className="text-gray-300">
                     For customers requiring EU data residency, we offer the option to store and process data
@@ -556,16 +556,16 @@ function GDPRPolicy() {
                 Data Security Measures
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   We implement appropriate technical and organizational measures to ensure a level of
                   security appropriate to the risk, in accordance with Article 32 of the GDPR.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       Technical Measures
@@ -580,9 +580,9 @@ function GDPRPolicy() {
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
-                      <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                       </svg>
                       Organizational Measures
@@ -616,7 +616,7 @@ function GDPRPolicy() {
                 Sub-Processors and Third Parties
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   We engage the following categories of sub-processors to provide our services:
                 </p>
@@ -624,29 +624,29 @@ function GDPRPolicy() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
                     <thead>
-                      <tr className="border-b border-gray-700">
+                      <tr className="border-b border-[#1a2744]">
                         <th className="py-3 px-4 text-white font-semibold">Category</th>
                         <th className="py-3 px-4 text-white font-semibold">Purpose</th>
                         <th className="py-3 px-4 text-white font-semibold">Location</th>
                       </tr>
                     </thead>
                     <tbody className="text-gray-300 text-sm">
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Cloud Infrastructure</td>
                         <td className="py-3 px-4">Hosting and data storage</td>
                         <td className="py-3 px-4">EU/US (SCCs)</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">AI Processing</td>
                         <td className="py-3 px-4">Natural language processing</td>
                         <td className="py-3 px-4">US (SCCs + DPA)</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Payment Processing</td>
                         <td className="py-3 px-4">Subscription billing</td>
                         <td className="py-3 px-4">EU/US (SCCs)</td>
                       </tr>
-                      <tr className="border-b border-gray-800">
+                      <tr className="border-b border-[#1a2744]">
                         <td className="py-3 px-4">Email Services</td>
                         <td className="py-3 px-4">Transactional emails</td>
                         <td className="py-3 px-4">EU/US (SCCs)</td>
@@ -676,7 +676,7 @@ function GDPRPolicy() {
               </h2>
 
               <div className="space-y-6">
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.1 Cookie Categories</h3>
                   <p className="text-gray-300 mb-4">
                     In compliance with the ePrivacy Directive and GDPR, we categorize cookies as:
@@ -702,7 +702,7 @@ function GDPRPolicy() {
                   </div>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.2 Consent Management</h3>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>We display a cookie consent banner on first visit</li>
@@ -713,7 +713,7 @@ function GDPRPolicy() {
                   </ul>
                 </div>
 
-                <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+                <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-white mb-4">10.3 Widget Cookies</h3>
                   <p className="text-gray-300">
                     Our chatbot widget uses minimal local storage for session management. Business customers
@@ -731,14 +731,14 @@ function GDPRPolicy() {
                 Data Protection Officer
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   We have appointed a Data Protection Officer (DPO) to oversee our data protection
                   compliance. You can contact our DPO for any questions or concerns related to your
                   personal data or this policy.
                 </p>
 
-                <div className="p-4 bg-gray-800/50 rounded-lg">
+                <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                   <h4 className="font-semibold text-white mb-3">Data Protection Officer</h4>
                   <div className="space-y-2 text-gray-300">
                     <p>
@@ -769,7 +769,7 @@ function GDPRPolicy() {
                 Supervisory Authority
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-white mb-4">12.1 Right to Lodge a Complaint</h3>
                 <p className="text-gray-300 mb-4">
                   If you believe that our processing of your personal data infringes the GDPR, you have
@@ -777,7 +777,7 @@ function GDPRPolicy() {
                   Member State of your habitual residence, place of work, or place of the alleged infringement.
                 </p>
 
-                <div className="p-4 bg-gray-800/50 rounded-lg mb-4">
+                <div className="p-4 bg-[#0A1628]/50 rounded-lg mb-4">
                   <h4 className="font-semibold text-white mb-2">Our Lead Supervisory Authority</h4>
                   <p className="text-gray-300 text-sm">
                     Dubai World Trade Centre Authority<br />
@@ -808,7 +808,7 @@ function GDPRPolicy() {
                 Data Processing Agreement
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
                   For business customers who use our services to process personal data of their end users,
                   we offer a Data Processing Agreement (DPA) that:
@@ -841,7 +841,7 @@ function GDPRPolicy() {
                 Policy Updates
               </h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-4">
                   We may update this GDPR Policy from time to time to reflect changes in our practices,
                   technology, legal requirements, or other factors. When we make material changes:
@@ -865,35 +865,35 @@ function GDPRPolicy() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
 
-              <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+              <div className="bg-[#010A1F]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-300 mb-6">
                   If you have any questions about this GDPR Policy or our data protection practices,
                   please contact us:
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Privacy Inquiries</h4>
                     <p className="text-gray-300 text-sm">
                       Email: <a href="mailto:privacy@payai-x.com" className="text-primary-400 hover:text-primary-300">privacy@payai-x.com</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Data Protection Officer</h4>
                     <p className="text-gray-300 text-sm">
                       Email: <a href="mailto:dpo@payai-x.com" className="text-primary-400 hover:text-primary-300">dpo@payai-x.com</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Legal Department</h4>
                     <p className="text-gray-300 text-sm">
                       Email: <a href="mailto:legal@payai-x.com" className="text-primary-400 hover:text-primary-300">legal@payai-x.com</a>
                     </p>
                   </div>
 
-                  <div className="p-4 bg-gray-800/50 rounded-lg">
+                  <div className="p-4 bg-[#0A1628]/50 rounded-lg">
                     <h4 className="font-semibold text-white mb-2">Mailing Address</h4>
                     <p className="text-gray-300 text-sm">
                       PayAi-X FZE<br />
@@ -908,7 +908,7 @@ function GDPRPolicy() {
 
             {/* Disclaimer */}
             <section className="mt-12">
-              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <div className="bg-[#0A1628]/50 border border-[#1a2744] rounded-xl p-6">
                 <p className="text-gray-400 text-sm italic">
                   <strong>Disclaimer:</strong> This GDPR Policy is a template for informational purposes.
                   Consult with a qualified attorney for legal advice specific to your situation and jurisdiction.

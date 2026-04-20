@@ -93,10 +93,10 @@ export default function ROICalculator() {
   const t = translations[lang] || translations.en
 
   return (
-    <section ref={ref} id="roi-calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 via-indigo-950/30 to-gray-900 relative overflow-hidden">
+    <section ref={ref} id="roi-calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 via-[#1A3F7A]/30 to-gray-900 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -104,17 +104,17 @@ export default function ROICalculator() {
 
           {/* Left - Content */}
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
               </span>
-              <span className="text-indigo-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+              <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
               {t.title1}<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">{t.title2}</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-[#D4B57A]">{t.title2}</span>
             </h2>
 
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
@@ -125,8 +125,8 @@ export default function ROICalculator() {
             <div className="space-y-3 mb-8">
               {[t.feature1, t.feature2, t.feature3, t.feature4].map((feature, i) => (
                 <div key={i} className="flex items-center gap-3 text-gray-300">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-indigo-400" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-gold" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -138,7 +138,7 @@ export default function ROICalculator() {
             {/* CTA Button */}
             <Link
               to="/analyze"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] group"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02] group"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -153,7 +153,7 @@ export default function ROICalculator() {
             <div className="flex flex-wrap gap-4 mt-6">
               {[t.trust1, t.trust2, t.trust3].map((trust, i) => (
                 <div key={i} className="flex items-center gap-2 text-gray-500 text-sm">
-                  <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   {trust}
@@ -164,11 +164,11 @@ export default function ROICalculator() {
 
           {/* Right - Example Result Preview */}
           <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <div className="bg-gray-800/50 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
+            <div className="bg-[#0A1628]/50 backdrop-blur-xl rounded-3xl p-8 border border-[#1a2744]/50 shadow-2xl">
               <div className="text-gray-500 text-sm mb-4">{t.example}</div>
 
               {/* Site header */}
-              <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-700/50">
+              <div className="flex items-center gap-3 mb-6 pb-6 border-b border-[#1a2744]/50">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-2xl">
                   🦷
                 </div>
@@ -180,28 +180,28 @@ export default function ROICalculator() {
 
               {/* ROI Numbers */}
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-xl border border-green-500/20">
+                <div className="flex items-center justify-between p-4 bg-gold/10 rounded-xl border border-gold/20">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                     </div>
                     <span className="text-gray-300">Leads</span>
                   </div>
-                  <span className="text-2xl font-bold text-green-400">{t.exampleLeads}</span>
+                  <span className="text-2xl font-bold text-gold">{t.exampleLeads}</span>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-purple-500/10 rounded-xl border border-purple-500/20">
+                <div className="flex items-center justify-between p-4 bg-[#1A3F7A]/20 rounded-xl border border-[#1A3F7A]/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 rounded-lg bg-[#1A3F7A]/30 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[#5B8DEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <span className="text-gray-300">Revenue</span>
                   </div>
-                  <span className="text-2xl font-bold text-purple-400">{t.exampleRevenue}</span>
+                  <span className="text-2xl font-bold text-[#5B8DEF]">{t.exampleRevenue}</span>
                 </div>
               </div>
 
@@ -219,10 +219,10 @@ export default function ROICalculator() {
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-gray-500">With CatyAI</span>
-                    <span className="text-green-400">8.4%</span>
+                    <span className="text-gold">8.4%</span>
                   </div>
                   <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full w-[84%] bg-gradient-to-r from-green-500 to-emerald-400 rounded-full"></div>
+                    <div className="h-full w-[84%] bg-gradient-to-r from-gold to-[#D4B57A] rounded-full"></div>
                   </div>
                 </div>
               </div>

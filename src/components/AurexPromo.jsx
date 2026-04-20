@@ -27,7 +27,7 @@ const features = [
       'Posts & Q&A management',
       'Insights & Analytics'
     ],
-    color: 'from-green-500 to-emerald-600',
+    color: 'from-gold to-[#D4B57A]',
     icon: 'map'
   },
   {
@@ -67,7 +67,7 @@ const SearchIcon = () => (
 )
 
 const CheckIcon = () => (
-  <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
   </svg>
 )
@@ -106,7 +106,7 @@ export default function AurexPromo() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
             Powered by <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">AUREX Guardian v3</span>
           </h2>
-          <p className="text-sm font-semibold tracking-widest uppercase text-cyan-400/70 mb-4">
+          <p className="text-sm font-semibold tracking-widest uppercase text-gold/70 mb-4">
             The AI Engine Powering CatyAI
           </p>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -132,7 +132,7 @@ export default function AurexPromo() {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 hover:border-gray-700 transition-all duration-300"
+              className="group relative bg-[#010A1F]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#1a2744] hover:border-[#1a2744] transition-all duration-300"
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
@@ -176,7 +176,7 @@ export default function AurexPromo() {
             { value: 'AI', label: 'Profit Scoring' },
             { value: 'Real-time', label: 'Market Signals' }
           ].map((stat, i) => (
-            <div key={i} className="text-center p-4 bg-gray-900/30 rounded-xl border border-gray-800/50">
+            <div key={i} className="text-center p-4 bg-[#010A1F]/30 rounded-xl border border-[#1a2744]/50">
               <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 {stat.value}
               </div>

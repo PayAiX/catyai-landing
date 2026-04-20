@@ -35,7 +35,7 @@ export default function Blog() {
         <section className="px-4 pb-12">
           <div className="max-w-6xl mx-auto">
             <Link to={`/blog/${blogArticles[0].slug}`} className="block group">
-              <div className="relative rounded-2xl overflow-hidden bg-gray-800/50 border border-gray-700 hover:border-indigo-500/50 transition-all">
+              <div className="relative rounded-2xl overflow-hidden bg-[#0A1628]/50 border border-[#1a2744] hover:border-gold/50 transition-all">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="aspect-video md:aspect-auto">
                     <img
@@ -45,10 +45,10 @@ export default function Blog() {
                     />
                   </div>
                   <div className="p-6 md:p-8 flex flex-col justify-center">
-                    <span className="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-400 text-sm rounded-full w-fit mb-4">
+                    <span className="inline-block px-3 py-1 bg-gold/20 text-gold text-sm rounded-full w-fit mb-4">
                       Featured
                     </span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-indigo-400 transition-colors">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-gold transition-colors">
                       {blogArticles[0].title}
                     </h2>
                     <p className="text-gray-400 mb-4">
@@ -76,7 +76,7 @@ export default function Blog() {
               <Link
                 key={article.slug}
                 to={`/blog/${article.slug}`}
-                className="group block bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-indigo-500/50 transition-all hover:-translate-y-1"
+                className="group block bg-[#0A1628]/50 rounded-xl overflow-hidden border border-[#1a2744] hover:border-gold/50 transition-all hover:-translate-y-1"
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -89,7 +89,7 @@ export default function Blog() {
                   <span className="inline-block px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded mb-3">
                     {article.category}
                   </span>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-gold transition-colors line-clamp-2">
                     {article.title}
                   </h3>
                   <p className="text-gray-400 text-sm mb-4 line-clamp-2">

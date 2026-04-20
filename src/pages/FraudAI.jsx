@@ -340,7 +340,7 @@ function LanguageSelector({ lang, setLang }) {
 
   return (
     <div className="relative">
-      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-1 px-2 py-1 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors text-sm">
+      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-1 px-2 py-1 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm">
         <span>{current.flag}</span>
         <span className="text-gray-300">{current.name}</span>
         <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -348,10 +348,10 @@ function LanguageSelector({ lang, setLang }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-24 bg-gray-800 rounded-lg shadow-xl border border-gray-700 z-50">
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#0A1628] rounded-lg shadow-xl border border-[#1a2744] z-50">
           {languages.map(l => (
             <button key={l.code} onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setIsOpen(false) }}
-              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-gray-700 ${lang === l.code ? 'text-red-400' : 'text-gray-300'}`}>
+              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-[#1a2744] ${lang === l.code ? 'text-red-400' : 'text-gray-300'}`}>
               <span>{l.flag}</span> {l.name}
             </button>
           ))}
@@ -396,11 +396,11 @@ export default function FraudAI() {
       />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-[#1a2744]/50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.webp" alt="CatyAI" className="h-20" width="80" height="80" />
+              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <Link to="/" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</Link>
@@ -423,7 +423,7 @@ export default function FraudAI() {
             </div>
           </div>
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-800/50">
+            <div className="md:hidden py-4 border-t border-[#1a2744]/50">
               <div className="flex flex-col gap-4">
                 <Link to="/" className="text-gray-300 hover:text-white">{t.nav.home}</Link>
                 <a href="#modules" className="text-gray-300 hover:text-white">{t.nav.features}</a>
@@ -464,7 +464,7 @@ export default function FraudAI() {
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                   {t.heroCta}
                 </a>
-                <a href="#how" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-800/50 text-white font-semibold text-lg rounded-2xl border border-gray-700 hover:bg-gray-700/50 transition-all">
+                <a href="#how" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0A1628]/50 text-white font-semibold text-lg rounded-2xl border border-[#1a2744] hover:bg-[#1a2744]/50 transition-all">
                   {t.heroCtaSecondary}
                 </a>
               </div>
@@ -486,16 +486,16 @@ export default function FraudAI() {
               <div className="w-72 h-72 mx-auto relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full animate-pulse"></div>
                 <div className="absolute inset-4 bg-gradient-to-br from-red-500/30 to-orange-500/30 rounded-full"></div>
-                <div className="absolute inset-8 bg-gray-900 rounded-full flex items-center justify-center">
+                <div className="absolute inset-8 bg-[#010A1F] rounded-full flex items-center justify-center">
                   <svg className="w-32 h-32 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
                 {/* Floating threat indicators */}
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold animate-bounce">BLOCKED</div>
-                <div className="absolute top-1/4 -left-8 bg-gray-800 border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">🔗 Phishing</div>
-                <div className="absolute top-1/2 -right-8 bg-gray-800 border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">💸 Scam</div>
-                <div className="absolute bottom-1/4 -left-4 bg-gray-800 border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">🎭 Fake</div>
+                <div className="absolute top-1/4 -left-8 bg-[#0A1628] border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">🔗 Phishing</div>
+                <div className="absolute top-1/2 -right-8 bg-[#0A1628] border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">💸 Scam</div>
+                <div className="absolute bottom-1/4 -left-4 bg-[#0A1628] border border-red-500/50 px-2 py-1 rounded text-xs text-red-400">🎭 Fake</div>
               </div>
             </div>
           </div>
@@ -503,7 +503,7 @@ export default function FraudAI() {
       </section>
 
       {/* Problem */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.problemTitle} <span className="text-red-400">{t.problemHighlight}</span>
@@ -529,7 +529,7 @@ export default function FraudAI() {
           </div>
           <div className="space-y-6">
             {t.howSteps.map((step, i) => (
-              <div key={i} className="flex items-start gap-6 p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
+              <div key={i} className="flex items-start gap-6 p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
                 <div className="w-16 h-16 rounded-2xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-3xl flex-shrink-0">{step.icon}</div>
                 <div>
                   <div className="flex items-center gap-3 mb-2">
@@ -553,7 +553,7 @@ export default function FraudAI() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {t.modules.map((mod, i) => (
-              <div key={i} className="p-5 bg-gray-800/30 rounded-2xl border border-gray-700/50 hover:border-red-500/30 transition-colors">
+              <div key={i} className="p-5 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 hover:border-red-500/30 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-2xl mb-4">{mod.icon}</div>
                 <h3 className="text-white font-semibold mb-2">{mod.title}</h3>
                 <p className="text-gray-400 text-sm mb-3">{mod.desc}</p>
@@ -581,17 +581,17 @@ export default function FraudAI() {
       </section>
 
       {/* Comparison */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.comparisonTitle}</h2>
-          <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-hidden">
-            <div className="grid grid-cols-3 bg-gray-800/50 p-4">
+          <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-hidden">
+            <div className="grid grid-cols-3 bg-[#0A1628]/50 p-4">
               <div className="text-gray-400 font-medium"></div>
               <div className="text-center text-gray-400 font-medium">Without</div>
               <div className="text-center text-red-400 font-bold">With FraudAI</div>
             </div>
             {t.comparisonItems.map((item, i) => (
-              <div key={i} className="grid grid-cols-3 p-4 border-t border-gray-700/50">
+              <div key={i} className="grid grid-cols-3 p-4 border-t border-[#1a2744]/50">
                 <div className="text-gray-300">{item.feature}</div>
                 <div className="text-center text-gray-400">{item.without}</div>
                 <div className="text-center text-red-400 font-semibold">{item.with}</div>
@@ -607,7 +607,7 @@ export default function FraudAI() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.useCasesTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.useCases.map((uc, i) => (
-              <div key={i} className="p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50 text-center">
+              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 text-center">
                 <div className="text-4xl mb-4">{uc.icon}</div>
                 <h3 className="text-white font-semibold mb-2">{uc.title}</h3>
                 <p className="text-gray-400 text-sm">{uc.desc}</p>
@@ -623,7 +623,7 @@ export default function FraudAI() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.testimonialsTitle}</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {t.testimonials.map((test, i) => (
-              <div key={i} className="p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
+              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
                 <p className="text-gray-300 italic mb-4">"{test.quote}"</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold">{test.author[0]}</div>
@@ -644,7 +644,7 @@ export default function FraudAI() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
           <div className="space-y-4">
             {t.faqs.map((faq, i) => (
-              <details key={i} className="group p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
+              <details key={i} className="group p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
                 <summary className="flex items-center justify-between cursor-pointer text-white font-semibold list-none">
                   {faq.q}
                   <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -671,12 +671,12 @@ export default function FraudAI() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-gray-800/50">
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-[#1a2744]/50">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
               <Link to="/" className="inline-block mb-4">
-                <img src="/images/caty-logo.webp" alt="CatyAI" className="h-14" width="56" height="56" />
+                <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
               </Link>
               <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
             </div>
@@ -705,7 +705,7 @@ export default function FraudAI() {
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-gray-800/50 text-center text-gray-400 text-sm">{t.footer.copyright}</div>
+          <div className="pt-8 border-t border-[#1a2744]/50 text-center text-gray-400 text-sm">{t.footer.copyright}</div>
         </div>
       </footer>
     </div>

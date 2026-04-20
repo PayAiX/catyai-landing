@@ -187,14 +187,14 @@ export default function WhatsAppZeroMeta() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-            <span className="text-green-400 text-sm font-bold uppercase tracking-wider">{t.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <span className="text-gold text-sm font-bold uppercase tracking-wider">{t.badge}</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
             {t.title}
           </h2>
-          <h3 className="text-2xl md:text-3xl font-bold text-green-400 mb-6">
+          <h3 className="text-2xl md:text-3xl font-bold text-gold mb-6">
             {t.titleHighlight}
           </h3>
 
@@ -203,7 +203,7 @@ export default function WhatsAppZeroMeta() {
           </p>
 
           {t.problemQuote && (
-            <div className="max-w-2xl mx-auto bg-gray-800/50 border border-gray-700 rounded-xl p-4 italic text-gray-300 text-sm">
+            <div className="max-w-2xl mx-auto bg-[#0A1628]/50 border border-[#1a2744] rounded-xl p-4 italic text-gray-300 text-sm">
               {t.problemQuote}
             </div>
           )}
@@ -212,7 +212,7 @@ export default function WhatsAppZeroMeta() {
         {/* Comparison Cards */}
         <div className={`grid lg:grid-cols-2 gap-8 mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Others - Red Card */}
-          <div className="bg-gray-900/80 rounded-3xl border border-red-500/30 overflow-hidden">
+          <div className="bg-[#010A1F]/80 rounded-3xl border border-red-500/30 overflow-hidden">
             <div className="bg-red-500/10 px-6 py-4 border-b border-red-500/20">
               <div className="text-red-400 text-sm font-semibold">{t.othersTitle}</div>
               <div className="text-gray-500 text-xs">{t.othersSubtitle}</div>
@@ -238,21 +238,21 @@ export default function WhatsAppZeroMeta() {
             </div>
           </div>
 
-          {/* CatyAI - Green Card */}
-          <div className="bg-gray-900/80 rounded-3xl border border-green-500/30 overflow-hidden relative">
-            <div className="absolute -top-3 -right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-10">
+          {/* CatyAI - Gold Card */}
+          <div className="bg-[#010A1F]/80 rounded-3xl border border-gold/30 overflow-hidden relative">
+            <div className="absolute -top-3 -right-3 bg-gold text-[#010A1F] px-3 py-1 rounded-full text-xs font-bold shadow-lg z-10">
               RECOMANDAT
             </div>
-            <div className="bg-green-500/10 px-6 py-4 border-b border-green-500/20">
-              <div className="text-green-400 text-sm font-semibold">{t.catyTitle}</div>
+            <div className="bg-gold/10 px-6 py-4 border-b border-gold/20">
+              <div className="text-gold text-sm font-semibold">{t.catyTitle}</div>
               <div className="text-gray-500 text-xs">{t.catySubtitle}</div>
               <div className="text-white font-bold mt-1">{t.catyDesc}</div>
             </div>
             <div className="p-6 space-y-4">
               {t.caty.map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-green-400 text-sm font-bold">{item.icon}</span>
+                  <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-gold text-sm font-bold">{item.icon}</span>
                   </div>
                   <div>
                     <div className="text-white font-medium text-sm">{item.title}</div>
@@ -261,9 +261,9 @@ export default function WhatsAppZeroMeta() {
                 </div>
               ))}
             </div>
-            <div className="px-6 py-4 bg-green-500/5 border-t border-green-500/20 text-center">
-              <div className="text-3xl font-extrabold text-green-400">{t.catyCost}</div>
-              <div className="text-green-300 text-sm">{t.catyCostLabel}</div>
+            <div className="px-6 py-4 bg-gold/5 border-t border-gold/20 text-center">
+              <div className="text-3xl font-extrabold text-gold">{t.catyCost}</div>
+              <div className="text-[#D4B57A] text-sm">{t.catyCostLabel}</div>
               <div className="text-gray-500 text-xs">{t.catyCostExtra}</div>
             </div>
           </div>
@@ -272,8 +272,8 @@ export default function WhatsAppZeroMeta() {
         {/* Stats */}
         <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {t.stats.map((stat, i) => (
-            <div key={i} className="bg-gray-800/50 rounded-2xl p-6 text-center border border-gray-700/50">
-              <div className="text-2xl md:text-3xl font-bold text-green-400 mb-1">{stat.value}</div>
+            <div key={i} className="bg-[#0A1628]/50 rounded-2xl p-6 text-center border border-[#1a2744]/50">
+              <div className="text-2xl md:text-3xl font-bold text-gold mb-1">{stat.value}</div>
               <div className="text-gray-500 text-sm">{stat.label}</div>
             </div>
           ))}
@@ -288,7 +288,7 @@ export default function WhatsAppZeroMeta() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.features.map((feature, i) => (
-              <div key={i} className="bg-gray-800/40 rounded-xl p-5 border border-gray-700/50 hover:border-green-500/30 transition-all">
+              <div key={i} className="bg-[#0A1628]/40 rounded-xl p-5 border border-[#1a2744]/50 hover:border-gold/30 transition-all">
                 <div className="text-3xl mb-3">{feature.icon}</div>
                 <h4 className="text-white font-semibold mb-2">{feature.title}</h4>
                 <p className="text-gray-500 text-sm">{feature.desc}</p>
@@ -400,7 +400,7 @@ export default function WhatsAppZeroMeta() {
               <div className="absolute right-[-2px] top-[160px] w-[3px] h-20 bg-[#2a2a2e] rounded-r-sm"></div>
 
               {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-green-500/30 z-30">
+              <div className="absolute -top-4 -right-4 bg-gold text-[#010A1F] px-3 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-gold/30 z-30">
                 24/7 AI
               </div>
             </div>
@@ -414,9 +414,9 @@ export default function WhatsAppZeroMeta() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
             {t.steps.map((step, i) => (
               <div key={i} className="flex items-center gap-4">
-                <div className="bg-gray-800/80 rounded-2xl p-6 text-center border border-gray-700/50 min-w-[160px]">
+                <div className="bg-[#0A1628]/80 rounded-2xl p-6 text-center border border-[#1a2744]/50 min-w-[160px]">
                   <div className="text-4xl mb-2">{step.icon}</div>
-                  <div className="text-green-400 text-xs font-semibold mb-1">{step.step}</div>
+                  <div className="text-gold text-xs font-semibold mb-1">{step.step}</div>
                   <div className="text-white font-medium text-sm mb-1">{step.title}</div>
                   <div className="text-gray-500 text-xs">{step.time}</div>
                 </div>
@@ -431,12 +431,12 @@ export default function WhatsAppZeroMeta() {
         {/* CTA */}
         <div className={`text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{t.ctaTitle}</h3>
-          <p className="text-xl text-green-400 font-semibold mb-4">{t.ctaSubtitle}</p>
+          <p className="text-xl text-gold font-semibold mb-4">{t.ctaSubtitle}</p>
           <p className="text-gray-400 mb-8 max-w-xl mx-auto">{t.ctaDesc}</p>
 
           <a
             href="https://app.catyai.io/qr-first"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold text-xl rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-[1.02]"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold to-[#D4B57A] text-[#010A1F] font-bold text-xl rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]"
           >
             {t.ctaBtn}
           </a>

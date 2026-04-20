@@ -9,7 +9,7 @@ const pressLinks = [
     fallbackLetter: 'DR',
     url: 'https://www.digitalromania.ro/solutii-digitale/catyai',
     description: 'Chatbot AI pentru site & Secretara AI pe WhatsApp',
-    color: 'from-blue-600 to-indigo-600'
+    color: 'from-[#1A3F7A] to-[#5B8DEF]'
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const pressLinks = [
     fallbackLetter: 'M',
     url: 'https://medium.com/@adrianvitan/catyai-a406bcb42200',
     description: 'Articol complet despre CatyAI',
-    color: 'from-green-600 to-emerald-600'
+    color: 'from-gold to-[#D4B57A]'
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const pressLinks = [
     fallbackLetter: 'M',
     url: 'https://medium.com/@adrianvitan/aurex-guardian-f3939e80d126',
     description: 'Market Intelligence Platform',
-    color: 'from-purple-600 to-pink-600'
+    color: 'from-gold to-[#D4B57A]'
   },
   {
     id: 4,
@@ -91,13 +91,13 @@ const HandshakeIcon = () => (
 
 export default function PartnersPress() {
   return (
-    <section id="partners" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+    <section id="partners" className="py-16 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/30">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            In presa & <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Parteneri</span>
+            In presa & <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">Parteneri</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
             Citeste despre CatyAI si descopera partenerii nostri de incredere
@@ -107,7 +107,7 @@ export default function PartnersPress() {
         {/* Press Section */}
         <div className="mb-12">
           <div className="flex items-center gap-2 mb-6">
-            <div className="p-2 bg-indigo-500/20 rounded-lg">
+            <div className="p-2 bg-gold/20 rounded-lg">
               <NewspaperIcon />
             </div>
             <h3 className="text-lg font-semibold text-white">Articole & Recenzii</h3>
@@ -120,7 +120,7 @@ export default function PartnersPress() {
                 href={press.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800/80 transition-all duration-300"
+                className="group flex items-center gap-4 p-4 bg-[#0A1628]/50 rounded-xl border border-[#1a2744]/50 hover:border-gold/50 hover:bg-[#0A1628]/80 transition-all duration-300"
               >
                 {/* Logo placeholder */}
                 <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${press.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>
@@ -129,7 +129,7 @@ export default function PartnersPress() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-white group-hover:text-indigo-400 transition-colors truncate">
+                    <span className="font-medium text-white group-hover:text-gold transition-colors truncate">
                       {press.name}
                     </span>
                     <ExternalLinkIcon />
@@ -144,7 +144,7 @@ export default function PartnersPress() {
         {/* Partners Section */}
         <div>
           <div className="flex items-center gap-2 mb-6">
-            <div className="p-2 bg-purple-500/20 rounded-lg">
+            <div className="p-2 bg-gold/20 rounded-lg">
               <HandshakeIcon />
             </div>
             <h3 className="text-lg font-semibold text-white">Parteneri Tehnologici</h3>
@@ -157,7 +157,7 @@ export default function PartnersPress() {
                 href={partner.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-5 bg-gray-800/50 rounded-xl border border-gray-700/50 hover:border-purple-500/50 hover:bg-gray-800/80 transition-all duration-300"
+                className="group flex items-center gap-4 p-5 bg-[#0A1628]/50 rounded-xl border border-[#1a2744]/50 hover:border-gold/50 hover:bg-[#0A1628]/80 transition-all duration-300"
               >
                 {/* Logo placeholder */}
                 <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${partner.color} flex items-center justify-center text-white font-bold shrink-0`}>
@@ -166,13 +166,13 @@ export default function PartnersPress() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-white group-hover:text-purple-400 transition-colors">
+                    <span className="font-semibold text-white group-hover:text-gold transition-colors">
                       {partner.name}
                     </span>
                     <ExternalLinkIcon />
                   </div>
                   <p className="text-gray-400 text-sm mb-1">{partner.description}</p>
-                  <span className="inline-block px-2 py-0.5 bg-purple-500/20 text-purple-300 text-xs rounded-full">
+                  <span className="inline-block px-2 py-0.5 bg-gold/20 text-gold text-xs rounded-full">
                     {partner.type}
                   </span>
                 </div>
@@ -182,11 +182,11 @@ export default function PartnersPress() {
         </div>
 
         {/* Become a partner CTA */}
-        <div className="text-center mt-10 pt-8 border-t border-gray-800">
+        <div className="text-center mt-10 pt-8 border-t border-[#1a2744]">
           <p className="text-gray-500 text-sm mb-3">Vrei sa devii partener CatyAI?</p>
           <a
             href="mailto:contact@payai-x.com?subject=Parteneriat%20CatyAI"
-            className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-gold hover:text-gold/80 font-medium transition-colors"
           >
             Contacteaza-ne
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

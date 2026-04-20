@@ -35,7 +35,7 @@ const translations = {
         tagline: 'Google Business Profile',
         description: 'Manage your Google Business profile, respond to reviews and increase local visibility.',
         features: ['Auto-sync profiles', 'AI review responses', 'Posts & Q&A management', 'Insights & Analytics'],
-        color: 'from-green-500 to-emerald-600'
+        color: 'from-gold to-[#D4B57A]'
       },
       {
         id: 'indexing',
@@ -104,7 +104,7 @@ const translations = {
         tagline: 'Google Business Profile',
         description: 'Gestionează profilul Google Business, răspunde la recenzii și crește vizibilitatea locală.',
         features: ['Sync automat profiluri', 'Răspunsuri AI la recenzii', 'Management Posts & Q&A', 'Insights & Analytics'],
-        color: 'from-green-500 to-emerald-600'
+        color: 'from-gold to-[#D4B57A]'
       },
       {
         id: 'indexing',
@@ -173,7 +173,7 @@ const translations = {
         tagline: 'Google Business Profile',
         description: 'Gestiona tu perfil de Google Business, responde a reseñas y aumenta la visibilidad local.',
         features: ['Sync automático perfiles', 'Respuestas AI a reseñas', 'Gestión Posts & Q&A', 'Insights & Analytics'],
-        color: 'from-green-500 to-emerald-600'
+        color: 'from-gold to-[#D4B57A]'
       },
       {
         id: 'indexing',
@@ -239,10 +239,10 @@ export default function AurexGuardian() {
       />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-lg border-b border-gray-800">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-lg border-b border-[#1a2744]">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/images/caty-logo.webp" alt="CatyAI" className="h-10 w-10" width="40" height="40" />
+            <img src="/images/caty-logo.png" alt="CatyAI" className="h-10 w-10" width="40" height="40" />
             <span className="font-bold text-xl text-white">CatyAI</span>
           </Link>
           <div className="flex items-center gap-4">
@@ -304,7 +304,7 @@ export default function AurexGuardian() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a href="#features" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-800/50 text-white font-semibold text-lg rounded-2xl border border-gray-700 hover:bg-gray-700/50 transition-all">
+            <a href="#features" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0A1628]/50 text-white font-semibold text-lg rounded-2xl border border-[#1a2744] hover:bg-[#1a2744]/50 transition-all">
               {t.heroCtaSecondary}
             </a>
           </div>
@@ -324,7 +324,7 @@ export default function AurexGuardian() {
       </section>
 
       {/* What is AUREX */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             {t.whatTitle} <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">{t.whatHighlight}</span>
@@ -348,7 +348,7 @@ export default function AurexGuardian() {
             {t.features.map((feature) => (
               <div
                 key={feature.id}
-                className="group relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800 hover:border-gray-700 transition-all duration-300"
+                className="group relative bg-[#010A1F]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#1a2744] hover:border-[#1a2744] transition-all duration-300"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
 
@@ -373,7 +373,7 @@ export default function AurexGuardian() {
                 <ul className="space-y-2">
                   {feature.features.map((f, i) => (
                     <li key={i} className="flex items-center gap-2 text-gray-300 text-sm">
-                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {f}
@@ -392,7 +392,7 @@ export default function AurexGuardian() {
           <h2 className="text-3xl font-bold text-white text-center mb-12">{t.statsTitle}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {t.stats.map((stat, i) => (
-              <div key={i} className="text-center p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+              <div key={i} className="text-center p-6 bg-[#010A1F]/50 rounded-xl border border-[#1a2744]">
                 <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
@@ -423,10 +423,10 @@ export default function AurexGuardian() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-[#010A1F] border-t border-[#1a2744]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img src="/images/caty-logo.webp" alt="CatyAI" className="h-8 w-8" width="32" height="32" />
+            <img src="/images/caty-logo.png" alt="CatyAI" className="h-8 w-8" width="32" height="32" />
             <span className="text-gray-400 text-sm">{t.footer.company}</span>
           </div>
           <p className="text-gray-400 text-sm">{t.footer.copyright}</p>

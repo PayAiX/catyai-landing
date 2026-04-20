@@ -105,13 +105,13 @@ export default function ComparisonTable() {
       <div className="max-w-5xl mx-auto">
 
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {t.title1}<br />
-            <span className="text-green-400">{t.title2}</span>
+            <span className="text-gold">{t.title2}</span>
           </h2>
 
           <p className="text-gray-400 max-w-2xl mx-auto">
@@ -119,12 +119,12 @@ export default function ComparisonTable() {
           </p>
         </div>
 
-        <div className={`bg-gray-800/30 backdrop-blur rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`bg-[#0A1628]/30 backdrop-blur rounded-2xl border border-[#1a2744]/50 overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
-          <div className="grid grid-cols-4 bg-gray-800/50 border-b border-gray-700/50">
+          <div className="grid grid-cols-4 bg-[#0A1628]/50 border-b border-[#1a2744]/50">
             <div className="p-4 text-gray-400 text-sm font-medium">{t.feature}</div>
             <div className="p-4 text-center">
-              <div className="text-cyan-400 font-bold">CatyAI</div>
+              <div className="text-gold font-bold">CatyAI</div>
               <div className="text-gray-500 text-xs">€49/mo</div>
             </div>
             <div className="p-4 text-center">
@@ -140,13 +140,13 @@ export default function ComparisonTable() {
           {t.features.map((f, i) => (
             <div
               key={i}
-              className={`grid grid-cols-4 border-b border-gray-700/30 hover:bg-gray-800/30 transition-colors ${i === t.features.length - 1 ? 'bg-green-500/5' : ''}`}
+              className={`grid grid-cols-4 border-b border-[#1a2744]/30 hover:bg-[#0A1628]/30 transition-colors ${i === t.features.length - 1 ? 'bg-gold/5' : ''}`}
             >
               <div className="p-4 text-gray-300 text-sm flex items-center">
                 {f.name}
-                {i === t.features.length - 1 && <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded">{t.total}</span>}
+                {i === t.features.length - 1 && <span className="ml-2 text-xs bg-gold/20 text-gold px-2 py-0.5 rounded">{t.total}</span>}
               </div>
-              <div className={`p-4 text-center text-sm ${f.caty.includes('✓') || i === t.features.length - 1 ? 'text-green-400 font-semibold' : 'text-gray-400'}`}>
+              <div className={`p-4 text-center text-sm ${f.caty.includes('✓') || i === t.features.length - 1 ? 'text-gold font-semibold' : 'text-gray-400'}`}>
                 {f.caty}
               </div>
               <div className="p-4 text-center text-sm text-gray-500">
@@ -159,7 +159,7 @@ export default function ComparisonTable() {
           ))}
         </div>
 
-        <div className={`mt-8 bg-gradient-to-r from-cyan-500/10 to-green-500/10 rounded-2xl p-8 border border-cyan-500/20 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`mt-8 bg-gradient-to-r from-cyan-500/10 to-gold/10 rounded-2xl p-8 border border-cyan-500/20 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -171,7 +171,7 @@ export default function ComparisonTable() {
             </div>
             <a
               href="https://app.catyai.io"
-              className="flex-shrink-0 px-6 py-3 bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity"
+              className="flex-shrink-0 px-6 py-3 bg-gradient-to-r from-cyan-500 to-gold text-gray-900 font-bold rounded-xl hover:opacity-90 transition-opacity"
             >
               {t.cta}
             </a>

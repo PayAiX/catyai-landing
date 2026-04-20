@@ -653,11 +653,11 @@ export default function WhatsAppAI() {
       />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-lg border-b border-gray-800/50">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-lg border-b border-[#1a2744]/50">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/images/caty-logo.webp" alt="CatyAI" className="h-10" width="40" height="40" />
+              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
               <span className="text-xl font-bold">Caty.AI</span>
             </Link>
             <div className="flex items-center gap-4">
@@ -666,7 +666,7 @@ export default function WhatsAppAI() {
               </Link>
               <a
                 href="https://app.catyai.io/secretary/dashboard"
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+                className="bg-gold hover:bg-[#A88A52] text-white font-semibold px-4 py-2 rounded-lg transition-colors"
               >
                 {t.heroCta}
               </a>
@@ -703,7 +703,7 @@ export default function WhatsAppAI() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="https://app.catyai.io/secretary/dashboard"
-                  className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
+                  className="bg-gold hover:bg-[#A88A52] text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -712,7 +712,7 @@ export default function WhatsAppAI() {
                 </a>
                 <a
                   href="#demo"
-                  className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-colors"
+                  className="bg-[#0A1628] hover:bg-[#1a2744] text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-colors"
                 >
                   {t.heroCtaSecondary}
                 </a>
@@ -745,12 +745,12 @@ export default function WhatsAppAI() {
             <div className="relative">
               <div className="relative mx-auto" style={{ maxWidth: '320px' }}>
                 {/* Phone frame */}
-                <div className="bg-gray-900 rounded-[3rem] p-3 shadow-2xl border border-gray-800">
+                <div className="bg-[#010A1F] rounded-[3rem] p-3 shadow-2xl border border-[#1a2744]">
                   <div className="bg-black rounded-[2.5rem] overflow-hidden">
                     {/* WhatsApp header */}
                     <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-                        <img src="/images/caty-logo.webp" alt="Caty" className="w-8 h-8 object-contain" width="32" height="32" />
+                        <img src="/images/caty-logo.png" alt="Caty" className="w-8 h-8 object-contain" width="32" height="32" />
                       </div>
                       <div className="flex-1">
                         <div className="text-white font-semibold text-sm">Caty Secretary</div>
@@ -840,7 +840,7 @@ export default function WhatsAppAI() {
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 px-4 bg-gray-900/50">
+      <section className="py-20 px-4 bg-[#010A1F]/50">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {t.problemTitle} <span className="text-red-400">{t.problemHighlight}</span>
@@ -848,7 +848,7 @@ export default function WhatsAppAI() {
 
           <div className="grid md:grid-cols-3 gap-6 mt-12 mb-12">
             {t.problemStats.map((stat, i) => (
-              <div key={i} className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+              <div key={i} className="bg-[#0A1628]/50 rounded-xl p-6 border border-[#1a2744]">
                 <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">{stat.value}</div>
                 <div className="text-gray-400">{stat.label}</div>
               </div>
@@ -870,7 +870,7 @@ export default function WhatsAppAI() {
           <div className="grid md:grid-cols-3 gap-8">
             {t.howSteps.map((step, i) => (
               <div key={i} className="relative">
-                <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center h-full hover:border-green-500/50 transition-colors">
+                <div className="bg-[#010A1F] border border-[#1a2744] rounded-2xl p-8 text-center h-full hover:border-green-500/50 transition-colors">
                   <div className="text-5xl mb-4">{step.icon}</div>
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4">
                     {i + 1}
@@ -892,7 +892,7 @@ export default function WhatsAppAI() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-900/50">
+      <section className="py-20 px-4 bg-[#010A1F]/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -902,7 +902,7 @@ export default function WhatsAppAI() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.features.map((feature, i) => (
-              <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-green-500/50 transition-colors group">
+              <div key={i} className="bg-[#010A1F] border border-[#1a2744] rounded-xl p-6 hover:border-green-500/50 transition-colors group">
                 <div className="text-4xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
                   {feature.title}
@@ -924,7 +924,7 @@ export default function WhatsAppAI() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.demoTitle}</h2>
             <p className="text-gray-400 text-lg mb-8">{t.demoSubtitle}</p>
 
-            <div className="bg-gray-900 rounded-xl p-6 mb-8 inline-block">
+            <div className="bg-[#010A1F] rounded-xl p-6 mb-8 inline-block">
               <div className="text-3xl font-bold text-green-400 mb-2">{t.demoNumber}</div>
               <p className="text-gray-400 text-sm">{t.demoInstructions}</p>
             </div>
@@ -947,13 +947,13 @@ export default function WhatsAppAI() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-20 px-4 bg-gray-900/50">
+      <section className="py-20 px-4 bg-[#010A1F]/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.useCasesTitle}</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.useCases.map((uc, i) => (
-              <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-green-500/50 transition-colors">
+              <div key={i} className="bg-[#010A1F] border border-[#1a2744] rounded-xl p-6 hover:border-green-500/50 transition-colors">
                 <div className="text-4xl mb-4">{uc.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{uc.title}</h3>
                 <p className="text-gray-400 text-sm">{uc.desc}</p>
@@ -1003,7 +1003,7 @@ export default function WhatsAppAI() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://app.catyai.io/secretary/dashboard"
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
+              className="bg-gold hover:bg-[#A88A52] text-white font-semibold px-8 py-4 rounded-xl inline-flex items-center justify-center gap-2 transition-all hover:scale-105"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -1022,13 +1022,13 @@ export default function WhatsAppAI() {
 
 
       {/* FAQ */}
-      <section className="py-20 px-4 bg-gray-900/50">
+      <section className="py-20 px-4 bg-[#010A1F]/50">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">{t.faqTitle}</h2>
 
           <div className="space-y-4">
             {t.faqs.map((faq, i) => (
-              <details key={i} className="group bg-gray-900 border border-gray-800 rounded-xl">
+              <details key={i} className="group bg-[#010A1F] border border-[#1a2744] rounded-xl">
                 <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
                   <span className="font-semibold">{faq.q}</span>
                   <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

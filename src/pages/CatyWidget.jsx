@@ -1442,6 +1442,46 @@ const translations = {
   }
 }
 
+function LanguageSelector({ lang, setLang }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const languages = [
+    { code: 'en', flag: '🇬🇧', name: 'EN' },
+    { code: 'ro', flag: '🇷🇴', name: 'RO' },
+    { code: 'es', flag: '🇪🇸', name: 'ES' },
+    { code: 'pt', flag: '🇵🇹', name: 'PT' },
+    { code: 'fr', flag: '🇫🇷', name: 'FR' }
+  ]
+  const current = languages.find(l => l.code === lang) || languages[0]
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-1 px-2 py-1 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm"
+      >
+        <span>{current.flag}</span>
+        <span className="text-gray-300">{current.name}</span>
+        <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#0A1628] rounded-lg shadow-xl border border-[#1a2744] z-50">
+          {languages.map(l => (
+            <button
+              key={l.code}
+              onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setIsOpen(false) }}
+              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-[#1a2744] ${lang === l.code ? 'text-gold' : 'text-gray-300'}`}
+            >
+              <span>{l.flag}</span> {l.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function CatyWidget() {
   const [lang, setLang] = useState('en')
 
@@ -1479,11 +1519,11 @@ export default function CatyWidget() {
 
       <div className="min-h-screen bg-gray-950">
         {/* Navigation */}
-        <nav className="fixed top-0 w-full z-50 bg-gray-950/90 backdrop-blur border-b border-gray-800/50">
+        <nav className="fixed top-0 w-full z-50 bg-gray-950/90 backdrop-blur border-b border-[#1a2744]/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link to="/" className="flex items-center gap-2">
-                <img src="/images/caty-logo.webp" alt="CatyAI" className="h-8 w-auto" />
+                <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
                 <span className="font-bold text-white">CatyAI</span>
               </Link>
               <div className="hidden md:flex items-center gap-6">
@@ -1493,63 +1533,74 @@ export default function CatyWidget() {
                 <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">{t.nav.faq}</a>
               </div>
               <div className="flex items-center gap-4">
+                <LanguageSelector lang={lang} setLang={setLang} />
                 <a href="https://app.catyai.io" className="text-gray-400 hover:text-white transition-colors text-sm hidden sm:block">{t.nav.login}</a>
-                <a href="https://app.catyai.io" className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
+                <a href="https://app.catyai.io" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
               </div>
             </div>
           </div>
         </nav>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
-              <span className="text-cyan-400 text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/widget-hero.png"
+              alt="CatyAI Background"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-[#010A1F]/75"></div>
+          </div>
+
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+              <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               {t.heroTitle1}<br />
-              <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">{t.heroTitle2}</span>
+              <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.heroTitle2}</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
               {t.heroSubtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
+              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
                 {t.heroCta}
               </a>
-              <a href="#demo" className="px-8 py-4 bg-gray-800 text-white font-semibold rounded-xl text-lg hover:bg-gray-700 transition-colors border border-gray-700">
+              <a href="#demo" className="px-8 py-4 bg-[#0A1628] text-white font-semibold rounded-xl text-lg hover:bg-[#1a2744] transition-colors border border-[#1a2744]">
                 {t.heroCtaSecondary}
               </a>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
-              <span className="flex items-center gap-2"><span className="text-green-500">✓</span> {t.trustBadge1}</span>
-              <span className="flex items-center gap-2"><span className="text-green-500">✓</span> {t.trustBadge2}</span>
-              <span className="flex items-center gap-2"><span className="text-green-500">✓</span> {t.trustBadge3}</span>
+              <span className="flex items-center gap-2"><span className="text-gold">✓</span> {t.trustBadge1}</span>
+              <span className="flex items-center gap-2"><span className="text-gold">✓</span> {t.trustBadge2}</span>
+              <span className="flex items-center gap-2"><span className="text-gold">✓</span> {t.trustBadge3}</span>
             </div>
           </div>
         </section>
 
         {/* Problem Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.problemTitle} <span className="text-red-400">{t.problemHighlight}</span>
+              {t.problemTitle} <span className="text-gold">{t.problemHighlight}</span>
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8 mt-12 mb-12">
               {t.problemStats.map((stat, i) => (
-                <div key={i} className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-                  <div className="text-4xl font-bold text-red-400 mb-2">{stat.value}</div>
-                  <div className="text-gray-400">{stat.label}</div>
+                <div key={i} className="bg-[#0A1628]/50 rounded-2xl p-8 border border-[#1a2744]/50">
+                  <div className="text-4xl font-bold text-gold mb-2">{stat.value}</div>
+                  <div className="text-white">{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            <p className="text-xl text-green-400 font-semibold">{t.problemSolution}</p>
+            <p className="text-xl text-gold font-semibold">{t.problemSolution}</p>
           </div>
         </section>
 
@@ -1561,16 +1612,16 @@ export default function CatyWidget() {
               <p className="text-gray-400 text-lg">{t.integrationSubtitle}</p>
             </div>
 
-            <div className="bg-gray-900 rounded-2xl p-6 mb-12 border border-gray-800">
-              <code className="text-cyan-400 text-sm md:text-base break-all">{t.integrationCode}</code>
+            <div className="bg-[#010A1F] rounded-2xl p-6 mb-12 border border-[#1a2744]">
+              <code className="text-gold text-sm md:text-base break-all">{t.integrationCode}</code>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {t.integrationSteps.map((step, i) => (
                 <div key={i} className="text-center">
                   <div className="text-4xl mb-4">{step.icon}</div>
-                  <div className="text-xl font-bold text-white mb-2">{step.title}</div>
-                  <div className="text-gray-400">{step.desc}</div>
+                  <div className="text-xl font-bold text-gold mb-2">{step.title}</div>
+                  <div className="text-white">{step.desc}</div>
                 </div>
               ))}
             </div>
@@ -1580,26 +1631,26 @@ export default function CatyWidget() {
         </section>
 
         {/* Not a Chatbot Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                {t.agentTitle} <span className="text-cyan-400">{t.agentHighlight}</span>
+                {t.agentTitle} <span className="text-gold">{t.agentHighlight}</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto">{t.agentDesc}</p>
             </div>
 
-            <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-hidden">
-              <div className="grid grid-cols-3 bg-gray-800/50 border-b border-gray-700/50">
+            <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-hidden">
+              <div className="grid grid-cols-3 bg-[#0A1628]/50 border-b border-[#1a2744]/50">
                 <div className="p-4 text-gray-500 text-sm font-medium"></div>
                 <div className="p-4 text-center text-gray-400 font-medium">Chatbot Traditional</div>
-                <div className="p-4 text-center text-cyan-400 font-bold">Caty Widget</div>
+                <div className="p-4 text-center text-gold font-bold">Caty Widget</div>
               </div>
               {t.agentComparison.map((item, i) => (
-                <div key={i} className="grid grid-cols-3 border-b border-gray-700/30">
+                <div key={i} className="grid grid-cols-3 border-b border-[#1a2744]/30">
                   <div className="p-4 text-gray-300 text-sm">{item.chatbot}</div>
-                  <div className="p-4 text-center text-red-400">✗</div>
-                  <div className="p-4 text-center text-green-400">✓ {item.caty}</div>
+                  <div className="p-4 text-center text-gray-500">✗</div>
+                  <div className="p-4 text-center text-gold">✓ {item.caty}</div>
                 </div>
               ))}
             </div>
@@ -1616,10 +1667,10 @@ export default function CatyWidget() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {t.modules.map((module, i) => (
-                <div key={i} className="bg-gray-800/30 rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-500/30 transition-colors">
+                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50 hover:border-cyan-500/30 transition-colors">
                   <div className="text-3xl mb-4">{module.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{module.name}</h3>
-                  <p className="text-gray-400 text-sm mb-4">{module.desc}</p>
+                  <h3 className="text-xl font-bold text-gold mb-2">{module.name}</h3>
+                  <p className="text-white text-sm mb-4">{module.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {module.features.map((feature, j) => (
                       <span key={j} className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full">{feature}</span>
@@ -1632,7 +1683,7 @@ export default function CatyWidget() {
         </section>
 
         {/* Why Unique Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.uniqueTitle}</h2>
@@ -1641,10 +1692,10 @@ export default function CatyWidget() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {t.unique.map((item, i) => (
-                <div key={i} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-6 border border-gray-700/50">
+                <div key={i} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-6 border border-[#1a2744]/50">
                   <div className="text-3xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-gold mb-2">{item.title}</h3>
+                  <p className="text-white">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -1661,9 +1712,9 @@ export default function CatyWidget() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {t.featuresList.map((feature, i) => (
-                <div key={i} className="flex items-center gap-3 px-4 py-3 bg-gray-800/30 rounded-lg border border-gray-700/30">
-                  <span className="text-green-500">✓</span>
-                  <span className="text-gray-300 text-sm">{feature}</span>
+                <div key={i} className={`flex items-center gap-3 px-4 py-3 rounded-lg border ${i % 2 === 0 ? 'bg-gold/10 border-gold/20' : 'bg-[#0A1628]/30 border-[#1a2744]/30'}`}>
+                  <span className={i % 2 === 0 ? 'text-gold' : 'text-white'}>✓</span>
+                  <span className={`text-sm ${i % 2 === 0 ? 'text-gold' : 'text-white'}`}>{feature}</span>
                 </div>
               ))}
             </div>
@@ -1671,19 +1722,19 @@ export default function CatyWidget() {
         </section>
 
         {/* Comparison Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.comparisonTitle}</h2>
               <p className="text-gray-400 text-lg">{t.comparisonSubtitle}</p>
             </div>
 
-            <div className="bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-x-auto">
+            <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-700/50">
+                  <tr className="border-b border-[#1a2744]/50">
                     <th className="p-4 text-left text-gray-400 font-medium">Feature</th>
-                    <th className="p-4 text-center text-cyan-400 font-bold">CatyAI</th>
+                    <th className="p-4 text-center text-gold font-bold">CatyAI</th>
                     <th className="p-4 text-center text-gray-400">Tidio</th>
                     <th className="p-4 text-center text-gray-400">Intercom</th>
                     <th className="p-4 text-center text-gray-400">Drift</th>
@@ -1691,9 +1742,9 @@ export default function CatyWidget() {
                 </thead>
                 <tbody>
                   {t.comparisonItems.map((item, i) => (
-                    <tr key={i} className="border-b border-gray-700/30">
+                    <tr key={i} className="border-b border-[#1a2744]/30">
                       <td className="p-4 text-gray-300">{item.feature}</td>
-                      <td className="p-4 text-center text-green-400 font-semibold">{item.caty}</td>
+                      <td className="p-4 text-center text-gold font-semibold">{item.caty}</td>
                       <td className="p-4 text-center text-gray-500">{item.tidio}</td>
                       <td className="p-4 text-center text-gray-500">{item.intercom}</td>
                       <td className="p-4 text-center text-gray-500">{item.drift}</td>
@@ -1715,10 +1766,10 @@ export default function CatyWidget() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {t.useCases.map((useCase, i) => (
-                <div key={i} className="bg-gray-800/30 rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-500/30 transition-colors">
+                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50 hover:border-cyan-500/30 transition-colors">
                   <div className="text-3xl mb-4">{useCase.icon}</div>
-                  <h3 className="text-lg font-bold text-white mb-2">{useCase.title}</h3>
-                  <p className="text-gray-400 text-sm">{useCase.desc}</p>
+                  <h3 className="text-lg font-bold text-gold mb-2">{useCase.title}</h3>
+                  <p className="text-white text-sm">{useCase.desc}</p>
                 </div>
               ))}
             </div>
@@ -1726,17 +1777,17 @@ export default function CatyWidget() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.testimonialsTitle}</h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {t.testimonials.map((testimonial, i) => (
-                <div key={i} className="bg-gray-800/30 rounded-2xl p-6 border border-gray-700/50">
-                  <p className="text-gray-300 italic mb-4">"{testimonial.quote}"</p>
+                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50">
+                  <p className="text-white italic mb-4">"{testimonial.quote}"</p>
                   <div>
-                    <div className="font-semibold text-white">{testimonial.author}</div>
-                    <div className="text-gray-500 text-sm">{testimonial.role}</div>
+                    <div className="font-semibold text-gold">{testimonial.author}</div>
+                    <div className="text-gray-400 text-sm">{testimonial.role}</div>
                   </div>
                 </div>
               ))}
@@ -1749,7 +1800,7 @@ export default function CatyWidget() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                {t.pricingTitle} <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">{t.pricingHighlight}</span>
+                {t.pricingTitle} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.pricingHighlight}</span>
               </h2>
               <p className="text-gray-400 text-lg">{t.pricingSubtitle}</p>
             </div>
@@ -1758,20 +1809,20 @@ export default function CatyWidget() {
               {t.pricingPlans.map((plan, i) => (
                 <div
                   key={i}
-                  className={`relative bg-gray-800/30 rounded-2xl p-8 border-2 transition-all hover:shadow-xl ${
+                  className={`relative bg-[#0A1628]/30 rounded-2xl p-8 border-2 transition-all hover:shadow-xl ${
                     plan.popular
                       ? 'border-cyan-500/60 shadow-cyan-500/20 md:scale-105 z-10'
-                      : 'border-gray-700/50 hover:border-cyan-500/30'
+                      : 'border-[#1a2744]/50 hover:border-cyan-500/30'
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full text-gray-900 text-sm font-bold">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-gold to-[#D4B57A] rounded-full text-gray-900 text-sm font-bold">
                       Popular
                     </div>
                   )}
 
                   <div className="text-center mb-6">
-                    <h3 className="text-gray-400 font-bold text-sm tracking-wider mb-2">{plan.name}</h3>
+                    <h3 className="text-gold font-bold text-sm tracking-wider mb-2">{plan.name}</h3>
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-4xl font-bold text-white">{plan.price}</span>
                       <span className="text-gray-500">{plan.period}</span>
@@ -1781,8 +1832,8 @@ export default function CatyWidget() {
 
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-3 text-gray-300">
-                        <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <li key={j} className="flex items-center gap-3 text-white">
+                        <svg className="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-sm">{feature}</span>
@@ -1794,7 +1845,7 @@ export default function CatyWidget() {
                     href={plan.name === 'ENTERPRISE' || plan.name === 'Personalizado' || plan.name === 'Sur mesure' ? 'mailto:contact@payai-x.com' : 'https://app.catyai.io'}
                     className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all ${
                       plan.popular
-                        ? 'bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 hover:opacity-90'
+                        ? 'bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 hover:opacity-90'
                         : 'bg-gray-700 text-white hover:bg-gray-600'
                     }`}
                   >
@@ -1807,18 +1858,18 @@ export default function CatyWidget() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
 
             <div className="space-y-4">
               {t.faqs.map((faq, i) => (
-                <details key={i} className="group bg-gray-800/30 rounded-xl border border-gray-700/50">
+                <details key={i} className="group bg-[#0A1628]/30 rounded-xl border border-[#1a2744]/50">
                   <summary className="p-6 cursor-pointer text-white font-medium flex justify-between items-center">
                     {faq.q}
                     <span className="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
                   </summary>
-                  <div className="px-6 pb-6 text-gray-400">{faq.a}</div>
+                  <div className="px-6 pb-6 text-white">{faq.a}</div>
                 </details>
               ))}
             </div>
@@ -1826,16 +1877,16 @@ export default function CatyWidget() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-cyan-500/10 to-green-500/10">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gold/10 to-[#D4B57A]/10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.ctaTitle}</h2>
-            <p className="text-gray-400 text-lg mb-8">{t.ctaSubtitle}</p>
+            <p className="text-white text-lg mb-8">{t.ctaSubtitle}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
+              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
                 {t.ctaButton}
               </a>
-              <Link to="/contact" className="px-8 py-4 bg-transparent text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors">
+              <Link to="/contact" className="px-8 py-4 bg-transparent text-gold font-semibold text-lg hover:text-cyan-300 transition-colors">
                 {t.ctaDemo}
               </Link>
             </div>
@@ -1843,12 +1894,12 @@ export default function CatyWidget() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
                 <Link to="/" className="flex items-center gap-2 mb-4">
-                  <img src="/images/caty-logo.webp" alt="CatyAI" className="h-8 w-auto" />
+                  <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
                   <span className="font-bold text-white">CatyAI</span>
                 </Link>
                 <p className="text-gray-500 text-sm">{t.footer.tagline}</p>
@@ -1882,7 +1933,7 @@ export default function CatyWidget() {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+            <div className="pt-8 border-t border-[#1a2744] text-center text-gray-500 text-sm">
               {t.footer.copyright}
             </div>
           </div>
