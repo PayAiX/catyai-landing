@@ -533,7 +533,7 @@ export default function GeoGateway() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
+              <img src="/images/caty-logo-arrow.png" alt="CatyAI" className="h-10" width="40" height="40" />
               <span className="text-xl font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
             </Link>
             <div className="hidden md:flex items-center gap-8">
@@ -802,7 +802,7 @@ export default function GeoGateway() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2 md:col-span-1">
               <Link to="/" className="inline-flex items-center gap-2 mb-4">
-                <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
+                <img src="/images/caty-logo-arrow.png" alt="CatyAI" className="h-8" width="32" height="32" />
                 <span className="text-lg font-bold"><span className="text-white">Caty</span><span className="text-gold">AI</span></span>
               </Link>
               <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
