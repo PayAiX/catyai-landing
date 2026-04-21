@@ -21,8 +21,8 @@ export default function Footer({ t }) {
           <div>
             <h4 className="font-semibold text-white mb-3 md:mb-4 text-base">{t.footer.product}</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><a href="#features" className="hover:text-white transition-colors block py-1">{t.nav.features}</a></li>
-              <li><a href="#pricing" className="hover:text-white transition-colors block py-1">{t.nav.pricing}</a></li>
+              <li><a href="/#features" className="hover:text-white transition-colors block py-1">{t.nav.features}</a></li>
+              <li><Link to="/pricing" className="hover:text-white transition-colors block py-1">{t.nav.pricing}</Link></li>
               <li><a href="https://app.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.dashboard}</a></li>
               <li><a href="https://docs.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.docs}</a></li>
             </ul>

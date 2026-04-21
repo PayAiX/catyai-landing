@@ -47,7 +47,7 @@ const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', login: 'Login', getStarted: 'Start Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Login', getStarted: 'Start Free' },
     hero: {
       tagline: 'High-Performance Artificial Intelligence',
       title1: 'We Grow Your Revenue with',
@@ -331,7 +331,7 @@ const translations = {
     }
   },
   ro: {
-    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', login: 'Autentificare', getStarted: 'Începe Gratuit' },
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Vizibilitate AI & API public AI-to-AI', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
       tagline: 'Inteligență Artificială de Performanță',
       title1: 'Creștem Veniturile Tale cu',
@@ -615,7 +615,7 @@ const translations = {
     }
   },
   es: {
-    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
       tagline: 'El empleado digital que vende por ti',
       title1: 'Convierte Conversaciones en',
@@ -899,7 +899,7 @@ const translations = {
     }
   },
   pt: {
-    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', login: 'Entrar', getStarted: 'Começar Grátis' },
+    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
       tagline: 'O funcionário digital que vende por você',
       title1: 'Transforme Conversas em',
@@ -1183,7 +1183,7 @@ const translations = {
     }
   },
   fr: {
-    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', login: 'Connexion', getStarted: 'Commencer Gratuit' },
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
       tagline: "L'employé digital qui vend pour vous",
       title1: 'Transformez les Conversations en',
@@ -1617,6 +1617,13 @@ function Header() {
                     </div>
                   </Link>
                   <hr className="border-[#1a2744]" />
+                  <Link to="/geo-gateway" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">🛰️</span>
+                    <div>
+                      <div className="text-gold font-medium">{t.nav.geoGateway}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.geoGatewayDesc}</div>
+                    </div>
+                  </Link>
                   <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">🛡️</span>
                     <div>
@@ -1629,7 +1636,7 @@ function Header() {
               )}
             </div>
 
-            <a href="#solutions" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
+            <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</Link>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
           </div>
 
@@ -1661,9 +1668,10 @@ function Header() {
               <Link to="/no-website" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
               <Link to="/whatsapp" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
               <Link to="/fraud-shield" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
+              <Link to="/geo-gateway" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛰️ {t.nav.geoGateway}</Link>
 
               <hr className="border-[#1a2744]" />
-              <a href="#solutions" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
+              <Link to="/pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</Link>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
               <hr className="border-[#1a2744]" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
