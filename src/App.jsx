@@ -20,8 +20,9 @@ const Licensing = lazy(() => import('./pages/Licensing'))
 const LicenseAGPL = lazy(() => import('./pages/LicenseAGPL'))
 const SiteAnalyzer = lazy(() => import('./pages/SiteAnalyzer'))
 const About = lazy(() => import('./pages/About'))
-const Careers = lazy(() => import('./pages/Careers'))
 const Contact = lazy(() => import('./pages/Contact'))
+const GeoGateway = lazy(() => import('./pages/GeoGateway'))
+const PricingPage = lazy(() => import('./pages/Pricing'))
 const CommerceDemo = lazy(() => import('./pages/CommerceDemo'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
@@ -3273,8 +3274,9 @@ function AppContent() {
             <Route path="/license-agpl" element={<LicenseAGPL />} />
             <Route path="/analyze" element={<SiteAnalyzer />} />
             <Route path="/about" element={<About />} />
-            <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/geo-gateway" element={<GeoGateway />} />
+            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/commerce" element={<CommerceDemo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
