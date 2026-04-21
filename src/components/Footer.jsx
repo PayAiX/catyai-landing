@@ -33,7 +33,6 @@ export default function Footer({ t }) {
             <ul className="space-y-2 text-gray-300 text-sm">
               <li><Link to="/about" className="hover:text-white transition-colors block py-1">{t.footer.about}</Link></li>
               <li><Link to="/blog" className="hover:text-white transition-colors block py-1">{t.footer.blog}</Link></li>
-              <li><Link to="/careers" className="hover:text-white transition-colors block py-1">{t.footer.careers}</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors block py-1">{t.footer.contact}</Link></li>
             </ul>
           </div>
