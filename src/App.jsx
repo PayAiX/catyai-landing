@@ -3369,7 +3369,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway']
+  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3408,7 +3408,6 @@ function AppContent() {
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
             <Route path="/widget" element={<CatyWidget />} />
-            <Route path="/geo-gateway" element={<GeoGateway />} />
           </Routes>
         </Suspense>
       </div>
@@ -3442,6 +3441,7 @@ function AppContent() {
             <Route path="/solutii/restaurante" element={<ForRestaurants />} />
             <Route path="/solutii/ecommerce" element={<ForEcommerce />} />
             <Route path="/solutii/agentii-marketing" element={<ForAgencies />} />
+            <Route path="/geo-gateway" element={<GeoGateway />} />
           </Routes>
         </Suspense>
       </main>
