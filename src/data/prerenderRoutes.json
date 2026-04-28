@@ -354,5 +354,25 @@
   {
     "path": "/blog/cum-alegi-chatbot-ai",
     "name": "Blog: Cum alegi un chatbot AI"
+  },
+  {
+    "path": "/solutii/clinici-medicale",
+    "name": "Solution: Medical Clinics"
+  },
+  {
+    "path": "/solutii/agentii-imobiliare",
+    "name": "Solution: Real Estate"
+  },
+  {
+    "path": "/solutii/restaurante",
+    "name": "Solution: Restaurants"
+  },
+  {
+    "path": "/solutii/ecommerce",
+    "name": "Solution: E-commerce"
+  },
+  {
+    "path": "/solutii/agentii-marketing",
+    "name": "Solution: Marketing Agencies"
   }
 ]

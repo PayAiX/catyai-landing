@@ -1,20 +1,35 @@
-import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["RealEstateAgent", "SoftwareApplication"],
+  "name": "CatyAI for Real Estate Agencies",
+  "applicationCategory": "BusinessApplication",
+  "description": "AI agent that qualifies leads and schedules property viewings automatically. 24/7 on WhatsApp and web.",
+  "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR" },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://catyai.io/solutii/agentii-imobiliare",
+    "serviceType": "AI Real Estate Lead Qualification"
+  },
+  "provider": { "@type": "Organization", "name": "PayAi-X FZE", "url": "https://catyai.io" }
+};
 
 function PainCard({ icon, title, desc }) {
   return (
-    <div className="p-6 bg-[#0A1628]/50 rounded-2xl border border-[#1a2744]/50 hover:border-[#C48D32]/50 transition-colors">
-      <div className="text-3xl mb-3">{icon}</div>
+    <div className="bg-[#0A1628]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#1a2744]/50 hover:border-gold/50 transition-all duration-300">
+      <div className="text-3xl mb-4">{icon}</div>
       <h3 className="font-bold text-white mb-2">{title}</h3>
       <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
     </div>
-  )
+  );
 }
 
 function StepCard({ step, title, desc }) {
   return (
     <div className="flex gap-4">
-      <div className="shrink-0 w-10 h-10 rounded-full bg-[#C48D32]/20 border border-[#C48D32]/40 flex items-center justify-center text-[#C48D32] font-bold text-sm">
+      <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-sm font-bold flex-shrink-0 mt-1">
         {step}
       </div>
       <div>
@@ -22,174 +37,133 @@ function StepCard({ step, title, desc }) {
         <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
       </div>
     </div>
-  )
+  );
 }
 
 function FeatureItem({ icon, text }) {
   return (
-    <div className="flex items-center gap-3 p-4 bg-[#010A1F]/50 rounded-xl border border-[#1a2744]/40">
-      <span className="text-xl shrink-0">{icon}</span>
-      <span className="text-gray-300 text-sm">{text}</span>
+    <div className="flex items-start gap-3 p-4 bg-[#010A1F]/50 rounded-xl border border-[#1a2744]/50">
+      <span className="text-xl flex-shrink-0">{icon}</span>
+      <span className="text-gray-300 text-sm leading-relaxed">{text}</span>
     </div>
-  )
-}
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'RealEstateAgent',
-      name: 'CatyAI pentru Agenții Imobiliare',
-      description: 'Agentul AI care califică lead-urile și programează vizionări automat.',
-    },
-    {
-      '@type': 'SoftwareApplication',
-      name: 'CatyAI',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Web',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'EUR',
-        description: 'Plan gratuit disponibil',
-      },
-    },
-  ],
+  );
 }
 
 export default function ForRealEstate() {
   return (
-    <div className="bg-[#010A1F] text-white min-h-screen">
+    <>
       <Helmet>
-        <title>CatyAI pentru Agenții Imobiliare — Califică Lead-uri Automat | WhatsApp + Web</title>
-        <meta
-          name="description"
-          content="Agentul AI care califică clienții, răspunde 24/7 la întrebări despre proprietăți și programează vizionări automat. Fără efort manual."
-        />
+        <title>CatyAI for Real Estate — AI Lead Qualification 24/7 | WhatsApp + Web</title>
+        <meta name="description" content="AI agent that qualifies buyers by budget, property type, and location — then delivers ready-to-view leads. No manual follow-up needed." />
         <link rel="canonical" href="https://catyai.io/solutii/agentii-imobiliare" />
+        <meta property="og:title" content="CatyAI for Real Estate — 24/7 Lead Qualification" />
+        <meta property="og:description" content="Qualify leads automatically. Schedule viewings without lifting the phone." />
+        <meta property="og:url" content="https://catyai.io/solutii/agentii-imobiliare" />
+        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
-      {/* Hero */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-gray-900 to-[#010A1F]">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C48D32]/10 border border-[#C48D32]/20 text-[#C48D32] text-sm font-medium mb-6">
-            <span>🏠</span>
-            Soluție pentru Agenții Imobiliare
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Califică Lead-uri Automat<br />
-            <span className="text-[#C48D32]">WhatsApp + Web — 24/7</span>
-          </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-            CatyAI întreabă clienții despre buget, tip de proprietate și zonă preferată — și îți livrează doar lead-urile calificate, gata de vizionare.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href="https://app.catyai.io/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-[#C48D32] hover:bg-[#D4B57A] text-[#010A1F] rounded-xl font-semibold transition-colors"
-            >
-              Testează Gratuit
-            </a>
-            <Link
-              to="/pricing"
-              className="px-8 py-3 border border-[#1a2744] hover:border-[#C48D32]/50 rounded-xl font-semibold text-gray-300 hover:text-white transition-colors"
-            >
-              Vezi Prețuri
-            </Link>
-          </div>
-        </div>
-      </section>
+      <div className="bg-[#010A1F] min-h-screen pt-24">
 
-      {/* Pain Points */}
-      <section className="py-16 px-4 bg-gray-950">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-3">Probleme pe care le rezolvăm</h2>
-          <p className="text-gray-400 text-center mb-10">De ce agenții imobiliare pierd timp și clienți</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <PainCard
-              icon="🕐"
-              title="Timp pierdut cu lead-uri necalificate"
-              desc="Agenții petrec ore la telefon cu clienți care nu au bugetul necesar sau nu sunt pregătiți să cumpere."
-            />
-            <PainCard
-              icon="📉"
-              title="Lead-uri pierdute noaptea"
-              desc="Potențialii cumpărători trimit mesaje seara și dimineața găsesc răspuns de la concurență."
-            />
-            <PainCard
-              icon="📊"
-              title="Fără date despre interesele clienților"
-              desc="Fără calificare structurată, agenții nu știu care proprietăți să prezinte mai întâi fiecărui client."
-            />
+        {/* HERO */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm mb-6">
+              🏠 Solution for Real Estate Agencies
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              CatyAI for{' '}
+              <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">
+                Real Estate
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
+              Qualify leads automatically — budget, property type, preferred area —
+              and receive only viewing-ready prospects.
+            </p>
+            <p className="text-gray-400 max-w-xl mx-auto mb-8">
+              AI agent that handles inquiries on WhatsApp and your website 24/7.
+              You focus on closing deals, not chasing unqualified calls.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://app.catyai.io/register"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-bold rounded-xl transition-all shadow-lg">
+                Start free — 2 minute setup →
+              </a>
+              <Link to="/pricing"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold/10 border border-gold/30 rounded-xl text-gold hover:bg-gold/20 transition-colors">
+                See pricing
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* How It Works */}
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-10">Cum funcționează</h2>
-          <div className="space-y-8">
-            <StepCard
-              step="1"
-              title="Clientul scrie pe WhatsApp sau completează formularul de pe site"
-              desc="CatyAI răspunde instant și începe calificarea: buget, tip de proprietate, zonă, termen de cumpărare."
-            />
-            <StepCard
-              step="2"
-              title="Lead-ul calificat ajunge direct în dashboard-ul tău"
-              desc="Primești notificare cu toate detaliile: nume, contact, preferințe — gata pentru follow-up."
-            />
-            <StepCard
-              step="3"
-              title="Programare vizionare automată"
-              desc="CatyAI propune date disponibile și confirmă vizionarea direct pe WhatsApp-ul clientului."
-            />
+        {/* PAIN POINTS */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-3 text-center">Problems costing you deals every week</h2>
+            <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto">Sound familiar? CatyAI handles all of these automatically.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <PainCard icon="🕐" title="Hours wasted on unqualified leads"
+                desc="Agents spend half their day on calls with buyers who don't have the budget or aren't ready to commit." />
+              <PainCard icon="📉" title="Leads lost overnight"
+                desc="A buyer messages at 11 PM. By morning, they've already scheduled a viewing with a competitor who replied first." />
+              <PainCard icon="📊" title="No structured data on preferences"
+                desc="Without proper qualification, agents don't know which properties to show first — wasting everyone's time." />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features */}
-      <section className="py-16 px-4 bg-gray-950">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-10">Ce primești</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <FeatureItem icon="🎯" text="Calificare automată buget + preferințe" />
-            <FeatureItem icon="💬" text="Răspuns WhatsApp 24/7 — fără Meta API" />
-            <FeatureItem icon="📋" text="Lead-uri exportabile din dashboard" />
-            <FeatureItem icon="🔔" text="Notificări instant pentru lead-uri noi" />
-            <FeatureItem icon="🌐" text="Widget web pe site-ul agenției" />
-            <FeatureItem icon="🛡️" text="FraudAI Shield — filtrează cereri false" />
+        {/* HOW IT WORKS */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-10 text-center">How it works for your agency</h2>
+            <div className="space-y-8">
+              <StepCard step="1" title="Prospect messages on WhatsApp or your website"
+                desc="CatyAI responds instantly and starts qualification: budget, property type, preferred area, purchase timeline." />
+              <StepCard step="2" title="Qualified lead lands in your dashboard"
+                desc="You get a notification with all details: name, contact, preferences — ready for follow-up." />
+              <StepCard step="3" title="Viewing scheduled automatically"
+                desc="CatyAI proposes available slots and confirms the viewing directly on WhatsApp. You just show up." />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="py-16 px-4 bg-gradient-to-b from-gray-900 to-[#010A1F] text-center">
-        <div className="max-w-xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Mai multe vizionări, mai puțin telefon</h2>
-          <p className="text-gray-400 mb-8">CatyAI lucrează 24/7 — tu te concentrezi pe încheierea tranzacțiilor.</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
-              href="https://app.catyai.io/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-[#C48D32] hover:bg-[#D4B57A] text-[#010A1F] rounded-xl font-semibold transition-colors"
-            >
-              Începe Gratuit
-            </a>
-            <Link
-              to="/features"
-              className="px-8 py-3 border border-[#1a2744] hover:border-[#C48D32]/50 rounded-xl font-semibold text-gray-300 hover:text-white transition-colors"
-            >
-              Toate Funcțiile
-            </Link>
+        {/* FEATURES */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-10 text-center">Features built for real estate</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <FeatureItem icon="🎯" text="Automatic qualification: budget, property type, location, timeline — before you pick up the phone." />
+              <FeatureItem icon="💬" text="WhatsApp 24/7 without Meta API — works with your existing business number." />
+              <FeatureItem icon="📋" text="Exportable leads from dashboard with all collected data." />
+              <FeatureItem icon="🔔" text="Instant notifications for new qualified leads." />
+              <FeatureItem icon="🌐" text="Web widget on your agency website — same AI, unified inbox." />
+              <FeatureItem icon="🛡️" text="FraudAI Shield included — filters fake inquiries before they waste your time." />
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
-  )
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 text-center border-t border-[#1a2744]/50">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-white mb-4">More viewings, less phone tag</h2>
+            <p className="text-gray-400 mb-8">CatyAI works 24/7 — you focus on closing deals.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://app.catyai.io/register"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-bold rounded-xl transition-all shadow-lg">
+                Start free →
+              </a>
+              <Link to="/features"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold/10 border border-gold/30 rounded-xl text-gold hover:bg-gold/20 transition-colors">
+                See all features
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
 }
