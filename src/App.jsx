@@ -21,8 +21,6 @@ const LicenseAGPL = lazy(() => import('./pages/LicenseAGPL'))
 const SiteAnalyzer = lazy(() => import('./pages/SiteAnalyzer'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
-const GeoGateway = lazy(() => import('./pages/GeoGateway'))
-const PricingPage = lazy(() => import('./pages/Pricing'))
 const CommerceDemo = lazy(() => import('./pages/CommerceDemo'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
@@ -31,6 +29,15 @@ const FraudAI = lazy(() => import('./pages/FraudAI'))
 const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
 const NoWebsite = lazy(() => import('./pages/NoWebsite'))
 const CatyWidget = lazy(() => import('./pages/CatyWidget'))
+const GeoGateway = lazy(() => import('./pages/GeoGateway'))
+const FeaturesPage = lazy(() => import('./pages/Features'))
+const InfrastructurePage = lazy(() => import('./pages/Infrastructure'))
+const PricingPage = lazy(() => import('./pages/Pricing'))
+const ForClinics = lazy(() => import('./pages/solutii/ForClinics'))
+const ForRealEstate = lazy(() => import('./pages/solutii/ForRealEstate'))
+const ForRestaurants = lazy(() => import('./pages/solutii/ForRestaurants'))
+const ForEcommerce = lazy(() => import('./pages/solutii/ForEcommerce'))
+const ForAgencies = lazy(() => import('./pages/solutii/ForAgencies'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -47,7 +54,7 @@ const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Login', getStarted: 'Start Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Intelligent geographic routing', login: 'Login', getStarted: 'Start Free' },
     hero: {
       tagline: 'High-Performance Artificial Intelligence',
       title1: 'We Grow Your Revenue with',
@@ -248,7 +255,7 @@ const translations = {
     },
     products3: {
       title: 'One AI.',
-      titleHighlight: 'Three ways to sell.',
+      titleHighlight: 'Four products.',
       subtitle: 'Choose the right solution for your business',
       popular: 'Popular',
       qrFirst: {
@@ -274,6 +281,14 @@ const translations = {
         period: 'forever',
         features: ['8 detection modules', 'Blocks phishing', 'Real-time alert', 'Zero false positives'],
         cta: 'Activate Free'
+      },
+      geoGateway: {
+        name: 'GEO Gateway',
+        tagline: 'Intelligent geographic routing',
+        price: 'Pro+',
+        period: 'plans',
+        features: ['180+ countries', 'AI language detection', 'Timezone-aware routing', 'LLMs.txt generation'],
+        cta: 'Explore GEO'
       }
     },
     howItWorks2: {
@@ -331,7 +346,7 @@ const translations = {
     }
   },
   ro: {
-    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Vizibilitate AI & API public AI-to-AI', login: 'Autentificare', getStarted: 'Începe Gratuit' },
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Rutare geografică inteligentă', login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
       tagline: 'Inteligență Artificială de Performanță',
       title1: 'Creștem Veniturile Tale cu',
@@ -532,7 +547,7 @@ const translations = {
     },
     products3: {
       title: 'Un singur AI.',
-      titleHighlight: 'Trei moduri de a vinde.',
+      titleHighlight: 'Patru produse.',
       subtitle: 'Alege soluția potrivită pentru afacerea ta',
       popular: 'Popular',
       qrFirst: {
@@ -558,6 +573,14 @@ const translations = {
         period: 'pentru totdeauna',
         features: ['8 module detecție', 'Blochează phishing', 'Alertă în timp real', 'Zero false positive'],
         cta: 'Activează Gratuit'
+      },
+      geoGateway: {
+        name: 'GEO Gateway',
+        tagline: 'Rutare geografică inteligentă',
+        price: 'Pro+',
+        period: 'planuri',
+        features: ['180+ țări', 'Detecție limbă AI', 'Rutare după fus orar', 'Generare LLMs.txt'],
+        cta: 'Explorează GEO'
       }
     },
     howItWorks2: {
@@ -615,7 +638,7 @@ const translations = {
     }
   },
   es: {
-    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Enrutamiento geográfico inteligente', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
       tagline: 'El empleado digital que vende por ti',
       title1: 'Convierte Conversaciones en',
@@ -816,7 +839,7 @@ const translations = {
     },
     products3: {
       title: 'Una IA.',
-      titleHighlight: 'Tres formas de vender.',
+      titleHighlight: 'Cuatro productos.',
       subtitle: 'Elige la solución adecuada para tu negocio',
       popular: 'Popular',
       qrFirst: {
@@ -842,6 +865,14 @@ const translations = {
         period: 'para siempre',
         features: ['8 módulos de detección', 'Bloquea phishing', 'Alerta en tiempo real', 'Cero falsos positivos'],
         cta: 'Activar Gratis'
+      },
+      geoGateway: {
+        name: 'GEO Gateway',
+        tagline: 'Enrutamiento geográfico inteligente',
+        price: 'Pro+',
+        period: 'planes',
+        features: ['180+ países', 'Detección de idioma IA', 'Ruteo por zona horaria', 'Generación LLMs.txt'],
+        cta: 'Explorar GEO'
       }
     },
     howItWorks2: {
@@ -899,7 +930,7 @@ const translations = {
     }
   },
   pt: {
-    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Entrar', getStarted: 'Começar Grátis' },
+    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Roteamento geográfico inteligente', login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
       tagline: 'O funcionário digital que vende por você',
       title1: 'Transforme Conversas em',
@@ -1100,7 +1131,7 @@ const translations = {
     },
     products3: {
       title: 'Uma IA.',
-      titleHighlight: 'Três formas de vender.',
+      titleHighlight: 'Quatro produtos.',
       subtitle: 'Escolha a solução certa para o seu negócio',
       popular: 'Popular',
       qrFirst: {
@@ -1126,6 +1157,14 @@ const translations = {
         period: 'para sempre',
         features: ['8 módulos de detecção', 'Bloqueia phishing', 'Alerta em tempo real', 'Zero falsos positivos'],
         cta: 'Ativar Grátis'
+      },
+      geoGateway: {
+        name: 'GEO Gateway',
+        tagline: 'Roteamento geográfico inteligente',
+        price: 'Pro+',
+        period: 'planos',
+        features: ['180+ países', 'Detecção de idioma IA', 'Roteamento por fuso horário', 'Geração LLMs.txt'],
+        cta: 'Explorar GEO'
       }
     },
     howItWorks2: {
@@ -1183,7 +1222,7 @@ const translations = {
     }
   },
   fr: {
-    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'AI visibility & public AI-to-AI API', login: 'Connexion', getStarted: 'Commencer Gratuit' },
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Routage géographique intelligent', login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
       tagline: "L'employé digital qui vend pour vous",
       title1: 'Transformez les Conversations en',
@@ -1384,7 +1423,7 @@ const translations = {
     },
     products3: {
       title: 'Une IA.',
-      titleHighlight: 'Trois façons de vendre.',
+      titleHighlight: 'Quatre produits.',
       subtitle: 'Choisissez la solution adaptée à votre entreprise',
       popular: 'Populaire',
       qrFirst: {
@@ -1410,6 +1449,14 @@ const translations = {
         period: 'pour toujours',
         features: ['8 modules de détection', 'Bloque le phishing', 'Alerte en temps réel', 'Zéro faux positifs'],
         cta: 'Activer Gratuit'
+      },
+      geoGateway: {
+        name: 'GEO Gateway',
+        tagline: 'Routage géographique intelligent',
+        price: 'Pro+',
+        period: 'plans',
+        features: ['180+ pays', 'Détection de langue IA', 'Routage par fuseau horaire', 'Génération LLMs.txt'],
+        cta: 'Explorer GEO'
       }
     },
     howItWorks2: {
@@ -1559,7 +1606,9 @@ function LanguageSelector() {
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
+  const [solutiiOpen, setSolutiiOpen] = useState(false)
   const productsTimeoutRef = useRef(null)
+  const solutiiTimeoutRef = useRef(null)
   const { t } = useLanguage()
 
   const handleProductsEnter = () => {
@@ -1569,6 +1618,15 @@ function Header() {
 
   const handleProductsLeave = () => {
     productsTimeoutRef.current = setTimeout(() => setProductsOpen(false), 300)
+  }
+
+  const handleSolutiiEnter = () => {
+    clearTimeout(solutiiTimeoutRef.current)
+    setSolutiiOpen(true)
+  }
+
+  const handleSolutiiLeave = () => {
+    solutiiTimeoutRef.current = setTimeout(() => setSolutiiOpen(false), 300)
   }
 
   return (
@@ -1617,13 +1675,6 @@ function Header() {
                     </div>
                   </Link>
                   <hr className="border-[#1a2744]" />
-                  <Link to="/geo-gateway" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">🛰️</span>
-                    <div>
-                      <div className="text-gold font-medium">{t.nav.geoGateway}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.geoGatewayDesc}</div>
-                    </div>
-                  </Link>
                   <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">🛡️</span>
                     <div>
@@ -1631,12 +1682,78 @@ function Header() {
                       <div className="text-gray-400 text-xs">{t.nav.fraudaiDesc}</div>
                     </div>
                   </Link>
+                  <Link to="/geo-gateway" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-2xl">🌍</span>
+                    <div>
+                      <div className="text-white font-medium">{t.nav.geoGateway}</div>
+                      <div className="text-gray-400 text-xs">{t.nav.geoGatewayDesc}</div>
+                    </div>
+                  </Link>
+                  <Link to="/infrastructura" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
+                    <span className="text-lg">🧠</span>
+                    <div>
+                      <div className="text-sm font-medium text-white">Infrastructură Neurală</div>
+                      <div className="text-xs text-gray-400">SENTINEL, NAP, Universal Brain</div>
+                    </div>
+                  </Link>
                 </div>
                 </>
               )}
             </div>
 
-            <Link to="/pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</Link>
+            {/* Soluții Dropdown */}
+            <div className="relative" onMouseEnter={handleSolutiiEnter} onMouseLeave={handleSolutiiLeave}>
+              <button className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors py-2">
+                Soluții
+                <svg className={`w-4 h-4 transition-transform ${solutiiOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {solutiiOpen && (
+                <>
+                  <div className="absolute top-full left-0 w-64 h-2" />
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-[#010A1F] border border-[#1a2744] rounded-xl shadow-xl overflow-hidden">
+                    <Link to="/solutii/clinici-medicale" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
+                      <span className="text-2xl">🏥</span>
+                      <div>
+                        <div className="text-white font-medium">Clinici Medicale</div>
+                        <div className="text-gray-400 text-xs">Programări automate 24/7</div>
+                      </div>
+                    </Link>
+                    <Link to="/solutii/agentii-imobiliare" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
+                      <span className="text-2xl">🏠</span>
+                      <div>
+                        <div className="text-white font-medium">Agenții Imobiliare</div>
+                        <div className="text-gray-400 text-xs">Califică lead-uri automat</div>
+                      </div>
+                    </Link>
+                    <Link to="/solutii/restaurante" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
+                      <span className="text-2xl">🍽️</span>
+                      <div>
+                        <div className="text-white font-medium">Restaurante</div>
+                        <div className="text-gray-400 text-xs">Rezervări și meniu QR-First</div>
+                      </div>
+                    </Link>
+                    <Link to="/solutii/ecommerce" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
+                      <span className="text-2xl">🛍️</span>
+                      <div>
+                        <div className="text-white font-medium">Magazine Online</div>
+                        <div className="text-gray-400 text-xs">Crește conversia cu AI</div>
+                      </div>
+                    </Link>
+                    <Link to="/solutii/agentii-marketing" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
+                      <span className="text-2xl">📣</span>
+                      <div>
+                        <div className="text-white font-medium">Agenții de Marketing</div>
+                        <div className="text-gray-400 text-xs">AI white-label pentru clienți</div>
+                      </div>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <a href="#solutions" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
           </div>
 
@@ -1668,10 +1785,19 @@ function Header() {
               <Link to="/no-website" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
               <Link to="/whatsapp" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
               <Link to="/fraud-shield" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
-              <Link to="/geo-gateway" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛰️ {t.nav.geoGateway}</Link>
+              <Link to="/geo-gateway" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌍 {t.nav.geoGateway}</Link>
 
               <hr className="border-[#1a2744]" />
-              <Link to="/pricing" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</Link>
+              {/* Mobile Soluții Section */}
+              <div className="text-gray-500 text-xs uppercase tracking-wider">Soluții</div>
+              <Link to="/solutii/clinici-medicale" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏥 Clinici Medicale</Link>
+              <Link to="/solutii/agentii-imobiliare" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏠 Agenții Imobiliare</Link>
+              <Link to="/solutii/restaurante" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🍽️ Restaurante</Link>
+              <Link to="/solutii/ecommerce" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛍️ Magazine Online</Link>
+              <Link to="/solutii/agentii-marketing" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📣 Agenții de Marketing</Link>
+
+              <hr className="border-[#1a2744]" />
+              <a href="#solutions" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
               <a href="#faq" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
               <hr className="border-[#1a2744]" />
               <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white">{t.nav.login}</a>
@@ -1842,17 +1968,31 @@ function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#010A1F]">
         {/* Desktop hero image */}
-        <img
-          src="/images/widget-hero.png"
-          alt="CatyAI Background"
-          className="hidden md:block w-full h-full object-cover object-center"
-        />
+        <picture className="hidden md:block w-full h-full">
+          <source srcSet="/images/widget-hero.webp" type="image/webp" />
+          <img
+            src="/images/widget-hero.png"
+            alt="CatyAI Background"
+            className="w-full h-full object-cover object-center"
+            fetchpriority="high"
+            loading="eager"
+            width="2760"
+            height="1504"
+          />
+        </picture>
         {/* Mobile hero image */}
-        <img
-          src="/images/hero-mobile.png"
-          alt="CatyAI Mobile"
-          className="md:hidden w-full h-full object-cover object-top"
-        />
+        <picture className="md:hidden w-full h-full">
+          <source srcSet="/images/hero-mobile.webp" type="image/webp" />
+          <img
+            src="/images/hero-mobile.png"
+            alt="CatyAI Mobile"
+            className="w-full h-full object-cover object-top"
+            fetchpriority="high"
+            loading="eager"
+            width="1536"
+            height="1641"
+          />
+        </picture>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-[#010A1F]/70 md:bg-[#010A1F]/50"></div>
         {/* Bottom fade overlay to blend seamlessly with next section */}
@@ -2949,6 +3089,13 @@ function ProduseNoi() {
       borderColor: 'border-gold/30 hover:border-gold/60',
       link: '/fraud-shield',
       icon: '🛡️'
+    },
+    {
+      ...t.products3.geoGateway,
+      color: 'from-gold to-[#D4B57A]',
+      borderColor: 'border-gold/30 hover:border-gold/60',
+      link: '/geo-gateway',
+      icon: '🌍'
     }
   ]
 
@@ -2964,7 +3111,7 @@ function ProduseNoi() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, i) => (
             <div
               key={i}
@@ -3222,7 +3369,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget']
+  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3261,6 +3408,7 @@ function AppContent() {
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
             <Route path="/widget" element={<CatyWidget />} />
+            <Route path="/geo-gateway" element={<GeoGateway />} />
           </Routes>
         </Suspense>
       </div>
@@ -3283,11 +3431,17 @@ function AppContent() {
             <Route path="/analyze" element={<SiteAnalyzer />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/geo-gateway" element={<GeoGateway />} />
-            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/commerce" element={<CommerceDemo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/features" element={<FeaturesPage />} />
+            <Route path="/infrastructura" element={<InfrastructurePage />} />
+            <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
+            <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />
+            <Route path="/solutii/restaurante" element={<ForRestaurants />} />
+            <Route path="/solutii/ecommerce" element={<ForEcommerce />} />
+            <Route path="/solutii/agentii-marketing" element={<ForAgencies />} />
           </Routes>
         </Suspense>
       </main>
