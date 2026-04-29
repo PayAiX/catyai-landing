@@ -6,14 +6,23 @@ import GeoAuditWidget from '../components/GeoAuditWidget'
 const translations = {
   en: {
     badge: 'Generative Engine Optimization',
-    heroTitle1: 'GEO Gateway',
-    heroTitle2: 'Make Your Business Visible to AI',
-    heroSubtitle: 'ChatGPT, Gemini, Perplexity, and Claude are answering your customers\' questions right now — without mentioning you. GEO Gateway changes that. 6 layers of AI infrastructure ensure every AI model knows who you are, what you do, and when to recommend you.',
-    heroCta: 'Get GEO Ready',
-    heroCtaSecondary: 'How It Works',
-    trustBadge1: 'Supports 9 AI crawlers',
-    trustBadge2: 'Structured data injection',
-    trustBadge3: 'Real-time AI visibility',
+    heroBadge: 'GEO Gateway · 6 Active Layers',
+    card1Icon: '!',
+    card1Title: 'AI is',
+    card1TitleAccent: 'blind',
+    card1TitleEnd: 'to your website',
+    card1Body: "GPTBot, ClaudeBot and Perplexity don't run JavaScript. They see only an empty HTML shell. Your products, prices, services — invisible.",
+    card2Icon: '✓',
+    card2TitleStart: '',
+    card2TitleAccent: 'Truth Protocol',
+    card2TitleEnd: 'readable by any AI',
+    card2Body: 'CatyAI GEO Gateway transforms your site into a verifiable Truth Protocol — signed Ed25519, structured for every AI engine.',
+    heroCta: 'Test your GEO score',
+    heroCtaSecondary: 'How it works →',
+    trustBadge1: 'Ed25519 Signature',
+    trustBadge2: '9 AI Crawlers',
+    trustBadge3: '300ms',
+    trustBadge4: '0% Hallucination',
 
     problemTitle: 'AI Answers Questions.',
     problemHighlight: 'Is Your Business In Those Answers?',
@@ -138,15 +147,24 @@ const translations = {
   },
 
   ro: {
-    badge: 'Optimizare pentru Motoare Generative',
-    heroTitle1: 'GEO Gateway',
-    heroTitle2: 'Fă-ți Afacerea Vizibilă pentru AI',
-    heroSubtitle: 'ChatGPT, Gemini, Perplexity și Claude răspund acum la întrebările clienților tăi — fără să te menționeze. GEO Gateway schimbă asta. 6 straturi de infrastructură AI asigură că fiecare model AI știe cine ești, ce faci și când să te recomande.',
-    heroCta: 'Devino GEO Ready',
-    heroCtaSecondary: 'Cum Funcționează',
-    trustBadge1: 'Suportă 9 crawlere AI',
-    trustBadge2: 'Injectare date structurate',
-    trustBadge3: 'Vizibilitate AI în timp real',
+    badge: 'Generative Engine Optimization',
+    heroBadge: 'GEO Gateway · 6 Straturi Active',
+    card1Icon: '!',
+    card1Title: 'AI-ul este',
+    card1TitleAccent: 'orb',
+    card1TitleEnd: 'pe site-ul tău',
+    card1Body: 'GPTBot, ClaudeBot și Perplexity nu rulează JavaScript. Văd doar un shell HTML gol. Produsele, prețurile, serviciile tale — invizibile.',
+    card2Icon: '✓',
+    card2TitleStart: '',
+    card2TitleAccent: 'Protocol de Adevăr',
+    card2TitleEnd: 'citibil de orice AI',
+    card2Body: 'CatyAI GEO Gateway transformă site-ul tău într-un Protocol de Adevăr verificabil — semnat Ed25519, structurat pentru orice motor AI.',
+    heroCta: 'Testează-ți scorul GEO',
+    heroCtaSecondary: 'Cum funcționează →',
+    trustBadge1: 'Ed25519 Signature',
+    trustBadge2: '9 AI Crawlers',
+    trustBadge3: '300ms',
+    trustBadge4: '0% Halucinare',
 
     problemTitle: 'AI Răspunde la Întrebări.',
     problemHighlight: 'Este Afacerea Ta în Acele Răspunsuri?',
@@ -268,6 +286,69 @@ const translations = {
 
     finalCta: 'Începe să Fii Citat de AI',
     finalCtaBody: 'Fiecare zi fără GEO este o zi în care concurenții tăi sunt recomandați de ChatGPT în loc de tine.'
+  },
+
+  es: {
+    badge: 'Generative Engine Optimization',
+    heroBadge: 'GEO Gateway · 6 Capas Activas',
+    card1Icon: '!',
+    card1Title: 'La AI está',
+    card1TitleAccent: 'ciega',
+    card1TitleEnd: 'a tu sitio web',
+    card1Body: 'GPTBot, ClaudeBot y Perplexity no ejecutan JavaScript. Solo ven un shell HTML vacío. Tus productos, precios, servicios — invisibles.',
+    card2Icon: '✓',
+    card2TitleStart: '',
+    card2TitleAccent: 'Protocolo de Verdad',
+    card2TitleEnd: 'legible por cualquier AI',
+    card2Body: 'CatyAI GEO Gateway transforma tu sitio en un Protocolo de Verdad verificable — firmado Ed25519, estructurado para cualquier motor AI.',
+    heroCta: 'Prueba tu puntuación GEO',
+    heroCtaSecondary: 'Cómo funciona →',
+    trustBadge1: 'Ed25519 Signature',
+    trustBadge2: '9 AI Crawlers',
+    trustBadge3: '300ms',
+    trustBadge4: '0% Alucinación'
+  },
+
+  pt: {
+    badge: 'Generative Engine Optimization',
+    heroBadge: 'GEO Gateway · 6 Camadas Ativas',
+    card1Icon: '!',
+    card1Title: 'A AI está',
+    card1TitleAccent: 'cega',
+    card1TitleEnd: 'para o seu site',
+    card1Body: 'GPTBot, ClaudeBot e Perplexity não executam JavaScript. Eles veem apenas um shell HTML vazio. Seus produtos, preços, serviços — invisíveis.',
+    card2Icon: '✓',
+    card2TitleStart: '',
+    card2TitleAccent: 'Protocolo da Verdade',
+    card2TitleEnd: 'legível por qualquer AI',
+    card2Body: 'CatyAI GEO Gateway transforma seu site em um Protocolo da Verdade verificável — assinado Ed25519, estruturado para qualquer motor AI.',
+    heroCta: 'Teste sua pontuação GEO',
+    heroCtaSecondary: 'Como funciona →',
+    trustBadge1: 'Ed25519 Signature',
+    trustBadge2: '9 AI Crawlers',
+    trustBadge3: '300ms',
+    trustBadge4: '0% Alucinação'
+  },
+
+  fr: {
+    badge: 'Generative Engine Optimization',
+    heroBadge: 'GEO Gateway · 6 Couches Actives',
+    card1Icon: '!',
+    card1Title: "L'AI est",
+    card1TitleAccent: 'aveugle',
+    card1TitleEnd: 'à votre site',
+    card1Body: "GPTBot, ClaudeBot et Perplexity n'exécutent pas JavaScript. Ils ne voient qu'un shell HTML vide. Vos produits, prix, services — invisibles.",
+    card2Icon: '✓',
+    card2TitleStart: '',
+    card2TitleAccent: 'Protocole de Vérité',
+    card2TitleEnd: 'lisible par toute AI',
+    card2Body: "CatyAI GEO Gateway transforme votre site en un Protocole de Vérité vérifiable — signé Ed25519, structuré pour tout moteur AI.",
+    heroCta: 'Testez votre score GEO',
+    heroCtaSecondary: 'Comment ça marche →',
+    trustBadge1: 'Ed25519 Signature',
+    trustBadge2: '9 AI Crawlers',
+    trustBadge3: '300ms',
+    trustBadge4: '0% Hallucination'
   }
 }
 
@@ -298,27 +379,25 @@ export default function GeoGateway() {
       ? 'GEO Gateway — Vizibilitate AI pentru Afacerea Ta | CatyAI'
       : 'GEO Gateway — AI Visibility for Your Business | CatyAI'
     const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', t.heroSubtitle)
+    if (desc) desc.setAttribute('content', t.card1Body)
   }, [lang])
 
-  const t = translations[lang] || translations.en
+  const t = { ...translations.en, ...(translations[lang] || {}) }
 
   return (
     <div className="bg-[#010A1F] text-white min-h-screen">
       <SEO
         title={lang === 'ro' ? 'GEO Gateway — Vizibilitate AI pentru Afacerea Ta | CatyAI' : 'GEO Gateway — AI Visibility for Your Business | CatyAI'}
-        description={t.heroSubtitle}
+        description={t.card1Body}
       />
 
-      {/* Hero */}
+      {/* Hero — clean image with top badge only */}
       <section style={{
         position:'relative', width:'100%',
-        aspectRatio:'1380/752', minHeight:'520px', maxHeight:'100vh',
-        display:'flex', alignItems:'flex-end', justifyContent:'center',
+        aspectRatio:'1380/752', minHeight:'420px', maxHeight:'80vh',
+        display:'flex', alignItems:'flex-start', justifyContent:'center',
         overflow:'hidden', background:'#010A1F'
       }}>
-
-        {/* Imaginea hero — object-fit contain, fără stretch */}
         <img
           src="/images/geo-gateway-hero.png"
           alt="GEO Gateway AI Visibility Protocol"
@@ -331,68 +410,83 @@ export default function GeoGateway() {
             objectFit:'contain', objectPosition:'center'
           }}
         />
-
-        {/* Gradient jos→sus: text lizibil, imagine vizibilă sus */}
         <div style={{
-          position:'absolute', inset:0,
-          background:'linear-gradient(to top, rgba(1,10,31,0.88) 0%, rgba(1,10,31,0.55) 35%, rgba(1,10,31,0.15) 60%, transparent 100%)'
+          position:'absolute', top:0, left:0, right:0, height:'30%',
+          background:'linear-gradient(to bottom, rgba(1,10,31,0.6) 0%, transparent 100%)',
+          pointerEvents:'none'
         }} />
-
-        {/* Conținut jos */}
-        <div style={{position:'relative',zIndex:2,textAlign:'center',padding:'0 32px 48px',maxWidth:'860px',width:'100%'}}>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase mb-5"
-               style={{background:'rgba(196,141,50,0.12)',borderColor:'rgba(196,141,50,0.35)',color:'#D4A84B'}}>
+        <div style={{position:'relative', zIndex:2, padding:'24px 16px 0'}}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase"
+               style={{background:'rgba(196,141,50,0.12)', borderColor:'rgba(196,141,50,0.35)', color:'#D4A84B'}}>
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" style={{boxShadow:'0 0 6px #16C784'}} />
-            GEO Gateway · 6 Straturi Active
+            {t.heroBadge}
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Cards — 2 explanation cards + CTA + trust */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-4">
+
+            <div className="rounded-2xl p-7"
+                 style={{background:'rgba(196,141,50,0.04)', border:'1px solid rgba(196,141,50,0.2)'}}>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4 font-mono font-bold"
+                   style={{background:'rgba(196,141,50,0.12)', color:'#C48D32'}}>
+                {t.card1Icon}
+              </div>
+              <h3 className="text-2xl font-bold leading-tight mb-3"
+                  style={{fontFamily:'Syne,sans-serif', color:'#F8F6F0'}}>
+                {t.card1Title}{' '}
+                <span style={{color:'#C48D32'}}>{t.card1TitleAccent}</span>{' '}
+                {t.card1TitleEnd}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{color:'#A0AABF'}}>
+                {t.card1Body}
+              </p>
+            </div>
+
+            <div className="rounded-2xl p-7"
+                 style={{background:'rgba(196,141,50,0.04)', border:'1px solid rgba(196,141,50,0.2)'}}>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4 font-mono font-bold"
+                   style={{background:'rgba(196,141,50,0.12)', color:'#C48D32'}}>
+                {t.card2Icon}
+              </div>
+              <h3 className="text-2xl font-bold leading-tight mb-3"
+                  style={{fontFamily:'Syne,sans-serif', color:'#F8F6F0'}}>
+                {t.card2TitleStart}
+                <span style={{color:'#C48D32'}}>{t.card2TitleAccent}</span>{' '}
+                {t.card2TitleEnd}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{color:'#A0AABF'}}>
+                {t.card2Body}
+              </p>
+            </div>
+
           </div>
 
-          <h1 className="font-black leading-tight mb-4"
-              style={{
-                fontFamily:'Syne,sans-serif',
-                fontSize:'clamp(38px,5vw,66px)',
-                letterSpacing:'-0.03em',
-                color:'#C48D32',
-                textShadow:'0 0 40px rgba(196,141,50,0.5), 0 2px 20px rgba(0,0,0,0.9)'
-              }}>
-            AI-ul este ORB pe site-ul tău.
-          </h1>
-
-          <p className="mx-auto mb-8 font-light leading-relaxed"
-             style={{
-               fontSize:'clamp(14px,1.5vw,17px)',
-               color:'rgba(255,255,255,0.9)',
-               maxWidth:'580px',
-               textShadow:'0 1px 12px rgba(0,0,0,0.9)'
-             }}>
-            GPTBot, ClaudeBot și Perplexity nu rulează JavaScript.{' '}
-            <strong className="text-white font-medium">Văd doar un shell HTML gol.</strong>{' '}
-            CatyAI GEO Gateway transformă site-ul tău într-un{' '}
-            <strong className="text-white font-medium">Protocol de Adevăr citibil de orice AI.</strong>
-          </p>
-
-          <div className="flex gap-3 justify-center flex-wrap mb-6">
+          <div className="flex gap-3 justify-center flex-wrap mt-8">
             <a href="#audit"
                className="px-7 py-3.5 rounded-xl font-bold text-[#010A1F] transition-all hover:-translate-y-0.5"
-               style={{background:'#C48D32',boxShadow:'0 4px 24px rgba(196,141,50,0.45)',fontSize:'15px'}}>
-              Testează-ți scorul GEO
+               style={{background:'#C48D32', boxShadow:'0 4px 24px rgba(196,141,50,0.35)', fontSize:'15px'}}>
+              {t.heroCta}
             </a>
             <a href="#layers"
-               className="px-7 py-3.5 rounded-xl font-medium text-white transition-all hover:border-[#C48D32]/50"
-               style={{background:'rgba(255,255,255,0.08)',border:'1px solid rgba(255,255,255,0.2)',fontSize:'15px',backdropFilter:'blur(6px)'}}>
-              Cum funcționează →
+               className="px-7 py-3.5 rounded-xl font-medium text-white transition-all"
+               style={{background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.18)', fontSize:'15px'}}>
+              {t.heroCtaSecondary}
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-5 flex-wrap">
-            {['Ed25519 Signature','9 AI Crawlers','300ms','0% Halucinare'].map(t => (
-              <div key={t} className="flex items-center gap-1.5 text-xs" style={{color:'rgba(255,255,255,0.45)'}}>
-                <span className="w-1 h-1 rounded-full" style={{background:'#16C784',boxShadow:'0 0 4px #16C784'}} />
-                {t}
+          <div className="flex items-center justify-center gap-6 flex-wrap mt-6">
+            {[t.trustBadge1, t.trustBadge2, t.trustBadge3, t.trustBadge4].map(badge => (
+              <div key={badge} className="flex items-center gap-1.5 text-xs font-mono"
+                   style={{color:'rgba(255,255,255,0.5)'}}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{background:'#16C784', boxShadow:'0 0 6px #16C784'}} />
+                {badge}
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
