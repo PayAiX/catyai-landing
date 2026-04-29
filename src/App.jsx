@@ -11,6 +11,7 @@ import ROICalculator from './components/ROICalculator'
 import FraudShield from './components/FraudShield'
 import ComparisonTable from './components/ComparisonTable'
 import WhatsAppSecretary from './components/WhatsAppSecretary'
+import GeoAuditWidget from './components/GeoAuditWidget'
 
 // Lazy load pages for better performance (code splitting)
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -252,6 +253,34 @@ const translations = {
       bullet2: 'Publishers lost 38% of their Google referral traffic year-over-year.',
       bullet3: 'HubSpot — one of the best SEO teams in the world — lost nearly half their organic traffic.',
       closing: 'AI is the new storefront. WhatsApp is the new channel. A QR code replaces a €5,000 website.'
+    },
+    geoSection: {
+      step1: 'Diagnose',
+      step2: 'The proof · Simple Smile case study',
+      step3: 'Activate',
+      eyebrow: '90% of websites are invisible to AI',
+      heroTitle: 'Is AI',
+      heroTitleAccent: 'blind',
+      heroTitleEnd: 'to your website?',
+      heroSubtitle: "GPTBot, ClaudeBot and Perplexity don't run JavaScript. They see an empty HTML shell — not your business. Find your GEO score in 30 seconds.",
+      trustFree: 'Free',
+      trustNoAccount: 'No account',
+      trust30sec: '30 seconds',
+      compTitle: 'Standard crawl vs CatyAI NAP Protocol',
+      compWithout: 'Without CatyAI',
+      compWith: 'With CatyAI NAP',
+      compDataAccuracy: 'Data accuracy',
+      compLatency: 'AI latency',
+      compHallucination: 'Hallucination risk',
+      compSignature: 'Verifiable signature',
+      compNone: 'None',
+      ctaUrgency: 'Stop losing customers to invisible competitors',
+      ctaTitle: 'I want CatyAI on my site —',
+      ctaTitleAccent: 'now',
+      ctaSubtitle: 'Activate NAP Protocol in 5 minutes. Your business becomes visible to ChatGPT, Claude and Perplexity instantly.',
+      ctaPrimary: 'I want CatyAI on my site →',
+      ctaSecondary: 'See pricing',
+      ctaFooter: 'Free trial · No credit card · 5-minute setup'
     },
     products3: {
       title: 'One AI.',
@@ -545,6 +574,34 @@ const translations = {
       bullet3: 'HubSpot — una dintre cele mai bune echipe SEO din lume — a pierdut aproape jumătate din traficul organic.',
       closing: 'AI este noua vitrină. WhatsApp este noul canal. Un cod QR înlocuiește un site de €5,000.'
     },
+    geoSection: {
+      step1: 'Diagnostic',
+      step2: 'Dovada · Studiu de caz Simple Smile',
+      step3: 'Activează',
+      eyebrow: '90% din site-uri sunt invizibile pentru AI',
+      heroTitle: 'AI-ul este',
+      heroTitleAccent: 'orb',
+      heroTitleEnd: 'pe site-ul tău?',
+      heroSubtitle: 'GPTBot, ClaudeBot și Perplexity nu rulează JavaScript. Văd doar un shell HTML gol — nu afacerea ta. Află scorul tău GEO în 30 de secunde.',
+      trustFree: 'Gratuit',
+      trustNoAccount: 'Fără cont',
+      trust30sec: '30 secunde',
+      compTitle: 'Crawl standard vs CatyAI NAP Protocol',
+      compWithout: 'Fără CatyAI',
+      compWith: 'Cu CatyAI NAP',
+      compDataAccuracy: 'Acuratețe date',
+      compLatency: 'Latență AI',
+      compHallucination: 'Risc halucinare',
+      compSignature: 'Semnătură verificabilă',
+      compNone: 'Niciuna',
+      ctaUrgency: 'Nu mai pierde clienți în fața concurenților invizibili',
+      ctaTitle: 'Vreau CatyAI pe site-ul meu —',
+      ctaTitleAccent: 'acum',
+      ctaSubtitle: 'Activează NAP Protocol în 5 minute. Afacerea ta devine vizibilă instant pentru ChatGPT, Claude și Perplexity.',
+      ctaPrimary: 'Vreau CatyAI pe site-ul meu →',
+      ctaSecondary: 'Vezi prețuri',
+      ctaFooter: 'Trial gratuit · Fără card · Setup în 5 minute'
+    },
     products3: {
       title: 'Un singur AI.',
       titleHighlight: 'Patru produse.',
@@ -836,6 +893,34 @@ const translations = {
       bullet2: 'Los editores perdieron el 38% de su tráfico de referencia de Google año tras año.',
       bullet3: 'HubSpot — uno de los mejores equipos de SEO del mundo — perdió casi la mitad de su tráfico orgánico.',
       closing: 'La IA es el nuevo escaparate. WhatsApp es el nuevo canal. Un código QR reemplaza un sitio web de €5,000.'
+    },
+    geoSection: {
+      step1: 'Diagnóstico',
+      step2: 'La prueba · Caso de estudio Simple Smile',
+      step3: 'Activar',
+      eyebrow: '90% de los sitios web son invisibles para AI',
+      heroTitle: '¿La AI está',
+      heroTitleAccent: 'ciega',
+      heroTitleEnd: 'a tu sitio web?',
+      heroSubtitle: 'GPTBot, ClaudeBot y Perplexity no ejecutan JavaScript. Solo ven un shell HTML vacío — no tu negocio. Descubre tu puntuación GEO en 30 segundos.',
+      trustFree: 'Gratis',
+      trustNoAccount: 'Sin cuenta',
+      trust30sec: '30 segundos',
+      compTitle: 'Crawl estándar vs CatyAI NAP Protocol',
+      compWithout: 'Sin CatyAI',
+      compWith: 'Con CatyAI NAP',
+      compDataAccuracy: 'Precisión de datos',
+      compLatency: 'Latencia AI',
+      compHallucination: 'Riesgo de alucinación',
+      compSignature: 'Firma verificable',
+      compNone: 'Ninguna',
+      ctaUrgency: 'Deja de perder clientes ante competidores invisibles',
+      ctaTitle: 'Quiero CatyAI en mi sitio —',
+      ctaTitleAccent: 'ahora',
+      ctaSubtitle: 'Activa NAP Protocol en 5 minutos. Tu negocio se vuelve visible al instante para ChatGPT, Claude y Perplexity.',
+      ctaPrimary: 'Quiero CatyAI en mi sitio →',
+      ctaSecondary: 'Ver precios',
+      ctaFooter: 'Prueba gratuita · Sin tarjeta · Setup en 5 min'
     },
     products3: {
       title: 'Una IA.',
@@ -1129,6 +1214,34 @@ const translations = {
       bullet3: 'HubSpot — uma das melhores equipes de SEO do mundo — perdeu quase metade do tráfego orgânico.',
       closing: 'IA é a nova vitrine. WhatsApp é o novo canal. Um código QR substitui um site de €5.000.'
     },
+    geoSection: {
+      step1: 'Diagnóstico',
+      step2: 'A prova · Estudo de caso Simple Smile',
+      step3: 'Ativar',
+      eyebrow: '90% dos sites são invisíveis para AI',
+      heroTitle: 'A AI está',
+      heroTitleAccent: 'cega',
+      heroTitleEnd: 'para o seu site?',
+      heroSubtitle: 'GPTBot, ClaudeBot e Perplexity não executam JavaScript. Eles veem apenas um shell HTML vazio — não o seu negócio. Descubra sua pontuação GEO em 30 segundos.',
+      trustFree: 'Grátis',
+      trustNoAccount: 'Sem conta',
+      trust30sec: '30 segundos',
+      compTitle: 'Crawl padrão vs CatyAI NAP Protocol',
+      compWithout: 'Sem CatyAI',
+      compWith: 'Com CatyAI NAP',
+      compDataAccuracy: 'Precisão dos dados',
+      compLatency: 'Latência AI',
+      compHallucination: 'Risco de alucinação',
+      compSignature: 'Assinatura verificável',
+      compNone: 'Nenhuma',
+      ctaUrgency: 'Pare de perder clientes para concorrentes invisíveis',
+      ctaTitle: 'Quero CatyAI no meu site —',
+      ctaTitleAccent: 'agora',
+      ctaSubtitle: 'Ative NAP Protocol em 5 minutos. Seu negócio fica visível instantaneamente para ChatGPT, Claude e Perplexity.',
+      ctaPrimary: 'Quero CatyAI no meu site →',
+      ctaSecondary: 'Ver preços',
+      ctaFooter: 'Avaliação grátis · Sem cartão · Setup em 5 min'
+    },
     products3: {
       title: 'Uma IA.',
       titleHighlight: 'Quatro produtos.',
@@ -1420,6 +1533,34 @@ const translations = {
       bullet2: 'Les éditeurs ont perdu 38% de leur trafic de référence Google d\'une année sur l\'autre.',
       bullet3: 'HubSpot — l\'une des meilleures équipes SEO au monde — a perdu près de la moitié de son trafic organique.',
       closing: 'L\'IA est la nouvelle vitrine. WhatsApp est le nouveau canal. Un code QR remplace un site web à 5 000€.'
+    },
+    geoSection: {
+      step1: 'Diagnostic',
+      step2: 'La preuve · Étude de cas Simple Smile',
+      step3: 'Activer',
+      eyebrow: '90% des sites sont invisibles pour l\'AI',
+      heroTitle: 'L\'AI est-elle',
+      heroTitleAccent: 'aveugle',
+      heroTitleEnd: 'à votre site ?',
+      heroSubtitle: 'GPTBot, ClaudeBot et Perplexity n\'exécutent pas JavaScript. Ils ne voient qu\'un shell HTML vide — pas votre entreprise. Découvrez votre score GEO en 30 secondes.',
+      trustFree: 'Gratuit',
+      trustNoAccount: 'Sans compte',
+      trust30sec: '30 secondes',
+      compTitle: 'Crawl standard vs CatyAI NAP Protocol',
+      compWithout: 'Sans CatyAI',
+      compWith: 'Avec CatyAI NAP',
+      compDataAccuracy: 'Précision des données',
+      compLatency: 'Latence AI',
+      compHallucination: 'Risque d\'hallucination',
+      compSignature: 'Signature vérifiable',
+      compNone: 'Aucune',
+      ctaUrgency: 'Arrêtez de perdre des clients face aux concurrents invisibles',
+      ctaTitle: 'Je veux CatyAI sur mon site —',
+      ctaTitleAccent: 'maintenant',
+      ctaSubtitle: 'Activez NAP Protocol en 5 minutes. Votre entreprise devient instantanément visible pour ChatGPT, Claude et Perplexity.',
+      ctaPrimary: 'Je veux CatyAI sur mon site →',
+      ctaSecondary: 'Voir les tarifs',
+      ctaFooter: 'Essai gratuit · Sans carte · Setup en 5 min'
     },
     products3: {
       title: 'Une IA.',
@@ -2950,115 +3091,108 @@ const homepageFAQ = [
   }
 ];
 
-// SECTION 2: Realitatea - Your Website Is Dead
-function Realitatea() {
+// SECTION 2: GEO Audit Section — Hormozi 3-step funnel
+function GeoAuditSection() {
   const { t } = useLanguage()
-  const [counts, setCounts] = useState({ google: 0, zero: 0, ctr: 0 })
-  const sectionRef = useRef(null)
-  const hasAnimated = useRef(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true
-          const duration = 2000
-          const steps = 60
-          const interval = duration / steps
-          let step = 0
-
-          const timer = setInterval(() => {
-            step++
-            const progress = step / steps
-            const eased = 1 - Math.pow(1 - progress, 3)
-
-            setCounts({
-              google: Math.round(33 * eased),
-              zero: Math.round(60 * eased),
-              ctr: Math.round(3 * eased)
-            })
-
-            if (step >= steps) clearInterval(timer)
-          }, interval)
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
 
   return (
-    <section ref={sectionRef} className="pt-0 pb-24 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
-      <div className="max-w-5xl mx-auto">
-        {/* Main Headline - Half white, half gold */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6">
-          <span className="text-white">Your Website Is Dead.</span>{' '}
-          <span className="text-gold">You Just Haven't Buried It Yet.</span>
-        </h2>
+    <section className="py-0 bg-[#010A1F]">
 
-        {/* Italic Subtext */}
-        <p className="text-center text-lg md:text-xl italic mb-10 max-w-3xl mx-auto" style={{ color: '#A1A1AA' }}>
-          {t.realitatea.subtitle}
-        </p>
-
-        {/* Paragraph */}
-        <p className="text-white text-lg md:text-xl text-center mb-16 max-w-4xl mx-auto leading-relaxed">
-          {t.realitatea.paragraph}
-        </p>
-
-        {/* 3 Stats Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {/* Card 1: -33% */}
-          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
-            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
-              -{counts.google}%
-            </div>
-            <div className="text-white text-base">
-              {t.realitatea.stat1Label}
-            </div>
+      {/* STEP 1 — Diagnose */}
+      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 mb-4 text-xs font-mono uppercase tracking-widest text-gray-500">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#C48D32]/15 text-[#C48D32] text-xs font-bold">1</span>
+            {t.geoSection.step1}
           </div>
-
-          {/* Card 2: 60% */}
-          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
-            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
-              {counts.zero}%
-            </div>
-            <div className="text-white text-base">
-              {t.realitatea.stat2Label}
-            </div>
-          </div>
-
-          {/* Card 3: 3% */}
-          <div className="bg-[#010A1F] rounded-2xl p-8 border border-[#1a2744]/50 text-center">
-            <div className="text-4xl md:text-5xl font-bold mb-3 text-gold">
-              {counts.ctr}%
-            </div>
-            <div className="text-white text-base">
-              {t.realitatea.stat3Label}
-            </div>
+          <span className="inline-block px-3 py-1 mb-4 rounded-full text-xs font-mono uppercase tracking-widest"
+                style={{ background: 'rgba(196,141,50,0.08)', border: '1px solid rgba(196,141,50,0.25)', color: '#C48D32' }}>
+            {t.geoSection.eyebrow}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black mb-4" style={{ fontFamily: 'Syne,sans-serif', color: '#F8F6F0', letterSpacing: '-0.02em' }}>
+            {t.geoSection.heroTitle}{' '}
+            <span style={{ color: '#C48D32' }}>{t.geoSection.heroTitleAccent}</span>{' '}
+            {t.geoSection.heroTitleEnd}
+          </h2>
+          <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+            {t.geoSection.heroSubtitle}
+          </p>
+          <GeoAuditWidget />
+          <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs font-mono text-gray-500">
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C48D32] mr-1.5 align-middle"></span>{t.geoSection.trustFree}</span>
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C48D32] mr-1.5 align-middle"></span>{t.geoSection.trustNoAccount}</span>
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C48D32] mr-1.5 align-middle"></span>{t.geoSection.trust30sec}</span>
           </div>
         </div>
-
-        {/* Bullet Points */}
-        <div className="max-w-3xl mx-auto mb-16 space-y-4">
-          <p className="text-white text-lg">
-            • {t.realitatea.bullet1}
-          </p>
-          <p className="text-white text-lg">
-            • {t.realitatea.bullet2}
-          </p>
-          <p className="text-white text-lg">
-            • {t.realitatea.bullet3}
-          </p>
-        </div>
-
-        {/* Gold Closing Statement */}
-        <p className="text-center text-xl md:text-2xl font-bold text-gold">
-          {t.realitatea.closing}
-        </p>
       </div>
+
+      {/* STEP 2 — Comparison */}
+      <div className="py-12 px-4 sm:px-6 lg:px-8" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-6 text-xs font-mono uppercase tracking-widest text-gray-500">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#C48D32]/15 text-[#C48D32] text-xs font-bold mr-2">2</span>
+            {t.geoSection.step2}
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ fontFamily: 'Syne,sans-serif', color: '#F8F6F0' }}>
+            {t.geoSection.compTitle}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-3 max-w-xl mx-auto">
+            <div className="rounded-xl p-5" style={{ background: 'rgba(136,146,164,0.05)', border: '1px solid rgba(136,146,164,0.2)' }}>
+              <div className="text-xs font-mono uppercase tracking-wider text-gray-500 mb-3">{t.geoSection.compWithout}</div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compDataAccuracy}</span><span className="font-mono font-semibold text-gray-500 line-through">10%</span></div>
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compLatency}</span><span className="font-mono font-semibold text-gray-500 line-through">8–15s</span></div>
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compHallucination}</span><span className="font-mono font-semibold text-gray-500 line-through">70%+</span></div>
+                <div className="flex justify-between"><span className="text-gray-400">{t.geoSection.compSignature}</span><span className="font-mono font-semibold text-gray-500 line-through">{t.geoSection.compNone}</span></div>
+              </div>
+            </div>
+            <div className="rounded-xl p-5" style={{ background: 'rgba(196,141,50,0.06)', border: '1px solid rgba(196,141,50,0.3)' }}>
+              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#C48D32' }}>{t.geoSection.compWith}</div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compDataAccuracy}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>100%</span></div>
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compLatency}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>300ms</span></div>
+                <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compHallucination}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>0%</span></div>
+                <div className="flex justify-between"><span className="text-gray-400">{t.geoSection.compSignature}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>Ed25519</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* STEP 3 — Activate */}
+      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center" style={{ background: 'radial-gradient(circle at top, rgba(196,141,50,0.08), transparent 70%)' }}>
+        <div className="max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 mb-4 text-xs font-mono uppercase tracking-widest text-gray-500">
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#C48D32]/15 text-[#C48D32] text-xs font-bold">3</span>
+            {t.geoSection.step3}
+          </div>
+          <div className="text-xs font-mono uppercase tracking-widest mb-3" style={{ color: '#C48D32' }}>
+            {t.geoSection.ctaUrgency}
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: 'Syne,sans-serif', color: '#F8F6F0' }}>
+            {t.geoSection.ctaTitle} <span style={{ color: '#C48D32' }}>{t.geoSection.ctaTitleAccent}</span>
+          </h2>
+          <p className="text-base text-gray-400 mb-8 max-w-md mx-auto">
+            {t.geoSection.ctaSubtitle}
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="https://app.catyai.io/signup"
+               className="px-7 py-3.5 rounded-xl font-bold text-sm"
+               style={{ background: '#C48D32', color: '#010A1F', boxShadow: '0 0 0 1px rgba(196,141,50,0.4), 0 4px 16px rgba(196,141,50,0.25)' }}>
+              {t.geoSection.ctaPrimary}
+            </a>
+            <Link to="/pricing"
+                  className="px-6 py-3.5 rounded-xl font-medium text-sm"
+                  style={{ background: 'transparent', color: '#F8F6F0', border: '1px solid #C48D32' }}>
+              {t.geoSection.ctaSecondary}
+            </Link>
+          </div>
+          <div className="text-xs font-mono text-gray-600 mt-4">
+            {t.geoSection.ctaFooter}
+          </div>
+        </div>
+      </div>
+
     </section>
   )
 }
@@ -3318,8 +3452,8 @@ function HomePage() {
       {/* SECTION 1: Hero - kept as-is */}
       <Hero />
 
-      {/* SECTION 2: Realitatea - Google traffic decline stats */}
-      <Realitatea />
+      {/* SECTION 2: GEO Audit funnel — Diagnose / Proof / Activate */}
+      <GeoAuditSection />
 
       {/* SECTION 3: Produse - 3 product cards */}
       <ProduseNoi />
