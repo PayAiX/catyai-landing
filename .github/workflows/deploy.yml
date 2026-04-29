@@ -37,7 +37,8 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} --delete
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} --delete --exclude "cdn/*"
+          aws s3 sync public/cdn/ s3://${{ secrets.S3_BUCKET }}/cdn/ --content-type "application/javascript" --cache-control "public, max-age=300"
 
       - name: Invalidate CloudFront cache
         run: |
