@@ -3136,19 +3136,19 @@ function GeoAuditSection() {
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ fontFamily: 'Syne,sans-serif', color: '#F8F6F0' }}>
             {t.geoSection.compTitle}
           </h2>
-          <div className="grid md:grid-cols-2 gap-3 max-w-xl mx-auto">
-            <div className="rounded-xl p-5" style={{ background: 'rgba(136,146,164,0.05)', border: '1px solid rgba(136,146,164,0.2)' }}>
-              <div className="text-xs font-mono uppercase tracking-wider text-gray-500 mb-3">{t.geoSection.compWithout}</div>
-              <div className="space-y-2 text-sm">
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            <div className="rounded-xl p-7" style={{ background: 'rgba(136,146,164,0.05)', border: '1px solid rgba(136,146,164,0.2)' }}>
+              <div className="text-sm font-mono uppercase tracking-wider text-gray-500 mb-4">{t.geoSection.compWithout}</div>
+              <div className="space-y-3 text-base">
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compDataAccuracy}</span><span className="font-mono font-semibold text-gray-500 line-through">10%</span></div>
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compLatency}</span><span className="font-mono font-semibold text-gray-500 line-through">8–15s</span></div>
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compHallucination}</span><span className="font-mono font-semibold text-gray-500 line-through">70%+</span></div>
                 <div className="flex justify-between"><span className="text-gray-400">{t.geoSection.compSignature}</span><span className="font-mono font-semibold text-gray-500 line-through">{t.geoSection.compNone}</span></div>
               </div>
             </div>
-            <div className="rounded-xl p-5" style={{ background: 'rgba(196,141,50,0.06)', border: '1px solid rgba(196,141,50,0.3)' }}>
-              <div className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: '#C48D32' }}>{t.geoSection.compWith}</div>
-              <div className="space-y-2 text-sm">
+            <div className="rounded-xl p-7" style={{ background: 'rgba(196,141,50,0.06)', border: '1px solid rgba(196,141,50,0.3)' }}>
+              <div className="text-sm font-mono uppercase tracking-wider mb-4" style={{ color: '#C48D32' }}>{t.geoSection.compWith}</div>
+              <div className="space-y-3 text-base">
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compDataAccuracy}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>100%</span></div>
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compLatency}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>300ms</span></div>
                 <div className="flex justify-between border-b border-white/5 pb-2"><span className="text-gray-400">{t.geoSection.compHallucination}</span><span className="font-mono font-semibold" style={{ color: '#C48D32' }}>0%</span></div>
