@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import GeoAuditWidget from '../components/GeoAuditWidget'
 
 const translations = {
   en: {
@@ -518,9 +519,26 @@ export default function GeoGateway() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 px-4 bg-gradient-to-b from-gray-900 to-[#010A1F]">
-        <div className="max-w-2xl mx-auto text-center">
+      {/* GEO Audit Tool */}
+      <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-[#010A1F]" id="audit">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-mono tracking-widest uppercase mb-4"
+                  style={{ background: 'rgba(196,141,50,0.08)', border: '1px solid rgba(196,141,50,0.25)', color: '#D4A84B' }}>
+              GEO Visibility Audit
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black mb-3" style={{ fontFamily: 'Syne,sans-serif', color: '#F8F6F0' }}>
+              Testează-ți scorul GEO
+            </h2>
+            <p className="text-gray-400 text-base max-w-md mx-auto">
+              Gratuit · Fără cont · 5 audit-uri / zi
+            </p>
+          </div>
+          <GeoAuditWidget />
+        </div>
+
+        {/* Final CTA */}
+        <div className="max-w-2xl mx-auto text-center mt-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.finalCta}</h2>
           <p className="text-gray-400 mb-8">{t.finalCtaBody}</p>
           <div className="flex flex-wrap justify-center gap-3">
