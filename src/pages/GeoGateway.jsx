@@ -310,65 +310,88 @@ export default function GeoGateway() {
       />
 
       {/* Hero */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-gray-900 to-[#010A1F]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-                <span>🌐</span>
-                {t.badge}
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                {t.heroTitle1}{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                  {t.heroTitle2}
-                </span>
-              </h1>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">{t.heroSubtitle}</p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                <Link to="/contact" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-colors">
-                  {t.heroCta}
-                </Link>
-                <a href="#how-it-works" className="px-6 py-3 border border-[#1a2744] hover:border-blue-500/50 rounded-xl font-semibold transition-colors text-gray-300 hover:text-white">
-                  {t.heroCtaSecondary}
-                </a>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {[t.trustBadge1, t.trustBadge2, t.trustBadge3].map((b, i) => (
-                  <span key={i} className="flex items-center gap-2 text-sm text-gray-400">
-                    <span className="text-blue-400">✓</span>{b}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-[#0A1628]/60 rounded-2xl border border-[#1a2744]/50 p-6 font-mono text-sm">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-500/60"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/60"></div>
-                  <span className="ml-2 text-gray-500 text-xs">AI Crawler Activity</span>
-                </div>
-                {[
-                  { bot: 'GPTBot', action: 'READ /llms.txt', status: '200 OK', color: 'text-green-400' },
-                  { bot: 'ClaudeBot', action: 'GET /answer?q=services', status: '200 OK', color: 'text-green-400' },
-                  { bot: 'PerplexityBot', action: 'CRAWL /schema.json', status: '200 OK', color: 'text-green-400' },
-                  { bot: 'GoogleBot AI', action: 'INDEX structured data', status: 'CITED', color: 'text-blue-400' }
-                ].map((row, i) => (
-                  <div key={i} className="flex justify-between items-center py-2 border-b border-[#1a2744]/30 last:border-0">
-                    <div>
-                      <span className="text-purple-400 font-semibold">{row.bot}</span>
-                      <span className="text-gray-500 ml-3">{row.action}</span>
-                    </div>
-                    <span className={`text-xs font-semibold ${row.color}`}>{row.status}</span>
-                  </div>
-                ))}
-                <div className="mt-4 pt-4 border-t border-[#1a2744]/30 text-center text-xs text-gray-500">
-                  Live AI crawler feed • catyai.io
-                </div>
-              </div>
-            </div>
+      <section style={{
+        position:'relative', width:'100%',
+        aspectRatio:'1380/752', minHeight:'520px', maxHeight:'100vh',
+        display:'flex', alignItems:'flex-end', justifyContent:'center',
+        overflow:'hidden', background:'#010A1F'
+      }}>
+
+        {/* Imaginea hero — object-fit contain, fără stretch */}
+        <img
+          src="/images/geo-gateway-hero.png"
+          alt="GEO Gateway AI Visibility Protocol"
+          width={1380} height={752}
+          loading="eager"
+          fetchpriority="high"
+          style={{
+            position:'absolute', inset:0,
+            width:'100%', height:'100%',
+            objectFit:'contain', objectPosition:'center'
+          }}
+        />
+
+        {/* Gradient jos→sus: text lizibil, imagine vizibilă sus */}
+        <div style={{
+          position:'absolute', inset:0,
+          background:'linear-gradient(to top, rgba(1,10,31,0.88) 0%, rgba(1,10,31,0.55) 35%, rgba(1,10,31,0.15) 60%, transparent 100%)'
+        }} />
+
+        {/* Conținut jos */}
+        <div style={{position:'relative',zIndex:2,textAlign:'center',padding:'0 32px 48px',maxWidth:'860px',width:'100%'}}>
+
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase mb-5"
+               style={{background:'rgba(196,141,50,0.12)',borderColor:'rgba(196,141,50,0.35)',color:'#D4A84B'}}>
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400" style={{boxShadow:'0 0 6px #16C784'}} />
+            GEO Gateway · 6 Straturi Active
           </div>
+
+          <h1 className="font-black leading-tight mb-4"
+              style={{
+                fontFamily:'Syne,sans-serif',
+                fontSize:'clamp(38px,5vw,66px)',
+                letterSpacing:'-0.03em',
+                color:'#C48D32',
+                textShadow:'0 0 40px rgba(196,141,50,0.5), 0 2px 20px rgba(0,0,0,0.9)'
+              }}>
+            AI-ul este ORB pe site-ul tău.
+          </h1>
+
+          <p className="mx-auto mb-8 font-light leading-relaxed"
+             style={{
+               fontSize:'clamp(14px,1.5vw,17px)',
+               color:'rgba(255,255,255,0.9)',
+               maxWidth:'580px',
+               textShadow:'0 1px 12px rgba(0,0,0,0.9)'
+             }}>
+            GPTBot, ClaudeBot și Perplexity nu rulează JavaScript.{' '}
+            <strong className="text-white font-medium">Văd doar un shell HTML gol.</strong>{' '}
+            CatyAI GEO Gateway transformă site-ul tău într-un{' '}
+            <strong className="text-white font-medium">Protocol de Adevăr citibil de orice AI.</strong>
+          </p>
+
+          <div className="flex gap-3 justify-center flex-wrap mb-6">
+            <a href="#audit"
+               className="px-7 py-3.5 rounded-xl font-bold text-[#010A1F] transition-all hover:-translate-y-0.5"
+               style={{background:'#C48D32',boxShadow:'0 4px 24px rgba(196,141,50,0.45)',fontSize:'15px'}}>
+              Testează-ți scorul GEO
+            </a>
+            <a href="#layers"
+               className="px-7 py-3.5 rounded-xl font-medium text-white transition-all hover:border-[#C48D32]/50"
+               style={{background:'rgba(255,255,255,0.08)',border:'1px solid rgba(255,255,255,0.2)',fontSize:'15px',backdropFilter:'blur(6px)'}}>
+              Cum funcționează →
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center gap-5 flex-wrap">
+            {['Ed25519 Signature','9 AI Crawlers','300ms','0% Halucinare'].map(t => (
+              <div key={t} className="flex items-center gap-1.5 text-xs" style={{color:'rgba(255,255,255,0.45)'}}>
+                <span className="w-1 h-1 rounded-full" style={{background:'#16C784',boxShadow:'0 0 4px #16C784'}} />
+                {t}
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
