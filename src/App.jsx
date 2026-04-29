@@ -54,7 +54,7 @@ const LanguageContext = createContext()
 
 const translations = {
   en: {
-    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Intelligent geographic routing', login: 'Login', getStarted: 'Start Free' },
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', products: 'Products', whatsappSecretary: 'WhatsApp AI Secretary', whatsappDesc: 'Full-featured AI secretary', qrFirst: 'QR-First (No Website)', qrFirstDesc: 'No website? No problem.', fraudai: 'FraudAI', fraudaiDesc: 'AI scam protection', catyWidget: 'Caty Widget', catyWidgetDesc: 'AI sales agent for websites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Intelligent geographic routing', solutions: 'Solutions', forClinics: { label: 'For Clinics', description: 'Medical practice management' }, forRealEstate: { label: 'For Real Estate', description: 'Property lead generation' }, forRestaurants: { label: 'For Restaurants', description: 'Reservations & orders' }, forEcommerce: { label: 'For Ecommerce', description: 'Sales automation' }, forAgencies: { label: 'For Agencies', description: 'Client service delivery' }, login: 'Login', getStarted: 'Start Free' },
     hero: {
       tagline: 'High-Performance Artificial Intelligence',
       title1: 'We Grow Your Revenue with',
@@ -346,7 +346,7 @@ const translations = {
     }
   },
   ro: {
-    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Rutare geografică inteligentă', login: 'Autentificare', getStarted: 'Începe Gratuit' },
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'Întrebări', products: 'Produse', whatsappSecretary: 'Secretar AI WhatsApp', whatsappDesc: 'Secretar AI complet', qrFirst: 'QR-First (Fără Site)', qrFirstDesc: 'Fără site? Nicio problemă.', fraudai: 'FraudAI', fraudaiDesc: 'Protecție AI anti-escrocherii', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI vânzări pentru site-uri', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Rutare geografică inteligentă', solutions: 'Soluții', forClinics: { label: 'Pentru Clinici', description: 'Gestionare practică medicală' }, forRealEstate: { label: 'Pentru Imobiliare', description: 'Generare leaduri proprietăți' }, forRestaurants: { label: 'Pentru Restaurante', description: 'Rezervări și comenzi' }, forEcommerce: { label: 'Pentru Ecommerce', description: 'Automatizare vânzări' }, forAgencies: { label: 'Pentru Agenții', description: 'Livrare servicii client' }, login: 'Autentificare', getStarted: 'Începe Gratuit' },
     hero: {
       tagline: 'Inteligență Artificială de Performanță',
       title1: 'Creștem Veniturile Tale cu',
@@ -638,7 +638,7 @@ const translations = {
     }
   },
   es: {
-    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Enrutamiento geográfico inteligente', login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo funciona', pricing: 'Precios', faq: 'FAQ', products: 'Productos', whatsappSecretary: 'Secretario AI WhatsApp', whatsappDesc: 'Secretario AI completo', qrFirst: 'QR-First (Sin Web)', qrFirstDesc: '¿Sin sitio web? Sin problema.', fraudai: 'FraudAI', fraudaiDesc: 'Protección AI anti-estafas', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de ventas para webs', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Enrutamiento geográfico inteligente', solutions: 'Soluciones', forClinics: { label: 'Para Clínicas', description: 'Gestión de práctica médica' }, forRealEstate: { label: 'Para Inmobiliarias', description: 'Generación de leads inmobiliarios' }, forRestaurants: { label: 'Para Restaurantes', description: 'Reservas y pedidos' }, forEcommerce: { label: 'Para Ecommerce', description: 'Automatización de ventas' }, forAgencies: { label: 'Para Agencias', description: 'Entrega de servicios al cliente' }, login: 'Iniciar sesión', getStarted: 'Empezar Gratis' },
     hero: {
       tagline: 'El empleado digital que vende por ti',
       title1: 'Convierte Conversaciones en',
@@ -930,7 +930,7 @@ const translations = {
     }
   },
   pt: {
-    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Roteamento geográfico inteligente', login: 'Entrar', getStarted: 'Começar Grátis' },
+    nav: { home: 'Início', features: 'Recursos', howItWorks: 'Como funciona', pricing: 'Preços', faq: 'FAQ', products: 'Produtos', whatsappSecretary: 'Secretário AI WhatsApp', whatsappDesc: 'Secretário AI completo', qrFirst: 'QR-First (Sem Site)', qrFirstDesc: 'Sem site? Sem problema.', fraudai: 'FraudAI', fraudaiDesc: 'Proteção AI anti-fraudes', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agente AI de vendas para sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Roteamento geográfico inteligente', solutions: 'Soluções', forClinics: { label: 'Para Clínicas', description: 'Gestão de prática médica' }, forRealEstate: { label: 'Para Imobiliárias', description: 'Geração de leads imobiliários' }, forRestaurants: { label: 'Para Restaurantes', description: 'Reservas e pedidos' }, forEcommerce: { label: 'Para Ecommerce', description: 'Automação de vendas' }, forAgencies: { label: 'Para Agências', description: 'Entrega de serviços ao cliente' }, login: 'Entrar', getStarted: 'Começar Grátis' },
     hero: {
       tagline: 'O funcionário digital que vende por você',
       title1: 'Transforme Conversas em',
@@ -1222,7 +1222,7 @@ const translations = {
     }
   },
   fr: {
-    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Routage géographique intelligent', login: 'Connexion', getStarted: 'Commencer Gratuit' },
+    nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment ça marche', pricing: 'Tarifs', faq: 'FAQ', products: 'Produits', whatsappSecretary: 'Secrétaire AI WhatsApp', whatsappDesc: 'Secrétaire AI complet', qrFirst: 'QR-First (Sans Site)', qrFirstDesc: 'Pas de site ? Pas de problème.', fraudai: 'FraudAI', fraudaiDesc: 'Protection AI anti-arnaques', catyWidget: 'Caty Widget', catyWidgetDesc: 'Agent AI de ventes pour sites', geoGateway: 'GEO Gateway', geoGatewayDesc: 'Routage géographique intelligent', solutions: 'Solutions', forClinics: { label: 'Pour Cliniques', description: 'Gestion de cabinet médical' }, forRealEstate: { label: 'Pour Immobilier', description: 'Génération de leads immobiliers' }, forRestaurants: { label: 'Pour Restaurants', description: 'Réservations et commandes' }, forEcommerce: { label: 'Pour Ecommerce', description: 'Automatisation des ventes' }, forAgencies: { label: 'Pour Agences', description: 'Livraison de services clients' }, login: 'Connexion', getStarted: 'Commencer Gratuit' },
     hero: {
       tagline: "L'employé digital qui vend pour vous",
       title1: 'Transformez les Conversations en',
@@ -1704,7 +1704,7 @@ function Header() {
             {/* Soluții Dropdown */}
             <div className="relative" onMouseEnter={handleSolutiiEnter} onMouseLeave={handleSolutiiLeave}>
               <button className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors py-2">
-                Soluții
+                {t.nav.solutions}
                 <svg className={`w-4 h-4 transition-transform ${solutiiOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -1716,36 +1716,36 @@ function Header() {
                     <Link to="/solutii/clinici-medicale" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
                       <span className="text-2xl">🏥</span>
                       <div>
-                        <div className="text-white font-medium">Clinici Medicale</div>
-                        <div className="text-gray-400 text-xs">Programări automate 24/7</div>
+                        <div className="text-white font-medium">{t.nav.forClinics.label}</div>
+                        <div className="text-gray-400 text-xs">{t.nav.forClinics.description}</div>
                       </div>
                     </Link>
                     <Link to="/solutii/agentii-imobiliare" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
                       <span className="text-2xl">🏠</span>
                       <div>
-                        <div className="text-white font-medium">Agenții Imobiliare</div>
-                        <div className="text-gray-400 text-xs">Califică lead-uri automat</div>
+                        <div className="text-white font-medium">{t.nav.forRealEstate.label}</div>
+                        <div className="text-gray-400 text-xs">{t.nav.forRealEstate.description}</div>
                       </div>
                     </Link>
                     <Link to="/solutii/restaurante" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
                       <span className="text-2xl">🍽️</span>
                       <div>
-                        <div className="text-white font-medium">Restaurante</div>
-                        <div className="text-gray-400 text-xs">Rezervări și meniu QR-First</div>
+                        <div className="text-white font-medium">{t.nav.forRestaurants.label}</div>
+                        <div className="text-gray-400 text-xs">{t.nav.forRestaurants.description}</div>
                       </div>
                     </Link>
                     <Link to="/solutii/ecommerce" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
                       <span className="text-2xl">🛍️</span>
                       <div>
-                        <div className="text-white font-medium">Magazine Online</div>
-                        <div className="text-gray-400 text-xs">Crește conversia cu AI</div>
+                        <div className="text-white font-medium">{t.nav.forEcommerce.label}</div>
+                        <div className="text-gray-400 text-xs">{t.nav.forEcommerce.description}</div>
                       </div>
                     </Link>
                     <Link to="/solutii/agentii-marketing" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setSolutiiOpen(false)}>
                       <span className="text-2xl">📣</span>
                       <div>
-                        <div className="text-white font-medium">Agenții de Marketing</div>
-                        <div className="text-gray-400 text-xs">AI white-label pentru clienți</div>
+                        <div className="text-white font-medium">{t.nav.forAgencies.label}</div>
+                        <div className="text-gray-400 text-xs">{t.nav.forAgencies.description}</div>
                       </div>
                     </Link>
                   </div>
@@ -1789,12 +1789,12 @@ function Header() {
 
               <hr className="border-[#1a2744]" />
               {/* Mobile Soluții Section */}
-              <div className="text-gray-500 text-xs uppercase tracking-wider">Soluții</div>
-              <Link to="/solutii/clinici-medicale" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏥 Clinici Medicale</Link>
-              <Link to="/solutii/agentii-imobiliare" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏠 Agenții Imobiliare</Link>
-              <Link to="/solutii/restaurante" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🍽️ Restaurante</Link>
-              <Link to="/solutii/ecommerce" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛍️ Magazine Online</Link>
-              <Link to="/solutii/agentii-marketing" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📣 Agenții de Marketing</Link>
+              <div className="text-gray-500 text-xs uppercase tracking-wider">{t.nav.solutions}</div>
+              <Link to="/solutii/clinici-medicale" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏥 {t.nav.forClinics.label}</Link>
+              <Link to="/solutii/agentii-imobiliare" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🏠 {t.nav.forRealEstate.label}</Link>
+              <Link to="/solutii/restaurante" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🍽️ {t.nav.forRestaurants.label}</Link>
+              <Link to="/solutii/ecommerce" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛍️ {t.nav.forEcommerce.label}</Link>
+              <Link to="/solutii/agentii-marketing" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📣 {t.nav.forAgencies.label}</Link>
 
               <hr className="border-[#1a2744]" />
               <a href="#solutions" className="text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>{t.nav.pricing}</a>
