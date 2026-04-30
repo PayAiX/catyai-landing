@@ -39,6 +39,7 @@ const ForRealEstate = lazy(() => import('./pages/solutii/ForRealEstate'))
 const ForRestaurants = lazy(() => import('./pages/solutii/ForRestaurants'))
 const ForEcommerce = lazy(() => import('./pages/solutii/ForEcommerce'))
 const ForAgencies = lazy(() => import('./pages/solutii/ForAgencies'))
+const DsPreview = lazy(() => import('./pages/_DsPreview'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3576,6 +3577,7 @@ function AppContent() {
             <Route path="/solutii/ecommerce" element={<ForEcommerce />} />
             <Route path="/solutii/agentii-marketing" element={<ForAgencies />} />
             <Route path="/geo-gateway" element={<GeoGateway />} />
+            <Route path="/_ds-preview" element={<DsPreview />} />
           </Routes>
         </Suspense>
       </main>

@@ -1,17 +1,31 @@
 import { Link } from 'react-router-dom';
-import { Cpu, Zap, ArrowUpRight } from 'lucide-react';
 
-/**
- * Sales-focused nav for IMM RO + separated Enterprise link to /geo-gateway.
- * Lang switcher kept simple (controlled component — pass `lang` and `onLangChange` from parent i18n context).
- */
+const IconCpu = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" />
+    <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" />
+  </svg>
+);
+
+const IconZap = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+);
+
+const IconArrowUpRight = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+  </svg>
+);
+
 export default function TaithonNav({ lang = 'RO', onLangChange }) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gold/10 rounded border border-gold/30 flex items-center justify-center">
-            <Cpu className="text-gold w-5 h-5" />
+            <IconCpu className="text-gold w-5 h-5" />
           </div>
           <span className="font-bold tracking-tight text-white">
             Caty<span className="text-gold">AI</span>
@@ -25,12 +39,11 @@ export default function TaithonNav({ lang = 'RO', onLangChange }) {
           <Link to="/pricing" className="hover:text-white transition-colors">Prețuri</Link>
           <a href="/#faq" className="hover:text-white transition-colors">FAQ</a>
 
-          {/* Separator + Enterprise link */}
           <span className="h-4 w-px bg-white/10" />
           <Link to="/geo-gateway" className="group flex items-center gap-1.5 text-slate-500 hover:text-gold transition-colors">
-            <Zap className="w-3.5 h-3.5" />
+            <IconZap className="w-3.5 h-3.5" />
             <span>Enterprise</span>
-            <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            <IconArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
           </Link>
         </div>
 
