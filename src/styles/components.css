@@ -219,4 +219,9 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
   }
+
+  @keyframes ds-loading {
+    0% { left: -30%; }
+    100% { left: 100%; }
+  }
 }
