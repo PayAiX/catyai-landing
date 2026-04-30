@@ -254,8 +254,8 @@ const TABS = [
 function TabBar({ active, onChange }) {
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[200] flex items-center gap-1 px-4 py-2 border-b border-white/10"
-      style={{ background: 'rgba(1,10,31,0.95)', backdropFilter: 'blur(12px)' }}
+      className="fixed left-0 right-0 z-[60] flex items-center gap-1 px-4 py-2 border-b border-white/10"
+      style={{ top: '4rem', background: 'rgba(1,10,31,0.95)', backdropFilter: 'blur(12px)' }}
     >
       <span className="font-mono text-[10px] text-gold/60 uppercase tracking-widest mr-3">DS Preview</span>
       {TABS.map((tab) => (
@@ -283,7 +283,7 @@ export default function DsPreview() {
   return (
     <>
       <TabBar active={active} onChange={setActive} />
-      <div style={{ paddingTop: '40px' }}>
+      <div style={{ paddingTop: '88px' }}>
         {active === 'home' && (
           <HomePageTemplate t={HOME_T} lang={lang} onLangChange={setLang} />
         )}

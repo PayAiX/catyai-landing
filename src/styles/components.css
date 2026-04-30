@@ -56,6 +56,10 @@
   }
 
   /* ============== STACKING CARDS ============== */
+  .stacking-section {
+    position: relative;
+  }
+
   .stack-card {
     position: sticky;
     top: 0;
@@ -146,6 +150,7 @@
   .footer-wordmark {
     font-size: clamp(6rem, 22vw, 22rem);
     font-weight: 900;
+    font-family: 'Inter', sans-serif;
     letter-spacing: -0.06em;
     line-height: 0.85;
     background: linear-gradient(180deg, rgba(248, 250, 252, 0.08) 0%, rgba(200, 161, 101, 0.18) 50%, rgba(1, 10, 31, 0.95) 100%);
@@ -224,4 +229,23 @@
     0% { left: -30%; }
     100% { left: 100%; }
   }
+
+  /* ============== EXPLICIT COLOR UTILITIES ============== */
+  /* Tailwind v4 @theme tokens don't always generate gradient/color
+     utility classes reliably — these explicit rules act as a failsafe. */
+  .text-gold { color: #C8A165; }
+  .text-gold-light { color: #D4B57A; }
+  .bg-gold { background-color: #C8A165; }
+  .bg-gold-light { background-color: #D4B57A; }
+  .bg-navy { background-color: #010A1F; }
+  .bg-navy-900 { background-color: #020F2A; }
+  .bg-navy-800 { background-color: #041020; }
+  .border-gold { border-color: #C8A165; }
+  .text-navy { color: #010A1F; }
+
+  /* Gradient stop utilities for gold */
+  .from-gold { --tw-gradient-from: #C8A165 var(--tw-gradient-from-position); }
+  .to-gold { --tw-gradient-to: #C8A165 var(--tw-gradient-to-position); }
+  .to-gold-light { --tw-gradient-to: #D4B57A var(--tw-gradient-to-position); }
+  .via-gold-light { --tw-gradient-via: #D4B57A var(--tw-gradient-via-position); }
 }
