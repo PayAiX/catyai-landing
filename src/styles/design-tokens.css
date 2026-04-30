@@ -1,0 +1,25 @@
+/**
+ * CatyAI Design Tokens — Tailwind v4 @theme
+ * Single source of truth for colors, fonts, motion.
+ * Imported by src/index.css → propagates to all pages.
+ */
+
+@theme {
+  /* Brand: Navy (production background) */
+  --color-navy: #010A1F;
+  --color-navy-900: #020F2A;
+  --color-navy-800: #0A1B3D;
+  --color-navy-700: #1a2744;
+
+  /* Brand: Gold */
+  --color-gold: #C8A165;
+  --color-gold-light: #D4B57A;
+  --color-gold-dark: #A68246;
+
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Motion */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}

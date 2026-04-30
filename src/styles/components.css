@@ -1,0 +1,222 @@
+/**
+ * CatyAI Component Utilities
+ * Reusable classes used across templates.
+ */
+
+@layer components {
+  /* ============== NAV ============== */
+  .glass-nav {
+    background: rgba(1, 10, 31, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* ============== BADGES & BUTTONS ============== */
+  .badge-glow {
+    box-shadow: 0 0 20px rgba(200, 161, 101, 0.2);
+    border: 1px solid rgba(200, 161, 101, 0.3);
+    background: rgba(200, 161, 101, 0.1);
+  }
+
+  .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(200, 161, 101, 0.25);
+  }
+  .btn-primary:hover {
+    background: var(--color-gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 28px rgba(200, 161, 101, 0.4);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(200, 161, 101, 0.3);
+  }
+
+  /* ============== CARDS ============== */
+  .ds-card {
+    background: rgba(10, 27, 61, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .ds-card:hover {
+    border-color: rgba(200, 161, 101, 0.25);
+    background: rgba(10, 27, 61, 0.6);
+    transform: translateY(-2px);
+  }
+
+  /* ============== STACKING CARDS ============== */
+  .stack-card {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 1.5rem 2rem;
+    will-change: transform;
+  }
+  .stack-card-inner {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(10, 27, 61, 0.95) 0%, rgba(1, 10, 31, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+    padding: 3.5rem;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    transform-origin: 50% 0%;
+    transition: transform 0.6s var(--ease-smooth), opacity 0.6s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .stack-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 161, 101, 0.4), transparent);
+  }
+  .stack-card[data-index="0"] { top: 0px; }
+  .stack-card[data-index="1"] { top: 30px; }
+  .stack-card[data-index="2"] { top: 60px; }
+  .stack-card[data-index="3"] { top: 90px; }
+  .stack-card[data-index="4"] { top: 120px; }
+
+  @media (max-width: 768px) {
+    .stack-card-inner { padding: 2rem; border-radius: 20px; }
+    .stack-card { padding: 4rem 1rem 2rem; }
+  }
+
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(200, 161, 101, 0.08);
+    border: 1px solid rgba(200, 161, 101, 0.2);
+    color: var(--color-gold-light);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ============== CODE BLOCK ============== */
+  .code-block {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+  .code-block .key { color: var(--color-gold); }
+  .code-block .str { color: #86efac; }
+  .code-block .com { color: #475569; }
+
+  /* ============== MARQUEE ============== */
+  .marquee {
+    display: flex;
+    gap: 4rem;
+    animation: ds-scroll-x 30s linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes ds-scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============== FOOTER ============== */
+  .footer-wordmark {
+    font-size: clamp(6rem, 22vw, 22rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.08) 0%, rgba(200, 161, 101, 0.18) 50%, rgba(1, 10, 31, 0.95) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .footer-link {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-link:hover { color: var(--color-gold-light); }
+  .footer-link svg { opacity: 0; transform: translateX(-4px); transition: all 0.2s ease; }
+  .footer-link:hover svg { opacity: 1; transform: translateX(0); color: var(--color-gold); }
+
+  .footer-col-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: all 0.2s ease;
+  }
+  .social-icon:hover {
+    background: rgba(200, 161, 101, 0.1);
+    border-color: rgba(200, 161, 101, 0.3);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+
+  .newsletter-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+  }
+  .newsletter-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(200, 161, 101, 0.4);
+    outline: none;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 12px #10b981;
+    animation: ds-pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes ds-pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
