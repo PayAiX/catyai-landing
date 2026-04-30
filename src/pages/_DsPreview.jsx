@@ -1,5 +1,22 @@
-import { useState } from 'react';
+import { useState, Component } from 'react';
 import HomePageTemplate from '../templates/HomePageTemplate';
+
+class ErrorBoundary extends Component {
+  constructor(props) { super(props); this.state = { error: null }; }
+  static getDerivedStateFromError(error) { return { error }; }
+  render() {
+    if (this.state.error) {
+      return (
+        <div className="p-8 text-red-400 font-mono whitespace-pre-wrap">
+          <h2 className="text-2xl mb-4">Template render error:</h2>
+          <p>{String(this.state.error.message)}</p>
+          <pre className="text-xs mt-4 opacity-70">{this.state.error.stack}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 import ProductPageTemplate from '../templates/ProductPageTemplate';
 import EnterpriseTemplate from '../templates/EnterpriseTemplate';
 import StaticPageTemplate from '../templates/StaticPageTemplate';
@@ -160,7 +177,7 @@ export default function DsPreview() {
           </button>
         ))}
       </div>
-      {view}
+      <ErrorBoundary key={active}>{view}</ErrorBoundary>
     </div>
   );
 }

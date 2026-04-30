@@ -246,18 +246,111 @@ function FinalCtaSection({ t }) {
   );
 }
 
+/* ─── DEFAULT DATA ──────────────────────────────────── */
+const DEFAULT_T = {
+  hero: {
+    badge: 'CatyAI v3.0 · GEO Infrastructure live',
+    h1: ['Site-ul tău este', 'invizibil pentru AI?'],
+    sub: 'GPTBot, ClaudeBot și Perplexity nu rulează JavaScript. Verifică în 30 secunde dacă te pot citi sau dacă halucinează prețuri și servicii inventate.',
+    placeholder: 'exemplu.ro',
+    cta: 'Verifică acum',
+    resultTitle: 'Audit complet',
+    resultSub: 'Raport generat cu succes. 3 probleme detectate.',
+    trust: '300+ companii folosesc CatyAI · ZF IT Generation 2025 · Gratuit, fără card',
+  },
+  marquee: ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'Gemini', 'Bingbot'],
+  products: {
+    tag: 'Produse',
+    h2: 'Trei produse, o singură platformă AI',
+    items: [
+      { icon: '💬', tag: 'Widget Chat', name: 'AI Sales Agent', desc: 'Bot AI integrat în site cu 8 agenți specializați. Sales + Support + Scheduler în una.', href: '/widget', cta: 'Află mai mult' },
+      { icon: '📱', tag: 'WhatsApp AI', name: 'Secretar WhatsApp', desc: 'AI nativ pe WhatsApp. Zero BSP cost. Răspuns < 3 secunde, programări + facturi auto.', href: '/whatsapp', cta: 'Află mai mult' },
+      { icon: '🛡️', tag: 'FraudAI Shield', name: 'Protecție Anti-Fraudă', desc: '8 module anti-fraudă. Singura platformă completă din RO. Anti-phishing real-time.', href: '/fraud', cta: 'Află mai mult' },
+    ],
+  },
+  howItWorks: {
+    cards: [
+      {
+        tag: 'Layer 01 · Audit',
+        title: 'Detectăm invizibilitatea AI',
+        body: 'Scanăm site-ul tău și identificăm ce vede sau nu vede fiecare crawler AI major.',
+        bullets: ['GPTBot, ClaudeBot, PerplexityBot', 'JavaScript rendering detection', 'Schema markup analysis'],
+        snippet: '# /geo/v1/audit\nstatus: "invisible"\ncrawlers_blocked: 3',
+      },
+      {
+        tag: 'Layer 02 · Fix',
+        title: 'Implementăm protocolul NAP',
+        body: 'Native AI Protocol transformă site-ul tău în sursă de adevăr canonică pentru LLM-uri.',
+        bullets: ['llms.txt manifest', 'Ed25519 signatures', 'Semantic vectors'],
+        snippet: '# /geo/v1/llms.txt\nprotocol: "NAP/1.0"\ntrust_score: 98',
+      },
+      {
+        tag: 'Layer 03 · Monitor',
+        title: 'Monitorizare continuă',
+        body: 'Dashboard live cu toate mențiunile în AI și alertă când apar halucinații.',
+        bullets: ['Real-time AI mentions', 'Hallucination alerts', 'Competitor comparison'],
+        snippet: '# /geo/v1/monitor\nmentions_today: 47\nhallucinations: 0',
+      },
+    ],
+  },
+  testimonials: {
+    tag: 'Ce spun clienții',
+    items: [
+      '"CatyAI ne-a transformat modul în care interacționăm cu clienții." — Mihai D.',
+      '"Hemos reducido los tickets un 60%." — Laura M.',
+      '"O chatbot atende clientes 24h." — Paulo S.',
+      '"CatyAI a transformé notre service client." — Marie L.',
+      '"Am redus 60% ticketele de suport." — Ionuț T.',
+    ],
+  },
+  industries: {
+    tag: 'Industrii',
+    h2: 'Folosit în 14 verticale',
+    items: [
+      { icon: '🏥', label: 'Clinici Medicale' },
+      { icon: '🍽️', label: 'Restaurante' },
+      { icon: '🏠', label: 'Real Estate' },
+      { icon: '💇', label: 'Saloane Beauty' },
+      { icon: '🚗', label: 'Service Auto' },
+      { icon: '📚', label: 'Educație' },
+      { icon: '🛒', label: 'E-commerce' },
+      { icon: '🏢', label: 'Servicii B2B' },
+    ],
+  },
+  faq: {
+    tag: 'Întrebări frecvente',
+    h2: 'Tot ce vrei să știi',
+    items: [
+      { q: 'Cât durează setup-ul?', a: '2-5 minute. Conectezi WhatsApp Business sau adaugi widget-ul cu un script tag pe site.' },
+      { q: 'Ce se întâmplă cu datele clienților mei?', a: 'GDPR-compliant. Datele sunt în AWS eu-west-1 (Irlanda), criptate at-rest cu AWS KMS.' },
+      { q: 'Pot integra cu CRM-ul existent?', a: 'Da. Integrări native: HubSpot, Pipedrive, Salesforce, Zoho.' },
+      { q: 'Există plan gratuit?', a: 'Da — 100 sesiuni/lună gratuit, fără card. Starter €49, Growth €99, Business €199.' },
+    ],
+  },
+  finalCta: {
+    badge: 'Începe gratuit · Setup 2 min',
+    h2: 'Infrastructură AI pentru afacerea ta',
+    sub: 'Începe gratuit. Setup în 2 minute. Fără card.',
+    primary: 'Setup gratuit acum',
+    primaryHref: 'https://app.catyai.io/signup',
+    secondary: 'Vorbește cu echipa',
+    secondaryHref: 'mailto:contact@catyai.io',
+  },
+};
+
 /* ─── TEMPLATE ──────────────────────────────────────── */
 export default function HomePageTemplate({ t, lang, onLangChange }) {
+  const d = t ?? DEFAULT_T;
   return (
     <PageLayout lang={lang} onLangChange={onLangChange}>
-      <HeroSection t={t} />
-      <MarqueeCrawlers items={t.marquee} className="py-8 border-y border-white/5" />
-      <ProductsSection t={t} />
-      <HowItWorksSection t={t} />
-      <TestimonialsSection t={t} />
-      <IndustriesSection t={t} />
-      <FaqSection t={t} />
-      <FinalCtaSection t={t} />
+      <HeroSection t={d} />
+      <MarqueeCrawlers items={d.marquee} className="py-8 border-y border-white/5" />
+      <ProductsSection t={d} />
+      <HowItWorksSection t={d} />
+      <TestimonialsSection t={d} />
+      <IndustriesSection t={d} />
+      <FaqSection t={d} />
+      <FinalCtaSection t={d} />
     </PageLayout>
   );
 }
