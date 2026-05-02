@@ -194,11 +194,11 @@ export default function FooterV9({ lang = 'en' }) {
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.resources}</h4>
             <ul className="space-y-3 text-sm">
+              <li><a href="/blog" className="fv9-link">Blog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="https://docs.catyai.io" className="fv9-link" target="_blank" rel="noopener noreferrer">{t.docs} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="#" className="fv9-link">API Reference <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="#" className="fv9-link">Manifesto <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="#" className="fv9-link">Benchmarks <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Changelog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
@@ -218,6 +218,7 @@ export default function FooterV9({ lang = 'en' }) {
               <li><a href="/privacy" className="fv9-link">Privacy <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="/terms" className="fv9-link">{t.terms} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="/gdpr" className="fv9-link">GDPR <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/licensing" className="fv9-link">Licensing <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
             </ul>
           </div>
         </div>
