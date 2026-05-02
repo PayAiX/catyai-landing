@@ -30,6 +30,7 @@ const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
 const NoWebsite = lazy(() => import('./pages/NoWebsite'))
 const CatyWidget = lazy(() => import('./pages/CatyWidget'))
 const GeoGateway = lazy(() => import('./pages/GeoGateway'))
+const Press = lazy(() => import('./pages/Press'))
 const FeaturesPage = lazy(() => import('./pages/Features'))
 const InfrastructurePage = lazy(() => import('./pages/Infrastructure'))
 const PricingPage = lazy(() => import('./pages/Pricing'))
@@ -3347,6 +3348,7 @@ function AppContent() {
       <main>
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            <Route path="/press" element={<Press />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/gdpr" element={<GDPRPolicy />} />

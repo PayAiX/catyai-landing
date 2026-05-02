@@ -207,7 +207,7 @@ export default function FooterV9({ lang = 'en' }) {
             <ul className="space-y-3 text-sm">
               <li><a href="/about" className="fv9-link">{t.about} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="#" className="fv9-link">{t.careers} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Press Kit <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/press" className="fv9-link">Press Kit <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="mailto:contact@payai-x.com" className="fv9-link">Contact <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
             </ul>
           </div>
@@ -218,7 +218,6 @@ export default function FooterV9({ lang = 'en' }) {
               <li><a href="/privacy" className="fv9-link">Privacy <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="/terms" className="fv9-link">{t.terms} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
               <li><a href="/gdpr" className="fv9-link">GDPR <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/licensing" className="fv9-link">Licensing <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
             </ul>
           </div>
         </div>
