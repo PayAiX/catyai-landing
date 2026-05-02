@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import FooterV9 from '../components/FooterV9'
 
 const translations = {
   en: {
@@ -381,8 +382,96 @@ export default function FraudAI() {
 
   const t = translations[lang] || translations.en
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.fs-stack-card')
+      const total = cards.length
+      cards.forEach((card, idx) => {
+        const inner = card.querySelector('.fs-stack-inner')
+        if (!inner) return
+        const rect = card.getBoundingClientRect()
+        const stickyTopPx = window.innerHeight * 0.10
+        const distance = stickyTopPx - rect.top
+        const threshold = window.innerHeight * 0.5
+        const baseScale = 1 - (idx * 0.03)
+        if (distance > 0 && idx < total - 1) {
+          const progress = Math.min(distance / threshold, 1)
+          inner.style.transform = `scale(${baseScale - progress * 0.05})`
+        } else {
+          inner.style.transform = `scale(${baseScale})`
+        }
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
+  const fsCss = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.fs-stack-card {
+  position: sticky; top: 10vh; margin-bottom: 20vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem 1.5rem; isolation: isolate; will-change: transform;
+}
+.fs-stack-card::before {
+  content: ''; position: absolute; inset: 1rem; border-radius: 28px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(239,68,68,0.12) 0%, rgba(239,68,68,0.04) 40%, transparent 75%);
+  filter: blur(40px); opacity: 0.6; z-index: -1; pointer-events: none;
+}
+.fs-stack-inner {
+  width: 100%; max-width: 1100px; border-radius: 28px;
+  background: linear-gradient(180deg, rgba(10,27,61,0.97) 0%, rgba(1,10,31,0.99) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02) inset;
+  padding: 4rem 3.5rem; backdrop-filter: blur(30px);
+  transform-origin: 50% 0%; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  position: relative; overflow: hidden;
+}
+.fs-stack-inner::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(239,68,68,0.35), transparent);
+}
+.fs-stack-card[data-index="0"] .fs-stack-inner { transform: scale(1); }
+.fs-stack-card[data-index="1"] .fs-stack-inner { transform: scale(0.97); }
+.fs-stack-card[data-index="2"] .fs-stack-inner { transform: scale(0.94); }
+.fs-stack-card[data-index="3"] .fs-stack-inner { transform: scale(0.91); }
+.fs-stack-inner h3 {
+  font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+  font-size: clamp(2.2rem,4.5vw,4rem); font-weight: 700; letter-spacing: -0.04em;
+  line-height: 0.95; max-width: 50%; color: #f8fafc;
+}
+.fs-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.9rem; border-radius: 999px;
+  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.22);
+  color: #fca5a5; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.fs-tagline { font-size: clamp(1rem,1.5vw,1.35rem); color: #C8A165; font-weight: 500; margin-top: 1rem; margin-bottom: 1.25rem; font-family: 'Inter', sans-serif; }
+.fs-body { font-size: 1.05rem; color: #94a3b8; line-height: 1.65; max-width: 90%; font-family: 'Inter', sans-serif; }
+.fs-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;
+  padding: 0.75rem 1rem; border-radius: 10px;
+  background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.18);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #fca5a5;
+}
+@media (max-width: 768px) {
+  .fs-stack-inner { padding: 2rem; border-radius: 20px; }
+  .fs-stack-card { padding: 1rem; margin-bottom: 10vh; }
+  .fs-stack-inner h3 { max-width: 100%; font-size: 2rem; }
+  .fs-body { max-width: 100%; }
+}
+`
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <style dangerouslySetInnerHTML={{ __html: fsCss }} />
       <SEO
         title="FraudAI Shield | CatyAI - AI Scam Protection for WhatsApp"
         description="8 AI detection modules block phishing, scams, and fraud on WhatsApp in real-time. 99.2% accuracy, <1 second analysis. Included FREE with CatyAI."
@@ -544,37 +633,177 @@ export default function FraudAI() {
         </div>
       </section>
 
-      {/* 8 Modules */}
-      <section id="modules" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
+      {/* 8 Modules — stacking cards */}
+      <section id="modules" className="py-24 px-4 sm:px-6 lg:px-8" style={{ background: '#010A1F' }}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.modulesTitle}</h2>
-            <p className="text-gray-400">{t.modulesSubtitle}</p>
+          <div className="text-center mb-4">
+            <span className="fs-tag" style={{ display: 'inline-flex' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+              {t.modulesTitle}
+            </span>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {t.modules.map((mod, i) => (
-              <div key={i} className="p-5 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 hover:border-red-500/30 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-2xl mb-4">{mod.icon}</div>
-                <h3 className="text-white font-semibold mb-2">{mod.title}</h3>
-                <p className="text-gray-400 text-sm mb-3">{mod.desc}</p>
-                <div className="text-red-400 text-xs font-medium">{mod.stats}</div>
-              </div>
-            ))}
+          <div className="text-center mb-20">
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(2.5rem,5vw,4rem)', fontWeight: 700, color: '#f8fafc', lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+              {t.modulesSubtitle.split(' ').slice(0, Math.ceil(t.modulesSubtitle.split(' ').length / 2)).join(' ')}{' '}
+              <span style={{ background: 'linear-gradient(135deg,#ef4444,#f97316)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+                {t.modulesSubtitle.split(' ').slice(Math.ceil(t.modulesSubtitle.split(' ').length / 2)).join(' ')}
+              </span>
+            </h2>
           </div>
         </div>
-      </section>
 
-      {/* Stats */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-red-500/10 via-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-red-500/20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {t.stats.map((stat, i) => (
-                <div key={i}>
-                  <div className={`text-3xl md:text-4xl font-bold ${stat.color === 'red' ? 'text-red-400' : stat.color === 'orange' ? 'text-orange-400' : stat.color === 'yellow' ? 'text-yellow-400' : 'text-green-400'}`}>{stat.value}</div>
-                  <div className="text-gray-400 text-sm mt-1">{stat.label}</div>
+        {/* Card 0 — Phishing Links */}
+        <div className="fs-stack-card" data-index="0">
+          <div className="fs-stack-inner">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="fs-tag">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+                  {t.modules[0].icon} {t.modules[0].title}
+                </span>
+                <h3>{t.modules[0].title}</h3>
+                <p className="fs-tagline">{t.modules[0].stats}</p>
+                <p className="fs-body">{t.modules[0].desc}</p>
+                <div className="fs-pill">
+                  <span style={{ color: '#64748b' }}>scan</span> domain · ssl · redirect-chain
                 </div>
-              ))}
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', background: 'rgba(0,0,0,0.45)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', padding: '1.5rem', color: '#64748b' }}>
+                <div style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>// url scan results</div>
+                {[
+                  { url: 'paypa1.security-alert.xyz', risk: 'BLOCKED', color: '#ef4444' },
+                  { url: 'g00gle-verify.com/login',  risk: 'BLOCKED', color: '#ef4444' },
+                  { url: 'bank-secure-msg.tk',       risk: 'BLOCKED', color: '#ef4444' },
+                  { url: 'shop.catyai.io/checkout',  risk: 'SAFE',    color: '#a3e635' },
+                  { url: 'docs.google.com/forms',    risk: 'SAFE',    color: '#a3e635' },
+                ].map(({ url, risk, color }) => (
+                  <div key={url} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.45rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <span style={{ color: '#94a3b8', fontSize: '0.73rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '75%' }}>{url}</span>
+                    <span style={{ color, fontSize: '0.65rem', fontWeight: 700, flexShrink: 0, marginLeft: '0.5rem' }}>{risk}</span>
+                  </div>
+                ))}
+                <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem' }}>
+                  {[['12k+', 'domains'], ['<50ms', 'check'], ['100%', 'auto']].map(([v, l]) => (
+                    <div key={l} style={{ flex: 1, textAlign: 'center', padding: '0.5rem', background: 'rgba(239,68,68,0.05)', borderRadius: 8, border: '1px solid rgba(239,68,68,0.15)' }}>
+                      <div style={{ color: '#fca5a5', fontSize: '1rem', fontWeight: 700 }}>{v}</div>
+                      <div style={{ color: '#475569', fontSize: '0.65rem' }}>{l}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 1 — Financial Scams */}
+        <div className="fs-stack-card" data-index="1">
+          <div className="fs-stack-inner">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="md:order-2">
+                <span className="fs-tag">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#f97316', display: 'inline-block' }} />
+                  {t.modules[1].icon} {t.modules[1].title}
+                </span>
+                <h3>{t.modules[1].title}</h3>
+                <p className="fs-tagline">{t.modules[1].stats}</p>
+                <p className="fs-body">{t.modules[1].desc}</p>
+                <div className="fs-pill">
+                  <span style={{ color: '#64748b' }}>patterns</span> matched in real-time
+                </div>
+              </div>
+              <div className="md:order-1" style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                {[
+                  { pattern: '"urgent transfer required"',   score: 97, color: '#ef4444' },
+                  { pattern: '"guaranteed 300% returns"',    score: 94, color: '#ef4444' },
+                  { pattern: '"crypto opportunity limited"', score: 91, color: '#f97316' },
+                  { pattern: '"send fee to release funds"',  score: 89, color: '#f97316' },
+                  { pattern: '"you have won a prize"',       score: 85, color: '#eab308' },
+                ].map(({ pattern, score, color }) => (
+                  <div key={pattern} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: "'JetBrains Mono',monospace" }}>
+                    <div style={{ flex: 1, padding: '0.55rem 0.9rem', background: 'rgba(0,0,0,0.4)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.72rem', color: '#94a3b8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pattern}</div>
+                    <div style={{ width: 40, textAlign: 'right', fontSize: '0.72rem', color, fontWeight: 700, flexShrink: 0 }}>{score}%</div>
+                  </div>
+                ))}
+                <div style={{ marginTop: '0.5rem', padding: '0.6rem 1rem', background: 'rgba(239,68,68,0.05)', borderRadius: 10, border: '1px solid rgba(239,68,68,0.12)', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.7rem', color: '#94a3b8' }}>
+                  <span style={{ color: '#ef4444' }}>ACTION</span>: auto-quarantine · sender flagged · admin notified
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 2 — Impersonation Attacks */}
+        <div className="fs-stack-card" data-index="2">
+          <div className="fs-stack-inner">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="fs-tag">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+                  {t.modules[2].icon} {t.modules[2].title}
+                </span>
+                <h3>{t.modules[2].title}</h3>
+                <p className="fs-tagline">{t.modules[2].stats}</p>
+                <p className="fs-body">{t.modules[2].desc}</p>
+                <div className="fs-pill">
+                  <span style={{ color: '#64748b' }}>identity</span> verified in &lt;1s
+                </div>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                {[
+                  { entity: 'BCR Bank Romania',     result: 'IMPOSTOR', color: '#ef4444', detail: 'spoofed number +40xxx' },
+                  { entity: 'DHL Courier',           result: 'IMPOSTOR', color: '#ef4444', detail: 'fake tracking link' },
+                  { entity: 'Your CEO / Manager',    result: 'IMPOSTOR', color: '#f97316', detail: 'display name match' },
+                  { entity: 'CatyAI Support',        result: 'VERIFIED', color: '#a3e635', detail: 'official number' },
+                ].map(({ entity, result, color, detail }) => (
+                  <div key={entity} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.7rem 1rem', background: 'rgba(0,0,0,0.4)', borderRadius: 10, border: `1px solid ${color}22` }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ color: '#e2e8f0', fontSize: '0.78rem' }}>{entity}</div>
+                      <div style={{ color: '#475569', fontSize: '0.65rem', marginTop: 2 }}>{detail}</div>
+                    </div>
+                    <span style={{ color, fontSize: '0.65rem', fontWeight: 700, flexShrink: 0 }}>{result}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 3 — Data Harvesting + Fake Urgency */}
+        <div className="fs-stack-card" data-index="3">
+          <div className="fs-stack-inner">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="md:order-2">
+                <span className="fs-tag">
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block' }} />
+                  {t.modules[3].icon} {t.modules[3].title} · {t.modules[7].icon} {t.modules[7].title}
+                </span>
+                <h3>{t.modules[7].title}</h3>
+                <p className="fs-tagline">{t.modules[3].stats}</p>
+                <p className="fs-body">{t.modules[7].desc}</p>
+                <div className="fs-pill">
+                  <span style={{ color: '#64748b' }}>shield</span> active · 0 data leaked
+                </div>
+              </div>
+              <div className="md:order-1" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', background: 'rgba(0,0,0,0.45)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', padding: '1.5rem' }}>
+                <div style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>// live threat log</div>
+                {[
+                  { time: '14:23:01', type: 'DATA_HARVEST',  msg: 'SSN request blocked',      severity: 'CRITICAL' },
+                  { time: '14:22:47', type: 'FAKE_URGENCY',  msg: '"respond in 5 min" tactic', severity: 'HIGH' },
+                  { time: '14:21:33', type: 'DATA_HARVEST',  msg: 'credit card prompt blocked', severity: 'CRITICAL' },
+                  { time: '14:20:15', type: 'SPAM',          msg: 'mass broadcast detected',   severity: 'MEDIUM' },
+                  { time: '14:19:58', type: 'FAKE_URGENCY',  msg: '"account closure" pressure', severity: 'HIGH' },
+                ].map(({ time, type, msg, severity }) => (
+                  <div key={time + msg} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', padding: '0.4rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <span style={{ color: '#334155', flexShrink: 0, fontSize: '0.65rem' }}>{time}</span>
+                    <span style={{ color: severity === 'CRITICAL' ? '#ef4444' : severity === 'HIGH' ? '#f97316' : '#eab308', flexShrink: 0, fontSize: '0.65rem', width: 55 }}>{severity}</span>
+                    <span style={{ color: '#64748b', fontSize: '0.7rem' }}>{msg}</span>
+                  </div>
+                ))}
+                <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#a3e635', display: 'inline-block', boxShadow: '0 0 6px #a3e635' }} />
+                  <span style={{ color: '#475569', fontSize: '0.68rem' }}>shield active · all threats quarantined</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -670,44 +899,7 @@ export default function FraudAI() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-[#1a2744]/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="inline-block mb-4">
-                <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
-              </Link>
-              <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.product}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/#features" className="hover:text-white">{t.footer.features}</Link></li>
-                <li><Link to="/#pricing" className="hover:text-white">{t.footer.pricing}</Link></li>
-                <li><Link to="/whatsapp" className="hover:text-white">{t.footer.whatsapp}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.company}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/about" className="hover:text-white">{t.footer.about}</Link></li>
-                <li><Link to="/blog" className="hover:text-white">{t.footer.blog}</Link></li>
-                <li><Link to="/contact" className="hover:text-white">{t.footer.contact}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.legal}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/privacy" className="hover:text-white">{t.footer.privacy}</Link></li>
-                <li><Link to="/terms" className="hover:text-white">{t.footer.terms}</Link></li>
-                <li><Link to="/gdpr" className="hover:text-white">{t.footer.gdpr}</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-[#1a2744]/50 text-center text-gray-400 text-sm">{t.footer.copyright}</div>
-        </div>
-      </footer>
+      <FooterV9 lang={lang} />
     </div>
   )
 }
