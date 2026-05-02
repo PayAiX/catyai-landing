@@ -3294,7 +3294,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/pricing', '/press']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3335,6 +3335,8 @@ function AppContent() {
             <Route path="/no-website" element={<NoWebsite />} />
             <Route path="/widget" element={<CatyWidget />} />
             <Route path="/geo-gateway" element={<GeoGateway />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/press" element={<Press />} />
           </Routes>
         </Suspense>
       </div>
@@ -3348,7 +3350,6 @@ function AppContent() {
       <main>
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/press" element={<Press />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/gdpr" element={<GDPRPolicy />} />
@@ -3360,7 +3361,6 @@ function AppContent() {
             <Route path="/commerce" element={<CommerceDemo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
-            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/infrastructura" element={<InfrastructurePage />} />
           </Routes>
