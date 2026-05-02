@@ -13,156 +13,48 @@ const translations = {
     trustBadge1: 'Only €10/month',
     trustBadge2: 'No technical skills needed',
     trustBadge3: 'Setup in 2 minutes',
-
-    problemTitle: 'You Have Customers.',
-    problemHighlight: 'They Can\'t Find You.',
-    problemStats: [
-      { value: '73%', label: 'of customers prefer WhatsApp over calling' },
-      { value: '45%', label: 'of small businesses have no online presence' },
-      { value: '€10', label: 'per month - all inclusive' }
-    ],
-    problemSolution: 'Your WhatsApp becomes your 24/7 business front desk.',
-
     howTitle: 'How It Works',
     howSubtitle: 'Live in 2 minutes. No website. No app to install. No technical skills.',
     howSteps: [
-      { title: 'Scan QR Code', desc: 'Just like WhatsApp Web. Uses your existing business number. No new number needed.', icon: '📱' },
-      { title: 'Tell Caty About Your Business', desc: 'Services you offer, your prices, working hours, location. Voice or text — takes 5 minutes.', icon: '💬' },
-      { title: 'You\'re Live!', desc: 'Caty responds to customers 24/7. Books appointments. Sends quotes. You focus on your work.', icon: '🚀' }
+      { title: 'Scan QR Code', desc: 'Just like WhatsApp Web. Uses your existing business number. No new number needed.', num: '1' },
+      { title: 'Tell Caty About Your Business', desc: 'Services, prices, working hours, location. Voice or text — takes 5 minutes.', num: '2' },
+      { title: "You're Live!", desc: 'Caty responds to customers 24/7. Books appointments. Sends quotes. You focus on your work.', num: '3' }
     ],
-
-    benefitsTitle: 'Everything You Need.',
-    benefitsHighlight: 'Nothing You Don\'t.',
-    benefits: [
-      {
-        icon: '💬',
-        title: 'Instant Customer Response',
-        desc: 'Customers message your WhatsApp, Caty responds instantly. No more missed messages while you\'re working.',
-        highlight: '24/7'
-      },
-      {
-        icon: '📅',
-        title: 'Automatic Appointments',
-        desc: 'Caty books appointments directly into your calendar. Sends reminders. Handles rescheduling.',
-        highlight: 'Google Calendar'
-      },
-      {
-        icon: '📄',
-        title: 'Quotes in Seconds',
-        desc: 'Customer asks for a price? Caty generates a professional PDF quote and sends it right away.',
-        highlight: 'PDF Quotes'
-      },
-      {
-        icon: '🛡️',
-        title: 'Scam Protection',
-        desc: 'FraudAI Shield blocks phishing links, fake urgency scams, and suspicious requests before you see them.',
-        highlight: 'Protected'
-      },
-      {
-        icon: '🌍',
-        title: 'Multi-Language',
-        desc: 'Caty speaks Romanian, English, Spanish, Portuguese, French, and Arabic. Auto-detects customer language.',
-        highlight: '6 Languages'
-      },
-      {
-        icon: '📊',
-        title: 'Business Insights',
-        desc: 'See what customers ask most, peak hours, and missed opportunities. Grow smarter.',
-        highlight: 'Analytics'
-      }
-    ],
-
-    useCasesTitle: 'Perfect For',
-    useCasesSubtitle: 'Small businesses and freelancers who don\'t need a website — just customers.',
+    useCasesTitle: 'Built For Your Business',
+    useCasesSubtitle: 'Small businesses and freelancers who just need customers.',
     useCases: [
-      { icon: '💇', title: 'Hair Stylists', desc: 'Book appointments while you cut. Never miss a client.' },
-      { icon: '🔧', title: 'Mechanics', desc: 'Receive repair requests. Send quotes. Confirm pickups.' },
-      { icon: '🔌', title: 'Electricians & Plumbers', desc: 'Get job requests 24/7. Schedule visits automatically.' },
-      { icon: '🦷', title: 'Dentists', desc: 'Book checkups. Send reminders. Handle emergencies.' },
-      { icon: '🏋️', title: 'Personal Trainers', desc: 'Schedule sessions. Answer fitness questions. Grow your client base.' },
-      { icon: '📸', title: 'Photographers', desc: 'Book shoots. Share packages. Confirm dates.' },
-      { icon: '🧹', title: 'Cleaning Services', desc: 'Receive bookings. Send confirmations. Manage schedules.' },
-      { icon: '🚗', title: 'Driving Instructors', desc: 'Book lessons. Send reminders. Handle cancellations.' }
+      { tag: 'Use Case 01 · Beauty', title: 'Hair Stylists', tagline: 'Book appointments while you cut.', body: 'Caty answers new clients instantly while you work. Books slots, checks availability, sends confirmation — all over WhatsApp. Never miss a booking again.', note: 'Setup in 2 min · Works with your existing number · No app needed', customer: 'Hi! Do you have availability tomorrow at 3pm?', reply: "Hello! Yes, we have a slot at 3:00 PM tomorrow. What service would you like? ✂️", reply2: "Booking confirmed for tomorrow at 3 PM! I'll send you a reminder in the morning. 📅" },
+      { tag: 'Use Case 02 · Trades', title: 'Mechanics & Plumbers', tagline: 'Repair requests. Quotes. Confirmations.', body: 'Receive repair requests 24/7, quote automatically based on your price list, confirm pickups and site visits — without stopping your work on site.', note: 'Auto-quotes · Location sharing · Calendar sync', customer: 'My car is making a strange noise. Can you check it?', reply: "Of course! We can schedule a check for tomorrow. What type of car? 🔧", reply2: "Appointment confirmed for Wednesday at 10 AM. Our address is 42 Main St. 📍" },
+      { tag: 'Use Case 03 · Fitness', title: 'Trainers & Coaches', tagline: 'Turn inquiries into paying clients.', body: 'Potential clients ask about prices, packages, schedules. Caty answers instantly and converts them before they check a competitor. Session booking, payment links, reminders — automated.', note: 'Session booking · Payment links · Progress reminders', customer: 'I want to start training. What packages do you offer?', reply: "Great! We have 3 packages: 4 sessions/month €120, 8 sessions €200, unlimited €280. 💪", reply2: "Perfect! I've booked your first session for Monday at 7 AM. See you then! 🏋️" }
     ],
-
-    comparisonTitle: 'Website vs. WhatsApp + Caty',
-    comparisonItems: [
-      { feature: 'Setup time', website: '2-4 weeks', caty: '2 minutes' },
-      { feature: 'Cost', website: '€500-5,000', caty: '€10/month' },
-      { feature: 'Technical skills', website: 'Required', caty: 'None' },
-      { feature: 'Customer response', website: 'You manually', caty: '24/7 AI' },
-      { feature: 'Appointments', website: 'External tool', caty: 'Built-in' },
-      { feature: 'Maintenance', website: 'Ongoing', caty: 'Zero' }
-    ],
-
     testimonialsTitle: 'What They Say',
     testimonials: [
-      { quote: 'I connected in 2 minutes. Now Caty books my appointments while I work on cars.', author: 'Andrei', role: 'Auto Mechanic' },
-      { quote: 'No website, no problem. My clients message on WhatsApp and Caty handles everything.', author: 'Maria', role: 'Hair Stylist' },
-      { quote: 'I was skeptical about AI but it speaks Romanian perfectly. My clients love it.', author: 'Ion', role: 'Plumber' }
+      { quote: 'I connected in 2 minutes. Now Caty books my appointments while I work on cars.', author: 'Andrei M.', role: 'Auto Mechanic, Bucharest' },
+      { quote: 'No website, no problem. My clients message on WhatsApp and Caty handles everything.', author: 'Maria P.', role: 'Hair Stylist, Cluj' },
+      { quote: 'I was skeptical about AI but it speaks Romanian perfectly. My clients love it.', author: 'Ion T.', role: 'Plumber, Iași' }
     ],
-
     pricingTitle: 'Simple Pricing',
-    pricingSubtitle: 'One plan. Everything included. Cancel anytime.',
-    plans: [
-      {
-        name: 'WhatsApp AI',
-        price: '€10',
-        period: '/month',
-        desc: 'Everything you need',
-        features: [
-          '500 conversations/month',
-          '24/7 AI responses',
-          'Google Calendar sync',
-          'PDF quotes & invoices',
-          'FraudAI protection',
-          'Multi-language support'
-        ],
-        cta: 'Get Started',
-        highlight: true
-      }
-    ],
-
+    pricingSubtitle: 'One plan. Everything included.',
+    planName: 'WhatsApp AI',
+    planPrice: '€10',
+    planPeriod: '/month',
+    planDesc: 'Everything you need to grow',
+    planFeatures: ['500 conversations/month', '24/7 AI responses', 'Google Calendar sync', 'PDF quotes & invoices', 'FraudAI protection', 'Multi-language (6 languages)', '2-minute setup'],
+    planCta: 'Get Started Free',
     faqTitle: 'Questions?',
     faqs: [
-      { q: 'Do I really not need a website?', a: 'Correct. Your WhatsApp number becomes your business contact. Customers message you there, Caty responds.' },
-      { q: 'What if Caty can\'t answer something?', a: 'Caty forwards the conversation to you with full context. You take over seamlessly.' },
-      { q: 'Will customers know it\'s AI?', a: 'Only if you want them to. Caty can respond as your business, with your name and style.' },
+      { q: 'Do I really not need a website?', a: 'Correct. Your WhatsApp number becomes your business contact. Customers message you there, Caty responds instantly.' },
+      { q: "What if Caty can't answer something?", a: 'Caty forwards the conversation to you with full context. You take over seamlessly.' },
+      { q: "Will customers know it's AI?", a: 'Only if you want them to. Caty can respond as your business, with your name and style.' },
       { q: 'Can I use my existing WhatsApp number?', a: 'Yes! Caty connects to your existing business WhatsApp. No new number needed.' },
-      { q: 'What languages does Caty speak?', a: 'Romanian, English, Spanish, Portuguese, French, and Arabic. Auto-detects and responds in customer\'s language.' },
+      { q: 'What languages does Caty speak?', a: 'Romanian, English, Spanish, Portuguese, French, and Arabic. Auto-detects and responds in the customer language.' },
       { q: 'How do I cancel?', a: 'Cancel anytime from your dashboard. No contracts, no penalties.' }
     ],
-
     ctaTitle: 'Ready in 2 Minutes',
     ctaSubtitle: 'Scan. Setup. Start receiving customers.',
     ctaButton: 'Connect WhatsApp Now',
-
-    paymentMethodsTitle: 'Payment Methods',
-    paymentMethodsSubtitle: 'Your customers pay how they want. You decide which methods to accept.',
-    paymentMethods: [
-      { icon: '💵', title: 'Cash', desc: 'Customer pays in person when receiving the service.', badge: 'FREE', badgeColor: 'green' },
-      { icon: '🏦', title: 'Bank Transfer', desc: 'Caty sends your IBAN automatically. Customer pays via bank app.', badge: 'FREE', badgeColor: 'green' },
-      { icon: '🔄', title: 'Revolut', desc: 'Instant payment via Revolut link. Money arrives in seconds.', badge: 'FREE', badgeColor: 'green' },
-      { icon: '💳', title: 'Card Online', desc: 'Stripe integration for card payments. Professional checkout.', badge: '5%', badgeColor: 'gold' }
-    ],
-
     nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', pricing: 'Pricing', faq: 'FAQ', login: 'Login', getStarted: 'Get Started' },
-    footer: {
-      tagline: 'AI that works for your business.',
-      product: 'Product',
-      company: 'Company',
-      legal: 'Legal',
-      features: 'Features',
-      pricing: 'Pricing',
-      whatsapp: 'WhatsApp AI',
-      about: 'About',
-      blog: 'Blog',
-      contact: 'Contact',
-      privacy: 'Privacy',
-      terms: 'Terms',
-      gdpr: 'GDPR',
-      copyright: '© 2024 PayAi-X FZE. All rights reserved.'
-    }
+    footer: { tagline: 'AI that works for your business.', product: 'Product', company: 'Company', legal: 'Legal', features: 'Features', pricing: 'Pricing', whatsapp: 'WhatsApp AI', about: 'About', blog: 'Blog', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', gdpr: 'GDPR', copyright: '© 2025 PayAi-X FZE. All rights reserved.' }
   },
   ro: {
     badge: 'Fără Site Web',
@@ -174,156 +66,48 @@ const translations = {
     trustBadge1: 'Doar €10/lună',
     trustBadge2: 'Fără cunoștințe tehnice',
     trustBadge3: 'Setup în 2 minute',
-
-    problemTitle: 'Ai Clienți.',
-    problemHighlight: 'Nu Te Pot Găsi.',
-    problemStats: [
-      { value: '73%', label: 'din clienți preferă WhatsApp în loc să sune' },
-      { value: '45%', label: 'din afacerile mici nu au prezență online' },
-      { value: '€10', label: 'pe lună - totul inclus' }
-    ],
-    problemSolution: 'WhatsApp-ul tău devine recepția ta 24/7.',
-
     howTitle: 'Cum Funcționează',
-    howSubtitle: 'Live în 2 minute. Fără site. Fără aplicație de instalat. Fără cunoștințe tehnice.',
+    howSubtitle: 'Live în 2 minute. Fără site. Fără aplicație. Fără cunoștințe tehnice.',
     howSteps: [
-      { title: 'Scanează Codul QR', desc: 'Ca la WhatsApp Web. Folosești numărul tău de business. Nu ai nevoie de număr nou.', icon: '📱' },
-      { title: 'Spune-i lui Caty Despre Afacerea Ta', desc: 'Servicii, prețuri, program, locație. Vocal sau text — durează 5 minute.', icon: '💬' },
-      { title: 'Ești Live!', desc: 'Caty răspunde clienților 24/7. Programează întâlniri. Trimite oferte. Tu te concentrezi pe muncă.', icon: '🚀' }
+      { title: 'Scanează Codul QR', desc: 'Ca la WhatsApp Web. Folosești numărul tău de business. Nu ai nevoie de număr nou.', num: '1' },
+      { title: 'Spune-i lui Caty Despre Afacerea Ta', desc: 'Servicii, prețuri, program, locație. Vocal sau text — durează 5 minute.', num: '2' },
+      { title: 'Ești Live!', desc: 'Caty răspunde clienților 24/7. Programează întâlniri. Trimite oferte. Tu te concentrezi pe muncă.', num: '3' }
     ],
-
-    benefitsTitle: 'Tot Ce Ai Nevoie.',
-    benefitsHighlight: 'Nimic în Plus.',
-    benefits: [
-      {
-        icon: '💬',
-        title: 'Răspuns Instant Clienților',
-        desc: 'Clienții îți scriu pe WhatsApp, Caty răspunde instant. Nu mai pierzi mesaje în timp ce lucrezi.',
-        highlight: '24/7'
-      },
-      {
-        icon: '📅',
-        title: 'Programări Automate',
-        desc: 'Caty programează întâlnirile direct în calendarul tău. Trimite remindere. Gestionează reprogramările.',
-        highlight: 'Google Calendar'
-      },
-      {
-        icon: '📄',
-        title: 'Oferte în Secunde',
-        desc: 'Clientul întreabă de preț? Caty generează o ofertă PDF profesională și o trimite instant.',
-        highlight: 'PDF'
-      },
-      {
-        icon: '🛡️',
-        title: 'Protecție Anti-Fraudă',
-        desc: 'FraudAI Shield blochează link-uri phishing, mesaje false urgente și cereri suspecte.',
-        highlight: 'Protejat'
-      },
-      {
-        icon: '🌍',
-        title: 'Multi-Limbă',
-        desc: 'Caty vorbește română, engleză, spaniolă, portugheză, franceză și arabă. Detectează automat limba.',
-        highlight: '6 Limbi'
-      },
-      {
-        icon: '📊',
-        title: 'Statistici Business',
-        desc: 'Vezi ce întreabă clienții cel mai des, orele de vârf și oportunitățile ratate. Crești mai inteligent.',
-        highlight: 'Analytics'
-      }
-    ],
-
-    useCasesTitle: 'Perfect Pentru',
-    useCasesSubtitle: 'Afaceri mici și freelanceri care nu au nevoie de site — doar de clienți.',
+    useCasesTitle: 'Construit Pentru Afacerea Ta',
+    useCasesSubtitle: 'Afaceri mici și freelanceri care au nevoie doar de clienți.',
     useCases: [
-      { icon: '💇', title: 'Frizeri', desc: 'Programezi în timp ce tunzi. Nu mai pierzi clienți.' },
-      { icon: '🔧', title: 'Mecanici', desc: 'Primești cereri de reparații. Trimiți oferte. Confirmi ridicări.' },
-      { icon: '🔌', title: 'Electricieni & Instalatori', desc: 'Primești cereri 24/7. Programezi vizite automat.' },
-      { icon: '🦷', title: 'Stomatologi', desc: 'Programezi controale. Trimiți remindere. Gestionezi urgențe.' },
-      { icon: '🏋️', title: 'Antrenori Personali', desc: 'Programezi sesiuni. Răspunzi la întrebări. Crești baza de clienți.' },
-      { icon: '📸', title: 'Fotografi', desc: 'Programezi ședințe. Împărtășești pachete. Confirmi date.' },
-      { icon: '🧹', title: 'Servicii Curățenie', desc: 'Primești rezervări. Trimiți confirmări. Gestionezi programul.' },
-      { icon: '🚗', title: 'Instructori Auto', desc: 'Programezi lecții. Trimiți remindere. Gestionezi anulări.' }
+      { tag: 'Caz 01 · Beauty', title: 'Frizeri & Stilisti', tagline: 'Programări în timp ce tunzi.', body: 'Caty răspunde clienților noi instant cât timp tu lucrezi. Rezervă locuri, verifică disponibilitatea, trimite confirmare — totul pe WhatsApp. Nu mai pierzi nicio programare.', note: 'Setup în 2 min · Număr existent · Fără aplicație nouă', customer: 'Bună! Aveți loc mâine la ora 15:00?', reply: 'Bună! Da, avem loc la 15:00 mâine. Ce serviciu doriți? ✂️', reply2: 'Programare confirmată pentru mâine la 15:00! Îți trimit reminder dimineața. 📅' },
+      { tag: 'Caz 02 · Meserii', title: 'Mecanici & Instalatori', tagline: 'Cereri. Oferte. Confirmări.', body: 'Primești cereri 24/7, trimiți oferte automat pe baza listei tale de prețuri, confirmi vizite și ridicări — fără să te oprești din lucru.', note: 'Oferte automate · Locație · Sync calendar', customer: 'Mașina mea face un zgomot ciudat. Puteți verifica?', reply: 'Sigur! Putem programa o verificare mâine. Ce tip de mașină aveți? 🔧', reply2: 'Programare confirmată miercuri la 10:00. Adresa noastră: Str. Principală 42. 📍' },
+      { tag: 'Caz 03 · Fitness', title: 'Antrenori Personali', tagline: 'Transformă întrebările în clienți plătitori.', body: 'Potențialii clienți întreabă despre prețuri, pachete, program. Caty răspunde instant și îi convertește înainte să caute altundeva. Rezervări, linkuri plată, reminder-uri — automatizat.', note: 'Rezervări ședințe · Linkuri plată · Reminder-uri', customer: 'Vreau să încep antrenamentele. Ce pachete aveți?', reply: 'Super! Avem 3 pachete: 4 ședințe/lună €120, 8 ședințe €200, nelimitat €280. 💪', reply2: 'Perfect! Am rezervat prima ședință luni la 7:00. Ne vedem acolo! 🏋️' }
     ],
-
-    comparisonTitle: 'Site Web vs. WhatsApp + Caty',
-    comparisonItems: [
-      { feature: 'Timp setup', website: '2-4 săptămâni', caty: '2 minute' },
-      { feature: 'Cost', website: '€500-5,000', caty: '€10/lună' },
-      { feature: 'Cunoștințe tehnice', website: 'Necesare', caty: 'Zero' },
-      { feature: 'Răspuns clienți', website: 'Tu manual', caty: 'AI 24/7' },
-      { feature: 'Programări', website: 'Tool extern', caty: 'Incluse' },
-      { feature: 'Întreținere', website: 'Continuă', caty: 'Zero' }
-    ],
-
     testimonialsTitle: 'Ce Spun Ei',
     testimonials: [
-      { quote: 'M-am conectat în 2 minute. Acum Caty îmi face programări în timp ce lucrez la mașini.', author: 'Andrei', role: 'Mecanic Auto' },
-      { quote: 'Fără site, fără problemă. Clienții mei scriu pe WhatsApp și Caty se ocupă de tot.', author: 'Maria', role: 'Stilist' },
-      { quote: 'Am fost sceptic cu AI-ul dar vorbește română perfect. Clienții mei adoră.', author: 'Ion', role: 'Instalator' }
+      { quote: 'M-am conectat în 2 minute. Acum Caty îmi face programări în timp ce lucrez la mașini.', author: 'Andrei M.', role: 'Mecanic Auto, București' },
+      { quote: 'Fără site, fără problemă. Clienții mei scriu pe WhatsApp și Caty se ocupă de tot.', author: 'Maria P.', role: 'Stilist, Cluj' },
+      { quote: 'Am fost sceptic cu AI-ul dar vorbește română perfect. Clienții mei adoră.', author: 'Ion T.', role: 'Instalator, Iași' }
     ],
-
     pricingTitle: 'Preț Simplu',
-    pricingSubtitle: 'Un singur plan. Totul inclus. Anulezi oricând.',
-    plans: [
-      {
-        name: 'WhatsApp AI',
-        price: '€10',
-        period: '/lună',
-        desc: 'Tot ce ai nevoie',
-        features: [
-          '500 conversații/lună',
-          'Răspunsuri AI 24/7',
-          'Sync Google Calendar',
-          'Oferte & facturi PDF',
-          'Protecție FraudAI',
-          'Suport multi-limbă'
-        ],
-        cta: 'Începe Acum',
-        highlight: true
-      }
-    ],
-
+    pricingSubtitle: 'Un singur plan. Totul inclus.',
+    planName: 'WhatsApp AI',
+    planPrice: '€10',
+    planPeriod: '/lună',
+    planDesc: 'Tot ce ai nevoie să crești',
+    planFeatures: ['500 conversații/lună', 'Răspunsuri AI 24/7', 'Sync Google Calendar', 'Oferte & facturi PDF', 'Protecție FraudAI', 'Multi-limbă (6 limbi)', 'Setup în 2 minute'],
+    planCta: 'Începe Gratuit',
     faqTitle: 'Întrebări?',
     faqs: [
-      { q: 'Chiar nu am nevoie de site?', a: 'Corect. Numărul tău de WhatsApp devine contactul afacerii. Clienții îți scriu acolo, Caty răspunde.' },
+      { q: 'Chiar nu am nevoie de site?', a: 'Corect. Numărul tău de WhatsApp devine contactul afacerii. Clienții îți scriu acolo, Caty răspunde instant.' },
       { q: 'Ce se întâmplă dacă Caty nu poate răspunde?', a: 'Caty îți trimite conversația cu tot contextul. Preiei fără probleme.' },
       { q: 'Vor ști clienții că e AI?', a: 'Doar dacă vrei tu. Caty poate răspunde ca afacerea ta, cu numele și stilul tău.' },
       { q: 'Pot folosi numărul meu de WhatsApp?', a: 'Da! Caty se conectează la WhatsApp-ul tău de business. Nu ai nevoie de număr nou.' },
       { q: 'Ce limbi vorbește Caty?', a: 'Română, engleză, spaniolă, portugheză, franceză și arabă. Detectează automat și răspunde în limba clientului.' },
       { q: 'Cum anulez?', a: 'Anulezi oricând din dashboard. Fără contracte, fără penalități.' }
     ],
-
     ctaTitle: 'Gata în 2 Minute',
     ctaSubtitle: 'Scanează. Configurează. Începe să primești clienți.',
     ctaButton: 'Conectează WhatsApp Acum',
-
-    paymentMethodsTitle: 'Metode de Plată',
-    paymentMethodsSubtitle: 'Clienții tăi plătesc cum vor. Tu decizi ce metode accepți.',
-    paymentMethods: [
-      { icon: '💵', title: 'Cash', desc: 'Clientul plătește în persoană când primește serviciul.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '🏦', title: 'Transfer Bancar', desc: 'Caty trimite IBAN-ul tău automat. Clientul plătește din aplicația băncii.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '🔄', title: 'Revolut', desc: 'Plată instant prin link Revolut. Banii ajung în secunde.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '💳', title: 'Card Online', desc: 'Integrare Stripe pentru plăți cu cardul. Checkout profesional.', badge: '5%', badgeColor: 'gold' }
-    ],
-
     nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', pricing: 'Prețuri', faq: 'FAQ', login: 'Autentificare', getStarted: 'Începe Acum' },
-    footer: {
-      tagline: 'AI care lucrează pentru afacerea ta.',
-      product: 'Produs',
-      company: 'Companie',
-      legal: 'Legal',
-      features: 'Funcții',
-      pricing: 'Prețuri',
-      whatsapp: 'WhatsApp AI',
-      about: 'Despre',
-      blog: 'Blog',
-      contact: 'Contact',
-      privacy: 'Confidențialitate',
-      terms: 'Termeni',
-      gdpr: 'GDPR',
-      copyright: '© 2024 PayAi-X FZE. Toate drepturile rezervate.'
-    }
+    footer: { tagline: 'AI care lucrează pentru afacerea ta.', product: 'Produs', company: 'Companie', legal: 'Legal', features: 'Funcții', pricing: 'Prețuri', whatsapp: 'WhatsApp AI', about: 'Despre', blog: 'Blog', contact: 'Contact', privacy: 'Confidențialitate', terms: 'Termeni', gdpr: 'GDPR', copyright: '© 2025 PayAi-X FZE. Toate drepturile rezervate.' }
   },
   es: {
     badge: 'Sin Sitio Web',
@@ -335,126 +119,48 @@ const translations = {
     trustBadge1: 'Solo €10/mes',
     trustBadge2: 'Sin conocimientos técnicos',
     trustBadge3: 'Setup en 2 minutos',
-
-    problemTitle: 'Tienes Clientes.',
-    problemHighlight: 'No Pueden Encontrarte.',
-    problemStats: [
-      { value: '73%', label: 'de clientes prefieren WhatsApp a llamar' },
-      { value: '45%', label: 'de pequeños negocios no tienen presencia online' },
-      { value: '€10', label: 'al mes - todo incluido' }
-    ],
-    problemSolution: 'Tu WhatsApp se convierte en tu recepción 24/7.',
-
     howTitle: 'Cómo Funciona',
-    howSubtitle: 'En vivo en 2 minutos. Sin web. Sin app para instalar. Sin conocimientos técnicos.',
+    howSubtitle: 'En vivo en 2 minutos. Sin web. Sin app. Sin conocimientos técnicos.',
     howSteps: [
-      { title: 'Escanea el Código QR', desc: 'Como WhatsApp Web. Usa tu número de negocio existente. No necesitas número nuevo.', icon: '📱' },
-      { title: 'Cuéntale a Caty Tu Negocio', desc: 'Servicios, precios, horarios, ubicación. Voz o texto — toma 5 minutos.', icon: '💬' },
-      { title: '¡Estás En Vivo!', desc: 'Caty responde a clientes 24/7. Agenda citas. Envía presupuestos. Tú te enfocas en tu trabajo.', icon: '🚀' }
+      { title: 'Escanea el Código QR', desc: 'Como WhatsApp Web. Usa tu número de negocio existente. No necesitas número nuevo.', num: '1' },
+      { title: 'Cuéntale a Caty Tu Negocio', desc: 'Servicios, precios, horarios, ubicación. Voz o texto — toma 5 minutos.', num: '2' },
+      { title: '¡Estás En Vivo!', desc: 'Caty responde a clientes 24/7. Agenda citas. Envía presupuestos. Tú te enfocas en tu trabajo.', num: '3' }
     ],
-
-    benefitsTitle: 'Todo Lo Que Necesitas.',
-    benefitsHighlight: 'Nada Que No.',
-    benefits: [
-      { icon: '💬', title: 'Respuesta Instantánea', desc: 'Los clientes te escriben en WhatsApp, Caty responde al instante.', highlight: '24/7' },
-      { icon: '📅', title: 'Citas Automáticas', desc: 'Caty agenda citas directamente en tu calendario.', highlight: 'Google Calendar' },
-      { icon: '📄', title: 'Presupuestos en Segundos', desc: '¿El cliente pregunta precio? Caty genera un PDF profesional.', highlight: 'PDF' },
-      { icon: '🛡️', title: 'Protección Anti-Fraude', desc: 'FraudAI Shield bloquea phishing y mensajes sospechosos.', highlight: 'Protegido' },
-      { icon: '🌍', title: 'Multi-Idioma', desc: 'Caty habla español, inglés, rumano, portugués, francés y árabe.', highlight: '6 Idiomas' },
-      { icon: '📊', title: 'Estadísticas', desc: 'Ve qué preguntan más los clientes y las horas pico.', highlight: 'Analytics' }
-    ],
-
-    useCasesTitle: 'Perfecto Para',
-    useCasesSubtitle: 'Pequeños negocios y freelancers que no necesitan web — solo clientes.',
+    useCasesTitle: 'Construido Para Tu Negocio',
+    useCasesSubtitle: 'Pequeños negocios y freelancers que solo necesitan clientes.',
     useCases: [
-      { icon: '💇', title: 'Peluqueros', desc: 'Agenda citas mientras cortas. Nunca pierdas un cliente.' },
-      { icon: '🔧', title: 'Mecánicos', desc: 'Recibe solicitudes de reparación. Envía presupuestos.' },
-      { icon: '🔌', title: 'Electricistas', desc: 'Recibe trabajos 24/7. Programa visitas automáticamente.' },
-      { icon: '🦷', title: 'Dentistas', desc: 'Agenda chequeos. Envía recordatorios. Gestiona urgencias.' },
-      { icon: '🏋️', title: 'Entrenadores', desc: 'Programa sesiones. Responde preguntas de fitness.' },
-      { icon: '📸', title: 'Fotógrafos', desc: 'Agenda sesiones. Comparte paquetes. Confirma fechas.' },
-      { icon: '🧹', title: 'Limpieza', desc: 'Recibe reservas. Envía confirmaciones.' },
-      { icon: '🚗', title: 'Instructores', desc: 'Programa clases. Envía recordatorios.' }
+      { tag: 'Caso 01 · Belleza', title: 'Peluqueros & Estilistas', tagline: 'Citas mientras cortas.', body: 'Caty responde a nuevos clientes al instante mientras trabajas. Reserva turnos, verifica disponibilidad, envía confirmación — todo por WhatsApp. Nunca pierdas una reserva.', note: 'Setup en 2 min · Tu número existente · Sin app nueva', customer: '¡Hola! ¿Tienen disponibilidad mañana a las 3pm?', reply: '¡Hola! Sí, tenemos lugar a las 3:00 PM mañana. ¿Qué servicio desea? ✂️', reply2: '¡Reserva confirmada para mañana a las 3 PM! Te enviaré un recordatorio. 📅' },
+      { tag: 'Caso 02 · Oficios', title: 'Mecánicos & Fontaneros', tagline: 'Solicitudes. Presupuestos. Confirmaciones.', body: 'Recibe solicitudes 24/7, envía presupuestos automáticos según tu lista de precios, confirma visitas y recogidas — sin parar tu trabajo en el sitio.', note: 'Presupuestos auto · Ubicación · Sync calendario', customer: 'Mi coche hace un ruido extraño. ¿Pueden revisarlo?', reply: '¡Claro! Podemos programar una revisión mañana. ¿Qué tipo de coche? 🔧', reply2: 'Cita confirmada el miércoles a las 10:00. Nuestra dirección: Calle Principal 42. 📍' },
+      { tag: 'Caso 03 · Fitness', title: 'Entrenadores Personales', tagline: 'Convierte consultas en clientes de pago.', body: 'Los clientes potenciales preguntan por precios, paquetes, horarios. Caty responde al instante y los convierte antes de que consulten a un competidor.', note: 'Reserva sesiones · Links de pago · Recordatorios', customer: 'Quiero empezar a entrenar. ¿Qué paquetes tienen?', reply: '¡Genial! Tenemos 3 paquetes: 4 sesiones/mes €120, 8 sesiones €200, ilimitado €280. 💪', reply2: '¡Perfecto! He reservado tu primera sesión el lunes a las 7:00. ¡Nos vemos! 🏋️' }
     ],
-
-    comparisonTitle: 'Sitio Web vs. WhatsApp + Caty',
-    comparisonItems: [
-      { feature: 'Tiempo setup', website: '2-4 semanas', caty: '2 minutos' },
-      { feature: 'Costo', website: '€500-5,000', caty: '€10/mes' },
-      { feature: 'Conocimientos técnicos', website: 'Necesarios', caty: 'Ninguno' },
-      { feature: 'Respuesta clientes', website: 'Tú manualmente', caty: 'AI 24/7' },
-      { feature: 'Citas', website: 'Herramienta externa', caty: 'Incluidas' },
-      { feature: 'Mantenimiento', website: 'Continuo', caty: 'Cero' }
-    ],
-
     testimonialsTitle: 'Lo Que Dicen',
     testimonials: [
-      { quote: 'Me conecté en 2 minutos. Ahora Caty agenda mis citas mientras trabajo.', author: 'Carlos', role: 'Mecánico' },
-      { quote: 'Sin web, sin problema. Mis clientes escriben en WhatsApp y Caty maneja todo.', author: 'María', role: 'Estilista' },
-      { quote: 'Era escéptico con la IA pero habla español perfectamente.', author: 'Juan', role: 'Fontanero' }
+      { quote: 'Me conecté en 2 minutos. Ahora Caty agenda mis citas mientras trabajo.', author: 'Carlos M.', role: 'Mecánico, Madrid' },
+      { quote: 'Sin web, sin problema. Mis clientes escriben en WhatsApp y Caty maneja todo.', author: 'María P.', role: 'Estilista, Barcelona' },
+      { quote: 'Era escéptico con la IA pero habla español perfectamente. Mis clientes la aman.', author: 'Juan T.', role: 'Fontanero, Valencia' }
     ],
-
     pricingTitle: 'Precio Simple',
-    pricingSubtitle: 'Un solo plan. Todo incluido. Cancela cuando quieras.',
-    plans: [
-      {
-        name: 'WhatsApp AI',
-        price: '€10',
-        period: '/mes',
-        desc: 'Todo lo que necesitas',
-        features: [
-          '500 conversaciones/mes',
-          'Respuestas AI 24/7',
-          'Google Calendar sync',
-          'Presupuestos PDF',
-          'Protección FraudAI',
-          'Soporte multiidioma'
-        ],
-        cta: 'Empezar Ahora',
-        highlight: true
-      }
-    ],
-
+    pricingSubtitle: 'Un solo plan. Todo incluido.',
+    planName: 'WhatsApp AI',
+    planPrice: '€10',
+    planPeriod: '/mes',
+    planDesc: 'Todo lo que necesitas para crecer',
+    planFeatures: ['500 conversaciones/mes', 'Respuestas AI 24/7', 'Google Calendar sync', 'Presupuestos PDF', 'Protección FraudAI', 'Multi-idioma (6 idiomas)', 'Setup en 2 minutos'],
+    planCta: 'Empezar Gratis',
     faqTitle: '¿Preguntas?',
     faqs: [
-      { q: '¿Realmente no necesito sitio web?', a: 'Correcto. Tu WhatsApp se convierte en el contacto de tu negocio.' },
-      { q: '¿Qué pasa si Caty no puede responder?', a: 'Caty te envía la conversación con todo el contexto. Tomas el control.' },
-      { q: '¿Sabrán los clientes que es IA?', a: 'Solo si tú quieres. Caty puede responder como tu negocio.' },
-      { q: '¿Puedo usar mi número de WhatsApp?', a: 'Sí! Caty se conecta a tu WhatsApp de negocio existente.' },
-      { q: '¿Qué idiomas habla Caty?', a: 'Español, inglés, rumano, portugués, francés y árabe. Detecta automáticamente.' },
+      { q: '¿Realmente no necesito sitio web?', a: 'Correcto. Tu WhatsApp se convierte en el contacto de tu negocio. Los clientes te escriben allí, Caty responde.' },
+      { q: '¿Qué pasa si Caty no puede responder?', a: 'Caty te envía la conversación con todo el contexto. Tomas el control sin problemas.' },
+      { q: '¿Sabrán los clientes que es IA?', a: 'Solo si tú quieres. Caty puede responder como tu negocio, con tu nombre y estilo.' },
+      { q: '¿Puedo usar mi número de WhatsApp?', a: '¡Sí! Caty se conecta a tu WhatsApp de negocio existente.' },
+      { q: '¿Qué idiomas habla Caty?', a: 'Español, inglés, rumano, portugués, francés y árabe. Detecta automáticamente el idioma.' },
       { q: '¿Cómo cancelo?', a: 'Cancela cuando quieras desde tu panel. Sin contratos.' }
     ],
-
     ctaTitle: 'Listo en 2 Minutos',
     ctaSubtitle: 'Escanea. Configura. Empieza a recibir clientes.',
     ctaButton: 'Conectar WhatsApp Ahora',
-
-    paymentMethodsTitle: 'Métodos de Pago',
-    paymentMethodsSubtitle: 'Tus clientes pagan como quieran. Tú decides qué métodos aceptar.',
-    paymentMethods: [
-      { icon: '💵', title: 'Efectivo', desc: 'El cliente paga en persona al recibir el servicio.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '🏦', title: 'Transferencia', desc: 'Caty envía tu IBAN automáticamente. El cliente paga desde su app bancaria.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '🔄', title: 'Revolut', desc: 'Pago instantáneo vía link Revolut. El dinero llega en segundos.', badge: 'GRATIS', badgeColor: 'green' },
-      { icon: '💳', title: 'Tarjeta Online', desc: 'Integración Stripe para pagos con tarjeta. Checkout profesional.', badge: '5%', badgeColor: 'gold' }
-    ],
-
     nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo Funciona', pricing: 'Precios', faq: 'FAQ', login: 'Entrar', getStarted: 'Empezar Ahora' },
-    footer: {
-      tagline: 'IA que trabaja para tu negocio.',
-      product: 'Producto',
-      company: 'Empresa',
-      legal: 'Legal',
-      features: 'Funciones',
-      pricing: 'Precios',
-      whatsapp: 'WhatsApp AI',
-      about: 'Nosotros',
-      blog: 'Blog',
-      contact: 'Contacto',
-      privacy: 'Privacidad',
-      terms: 'Términos',
-      gdpr: 'GDPR',
-      copyright: '© 2024 PayAi-X FZE. Todos los derechos reservados.'
-    }
+    footer: { tagline: 'IA que trabaja para tu negocio.', product: 'Producto', company: 'Empresa', legal: 'Legal', features: 'Funciones', pricing: 'Precios', whatsapp: 'WhatsApp AI', about: 'Nosotros', blog: 'Blog', contact: 'Contacto', privacy: 'Privacidad', terms: 'Términos', gdpr: 'GDPR', copyright: '© 2025 PayAi-X FZE. Todos los derechos reservados.' }
   },
   pt: {
     badge: 'Sem Website',
@@ -466,126 +172,48 @@ const translations = {
     trustBadge1: 'Apenas €10/mês',
     trustBadge2: 'Sem conhecimentos técnicos',
     trustBadge3: 'Setup em 2 minutos',
-
-    problemTitle: 'Tem Clientes.',
-    problemHighlight: 'Não Conseguem Encontrá-lo.',
-    problemStats: [
-      { value: '73%', label: 'dos clientes preferem WhatsApp a ligar' },
-      { value: '45%', label: 'dos pequenos negócios não têm presença online' },
-      { value: '€10', label: 'por mês - tudo incluído' }
-    ],
-    problemSolution: 'O seu WhatsApp torna-se a sua recepção 24/7.',
-
     howTitle: 'Como Funciona',
-    howSubtitle: 'Ao vivo em 2 minutos. Sem site. Sem app para instalar. Sem conhecimentos técnicos.',
+    howSubtitle: 'Ao vivo em 2 minutos. Sem site. Sem app. Sem conhecimentos técnicos.',
     howSteps: [
-      { title: 'Digitalize o Código QR', desc: 'Como no WhatsApp Web. Use o seu número de negócio existente. Não precisa de número novo.', icon: '📱' },
-      { title: 'Conte à Caty Sobre o Seu Negócio', desc: 'Serviços, preços, horários, localização. Voz ou texto — leva 5 minutos.', icon: '💬' },
-      { title: 'Está Online!', desc: 'Caty responde aos clientes 24/7. Marca consultas. Envia orçamentos. Você foca no seu trabalho.', icon: '🚀' }
+      { title: 'Digitalize o Código QR', desc: 'Como no WhatsApp Web. Use o seu número de negócio existente. Não precisa de número novo.', num: '1' },
+      { title: 'Conte à Caty Sobre o Seu Negócio', desc: 'Serviços, preços, horários, localização. Voz ou texto — leva 5 minutos.', num: '2' },
+      { title: 'Está Online!', desc: 'Caty responde aos clientes 24/7. Marca consultas. Envia orçamentos. Você foca no seu trabalho.', num: '3' }
     ],
-
-    benefitsTitle: 'Tudo O Que Precisa.',
-    benefitsHighlight: 'Nada Que Não.',
-    benefits: [
-      { icon: '💬', title: 'Resposta Instantânea', desc: 'Os clientes escrevem no WhatsApp, Caty responde instantaneamente.', highlight: '24/7' },
-      { icon: '📅', title: 'Marcações Automáticas', desc: 'Caty marca consultas diretamente no seu calendário.', highlight: 'Google Calendar' },
-      { icon: '📄', title: 'Orçamentos em Segundos', desc: 'O cliente pergunta o preço? Caty gera um PDF profissional.', highlight: 'PDF' },
-      { icon: '🛡️', title: 'Proteção Anti-Fraude', desc: 'FraudAI Shield bloqueia phishing e mensagens suspeitas.', highlight: 'Protegido' },
-      { icon: '🌍', title: 'Multi-Idioma', desc: 'Caty fala português, inglês, espanhol, romeno, francês e árabe.', highlight: '6 Idiomas' },
-      { icon: '📊', title: 'Estatísticas', desc: 'Veja o que os clientes mais perguntam e as horas de pico.', highlight: 'Analytics' }
-    ],
-
-    useCasesTitle: 'Perfeito Para',
-    useCasesSubtitle: 'Pequenos negócios e freelancers que não precisam de site — apenas de clientes.',
+    useCasesTitle: 'Construído Para o Seu Negócio',
+    useCasesSubtitle: 'Pequenos negócios e freelancers que precisam apenas de clientes.',
     useCases: [
-      { icon: '💇', title: 'Cabeleireiros', desc: 'Marque consultas enquanto corta. Nunca perca um cliente.' },
-      { icon: '🔧', title: 'Mecânicos', desc: 'Receba pedidos de reparação. Envie orçamentos.' },
-      { icon: '🔌', title: 'Eletricistas', desc: 'Receba trabalhos 24/7. Agende visitas automaticamente.' },
-      { icon: '🦷', title: 'Dentistas', desc: 'Marque consultas. Envie lembretes. Gerencie urgências.' },
-      { icon: '🏋️', title: 'Personal Trainers', desc: 'Agende sessões. Responda perguntas de fitness.' },
-      { icon: '📸', title: 'Fotógrafos', desc: 'Agende sessões. Partilhe pacotes. Confirme datas.' },
-      { icon: '🧹', title: 'Limpezas', desc: 'Receba reservas. Envie confirmações.' },
-      { icon: '🚗', title: 'Instrutores', desc: 'Agende aulas. Envie lembretes.' }
+      { tag: 'Caso 01 · Beleza', title: 'Cabeleireiros & Esteticistas', tagline: 'Marcações enquanto trabalha.', body: 'Caty responde a novos clientes instantaneamente enquanto trabalha. Reserva slots, verifica disponibilidade, envia confirmação — tudo pelo WhatsApp. Nunca perca uma marcação.', note: 'Setup em 2 min · Número existente · Sem nova app', customer: 'Olá! Têm disponibilidade amanhã às 15h?', reply: 'Olá! Sim, temos lugar às 15:00 de amanhã. Que serviço deseja? ✂️', reply2: 'Marcação confirmada para amanhã às 15:00! Envio lembrete de manhã. 📅' },
+      { tag: 'Caso 02 · Ofícios', title: 'Mecânicos & Canalizadores', tagline: 'Pedidos. Orçamentos. Confirmações.', body: 'Receba pedidos 24/7, faça orçamentos automáticos com base na sua lista de preços, confirme visitas e recolhas — sem parar o trabalho no local.', note: 'Orçamentos auto · Localização · Sync calendário', customer: 'O meu carro faz um barulho estranho. Podem verificar?', reply: 'Claro! Podemos agendar uma verificação amanhã. Que tipo de carro? 🔧', reply2: 'Consulta confirmada para quarta às 10:00. Morada: Rua Principal 42. 📍' },
+      { tag: 'Caso 03 · Fitness', title: 'Personal Trainers', tagline: 'Transforme consultas em clientes pagantes.', body: 'Potenciais clientes perguntam sobre preços, pacotes, horários. Caty responde instantaneamente e converte-os antes de consultarem um concorrente.', note: 'Reserva sessões · Links pagamento · Lembretes', customer: 'Quero começar a treinar. Que pacotes têm?', reply: 'Ótimo! Temos 3 pacotes: 4 sessões/mês €120, 8 sessões €200, ilimitado €280. 💪', reply2: 'Perfeito! Reservei a sua primeira sessão segunda às 7:00. Até lá! 🏋️' }
     ],
-
-    comparisonTitle: 'Website vs. WhatsApp + Caty',
-    comparisonItems: [
-      { feature: 'Tempo setup', website: '2-4 semanas', caty: '2 minutos' },
-      { feature: 'Custo', website: '€500-5,000', caty: '€10/mês' },
-      { feature: 'Conhecimentos técnicos', website: 'Necessários', caty: 'Nenhum' },
-      { feature: 'Resposta clientes', website: 'Você manualmente', caty: 'AI 24/7' },
-      { feature: 'Marcações', website: 'Ferramenta externa', caty: 'Incluídas' },
-      { feature: 'Manutenção', website: 'Contínua', caty: 'Zero' }
-    ],
-
     testimonialsTitle: 'O Que Dizem',
     testimonials: [
-      { quote: 'Conectei em 2 minutos. Agora Caty marca as minhas consultas enquanto trabalho.', author: 'Carlos', role: 'Mecânico' },
-      { quote: 'Sem site, sem problema. Os meus clientes escrevem no WhatsApp e Caty trata de tudo.', author: 'Maria', role: 'Cabeleireira' },
-      { quote: 'Era cético com IA mas fala português perfeitamente.', author: 'João', role: 'Canalizador' }
+      { quote: 'Conectei em 2 minutos. Agora Caty marca as minhas consultas enquanto trabalho.', author: 'Carlos M.', role: 'Mecânico, Lisboa' },
+      { quote: 'Sem site, sem problema. Os meus clientes escrevem no WhatsApp e Caty trata de tudo.', author: 'Maria P.', role: 'Cabeleireira, Porto' },
+      { quote: 'Era cético com IA mas fala português perfeitamente. Os meus clientes adoram.', author: 'João T.', role: 'Canalizador, Coimbra' }
     ],
-
     pricingTitle: 'Preço Simples',
-    pricingSubtitle: 'Um só plano. Tudo incluído. Cancele quando quiser.',
-    plans: [
-      {
-        name: 'WhatsApp AI',
-        price: '€10',
-        period: '/mês',
-        desc: 'Tudo o que precisa',
-        features: [
-          '500 conversas/mês',
-          'Respostas AI 24/7',
-          'Google Calendar sync',
-          'Orçamentos PDF',
-          'Proteção FraudAI',
-          'Suporte multi-idioma'
-        ],
-        cta: 'Começar Agora',
-        highlight: true
-      }
-    ],
-
+    pricingSubtitle: 'Um só plano. Tudo incluído.',
+    planName: 'WhatsApp AI',
+    planPrice: '€10',
+    planPeriod: '/mês',
+    planDesc: 'Tudo o que precisa para crescer',
+    planFeatures: ['500 conversas/mês', 'Respostas AI 24/7', 'Google Calendar sync', 'Orçamentos PDF', 'Proteção FraudAI', 'Multi-idioma (6 idiomas)', 'Setup em 2 minutos'],
+    planCta: 'Começar Grátis',
     faqTitle: 'Perguntas?',
     faqs: [
-      { q: 'Realmente não preciso de site?', a: 'Correto. O seu WhatsApp torna-se o contacto do seu negócio.' },
-      { q: 'E se Caty não conseguir responder?', a: 'Caty envia-lhe a conversa com todo o contexto. Você assume o controlo.' },
-      { q: 'Os clientes saberão que é IA?', a: 'Só se você quiser. Caty pode responder como o seu negócio.' },
+      { q: 'Realmente não preciso de site?', a: 'Correto. O seu WhatsApp torna-se o contacto do seu negócio. Os clientes escrevem, Caty responde.' },
+      { q: 'E se Caty não conseguir responder?', a: 'Caty envia-lhe a conversa com todo o contexto. Você assume o controlo facilmente.' },
+      { q: 'Os clientes saberão que é IA?', a: 'Só se você quiser. Caty pode responder como o seu negócio, com o seu nome e estilo.' },
       { q: 'Posso usar o meu número de WhatsApp?', a: 'Sim! Caty conecta-se ao seu WhatsApp de negócio existente.' },
-      { q: 'Que idiomas fala Caty?', a: 'Português, inglês, espanhol, romeno, francês e árabe. Deteta automaticamente.' },
+      { q: 'Que idiomas fala Caty?', a: 'Português, inglês, espanhol, romeno, francês e árabe. Deteta automaticamente o idioma.' },
       { q: 'Como cancelo?', a: 'Cancele quando quiser no seu painel. Sem contratos.' }
     ],
-
     ctaTitle: 'Pronto em 2 Minutos',
     ctaSubtitle: 'Digitalize. Configure. Comece a receber clientes.',
     ctaButton: 'Conectar WhatsApp Agora',
-
-    paymentMethodsTitle: 'Métodos de Pagamento',
-    paymentMethodsSubtitle: 'Os seus clientes pagam como quiserem. Você decide que métodos aceitar.',
-    paymentMethods: [
-      { icon: '💵', title: 'Dinheiro', desc: 'O cliente paga presencialmente ao receber o serviço.', badge: 'GRÁTIS', badgeColor: 'green' },
-      { icon: '🏦', title: 'Transferência', desc: 'Caty envia o seu IBAN automaticamente. O cliente paga pela app do banco.', badge: 'GRÁTIS', badgeColor: 'green' },
-      { icon: '🔄', title: 'Revolut', desc: 'Pagamento instantâneo via link Revolut. O dinheiro chega em segundos.', badge: 'GRÁTIS', badgeColor: 'green' },
-      { icon: '💳', title: 'Cartão Online', desc: 'Integração Stripe para pagamentos com cartão. Checkout profissional.', badge: '5%', badgeColor: 'gold' }
-    ],
-
     nav: { home: 'Início', features: 'Funcionalidades', howItWorks: 'Como Funciona', pricing: 'Preços', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar Agora' },
-    footer: {
-      tagline: 'IA que trabalha para o seu negócio.',
-      product: 'Produto',
-      company: 'Empresa',
-      legal: 'Legal',
-      features: 'Funcionalidades',
-      pricing: 'Preços',
-      whatsapp: 'WhatsApp AI',
-      about: 'Sobre',
-      blog: 'Blog',
-      contact: 'Contacto',
-      privacy: 'Privacidade',
-      terms: 'Termos',
-      gdpr: 'RGPD',
-      copyright: '© 2024 PayAi-X FZE. Todos os direitos reservados.'
-    }
+    footer: { tagline: 'IA que trabalha para o seu negócio.', product: 'Produto', company: 'Empresa', legal: 'Legal', features: 'Funcionalidades', pricing: 'Preços', whatsapp: 'WhatsApp AI', about: 'Sobre', blog: 'Blog', contact: 'Contacto', privacy: 'Privacidade', terms: 'Termos', gdpr: 'RGPD', copyright: '© 2025 PayAi-X FZE. Todos os direitos reservados.' }
   },
   fr: {
     badge: 'Sans Site Web',
@@ -597,163 +225,638 @@ const translations = {
     trustBadge1: 'Seulement €10/mois',
     trustBadge2: 'Aucune compétence technique',
     trustBadge3: 'Setup en 2 minutes',
-
-    problemTitle: 'Vous Avez des Clients.',
-    problemHighlight: 'Ils Ne Peuvent Pas Vous Trouver.',
-    problemStats: [
-      { value: '73%', label: 'des clients préfèrent WhatsApp aux appels' },
-      { value: '45%', label: 'des petites entreprises n\'ont pas de présence en ligne' },
-      { value: '€10', label: 'par mois - tout inclus' }
-    ],
-    problemSolution: 'Votre WhatsApp devient votre réception 24/7.',
-
     howTitle: 'Comment Ça Marche',
-    howSubtitle: 'En ligne en 2 minutes. Pas de site. Pas d\'app à installer. Pas de compétences techniques.',
+    howSubtitle: 'En ligne en 2 minutes. Sans site. Sans app. Sans compétences techniques.',
     howSteps: [
-      { title: 'Scannez le Code QR', desc: 'Comme WhatsApp Web. Utilisez votre numéro professionnel existant. Pas besoin de nouveau numéro.', icon: '📱' },
-      { title: 'Parlez de Votre Entreprise à Caty', desc: 'Services, prix, horaires, emplacement. Voix ou texte — prend 5 minutes.', icon: '💬' },
-      { title: 'Vous Êtes En Ligne!', desc: 'Caty répond aux clients 24/7. Prend des rendez-vous. Envoie des devis. Vous vous concentrez sur votre travail.', icon: '🚀' }
+      { title: 'Scannez le Code QR', desc: 'Comme WhatsApp Web. Utilise votre numéro professionnel existant. Pas besoin de nouveau numéro.', num: '1' },
+      { title: 'Parlez à Caty de Votre Business', desc: 'Services, prix, horaires, localisation. Vocal ou texte — prend 5 minutes.', num: '2' },
+      { title: "Vous Êtes En Ligne!", desc: 'Caty répond aux clients 24/7. Prend des rendez-vous. Envoie des devis. Vous vous concentrez sur votre travail.', num: '3' }
     ],
-
-    benefitsTitle: 'Tout Ce Dont Vous Avez Besoin.',
-    benefitsHighlight: 'Rien de Plus.',
-    benefits: [
-      { icon: '💬', title: 'Réponse Instantanée', desc: 'Les clients vous écrivent sur WhatsApp, Caty répond instantanément.', highlight: '24/7' },
-      { icon: '📅', title: 'Rendez-vous Automatiques', desc: 'Caty prend les rendez-vous directement dans votre calendrier.', highlight: 'Google Calendar' },
-      { icon: '📄', title: 'Devis en Secondes', desc: 'Le client demande un prix? Caty génère un PDF professionnel.', highlight: 'PDF' },
-      { icon: '🛡️', title: 'Protection Anti-Fraude', desc: 'FraudAI Shield bloque le phishing et les messages suspects.', highlight: 'Protégé' },
-      { icon: '🌍', title: 'Multi-Langue', desc: 'Caty parle français, anglais, espagnol, portugais, roumain et arabe.', highlight: '6 Langues' },
-      { icon: '📊', title: 'Statistiques', desc: 'Voyez ce que les clients demandent le plus et les heures de pointe.', highlight: 'Analytics' }
-    ],
-
-    useCasesTitle: 'Parfait Pour',
-    useCasesSubtitle: 'Petites entreprises et freelances qui n\'ont pas besoin de site — juste de clients.',
+    useCasesTitle: 'Construit Pour Votre Business',
+    useCasesSubtitle: 'Petites entreprises et freelances qui ont juste besoin de clients.',
     useCases: [
-      { icon: '💇', title: 'Coiffeurs', desc: 'Prenez des rendez-vous pendant que vous coupez. Ne perdez jamais un client.' },
-      { icon: '🔧', title: 'Mécaniciens', desc: 'Recevez des demandes de réparation. Envoyez des devis.' },
-      { icon: '🔌', title: 'Électriciens', desc: 'Recevez des travaux 24/7. Planifiez les visites automatiquement.' },
-      { icon: '🦷', title: 'Dentistes', desc: 'Prenez des rendez-vous. Envoyez des rappels. Gérez les urgences.' },
-      { icon: '🏋️', title: 'Coachs Sportifs', desc: 'Planifiez des séances. Répondez aux questions fitness.' },
-      { icon: '📸', title: 'Photographes', desc: 'Planifiez des séances. Partagez vos forfaits. Confirmez les dates.' },
-      { icon: '🧹', title: 'Nettoyage', desc: 'Recevez des réservations. Envoyez des confirmations.' },
-      { icon: '🚗', title: 'Moniteurs', desc: 'Planifiez des leçons. Envoyez des rappels.' }
+      { tag: 'Cas 01 · Beauté', title: 'Coiffeurs & Esthéticiens', tagline: 'Des rendez-vous pendant que vous travaillez.', body: 'Caty répond aux nouveaux clients instantanément pendant que vous travaillez. Réserve des créneaux, vérifie les disponibilités, envoie la confirmation — tout sur WhatsApp. Ne ratez plus jamais une réservation.', note: 'Setup en 2 min · Votre numéro existant · Sans nouvelle app', customer: 'Bonjour! Avez-vous une disponibilité demain à 15h?', reply: 'Bonjour! Oui, nous avons un créneau à 15h00 demain. Quel service souhaitez-vous? ✂️', reply2: 'Réservation confirmée pour demain à 15h! Je vous enverrai un rappel le matin. 📅' },
+      { tag: 'Cas 02 · Métiers', title: 'Mécaniciens & Plombiers', tagline: 'Demandes. Devis. Confirmations.', body: 'Recevez des demandes 24/7, établissez des devis automatiques selon votre tarif, confirmez visites et enlèvements — sans interrompre votre travail sur le chantier.', note: 'Devis auto · Localisation · Sync agenda', customer: 'Ma voiture fait un bruit étrange. Pouvez-vous vérifier?', reply: 'Bien sûr! Nous pouvons prévoir une vérification demain. Quel type de voiture? 🔧', reply2: 'Rendez-vous confirmé mercredi à 10h00. Notre adresse: 42 Rue Principale. 📍' },
+      { tag: 'Cas 03 · Fitness', title: 'Coachs Sportifs', tagline: "Transformez les demandes en clients payants.", body: "Les clients potentiels posent des questions sur les prix, les forfaits, les horaires. Caty répond instantanément et les convertit avant qu'ils consultent un concurrent.", note: 'Réservation séances · Liens paiement · Rappels', customer: "Je veux commencer à m'entraîner. Quels forfaits proposez-vous?", reply: 'Super! Nous avons 3 forfaits: 4 séances/mois €120, 8 séances €200, illimité €280. 💪', reply2: "Parfait! J'ai réservé votre première séance lundi à 7h00. À bientôt! 🏋️" }
     ],
-
-    comparisonTitle: 'Site Web vs. WhatsApp + Caty',
-    comparisonItems: [
-      { feature: 'Temps setup', website: '2-4 semaines', caty: '2 minutes' },
-      { feature: 'Coût', website: '€500-5,000', caty: '€10/mois' },
-      { feature: 'Compétences techniques', website: 'Nécessaires', caty: 'Aucune' },
-      { feature: 'Réponse clients', website: 'Vous manuellement', caty: 'IA 24/7' },
-      { feature: 'Rendez-vous', website: 'Outil externe', caty: 'Inclus' },
-      { feature: 'Maintenance', website: 'Continue', caty: 'Zéro' }
-    ],
-
     testimonialsTitle: 'Ce Qu\'ils Disent',
     testimonials: [
-      { quote: 'Je me suis connecté en 2 minutes. Maintenant Caty prend mes rendez-vous pendant que je travaille.', author: 'Pierre', role: 'Mécanicien' },
-      { quote: 'Pas de site, pas de problème. Mes clients écrivent sur WhatsApp et Caty gère tout.', author: 'Marie', role: 'Coiffeuse' },
-      { quote: 'J\'étais sceptique avec l\'IA mais elle parle français parfaitement.', author: 'Jean', role: 'Plombier' }
+      { quote: "Je me suis connecté en 2 minutes. Maintenant Caty prend mes rendez-vous pendant que je travaille.", author: 'Pierre M.', role: 'Mécanicien, Paris' },
+      { quote: 'Sans site, sans problème. Mes clients écrivent sur WhatsApp et Caty gère tout.', author: 'Sophie P.', role: 'Coiffeuse, Lyon' },
+      { quote: "J'étais sceptique avec l'IA mais elle parle français parfaitement. Mes clients adorent.", author: 'Thomas T.', role: 'Plombier, Marseille' }
     ],
-
     pricingTitle: 'Prix Simple',
-    pricingSubtitle: 'Un seul plan. Tout inclus. Annulez quand vous voulez.',
-    plans: [
-      {
-        name: 'WhatsApp AI',
-        price: '€10',
-        period: '/mois',
-        desc: 'Tout ce dont vous avez besoin',
-        features: [
-          '500 conversations/mois',
-          'Réponses IA 24/7',
-          'Google Calendar sync',
-          'Devis PDF',
-          'Protection FraudAI',
-          'Support multi-langue'
-        ],
-        cta: 'Commencer Maintenant',
-        highlight: true
-      }
-    ],
-
+    pricingSubtitle: 'Un seul plan. Tout inclus.',
+    planName: 'WhatsApp AI',
+    planPrice: '€10',
+    planPeriod: '/mois',
+    planDesc: 'Tout ce dont vous avez besoin pour grandir',
+    planFeatures: ['500 conversations/mois', 'Réponses AI 24/7', 'Google Calendar sync', 'Devis PDF', 'Protection FraudAI', 'Multi-langue (6 langues)', 'Setup en 2 minutes'],
+    planCta: 'Commencer Gratuitement',
     faqTitle: 'Questions?',
     faqs: [
-      { q: 'Je n\'ai vraiment pas besoin de site?', a: 'Correct. Votre WhatsApp devient le contact de votre entreprise.' },
-      { q: 'Et si Caty ne peut pas répondre?', a: 'Caty vous envoie la conversation avec tout le contexte. Vous prenez le relais.' },
-      { q: 'Les clients sauront que c\'est une IA?', a: 'Seulement si vous le voulez. Caty peut répondre comme votre entreprise.' },
-      { q: 'Puis-je utiliser mon numéro WhatsApp?', a: 'Oui! Caty se connecte à votre WhatsApp professionnel existant.' },
-      { q: 'Quelles langues parle Caty?', a: 'Français, anglais, espagnol, portugais, roumain et arabe. Détection automatique.' },
-      { q: 'Comment j\'annule?', a: 'Annulez quand vous voulez depuis votre tableau de bord. Sans contrat.' }
+      { q: "Je n'ai vraiment pas besoin de site web?", a: "Correct. Votre WhatsApp devient le contact de votre entreprise. Les clients vous écrivent là, Caty répond." },
+      { q: "Que se passe-t-il si Caty ne peut pas répondre?", a: "Caty vous transfère la conversation avec tout le contexte. Vous prenez le relais facilement." },
+      { q: "Les clients sauront-ils que c'est une IA?", a: "Seulement si vous le souhaitez. Caty peut répondre comme votre entreprise, avec votre nom et style." },
+      { q: 'Puis-je utiliser mon numéro WhatsApp existant?', a: "Oui! Caty se connecte à votre WhatsApp professionnel existant." },
+      { q: 'Quelles langues parle Caty?', a: "Français, anglais, espagnol, portugais, roumain et arabe. Détecte automatiquement la langue." },
+      { q: 'Comment annuler?', a: "Annulez quand vous voulez depuis votre tableau de bord. Sans contrat." }
     ],
-
     ctaTitle: 'Prêt en 2 Minutes',
     ctaSubtitle: 'Scannez. Configurez. Commencez à recevoir des clients.',
     ctaButton: 'Connecter WhatsApp Maintenant',
-
-    paymentMethodsTitle: 'Méthodes de Paiement',
-    paymentMethodsSubtitle: 'Vos clients paient comme ils veulent. Vous décidez quelles méthodes accepter.',
-    paymentMethods: [
-      { icon: '💵', title: 'Espèces', desc: 'Le client paie en personne lors de la réception du service.', badge: 'GRATUIT', badgeColor: 'green' },
-      { icon: '🏦', title: 'Virement', desc: 'Caty envoie votre IBAN automatiquement. Le client paie via son app bancaire.', badge: 'GRATUIT', badgeColor: 'green' },
-      { icon: '🔄', title: 'Revolut', desc: 'Paiement instantané via lien Revolut. L\'argent arrive en secondes.', badge: 'GRATUIT', badgeColor: 'green' },
-      { icon: '💳', title: 'Carte en Ligne', desc: 'Intégration Stripe pour les paiements par carte. Checkout professionnel.', badge: '5%', badgeColor: 'gold' }
-    ],
-
     nav: { home: 'Accueil', features: 'Fonctionnalités', howItWorks: 'Comment Ça Marche', pricing: 'Tarifs', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer' },
-    footer: {
-      tagline: 'IA qui travaille pour votre entreprise.',
-      product: 'Produit',
-      company: 'Entreprise',
-      legal: 'Légal',
-      features: 'Fonctionnalités',
-      pricing: 'Tarifs',
-      whatsapp: 'WhatsApp AI',
-      about: 'À Propos',
-      blog: 'Blog',
-      contact: 'Contact',
-      privacy: 'Confidentialité',
-      terms: 'Conditions',
-      gdpr: 'RGPD',
-      copyright: '© 2024 PayAi-X FZE. Tous droits réservés.'
-    }
+    footer: { tagline: "IA qui travaille pour votre entreprise.", product: 'Produit', company: 'Entreprise', legal: 'Légal', features: 'Fonctionnalités', pricing: 'Tarifs', whatsapp: 'WhatsApp AI', about: 'À propos', blog: 'Blog', contact: 'Contact', privacy: 'Confidentialité', terms: 'CGU', gdpr: 'RGPD', copyright: '© 2025 PayAi-X FZE. Tous droits réservés.' }
   }
 }
 
-// Language selector component
+const LANGUAGES = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'ro', name: 'Română', flag: '🇷🇴' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' }
+]
+
+const css = `
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  :root {
+    --gold: #C8A165;
+    --gold-light: #D4B57A;
+    --gold-dark: #A68246;
+    --gold-dark-rgb: 166, 130, 70;
+    --navy: #010A1F;
+  }
+
+  .nw-body {
+    background-color: #010A1F;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(200,161,101,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(56,189,248,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(200,161,101,0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* NAV */
+  .nw-glass-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(1,10,31,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* BUTTONS */
+  .nw-btn-primary {
+    background: #C8A165;
+    color: #010A1F;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(200,161,101,0.25);
+    border-radius: 12px;
+    padding: 0.85rem 1.75rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; gap: 0.5rem; font-size: 1rem;
+    white-space: nowrap;
+  }
+  .nw-btn-primary:hover { background: #D4B57A; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,161,101,0.4); }
+
+  .nw-btn-secondary {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #f8fafc;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    padding: 0.85rem 1.75rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; gap: 0.5rem; font-size: 1rem;
+    white-space: nowrap;
+  }
+  .nw-btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(200,161,101,0.3); }
+
+  /* BADGE */
+  .nw-badge-glow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem; border-radius: 999px;
+    background: rgba(200,161,101,0.10);
+    border: 1px solid rgba(200,161,101,0.30);
+    box-shadow: 0 0 20px rgba(200,161,101,0.15);
+  }
+  .nw-badge-ping {
+    width: 8px; height: 8px; border-radius: 50%; background: #C8A165;
+    box-shadow: 0 0 0 0 rgba(200,161,101,0.4);
+    animation: nw-ping 2s cubic-bezier(0,0,0.2,1) infinite;
+    flex-shrink: 0;
+  }
+  @keyframes nw-ping {
+    0% { box-shadow: 0 0 0 0 rgba(200,161,101,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(200,161,101,0); }
+    100% { box-shadow: 0 0 0 0 rgba(200,161,101,0); }
+  }
+
+  /* HERO */
+  .nw-hero {
+    position: relative; min-height: 92vh;
+    display: flex; align-items: center; overflow: hidden;
+    padding-top: 5rem; padding-bottom: 3rem;
+  }
+  .nw-hero-bg-pattern {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      radial-gradient(circle at 80% 30%, rgba(166,130,70,0.20), transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(34,197,94,0.06), transparent 50%);
+  }
+  .nw-hero-bg-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(200,161,101,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,161,101,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .nw-hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .nw-hero-title-1 {
+    display: block;
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .nw-hero-title-2 {
+    display: block; position: relative; margin-top: 0.2rem;
+    background: linear-gradient(135deg, #D4B57A 0%, #C8A165 40%, #A68246 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .nw-hero-title-2::after {
+    content: ''; position: absolute; left: 0; bottom: 0.05em;
+    width: 65%; height: 1px;
+    background: linear-gradient(90deg, rgba(200,161,101,0.7), transparent);
+  }
+
+  /* QR STEPS */
+  .nw-qr-step {
+    position: relative;
+    background: rgba(10,27,61,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+    overflow: visible;
+  }
+  .nw-qr-step::after {
+    content: ''; position: absolute; inset: -2px; border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(166,130,70,0.18) 0%, rgba(166,130,70,0.08) 30%, transparent 70%);
+    filter: blur(24px); opacity: 0.5; z-index: -1;
+    pointer-events: none; transition: opacity 0.4s ease, filter 0.4s ease;
+  }
+  .nw-qr-step:hover::after { opacity: 1; filter: blur(36px); }
+  .nw-qr-step:hover { border-color: rgba(200,161,101,0.25); transform: translateY(-4px); }
+  .nw-step-number {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: linear-gradient(135deg, #C8A165, #A68246);
+    color: #010A1F;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-weight: 700; font-size: 1.75rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 24px -8px rgba(200,161,101,0.5);
+  }
+
+  /* USE CASE CARDS */
+  .nw-usecase-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(10,27,61,0.7), rgba(1,10,31,0.95));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px; padding: 2rem; overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .nw-usecase-card::after {
+    content: ''; position: absolute; inset: -2px; border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(166,130,70,0.15) 0%, transparent 70%);
+    filter: blur(28px); opacity: 0.4; z-index: -1;
+    pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .nw-usecase-card:hover { transform: translateY(-4px); border-color: rgba(200,161,101,0.3); }
+  .nw-usecase-card:hover::after { opacity: 1; }
+
+  .nw-vertical-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.8rem; border-radius: 999px;
+    background: rgba(200,161,101,0.08);
+    border: 1px solid rgba(200,161,101,0.2);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: #C8A165; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* WA MOCK */
+  .nw-wa-mock {
+    background: #0F1A2A; border-radius: 14px; padding: 0.875rem;
+    margin-top: 1.25rem; border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.83rem;
+  }
+  .nw-wa-bubble {
+    max-width: 88%; padding: 0.55rem 0.8rem;
+    border-radius: 12px; margin-bottom: 0.45rem; line-height: 1.4;
+  }
+  .nw-wa-in {
+    background: #1F2937; color: #cbd5e1;
+    border-top-left-radius: 4px; margin-right: auto;
+  }
+  .nw-wa-out {
+    background: linear-gradient(135deg, #166534, #15803d);
+    color: #f0fdf4; border-top-right-radius: 4px; margin-left: auto;
+  }
+  .nw-wa-time {
+    font-size: 0.65rem; color: #64748b;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: right; margin-top: 2px;
+  }
+
+  /* TESTIMONIALS */
+  .nw-testimonial-card {
+    position: relative;
+    background: rgba(10,27,61,0.4);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 18px; padding: 1.75rem;
+    transition: all 0.3s ease; overflow: visible;
+  }
+  .nw-testimonial-card::after {
+    content: ''; position: absolute; inset: -2px; border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(166,130,70,0.14) 0%, rgba(166,130,70,0.06) 30%, transparent 70%);
+    filter: blur(24px); opacity: 0.4; z-index: -1;
+    pointer-events: none; transition: opacity 0.4s ease, filter 0.4s ease;
+  }
+  .nw-testimonial-card:hover::after { opacity: 1; filter: blur(36px); }
+  .nw-testimonial-card:hover { border-color: rgba(200,161,101,0.2); transform: translateY(-3px); }
+
+  /* PRICING */
+  .nw-pricing-tier {
+    position: relative; max-width: 520px; margin: 0 auto;
+    background: linear-gradient(180deg, rgba(200,161,101,0.08) 0%, rgba(10,27,61,0.7) 100%);
+    border: 1px solid rgba(200,161,101,0.35);
+    border-radius: 28px; padding: 3rem 2.5rem; overflow: visible;
+    box-shadow: 0 30px 80px -20px rgba(200,161,101,0.25);
+  }
+  .nw-pricing-tier::after {
+    content: ''; position: absolute; inset: -4px; border-radius: 32px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(166,130,70,0.4) 0%, rgba(166,130,70,0.15) 30%, transparent 70%);
+    filter: blur(40px); opacity: 0.7; z-index: -1; pointer-events: none;
+  }
+  .nw-pricing-amount {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 5rem; font-weight: 700; line-height: 1;
+    background: linear-gradient(180deg, #f8fafc 0%, #C8A165 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    letter-spacing: -0.02em;
+  }
+  .nw-check-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.95rem; color: #cbd5e1;
+  }
+  .nw-check-icon {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(200,161,101,0.15);
+    border: 1px solid rgba(200,161,101,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* FAQ */
+  .nw-faq-item {
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    overflow: visible;
+  }
+  .nw-faq-item::after {
+    content: ''; position: absolute; inset: -2px; border-radius: 12px;
+    background: radial-gradient(circle at 50% 0%, rgba(166,130,70,0.10) 0%, transparent 60%);
+    filter: blur(20px); opacity: 0; z-index: -1;
+    pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .nw-faq-item:hover::after { opacity: 1; }
+  .nw-faq-item summary {
+    list-style: none; cursor: pointer; padding: 1.4rem 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    color: #f1f5f9; font-size: 1rem; font-weight: 500;
+  }
+  .nw-faq-item summary::-webkit-details-marker { display: none; }
+  .nw-faq-item[open] summary .nw-faq-icon { transform: rotate(45deg); }
+  .nw-faq-icon {
+    transition: transform 0.3s ease; flex-shrink: 0;
+    color: #C8A165; font-size: 1.25rem; font-weight: 300;
+  }
+  .nw-faq-answer { padding: 0 0 1.25rem; color: #94a3b8; line-height: 1.7; }
+
+  /* IPHONE MOCKUP */
+  .nw-iphone-frame {
+    position: relative; width: 100%; max-width: 300px; margin: 0 auto;
+    aspect-ratio: 9/19.5;
+    background: linear-gradient(145deg, #C8A165 0%, #A68246 45%, #7a5e2e 100%);
+    border-radius: 48px; padding: 12px 10px;
+    box-shadow:
+      0 50px 100px -20px rgba(0,0,0,0.7),
+      0 0 0 1.5px rgba(200,161,101,0.5),
+      0 0 0 6px #6b4f1e,
+      0 0 80px -20px rgba(166,130,70,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.18);
+    overflow: hidden;
+  }
+  .nw-iphone-notch {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 24px; background: #000; border-radius: 999px; z-index: 30;
+  }
+  .nw-iphone-screen {
+    width: 100%; height: 100%; background: #ECE5DD;
+    border-radius: 38px; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .nw-wa-status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px 4px; color: white; font-size: 11px; font-weight: 600;
+    background: #075E54;
+  }
+  .nw-wa-header {
+    display: flex; align-items: center; gap: 8px; padding: 6px 12px 8px;
+    background: #075E54; border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .nw-wa-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 13px; flex-shrink: 0;
+  }
+  .nw-wa-chat-bg {
+    flex-grow: 1; background-color: #ECE5DD;
+    padding: 10px 8px 8px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .nw-wa-day {
+    align-self: center; background: rgba(225,245,254,0.92); color: #54656F;
+    font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 6px;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  }
+  .nw-wa-row {
+    display: flex; margin: 0 3px;
+    opacity: 0; transform: translateY(6px);
+    animation: nw-msg-appear 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .nw-wa-row-in { justify-content: flex-start; }
+  .nw-wa-row-out { justify-content: flex-end; }
+  @keyframes nw-msg-appear { to { opacity: 1; transform: translateY(0); } }
+  .nw-wa-row[data-msg="1"] { animation-delay: 0.6s; }
+  .nw-wa-row[data-msg="2"] { animation-delay: 2.2s; }
+  .nw-wa-row[data-msg="3"] { animation-delay: 4.8s; }
+  .nw-wa-row[data-msg="4"] { animation-delay: 7.8s; }
+  .nw-wa-typing {
+    display: flex; justify-content: flex-end; margin: 0 3px;
+    opacity: 0;
+    animation: nw-typing-show 0.3s ease forwards, nw-typing-hide 0.3s ease forwards;
+    animation-delay: 5.8s, 7.6s;
+  }
+  @keyframes nw-typing-show { to { opacity: 1; } }
+  @keyframes nw-typing-hide { to { opacity: 0; transform: scale(0.8); } }
+  .nw-wa-bubble-iphone {
+    max-width: 82%; padding: 6px 9px 4px; border-radius: 8px;
+    font-size: 11.5px; line-height: 1.35; color: #111B21; position: relative;
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13); word-wrap: break-word;
+  }
+  .nw-wa-bubble-in-iphone { background: #FFFFFF; border-top-left-radius: 0; }
+  .nw-wa-bubble-out-iphone { background: #DCF8C6; border-top-right-radius: 0; }
+  .nw-wa-msg-time { display: block; font-size: 9px; color: #667781; text-align: right; margin-top: 1px; }
+  .nw-wa-typing-dots {
+    padding: 9px 12px; display: flex; gap: 3px; align-items: center;
+    background: #DCF8C6; border-radius: 8px; border-top-right-radius: 0;
+  }
+  .nw-typing-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(0,0,0,0.4); animation: nw-bounce 1.4s ease-in-out infinite;
+  }
+  .nw-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .nw-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes nw-bounce { 0%,60%,100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-3px); opacity: 1; } }
+  .nw-wa-input-bar {
+    background: #F0F2F5; padding: 6px 10px;
+    display: flex; align-items: center; gap: 6px;
+    border-top: 0.5px solid rgba(0,0,0,0.08); flex-shrink: 0;
+  }
+
+  /* SECTION TITLES */
+  .nw-section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.02em; line-height: 1.1;
+    background: linear-gradient(120deg, #e2e8f0 0%, #cbd5e1 35%, #C8A165 70%, #A68246 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    display: inline-block;
+  }
+
+  /* STACKING USE CASE CARDS */
+  .nw-stack-scene {
+    position: relative;
+  }
+  .nw-stack-card {
+    position: sticky;
+    top: 10vh;
+    margin-bottom: 20vh;
+  }
+  .nw-stack-card:last-child {
+    margin-bottom: 0;
+  }
+  .nw-stack-card-inner {
+    position: relative;
+    background: linear-gradient(135deg, rgba(10,27,61,0.92) 0%, rgba(1,10,31,0.98) 100%);
+    border: 1px solid rgba(200,161,101,0.18);
+    border-radius: 28px;
+    padding: 4rem 3.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow:
+      0 40px 100px -20px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.04) inset;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .nw-stack-card[data-index="1"] .nw-stack-card-inner { transform: scale(0.97); }
+  .nw-stack-card[data-index="2"] .nw-stack-card-inner { transform: scale(0.94); }
+  .nw-stack-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 2.5rem; right: 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,161,101,0.7) 30%, rgba(212,181,122,0.9) 50%, rgba(200,161,101,0.7) 70%, transparent);
+    border-radius: 1px;
+  }
+  .nw-card-tag {
+    display: inline-flex; align-items: center;
+    padding: 0.35rem 0.8rem; border-radius: 999px;
+    background: rgba(200,161,101,0.08);
+    border: 1px solid rgba(200,161,101,0.25);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: #C8A165; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
+  .nw-stack-card-inner h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    line-height: 1.05; letter-spacing: -0.02em;
+    color: #f8fafc; margin: 0 0 1.25rem;
+    max-width: 90%;
+  }
+  .nw-layer-tagline {
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-weight: 600; letter-spacing: -0.01em;
+    color: #C8A165; margin-bottom: 1rem; line-height: 1.3;
+  }
+  .nw-layer-body {
+    font-size: 1.05rem; line-height: 1.7;
+    color: #94a3b8; margin-bottom: 1.5rem; font-weight: 300;
+  }
+  .nw-layer-compliance {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.45rem 0.9rem; border-radius: 8px;
+    border: 1px solid rgba(200,161,101,0.25);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    color: #94a3b8; letter-spacing: 0.04em;
+  }
+  .nw-stack-wa-panel {
+    background: #0F1A2A; border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;
+    box-shadow: 0 20px 60px -15px rgba(0,0,0,0.5);
+  }
+  .nw-stack-wa-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+    color: #3D7A5A; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .nw-stack-card-inner {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 1.75rem;
+      gap: 2rem;
+    }
+    .nw-stack-card { top: 6vh; margin-bottom: 10vh; }
+    .nw-stack-card[data-index="1"] .nw-stack-card-inner,
+    .nw-stack-card[data-index="2"] .nw-stack-card-inner { transform: none; }
+  }
+
+  /* FOOTER */
+  .nw-footer-wordmark {
+    font-size: clamp(5rem, 20vw, 18rem); font-weight: 900;
+    letter-spacing: -0.06em; line-height: 0.85;
+    background: linear-gradient(180deg, rgba(248,250,252,0.07) 0%, rgba(200,161,101,0.15) 50%, rgba(1,10,31,0.95) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    user-select: none; white-space: nowrap;
+  }
+  .nw-footer-link { color: #94a3b8; transition: color 0.2s ease; text-decoration: none; font-size: 0.9rem; }
+  .nw-footer-link:hover { color: #D4B57A; }
+  .nw-footer-col-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.15em; color: #64748b;
+    margin-bottom: 1.25rem;
+  }
+  .nw-mono { font-family: 'JetBrains Mono', monospace; }
+  .nw-status-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #10b981;
+    box-shadow: 0 0 12px #10b981; flex-shrink: 0;
+    animation: nw-pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes nw-pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  /* LANG DROPDOWN */
+  .nw-lang-btn {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 0.75rem; border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #cbd5e1; font-size: 0.85rem; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .nw-lang-btn:hover { background: rgba(200,161,101,0.08); border-color: rgba(200,161,101,0.3); color: #C8A165; }
+  .nw-lang-dropdown {
+    position: absolute; top: 100%; right: 0; margin-top: 4px;
+    background: rgba(8,20,50,0.97); border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 10px; padding: 0.5rem; min-width: 140px; z-index: 100;
+    backdrop-filter: blur(16px);
+  }
+  .nw-lang-option {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.45rem 0.7rem; border-radius: 6px;
+    cursor: pointer; font-size: 0.875rem; color: #cbd5e1;
+    transition: background 0.15s;
+  }
+  .nw-lang-option:hover { background: rgba(200,161,101,0.10); color: #f8fafc; }
+  .nw-lang-option.active { color: #C8A165; }
+
+  /* WA FLOATING BUTTON */
+  .nw-wa-float {
+    position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 50;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #A68246;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px -8px rgba(166,130,70,0.6);
+    transition: all 0.2s ease; text-decoration: none;
+  }
+  .nw-wa-float:hover { background: #8f6e38; transform: scale(1.08); box-shadow: 0 12px 40px -8px rgba(166,130,70,0.8); }
+
+  /* SECTION LABEL */
+  .nw-section-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: #C8A165; margin-bottom: 0.75rem; display: block;
+  }
+
+  /* DIVIDER */
+  .nw-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+
+  @media (max-width: 640px) {
+    .nw-hero { min-height: auto; padding-top: 6rem; padding-bottom: 4rem; }
+    .nw-pricing-tier { padding: 2rem 1.5rem; }
+    .nw-iphone-frame { max-width: 220px; }
+  }
+`
+
 function LanguageSelector({ lang, setLang }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const languages = [
-    { code: 'en', flag: '🇬🇧', name: 'EN' },
-    { code: 'ro', flag: '🇷🇴', name: 'RO' },
-    { code: 'es', flag: '🇪🇸', name: 'ES' },
-    { code: 'pt', flag: '🇵🇹', name: 'PT' },
-    { code: 'fr', flag: '🇫🇷', name: 'FR' }
-  ]
-  const current = languages.find(l => l.code === lang) || languages[0]
+  const [open, setOpen] = useState(false)
+  const current = LANGUAGES.find(l => l.code === lang) || LANGUAGES[0]
 
   return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 px-2 py-1 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm"
-      >
+    <div style={{ position: 'relative' }}>
+      <button className="nw-lang-btn" onClick={() => setOpen(!open)}>
         <span>{current.flag}</span>
-        <span className="text-gray-300">{current.name}</span>
-        <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        <span>{current.code.toUpperCase()}</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style={{ opacity: 0.6 }}>
+          <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
         </svg>
       </button>
-      {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#0A1628] rounded-lg shadow-xl border border-[#1a2744] z-50">
-          {languages.map(l => (
-            <button
+      {open && (
+        <div className="nw-lang-dropdown">
+          {LANGUAGES.map(l => (
+            <div
               key={l.code}
-              onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setIsOpen(false) }}
-              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-[#1a2744] ${lang === l.code ? 'text-gold' : 'text-gray-300'}`}
+              className={`nw-lang-option${lang === l.code ? ' active' : ''}`}
+              onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setOpen(false) }}
             >
               <span>{l.flag}</span> {l.name}
-            </button>
+            </div>
           ))}
         </div>
       )}
@@ -762,563 +865,453 @@ function LanguageSelector({ lang, setLang }) {
 }
 
 export default function NoWebsite() {
-  const [lang, setLang] = useState('en')
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [lang, setLang] = useState('ro')
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const updateLang = () => {
-      const stored = localStorage.getItem('caty-lang')
-      if (stored && translations[stored]) {
-        setLang(stored)
-      } else {
-        const browserLang = navigator.language?.slice(0, 2)
-        if (translations[browserLang]) setLang(browserLang)
-      }
-    }
-    updateLang()
-    const interval = setInterval(updateLang, 500)
-    return () => clearInterval(interval)
+    const stored = localStorage.getItem('caty-lang')
+    if (stored && translations[stored]) { setLang(stored); return }
+    const bl = navigator.language?.slice(0, 2)
+    if (translations[bl]) setLang(bl)
   }, [])
 
-  const t = translations[lang] || translations.en
+  const t = translations[lang] || translations.ro
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="nw-body">
+      <style dangerouslySetInnerHTML={{ __html: css }} />
       <SEO
         title="QR-First | CatyAI - WhatsApp AI for Small Businesses"
-        description="Nu ai site? Nicio problemă. Lipești QR code pe vitrină, clientul scanează, Caty răspunde instant pe WhatsApp. Setup 2 minute, doar €10/lună."
+        description="Nu ai site? Nicio problemă. Conectezi WhatsApp în 2 minute, Caty răspunde instant clienților tăi. Doar €10/lună."
         url="https://catyai.io/no-website"
         service={{
           name: 'CatyAI QR-First',
-          description: 'WhatsApp AI for businesses without a website. Stick a QR code on your shop window, customers scan it, Caty responds instantly with prices, hours, and services.',
+          description: 'WhatsApp AI for businesses without a website. Connect in 2 minutes, respond to customers 24/7.',
           price: '10',
-          features: ['QR code for shop window', '24/7 AI responses', 'Appointment booking', 'Price quotes', 'No website needed', '2-minute setup']
+          features: ['24/7 AI responses', 'Appointment booking', 'PDF quotes', 'No website needed', '2-minute setup']
         }}
       />
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-[#1a2744]/50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="hover:opacity-80 transition-opacity">
-              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
+      {/* NAV */}
+      <nav className="nw-glass-nav">
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <img src="/images/caty-logo.png" alt="CatyAI" style={{ height: '36px', width: '36px' }} />
             </Link>
-
-            <div className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-gray-300 hover:text-white transition-colors">{t.nav.home}</Link>
-              <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">{t.nav.features}</a>
-              <a href="#how" className="text-gray-300 hover:text-white transition-colors">{t.nav.howItWorks}</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">{t.nav.pricing}</a>
-              <a href="#faq" className="text-gray-300 hover:text-white transition-colors">{t.nav.faq}</a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="hidden md:flex">
+              <Link to="/" style={{ color: '#94a3b8', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.target.style.color = '#f8fafc'} onMouseLeave={e => e.target.style.color = '#94a3b8'}>
+                {t.nav.home}
+              </Link>
+              {['#how', '#use-cases', '#pricing', '#faq'].map((href, i) => (
+                <a key={href} href={href} style={{ color: '#94a3b8', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.target.style.color = '#f8fafc'} onMouseLeave={e => e.target.style.color = '#94a3b8'}>
+                  {[t.nav.howItWorks, t.nav.features, t.nav.pricing, t.nav.faq][i]}
+                </a>
+              ))}
             </div>
-
-            <div className="hidden md:flex items-center gap-4">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <LanguageSelector lang={lang} setLang={setLang} />
-              <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white transition-colors">{t.nav.login}</a>
-              <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
-            </div>
-
-            <div className="flex md:hidden items-center gap-2">
-              <LanguageSelector lang={lang} setLang={setLang} />
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-gray-400 hover:text-white">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {mobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+              <a href="https://app.catyai.io/login" style={{ color: '#94a3b8', textDecoration: 'none', fontSize: '0.875rem', display: 'none' }}
+                className="hidden md:block">{t.nav.login}</a>
+              <a href="https://app.catyai.io/signup" className="nw-btn-primary" style={{ padding: '0.55rem 1.1rem', fontSize: '0.875rem', borderRadius: '10px' }}>
+                {t.nav.getStarted}
+              </a>
+              <button onClick={() => setMobileOpen(!mobileOpen)}
+                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: '0.25rem', display: 'none' }}
+                className="md:hidden">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileOpen
+                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
                 </svg>
               </button>
             </div>
           </div>
-
-          {/* Mobile menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-[#1a2744]/50">
-              <div className="flex flex-col gap-4">
-                <Link to="/" className="text-gray-300 hover:text-white">{t.nav.home}</Link>
-                <a href="#benefits" className="text-gray-300 hover:text-white">{t.nav.features}</a>
-                <a href="#how" className="text-gray-300 hover:text-white">{t.nav.howItWorks}</a>
-                <a href="#pricing" className="text-gray-300 hover:text-white">{t.nav.pricing}</a>
-                <a href="#faq" className="text-gray-300 hover:text-white">{t.nav.faq}</a>
-                <a href="https://app.catyai.io/signup" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-semibold rounded-xl text-center">{t.nav.getStarted}</a>
-              </div>
+          {mobileOpen && (
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '1rem 0', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <Link to="/" style={{ color: '#94a3b8', textDecoration: 'none' }}>{t.nav.home}</Link>
+              <a href="#how" style={{ color: '#94a3b8', textDecoration: 'none' }}>{t.nav.howItWorks}</a>
+              <a href="#use-cases" style={{ color: '#94a3b8', textDecoration: 'none' }}>{t.nav.features}</a>
+              <a href="#pricing" style={{ color: '#94a3b8', textDecoration: 'none' }}>{t.nav.pricing}</a>
+              <a href="#faq" style={{ color: '#94a3b8', textDecoration: 'none' }}>{t.nav.faq}</a>
+              <a href="https://app.catyai.io/signup" className="nw-btn-primary" style={{ textAlign: 'center' }}>{t.nav.getStarted}</a>
             </div>
           )}
-        </nav>
-      </header>
-
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 via-green-950/20 to-gray-900 relative overflow-hidden">
-        {/* WhatsApp pattern background */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2325D366' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
         </div>
+      </nav>
 
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Content */}
+      {/* HERO */}
+      <section className="nw-hero">
+        <div className="nw-hero-bg-pattern" />
+        <div className="nw-hero-bg-grid" />
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            {/* Left */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
-                <svg className="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+              <div className="nw-badge-glow" style={{ marginBottom: '1.75rem' }}>
+                <span className="nw-badge-ping" />
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: '#C8A165' }}>
+                  {t.badge}
+                </span>
               </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                {t.heroTitle1}<br />
-                <span className="text-gold">{t.heroTitle2}</span>
+              <h1 className="nw-hero-title">
+                <span className="nw-hero-title-1">{t.heroTitle1}</span>
+                <span className="nw-hero-title-2">{t.heroTitle2}</span>
               </h1>
-
-              <p className="text-gray-400 text-xl mb-8 leading-relaxed">
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#94a3b8', fontWeight: 300, maxWidth: '520px', marginTop: '1.5rem', marginBottom: '2rem' }}>
                 {t.heroSubtitle}
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold text-lg rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.875rem', marginBottom: '2rem' }}>
+                <a href="https://app.catyai.io/signup" className="nw-btn-primary">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                   {t.heroCta}
                 </a>
-                <a href="#how" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0A1628]/50 text-white font-semibold text-lg rounded-2xl border border-[#1a2744] hover:bg-[#1a2744]/50 transition-all">
-                  {t.heroCtaSecondary}
-                </a>
+                <a href="#how" className="nw-btn-secondary">{t.heroCtaSecondary}</a>
               </div>
-
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-4">
-                {[t.trustBadge1, t.trustBadge2, t.trustBadge3].map((badge, i) => (
-                  <div key={i} className="flex items-center gap-2 text-gray-400 text-sm">
-                    <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                {[t.trustBadge1, t.trustBadge2, t.trustBadge3].map((b, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: '#64748b' }}>
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="#C8A165">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    {badge}
+                    {b}
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Right - Realistic iPhone mockup with proper aspect ratio */}
-            <div className="relative mx-auto" style={{ width: '280px', height: '570px' }}>
-              {/* iPhone Frame - proper 19.5:9 aspect ratio */}
-              <div className="relative w-full h-full bg-[#1C1C1E] rounded-[45px] p-[10px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] border-[2px] border-[#3A3A3C]">
-                {/* Side buttons */}
-                <div className="absolute -left-[3px] top-[80px] w-[3px] h-[28px] bg-[#3A3A3C] rounded-l-sm"></div>
-                <div className="absolute -left-[3px] top-[120px] w-[3px] h-[50px] bg-[#3A3A3C] rounded-l-sm"></div>
-                <div className="absolute -left-[3px] top-[180px] w-[3px] h-[50px] bg-[#3A3A3C] rounded-l-sm"></div>
-                <div className="absolute -right-[3px] top-[130px] w-[3px] h-[70px] bg-[#3A3A3C] rounded-r-sm"></div>
-
-                {/* Screen container */}
-                <div className="w-full h-full bg-black rounded-[35px] overflow-hidden relative flex flex-col">
-                  {/* Dynamic Island */}
-                  <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[90px] h-[28px] bg-black rounded-full z-50"></div>
-
-                  {/* Status bar */}
-                  <div className="bg-[#075E54] px-5 pt-[42px] pb-1 flex justify-between items-center text-white text-[11px] font-semibold shrink-0">
-                    <span className="font-bold">9:41</span>
-                    <div className="flex items-center gap-[3px]">
-                      <svg className="w-[14px] h-[14px]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
-                      </svg>
-                      <svg className="w-[14px] h-[14px]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M2 22h20V2z" opacity="0.3"/><path d="M2 22h20V2zm2-2V8.83l16 9.53V20z"/>
-                      </svg>
-                      <div className="flex items-center ml-[2px]">
-                        <div className="w-[22px] h-[10px] border-[1.5px] border-white rounded-[3px] relative">
-                          <div className="absolute inset-[1.5px] right-[3px] bg-white rounded-[1px]"></div>
-                        </div>
-                        <div className="w-[1.5px] h-[4px] bg-white rounded-r-sm ml-[1px]"></div>
+            {/* Right — iPhone mockup */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <div className="nw-iphone-frame">
+                <div className="nw-iphone-notch" />
+                <div className="nw-iphone-screen">
+                  <div className="nw-wa-status-bar">
+                    <span style={{ fontFamily: '-apple-system, sans-serif', fontWeight: 700 }}>9:41</span>
+                    <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                      <svg width="13" height="13" fill="white" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                      <div style={{ width: '22px', height: '10px', border: '1.5px solid white', borderRadius: '3px', position: 'relative' }}>
+                        <div style={{ position: 'absolute', inset: '1.5px', right: '3px', background: 'white', borderRadius: '1px' }} />
                       </div>
                     </div>
                   </div>
-
-                  {/* WhatsApp header */}
-                  <div className="bg-[#075E54] px-2 py-[6px] flex items-center gap-[6px] shrink-0">
-                    <svg className="w-5 h-5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="nw-wa-header">
+                    <svg width="18" height="18" fill="none" stroke="white" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                     </svg>
-                    <div className="w-[36px] h-[36px] rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
-                      S
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-white font-semibold text-[13px] truncate">Salon Beauty</div>
-                      <div className="text-[#8EDEB8] text-[10px] flex items-center gap-1">
-                        <span className="w-[6px] h-[6px] bg-green-400 rounded-full animate-pulse"></span>
+                    <div className="nw-wa-avatar">S</div>
+                    <div style={{ flexGrow: 1 }}>
+                      <div style={{ color: 'white', fontWeight: 600, fontSize: '12px' }}>Salon Beauty</div>
+                      <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <span style={{ width: '6px', height: '6px', background: '#25D366', borderRadius: '50%', display: 'inline-block' }} />
                         CatyAI Online
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 shrink-0">
-                      <svg className="w-[18px] h-[18px] text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-                      </svg>
-                      <svg className="w-[18px] h-[18px] text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                      </svg>
-                    </div>
                   </div>
-
-                  {/* Chat area - fills remaining space */}
-                  <div className="flex-1 bg-[#ECE5DD] relative overflow-hidden" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23c7c7c7\' fill-opacity=\'0.12\'%3E%3Cpath d=\'M20 20h-2v2h2v2h2v-2h2v-2h-2v-2h-2v2zM0 20h2v-2H0v2zm0 0h2v2H0v-2z\'/%3E%3C/g%3E%3C/svg%3E")' }}>
-                    <div className="p-2 space-y-[6px] pb-[50px]">
-                      {/* Today pill */}
-                      <div className="flex justify-center mb-2">
-                        <div className="bg-[#E1F3FB] text-[#5B7083] px-2 py-[2px] rounded text-[9px] shadow-sm">
-                          TODAY
-                        </div>
-                      </div>
-
-                      {/* Customer message */}
-                      <div className="flex justify-start">
-                        <div className="bg-white rounded-lg rounded-tl-none px-2 py-[5px] max-w-[78%] shadow-sm">
-                          <p className="text-[#303030] text-[12px] leading-[15px]">Bună! Aveți loc mâine pentru tunsoare?</p>
-                          <p className="text-[#8696A0] text-[9px] text-right mt-[2px]">10:23</p>
-                        </div>
-                      </div>
-
-                      {/* AI response */}
-                      <div className="flex justify-end">
-                        <div className="bg-[#D9FDD3] rounded-lg rounded-tr-none px-2 py-[5px] max-w-[78%] shadow-sm">
-                          <p className="text-[#303030] text-[12px] leading-[15px]">Bună! 👋 Da, avem:</p>
-                          <p className="text-[#303030] text-[12px] leading-[15px]">• 10:00 ✅</p>
-                          <p className="text-[#303030] text-[12px] leading-[15px]">• 14:00 ✅</p>
-                          <p className="text-[#303030] text-[12px] leading-[15px]">• 16:30 ✅</p>
-                          <p className="text-[#8696A0] text-[9px] text-right mt-[2px] flex items-center justify-end gap-[2px]">
-                            10:23
-                            <svg className="w-3 h-3 text-[#53BDEB]" viewBox="0 0 16 15" fill="currentColor"><path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.88a.32.32 0 0 1-.484.032l-.358-.325a.32.32 0 0 0-.484.032l-.378.48a.418.418 0 0 0 .036.54l1.32 1.266a.32.32 0 0 0 .484-.034l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.88a.32.32 0 0 1-.484.032L1.892 7.77a.366.366 0 0 0-.516.005l-.423.433a.364.364 0 0 0 .006.514l3.255 3.185a.32.32 0 0 0 .484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"/></svg>
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Customer reply */}
-                      <div className="flex justify-start">
-                        <div className="bg-white rounded-lg rounded-tl-none px-2 py-[5px] max-w-[78%] shadow-sm">
-                          <p className="text-[#303030] text-[12px] leading-[15px]">14:00 vă rog 🙏</p>
-                          <p className="text-[#8696A0] text-[9px] text-right mt-[2px]">10:24</p>
-                        </div>
-                      </div>
-
-                      {/* AI confirmation with card */}
-                      <div className="flex justify-end">
-                        <div className="bg-[#D9FDD3] rounded-lg rounded-tr-none px-2 py-[5px] max-w-[78%] shadow-sm">
-                          <p className="text-[#303030] text-[12px] leading-[15px]">Perfect! ✨ Confirmat:</p>
-                          <div className="bg-[#C8E6C9] rounded px-2 py-1 mt-1 border border-[#A5D6A7]">
-                            <p className="text-[#2E7D32] text-[10px] font-medium">📅 Mâine, 14:00</p>
-                            <p className="text-[#2E7D32] text-[10px]">✂️ Tunsoare</p>
-                          </div>
-                          <p className="text-[#303030] text-[12px] leading-[15px] mt-1">Reminder cu 1h înainte! 💈</p>
-                          <p className="text-[#8696A0] text-[9px] text-right mt-[2px] flex items-center justify-end gap-[2px]">
-                            10:24
-                            <svg className="w-3 h-3 text-[#53BDEB]" viewBox="0 0 16 15" fill="currentColor"><path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.88a.32.32 0 0 1-.484.032l-.358-.325a.32.32 0 0 0-.484.032l-.378.48a.418.418 0 0 0 .036.54l1.32 1.266a.32.32 0 0 0 .484-.034l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.88a.32.32 0 0 1-.484.032L1.892 7.77a.366.366 0 0 0-.516.005l-.423.433a.364.364 0 0 0 .006.514l3.255 3.185a.32.32 0 0 0 .484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"/></svg>
-                          </p>
-                        </div>
+                  <div className="nw-wa-chat-bg">
+                    <div className="nw-wa-day">Today</div>
+                    <div className="nw-wa-row nw-wa-row-in" data-msg="1">
+                      <div className="nw-wa-bubble-iphone nw-wa-bubble-in-iphone">
+                        Bună! Aveți loc mâine la 15:00?
+                        <span className="nw-wa-msg-time">14:32</span>
                       </div>
                     </div>
-
-                    {/* Input bar */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-[#F0F0F0] px-[6px] py-[5px] flex items-center gap-[5px]">
-                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                        <span className="text-[16px]">😊</span>
+                    <div className="nw-wa-row nw-wa-row-out" data-msg="2">
+                      <div className="nw-wa-bubble-iphone nw-wa-bubble-out-iphone">
+                        Bună! Da, avem loc la 15:00 ✂️ Ce serviciu doriți?
+                        <span className="nw-wa-msg-time">14:32 ✓✓</span>
                       </div>
-                      <div className="flex-1 bg-white rounded-full px-3 py-[6px]">
-                        <span className="text-[#8696A0] text-[12px]">Message</span>
+                    </div>
+                    <div className="nw-wa-row nw-wa-row-in" data-msg="3">
+                      <div className="nw-wa-bubble-iphone nw-wa-bubble-in-iphone">
+                        Tuns + vopsit, vă rog 😊
+                        <span className="nw-wa-msg-time">14:35</span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-[#00A884] flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 15c1.66 0 2.99-1.34 2.99-3L15 6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 15 6.7 12H5c0 3.42 2.72 6.23 6 6.72V22h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
-                        </svg>
+                    </div>
+                    <div className="nw-wa-typing">
+                      <div className="nw-wa-typing-dots">
+                        <div className="nw-typing-dot" />
+                        <div className="nw-typing-dot" />
+                        <div className="nw-typing-dot" />
+                      </div>
+                    </div>
+                    <div className="nw-wa-row nw-wa-row-out" data-msg="4">
+                      <div className="nw-wa-bubble-iphone nw-wa-bubble-out-iphone">
+                        Confirmat pentru mâine 15:00 📅 Îți trimit reminder dimineața!
+                        <span className="nw-wa-msg-time">14:36 ✓✓</span>
                       </div>
                     </div>
                   </div>
-
-                  {/* Home indicator */}
-                  <div className="bg-black py-2 shrink-0">
-                    <div className="mx-auto w-[100px] h-[4px] bg-white/40 rounded-full"></div>
+                  <div className="nw-wa-input-bar">
+                    <div style={{ flexGrow: 1, background: 'white', borderRadius: '18px', padding: '6px 12px', fontSize: '11px', color: '#aaa' }}>
+                      Message
+                    </div>
+                    <div style={{ width: '30px', height: '30px', background: '#25D366', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute -top-2 -right-2 bg-gradient-to-r from-gold to-[#D4B57A] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-bounce z-10">
-                24/7 Active!
-              </div>
-
-              {/* Bottom badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#010A1F] border border-[#1a2744] text-gray-300 px-3 py-1 rounded-full text-[10px] font-medium shadow-lg flex items-center gap-1 z-10 whitespace-nowrap">
-                <span className="w-[6px] h-[6px] bg-green-500 rounded-full animate-pulse"></span>
-                Powered by CatyAI
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {t.problemTitle} <span className="text-gold">{t.problemHighlight}</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 mt-12 mb-12">
-            {t.problemStats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-gray-400">{stat.label}</div>
-              </div>
-            ))}
+      {/* HOW IT WORKS */}
+      <section id="how" style={{ padding: '5rem 1.5rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span className="nw-section-label">{t.howTitle}</span>
+            <h2 className="nw-section-title" style={{ marginBottom: '1rem' }}>
+              {t.howTitle}
+            </h2>
+            <p style={{ color: '#64748b', fontSize: '1.05rem', maxWidth: '520px', margin: '0 auto' }}>{t.howSubtitle}</p>
           </div>
-          <p className="text-xl text-gold font-semibold">{t.problemSolution}</p>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.howTitle}</h2>
-            <p className="text-gray-400 text-lg">{t.howSubtitle}</p>
-          </div>
-          <div className="space-y-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
             {t.howSteps.map((step, i) => (
-              <div key={i} className="flex items-start gap-6 p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
-                <div className="w-16 h-16 rounded-2xl bg-gold/20 border border-gold/30 flex items-center justify-center text-3xl flex-shrink-0">
-                  {step.icon}
-                </div>
+              <div key={i} className="nw-qr-step">
+                <div className="nw-step-number">{step.num}</div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.75rem', letterSpacing: '-0.01em' }}>{step.title}</h3>
+                <p style={{ color: '#64748b', fontSize: '0.925rem', lineHeight: 1.65 }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <hr className="nw-divider" />
+
+      {/* USE CASES */}
+      <section id="use-cases" style={{ padding: '5rem 1.5rem 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <span className="nw-section-label">{t.useCasesTitle}</span>
+            <h2 className="nw-section-title" style={{ marginBottom: '1rem' }}>
+              {t.useCasesTitle}
+            </h2>
+            <p style={{ color: '#64748b', fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto' }}>{t.useCasesSubtitle}</p>
+          </div>
+        </div>
+        <div className="nw-stack-scene" style={{ padding: '0 1.5rem 8rem' }}>
+          {t.useCases.map((uc, i) => (
+            <div key={i} className="nw-stack-card" data-index={i}>
+              <div className="nw-stack-card-inner">
+                {/* Left: text */}
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="w-8 h-8 rounded-full bg-gold text-navy font-bold flex items-center justify-center text-sm">{i + 1}</span>
-                    <h3 className="text-xl font-semibold text-white">{step.title}</h3>
+                  <div className="nw-card-tag">{uc.tag}</div>
+                  <h3>{uc.title}</h3>
+                  <p className="nw-layer-tagline">{uc.tagline}</p>
+                  <p className="nw-layer-body">{uc.body}</p>
+                  <div className="nw-layer-compliance">
+                    <svg width="12" height="12" viewBox="0 0 20 20" fill="#C8A165">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    {uc.note}
                   </div>
-                  <p className="text-gray-400">{step.desc}</p>
+                </div>
+                {/* Right: WhatsApp preview */}
+                <div className="nw-stack-wa-panel">
+                  <div className="nw-stack-wa-label">WhatsApp · CatyAI</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex' }}>
+                      <div className="nw-wa-bubble nw-wa-in" style={{ fontSize: '0.9rem' }}>{uc.customer}</div>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <div className="nw-wa-bubble nw-wa-out" style={{ fontSize: '0.9rem' }}>{uc.reply}</div>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <div className="nw-wa-bubble nw-wa-out" style={{ fontSize: '0.9rem' }}>{uc.reply2}</div>
+                    </div>
+                    <div className="nw-wa-time">CatyAI · just now</div>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Payment Methods */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.paymentMethodsTitle}</h2>
-            <p className="text-gray-400 text-lg">{t.paymentMethodsSubtitle}</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.paymentMethods.map((method, i) => (
-              <div key={i} className="p-6 bg-[#0A1628]/50 rounded-2xl border border-[#1a2744]/50 text-center relative overflow-hidden">
-                {/* Badge */}
-                <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold ${
-                  method.badgeColor === 'green'
-                    ? 'bg-gold/20 text-gold border border-gold/30'
-                    : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                }`}>
-                  {method.badge}
-                </div>
-                <div className="text-5xl mb-4 mt-2">{method.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-2">{method.title}</h3>
-                <p className="text-gray-400 text-sm">{method.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <hr className="nw-divider" />
 
-      {/* Benefits */}
-      <section id="benefits" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.benefitsTitle} <span className="text-gold">{t.benefitsHighlight}</span>
+      {/* TESTIMONIALS */}
+      <section style={{ padding: '5rem 1.5rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <h2 className="nw-section-title">
+              {t.testimonialsTitle}
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.benefits.map((benefit, i) => (
-              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 hover:border-gold/30 transition-colors">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-semibold text-white">{benefit.title}</h3>
-                  <span className="px-2 py-0.5 bg-gold/20 text-gold text-xs rounded-full">{benefit.highlight}</span>
-                </div>
-                <p className="text-gray-400 text-sm">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.useCasesTitle}</h2>
-            <p className="text-gray-400">{t.useCasesSubtitle}</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {t.useCases.map((useCase, i) => (
-              <div key={i} className="p-4 bg-[#0A1628]/30 rounded-xl border border-[#1a2744]/50 text-center hover:border-gold/30 transition-colors">
-                <div className="text-3xl mb-2">{useCase.icon}</div>
-                <h3 className="text-white font-semibold mb-1">{useCase.title}</h3>
-                <p className="text-gray-400 text-sm">{useCase.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.comparisonTitle}</h2>
-          <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-hidden">
-            <div className="grid grid-cols-3 bg-[#0A1628]/50 p-4">
-              <div className="text-gray-400 font-medium"></div>
-              <div className="text-center text-gray-400 font-medium">Website</div>
-              <div className="text-center text-gold font-bold">WhatsApp + Caty</div>
-            </div>
-            {t.comparisonItems.map((item, i) => (
-              <div key={i} className="grid grid-cols-3 p-4 border-t border-[#1a2744]/50">
-                <div className="text-gray-300">{item.feature}</div>
-                <div className="text-center text-gray-400">{item.website}</div>
-                <div className="text-center text-gold font-semibold">{item.caty}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.testimonialsTitle}</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {t.testimonials.map((testimonial, i) => (
-              <div key={i} className="p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
-                <p className="text-gray-300 italic mb-4">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold">
-                    {testimonial.author[0]}
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold">{testimonial.author}</div>
-                    <div className="text-gray-400 text-sm">{testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-950">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.pricingTitle}</h2>
-            <p className="text-gray-400">{t.pricingSubtitle}</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {t.plans.map((plan, i) => (
-              <div key={i} className={`p-6 rounded-2xl border ${plan.highlight ? 'bg-gradient-to-b from-gold/10 to-transparent border-gold/30' : 'bg-[#0A1628]/30 border-[#1a2744]/50'}`}>
-                {plan.highlight && <div className="text-gold text-sm font-semibold mb-4">MOST POPULAR</div>}
-                <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-4">{plan.desc}</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-white">{plan.price}</span>
-                  <span className="text-gray-400">{plan.period}</span>
-                </div>
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-center gap-2 text-gray-300 text-sm">
-                      <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      {feature}
-                    </li>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            {t.testimonials.map((tm, i) => (
+              <div key={i} className="nw-testimonial-card">
+                <div style={{ display: 'flex', gap: '2px', marginBottom: '1rem' }}>
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} width="14" height="14" viewBox="0 0 20 20" fill="#C8A165">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                   ))}
-                </ul>
-                <a href="https://app.catyai.io/signup" className={`block w-full py-3 rounded-xl font-semibold text-center transition-opacity ${plan.highlight ? 'bg-gradient-to-r from-gold to-[#D4B57A] text-white hover:opacity-90' : 'bg-gray-700 text-white hover:bg-gray-600'}`}>
-                  {plan.cta}
-                </a>
+                </div>
+                <p style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: 1.65, marginBottom: '1.25rem', fontStyle: 'italic' }}>
+                  &ldquo;{tm.quote}&rdquo;
+                </p>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: '1rem' }}>
+                  <div style={{ fontWeight: 600, color: '#f8fafc', fontSize: '0.9rem' }}>{tm.author}</div>
+                  <div style={{ color: '#64748b', fontSize: '0.8rem', marginTop: '2px', fontFamily: "'JetBrains Mono', monospace" }}>{tm.role}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      <hr className="nw-divider" />
+
+      {/* PRICING */}
+      <section id="pricing" style={{ padding: '5rem 1.5rem' }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+          <span className="nw-section-label">{t.pricingTitle}</span>
+          <h2 className="nw-section-title" style={{ marginBottom: '0.75rem' }}>
+            {t.pricingTitle}
+          </h2>
+          <p style={{ color: '#64748b', marginBottom: '3rem' }}>{t.pricingSubtitle}</p>
+          <div className="nw-pricing-tier">
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.18em', color: '#C8A165', marginBottom: '1.25rem' }}>
+              {t.planName}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', justifyContent: 'center', marginBottom: '0.5rem' }}>
+              <span className="nw-pricing-amount">{t.planPrice}</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: '#64748b', fontSize: '1rem' }}>{t.planPeriod}</span>
+            </div>
+            <p style={{ color: '#94a3b8', marginBottom: '2rem', fontSize: '0.95rem' }}>{t.planDesc}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem', marginBottom: '2rem', textAlign: 'left' }}>
+              {t.planFeatures.map((f, i) => (
+                <div key={i} className="nw-check-item">
+                  <div className="nw-check-icon">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6l3 3 5-5" stroke="#C8A165" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  {f}
+                </div>
+              ))}
+            </div>
+            <a href="https://app.catyai.io/signup" className="nw-btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', borderRadius: '14px', padding: '1rem' }}>
+              {t.planCta}
+            </a>
+            <p style={{ color: '#475569', fontSize: '0.8rem', marginTop: '1rem', fontFamily: "'JetBrains Mono', monospace" }}>
+              No credit card required · Cancel anytime
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr className="nw-divider" />
 
       {/* FAQ */}
-      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
-          <div className="space-y-4">
+      <section id="faq" style={{ padding: '5rem 1.5rem' }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 400, color: '#f8fafc', letterSpacing: '-0.02em' }}>
+              {t.faqTitle}
+            </h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             {t.faqs.map((faq, i) => (
-              <details key={i} className="group p-6 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50">
-                <summary className="flex items-center justify-between cursor-pointer text-white font-semibold list-none">
-                  {faq.q}
-                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+              <details key={i} className="nw-faq-item">
+                <summary>
+                  <span>{faq.q}</span>
+                  <span className="nw-faq-icon">+</span>
                 </summary>
-                <p className="mt-4 text-gray-400">{faq.a}</p>
+                <div className="nw-faq-answer">{faq.a}</div>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-green-950/30 to-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.ctaTitle}</h2>
-          <p className="text-gray-400 text-lg mb-8">{t.ctaSubtitle}</p>
-          <a href="https://qr.catyai.io/qr-first/dashboard" className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold to-[#D4B57A] text-white font-bold text-xl rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]">
-            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            {t.ctaButton}
-          </a>
+      {/* CTA */}
+      <section style={{ padding: '5rem 1.5rem' }}>
+        <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ background: 'linear-gradient(180deg, rgba(200,161,101,0.10) 0%, rgba(10,27,61,0.6) 100%)', border: '1px solid rgba(200,161,101,0.25)', borderRadius: '28px', padding: '3.5rem 2.5rem', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(200,161,101,0.12) 0%, transparent 60%)', pointerEvents: 'none' }} />
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 400, color: '#f8fafc', letterSpacing: '-0.02em', marginBottom: '0.75rem', position: 'relative' }}>
+              {t.ctaTitle}
+            </h2>
+            <p style={{ color: '#94a3b8', marginBottom: '2rem', fontSize: '1.05rem', position: 'relative' }}>{t.ctaSubtitle}</p>
+            <a href="https://app.catyai.io/signup" className="nw-btn-primary" style={{ fontSize: '1.05rem', padding: '1rem 2rem', borderRadius: '14px', position: 'relative' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              {t.ctaButton}
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-950 border-t border-[#1a2744]/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="inline-block mb-4">
-                <img src="/images/caty-logo.png" alt="CatyAI" className="h-8" width="32" height="32" />
-              </Link>
-              <p className="text-gray-400 text-sm">{t.footer.tagline}</p>
+      {/* FOOTER */}
+      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '4rem 1.5rem 2rem' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+            <div>
+              <img src="/images/caty-logo.png" alt="CatyAI" style={{ height: '36px', width: '36px', marginBottom: '1rem' }} />
+              <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.6, maxWidth: '220px', marginBottom: '1.5rem' }}>{t.footer.tagline}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div className="nw-status-dot" />
+                <span className="nw-mono" style={{ fontSize: '0.7rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em' }}>All systems operational</span>
+              </div>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.product}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/#features" className="hover:text-white">{t.footer.features}</Link></li>
-                <li><Link to="/#pricing" className="hover:text-white">{t.footer.pricing}</Link></li>
-                <li><Link to="/whatsapp" className="hover:text-white">{t.footer.whatsapp}</Link></li>
-              </ul>
+              <div className="nw-footer-col-title">{t.footer.product}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <a href="#" className="nw-footer-link">{t.footer.features}</a>
+                <a href="#pricing" className="nw-footer-link">{t.footer.pricing}</a>
+                <a href="#" className="nw-footer-link">{t.footer.whatsapp}</a>
+              </div>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.company}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/about" className="hover:text-white">{t.footer.about}</Link></li>
-                <li><Link to="/blog" className="hover:text-white">{t.footer.blog}</Link></li>
-                <li><Link to="/contact" className="hover:text-white">{t.footer.contact}</Link></li>
-              </ul>
+              <div className="nw-footer-col-title">{t.footer.company}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <a href="#" className="nw-footer-link">{t.footer.about}</a>
+                <a href="/blog" className="nw-footer-link">{t.footer.blog}</a>
+                <a href="mailto:contact@payai-x.com" className="nw-footer-link">{t.footer.contact}</a>
+              </div>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">{t.footer.legal}</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link to="/privacy" className="hover:text-white">{t.footer.privacy}</Link></li>
-                <li><Link to="/terms" className="hover:text-white">{t.footer.terms}</Link></li>
-                <li><Link to="/gdpr" className="hover:text-white">{t.footer.gdpr}</Link></li>
-              </ul>
+              <div className="nw-footer-col-title">{t.footer.legal}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <a href="/privacy" className="nw-footer-link">{t.footer.privacy}</a>
+                <a href="/terms" className="nw-footer-link">{t.footer.terms}</a>
+                <a href="/gdpr" className="nw-footer-link">{t.footer.gdpr}</a>
+              </div>
             </div>
           </div>
-          <div className="pt-8 border-t border-[#1a2744]/50 text-center text-gray-400 text-sm">
-            {t.footer.copyright}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <span style={{ color: '#475569', fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace" }}>{t.footer.copyright}</span>
+            <a href="https://www.linkedin.com/company/payai-x" target="_blank" rel="noopener noreferrer"
+              style={{ width: '36px', height: '36px', borderRadius: '9px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', transition: 'all 0.2s', textDecoration: 'none' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,161,101,0.10)'; e.currentTarget.style.color = '#C8A165' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = '#94a3b8' }}>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
           </div>
         </div>
+        <div style={{ textAlign: 'center', marginTop: '3rem', overflow: 'hidden' }}>
+          <div className="nw-footer-wordmark">Caty</div>
+        </div>
       </footer>
+
+      {/* WA FLOATING BUTTON */}
+      <a href="https://wa.me/40700000000" target="_blank" rel="noopener noreferrer" className="nw-wa-float" aria-label="WhatsApp">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
     </div>
   )
 }
