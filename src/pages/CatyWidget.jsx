@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import FooterV9 from '../components/FooterV9'
 
 const translations = {
   en: {
@@ -291,13 +292,16 @@ const translations = {
       features: 'Features',
       pricing: 'Pricing',
       whatsapp: 'WhatsApp AI',
+      dashboard: 'Dashboard',
+      docs: 'Documentation',
       about: 'About',
       blog: 'Blog',
       contact: 'Contact',
       privacy: 'Privacy',
       terms: 'Terms',
       gdpr: 'GDPR',
-      copyright: '© 2026 PayAi-X FZE. All rights reserved.'
+      licensing: 'Licensing',
+      copyright: 'PayAi-X FZE. All rights reserved.'
     }
   },
   ro: {
@@ -588,13 +592,16 @@ const translations = {
       features: 'Funcții',
       pricing: 'Prețuri',
       whatsapp: 'WhatsApp AI',
+      dashboard: 'Dashboard',
+      docs: 'Documentație',
       about: 'Despre',
       blog: 'Blog',
       contact: 'Contact',
       privacy: 'Confidențialitate',
       terms: 'Termeni',
       gdpr: 'GDPR',
-      copyright: '© 2026 PayAi-X FZE. Toate drepturile rezervate.'
+      licensing: 'Licențiere',
+      copyright: 'PayAi-X FZE. Toate drepturile rezervate.'
     }
   },
   es: {
@@ -885,13 +892,16 @@ const translations = {
       features: 'Funciones',
       pricing: 'Precios',
       whatsapp: 'WhatsApp AI',
+      dashboard: 'Dashboard',
+      docs: 'Documentación',
       about: 'Acerca de',
       blog: 'Blog',
       contact: 'Contacto',
       privacy: 'Privacidad',
       terms: 'Términos',
       gdpr: 'GDPR',
-      copyright: '© 2026 PayAi-X FZE. Todos los derechos reservados.'
+      licensing: 'Licencias',
+      copyright: 'PayAi-X FZE. Todos los derechos reservados.'
     }
   },
   pt: {
@@ -1158,13 +1168,16 @@ const translations = {
       features: 'Recursos',
       pricing: 'Preços',
       whatsapp: 'WhatsApp AI',
+      dashboard: 'Dashboard',
+      docs: 'Documentação',
       about: 'Sobre',
       blog: 'Blog',
       contact: 'Contato',
       privacy: 'Privacidade',
       terms: 'Termos',
       gdpr: 'GDPR',
-      copyright: '© 2026 PayAi-X FZE. Todos os direitos reservados.'
+      licensing: 'Licenciamento',
+      copyright: 'PayAi-X FZE. Todos os direitos reservados.'
     }
   },
   fr: {
@@ -1431,16 +1444,319 @@ const translations = {
       features: 'Fonctionnalités',
       pricing: 'Tarifs',
       whatsapp: 'WhatsApp AI',
+      dashboard: 'Dashboard',
+      docs: 'Documentation',
       about: 'À Propos',
       blog: 'Blog',
       contact: 'Contact',
       privacy: 'Confidentialité',
       terms: 'Conditions',
       gdpr: 'RGPD',
-      copyright: '© 2026 PayAi-X FZE. Tous droits réservés.'
+      licensing: 'Licences',
+      copyright: 'PayAi-X FZE. Tous droits réservés.'
     }
   }
 }
+
+const css = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.cw-page {
+  background: #010A1F;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.cw-page h1, .cw-page h2, .cw-page h3, .cw-page h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+.cw-page p, .cw-page span, .cw-page li, .cw-page a, .cw-page button, .cw-page label {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.cw-nav {
+  background: rgba(1,10,31,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(200,161,101,0.15);
+}
+
+.cw-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px; border-radius: 100px;
+  background: rgba(200,161,101,0.08);
+  border: 1px solid rgba(200,161,101,0.25);
+  margin-bottom: 1.5rem;
+}
+.cw-badge-text {
+  color: #C8A165; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cw-hero-title1 {
+  display: block;
+  background: linear-gradient(135deg, #e8e8e8 0%, #ffffff 40%, #d0d0d0 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1.05; letter-spacing: -0.02em;
+}
+.cw-hero-title2 {
+  display: block;
+  background: linear-gradient(135deg, #C8A165 0%, #D4B57A 50%, #A68246 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.cw-section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic; font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  background: linear-gradient(135deg, #ffffff 0%, #C8A165 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  display: inline-block; line-height: 1.2;
+}
+.cw-section-sub { color: #64748b; font-size: 1.05rem; max-width: 600px; margin: 1rem auto 0; }
+
+.cw-stat-card {
+  background: linear-gradient(135deg, rgba(10,27,61,0.6) 0%, rgba(1,10,31,0.8) 100%);
+  border: 1px solid rgba(200,161,101,0.15); border-radius: 20px; padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden;
+}
+.cw-stat-card::before {
+  content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,161,101,0.5), transparent);
+}
+.cw-stat-value {
+  font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700;
+  background: linear-gradient(135deg, #C8A165, #D4B57A);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-family: 'Playfair Display', serif; font-style: italic; line-height: 1;
+}
+.cw-stat-label { color: #94a3b8; margin-top: 0.75rem; font-size: 0.95rem; }
+
+.cw-code-block {
+  background: #020d20; border: 1px solid rgba(200,161,101,0.2); border-radius: 16px; padding: 1.5rem 2rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #C8A165; overflow-x: auto;
+}
+
+.cw-step { text-align: center; }
+.cw-step-icon {
+  width: 72px; height: 72px; border-radius: 18px;
+  background: rgba(200,161,101,0.08); border: 1px solid rgba(200,161,101,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.75rem; margin: 0 auto 1.25rem;
+}
+.cw-step-title { color: #C8A165; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.4rem; }
+.cw-step-desc { color: #94a3b8; font-size: 0.9rem; }
+
+.cw-compare-wrap {
+  background: rgba(10,22,40,0.3); border: 1px solid rgba(200,161,101,0.12); border-radius: 20px; overflow: hidden;
+}
+.cw-compare-header-row {
+  background: rgba(10,22,40,0.5); border-bottom: 1px solid rgba(200,161,101,0.12);
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+}
+.cw-compare-data-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid rgba(200,161,101,0.06);
+}
+.cw-compare-data-row:last-child { border-bottom: none; }
+.cw-compare-cell { padding: 14px 16px; font-size: 0.9rem; }
+
+.cw-module-card {
+  background: linear-gradient(135deg, rgba(10,27,61,0.6) 0%, rgba(1,10,31,0.9) 100%);
+  border: 1px solid rgba(200,161,101,0.12); border-radius: 20px; padding: 1.75rem;
+  position: relative; overflow: hidden; transition: border-color 0.25s, transform 0.25s;
+}
+.cw-module-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(200,161,101,0.4), transparent);
+}
+.cw-module-card:hover { border-color: rgba(200,161,101,0.3); transform: translateY(-2px); }
+.cw-module-name {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.2rem; font-weight: 700; color: #C8A165; margin-bottom: 0.5rem;
+}
+.cw-module-desc { color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.65; }
+.cw-module-tag {
+  display: inline-block; padding: 3px 10px;
+  background: rgba(200,161,101,0.06); border: 1px solid rgba(200,161,101,0.15);
+  border-radius: 100px; font-size: 0.7rem; color: #C8A165; font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== STACKING CARDS — modules section ===== */
+:root { --gold-dark-rgb: 166,130,70; }
+.cwstack-card {
+  position: sticky; top: 10vh; margin-bottom: 20vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem 1.5rem; isolation: isolate; will-change: transform;
+}
+.cwstack-card::before {
+  content: ''; position: absolute; inset: 1rem; border-radius: 28px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(var(--gold-dark-rgb),0.15) 0%, rgba(var(--gold-dark-rgb),0.05) 40%, transparent 75%);
+  filter: blur(40px); opacity: 0.6; z-index: -1; pointer-events: none;
+}
+.cwstack-inner {
+  width: 100%; max-width: 1100px; border-radius: 28px;
+  background: linear-gradient(180deg, rgba(10,27,61,0.97) 0%, rgba(1,10,31,0.99) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02) inset;
+  padding: 4rem 3.5rem; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+  transform-origin: 50% 0%; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  position: relative; overflow: hidden;
+}
+.cwstack-inner::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,161,101,0.4), transparent);
+}
+.cwstack-card[data-index="0"] .cwstack-inner { transform: scale(1); }
+.cwstack-card[data-index="1"] .cwstack-inner { transform: scale(0.97); }
+.cwstack-card[data-index="2"] .cwstack-inner { transform: scale(0.94); }
+.cwstack-card[data-index="3"] .cwstack-inner { transform: scale(0.91); }
+.cwstack-inner h3 {
+  font-size: clamp(2.5rem,5vw,4.5rem); font-weight: 700;
+  letter-spacing: -0.04em; line-height: 0.95; max-width: 50%; color: #f8fafc;
+}
+.cwstack-tagline {
+  font-size: clamp(1.1rem,1.6vw,1.5rem); color: #C8A165;
+  font-weight: 500; margin-top: 1rem; margin-bottom: 1.5rem; letter-spacing: -0.01em;
+}
+.cwstack-body { font-size: 1.05rem; color: #94a3b8; line-height: 1.65; max-width: 90%; }
+.cwstack-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.5rem; padding: 0.75rem 1rem; border-radius: 10px;
+  background: rgba(200,161,101,0.06); border: 1px solid rgba(200,161,101,0.18);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #D4B57A; line-height: 1.5;
+}
+.cwstack-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.9rem; border-radius: 999px;
+  background: rgba(200,161,101,0.08); border: 1px solid rgba(200,161,101,0.2);
+  color: #D4B57A; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+@media (max-width: 768px) {
+  .cwstack-inner { padding: 2rem; border-radius: 20px; }
+  .cwstack-card { padding: 1rem; margin-bottom: 10vh; }
+  .cwstack-inner h3 { max-width: 100%; font-size: 2.25rem; }
+  .cwstack-body { max-width: 100%; }
+}
+
+.cw-unique-card {
+  background: linear-gradient(135deg, rgba(10,27,61,0.4) 0%, rgba(1,10,31,0.7) 100%);
+  border: 1px solid rgba(200,161,101,0.1); border-radius: 20px; padding: 2rem;
+  transition: border-color 0.25s;
+}
+.cw-unique-card:hover { border-color: rgba(200,161,101,0.25); }
+.cw-unique-title { color: #C8A165; font-size: 1.05rem; font-weight: 700; margin: 0.75rem 0 0.5rem; }
+.cw-unique-desc { color: #94a3b8; font-size: 0.9rem; line-height: 1.65; }
+
+.cw-usecase-card {
+  background: linear-gradient(135deg, rgba(10,27,61,0.6) 0%, rgba(1,10,31,0.9) 100%);
+  border: 1px solid rgba(200,161,101,0.12); border-radius: 20px; padding: 2rem;
+  transition: border-color 0.25s, transform 0.2s;
+}
+.cw-usecase-card:hover { border-color: rgba(200,161,101,0.3); transform: translateY(-3px); }
+.cw-usecase-title { color: #C8A165; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.cw-usecase-desc { color: #94a3b8; font-size: 0.875rem; line-height: 1.65; }
+
+.cw-testimonial {
+  background: linear-gradient(135deg, rgba(10,27,61,0.5) 0%, rgba(1,10,31,0.8) 100%);
+  border: 1px solid rgba(200,161,101,0.12); border-radius: 20px; padding: 2rem; position: relative;
+}
+.cw-testimonial::before {
+  content: '"'; position: absolute; top: -0.75rem; left: 1.5rem;
+  font-size: 5rem; color: rgba(200,161,101,0.12);
+  font-family: 'Playfair Display', serif; font-style: italic; line-height: 1;
+}
+.cw-testimonial-quote { color: #cbd5e1; font-style: italic; margin-bottom: 1.25rem; line-height: 1.7; }
+.cw-testimonial-author { color: #C8A165; font-weight: 600; }
+.cw-testimonial-role { color: #64748b; font-size: 0.85rem; }
+
+.cw-pricing-card {
+  background: linear-gradient(135deg, rgba(10,27,61,0.6) 0%, rgba(1,10,31,0.9) 100%);
+  border: 1px solid rgba(200,161,101,0.12); border-radius: 24px; padding: 2.5rem;
+}
+.cw-pricing-card-popular {
+  background: linear-gradient(135deg, rgba(20,37,71,0.9) 0%, rgba(10,20,51,1) 100%);
+  border: 2px solid rgba(200,161,101,0.45); border-radius: 24px; padding: 2.5rem;
+  position: relative; transform: scale(1.04);
+  box-shadow: 0 20px 60px rgba(200,161,101,0.12);
+}
+.cw-pricing-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  padding: 4px 20px; border-radius: 100px;
+  background: linear-gradient(90deg, #C8A165, #D4B57A);
+  color: #010A1F; font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+}
+.cw-pricing-name { color: #C8A165; font-size: 0.7rem; letter-spacing: 0.15em; font-weight: 700; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+.cw-pricing-price { font-size: 3rem; font-weight: 700; color: #ffffff; line-height: 1; }
+.cw-pricing-period { color: #64748b; font-size: 0.9rem; }
+.cw-pricing-desc { color: #64748b; font-size: 0.85rem; margin-top: 0.4rem; }
+.cw-pricing-feature { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.875rem; }
+.cw-pricing-check { color: #C8A165; flex-shrink: 0; }
+.cw-btn-gold {
+  display: block; text-align: center; padding: 14px 24px; border-radius: 12px;
+  font-weight: 700; background: linear-gradient(90deg, #C8A165, #D4B57A);
+  color: #010A1F; transition: opacity 0.2s; text-decoration: none;
+}
+.cw-btn-gold:hover { opacity: 0.88; }
+.cw-btn-outline {
+  display: block; text-align: center; padding: 14px 24px; border-radius: 12px;
+  font-weight: 600; background: rgba(200,161,101,0.06); color: #C8A165;
+  border: 1px solid rgba(200,161,101,0.2); transition: background 0.2s; text-decoration: none;
+}
+.cw-btn-outline:hover { background: rgba(200,161,101,0.12); }
+
+.cw-faq-item {
+  background: rgba(10,22,40,0.4); border: 1px solid rgba(200,161,101,0.12); border-radius: 16px; overflow: hidden;
+}
+.cw-faq-item summary {
+  padding: 1.25rem 1.5rem; cursor: pointer; color: #e2e8f0; font-weight: 500;
+  display: flex; justify-content: space-between; align-items: center; list-style: none;
+}
+.cw-faq-item summary::-webkit-details-marker { display: none; }
+.cw-faq-item[open] > summary { color: #C8A165; }
+.cw-faq-arrow { color: #64748b; transition: transform 0.25s; display: inline-block; }
+.cw-faq-item[open] .cw-faq-arrow { transform: rotate(180deg); color: #C8A165; }
+.cw-faq-body { padding: 0 1.5rem 1.25rem; color: #94a3b8; line-height: 1.7; }
+
+.cw-cta-section {
+  background: linear-gradient(135deg, rgba(200,161,101,0.05) 0%, rgba(200,161,101,0.02) 100%);
+  border-top: 1px solid rgba(200,161,101,0.12); border-bottom: 1px solid rgba(200,161,101,0.12);
+}
+
+.cw-feature-item-gold { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; background: rgba(200,161,101,0.07); border: 1px solid rgba(200,161,101,0.18); }
+.cw-feature-item-dark { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; background: rgba(10,22,40,0.3); border: 1px solid rgba(30,50,80,0.3); }
+.cw-feature-check-gold { color: #C8A165; flex-shrink: 0; }
+.cw-feature-check-white { color: #e2e8f0; flex-shrink: 0; }
+.cw-feature-text-gold { color: #C8A165; font-size: 0.875rem; }
+.cw-feature-text-white { color: #e2e8f0; font-size: 0.875rem; }
+
+.cw-full-compare { background: rgba(10,22,40,0.3); border: 1px solid rgba(200,161,101,0.12); border-radius: 20px; overflow: hidden; overflow-x: auto; }
+.cw-full-compare table { width: 100%; border-collapse: collapse; }
+.cw-full-compare thead tr { background: rgba(10,22,40,0.5); border-bottom: 1px solid rgba(200,161,101,0.15); }
+.cw-full-compare th { padding: 14px 16px; font-size: 0.875rem; font-weight: 600; }
+.cw-full-compare td { padding: 12px 16px; font-size: 0.875rem; border-bottom: 1px solid rgba(200,161,101,0.06); }
+.cw-full-compare tbody tr:last-child td { border-bottom: none; }
+.cw-th-feat { color: #64748b; text-align: left; }
+.cw-th-caty { color: #C8A165; text-align: center; }
+.cw-th-other { color: #475569; text-align: center; }
+.cw-td-feat { color: #94a3b8; }
+.cw-td-caty { color: #C8A165; text-align: center; font-weight: 600; }
+.cw-td-other { color: #475569; text-align: center; }
+
+@media (max-width: 768px) {
+  .cw-pricing-card-popular { transform: none; }
+}
+`
 
 function LanguageSelector({ lang, setLang }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -1504,6 +1820,35 @@ export default function CatyWidget() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.cwstack-card')
+      const total = cards.length
+      cards.forEach((card, idx) => {
+        const inner = card.querySelector('.cwstack-inner')
+        if (!inner) return
+        const rect = card.getBoundingClientRect()
+        const stickyTopPx = window.innerHeight * 0.10
+        const distance = stickyTopPx - rect.top
+        const threshold = window.innerHeight * 0.5
+        const baseScale = 1 - (idx * 0.03)
+        if (distance > 0 && idx < total - 1) {
+          const progress = Math.min(distance / threshold, 1)
+          inner.style.transform = `scale(${baseScale - progress * 0.05})`
+        } else {
+          inner.style.transform = `scale(${baseScale})`
+        }
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
   const t = translations[lang] || translations.en
 
   return (
@@ -1517,9 +1862,10 @@ export default function CatyWidget() {
         lang={lang}
       />
 
-      <div className="min-h-screen bg-gray-950">
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <div className="cw-page">
         {/* Navigation */}
-        <nav className="fixed top-0 w-full z-50 bg-gray-950/90 backdrop-blur border-b border-[#1a2744]/50">
+        <nav className="cw-nav fixed top-0 w-full z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link to="/" className="flex items-center gap-2">
@@ -1535,32 +1881,32 @@ export default function CatyWidget() {
               <div className="flex items-center gap-4">
                 <LanguageSelector lang={lang} setLang={setLang} />
                 <a href="https://app.catyai.io" className="text-gray-400 hover:text-white transition-colors text-sm hidden sm:block">{t.nav.login}</a>
-                <a href="https://app.catyai.io" className="px-4 py-2 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity">{t.nav.getStarted}</a>
+                <a href="https://app.catyai.io" style={{ padding: '8px 16px', background: 'linear-gradient(90deg, #C8A165, #D4B57A)', color: '#010A1F', fontWeight: 700, borderRadius: '8px', fontSize: '0.875rem', textDecoration: 'none' }}>{t.nav.getStarted}</a>
               </div>
             </div>
           </div>
         </nav>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ minHeight: '80vh' }}>
           {/* Background Image */}
-          <div className="absolute inset-0 z-0">
+          <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <img
               src="/images/widget-hero.png"
               alt="CatyAI Background"
-              className="w-full h-full object-cover object-center"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
             />
-            <div className="absolute inset-0 bg-[#010A1F]/75"></div>
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(1,10,31,0.78)' }}></div>
           </div>
 
           <div className="max-w-6xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
-              <span className="text-gold text-sm font-semibold uppercase tracking-wider">{t.badge}</span>
+            <div className="cw-badge">
+              <span className="cw-badge-text">{t.badge}</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              {t.heroTitle1}<br />
-              <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.heroTitle2}</span>
+            <h1 style={{ marginBottom: '1.5rem' }}>
+              <span className="cw-hero-title1">{t.heroTitle1}</span>
+              <span className="cw-hero-title2">{t.heroTitle2}</span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
@@ -1568,10 +1914,10 @@ export default function CatyWidget() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
+              <a href="https://app.catyai.io" style={{ padding: '1rem 2rem', background: 'linear-gradient(90deg, #C8A165, #D4B57A)', color: '#010A1F', fontWeight: 700, borderRadius: '12px', fontSize: '1.1rem', textDecoration: 'none' }}>
                 {t.heroCta}
               </a>
-              <a href="#demo" className="px-8 py-4 bg-[#0A1628] text-white font-semibold rounded-xl text-lg hover:bg-[#1a2744] transition-colors border border-[#1a2744]">
+              <a href="#demo" style={{ padding: '1rem 2rem', background: 'rgba(10,22,40,0.6)', color: '#e2e8f0', fontWeight: 600, borderRadius: '12px', fontSize: '1.1rem', border: '1px solid rgba(200,161,101,0.2)', textDecoration: 'none' }}>
                 {t.heroCtaSecondary}
               </a>
             </div>
@@ -1585,22 +1931,22 @@ export default function CatyWidget() {
         </section>
 
         {/* Problem Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: 'rgba(1,10,31,0.5)' }}>
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t.problemTitle} <span className="text-gold">{t.problemHighlight}</span>
+            <h2 style={{ marginBottom: '1rem' }}>
+              <span className="cw-section-title">{t.problemTitle} {t.problemHighlight}</span>
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8 mt-12 mb-12">
               {t.problemStats.map((stat, i) => (
-                <div key={i} className="bg-[#0A1628]/50 rounded-2xl p-8 border border-[#1a2744]/50">
-                  <div className="text-4xl font-bold text-gold mb-2">{stat.value}</div>
-                  <div className="text-white">{stat.label}</div>
+                <div key={i} className="cw-stat-card">
+                  <div className="cw-stat-value">{stat.value}</div>
+                  <div className="cw-stat-label">{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            <p className="text-xl text-gold font-semibold">{t.problemSolution}</p>
+            <p style={{ fontSize: '1.15rem', color: '#C8A165', fontWeight: 600 }}>{t.problemSolution}</p>
           </div>
         </section>
 
@@ -1608,150 +1954,399 @@ export default function CatyWidget() {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.integrationTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.integrationSubtitle}</p>
+              <h2><span className="cw-section-title">{t.integrationTitle}</span></h2>
+              <p className="cw-section-sub">{t.integrationSubtitle}</p>
             </div>
 
-            <div className="bg-[#010A1F] rounded-2xl p-6 mb-12 border border-[#1a2744]">
-              <code className="text-gold text-sm md:text-base break-all">{t.integrationCode}</code>
+            <div className="cw-code-block mb-12">
+              <code>{t.integrationCode}</code>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {t.integrationSteps.map((step, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-4xl mb-4">{step.icon}</div>
-                  <div className="text-xl font-bold text-gold mb-2">{step.title}</div>
-                  <div className="text-white">{step.desc}</div>
+                <div key={i} className="cw-step">
+                  <div className="cw-step-icon">{step.icon}</div>
+                  <div className="cw-step-title">{step.title}</div>
+                  <div className="cw-step-desc">{step.desc}</div>
                 </div>
               ))}
             </div>
 
-            <p className="text-center text-gray-500 text-sm">{t.integrationPlatforms}</p>
+            <p className="text-center" style={{ color: '#475569', fontSize: '0.875rem' }}>{t.integrationPlatforms}</p>
           </div>
         </section>
 
         {/* Not a Chatbot Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: 'rgba(1,10,31,0.5)' }}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                {t.agentTitle} <span className="text-gold">{t.agentHighlight}</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-3xl mx-auto">{t.agentDesc}</p>
+              <h2><span className="cw-section-title">{t.agentTitle} {t.agentHighlight}</span></h2>
+              <p className="cw-section-sub">{t.agentDesc}</p>
             </div>
 
-            <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-hidden">
-              <div className="grid grid-cols-3 bg-[#0A1628]/50 border-b border-[#1a2744]/50">
-                <div className="p-4 text-gray-500 text-sm font-medium"></div>
-                <div className="p-4 text-center text-gray-400 font-medium">Chatbot Traditional</div>
-                <div className="p-4 text-center text-gold font-bold">Caty Widget</div>
+            <div className="cw-compare-wrap">
+              <div className="cw-compare-header-row">
+                <div className="cw-compare-cell" style={{ color: '#475569' }}></div>
+                <div className="cw-compare-cell" style={{ color: '#64748b', textAlign: 'center', fontWeight: 500 }}>Chatbot Traditional</div>
+                <div className="cw-compare-cell" style={{ color: '#C8A165', textAlign: 'center', fontWeight: 700 }}>Caty Widget</div>
               </div>
               {t.agentComparison.map((item, i) => (
-                <div key={i} className="grid grid-cols-3 border-b border-[#1a2744]/30">
-                  <div className="p-4 text-gray-300 text-sm">{item.chatbot}</div>
-                  <div className="p-4 text-center text-gray-500">✗</div>
-                  <div className="p-4 text-center text-gold">✓ {item.caty}</div>
+                <div key={i} className="cw-compare-data-row">
+                  <div className="cw-compare-cell" style={{ color: '#94a3b8' }}>{item.chatbot}</div>
+                  <div className="cw-compare-cell" style={{ textAlign: 'center', color: '#475569' }}>✗</div>
+                  <div className="cw-compare-cell" style={{ textAlign: 'center', color: '#C8A165' }}>✓ {item.caty}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Admin Modules Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.modulesTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.modulesSubtitle}</p>
-            </div>
+        {/* Admin Modules — Stacking Cards */}
+        <section className="mt-32">
+          <div className="max-w-4xl mx-auto px-6 text-center mb-12">
+            <span className="text-gold font-mono text-sm tracking-widest uppercase">{t.modulesTitle}</span>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mt-4 tracking-tighter leading-tight">
+              {t.modulesSubtitle.split(' ').slice(0, 2).join(' ')}<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">
+                {t.modulesSubtitle.split(' ').slice(2).join(' ')}
+              </span>.
+            </h2>
+          </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {t.modules.map((module, i) => (
-                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50 hover:border-cyan-500/30 transition-colors">
-                  <div className="text-3xl mb-4">{module.icon}</div>
-                  <h3 className="text-xl font-bold text-gold mb-2">{module.name}</h3>
-                  <p className="text-white text-sm mb-4">{module.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {module.features.map((feature, j) => (
-                      <span key={j} className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full">{feature}</span>
-                    ))}
+          {/* Card 1 — Knowledge Base */}
+          <div className="cwstack-card" data-index="0">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                  <span className="cwstack-tag">
+                    <i data-lucide="brain" className="w-3 h-3" /> {t.modules[0].name}
+                  </span>
+                  <h3>{t.modules[0].name}</h3>
+                  <p className="cwstack-tagline">{t.modules[0].features.join(' · ')}</p>
+                  <p className="cwstack-body">{t.modules[0].desc}</p>
+                  <div className="cwstack-pill">
+                    <i data-lucide="database" className="w-3.5 h-3.5" />
+                    <span>12 {lang === 'ro' ? 'domenii de training' : lang === 'es' ? 'dominios de entrenamiento' : lang === 'pt' ? 'domínios de treinamento' : lang === 'fr' ? 'domaines d\'entraînement' : 'training domains'} · GPT-4o + Claude</span>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Unique Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.uniqueTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.uniqueSubtitle}</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {t.unique.map((item, i) => (
-                <div key={i} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-6 border border-[#1a2744]/50">
-                  <div className="text-3xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-gold mb-2">{item.title}</h3>
-                  <p className="text-white">{item.desc}</p>
+                <div className="bg-black/40 rounded-xl p-6 border border-white/5 font-mono text-sm text-slate-400 leading-relaxed">
+                  <div className="text-slate-600"># knowledge-base/v1/domains</div>
+                  <div><span className="text-gold">products</span>: <span className="text-emerald-400">"catalog + pricing"</span></div>
+                  <div><span className="text-gold">services</span>: <span className="text-emerald-400">"full descriptions"</span></div>
+                  <div><span className="text-gold">faq</span>: <span className="text-emerald-400">"247 entries"</span></div>
+                  <div><span className="text-gold">policies</span>: <span className="text-emerald-400">"returns + gdpr"</span></div>
+                  <div><span className="text-gold">team</span>: <span className="text-emerald-400">"5 members"</span></div>
+                  <div><span className="text-gold">locations</span>: <span className="text-emerald-400">"3 branches"</span></div>
+                  <div className="mt-4 pt-4 border-t border-white/10 flex gap-6">
+                    <div>
+                      <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">12</div>
+                      <div className="text-xs text-slate-500">{lang === 'ro' ? 'Domenii' : 'Domains'}</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">2 min</div>
+                      <div className="text-xs text-slate-500">{lang === 'ro' ? 'Setup' : 'Setup time'}</div>
+                    </div>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </section>
 
-        {/* Complete Features List */}
-        <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.featuresTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.featuresSubtitle}</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {t.featuresList.map((feature, i) => (
-                <div key={i} className={`flex items-center gap-3 px-4 py-3 rounded-lg border ${i % 2 === 0 ? 'bg-gold/10 border-gold/20' : 'bg-[#0A1628]/30 border-[#1a2744]/30'}`}>
-                  <span className={i % 2 === 0 ? 'text-gold' : 'text-white'}>✓</span>
-                  <span className={`text-sm ${i % 2 === 0 ? 'text-gold' : 'text-white'}`}>{feature}</span>
+          {/* Card 2 — AI Conversațional */}
+          <div className="cwstack-card" data-index="1">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="md:order-2">
+                  <span className="cwstack-tag">
+                    <i data-lucide="message-circle" className="w-3 h-3" /> {t.modules[1].name}
+                  </span>
+                  <h3>{t.modules[1].name}</h3>
+                  <p className="cwstack-tagline">{t.modules[1].features.join(' · ')}</p>
+                  <p className="cwstack-body">{t.modules[1].desc}</p>
+                  <div className="cwstack-pill">
+                    <i data-lucide="sparkles" className="w-3.5 h-3.5" />
+                    <span>{lang === 'ro' ? 'Memorie context · Analiză sentiment · Multi-turn' : 'Context memory · Sentiment analysis · Multi-turn'}</span>
+                  </div>
                 </div>
-              ))}
+                <div className="md:order-1 bg-black/40 rounded-xl p-6 border border-white/5 space-y-3">
+                  <div className="text-xs font-mono text-slate-600 mb-2 uppercase tracking-widest">Live conversation</div>
+                  <div className="flex gap-2 items-start">
+                    <div className="w-7 h-7 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0 text-xs">👤</div>
+                    <div className="bg-slate-800/80 rounded-xl rounded-tl-sm px-4 py-2.5 text-sm text-slate-300 max-w-xs">
+                      {lang === 'ro' ? 'Cât costă planul Pro?' : 'How much is the Pro plan?'}
+                    </div>
+                  </div>
+                  <div className="flex gap-2 items-start justify-end">
+                    <div className="bg-gold/10 border border-gold/20 rounded-xl rounded-tr-sm px-4 py-2.5 text-sm text-gold max-w-xs">
+                      {lang === 'ro' ? 'Planul Pro e 49€/lună — include conversații nelimitate și toate integrările. Vrei să-l activezi acum?' : 'Pro plan is €49/mo — unlimited conversations + all integrations. Want to activate it now?'}
+                    </div>
+                    <div className="w-7 h-7 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 text-xs">🤖</div>
+                  </div>
+                  <div className="pt-3 border-t border-white/10 flex gap-4 text-xs font-mono">
+                    <span className="text-emerald-400">sentiment: positive</span>
+                    <span className="text-gold">intent: purchase</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
 
-        {/* Comparison Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.comparisonTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.comparisonSubtitle}</p>
-            </div>
-
-            <div className="bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-[#1a2744]/50">
-                    <th className="p-4 text-left text-gray-400 font-medium">Feature</th>
-                    <th className="p-4 text-center text-gold font-bold">CatyAI</th>
-                    <th className="p-4 text-center text-gray-400">Tidio</th>
-                    <th className="p-4 text-center text-gray-400">Intercom</th>
-                    <th className="p-4 text-center text-gray-400">Drift</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {t.comparisonItems.map((item, i) => (
-                    <tr key={i} className="border-b border-[#1a2744]/30">
-                      <td className="p-4 text-gray-300">{item.feature}</td>
-                      <td className="p-4 text-center text-gold font-semibold">{item.caty}</td>
-                      <td className="p-4 text-center text-gray-500">{item.tidio}</td>
-                      <td className="p-4 text-center text-gray-500">{item.intercom}</td>
-                      <td className="p-4 text-center text-gray-500">{item.drift}</td>
-                    </tr>
+          {/* Card 3 — Generator Documente */}
+          <div className="cwstack-card" data-index="2">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                  <span className="cwstack-tag">
+                    <i data-lucide="file-text" className="w-3 h-3" /> {t.modules[3].name}
+                  </span>
+                  <h3>{t.modules[3].name}</h3>
+                  <p className="cwstack-tagline">{t.modules[3].features.join(' · ')}</p>
+                  <p className="cwstack-body">{t.modules[3].desc}</p>
+                  <div className="cwstack-pill">
+                    <i data-lucide="zap" className="w-3.5 h-3.5" />
+                    <span>{lang === 'ro' ? 'Generat în &lt; 3s · PDF instant în chat' : 'Generated in < 3s · Instant PDF in chat'}</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { icon: 'file-text', label: 'POST /docs/offer', sub: 'Ofertă PDF', status: '201 Created' },
+                    { icon: 'receipt', label: 'POST /docs/invoice', sub: 'Factură proformă', status: '201 Created' },
+                    { icon: 'credit-card', label: 'POST /docs/payment-link', sub: 'Stripe checkout', status: '200 OK' },
+                  ].map((row, i) => (
+                    <div key={i} className="bg-black/40 rounded-xl p-4 border border-white/5 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center">
+                          <i data-lucide={row.icon} className="w-4 h-4 text-gold" />
+                        </div>
+                        <div>
+                          <div className="text-white text-sm font-medium font-mono">{row.label}</div>
+                          <div className="text-xs text-slate-500">{row.sub}</div>
+                        </div>
+                      </div>
+                      <span className="text-xs font-mono text-emerald-400">{row.status}</span>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4 — Dashboard Analitics */}
+          <div className="cwstack-card" data-index="3">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="md:order-2">
+                  <span className="cwstack-tag">
+                    <i data-lucide="bar-chart-2" className="w-3 h-3" /> {t.modules[6].name}
+                  </span>
+                  <h3>{t.modules[6].name}</h3>
+                  <p className="cwstack-tagline">{t.modules[6].features.join(' · ')}</p>
+                  <p className="cwstack-body">{t.modules[6].desc}</p>
+                  <div className="cwstack-pill">
+                    <i data-lucide="activity" className="w-3.5 h-3.5" />
+                    <span>{lang === 'ro' ? 'Date în timp real · Export CSV · Webhook' : 'Real-time data · CSV export · Webhook'}</span>
+                  </div>
+                </div>
+                <div className="md:order-1 bg-black/40 rounded-xl p-6 border border-white/5">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">Live Dashboard</span>
+                    <span className="flex items-center gap-2 text-xs text-emerald-400 font-mono">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE
+                    </span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3"><i data-lucide="trending-up" className="w-4 h-4 text-emerald-400" /><span className="text-sm text-slate-300 flex-grow">{lang === 'ro' ? 'Conversii azi' : 'Conversions today'}</span><span className="text-xs font-mono text-emerald-400">+18.4%</span></div>
+                    <div className="flex items-center gap-3"><i data-lucide="users" className="w-4 h-4 text-emerald-400" /><span className="text-sm text-slate-300 flex-grow">{lang === 'ro' ? 'Lead-uri calificate' : 'Qualified leads'}</span><span className="text-xs font-mono text-emerald-400">47</span></div>
+                    <div className="flex items-center gap-3"><i data-lucide="clock" className="w-4 h-4 text-gold" /><span className="text-sm text-slate-300 flex-grow">{lang === 'ro' ? 'Timp răspuns mediu' : 'Avg response time'}</span><span className="text-xs font-mono text-gold">1.2s</span></div>
+                    <div className="flex items-center gap-3"><i data-lucide="smile" className="w-4 h-4 text-gold" /><span className="text-sm text-slate-300 flex-grow">CSAT Score</span><span className="text-xs font-mono text-gold">4.9/5</span></div>
+                    <div className="flex items-center gap-3 pt-3 border-t border-white/10"><i data-lucide="shield-check" className="w-4 h-4 text-emerald-400" /><span className="text-sm text-slate-300 flex-grow">FraudAI Shield</span><span className="text-xs font-mono text-emerald-400">{lang === 'ro' ? '3 blocate azi' : '3 blocked today'}</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Unique Section — stacking cards */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-4">
+              <span className="cwstack-tag" style={{ display: 'inline-flex' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A165', display: 'inline-block' }} />
+                {t.uniqueTitle}
+              </span>
+            </div>
+            <div className="text-center mb-20">
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(2.5rem,5vw,4rem)', fontWeight: 700, color: '#f8fafc', lineHeight: 1.05, letterSpacing: '-0.03em' }}>
+                {t.uniqueSubtitle.split(' ').slice(0, Math.ceil(t.uniqueSubtitle.split(' ').length / 2)).join(' ')}{' '}
+                <span style={{ background: 'linear-gradient(135deg,#C8A165,#E8C882)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+                  {t.uniqueSubtitle.split(' ').slice(Math.ceil(t.uniqueSubtitle.split(' ').length / 2)).join(' ')}
+                </span>
+              </h2>
+            </div>
+          </div>
+
+          {/* Card 0 — Deep Business Training */}
+          <div className="cwstack-card" data-index="0">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <span className="cwstack-tag">
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A165', display: 'inline-block' }} />
+                    {t.unique[0].icon} {t.unique[0].title}
+                  </span>
+                  <h3>{t.unique[0].title}</h3>
+                  <p className="cwstack-tagline">{t.unique[0].title}</p>
+                  <p className="cwstack-body">{t.unique[0].desc}</p>
+                  <div className="cwstack-pill">
+                    <span style={{ color: '#64748b' }}>$</span> caty train --source your-business
+                  </div>
+                </div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem', background: 'rgba(0,0,0,0.4)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', padding: '1.5rem', color: '#64748b' }}>
+                  <div style={{ color: '#C8A165', marginBottom: '1rem', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>// knowledge base loaded</div>
+                  {[
+                    ['products',    '247 items'],
+                    ['pricing',     'dynamic rules'],
+                    ['policies',    'returns · shipping'],
+                    ['faq',         '89 answers'],
+                    ['tone',        'brand voice'],
+                    ['objections',  '34 mapped'],
+                  ].map(([k, v]) => (
+                    <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                      <span style={{ color: '#7dd3fc' }}>{k}</span>
+                      <span style={{ color: '#a3e635' }}>{v}</span>
+                    </div>
+                  ))}
+                  <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+                    <div style={{ flex: 1, textAlign: 'center', padding: '0.6rem', background: 'rgba(200,161,101,0.06)', borderRadius: 8, border: '1px solid rgba(200,161,101,0.15)' }}>
+                      <div style={{ color: '#C8A165', fontSize: '1.1rem', fontWeight: 700 }}>6</div>
+                      <div style={{ color: '#475569', fontSize: '0.68rem' }}>domains</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: 'center', padding: '0.6rem', background: 'rgba(200,161,101,0.06)', borderRadius: 8, border: '1px solid rgba(200,161,101,0.15)' }}>
+                      <div style={{ color: '#C8A165', fontSize: '1.1rem', fontWeight: 700 }}>2min</div>
+                      <div style={{ color: '#475569', fontSize: '0.68rem' }}>setup</div>
+                    </div>
+                    <div style={{ flex: 1, textAlign: 'center', padding: '0.6rem', background: 'rgba(200,161,101,0.06)', borderRadius: 8, border: '1px solid rgba(200,161,101,0.15)' }}>
+                      <div style={{ color: '#C8A165', fontSize: '1.1rem', fontWeight: 700 }}>99%</div>
+                      <div style={{ color: '#475569', fontSize: '0.68rem' }}>accuracy</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 1 — Sells, Not Just Chats */}
+          <div className="cwstack-card" data-index="1">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="md:order-2">
+                  <span className="cwstack-tag">
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A165', display: 'inline-block' }} />
+                    {t.unique[1].icon} {t.unique[1].title}
+                  </span>
+                  <h3>{t.unique[1].title}</h3>
+                  <p className="cwstack-tagline">{t.unique[1].title}</p>
+                  <p className="cwstack-body">{t.unique[1].desc}</p>
+                  <div className="cwstack-pill">
+                    <span style={{ color: '#64748b' }}>avg</span> 3.2× conversion lift
+                  </div>
+                </div>
+                <div className="md:order-1" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  {[
+                    { stage: 'Visitor', action: 'asks about pricing', pct: 100, color: '#334155' },
+                    { stage: 'Qualify', action: 'budget · timeline · intent', pct: 78, color: '#1e40af' },
+                    { stage: 'Engage', action: 'objection handled', pct: 54, color: '#7c3aed' },
+                    { stage: 'Offer',  action: 'quote sent in-chat', pct: 38, color: '#C8A165' },
+                    { stage: 'Close',  action: '✓ payment link clicked', pct: 24, color: '#16a34a' },
+                  ].map(({ stage, action, pct, color }) => (
+                    <div key={stage} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <div style={{ width: 60, fontFamily: "'JetBrains Mono',monospace", fontSize: '0.65rem', color: '#475569', textAlign: 'right', flexShrink: 0 }}>{stage}</div>
+                      <div style={{ flex: 1, height: 28, borderRadius: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden', position: 'relative' }}>
+                        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${pct}%`, background: color, opacity: 0.35, borderRadius: 6 }} />
+                        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', paddingLeft: '0.75rem', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.7rem', color: '#94a3b8' }}>{action}</div>
+                      </div>
+                      <div style={{ width: 36, fontFamily: "'JetBrains Mono',monospace", fontSize: '0.65rem', color: '#C8A165', flexShrink: 0 }}>{pct}%</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2 — Documents in Chat */}
+          <div className="cwstack-card" data-index="2">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <span className="cwstack-tag">
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A165', display: 'inline-block' }} />
+                    {t.unique[2].icon} {t.unique[2].title}
+                  </span>
+                  <h3>{t.unique[2].title}</h3>
+                  <p className="cwstack-tagline">{t.unique[2].title}</p>
+                  <p className="cwstack-body">{t.unique[2].desc}</p>
+                  <div className="cwstack-pill">
+                    <span style={{ color: '#64748b' }}>latency</span> &lt; 800ms generation
+                  </div>
+                </div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.78rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {[
+                    { method: 'POST', path: '/docs/offer',        status: '201', statusColor: '#a3e635' },
+                    { method: 'POST', path: '/docs/invoice',      status: '201', statusColor: '#a3e635' },
+                    { method: 'POST', path: '/docs/payment-link', status: '200', statusColor: '#60a5fa' },
+                  ].map(({ method, path, status, statusColor }) => (
+                    <div key={path} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', background: 'rgba(0,0,0,0.4)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.06)' }}>
+                      <span style={{ color: '#C8A165', fontSize: '0.65rem', fontWeight: 700, width: 36 }}>{method}</span>
+                      <span style={{ color: '#94a3b8', flex: 1 }}>{path}</span>
+                      <span style={{ color: statusColor, fontSize: '0.65rem' }}>{status}</span>
+                    </div>
+                  ))}
+                  <div style={{ marginTop: '0.5rem', padding: '1rem', background: 'rgba(200,161,101,0.04)', borderRadius: 10, border: '1px solid rgba(200,161,101,0.1)', color: '#64748b', fontSize: '0.72rem', lineHeight: 1.6 }}>
+                    <span style={{ color: '#C8A165' }}>response.</span>document_url<br />
+                    <span style={{ color: '#a3e635' }}>"https://docs.catyai.io/q/..."</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3 — WhatsApp + Web Unified */}
+          <div className="cwstack-card" data-index="3">
+            <div className="cwstack-inner">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="md:order-2">
+                  <span className="cwstack-tag">
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8A165', display: 'inline-block' }} />
+                    {t.unique[4].icon} {t.unique[4].title}
+                  </span>
+                  <h3>{t.unique[4].title}</h3>
+                  <p className="cwstack-tagline">{t.unique[4].title}</p>
+                  <p className="cwstack-body">{t.unique[4].desc}</p>
+                  <div className="cwstack-pill">
+                    <span style={{ color: '#64748b' }}>channels</span> web · whatsapp · api
+                  </div>
+                </div>
+                <div className="md:order-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                  {[
+                    { label: 'Web Widget', color: '#1e40af', icon: '🌐', msg: 'What\'s the price for Pro?', reply: 'Pro is €49/mo — shall I send a quote?' },
+                    { label: 'WhatsApp', color: '#16a34a', icon: '💬', msg: 'Cât costă planul Pro?', reply: 'Pro e €49/lună — îți trimit oferta?' },
+                  ].map(({ label, color, icon, msg, reply }) => (
+                    <div key={label} style={{ background: 'rgba(0,0,0,0.4)', borderRadius: 14, border: `1px solid ${color}33`, padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
+                        <span>{icon}</span>
+                        <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '0.65rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</span>
+                      </div>
+                      <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 8, padding: '0.5rem 0.75rem', fontSize: '0.75rem', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>{msg}</div>
+                      <div style={{ background: `${color}15`, border: `1px solid ${color}30`, borderRadius: 8, padding: '0.5rem 0.75rem', fontSize: '0.75rem', color: '#C8A165', fontFamily: 'Inter, sans-serif' }}>{reply}</div>
+                    </div>
+                  ))}
+                  <div style={{ gridColumn: '1 / -1', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.6rem', background: 'rgba(200,161,101,0.04)', borderRadius: 10, border: '1px solid rgba(200,161,101,0.1)', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.68rem', color: '#C8A165' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#a3e635', display: 'inline-block' }} />
+                    same knowledge base · same AI · one dashboard
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1760,16 +2355,16 @@ export default function CatyWidget() {
         <section className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.useCasesTitle}</h2>
-              <p className="text-gray-400 text-lg">{t.useCasesSubtitle}</p>
+              <h2><span className="cw-section-title">{t.useCasesTitle}</span></h2>
+              <p className="cw-section-sub">{t.useCasesSubtitle}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {t.useCases.map((useCase, i) => (
-                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50 hover:border-cyan-500/30 transition-colors">
-                  <div className="text-3xl mb-4">{useCase.icon}</div>
-                  <h3 className="text-lg font-bold text-gold mb-2">{useCase.title}</h3>
-                  <p className="text-white text-sm">{useCase.desc}</p>
+                <div key={i} className="cw-usecase-card">
+                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{useCase.icon}</div>
+                  <h3 className="cw-usecase-title">{useCase.title}</h3>
+                  <p className="cw-usecase-desc">{useCase.desc}</p>
                 </div>
               ))}
             </div>
@@ -1777,17 +2372,19 @@ export default function CatyWidget() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: 'rgba(1,10,31,0.5)' }}>
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.testimonialsTitle}</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <span className="cw-section-title">{t.testimonialsTitle}</span>
+            </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {t.testimonials.map((testimonial, i) => (
-                <div key={i} className="bg-[#0A1628]/30 rounded-2xl p-6 border border-[#1a2744]/50">
-                  <p className="text-white italic mb-4">"{testimonial.quote}"</p>
+                <div key={i} className="cw-testimonial">
+                  <p className="cw-testimonial-quote">"{testimonial.quote}"</p>
                   <div>
-                    <div className="font-semibold text-gold">{testimonial.author}</div>
-                    <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                    <div className="cw-testimonial-author">{testimonial.author}</div>
+                    <div className="cw-testimonial-role">{testimonial.role}</div>
                   </div>
                 </div>
               ))}
@@ -1799,55 +2396,38 @@ export default function CatyWidget() {
         <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                {t.pricingTitle} <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">{t.pricingHighlight}</span>
-              </h2>
-              <p className="text-gray-400 text-lg">{t.pricingSubtitle}</p>
+              <h2><span className="cw-section-title">{t.pricingTitle} {t.pricingHighlight}</span></h2>
+              <p className="cw-section-sub">{t.pricingSubtitle}</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8" style={{ alignItems: 'start' }}>
               {t.pricingPlans.map((plan, i) => (
-                <div
-                  key={i}
-                  className={`relative bg-[#0A1628]/30 rounded-2xl p-8 border-2 transition-all hover:shadow-xl ${
-                    plan.popular
-                      ? 'border-cyan-500/60 shadow-cyan-500/20 md:scale-105 z-10'
-                      : 'border-[#1a2744]/50 hover:border-cyan-500/30'
-                  }`}
-                >
+                <div key={i} className={plan.popular ? 'cw-pricing-card-popular' : 'cw-pricing-card'}>
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-gold to-[#D4B57A] rounded-full text-gray-900 text-sm font-bold">
-                      Popular
-                    </div>
+                    <div className="cw-pricing-popular-badge">POPULAR</div>
                   )}
 
-                  <div className="text-center mb-6">
-                    <h3 className="text-gold font-bold text-sm tracking-wider mb-2">{plan.name}</h3>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-4xl font-bold text-white">{plan.price}</span>
-                      <span className="text-gray-500">{plan.period}</span>
+                  <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                    <div className="cw-pricing-name">{plan.name}</div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '4px', margin: '0.75rem 0 0' }}>
+                      <span className="cw-pricing-price">{plan.price}</span>
+                      <span className="cw-pricing-period">{plan.period}</span>
                     </div>
-                    <p className="text-gray-500 text-sm mt-2">{plan.desc}</p>
+                    <p className="cw-pricing-desc">{plan.desc}</p>
                   </div>
 
-                  <ul className="space-y-3 mb-8">
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {plan.features.map((feature, j) => (
-                      <li key={j} className="flex items-center gap-3 text-white">
-                        <svg className="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-sm">{feature}</span>
+                      <li key={j} className="cw-pricing-feature">
+                        <span className="cw-pricing-check">✓</span>
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
 
                   <a
                     href={plan.name === 'ENTERPRISE' || plan.name === 'Personalizado' || plan.name === 'Sur mesure' ? 'mailto:contact@payai-x.com' : 'https://app.catyai.io'}
-                    className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 hover:opacity-90'
-                        : 'bg-gray-700 text-white hover:bg-gray-600'
-                    }`}
+                    className={plan.popular ? 'cw-btn-gold' : 'cw-btn-outline'}
                   >
                     {plan.cta}
                   </a>
@@ -1858,18 +2438,20 @@ export default function CatyWidget() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#010A1F]/50">
+        <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: 'rgba(1,10,31,0.5)' }}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">{t.faqTitle}</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <span className="cw-section-title">{t.faqTitle}</span>
+            </h2>
 
-            <div className="space-y-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {t.faqs.map((faq, i) => (
-                <details key={i} className="group bg-[#0A1628]/30 rounded-xl border border-[#1a2744]/50">
-                  <summary className="p-6 cursor-pointer text-white font-medium flex justify-between items-center">
+                <details key={i} className="cw-faq-item">
+                  <summary>
                     {faq.q}
-                    <span className="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    <span className="cw-faq-arrow">▼</span>
                   </summary>
-                  <div className="px-6 pb-6 text-white">{faq.a}</div>
+                  <div className="cw-faq-body">{faq.a}</div>
                 </details>
               ))}
             </div>
@@ -1877,68 +2459,26 @@ export default function CatyWidget() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gold/10 to-[#D4B57A]/10">
+        <section className="cw-cta-section py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.ctaTitle}</h2>
-            <p className="text-white text-lg mb-8">{t.ctaSubtitle}</p>
+            <h2 style={{ marginBottom: '1rem' }}>
+              <span className="cw-section-title">{t.ctaTitle}</span>
+            </h2>
+            <p style={{ color: '#94a3b8', fontSize: '1.1rem', marginBottom: '2.5rem' }}>{t.ctaSubtitle}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://app.catyai.io" className="px-8 py-4 bg-gradient-to-r from-gold to-[#D4B57A] text-gray-900 font-bold rounded-xl text-lg hover:opacity-90 transition-opacity">
+              <a href="https://app.catyai.io" className="px-8 py-4 font-bold rounded-xl text-lg" style={{ background: 'linear-gradient(90deg, #C8A165, #D4B57A)', color: '#010A1F', textDecoration: 'none' }}>
                 {t.ctaButton}
               </a>
-              <Link to="/contact" className="px-8 py-4 bg-transparent text-gold font-semibold text-lg hover:text-cyan-300 transition-colors">
+              <Link to="/contact" style={{ padding: '1rem 2rem', color: '#C8A165', fontWeight: 600, fontSize: '1.1rem', textDecoration: 'none' }}>
                 {t.ctaDemo}
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <Link to="/" className="flex items-center gap-2 mb-4">
-                  <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
-                  <span className="font-bold text-white">CatyAI</span>
-                </Link>
-                <p className="text-gray-500 text-sm">{t.footer.tagline}</p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-white mb-4">{t.footer.product}</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/#features" className="text-gray-400 hover:text-white transition-colors">{t.footer.features}</Link></li>
-                  <li><Link to="/#pricing" className="text-gray-400 hover:text-white transition-colors">{t.footer.pricing}</Link></li>
-                  <li><Link to="/whatsapp" className="text-gray-400 hover:text-white transition-colors">{t.footer.whatsapp}</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-white mb-4">{t.footer.company}</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">{t.footer.about}</Link></li>
-                  <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t.footer.blog}</Link></li>
-                  <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t.footer.contact}</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-white mb-4">{t.footer.legal}</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">{t.footer.privacy}</Link></li>
-                  <li><Link to="/terms" className="text-gray-400 hover:text-white transition-colors">{t.footer.terms}</Link></li>
-                  <li><Link to="/gdpr" className="text-gray-400 hover:text-white transition-colors">{t.footer.gdpr}</Link></li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-[#1a2744] text-center text-gray-500 text-sm">
-              {t.footer.copyright}
-            </div>
-          </div>
-        </footer>
       </div>
+      <FooterV9 lang={lang} />
     </>
   )
 }
