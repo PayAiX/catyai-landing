@@ -213,11 +213,15 @@
   },
   {
     "path": "/about",
-    "name": "About"
+    "name": "About",
+    "title": "Despre CatyAI — Platforma AI pentru Vânzări | PayAi-X FZE",
+    "description": "CatyAI este platforma AI pentru vânzări și suport client, construită de PayAi-X FZE. WhatsApp, site web și QR code — unite într-un singur sistem."
   },
   {
     "path": "/contact",
-    "name": "Contact"
+    "name": "Contact",
+    "title": "Contact CatyAI — Suport & Vânzări | contact@catyai.io",
+    "description": "Contactează echipa CatyAI pentru demo, suport tehnic sau parteneriate. Răspundem în 24 de ore."
   },
   {
     "path": "/privacy",
@@ -241,27 +245,39 @@
   },
   {
     "path": "/chatbot-romania",
-    "name": "Chatbot Romania"
+    "name": "Chatbot Romania",
+    "title": "Chatbot România 2026 — Cel Mai Folosit AI Chatbot pentru Firme Românești",
+    "description": "Asistent AI în română, engleză și 12 limbi. Programări automate, răspuns WhatsApp, protecție scam. De la €0/lună. Setup în 2 minute."
   },
   {
     "path": "/whatsapp",
-    "name": "WhatsApp AI"
+    "name": "WhatsApp AI",
+    "title": "CatyAI WhatsApp — Răspuns Automat WhatsApp Business | Fără Meta API",
+    "description": "Asistent AI pe WhatsApp fără Meta API. Răspunde automat la mesaje, califică lead-uri și trimite campanii broadcast. Funcționează cu numărul tău actual."
   },
   {
     "path": "/fraud-shield",
-    "name": "FraudAI Shield"
+    "name": "FraudAI Shield",
+    "title": "FraudAI Shield — Protecție Anti-Fraud AI | Scam & Spam Detection",
+    "description": "Sistemul de detecție fraud cu 4 niveluri: LOW, MEDIUM, HIGH, BLOCKED. Oprește scam-ul și phishing-ul înainte să consume tokeni sau resurse financiare."
   },
   {
     "path": "/no-website",
-    "name": "QR-First - No Website Needed"
+    "name": "QR-First - No Website Needed",
+    "title": "CatyAI QR-First — AI pentru Afaceri Fără Site Web | QR Code Direct",
+    "description": "Nu ai site? Nicio problemă. QR code unic → WhatsApp → CatyAI. Clienții tăi scanează și primesc răspunsuri instant. Restaurante, cabinete, freelanceri."
   },
   {
     "path": "/compare",
-    "name": "CatyAI vs Tidio vs Intercom"
+    "name": "CatyAI vs Tidio vs Intercom",
+    "title": "CatyAI vs Tidio vs Intercom — Comparație Chatboți AI 2026 | România",
+    "description": "Comparație completă: funcționalități, prețuri și integrări. De ce CatyAI este alternativa optimă pentru piața românească față de Tidio și Intercom."
   },
   {
     "path": "/widget",
-    "name": "Caty Widget - AI Sales Agent for Websites"
+    "name": "Caty Widget - AI Sales Agent for Websites",
+    "title": "CatyAI Widget — AI pe Site-ul Tău în 5 Minute | Chatbot Embed",
+    "description": "Instalezi un rând de cod. CatyAI răspunde instant vizitatorilor tăi — prețuri, disponibilitate, programări. Leads colectate automat în dashboard."
   },
   {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",
@@ -355,24 +371,13 @@
     "path": "/blog/cum-alegi-chatbot-ai",
     "name": "Blog: Cum alegi un chatbot AI"
   },
-  {
-    "path": "/solutii/clinici-medicale",
-    "name": "Solution: Medical Clinics"
-  },
-  {
-    "path": "/solutii/agentii-imobiliare",
-    "name": "Solution: Real Estate"
-  },
-  {
-    "path": "/solutii/restaurante",
-    "name": "Solution: Restaurants"
-  },
-  {
-    "path": "/solutii/ecommerce",
-    "name": "Solution: E-commerce"
-  },
-  {
-    "path": "/solutii/agentii-marketing",
-    "name": "Solution: Marketing Agencies"
-  }
+  { "path": "/pricing", "name": "Prețuri CatyAI — De la €0/lună", "title": "Prețuri CatyAI — Planuri de la €0/lună | FraudAI Shield Inclus", "description": "Free forever, Starter €49, Growth €99, Business €199, Enterprise €499. FraudAI Shield inclus în toate planurile. Fără contract. Anulezi oricând." },
+  { "path": "/features", "name": "Features CatyAI — Toate capabilitățile", "title": "CatyAI Features — 10 Agenți AI, GEO Gateway, FraudAI Shield | 14 Limbi", "description": "SAG Pipeline cu 10 agenți specializați, GEO Gateway 6 layere, FraudAI Shield, WhatsApp Zero Meta, QR-First, Universal Brain. Fără cod. De la €0/lună." },
+  { "path": "/infrastructura", "name": "Infrastructură Neurală Activă — CatyAI", "title": "CatyAI Infrastructură — GEO SENTINEL, NAP Protocol, FraudAI | Standard AI 2026", "description": "SENTINEL monitorizează vizibilitatea în ChatGPT și Claude la 6 ore. NAP semnează datele Ed25519. GEO generează llms.txt dinamic. Infrastructură neurală activă." },
+  { "path": "/geo-gateway", "name": "GEO Gateway — AI Visibility in ChatGPT, Claude, Perplexity", "title": "CatyAI GEO Gateway — Vizibilitate AI în ChatGPT, Claude & Perplexity", "description": "GEO Gateway face site-ul tău vizibil pentru motoarele de căutare AI. 6 layere: llms.txt dinamic, detecție crawlere, portal /answer, beacon activ, SENTINEL." },
+  { "path": "/solutii/clinici-medicale", "name": "CatyAI pentru Clinici Medicale — Programări automate", "title": "CatyAI pentru Clinici Medicale — Programări Automate AI 24/7 | România", "description": "Asistentul AI care preia programările și răspunde la întrebări despre servicii și asigurări — non-stop. Fără angajat dedicat la recepție." },
+  { "path": "/solutii/agentii-imobiliare", "name": "CatyAI pentru Agenții Imobiliare — Calificarea lead-urilor", "title": "CatyAI pentru Agenții Imobiliare — Califică Lead-uri cu AI | WhatsApp + Web", "description": "Agentul AI care califică clienții, răspunde 24/7 la întrebări despre proprietăți și programează vizionări automat. Fără efort manual." },
+  { "path": "/solutii/restaurante", "name": "CatyAI pentru Restaurante — Rezervări și comenzi automate", "title": "CatyAI pentru Restaurante — Rezervări și Meniu AI 24/7 | QR-First", "description": "QR la masă → clienții scanează → CatyAI răspunde cu meniu, alergeni, disponibilitate și face rezervări automat. Fără recepționer." },
+  { "path": "/solutii/ecommerce", "name": "CatyAI pentru eCommerce — Recuperare coș abandonat", "title": "CatyAI pentru Magazine Online — Crește Conversia cu AI | Shopify, WooCommerce", "description": "Asistentul AI care răspunde la întrebări despre produse, stoc și livrare — și transformă vizitatorii în cumpărători. Compatible cu orice platformă." },
+  { "path": "/solutii/agentii-marketing", "name": "CatyAI pentru Agenții de Marketing — AI Sales Agent White Label", "title": "CatyAI pentru Agenții de Marketing — AI pentru Clienții Tăi în 24h", "description": "Oferă clienților tăi un asistent AI funcțional în 24 de ore. Multi-widget, branding personalizat, Analytics exportabil. Model reseller disponibil." }
 ]
