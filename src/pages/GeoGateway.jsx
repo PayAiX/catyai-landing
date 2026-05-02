@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import GeoAuditWidget from '../components/GeoAuditWidget'
+import FooterV9 from '../components/FooterV9'
 
 const translations = {
   en: {
@@ -352,6 +353,72 @@ const translations = {
   }
 }
 
+const ggCss = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+.gg-page { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+.gg-page h2, .gg-page h3, .gg-page h4 { font-family: 'Playfair Display', Georgia, serif; font-style: italic; }
+.gg-page p, .gg-page span, .gg-page li, .gg-page a, .gg-page button { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+.gg-stack-track { position: relative; }
+.gg-stack-card { position: sticky; top: 10vh; margin-bottom: 20vh; }
+.gg-stack-card:last-child { margin-bottom: 0; }
+.gg-stack-inner {
+  background: #0A1628;
+  border: 1px solid rgba(100,160,255,0.12);
+  border-radius: 20px;
+  transform-origin: top center;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+  overflow: hidden;
+}
+.gg-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25);
+  color: #60A5FA; font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;
+}
+.gg-tagline {
+  font-family: 'Playfair Display', Georgia, serif !important; font-style: italic !important;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 700; color: #F8F6F0;
+  line-height: 1.25; margin-bottom: 16px;
+}
+.gg-tagline span { color: #C8A165; }
+.gg-body { color: #8B9AB5; font-size: 15px; line-height: 1.7; }
+.gg-terminal {
+  background: #040E20; border-radius: 12px; border: 1px solid rgba(59,130,246,0.18);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 20px; overflow: hidden;
+}
+.gg-terminal-hdr {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.gg-terminal-dot { width: 8px; height: 8px; border-radius: 50%; }
+.gg-terminal-title { color: rgba(255,255,255,0.3); font-size: 11px; margin-left: 4px; }
+.gg-lk { color: #60A5FA; } .gg-lv { color: #34D399; } .gg-lc { color: rgba(255,255,255,0.3); } .gg-lu { color: #F59E0B; }
+.gg-crawler-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 10px; border-radius: 8px; margin-bottom: 5px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+}
+.gg-crawler-name { color: #E2E8F0; font-size: 12px; font-weight: 500; }
+.gg-crawler-engine { color: rgba(255,255,255,0.35); font-size: 10px; }
+.gg-badge-on {
+  padding: 2px 7px; border-radius: 100px;
+  background: rgba(22,199,132,0.12); border: 1px solid rgba(22,199,132,0.25);
+  color: #16C784; font-size: 9px; font-family: 'JetBrains Mono', monospace; white-space: nowrap;
+}
+.gg-jk { color: #93C5FD; } .gg-js { color: #86EFAC; } .gg-jn { color: #FCD34D; } .gg-jb { color: rgba(255,255,255,0.4); }
+.gg-schema-row {
+  display: flex; align-items: center; gap: 10px; padding: 7px 10px;
+  border-radius: 8px; margin-bottom: 5px; background: rgba(255,255,255,0.03);
+}
+.gg-schema-type {
+  font-size: 11px; padding: 2px 8px; border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.gg-schema-ok { font-size: 10px; color: #16C784; font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+`
+
 const colorMap = {
   blue: { border: 'border-blue-500/30', text: 'text-blue-400', bg: 'bg-blue-500/10', hover: 'hover:border-blue-500/30' },
   purple: { border: 'border-purple-500/30', text: 'text-purple-400', bg: 'bg-purple-500/10', hover: 'hover:border-purple-500/30' },
@@ -382,10 +449,40 @@ export default function GeoGateway() {
     if (desc) desc.setAttribute('content', t.card1Body)
   }, [lang])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.gg-stack-card')
+      const total = cards.length
+      cards.forEach((card, idx) => {
+        const inner = card.querySelector('.gg-stack-inner')
+        if (!inner) return
+        const rect = card.getBoundingClientRect()
+        const stickyTopPx = window.innerHeight * 0.10
+        const distance = stickyTopPx - rect.top
+        const threshold = window.innerHeight * 0.5
+        const baseScale = 1 - (idx * 0.03)
+        if (distance > 0 && idx < total - 1) {
+          const progress = Math.min(distance / threshold, 1)
+          inner.style.transform = `scale(${baseScale - progress * 0.05})`
+        } else {
+          inner.style.transform = `scale(${baseScale})`
+        }
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
   const t = { ...translations.en, ...(translations[lang] || {}) }
 
   return (
-    <div className="bg-[#010A1F] text-white min-h-screen">
+    <div className="gg-page bg-[#010A1F] text-white min-h-screen">
+      <style dangerouslySetInnerHTML={{ __html: ggCss }} />
       <SEO
         title={lang === 'ro' ? 'GEO Gateway — Vizibilitate AI pentru Afacerea Ta | CatyAI' : 'GEO Gateway — AI Visibility for Your Business | CatyAI'}
         description={t.card1Body}
@@ -509,24 +606,175 @@ export default function GeoGateway() {
         </div>
       </section>
 
-      {/* 6-Layer Architecture */}
-      <section className="py-16 px-4 bg-[#010A1F]" id="how-it-works">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">{t.layersTitle}</h2>
-            <p className="text-gray-400 text-lg">{t.layersSubtitle}</p>
+      {/* 6-Layer Architecture — stacking cards */}
+      <section className="px-4 bg-[#010A1F]" id="layers" style={{ paddingTop: '80px', paddingBottom: '20px' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="gg-tagline" style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)' }}>{t.layersTitle}</h2>
+            <p style={{ color: '#8B9AB5', fontSize: '17px', marginTop: '8px' }}>{t.layersSubtitle}</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.layers.map((layer, i) => {
+
+          <div className="gg-stack-track" style={{ paddingBottom: '30vh' }}>
+
+            {/* Card 0 — llms.txt Index */}
+            <div className="gg-stack-card" style={{ zIndex: 10 }}>
+              <div className="gg-stack-inner" style={{ padding: 'clamp(24px,4vw,48px) clamp(20px,4vw,40px)' }}>
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <div className="gg-tag"><span>📄</span> Layer {t.layers[0].number}</div>
+                    <h3 className="gg-tagline">{t.layers[0].title}</h3>
+                    <p className="gg-body">{t.layers[0].desc}</p>
+                  </div>
+                  <div className="gg-terminal">
+                    <div className="gg-terminal-hdr">
+                      <div className="gg-terminal-dot" style={{ background: '#FF5F57' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#FEBC2E' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#28C840' }} />
+                      <span className="gg-terminal-title">llms.txt — root index</span>
+                    </div>
+                    <div><span className="gg-lc"># llms.txt — AI Crawler Index</span></div>
+                    <div style={{ marginTop: '8px' }}><span className="gg-lc">&gt; </span><span className="gg-lv">CatyAI: AI Sales Agent</span></div>
+                    <div style={{ marginTop: '12px' }}><span className="gg-lk">## Products</span></div>
+                    <div><span className="gg-lc">- </span><span className="gg-lv">CatyAI Widget: Embeddable AI sales agent</span></div>
+                    <div><span className="gg-lc">- </span><span className="gg-lv">GEO Gateway: AI visibility protocol</span></div>
+                    <div><span className="gg-lc">- </span><span className="gg-lv">FraudAI Shield: Fraud detection layer</span></div>
+                    <div style={{ marginTop: '12px' }}><span className="gg-lk">## Contact</span></div>
+                    <div><span className="gg-lu">Email: contact@catyai.io</span></div>
+                    <div><span className="gg-lu">Hours: Mon–Fri 09:00–18:00</span></div>
+                    <div style={{ marginTop: '12px' }}><span className="gg-lk">## Sources</span></div>
+                    <div><span className="gg-lc">- </span><span className="gg-lu">/answer?q=pricing</span></div>
+                    <div><span className="gg-lc">- </span><span className="gg-lu">/answer?q=products</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 1 — AI Crawler Detection */}
+            <div className="gg-stack-card" style={{ zIndex: 11 }}>
+              <div className="gg-stack-inner" style={{ padding: 'clamp(24px,4vw,48px) clamp(20px,4vw,40px)', borderColor: 'rgba(168,85,247,0.15)' }}>
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="gg-terminal" style={{ borderColor: 'rgba(168,85,247,0.2)' }}>
+                    <div className="gg-terminal-hdr">
+                      <div className="gg-terminal-dot" style={{ background: '#FF5F57' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#FEBC2E' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#28C840' }} />
+                      <span className="gg-terminal-title">crawler-detection.log</span>
+                    </div>
+                    {[
+                      ['GPTBot', 'ChatGPT / OpenAI'],
+                      ['GoogleBot AI', 'Gemini / Google AI'],
+                      ['ClaudeBot', 'Claude / Anthropic'],
+                      ['PerplexityBot', 'Perplexity AI'],
+                      ['Applebot', 'Siri / Apple'],
+                      ['YouBot', 'You.com AI'],
+                      ['BingBot AI', 'Copilot / Microsoft'],
+                      ['Cohere AI', 'Cohere Enterprise'],
+                      ['Meta AI', 'Meta AI / Llama'],
+                    ].map(([name, engine]) => (
+                      <div key={name} className="gg-crawler-row">
+                        <div>
+                          <div className="gg-crawler-name">{name}</div>
+                          <div className="gg-crawler-engine">{engine}</div>
+                        </div>
+                        <span className="gg-badge-on">ACTIVE</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="gg-tag" style={{ background: 'rgba(168,85,247,0.12)', borderColor: 'rgba(168,85,247,0.28)', color: '#C084FC' }}>
+                      <span>🤖</span> Layer {t.layers[1].number}
+                    </div>
+                    <h3 className="gg-tagline">{t.layers[1].title}</h3>
+                    <p className="gg-body">{t.layers[1].desc}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 — /answer Portal */}
+            <div className="gg-stack-card" style={{ zIndex: 12 }}>
+              <div className="gg-stack-inner" style={{ padding: 'clamp(24px,4vw,48px) clamp(20px,4vw,40px)', borderColor: 'rgba(200,161,101,0.18)' }}>
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <div className="gg-tag" style={{ background: 'rgba(200,161,101,0.12)', borderColor: 'rgba(200,161,101,0.28)', color: '#C8A165' }}>
+                      <span>💬</span> Layer {t.layers[2].number}
+                    </div>
+                    <h3 className="gg-tagline">{t.layers[2].title}</h3>
+                    <p className="gg-body">{t.layers[2].desc}</p>
+                  </div>
+                  <div className="gg-terminal" style={{ borderColor: 'rgba(200,161,101,0.2)' }}>
+                    <div className="gg-terminal-hdr">
+                      <div className="gg-terminal-dot" style={{ background: '#FF5F57' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#FEBC2E' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#28C840' }} />
+                      <span className="gg-terminal-title">GET /answer?q=business_hours</span>
+                    </div>
+                    <div><span className="gg-lu">GET /answer?q=business_hours</span></div>
+                    <div style={{ marginTop: '8px' }}><span className="gg-jb">{'→ {'}</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"@context"</span><span className="gg-jb">: </span><span className="gg-js">"https://schema.org"</span><span className="gg-jb">,</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"@type"</span><span className="gg-jb">: </span><span className="gg-js">"LocalBusiness"</span><span className="gg-jb">,</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"name"</span><span className="gg-jb">: </span><span className="gg-js">"Your Business"</span><span className="gg-jb">,</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"openingHours"</span><span className="gg-jb">: [</span><span className="gg-js">"Mo-Fr 09:00-18:00"</span><span className="gg-jb">],</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"priceRange"</span><span className="gg-jb">: </span><span className="gg-js">"€€"</span><span className="gg-jb">,</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"description"</span><span className="gg-jb">: </span><span className="gg-js">"..."</span><span className="gg-jb">,</span></div>
+                    <div style={{ paddingLeft: '16px' }}><span className="gg-jk">"hasOfferCatalog"</span><span className="gg-jb">: [...]</span></div>
+                    <div><span className="gg-jb">{'}'}</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 — Dynamic Schema.org */}
+            <div className="gg-stack-card" style={{ zIndex: 13 }}>
+              <div className="gg-stack-inner" style={{ padding: 'clamp(24px,4vw,48px) clamp(20px,4vw,40px)', borderColor: 'rgba(34,197,94,0.15)' }}>
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div className="gg-terminal" style={{ borderColor: 'rgba(34,197,94,0.2)' }}>
+                    <div className="gg-terminal-hdr">
+                      <div className="gg-terminal-dot" style={{ background: '#FF5F57' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#FEBC2E' }} />
+                      <div className="gg-terminal-dot" style={{ background: '#28C840' }} />
+                      <span className="gg-terminal-title">schema-injection.log</span>
+                    </div>
+                    <div style={{ marginBottom: '10px', color: 'rgba(255,255,255,0.3)', fontSize: '10px' }}>Schema.org Dynamic Injection — All Pages</div>
+                    {[
+                      ['LocalBusiness', 'rgba(59,130,246,0.15)', '#60A5FA'],
+                      ['FAQPage', 'rgba(168,85,247,0.15)', '#C084FC'],
+                      ['Product', 'rgba(200,161,101,0.15)', '#C8A165'],
+                      ['Service', 'rgba(34,197,94,0.15)', '#4ADE80'],
+                      ['Review', 'rgba(249,115,22,0.15)', '#FB923C'],
+                      ['BreadcrumbList', 'rgba(100,116,139,0.15)', '#94A3B8'],
+                    ].map(([schema, bg, color]) => (
+                      <div key={schema} className="gg-schema-row">
+                        <span className="gg-schema-type" style={{ background: bg, color, border: `1px solid ${color}40` }}>{schema}</span>
+                        <span className="gg-schema-ok">INJECTED ✓</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="gg-tag" style={{ background: 'rgba(34,197,94,0.12)', borderColor: 'rgba(34,197,94,0.28)', color: '#4ADE80' }}>
+                      <span>🏗️</span> Layer {t.layers[3].number}
+                    </div>
+                    <h3 className="gg-tagline">{t.layers[3].title}</h3>
+                    <p className="gg-body">{t.layers[3].desc}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Layers 05–06 mini grid */}
+          <div className="grid md:grid-cols-2 gap-5" style={{ marginTop: '60px', marginBottom: '60px' }}>
+            {t.layers.slice(4).map((layer, i) => {
               const c = colorMap[layer.color]
               return (
-                <div key={i} className={`p-5 bg-[#0A1628]/30 rounded-2xl border border-[#1a2744]/50 ${c.hover} transition-colors`}>
+                <div key={i} className="p-6 rounded-2xl" style={{ background: '#0A1628', border: '1px solid rgba(255,255,255,0.06)' }}>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className={`text-xs font-bold ${c.text} opacity-60`}>{layer.number}</span>
-                    <span className="text-2xl">{layer.icon}</span>
-                    <h3 className={`font-bold ${c.text}`}>{layer.title}</h3>
+                    <span className={`text-xs font-bold font-mono opacity-50 ${c.text}`}>{layer.number}</span>
+                    <span className="text-xl">{layer.icon}</span>
+                    <h3 className={`font-semibold text-base ${c.text}`} style={{ fontFamily: 'Inter, sans-serif', fontStyle: 'normal' }}>{layer.title}</h3>
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">{layer.desc}</p>
+                  <p style={{ color: '#8B9AB5', fontSize: '14px', lineHeight: '1.65' }}>{layer.desc}</p>
                 </div>
               )
             })}
@@ -645,6 +893,8 @@ export default function GeoGateway() {
           </div>
         </div>
       </section>
+
+      <FooterV9 lang={lang} />
     </div>
   )
 }
