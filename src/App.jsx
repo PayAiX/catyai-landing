@@ -33,6 +33,7 @@ const GeoGateway = lazy(() => import('./pages/GeoGateway'))
 const FeaturesPage = lazy(() => import('./pages/Features'))
 const InfrastructurePage = lazy(() => import('./pages/Infrastructure'))
 const PricingPage = lazy(() => import('./pages/Pricing'))
+const HomePageV9 = lazy(() => import('./pages/HomePage'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3292,7 +3293,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3326,6 +3327,7 @@ function AppContent() {
         <ScrollToHash />
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            <Route path="/" element={<HomePageV9 />} />
             <Route path="/whatsapp" element={<WhatsAppAI />} />
             <Route path="/fraud-shield" element={<FraudAI />} />
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
@@ -3345,7 +3347,6 @@ function AppContent() {
       <main>
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/gdpr" element={<GDPRPolicy />} />
