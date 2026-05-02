@@ -4,8 +4,42 @@ import SEO from '../components/SEO'
 import GeoAuditWidget from '../components/GeoAuditWidget'
 import FooterV9 from '../components/FooterV9'
 
+function LanguageSelector({ lang, setLang }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const languages = [
+    { code: 'en', flag: '🇬🇧', name: 'EN' },
+    { code: 'ro', flag: '🇷🇴', name: 'RO' },
+    { code: 'es', flag: '🇪🇸', name: 'ES' },
+    { code: 'pt', flag: '🇧🇷', name: 'PT' },
+    { code: 'fr', flag: '🇫🇷', name: 'FR' },
+  ]
+  const current = languages.find(l => l.code === lang) || languages[0]
+  return (
+    <div className="relative">
+      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-1 px-2 py-1 rounded-lg bg-[#0A1628]/50 hover:bg-[#1a2744]/50 transition-colors text-sm">
+        <span>{current.flag}</span>
+        <span className="text-gray-300">{current.name}</span>
+        <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 py-2 w-24 bg-[#0A1628] rounded-lg shadow-xl border border-[#1a2744] z-50">
+          {languages.map(l => (
+            <button key={l.code} onClick={() => { setLang(l.code); localStorage.setItem('caty-lang', l.code); setIsOpen(false) }}
+              className={`w-full px-3 py-1.5 text-left text-sm flex items-center gap-2 hover:bg-[#1a2744] ${lang === l.code ? 'text-yellow-400' : 'text-gray-300'}`}>
+              <span>{l.flag}</span> {l.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 const translations = {
   en: {
+    nav: { home: 'Home', features: 'Features', howItWorks: 'How it Works', faq: 'FAQ', login: 'Login', getStarted: 'Get Started' },
     badge: 'Generative Engine Optimization',
     heroBadge: 'GEO Gateway · 6 Active Layers',
     card1Icon: '!',
@@ -148,6 +182,7 @@ const translations = {
   },
 
   ro: {
+    nav: { home: 'Acasă', features: 'Funcții', howItWorks: 'Cum funcționează', faq: 'FAQ', login: 'Autentificare', getStarted: 'Începe Acum' },
     badge: 'Generative Engine Optimization',
     heroBadge: 'GEO Gateway · 6 Straturi Active',
     card1Icon: '!',
@@ -290,6 +325,7 @@ const translations = {
   },
 
   es: {
+    nav: { home: 'Inicio', features: 'Funciones', howItWorks: 'Cómo Funciona', faq: 'FAQ', login: 'Entrar', getStarted: 'Empezar' },
     badge: 'Generative Engine Optimization',
     heroBadge: 'GEO Gateway · 6 Capas Activas',
     card1Icon: '!',
@@ -311,6 +347,7 @@ const translations = {
   },
 
   pt: {
+    nav: { home: 'Início', features: 'Funções', howItWorks: 'Como Funciona', faq: 'FAQ', login: 'Entrar', getStarted: 'Começar' },
     badge: 'Generative Engine Optimization',
     heroBadge: 'GEO Gateway · 6 Camadas Ativas',
     card1Icon: '!',
@@ -332,6 +369,7 @@ const translations = {
   },
 
   fr: {
+    nav: { home: 'Accueil', features: 'Fonctions', howItWorks: 'Comment ça marche', faq: 'FAQ', login: 'Connexion', getStarted: 'Commencer' },
     badge: 'Generative Engine Optimization',
     heroBadge: 'GEO Gateway · 6 Couches Actives',
     card1Icon: '!',
@@ -430,6 +468,7 @@ const colorMap = {
 
 export default function GeoGateway() {
   const [lang, setLang] = useState('ro')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem('caty-lang')
@@ -483,6 +522,58 @@ export default function GeoGateway() {
   return (
     <div className="gg-page bg-[#010A1F] text-white min-h-screen">
       <style dangerouslySetInnerHTML={{ __html: ggCss }} />
+
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#010A1F]/80 backdrop-blur-lg border-b border-[#1a2744]/50">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="hover:opacity-80 transition-opacity">
+              <img src="/images/caty-logo.png" alt="CatyAI" className="h-10" width="40" height="40" />
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">{t.nav.home}</Link>
+              <a href="#layers" className="text-gray-300 hover:text-white transition-colors text-sm">{t.nav.features}</a>
+              <a href="#audit" className="text-gray-300 hover:text-white transition-colors text-sm">{t.nav.howItWorks}</a>
+              <a href="#faq" className="text-gray-300 hover:text-white transition-colors text-sm">{t.nav.faq}</a>
+            </div>
+            <div className="hidden md:flex items-center gap-4">
+              <LanguageSelector lang={lang} setLang={setLang} />
+              <a href="https://app.catyai.io/login" className="text-gray-300 hover:text-white text-sm">{t.nav.login}</a>
+              <a href="https://app.catyai.io/signup"
+                 className="px-4 py-2 rounded-xl font-semibold text-sm text-[#010A1F] transition-all hover:opacity-90"
+                 style={{ background: '#C8A165' }}>
+                {t.nav.getStarted}
+              </a>
+            </div>
+            <div className="flex md:hidden items-center gap-2">
+              <LanguageSelector lang={lang} setLang={setLang} />
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-gray-400 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen
+                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+                </svg>
+              </button>
+            </div>
+          </div>
+          {mobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-[#1a2744]/50">
+              <div className="flex flex-col gap-4">
+                <Link to="/" className="text-gray-300 hover:text-white text-sm">{t.nav.home}</Link>
+                <a href="#layers" className="text-gray-300 hover:text-white text-sm" onClick={() => setMobileMenuOpen(false)}>{t.nav.features}</a>
+                <a href="#audit" className="text-gray-300 hover:text-white text-sm" onClick={() => setMobileMenuOpen(false)}>{t.nav.howItWorks}</a>
+                <a href="#faq" className="text-gray-300 hover:text-white text-sm" onClick={() => setMobileMenuOpen(false)}>{t.nav.faq}</a>
+                <a href="https://app.catyai.io/signup"
+                   className="px-4 py-2 rounded-xl font-semibold text-sm text-[#010A1F] text-center"
+                   style={{ background: '#C8A165' }}>
+                  {t.nav.getStarted}
+                </a>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
+
       <SEO
         title={lang === 'ro' ? 'GEO Gateway — Vizibilitate AI pentru Afacerea Ta | CatyAI' : 'GEO Gateway — AI Visibility for Your Business | CatyAI'}
         description={t.card1Body}
