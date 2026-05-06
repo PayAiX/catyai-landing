@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
+import GlobalHeader from '../components/GlobalHeader';
 
 // Note: Lucide icons are loaded via CDN script in index.html (already added by previous PR).
 // CatyAI Homepage V9 — full design with inline CSS, no Tailwind v4 utility class dependency.
 
 const translations = {
   ro: {
-    navLogin: 'Login', navCta: 'Începe gratuit',
-    badge: 'CatyAI v3.0 · GEO Infrastructure is live',
-    heroLine1: 'Site-ul tău este', heroAccent: 'invizibil pentru AI?',
-    heroSubtitle: 'GPTBot, ClaudeBot și Perplexity nu rulează JavaScript. Verifică în 30 secunde dacă te pot citi sau dacă halucinează prețuri și servicii inventate.',
+    navLogin: 'Login', navCta: 'Audit Vizibilitate',
+    navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Prețuri',
+    badge: '🔴 SCANARE: 90% DIN SITE-URI SUNT INVIZIBILE PENTRU AI',
+    heroLine1: 'AI este orb față de', heroAccent: 'afacerea ta?',
+    heroSubtitle: 'Dacă AI-ul nu poate citi site-ul tău, nu exiști. Verifică în 30 de secunde dacă GPTBot, ClaudeBot și Perplexity te pot citi — sau dacă inventează prețurile și serviciile tale.',
     heroPlaceholder: 'https://site-ul-tau.ro', heroBtn: 'Analizează',
     socialProof: '300+ companii folosesc CatyAI · ZF IT Generation 2025 · Gratuit, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
@@ -35,8 +37,12 @@ const translations = {
     layer4Tagline: 'Monitorizare și Imunitate Live.',
     layer4Body: 'Un sistem care veghează 24/7. Dacă AI-ul începe să se comporte ciudat sau datele tale „expiră", Sentinel repară totul instant sau oprește accesul. Zero riscuri de imagine.',
     layer4Compliance: 'EU AI Act · Art. 9 · Risk Management Lifecycle · JWKS revocation în milisecunde',
-    euBody: 'Technical documentation, transparency headers, data provenance și risk management — implementate nativ în CatyAI.',
+    euReadySince: 'Pregătit din prima zi',
+    euReady: 'GATA',
+    euBody: 'Documentație tehnică, headere de transparență, proveniența datelor și gestionarea riscurilor — implementate nativ în CatyAI.',
     euDeadline: 'Deadline: 2 august 2026 · Compliance by design, nu add-on',
+    euArt9: 'Articol 9 · Gestionarea Riscurilor', euArt10: 'Articol 10 · Guvernanța Datelor',
+    euArt50: 'Articol 50 · Transparență', euArt52: 'Articol 52 · Divulgare',
     testimonialsLabel: 'Testimoniale', testimonialsTitle: '4.8★ pe Google · 47 reviews',
     industriesLabel: 'Industrii', industriesTitle: 'Folosit în', industriesAccent: '14 verticale',
     ind1: 'Clinici Medicale', ind2: 'Restaurante', ind3: 'Real Estate',
@@ -62,12 +68,17 @@ const translations = {
     footerProduct: 'Produs', footerResources: 'Resurse', footerCompany: 'Companie', footerLegal: 'Legal',
     footerPricing: 'Prețuri', footerDocs: 'Documentație', footerAbout: 'Despre',
     footerCareers: 'Cariere', footerTerms: 'Termeni', footerSecurity: 'Securitate',
+    prod1Tagline: 'Fără site? Nicio problemă.', prod1F1: 'Cod QR pentru WhatsApp', prod1F2: 'AI răspunde 24/7', prod1F3: 'Programări automate', prod1F4: 'Zero costuri hosting', prod1Cta: 'Începe cu €10',
+    prod2Tagline: 'AI pe site-ul tău', prod2F1: 'Widget chat embed', prod2F2: 'Auto-Crawl site', prod2F3: 'Captare lead-uri', prod2F4: 'Analiză completă', prod2Cta: 'Adaugă pe site',
+    prod3Tagline: 'Protecție anti-fraudă', prod3F1: '8 module de detectare', prod3F2: 'Blochează phishing', prod3F3: 'Alertă în timp real', prod3F4: 'Zero fals pozitive', prod3Cta: 'Activează Gratuit',
+    prod4Tagline: 'Rutare geografică inteligentă', prod4F1: '180+ țări', prod4F2: 'Detectare limbă AI', prod4F3: 'Rutare cu fusul orar', prod4F4: 'Generare LLMs.txt', prod4Cta: 'Explorează GEO',
   },
   en: {
-    navLogin: 'Login', navCta: 'Start for free',
-    badge: 'CatyAI v3.0 · GEO Infrastructure is live',
-    heroLine1: 'Your website is', heroAccent: 'invisible to AI?',
-    heroSubtitle: "GPTBot, ClaudeBot and Perplexity don't run JavaScript. Check in 30 seconds if they can read you or if they're hallucinating prices and invented services.",
+    navLogin: 'Login', navCta: 'Audit Visibility',
+    navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
+    badge: '🔴 SCANNING: 90% OF WEBSITES ARE INVISIBLE TO AI',
+    heroLine1: 'Is AI blind to', heroAccent: 'your business?',
+    heroSubtitle: "If AI can't read your site, you don't exist. Check in 30 seconds if GPTBot, ClaudeBot and Perplexity can read your business — or if they're inventing your prices and services.",
     heroPlaceholder: 'https://your-website.com', heroBtn: 'Analyze',
     socialProof: '300+ companies use CatyAI · ZF IT Generation 2025 · Free, no credit card',
     scanCritical: 'Critical vulnerability detected',
@@ -94,8 +105,12 @@ const translations = {
     layer4Tagline: 'Live Monitoring and Immunity.',
     layer4Body: 'A system that watches 24/7. If AI starts behaving strangely or your data "expires", Sentinel fixes everything instantly or blocks access. Zero reputation risks.',
     layer4Compliance: 'EU AI Act · Art. 9 · Risk Management Lifecycle · JWKS revocation in milliseconds',
+    euReadySince: 'Ready since launch',
+    euReady: 'READY',
     euBody: 'Technical documentation, transparency headers, data provenance and risk management — natively implemented in CatyAI.',
     euDeadline: 'Deadline: August 2, 2026 · Compliance by design, not add-on',
+    euArt9: 'Article 9 · Risk Management', euArt10: 'Article 10 · Data Governance',
+    euArt50: 'Article 50 · Transparency', euArt52: 'Article 52 · Disclosure',
     testimonialsLabel: 'Testimonials', testimonialsTitle: '4.8★ on Google · 47 reviews',
     industriesLabel: 'Industries', industriesTitle: 'Used in', industriesAccent: '14 verticals',
     ind1: 'Medical Clinics', ind2: 'Restaurants', ind3: 'Real Estate',
@@ -121,12 +136,17 @@ const translations = {
     footerProduct: 'Product', footerResources: 'Resources', footerCompany: 'Company', footerLegal: 'Legal',
     footerPricing: 'Pricing', footerDocs: 'Documentation', footerAbout: 'About',
     footerCareers: 'Careers', footerTerms: 'Terms', footerSecurity: 'Security',
+    prod1Tagline: 'No website? No problem.', prod1F1: 'QR code for WhatsApp', prod1F2: 'AI responds 24/7', prod1F3: 'Automatic appointments', prod1F4: 'Zero hosting costs', prod1Cta: 'Start with €10',
+    prod2Tagline: 'AI on your website', prod2F1: 'Embed chat widget', prod2F2: 'Auto-Crawl site', prod2F3: 'Lead capture', prod2F4: 'Complete analytics', prod2Cta: 'Add to site',
+    prod3Tagline: 'Anti-scam protection', prod3F1: '8 detection modules', prod3F2: 'Blocks phishing', prod3F3: 'Real-time alert', prod3F4: 'Zero false positives', prod3Cta: 'Activate Free',
+    prod4Tagline: 'Intelligent geographic routing', prod4F1: '180+ countries', prod4F2: 'AI language detection', prod4F3: 'Timezone-aware routing', prod4F4: 'LLMs.txt generation', prod4Cta: 'Explore GEO',
   },
   es: {
-    navLogin: 'Iniciar sesión', navCta: 'Empieza gratis',
-    badge: 'CatyAI v3.0 · Infraestructura GEO activa',
-    heroLine1: 'Tu sitio web es', heroAccent: '¿invisible para la IA?',
-    heroSubtitle: 'GPTBot, ClaudeBot y Perplexity no ejecutan JavaScript. Verifica en 30 segundos si pueden leerte o si alucinan precios y servicios inventados.',
+    navLogin: 'Iniciar sesión', navCta: 'Auditar Visibilidad',
+    navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Precios',
+    badge: '🔴 ESCANEANDO: EL 90% DE SITIOS WEB SON INVISIBLES PARA LA IA',
+    heroLine1: '¿Está la IA ciega ante', heroAccent: 'tu negocio?',
+    heroSubtitle: 'Si la IA no puede leer tu sitio, no existes. Verifica en 30 segundos si GPTBot, ClaudeBot y Perplexity pueden leerte — o si están inventando tus precios y servicios.',
     heroPlaceholder: 'https://tu-sitio-web.com', heroBtn: 'Analizar',
     socialProof: '300+ empresas usan CatyAI · ZF IT Generation 2025 · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
@@ -153,8 +173,12 @@ const translations = {
     layer4Tagline: 'Monitoreo e Inmunidad en Vivo.',
     layer4Body: 'Un sistema que vigila 24/7. Si la IA comienza a comportarse de forma extraña o tus datos "expiran", Sentinel lo repara instantáneamente o bloquea el acceso.',
     layer4Compliance: 'EU AI Act · Art. 9 · Ciclo de Gestión de Riesgos · JWKS revocación en milisegundos',
+    euReadySince: 'Listo desde el lanzamiento',
+    euReady: 'LISTO',
     euBody: 'Documentación técnica, cabeceras de transparencia, proveniencia de datos y gestión de riesgos — implementados nativamente en CatyAI.',
     euDeadline: 'Fecha límite: 2 agosto 2026 · Compliance by design, no add-on',
+    euArt9: 'Artículo 9 · Gestión de Riesgos', euArt10: 'Artículo 10 · Gobernanza de Datos',
+    euArt50: 'Artículo 50 · Transparencia', euArt52: 'Artículo 52 · Divulgación',
     testimonialsLabel: 'Testimonios', testimonialsTitle: '4.8★ en Google · 47 reseñas',
     industriesLabel: 'Industrias', industriesTitle: 'Usado en', industriesAccent: '14 verticales',
     ind1: 'Clínicas Médicas', ind2: 'Restaurantes', ind3: 'Real Estate',
@@ -180,12 +204,17 @@ const translations = {
     footerProduct: 'Producto', footerResources: 'Recursos', footerCompany: 'Empresa', footerLegal: 'Legal',
     footerPricing: 'Precios', footerDocs: 'Documentación', footerAbout: 'Acerca de',
     footerCareers: 'Empleo', footerTerms: 'Términos', footerSecurity: 'Seguridad',
+    prod1Tagline: '¿Sin sitio web? Sin problema.', prod1F1: 'Código QR para WhatsApp', prod1F2: 'IA responde 24/7', prod1F3: 'Citas automáticas', prod1F4: 'Sin costos de hosting', prod1Cta: 'Empieza con €10',
+    prod2Tagline: 'IA en tu sitio web', prod2F1: 'Widget de chat embed', prod2F2: 'Auto-Crawl del sitio', prod2F3: 'Captación de leads', prod2F4: 'Análisis completo', prod2Cta: 'Añadir al sitio',
+    prod3Tagline: 'Protección anti-fraude', prod3F1: '8 módulos de detección', prod3F2: 'Bloquea phishing', prod3F3: 'Alerta en tiempo real', prod3F4: 'Cero falsos positivos', prod3Cta: 'Activar Gratis',
+    prod4Tagline: 'Enrutamiento geográfico inteligente', prod4F1: '180+ países', prod4F2: 'Detección de idioma IA', prod4F3: 'Enrutamiento por zona horaria', prod4F4: 'Generación LLMs.txt', prod4Cta: 'Explorar GEO',
   },
   pt: {
-    navLogin: 'Entrar', navCta: 'Comece grátis',
-    badge: 'CatyAI v3.0 · Infraestrutura GEO ativa',
-    heroLine1: 'Seu site está', heroAccent: 'invisível para a IA?',
-    heroSubtitle: 'GPTBot, ClaudeBot e Perplexity não executam JavaScript. Verifique em 30 segundos se eles podem ler você ou se estão alucinando preços e serviços inventados.',
+    navLogin: 'Entrar', navCta: 'Auditar Visibilidade',
+    navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Preços',
+    badge: '🔴 ESCANEANDO: 90% DOS SITES SÃO INVISÍVEIS PARA A IA',
+    heroLine1: 'A IA está cega para', heroAccent: 'o seu negócio?',
+    heroSubtitle: 'Se a IA não consegue ler seu site, você não existe. Verifique em 30 segundos se GPTBot, ClaudeBot e Perplexity conseguem ler seu negócio — ou se estão inventando seus preços e serviços.',
     heroPlaceholder: 'https://seu-site.com.br', heroBtn: 'Analisar',
     socialProof: '300+ empresas usam CatyAI · ZF IT Generation 2025 · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
@@ -212,8 +241,12 @@ const translations = {
     layer4Tagline: 'Monitoramento e Imunidade ao Vivo.',
     layer4Body: 'Um sistema que vigia 24/7. Se a IA começar a se comportar estranhamente ou seus dados "expirarem", o Sentinel conserta tudo instantaneamente ou bloqueia o acesso.',
     layer4Compliance: 'EU AI Act · Art. 9 · Ciclo de Gestão de Riscos · JWKS revogação em milissegundos',
+    euReadySince: 'Pronto desde o lançamento',
+    euReady: 'PRONTO',
     euBody: 'Documentação técnica, cabeçalhos de transparência, proveniência de dados e gestão de riscos — implementados nativamente no CatyAI.',
     euDeadline: 'Prazo: 2 agosto 2026 · Compliance by design, não add-on',
+    euArt9: 'Artigo 9 · Gestão de Riscos', euArt10: 'Artigo 10 · Governança de Dados',
+    euArt50: 'Artigo 50 · Transparência', euArt52: 'Artigo 52 · Divulgação',
     testimonialsLabel: 'Depoimentos', testimonialsTitle: '4.8★ no Google · 47 avaliações',
     industriesLabel: 'Indústrias', industriesTitle: 'Usado em', industriesAccent: '14 verticais',
     ind1: 'Clínicas Médicas', ind2: 'Restaurantes', ind3: 'Real Estate',
@@ -239,12 +272,17 @@ const translations = {
     footerProduct: 'Produto', footerResources: 'Recursos', footerCompany: 'Empresa', footerLegal: 'Legal',
     footerPricing: 'Preços', footerDocs: 'Documentação', footerAbout: 'Sobre',
     footerCareers: 'Carreiras', footerTerms: 'Termos', footerSecurity: 'Segurança',
+    prod1Tagline: 'Sem site? Sem problema.', prod1F1: 'Código QR para WhatsApp', prod1F2: 'IA responde 24/7', prod1F3: 'Agendamentos automáticos', prod1F4: 'Zero custos de hosting', prod1Cta: 'Começar com €10',
+    prod2Tagline: 'IA no seu site', prod2F1: 'Widget de chat embed', prod2F2: 'Auto-Crawl do site', prod2F3: 'Captura de leads', prod2F4: 'Análise completa', prod2Cta: 'Adicionar ao site',
+    prod3Tagline: 'Proteção anti-fraude', prod3F1: '8 módulos de detecção', prod3F2: 'Bloqueia phishing', prod3F3: 'Alerta em tempo real', prod3F4: 'Zero falsos positivos', prod3Cta: 'Ativar Grátis',
+    prod4Tagline: 'Roteamento geográfico inteligente', prod4F1: '180+ países', prod4F2: 'Detecção de idioma IA', prod4F3: 'Roteamento por fuso horário', prod4F4: 'Geração LLMs.txt', prod4Cta: 'Explorar GEO',
   },
   fr: {
-    navLogin: 'Connexion', navCta: 'Commencer gratuitement',
-    badge: "CatyAI v3.0 · Infrastructure GEO en direct",
-    heroLine1: 'Votre site est', heroAccent: "invisible pour l'IA ?",
-    heroSubtitle: "GPTBot, ClaudeBot et Perplexity n'exécutent pas JavaScript. Vérifiez en 30 secondes s'ils peuvent vous lire ou s'ils hallucinent des prix et services inventés.",
+    navLogin: 'Connexion', navCta: "Auditer la Visibilité",
+    navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocole', navPricing: 'Tarifs',
+    badge: "🔴 SCAN EN COURS : 90% DES SITES SONT INVISIBLES POUR L'IA",
+    heroLine1: "L'IA est-elle aveugle à", heroAccent: 'votre entreprise ?',
+    heroSubtitle: "Si l'IA ne peut pas lire votre site, vous n'existez pas. Vérifiez en 30 secondes si GPTBot, ClaudeBot et Perplexity peuvent vous lire — ou s'ils inventent vos prix et services.",
     heroPlaceholder: 'https://votre-site.fr', heroBtn: 'Analyser',
     socialProof: '300+ entreprises utilisent CatyAI · ZF IT Generation 2025 · Gratuit, sans carte',
     scanCritical: 'Vulnérabilité critique détectée',
@@ -271,8 +309,12 @@ const translations = {
     layer4Tagline: 'Surveillance et Immunité en Direct.',
     layer4Body: "Un système qui veille 24/7. Si l'IA commence à se comporter étrangement ou si vos données \"expirent\", Sentinel répare tout instantanément ou bloque l'accès.",
     layer4Compliance: 'EU AI Act · Art. 9 · Cycle de Gestion des Risques · révocation JWKS en millisecondes',
+    euReadySince: 'Prêt dès le lancement',
+    euReady: 'PRÊT',
     euBody: 'Documentation technique, en-têtes de transparence, provenance des données et gestion des risques — implémentés nativement dans CatyAI.',
     euDeadline: 'Échéance : 2 août 2026 · Compliance by design, pas un add-on',
+    euArt9: 'Article 9 · Gestion des Risques', euArt10: 'Article 10 · Gouvernance des Données',
+    euArt50: 'Article 50 · Transparence', euArt52: 'Article 52 · Divulgation',
     testimonialsLabel: 'Témoignages', testimonialsTitle: '4.8★ sur Google · 47 avis',
     industriesLabel: 'Industries', industriesTitle: 'Utilisé dans', industriesAccent: '14 secteurs',
     ind1: 'Cliniques Médicales', ind2: 'Restaurants', ind3: 'Immobilier',
@@ -298,6 +340,10 @@ const translations = {
     footerProduct: 'Produit', footerResources: 'Ressources', footerCompany: 'Entreprise', footerLegal: 'Légal',
     footerPricing: 'Tarifs', footerDocs: 'Documentation', footerAbout: 'À propos',
     footerCareers: 'Carrières', footerTerms: 'Conditions', footerSecurity: 'Sécurité',
+    prod1Tagline: 'Sans site ? Pas de problème.', prod1F1: 'QR code pour WhatsApp', prod1F2: "L'IA répond 24/7", prod1F3: 'Rendez-vous automatiques', prod1F4: 'Zéro frais d\'hébergement', prod1Cta: 'Commencer à 10€',
+    prod2Tagline: "L'IA sur votre site", prod2F1: 'Widget chat intégré', prod2F2: 'Auto-Crawl du site', prod2F3: 'Capture de leads', prod2F4: 'Analyse complète', prod2Cta: 'Ajouter au site',
+    prod3Tagline: 'Protection anti-fraude', prod3F1: '8 modules de détection', prod3F2: 'Bloque le phishing', prod3F3: 'Alerte en temps réel', prod3F4: 'Zéro faux positifs', prod3Cta: 'Activer Gratuitement',
+    prod4Tagline: 'Routage géographique intelligent', prod4F1: '180+ pays', prod4F2: "Détection de langue IA", prod4F3: 'Routage par fuseau horaire', prod4F4: 'Génération LLMs.txt', prod4Cta: 'Explorer GEO',
   },
 };
 
@@ -785,7 +831,7 @@ body {
         .hero-bg-image {
             position: absolute;
             inset: 0;
-            background-image: url('/hero-neural-node.jpg');
+            background-image: url('/hero-neural-node.webp');
             background-size: cover;
             background-position: 65% center;
             background-repeat: no-repeat;
@@ -831,23 +877,26 @@ body {
         }
 
         .hero-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-style: normal;
             font-weight: 800;
             font-size: clamp(3rem, 6.5vw, 6.5rem);
             line-height: 1.05;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            text-transform: none;
             text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
         }
         .hero-title-line-1 {
             display: block;
             color: #f1f5f9;
+            text-transform: none;
         }
         .hero-title-accent {
             display: block;
             color: #C8A165;
             position: relative;
             margin-top: 0.25rem;
+            text-transform: none;
         }
         .hero-title-accent::after {
             content: '';
@@ -1171,38 +1220,8 @@ body {
         .reveal.visible { opacity: 1; transform: translateY(0); }
       `}</style>
 
-      {/* ============== NAV — SALES-FOCUSED (IMM RO) + Enterprise link to /geo ============== */}
-          <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
-              <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                  <a href="#hero" className="flex items-center gap-2">
-                      <img src="/logo-caty.png" alt="CatyAI" className="w-8 h-8 object-contain" />
-                      <span className="font-bold tracking-tight text-white">Caty<span className="text-gold">AI</span></span>
-                  </a>
-
-                  {/* Sales-focused links pentru IMM-uri RO */}
-                  <div className="hidden md:flex items-center gap-7 text-sm text-slate-400 font-medium">
-                      <a href="#produse" className="hover:text-white transition-colors">Soluții</a>
-                      <a href="#cum" className="hover:text-white transition-colors">Cum funcționează</a>
-                      <a href="#industrii" className="hover:text-white transition-colors">Industrii</a>
-                      <a href="/pricing" className="hover:text-white transition-colors">Prețuri</a>
-                      <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-
-                      {/* Vertical separator + Enterprise/GEO link (poziționare distinctă) */}
-                      <span className="h-4 w-px bg-white/10"></span>
-                      <a href="/geo" className="group flex items-center gap-1.5 text-slate-500 hover:text-gold transition-colors">
-                          <i data-lucide="zap" className="w-3.5 h-3.5" />
-                          <span>Enterprise</span>
-                          <i data-lucide="arrow-up-right" className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                      </a>
-                  </div>
-
-                  <div className="flex items-center gap-3 text-sm font-medium">
-                      <LanguageSelector lang={lang} setLang={setLang} />
-                      <a href="https://app.catyai.io/login" className="text-slate-400 hover:text-white transition-colors hidden md:block">{t.navLogin}</a>
-                      <a href="https://app.catyai.io/signup" className="btn-primary px-4 py-2 rounded-md font-semibold whitespace-nowrap">{t.navCta}</a>
-                  </div>
-              </div>
-          </nav>
+      {/* ============== NAV — GlobalHeader ============== */}
+          <GlobalHeader lang={lang} setLang={setLang} />
 
           {/* ============== 1. HERO ============== */}
           <section id="hero" className="hero-fullscreen">
@@ -1429,19 +1448,19 @@ body {
                           <i data-lucide="qr-code" className="w-6 h-6" style={{color: '#22c55e'}} />
                       </div>
                       <h3 className="card-product-title">QR-First</h3>
-                      <p className="card-product-tagline">No website? No problem.</p>
+                      <p className="card-product-tagline">{t.prod1Tagline}</p>
                       <div className="card-product-price">
                           <span className="price-amount">€10</span>
                           <span className="price-period">/month</span>
                       </div>
                       <ul className="card-product-features">
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> QR code for WhatsApp</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> AI responds 24/7</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Automatic appointments</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Zero hosting costs</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F1}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F2}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F3}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F4}</li>
                       </ul>
                       <a href="https://catyai.io/no-website" className="card-product-cta">
-                          Start with €10
+                          {t.prod1Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
@@ -1452,19 +1471,19 @@ body {
                           <i data-lucide="globe" className="w-6 h-6 text-gold" />
                       </div>
                       <h3 className="card-product-title">Web Widget</h3>
-                      <p className="card-product-tagline">AI on your website</p>
+                      <p className="card-product-tagline">{t.prod2Tagline}</p>
                       <div className="card-product-price">
                           <span className="price-amount">€49</span>
                           <span className="price-period">/month</span>
                       </div>
                       <ul className="card-product-features">
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Embed chat widget</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Auto-Crawl site</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Lead capture</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Complete analytics</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F1}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F2}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F3}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F4}</li>
                       </ul>
                       <a href="https://catyai.io/widget" className="card-product-cta card-product-cta-primary">
-                          Add to site
+                          {t.prod2Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
@@ -1474,19 +1493,19 @@ body {
                           <i data-lucide="shield-check" className="w-6 h-6" style={{color: '#ef4444'}} />
                       </div>
                       <h3 className="card-product-title">FraudAI</h3>
-                      <p className="card-product-tagline">Anti-scam protection</p>
+                      <p className="card-product-tagline">{t.prod3Tagline}</p>
                       <div className="card-product-price">
                           <span className="price-amount-free">FREE</span>
                           <span className="price-period">forever</span>
                       </div>
                       <ul className="card-product-features">
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> 8 detection modules</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Blocks phishing</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Real-time alert</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Zero false positives</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F1}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F2}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F3}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F4}</li>
                       </ul>
                       <a href="https://catyai.io/fraud-shield" className="card-product-cta">
-                          Activate Free
+                          {t.prod3Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
@@ -1496,19 +1515,19 @@ body {
                           <i data-lucide="globe-2" className="w-6 h-6" style={{color: '#3b82f6'}} />
                       </div>
                       <h3 className="card-product-title">GEO Gateway</h3>
-                      <p className="card-product-tagline">Intelligent geographic routing</p>
+                      <p className="card-product-tagline">{t.prod4Tagline}</p>
                       <div className="card-product-price">
                           <span className="price-amount-pro">Pro+</span>
                           <span className="price-period">plans</span>
                       </div>
                       <ul className="card-product-features">
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> 180+ countries</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> AI language detection</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> Timezone-aware routing</li>
-                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> LLMs.txt generation</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F1}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F2}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F3}</li>
+                          <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F4}</li>
                       </ul>
                       <a href="https://catyai.io/geo-gateway" className="card-product-cta">
-                          Explore GEO
+                          {t.prod4Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
@@ -1688,19 +1707,19 @@ body {
                       <div>
                           <div className="flex items-center gap-2 mb-2">
                               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                              <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">Ready since launch</span>
+                              <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">{t.euReadySince}</span>
                           </div>
                           <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight mb-3">
-                              EU AI ACT 2026 <span className="text-gold">READY</span>
+                              EU AI ACT 2026 <span className="text-gold">{t.euReady}</span>
                           </h3>
                           <p className="text-slate-300 leading-relaxed mb-4">
                               {t.euBody}
                           </p>
                           <div className="flex flex-wrap gap-2 text-xs font-mono">
-                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">Article 9 · Risk Management</span>
-                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">Article 10 · Data Governance</span>
-                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">Article 50 · Transparency</span>
-                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">Article 52 · Disclosure</span>
+                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">{t.euArt9}</span>
+                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">{t.euArt10}</span>
+                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">{t.euArt50}</span>
+                              <span className="px-3 py-1.5 rounded-md bg-black/40 border border-white/10 text-gold">{t.euArt52}</span>
                           </div>
                           <p className="mt-4 text-xs text-slate-500 font-mono">{t.euDeadline}</p>
                       </div>

@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import React from 'react'
+import { ArrowUpRight, Mail, Globe } from 'lucide-react'
 
 const translations = {
   en: {
@@ -125,10 +126,6 @@ const css = `
 export default function FooterV9({ lang = 'en' }) {
   const t = translations[lang] || translations.en
 
-  useEffect(() => {
-    if (window.lucide) window.lucide.createIcons()
-  })
-
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
@@ -161,10 +158,13 @@ export default function FooterV9({ lang = 'en' }) {
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-12 gap-8">
           <div className="md:col-span-4">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gold/10 rounded border border-gold/30 flex items-center justify-center">
-                <i data-lucide="cpu" className="text-gold w-5 h-5" />
-              </div>
-              <span className="font-bold tracking-tight text-lg text-white">Caty<span className="text-gold">AI</span></span>
+              <picture>
+                <source srcSet="/logo-caty.webp" type="image/webp" />
+                <img src="/logo-caty.png" alt="CatyAI" style={{ width: 30, height: 30, objectFit: 'contain' }} />
+              </picture>
+              <span style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '-0.02em', color: '#f1f5f9' }}>
+                Caty<span style={{ color: '#C8A165' }}>AI</span>
+              </span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">{t.desc}</p>
             <div className="flex items-center gap-3">
@@ -175,7 +175,7 @@ export default function FooterV9({ lang = 'en' }) {
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
               </a>
               <a href="mailto:contact@payai-x.com" className="fv9-social" aria-label="Email">
-                <i data-lucide="mail" className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -183,42 +183,42 @@ export default function FooterV9({ lang = 'en' }) {
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.product}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/no-website" className="fv9-link">QR-First <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/widget" className="fv9-link">Web Widget <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/fraud-shield" className="fv9-link">FraudAI <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/geo-gateway" className="fv9-link">GEO Gateway <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/pricing" className="fv9-link">{t.pricing} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/no-website" className="fv9-link">QR-First <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/widget" className="fv9-link">Web Widget <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/fraud-shield" className="fv9-link">FraudAI <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/geo-gateway" className="fv9-link">GEO Gateway <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/pricing" className="fv9-link">{t.pricing} <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.resources}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/blog" className="fv9-link">Blog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="https://docs.catyai.io" className="fv9-link" target="_blank" rel="noopener noreferrer">{t.docs} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">API Reference <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Manifesto <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Benchmarks <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/blog" className="fv9-link">Blog <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="https://docs.catyai.io" className="fv9-link" target="_blank" rel="noopener noreferrer">{t.docs} <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="#" className="fv9-link">API Reference <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="#" className="fv9-link">Manifesto <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="#" className="fv9-link">Benchmarks <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.company}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/about" className="fv9-link">{t.about} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">{t.careers} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/press" className="fv9-link">Press Kit <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="mailto:contact@payai-x.com" className="fv9-link">Contact <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/about" className="fv9-link">{t.about} <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="#" className="fv9-link">{t.careers} <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/press" className="fv9-link">Press Kit <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="mailto:contact@payai-x.com" className="fv9-link">Contact <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.legal}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/privacy" className="fv9-link">Privacy <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/terms" className="fv9-link">{t.terms} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/gdpr" className="fv9-link">GDPR <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-              <li><a href="/licensing" className="fv9-link">Licensing <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+              <li><a href="/privacy" className="fv9-link">Privacy <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/terms" className="fv9-link">{t.terms} <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/gdpr" className="fv9-link">GDPR <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/licensing" className="fv9-link">Licensing <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
         </div>
@@ -238,7 +238,7 @@ export default function FooterV9({ lang = 'en' }) {
             </div>
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
-                <i data-lucide="globe" className="w-3 h-3" /> RO
+                <Globe className="w-3 h-3" /> RO
               </span>
               <span>·</span>
               <span>v3.0.18</span>

@@ -30,11 +30,26 @@ const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
 const NoWebsite = lazy(() => import('./pages/NoWebsite'))
 const CatyWidget = lazy(() => import('./pages/CatyWidget'))
 const GeoGateway = lazy(() => import('./pages/GeoGateway'))
-const Press = lazy(() => import('./pages/Press'))
+const HealthcarePage = lazy(() => import('./pages/HealthcarePage'))
 const FeaturesPage = lazy(() => import('./pages/Features'))
 const InfrastructurePage = lazy(() => import('./pages/Infrastructure'))
 const PricingPage = lazy(() => import('./pages/Pricing'))
-const HomePageV9 = lazy(() => import('./pages/HomePage'))
+const PlatformPage = lazy(() => import('./pages/PlatformPage'))
+const SolutionsPage = lazy(() => import('./pages/SolutionsPage'))
+const PartnersPage = lazy(() => import('./pages/PartnersPage'))
+const CompanyPage = lazy(() => import('./pages/CompanyPage'))
+const ProtocolPage = lazy(() => import('./pages/ProtocolPage'))
+const TrustCenter = lazy(() => import('./pages/TrustCenter'))
+const WhiteLabelPage = lazy(() => import('./pages/WhiteLabelPage'))
+const AgencyNetworkPage = lazy(() => import('./pages/AgencyNetworkPage'))
+const TechPartnersPage = lazy(() => import('./pages/TechPartnersPage'))
+const EnterprisePage = lazy(() => import('./pages/EnterprisePage'))
+const EcommercePage = lazy(() => import('./pages/EcommercePage'))
+const HomePage = lazy(() => import('./pages/HomePage'))
+const CareersPage = lazy(() => import('./pages/Careers'))
+const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
+const ManifestoPage = lazy(() => import('./pages/Manifesto'))
+const BenchmarksPage = lazy(() => import('./pages/Benchmarks'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3231,44 +3246,6 @@ function CTAFinal() {
   )
 }
 
-function HomePage() {
-  return (
-    <>
-      <SEO
-        title="AI Chatbot That Converts Visitors Into Customers"
-        description="CatyAI is an AI sales agent that responds, qualifies and converts your website visitors into real customers. 24/7 automation for WhatsApp and websites."
-        url="https://catyai.io/"
-        faq={homepageFAQ}
-      />
-      {/* SECTION 1: Hero - kept as-is */}
-      <Hero />
-
-      {/* SECTION 2: Realitatea - Google traffic decline stats */}
-      <Realitatea />
-
-      {/* SECTION 3: Produse - 3 product cards */}
-      <ProduseNoi />
-
-      {/* SECTION 4: Cum Funcționează - 4 steps timeline */}
-      <CumFunctioneaza />
-
-      {/* SECTION 5: Ce spun clienții - Google Reviews carousel preserved */}
-      <Testimonials />
-
-      {/* SECTION 6: Industrii - 6 icons */}
-      <IndustriiNoi />
-
-      {/* SECTION 7: FAQ */}
-      <FAQ />
-
-      {/* SECTION 8: CTA Final */}
-      <CTAFinal />
-
-      <FloatingWidgetIndicator />
-    </>
-  )
-}
-
 // Scroll to hash handler
 function ScrollToHash() {
   const location = useLocation()
@@ -3294,7 +3271,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/pricing', '/press']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/manifesto', '/benchmarks', '/licensing', '/pricing', '/contact']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3328,15 +3305,32 @@ function AppContent() {
         <ScrollToHash />
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/" element={<HomePageV9 />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/whatsapp" element={<WhatsAppAI />} />
             <Route path="/fraud-shield" element={<FraudAI />} />
             <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
             <Route path="/widget" element={<CatyWidget />} />
             <Route path="/geo-gateway" element={<GeoGateway />} />
+            <Route path="/ecommerce" element={<EcommercePage />} />
+            <Route path="/healthcare" element={<HealthcarePage />} />
+            <Route path="/platform" element={<PlatformPage />} />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/company" element={<CompanyPage />} />
+            <Route path="/protocol" element={<ProtocolPage />} />
+            <Route path="/trust-center" element={<TrustCenter />} />
+            <Route path="/white-label" element={<WhiteLabelPage />} />
+            <Route path="/agency-network" element={<AgencyNetworkPage />} />
+            <Route path="/technology-partners" element={<TechPartnersPage />} />
+            <Route path="/enterprise" element={<EnterprisePage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/api-reference" element={<ApiReferencePage />} />
+            <Route path="/manifesto" element={<ManifestoPage />} />
+            <Route path="/benchmarks" element={<BenchmarksPage />} />
+            <Route path="/licensing" element={<Licensing />} />
             <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/press" element={<Press />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>
       </div>
@@ -3350,6 +3344,7 @@ function AppContent() {
       <main>
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/gdpr" element={<GDPRPolicy />} />
@@ -3361,8 +3356,22 @@ function AppContent() {
             <Route path="/commerce" element={<CommerceDemo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
+            <Route path="/pricing" element={<PricingPage />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/infrastructura" element={<InfrastructurePage />} />
+            <Route path="/platform" element={<PlatformPage />} />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/partners" element={<PartnersPage />} />
+            <Route path="/company" element={<CompanyPage />} />
+            <Route path="/protocol" element={<ProtocolPage />} />
+            <Route path="/trust-center" element={<TrustCenter />} />
+            <Route path="/white-label" element={<WhiteLabelPage />} />
+            <Route path="/agency-network" element={<AgencyNetworkPage />} />
+            <Route path="/technology-partners" element={<TechPartnersPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/api-reference" element={<ApiReferencePage />} />
+            <Route path="/manifesto" element={<ManifestoPage />} />
+            <Route path="/benchmarks" element={<BenchmarksPage />} />
           </Routes>
         </Suspense>
       </main>

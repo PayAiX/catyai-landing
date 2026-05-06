@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CatyAI — Security &amp; Trust Whitepaper</title>
+<meta name="description" content="CatyAI Security & Trust Whitepaper — verifiable AI infrastructure built by PayAi-X FZE. Cryptographic response signing, SOC 2 / GDPR / EU AI Act compliance posture." />
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-muted: #f8fafc;
+    --ink: #0b1220;
+    --ink-soft: #334155;
+    --ink-mute: #64748b;
+    --line: #e2e8f0;
+    --line-soft: #f1f5f9;
+    --brand: #C8A165;
+    --brand-ink: #a07840;
+    --brand-bg: rgba(200,161,101,0.08);
+    --brand-border: rgba(200,161,101,0.35);
+    --code-bg: #010a1f;
+    --code-ink: #e2e8f0;
+    --ok: #10b981;
+    --warn: #f59e0b;
+    --navy: #010a1f;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  code, pre, .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+  a { color: var(--brand-ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+  a:hover { color: var(--brand); }
+
+  /* ============ HERO / COVER ============ */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(900px 500px at 75% -5%, rgba(200,161,101,0.18), transparent 60%),
+      radial-gradient(700px 400px at 5% 110%, rgba(200,161,101,0.10), transparent 60%),
+      linear-gradient(180deg, #010a1f 0%, #030d1e 100%);
+    color: #f8fafc;
+    padding: 80px 32px 100px;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 700px 420px at 50% 50%, black 30%, transparent 80%);
+    pointer-events: none;
+  }
+  .container { max-width: 880px; margin: 0 auto; position: relative; }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #f1f5f9; }
+  .logo img { width: 30px; height: 30px; object-fit: contain; display: block; }
+  .logo-ai { color: #C8A165; }
+  .nav-meta { font-size: 13px; color: #64748b; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(200,161,101,0.1);
+    border: 1px solid rgba(200,161,101,0.35);
+    color: #C8A165;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 8px var(--brand); }
+  h1.title {
+    margin: 20px 0 16px;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 19px;
+    color: #94a3b8;
+    max-width: 640px;
+    line-height: 1.55;
+  }
+  .doc-meta {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    font-size: 13px;
+  }
+  .doc-meta dt { color: #475569; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; margin-bottom: 4px; }
+  .doc-meta dd { margin: 0; color: #e2e8f0; font-weight: 500; }
+
+  /* ============ TOC ============ */
+  .toc {
+    background: var(--bg-muted);
+    border-bottom: 1px solid var(--line);
+    padding: 32px;
+  }
+  .toc-inner { max-width: 880px; margin: 0 auto; }
+  .toc h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute); margin: 0 0 16px; font-weight: 600; }
+  .toc ol {
+    columns: 2; column-gap: 32px;
+    margin: 0; padding: 0; list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    padding: 6px 0;
+    font-size: 14px;
+    break-inside: avoid;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    color: var(--brand-ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    margin-right: 10px;
+    font-weight: 600;
+  }
+  .toc a { color: var(--ink); border: none; }
+  .toc a:hover { color: var(--brand-ink); }
+
+  /* ============ CONTENT ============ */
+  main { padding: 64px 32px; }
+  section { max-width: 880px; margin: 0 auto 56px; scroll-margin-top: 24px; }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2.section-title {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .section-num {
+    display: inline-block;
+    color: var(--brand);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  h3 { font-size: 18px; margin: 32px 0 8px; letter-spacing: -0.01em; }
+  p { margin: 0 0 14px; color: var(--ink-soft); }
+  p strong { color: var(--ink); }
+  ul.checks { list-style: none; padding: 0; margin: 16px 0; }
+  ul.checks li {
+    position: relative;
+    padding: 8px 0 8px 28px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  ul.checks li:last-child { border-bottom: none; }
+  ul.checks li::before {
+    content: "";
+    position: absolute; left: 0; top: 14px;
+    width: 16px; height: 16px;
+    background: var(--ok);
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='black' fill-rule='evenodd' d='M16.704 5.29a1 1 0 010 1.42l-8 8a1 1 0 01-1.42 0l-4-4a1 1 0 011.42-1.42L8 12.58l7.29-7.29a1 1 0 011.41 0z' clip-rule='evenodd'/></svg>") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='black' fill-rule='evenodd' d='M16.704 5.29a1 1 0 010 1.42l-8 8a1 1 0 01-1.42 0l-4-4a1 1 0 011.42-1.42L8 12.58l7.29-7.29a1 1 0 011.41 0z' clip-rule='evenodd'/></svg>") no-repeat center / contain;
+  }
+
+  pre.code {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    padding: 18px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0;
+    border: 1px solid rgba(200,161,101,0.12);
+  }
+  pre.code .k { color: #C8A165; }
+  pre.code .s { color: #fde68a; }
+  pre.code .c { color: #475569; }
+  pre.code .n { color: #f9a8d4; }
+
+  .callout {
+    border: 1px solid var(--line);
+    background: var(--brand-bg);
+    border-left: 3px solid var(--brand);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .callout strong { color: var(--ink); }
+
+  table.kv {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  table.kv th, table.kv td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.kv th {
+    background: var(--bg-muted);
+    color: var(--ink-mute);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 38%;
+  }
+  table.kv td code { background: var(--bg-muted); padding: 2px 6px; border-radius: 4px; font-size: 12.5px; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--brand-bg);
+    color: var(--brand-ink);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--brand-border);
+  }
+  .badge svg { width: 14px; height: 14px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    margin-top: 80px;
+    background: var(--navy);
+    color: #94a3b8;
+    padding: 48px 32px 36px;
+  }
+  .footer-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #f8fafc; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; }
+  footer a { color: #94a3b8; border: none; }
+  footer a:hover { color: var(--brand); }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { padding: 4px 0; font-size: 14px; }
+  .legal {
+    max-width: 880px; margin: 32px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: 12.5px; color: #475569;
+  }
+
+  @media (max-width: 720px) {
+    .doc-meta { grid-template-columns: repeat(2, 1fr); }
+    .toc ol { columns: 1; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero { padding: 56px 20px 72px; }
+    main { padding: 48px 20px; }
+  }
+
+  @media print {
+    .hero, footer { background: white; color: black; }
+    .hero::after { display: none; }
+    .toc { background: white; }
+    pre.code { background: #f1f5f9; color: #0b1220; border: 1px solid var(--line); }
+    a { color: var(--brand-ink); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="nav">
+      <div class="logo">
+        <img src="https://catyai.io/logo-caty.png" alt="CatyAI logo" />
+        <span>Caty<span class="logo-ai">AI</span></span>
+      </div>
+      <div class="nav-meta">docs.catyai.io / security</div>
+    </div>
+
+    <span class="eyebrow"><span class="dot"></span>Security &amp; Trust Whitepaper</span>
+    <h1 class="title">Verifiable AI for<br/>Regulated Businesses</h1>
+    <p class="lede">
+      How CatyAI delivers cryptographically signed AI responses, tenant-isolated data, and
+      audit-ready infrastructure across SOC&nbsp;2, GDPR, and EU AI Act control objectives.
+    </p>
+
+    <dl class="doc-meta">
+      <div><dt>Document</dt><dd>v1.0</dd></div>
+      <div><dt>Published</dt><dd>May 2026</dd></div>
+      <div><dt>Owner</dt><dd>PayAi-X FZE</dd></div>
+      <div><dt>Classification</dt><dd>Public</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-inner">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#summary">Executive Summary</a></li>
+      <li><a href="#verifiability">Verifiable AI &mdash; Cryptographic Signing</a></li>
+      <li><a href="#data">Data Protection &amp; Privacy</a></li>
+      <li><a href="#compliance">Compliance Frameworks</a></li>
+      <li><a href="#infra">Infrastructure Security</a></li>
+      <li><a href="#app">Application Security</a></li>
+      <li><a href="#ir">Incident Response</a></li>
+      <li><a href="#contact">Contact &amp; Disclosure</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ 1. EXECUTIVE SUMMARY ============ -->
+  <section id="summary">
+    <span class="section-num">01 &mdash; Executive Summary</span>
+    <h2 class="section-title">A trust layer for enterprise AI</h2>
+    <p>
+      <strong>CatyAI</strong> is the AI infrastructure layer built by <strong>PayAi-X FZE</strong>,
+      a Dubai-based company providing verifiable, compliant, and high-performance AI for businesses
+      operating across the EU, MENA, and global regulated markets.
+    </p>
+    <p>
+      Where most AI providers ask customers to trust the output, CatyAI lets them <em>verify</em> it.
+      Every response served through the public answer endpoint is signed with an Ed25519 key, canonicalized
+      per RFC 8785, and verifiable against a published JWKS. This turns AI from an opaque API call into an
+      auditable artifact &mdash; required for finance, healthcare, public sector, and any vertical where
+      &ldquo;the AI told us&rdquo; isn&rsquo;t a defensible answer.
+    </p>
+    <div class="badges">
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        SOC 2 control posture
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        GDPR (EU 2016/679)
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        EU AI Act aligned
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"/></svg>
+        EdDSA signed responses
+      </span>
+    </div>
+  </section>
+
+  <!-- ============ 2. VERIFIABILITY ============ -->
+  <section id="verifiability">
+    <span class="section-num">02 &mdash; Verifiability</span>
+    <h2 class="section-title">Cryptographic response signing</h2>
+    <p>
+      The CatyAI public answer endpoint is the only AI surface in the platform that external clients
+      and AI crawlers consume directly. Every response is signed before it leaves the service boundary.
+    </p>
+
+    <h3>Signing scheme</h3>
+    <table class="kv">
+      <tr><th>Algorithm</th><td><code>EdDSA</code> over Curve25519, per RFC 8037</td></tr>
+      <tr><th>Canonicalization</th><td>RFC 8785 JCS (JSON Canonicalization Scheme)</td></tr>
+      <tr><th>Key identifier (kid)</th><td><code>catyai-akl-signing-key-2026-v1</code></td></tr>
+      <tr><th>Public key distribution</th><td>JWKS over HTTPS &mdash; <code>jwks_uri</code> field in every response</td></tr>
+      <tr><th>Signature transport</th><td>Detached signature in <code>X-AKL-Signature</code> response header</td></tr>
+      <tr><th>Body integrity</th><td><code>content_hash</code> (SHA-256 of canonicalized payload)</td></tr>
+      <tr><th>Endpoint</th><td><code>POST /geo/v2/answer</code></td></tr>
+      <tr><th>Authentication</th><td>Dual: AI crawler User-Agent allowlist OR <code>X-API-Key</code></td></tr>
+      <tr><th>Rate limit</th><td>60 requests / hour / IP, with per-tenant quotas</td></tr>
+    </table>
+
+    <h3>Verification flow (client-side)</h3>
+    <pre class="code"><span class="c">// Client verification — Node.js, @noble/ed25519</span>
+<span class="k">import</span> * <span class="k">as</span> ed <span class="k">from</span> <span class="s">'@noble/ed25519'</span>;
+<span class="k">import</span> { canonicalize } <span class="k">from</span> <span class="s">'rfc8785'</span>;
+<span class="k">import</span> { createHash } <span class="k">from</span> <span class="s">'node:crypto'</span>;
+
+<span class="k">const</span> res = <span class="k">await</span> fetch(<span class="s">'https://api.catyai.io/geo/v2/answer'</span>, {
+  method: <span class="s">'POST'</span>,
+  headers: { <span class="s">'X-API-Key'</span>: KEY, <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span> },
+  body: JSON.stringify({ query: <span class="s">'...'</span> })
+});
+
+<span class="k">const</span> payload   = <span class="k">await</span> res.json();
+<span class="k">const</span> signature = res.headers.get(<span class="s">'x-akl-signature'</span>);
+<span class="k">const</span> jwks      = <span class="k">await</span> (<span class="k">await</span> fetch(payload.jwks_uri)).json();
+<span class="k">const</span> jwk       = jwks.keys.find(k =&gt; k.kid === payload.kid);
+
+<span class="c">// 1. Recompute content hash from canonical JSON</span>
+<span class="k">const</span> canonical = canonicalize(payload.body);
+<span class="k">const</span> hash      = createHash(<span class="s">'sha256'</span>).update(canonical).digest(<span class="s">'hex'</span>);
+<span class="k">if</span> (hash !== payload.content_hash) <span class="k">throw new</span> <span class="n">Error</span>(<span class="s">'content_hash mismatch'</span>);
+
+<span class="c">// 2. Verify EdDSA signature</span>
+<span class="k">const</span> ok = <span class="k">await</span> ed.verifyAsync(signature, canonical, jwk.x);
+<span class="k">if</span> (!ok) <span class="k">throw new</span> <span class="n">Error</span>(<span class="s">'invalid signature'</span>);</pre>
+
+    <div class="callout">
+      <strong>Why this matters.</strong> A signed response can be replayed, archived, or shown to a regulator
+      months later, and any third party can independently confirm it was emitted by CatyAI and has not been
+      tampered with. No trust in the calling application is required.
+    </div>
+  </section>
+
+  <!-- ============ 3. DATA PROTECTION ============ -->
+  <section id="data">
+    <span class="section-num">03 &mdash; Data Protection</span>
+    <h2 class="section-title">Privacy by architecture</h2>
+    <p>
+      Customer data is processed in <strong>AWS eu-west-1 (Ireland)</strong>. EU customer payloads do
+      not leave the European Economic Area for processing. Cross-border transfers, where unavoidable,
+      use AWS Standard Contractual Clauses and are documented in the customer Data Processing Addendum.
+    </p>
+
+    <ul class="checks">
+      <li><strong>Encryption in transit.</strong> TLS 1.2+ enforced at the load balancer; HSTS on all customer-facing domains.</li>
+      <li><strong>Encryption at rest.</strong> AWS-managed KMS for DocumentDB, S3, and Secrets Manager. Per-environment keys with rotation.</li>
+      <li><strong>Tenant isolation.</strong> Logical isolation per tenant ID in DocumentDB, Qdrant collections, and Redis namespaces.</li>
+      <li><strong>Right to erasure.</strong> Tenant-scoped purge endpoint; deletion propagates to vector indices and conversation logs.</li>
+      <li><strong>Minimization.</strong> No mock data in production. <code>ALLOW_MOCK=false</code> is enforced as a runtime invariant.</li>
+      <li><strong>Audit trail.</strong> CloudWatch Logs with structured JSON; ECS task-level access logging on the answer endpoint.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 4. COMPLIANCE ============ -->
+  <section id="compliance">
+    <span class="section-num">04 &mdash; Compliance</span>
+    <h2 class="section-title">Frameworks &amp; control objectives</h2>
+
+    <h3>SOC 2 (Trust Service Criteria)</h3>
+    <p>
+      The platform is architected against the AICPA Trust Services Criteria for Security, Availability,
+      and Confidentiality. Controls are documented and operated; an independent attestation is in
+      progress with a qualified auditor.
+    </p>
+
+    <h3>GDPR &mdash; Regulation (EU) 2016/679</h3>
+    <p>
+      PayAi-X FZE acts as a data <em>processor</em> on behalf of customers, who remain controllers.
+      Lawful basis, data subject rights, breach notification (72&nbsp;h), and DPIA support are
+      addressed in the Data Processing Addendum available on request.
+    </p>
+
+    <h3>EU AI Act &mdash; Regulation (EU) 2024/1689</h3>
+    <p>
+      CatyAI is delivered as a general-purpose AI infrastructure layer. Deployment-time risk
+      classification is the customer&rsquo;s responsibility; the platform provides the technical
+      affordances required for compliance:
+    </p>
+    <ul class="checks">
+      <li>Transparency &mdash; signed responses with model and provider metadata.</li>
+      <li>Logging &mdash; immutable, tenant-scoped invocation logs.</li>
+      <li>Human oversight &mdash; pluggable review hooks on the answer pipeline.</li>
+      <li>Provider attribution &mdash; explicit declaration of upstream LLM in every response.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 5. INFRASTRUCTURE ============ -->
+  <section id="infra">
+    <span class="section-num">05 &mdash; Infrastructure</span>
+    <h2 class="section-title">AWS-only, infrastructure as code</h2>
+    <table class="kv">
+      <tr><th>Region</th><td>eu-west-1 (Ireland) &mdash; primary</td></tr>
+      <tr><th>Compute</th><td>AWS ECS Fargate, Linux/amd64, pinned image digests &mdash; no <code>:latest</code></td></tr>
+      <tr><th>Edge</th><td>Application Load Balancer + AWS WAF; CloudFront for static assets</td></tr>
+      <tr><th>Datastores</th><td>AWS DocumentDB (primary), Qdrant Cloud (vectors), Upstash Redis (cache), Supabase Postgres (auth)</td></tr>
+      <tr><th>Secrets</th><td>AWS Secrets Manager (<code>caty/production</code>); never written to disk or shipped in images</td></tr>
+      <tr><th>IaC</th><td>Terraform; pull-request gated; no manual console changes in production</td></tr>
+      <tr><th>Build provenance</th><td>GitHub Actions on protected branches; container images signed and scanned in ECR</td></tr>
+      <tr><th>Backups</th><td>S3 versioning enabled on content buckets; point-in-time recovery on DocumentDB</td></tr>
+    </table>
+  </section>
+
+  <!-- ============ 6. APP SECURITY ============ -->
+  <section id="app">
+    <span class="section-num">06 &mdash; Application Security</span>
+    <h2 class="section-title">Defense in depth at the API layer</h2>
+    <ul class="checks">
+      <li><strong>Authentication.</strong> Supabase Auth with Google OAuth and short-lived JWTs for the dashboard; per-tenant API keys for programmatic access.</li>
+      <li><strong>Authorization.</strong> Tenant scoping enforced at the data layer; row-level isolation on relational stores.</li>
+      <li><strong>Rate limiting.</strong> 60 req/hour/IP on the public answer endpoint, with separate per-tenant quotas; 429 with <code>Retry-After</code>.</li>
+      <li><strong>Input validation.</strong> Schema validation on all ingress; rejection of unsigned crawler traffic outside the User-Agent allowlist.</li>
+      <li><strong>Cache integrity.</strong> SHA-256 keying on canonicalized request payloads; no cross-tenant cache poisoning surface.</li>
+      <li><strong>Dependency hygiene.</strong> Automated CVE scanning on every PR; production deploys gated on a clean scan.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 7. INCIDENT RESPONSE ============ -->
+  <section id="ir">
+    <span class="section-num">07 &mdash; Incident Response</span>
+    <h2 class="section-title">Detection, response, disclosure</h2>
+    <p>
+      CloudWatch alarms feed an on-call rotation. Severity levels and response targets are defined
+      in the runbook. Customers are notified of confirmed incidents affecting their data within
+      <strong>72 hours</strong>, in line with GDPR Art. 33.
+    </p>
+    <table class="kv">
+      <tr><th>Detection</th><td>CloudWatch metrics + log filter alarms; signature verification failures alerted</td></tr>
+      <tr><th>Triage SLO</th><td>SEV-1 acknowledged within 15 minutes, 24/7</td></tr>
+      <tr><th>Communication</th><td>Status page; direct email to designated security contacts</td></tr>
+      <tr><th>Post-incident</th><td>RCA published to affected customers within 10 business days</td></tr>
+    </table>
+  </section>
+
+  <!-- ============ 8. CONTACT ============ -->
+  <section id="contact">
+    <span class="section-num">08 &mdash; Contact</span>
+    <h2 class="section-title">Security disclosure &amp; questions</h2>
+    <p>
+      Coordinated vulnerability disclosure is welcomed. Please send a detailed report to
+      <a href="mailto:security@catyai.io">security@catyai.io</a>. We acknowledge within
+      one business day and provide remediation timelines after triage.
+    </p>
+    <p>
+      Compliance, DPA, and audit questions: <a href="mailto:compliance@catyai.io">compliance@catyai.io</a>.
+    </p>
+    <div class="callout">
+      <strong>Public verification material.</strong>
+      JWKS for the public answer endpoint is published at
+      <code>https://api.catyai.io/.well-known/jwks.json</code>.
+      Detached signatures are returned in the <code>X-AKL-Signature</code> response header.
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo" style="color:#f1f5f9;">
+        <img src="https://catyai.io/logo-caty.png" alt="CatyAI logo" />
+        <span>Caty<span class="logo-ai">AI</span></span>
+      </div>
+      <p style="color:#64748b; font-size:13.5px; margin-top:12px; max-width:340px;">
+        The AI infrastructure layer built by PayAi-X FZE for businesses that need to prove
+        what their AI did, not just trust it.
+      </p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <ul>
+        <li><a href="https://catyai.io">catyai.io</a></li>
+        <li><a href="https://app.catyai.io">Dashboard</a></li>
+        <li><a href="https://docs.catyai.io">Documentation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Trust</h4>
+      <ul>
+        <li><a href="https://docs.catyai.io/security">Security</a></li>
+        <li><a href="mailto:security@catyai.io">Disclosure</a></li>
+        <li><a href="mailto:compliance@catyai.io">Compliance</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    <span>&copy; 2026 PayAi-X FZE. All rights reserved.</span>
+    <span>Document v1.0 &middot; Public &middot; May 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

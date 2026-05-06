@@ -1,33 +1,37 @@
-# CatyAI Robots.txt
+# ==========================================
+# CatyAI Enterprise Routing
+# Managed by PayAi-X FZE
+# ==========================================
 
-# Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /api/private/
+Disallow: /dashboard/
 
-# Explicitly allow AI crawlers
+# ------------------------------------------
+# Whitelisted AI & LLM Crawlers
+# ------------------------------------------
 User-agent: GPTBot
 Allow: /
+Allow: /.well-known/
 
-User-agent: ChatGPT-User
+User-agent: ClaudeBot
 Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
+Allow: /.well-known/
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /.well-known/
 
-User-agent: Googlebot
+User-agent: GoogleOther
 Allow: /
+Allow: /.well-known/
 
-User-agent: Bingbot
+User-agent: Applebot
 Allow: /
+Allow: /.well-known/
 
-# Sitemaps
-Sitemap: https://catyai.io/sitemap.xml
-
-# LLMs.txt for AI crawlers
-# See: https://catyai.io/llms.txt
+# ------------------------------------------
+# System Maps & Context
+# ------------------------------------------
+Sitemap: https://catyai.com/sitemap.xml
