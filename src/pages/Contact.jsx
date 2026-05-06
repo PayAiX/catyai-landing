@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import GlobalHeader from '../components/GlobalHeader'
+import FooterV9 from '../components/FooterV9'
 import SEO from '../components/SEO'
 
 const translations = {
   en: {
     title: 'Contact Us',
     subtitle: 'We\'d love to hear from you',
-    backHome: 'Back to Home',
     form: {
       name: 'Your Name',
       email: 'Email Address',
@@ -42,14 +42,11 @@ const translations = {
       },
       phone: { label: 'Phone', value: '+40 750 195 048 / +40 756 730 193' }
     },
-    social: {
-      title: 'Follow Us'
-    }
+    social: { title: 'Follow Us' }
   },
   ro: {
     title: 'Contacteaza-ne',
     subtitle: 'Ne-ar placea sa auzim de la tine',
-    backHome: 'Inapoi la Home',
     form: {
       name: 'Numele Tau',
       email: 'Adresa de Email',
@@ -85,14 +82,11 @@ const translations = {
       },
       phone: { label: 'Telefon', value: '+40 750 195 048 / +40 756 730 193' }
     },
-    social: {
-      title: 'Urmareste-ne'
-    }
+    social: { title: 'Urmareste-ne' }
   },
   es: {
     title: 'Contactanos',
     subtitle: 'Nos encantaria saber de ti',
-    backHome: 'Volver al Inicio',
     form: {
       name: 'Tu Nombre',
       email: 'Correo Electronico',
@@ -128,14 +122,11 @@ const translations = {
       },
       phone: { label: 'Telefono', value: '+40 750 195 048 / +40 756 730 193' }
     },
-    social: {
-      title: 'Siguenos'
-    }
+    social: { title: 'Siguenos' }
   },
   pt: {
     title: 'Contate-nos',
     subtitle: 'Adorariamos ouvir de voce',
-    backHome: 'Voltar ao Inicio',
     form: {
       name: 'Seu Nome',
       email: 'Endereco de Email',
@@ -171,14 +162,11 @@ const translations = {
       },
       phone: { label: 'Telefone', value: '+40 750 195 048 / +40 756 730 193' }
     },
-    social: {
-      title: 'Siga-nos'
-    }
+    social: { title: 'Siga-nos' }
   },
   fr: {
     title: 'Contactez-nous',
     subtitle: 'Nous serions ravis de vous entendre',
-    backHome: 'Retour a l\'Accueil',
     form: {
       name: 'Votre Nom',
       email: 'Adresse Email',
@@ -214,9 +202,7 @@ const translations = {
       },
       phone: { label: 'Telephone', value: '+40 750 195 048 / +40 756 730 193' }
     },
-    social: {
-      title: 'Suivez-nous'
-    }
+    social: { title: 'Suivez-nous' }
   }
 }
 
@@ -224,272 +210,229 @@ export default function Contact() {
   const lang = localStorage.getItem('caty-lang') || 'en'
   const t = translations[lang] || translations.en
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [status, setStatus] = useState(null) // 'sending', 'success', 'error'
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  const [status, setStatus] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-
-    // For now, open mailto
     const mailtoLink = `mailto:sales@catyai.io?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`
     window.location.href = mailtoLink
-
     setStatus('success')
     setFormData({ name: '', email: '', subject: '', message: '' })
   }
 
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div style={{ background: '#010A1F', color: '#e8e8f0', minHeight: '100vh' }}>
       <SEO
         title="Contact CatyAI - Get in Touch"
         description="Contact the CatyAI team for sales inquiries, technical support, or partnership opportunities. We're here to help."
         url="https://catyai.io/contact"
       />
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
-            <span className="gradient-text">{t.title}</span>
-          </h1>
-          <p className="text-xl text-gray-400">{t.subtitle}</p>
-        </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <div className="card">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  {t.form.name}
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0A1628] border border-[#1a2744] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
-                />
-              </div>
+      <GlobalHeader lang={lang} />
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  {t.form.email}
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0A1628] border border-[#1a2744] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
-                />
-              </div>
+      <main style={{ paddingTop: '80px' }}>
+        <section style={{ maxWidth: 896, margin: '0 auto', padding: '64px 24px 96px' }}>
+          {/* Page title */}
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <h1 style={{ fontSize: 'clamp(2rem,5vw,3rem)', fontWeight: 800, marginBottom: 12, background: 'linear-gradient(135deg,#5B8DEF,#A78BFA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              {t.title}
+            </h1>
+            <p style={{ fontSize: '1.125rem', color: '#94a3b8' }}>{t.subtitle}</p>
+          </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  {t.form.subject}
-                </label>
-                <select
-                  required
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0A1628] border border-[#1a2744] rounded-lg text-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 32 }}>
+            {/* Contact Form */}
+            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 32 }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: 8 }}>
+                    {t.form.name}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{ width: '100%', padding: '12px 16px', background: '#0A1628', border: '1px solid #1a2744', borderRadius: 8, color: '#fff', outline: 'none', fontSize: '0.95rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: 8 }}>
+                    {t.form.email}
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{ width: '100%', padding: '12px 16px', background: '#0A1628', border: '1px solid #1a2744', borderRadius: 8, color: '#fff', outline: 'none', fontSize: '0.95rem', boxSizing: 'border-box' }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: 8 }}>
+                    {t.form.subject}
+                  </label>
+                  <select
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    style={{ width: '100%', padding: '12px 16px', background: '#0A1628', border: '1px solid #1a2744', borderRadius: 8, color: '#fff', outline: 'none', fontSize: '0.95rem', boxSizing: 'border-box' }}
+                  >
+                    <option value="">--</option>
+                    {t.subjects.map((subject, idx) => (
+                      <option key={idx} value={subject}>{subject}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#cbd5e1', marginBottom: 8 }}>
+                    {t.form.message}
+                  </label>
+                  <textarea
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    style={{ width: '100%', padding: '12px 16px', background: '#0A1628', border: '1px solid #1a2744', borderRadius: 8, color: '#fff', outline: 'none', fontSize: '0.95rem', resize: 'none', boxSizing: 'border-box' }}
+                  />
+                </div>
+
+                {status === 'success' && (
+                  <div style={{ padding: '12px 16px', background: 'rgba(91,141,239,0.1)', border: '1px solid rgba(91,141,239,0.3)', borderRadius: 8, color: '#5B8DEF', fontSize: '0.875rem' }}>
+                    {t.form.success}
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div style={{ padding: '12px 16px', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 8, color: '#f87171', fontSize: '0.875rem' }}>
+                    {t.form.error}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  style={{ padding: '14px 24px', background: 'linear-gradient(135deg,#5B8DEF,#A78BFA)', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, opacity: status === 'sending' ? 0.5 : 1 }}
                 >
-                  <option value="">--</option>
-                  {t.subjects.map((subject, idx) => (
-                    <option key={idx} value={subject}>{subject}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  {t.form.message}
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#0A1628] border border-[#1a2744] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 resize-none"
-                />
-              </div>
-
-              {status === 'success' && (
-                <div className="p-4 bg-gold/10 border border-gold/30 rounded-lg text-gold text-sm">
-                  {t.form.success}
-                </div>
-              )}
-
-              {status === 'error' && (
-                <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                  {t.form.error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={status === 'sending'}
-                className="btn-primary w-full py-3 flex items-center justify-center gap-2 disabled:opacity-50"
-              >
-                {status === 'sending' ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    {t.form.sending}
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    {t.form.send}
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="card">
-              <h2 className="text-xl font-bold text-white mb-6">{t.info.title}</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-primary-500/10 rounded-lg">
-                    <svg className="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">{t.info.email.label}</p>
-                    <a href={`mailto:${t.info.email.value}`} className="text-white hover:text-primary-400 transition-colors">
-                      {t.info.email.value}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-gold/10 rounded-lg">
-                    <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">{t.info.sales.label}</p>
-                    <a href={`mailto:${t.info.sales.value}`} className="text-white hover:text-primary-400 transition-colors">
-                      {t.info.sales.value}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-gold/10 rounded-lg">
-                    <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">{t.info.support.label}</p>
-                    <a href={`mailto:${t.info.support.value}`} className="text-white hover:text-primary-400 transition-colors">
-                      {t.info.support.value}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Romania Office */}
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-gold/10 rounded-lg">
-                    <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">{t.info.addressRo.label}</p>
-                    <p className="text-white whitespace-pre-line">{t.info.addressRo.value}</p>
-                    <a href={t.info.addressRo.mapUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 text-sm inline-flex items-center gap-1 mt-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      Google Maps
-                    </a>
-                  </div>
-                </div>
-
-                {/* UAE Office */}
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-[#1A3F7A]/20 rounded-lg">
-                    <svg className="w-5 h-5 text-[#5B8DEF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">{t.info.addressUae.label}</p>
-                    <p className="text-white whitespace-pre-line">{t.info.addressUae.value}</p>
-                    <a href={t.info.addressUae.mapUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 text-sm inline-flex items-center gap-1 mt-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      Google Maps
-                    </a>
-                  </div>
-                </div>
-
-                {t.info.phone && (
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-gold/10 rounded-lg">
-                      <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400">{t.info.phone.label}</p>
-                      <p className="text-white">{t.info.phone.value}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  {status === 'sending' ? t.form.sending : t.form.send}
+                </button>
+              </form>
             </div>
 
-            {/* Social */}
-            <div className="card">
-              <h2 className="text-lg font-bold text-white mb-4">{t.social.title}</h2>
-              <div className="flex gap-4">
-                <a href="https://twitter.com/catyai" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#0A1628] rounded-lg hover:bg-[#1a2744] transition-colors">
-                  <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a href="https://linkedin.com/company/catyai" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#0A1628] rounded-lg hover:bg-[#1a2744] transition-colors">
-                  <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
+            {/* Contact Info */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 32 }}>
+                <h2 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#fff', marginBottom: 24 }}>{t.info.title}</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+
+                  {/* Sales email */}
+                  <InfoRow icon="email" color="#5B8DEF" bg="rgba(91,141,239,0.1)">
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>{t.info.email.label}</p>
+                    <a href={`mailto:${t.info.email.value}`} style={{ color: '#fff', textDecoration: 'none' }}>{t.info.email.value}</a>
+                  </InfoRow>
+
+                  {/* Support email */}
+                  <InfoRow icon="support" color="#A78BFA" bg="rgba(167,139,250,0.1)">
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>{t.info.support.label}</p>
+                    <a href={`mailto:${t.info.support.value}`} style={{ color: '#fff', textDecoration: 'none' }}>{t.info.support.value}</a>
+                  </InfoRow>
+
+                  {/* Romania Office */}
+                  <InfoRow icon="location" color="#34d399" bg="rgba(52,211,153,0.1)">
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>{t.info.addressRo.label}</p>
+                    <p style={{ color: '#fff', whiteSpace: 'pre-line', margin: '2px 0' }}>{t.info.addressRo.value}</p>
+                    <a href={t.info.addressRo.mapUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#5B8DEF', fontSize: '0.8rem', textDecoration: 'none' }}>Google Maps ↗</a>
+                  </InfoRow>
+
+                  {/* UAE Office */}
+                  <InfoRow icon="location" color="#5B8DEF" bg="rgba(91,141,239,0.1)">
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>{t.info.addressUae.label}</p>
+                    <p style={{ color: '#fff', whiteSpace: 'pre-line', margin: '2px 0' }}>{t.info.addressUae.value}</p>
+                    <a href={t.info.addressUae.mapUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#5B8DEF', fontSize: '0.8rem', textDecoration: 'none' }}>Google Maps ↗</a>
+                  </InfoRow>
+
+                  {/* Phone */}
+                  <InfoRow icon="phone" color="#fbbf24" bg="rgba(251,191,36,0.1)">
+                    <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>{t.info.phone.label}</p>
+                    <p style={{ color: '#fff', margin: 0 }}>{t.info.phone.value}</p>
+                  </InfoRow>
+                </div>
+              </div>
+
+              {/* Social */}
+              <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 24 }}>
+                <h2 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: 16 }}>{t.social.title}</h2>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <a href="https://linkedin.com/company/payai-x" target="_blank" rel="noopener noreferrer"
+                    style={{ padding: 12, background: '#0A1628', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                    <svg width="20" height="20" fill="#94a3b8" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                  </a>
+                  <a href="https://medium.com/@adrianvitan" target="_blank" rel="noopener noreferrer"
+                    style={{ padding: 12, background: '#0A1628', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                    <svg width="20" height="20" fill="#94a3b8" viewBox="0 0 24 24">
+                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+                    </svg>
+                  </a>
+                  <a href="mailto:contact@payai-x.com"
+                    style={{ padding: 12, background: '#0A1628', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                    <svg width="20" height="20" fill="none" stroke="#94a3b8" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+      </main>
+
+      <FooterV9 lang={lang} />
+    </div>
+  )
+}
+
+function InfoRow({ icon, color, bg, children }) {
+  const icons = {
+    email: (
+      <svg width="20" height="20" fill="none" stroke={color} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    support: (
+      <svg width="20" height="20" fill="none" stroke={color} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    location: (
+      <svg width="20" height="20" fill="none" stroke={color} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    phone: (
+      <svg width="20" height="20" fill="none" stroke={color} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+    )
+  }
+
+  return (
+    <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+      <div style={{ padding: 8, background: bg, borderRadius: 8, flexShrink: 0 }}>
+        {icons[icon]}
       </div>
-
-      {/* Back link */}
-      <Link
-        to="/"
-        className="fixed bottom-6 left-6 z-40 bg-[#0A1628] hover:bg-[#1a2744] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transition-colors"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        {t.backHome}
-      </Link>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        {children}
+      </div>
     </div>
   )
 }
