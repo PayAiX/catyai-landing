@@ -14,6 +14,12 @@
     "description": "CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage."
   },
   {
+    "path": "/research/zero-trust-ai-ads-en",
+    "name": "Research: Zero-Trust AI Advertising",
+    "title": "The Zero-Trust Future of AI Advertising — CatyAI Research",
+    "description": "OpenAI's programmatic Ads Manager creates a billion-dollar liability gap for commercial hallucinations. Cryptographic infrastructure built on Ed25519 signatures and verifiable JWKS endpoints is the only legally defensible path."
+  },
+  {
     "path": "/blog/chatgpt-ads-manager-nap-obligatoriu",
     "name": "Blog: ChatGPT Ads Manager - NAP Obligatoriu"
   },
