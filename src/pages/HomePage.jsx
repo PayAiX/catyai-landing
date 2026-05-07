@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import GlobalHeader from '../components/GlobalHeader';
 import FooterV9 from '../components/FooterV9';
 
@@ -474,6 +475,24 @@ export default function HomePage() {
 
   return (
     <>
+      <Helmet>
+        <title>CatyAI — Neural Infrastructure for AI Visibility | România</title>
+        <meta name="description" content="If AI can't read your site, you don't exist. CatyAI is the neural infrastructure that guarantees your visibility in the next generation of AI search." />
+        <link rel="canonical" href="https://catyai.io" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://catyai.io/" />
+        <meta property="og:title" content="CatyAI — Neural Infrastructure for AI Visibility | România" />
+        <meta property="og:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
+        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="CatyAI" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://catyai.io/" />
+        <meta name="twitter:title" content="CatyAI — Neural Infrastructure for AI Visibility" />
+        <meta name="twitter:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
+        <meta name="twitter:image" content="https://catyai.io/og-image.png" />
+      </Helmet>
       <style>{`
 body {
             background-color: #010A1F;
