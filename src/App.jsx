@@ -48,8 +48,7 @@ const EcommercePage = lazy(() => import('./pages/EcommercePage'))
 const HomePage = lazy(() => import('./pages/HomePage'))
 const CareersPage = lazy(() => import('./pages/Careers'))
 const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
-const ManifestoPage = lazy(() => import('./pages/Manifesto'))
-const BenchmarksPage = lazy(() => import('./pages/Benchmarks'))
+const Press = lazy(() => import('./pages/Press'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3271,7 +3270,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/manifesto', '/benchmarks', '/licensing', '/pricing', '/contact']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3326,11 +3325,10 @@ function AppContent() {
             <Route path="/enterprise" element={<EnterprisePage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
-            <Route path="/manifesto" element={<ManifestoPage />} />
-            <Route path="/benchmarks" element={<BenchmarksPage />} />
             <Route path="/licensing" element={<Licensing />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/press" element={<Press />} />
           </Routes>
         </Suspense>
       </div>
@@ -3353,6 +3351,7 @@ function AppContent() {
             <Route path="/analyze" element={<SiteAnalyzer />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/press" element={<Press />} />
             <Route path="/commerce" element={<CommerceDemo />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
@@ -3370,8 +3369,6 @@ function AppContent() {
             <Route path="/technology-partners" element={<TechPartnersPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
-            <Route path="/manifesto" element={<ManifestoPage />} />
-            <Route path="/benchmarks" element={<BenchmarksPage />} />
           </Routes>
         </Suspense>
       </main>

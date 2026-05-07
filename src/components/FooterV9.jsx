@@ -196,9 +196,7 @@ export default function FooterV9({ lang = 'en' }) {
             <ul className="space-y-3 text-sm">
               <li><a href="/blog" className="fv9-link">Blog <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="https://docs.catyai.io" className="fv9-link" target="_blank" rel="noopener noreferrer">{t.docs} <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">API Reference <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Manifesto <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">Benchmarks <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="https://docs.catyai.io/api/overview.html" className="fv9-link" target="_blank" rel="noopener noreferrer">API Reference <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
