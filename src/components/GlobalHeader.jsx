@@ -15,6 +15,7 @@ const NAV_ITEMS = [
       { label: 'GEO Gateway', desc: 'AI-native geographic routing', href: '/geo-gateway', icon: 'globe-2' },
       { label: 'Neural Node', desc: 'LLM visibility protocol', href: '/protocol', icon: 'cpu' },
       { label: 'FraudAI Shield', desc: 'Anti-phishing & scam detection', href: '/fraud-shield', icon: 'shield-check' },
+      { label: 'Zero-Trust AI Ads', desc: 'Cryptographic ad verification', href: '/research/zero-trust-ai-ads-en', icon: 'fingerprint' },
     ],
   },
   {
