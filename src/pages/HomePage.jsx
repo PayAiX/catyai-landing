@@ -1991,11 +1991,9 @@ body {
                   <div className="md:col-span-2">
                       <h4 className="footer-col-title">{t.footerResources}</h4>
                       <ul className="space-y-3 text-sm">
-                          <li><a href="https://docs.catyai.io" className="footer-link">{t.footerDocs} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">API Reference <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">Manifesto <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#cum" className="footer-link">Benchmarks <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">Changelog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+                          <li><a href="/blog" className="footer-link">Blog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+                          <li><a href="https://docs.catyai.io" className="footer-link" target="_blank" rel="noopener noreferrer">{t.footerDocs} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
+                          <li><a href="https://docs.catyai.io/api/overview.html" className="footer-link" target="_blank" rel="noopener noreferrer">API Reference <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
                       </ul>
                   </div>
 
