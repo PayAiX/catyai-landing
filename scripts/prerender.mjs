@@ -62,6 +62,44 @@ async function prerenderWithPuppeteer(route, browser) {
   const page = await browser.newPage();
 
   try {
+    // P0 FIX: block widget scripts from executing inside Puppeteer.
+
+    // Otherwise widget.js runs during pre-render, creates DOM, and that DOM gets
+
+    // serialized into the static HTML — at runtime widget.js runs again = 2 widgets.
+
+    // Solution: abort widget script network requests so they never execute in pre-render.
+
+    // Widget still loads normally in real browsers.
+
+    await page.setRequestInterception(true);
+
+    page.on('request', (req) => {
+
+      const url = req.url();
+
+      if (
+
+        url.includes('/cdn/widget.js') ||
+
+        url.includes('/cdn/loader.js') ||
+
+        url.includes('/cdn/commerce.js') ||
+
+        url.includes('/cdn/leads.js') ||
+
+        url.includes('api.catyai.io/widget.js')
+
+      ) {
+
+        return req.abort();
+
+      }
+
+      req.continue();
+
+    });
+
     await page.goto(`http://localhost:${PORT}${route.path}`, {
       waitUntil: 'networkidle0',
       timeout: 30000,
@@ -96,11 +134,6 @@ async function prerenderWithPuppeteer(route, browser) {
       /<meta property="og:image" content="[^"]*"[^>]*>(?=[\s\S]*<meta property="og:image"[^>]*data-rh="true")/g,
       ''
     );
-
-    html = html.replace(/<div id="caty-widget-container"[\s\S]*?<\/div>\s*$/m, '');
-    html = html.replace(/<div id="caty-widget-container"[\s\S]*?(?=<script|<\/body>)/g, '');
-    html = html.replace(/<style id="caty-widget-styles"[\s\S]*?<\/style>/g, '');
-    html = html.replace(/<div class="caty-overlay"[^>]*>[\s\S]*?<\/div>/g, '');
 
     const segments = route.path.split('/').filter(Boolean);
     const dir = path.join(distDir, ...segments);
