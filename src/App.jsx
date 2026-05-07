@@ -48,6 +48,7 @@ const EcommercePage = lazy(() => import('./pages/EcommercePage'))
 const HomePage = lazy(() => import('./pages/HomePage'))
 const CareersPage = lazy(() => import('./pages/Careers'))
 const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
+const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
 const Press = lazy(() => import('./pages/Press'))
 
 // Loading fallback component
@@ -3270,7 +3271,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3329,6 +3330,7 @@ function AppContent() {
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/press" element={<Press />} />
+            <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
           </Routes>
         </Suspense>
       </div>
