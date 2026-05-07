@@ -476,9 +476,12 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
+        <html lang="en" />
         <title>CatyAI — Neural Infrastructure for AI Visibility | România</title>
         <meta name="description" content="If AI can't read your site, you don't exist. CatyAI is the neural infrastructure that guarantees your visibility in the next generation of AI search." />
-        <link rel="canonical" href="https://catyai.io" />
+        <meta name="keywords" content="AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania" />
+        <meta name="author" content="PayAi-X FZE" />
+        <link rel="canonical" href="https://catyai.io/" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://catyai.io/" />
         <meta property="og:title" content="CatyAI — Neural Infrastructure for AI Visibility | România" />
@@ -486,7 +489,12 @@ export default function HomePage() {
         <meta property="og:image" content="https://catyai.io/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="CatyAI - AI Sales Platform - 8 AI Agents that sell for you 24/7" />
         <meta property="og:site_name" content="CatyAI" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="ro_RO" />
+        <meta property="fb:app_id" content="1532216557847516" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://catyai.io/" />
         <meta name="twitter:title" content="CatyAI — Neural Infrastructure for AI Visibility" />
