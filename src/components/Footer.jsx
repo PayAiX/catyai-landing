@@ -31,7 +31,7 @@ export default function Footer({ t }) {
           <div>
             <h4 className="font-semibold text-white mb-3 md:mb-4 text-base">{t.footer.company}</h4>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link to="/about" className="hover:text-white transition-colors block py-1">{t.footer.about}</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors block py-1">{t.footer.about}</Link></li>
               <li><Link to="/blog" className="hover:text-white transition-colors block py-1">{t.footer.blog}</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors block py-1">{t.footer.contact}</Link></li>
             </ul>

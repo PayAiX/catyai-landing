@@ -205,10 +205,9 @@ export default function FooterV9({ lang = 'en' }) {
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.company}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/about" className="fv9-link">{t.about} <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="#" className="fv9-link">{t.careers} <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/contact" className="fv9-link">{t.about} <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/press" className="fv9-link">Press Kit <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="mailto:contact@payai-x.com" className="fv9-link">Contact <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/contact" className="fv9-link">Contact <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
 
