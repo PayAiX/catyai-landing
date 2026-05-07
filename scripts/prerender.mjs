@@ -139,8 +139,8 @@ function prerenderMetaOnly(route) {
 }
 
 async function main() {
-  const criticalRoutes = routes.filter(r => r.path !== '/' && r.title && r.description);
-  const metaOnlyRoutes = routes.filter(r => r.path !== '/' && (!r.title || !r.description));
+  const criticalRoutes = routes.filter(r => r.title && r.description);
+  const metaOnlyRoutes = routes.filter(r => !r.title || !r.description);
 
   if (criticalRoutes.length > 0) {
     console.log(`Starting Puppeteer pre-render for ${criticalRoutes.length} critical routes...`);
@@ -174,7 +174,7 @@ async function main() {
     success++;
   }
 
-  skipped = routes.filter(r => r.path === '/').length;
+  skipped = 0;
 
   console.log(`\nPre-render done: ${success} routes generated (${rendered} fully rendered), ${skipped} skipped.`);
 }

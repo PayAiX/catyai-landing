@@ -1,7 +1,9 @@
 [
   {
     "path": "/",
-    "name": "Homepage"
+    "name": "Homepage",
+    "title": "CatyAI — Neural Infrastructure for AI Visibility | România",
+    "description": "If AI can't read your site, you don't exist. CatyAI is the neural infrastructure that guarantees your visibility in the next generation of AI search."
   },
   {
     "path": "/blog",
