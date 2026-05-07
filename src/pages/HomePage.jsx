@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import GlobalHeader from '../components/GlobalHeader';
+import FooterV9 from '../components/FooterV9';
 
 // Note: Lucide icons are loaded via CDN script in index.html (already added by previous PR).
 // CatyAI Homepage V9 — full design with inline CSS, no Tailwind v4 utility class dependency.
@@ -1929,125 +1930,7 @@ body {
                   </div>
               </div>
           </section>
-          {/* ============== EXPOSED FOOTER ============== */}
-          <footer className="relative z-10 mt-32 border-t border-white/5">
-              {/* Pre-footer: status + newsletter */}
-              <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 border-b border-white/5">
-                  <div>
-                      <div className="flex items-center gap-2 mb-4">
-                          <span className="status-dot"></span>
-                          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400">All systems operational</span>
-                      </div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-3">
-                          {t.footerTagline.split('\n').map((line, i) => <span key={i}>{line}{i === 0 && <br/>}</span>)}
-                      </h3>
-                      <p className="text-slate-400 max-w-md">{t.footerNewsletter}</p>
-                  </div>
-                  <div className="flex flex-col justify-center">
-                      <form className="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓'">
-                          <input type="email" required placeholder="you@company.com"
-                              className="newsletter-input flex-grow rounded-lg px-4 py-3.5 text-white placeholder-slate-500 font-mono text-sm" />
-                          <button type="submit" className="btn-primary px-6 py-3.5 rounded-lg font-semibold whitespace-nowrap">
-                              Subscribe
-                          </button>
-                      </form>
-                      <p className="text-xs text-slate-600 mt-3 font-mono">{t.footerNoSpam}</p>
-                  </div>
-              </div>
-
-              {/* Main columns */}
-              <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-12 gap-8">
-                  <div className="md:col-span-4">
-                      <div className="flex items-center gap-2 mb-4">
-                          <div className="w-8 h-8 bg-gold/10 rounded border border-gold/30 flex items-center justify-center">
-                              <i data-lucide="cpu" className="text-gold w-5 h-5" />
-                          </div>
-                          <span className="font-bold tracking-tight text-lg text-white">Caty<span className="text-gold">AI</span></span>
-                      </div>
-                      <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
-                          {t.footerDesc}
-                      </p>
-                      <div className="flex items-center gap-3">
-                          <a href="#" className="social-icon" aria-label="X / Twitter">
-                              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                          </a>
-                          <a href="#" className="social-icon"><i data-lucide="github" className="w-4 h-4" /></a>
-                          <a href="#" className="social-icon"><i data-lucide="linkedin" className="w-4 h-4" /></a>
-                          <a href="mailto:contact@payai-x.com" className="social-icon"><i data-lucide="mail" className="w-4 h-4" /></a>
-                      </div>
-                  </div>
-
-                  <div className="md:col-span-2">
-                      <h4 className="footer-col-title">{t.footerProduct}</h4>
-                      <ul className="space-y-3 text-sm">
-                          <li><a href="https://catyai.io/no-website" className="footer-link">QR-First <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="https://catyai.io/widget" className="footer-link">Web Widget <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="https://catyai.io/fraud-shield" className="footer-link">FraudAI <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="https://catyai.io/geo-gateway" className="footer-link">GEO Gateway <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="/pricing" className="footer-link">{t.footerPricing} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                      </ul>
-                  </div>
-
-                  <div className="md:col-span-2">
-                      <h4 className="footer-col-title">{t.footerResources}</h4>
-                      <ul className="space-y-3 text-sm">
-                          <li><a href="https://docs.catyai.io" className="footer-link">{t.footerDocs} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">API Reference <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">Manifesto <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#cum" className="footer-link">Benchmarks <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">Changelog <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                      </ul>
-                  </div>
-
-                  <div className="md:col-span-2">
-                      <h4 className="footer-col-title">{t.footerCompany}</h4>
-                      <ul className="space-y-3 text-sm">
-                          <li><a href="#" className="footer-link">{t.footerAbout} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">{t.footerCareers} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="#" className="footer-link">Press Kit <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="mailto:contact@payai-x.com" className="footer-link">Contact <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                      </ul>
-                  </div>
-
-                  <div className="md:col-span-2">
-                      <h4 className="footer-col-title">{t.footerLegal}</h4>
-                      <ul className="space-y-3 text-sm">
-                          <li><a href="/privacy" className="footer-link">Privacy <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="/terms" className="footer-link">{t.footerTerms} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="/dpa" className="footer-link">DPA <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                          <li><a href="/security" className="footer-link">{t.footerSecurity} <i data-lucide="arrow-up-right" className="w-3 h-3" /></a></li>
-                      </ul>
-                  </div>
-              </div>
-
-              {/* Oversized wordmark */}
-              <div className="overflow-hidden -mb-4 select-none pointer-events-none">
-                  <div className="footer-wordmark text-center px-6">CatyAI</div>
-              </div>
-
-              {/* Legal bottom row */}
-              <div className="border-t border-white/5 relative z-10 bg-navy">
-                  <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-600">
-                      <div className="flex items-center gap-4">
-                          <span>© 2026 PayAi-X FZE</span>
-                          <span className="hidden md:inline">·</span>
-                          <span className="hidden md:inline">Built in eu-west-1</span>
-                      </div>
-                      <div className="flex items-center gap-4">
-                          <span className="flex items-center gap-1.5">
-                              <i data-lucide="globe" className="w-3 h-3" /> RO
-                          </span>
-                          <span>·</span>
-                          <span>v3.0.18</span>
-                          <span>·</span>
-                          <a href="#" className="hover:text-gold transition-colors flex items-center gap-1.5">
-                              <span className="status-dot" style={{width: '6px', height: '6px'}}></span>
-                              Status
-                          </a>
-                      </div>
-                  </div>
-              </div>
-          </footer>
+          <FooterV9 lang={lang} />
 
           {/* WhatsApp floating button */}
           <a
