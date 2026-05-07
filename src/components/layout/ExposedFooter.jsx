@@ -157,7 +157,7 @@ export default function ExposedFooter() {
           <ul className="space-y-3 text-sm">
             <li><FooterLink to="/contact">Despre</FooterLink></li>
             <li><FooterLink to="/contact">Contact</FooterLink></li>
-            <li><FooterLink href="mailto:press@payai-x.com">Press Kit</FooterLink></li>
+            <li><FooterLink to="/press">Press Kit</FooterLink></li>
           </ul>
         </div>
 
