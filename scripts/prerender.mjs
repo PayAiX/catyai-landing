@@ -92,6 +92,11 @@ async function prerenderWithPuppeteer(route, browser) {
       ''
     );
 
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*"[^>]*>(?=[\s\S]*<meta property="og:image"[^>]*data-rh="true")/g,
+      ''
+    );
+
     const segments = route.path.split('/').filter(Boolean);
     const dir = path.join(distDir, ...segments);
     fs.mkdirSync(dir, { recursive: true });
