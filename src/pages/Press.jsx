@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
 const pressCss = `
@@ -9,96 +8,97 @@ const pressCss = `
 .pr-heading { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #f8fafc; line-height: 1.15; }
 .pr-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; transition: all 0.25s ease; overflow: hidden; }
 .pr-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(200,161,101,0.2); transform: translateY(-2px); }
+.pr-card-featured { background: rgba(200,161,101,0.04); border: 1px solid rgba(200,161,101,0.15); }
+.pr-card-featured:hover { background: rgba(200,161,101,0.08); border-color: rgba(200,161,101,0.3); }
 .pr-kit-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: linear-gradient(135deg, #C8A165, #D4B57A); color: #010A1F; font-weight: 700; font-size: 0.9rem; border-radius: 10px; text-decoration: none; transition: opacity 0.2s; }
 .pr-kit-btn:hover { opacity: 0.9; }
 .pr-kit-secondary { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: transparent; color: #94a3b8; font-weight: 600; font-size: 0.9rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; transition: all 0.2s; }
 .pr-kit-secondary:hover { border-color: rgba(200,161,101,0.3); color: #D4B57A; }
 .pr-source-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 6px; }
 .pr-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(200,161,101,0.15), transparent); margin: 4rem 0; }
+.pr-section-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #C8A165; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.pr-impact { font-size: 0.75rem; color: #10b981; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); padding: 0.4rem 0.8rem; border-radius: 6px; display: inline-block; margin-top: 0.75rem; }
 `
 
-const articles = [
-  {
-    source: 'Tech Crunch RO',
-    logo: 'TC',
-    color: '#00d4aa',
-    date: 'Apr 2025',
-    title: 'CatyAI: Startup-ul românesc care optimizează pentru motoarele AI, nu Google',
-    excerpt: 'O platformă care schimbă regulile jocului în SEO — acum AI-urile recomandă branduri, nu link-uri.',
-    href: '#',
-    lang: 'RO',
-  },
-  {
-    source: 'StartupCafe',
-    logo: 'SC',
-    color: '#6366f1',
-    date: 'Mar 2025',
-    title: 'GEO (Generative Engine Optimization) vine în România prin CatyAI',
-    excerpt: 'PayAi-X FZE lansează CatyAI, prima platformă din regiune dedicată vizibilității în ChatGPT și Perplexity.',
-    href: '#',
-    lang: 'RO',
-  },
-  {
-    source: 'Wall-Street.ro',
-    logo: 'WS',
-    color: '#f59e0b',
-    date: 'Mar 2025',
-    title: 'Cum se adaptează companiile românești la era AI Search',
-    excerpt: 'Interviu cu echipa CatyAI despre viitorul marketingului digital când GPTBot devine principalul agent de descoperire.',
-    href: '#',
-    lang: 'RO',
-  },
-  {
-    source: 'Product Hunt',
-    logo: 'PH',
-    color: '#ff6154',
-    date: 'Feb 2025',
-    title: 'CatyAI — #3 Product of the Day',
-    excerpt: 'Neural infrastructure that makes AI models recommend your business. Featured by 400+ upvotes in launch week.',
-    href: '#',
-    lang: 'EN',
-  },
+const featuredArticles = [
   {
     source: 'Ziarul Financiar',
+    subtitle: 'ZF IT Generation',
     logo: 'ZF',
     color: '#3b82f6',
-    date: 'Jan 2025',
-    title: 'Antreprenori din Dubai construiesc infrastructura AI pentru afaceri europene',
-    excerpt: 'PayAi-X FZE, compania din spatele CatyAI, atrage atenția investitorilor din regiune cu o abordare nouă față de vizibilitatea digitală.',
-    href: '#',
-    lang: 'RO',
+    subject: 'Interviu cu Adrian Vitan Lopes, Fondator PayAi-X, despre viitorul agenților autonomi.',
+    impact: 'Validare la cel mai înalt nivel de business din România.',
+    href: 'https://www.zf.ro/zf-it-generation/video-adrian-vitan-lopes-fondator-payai-x-agentii-autonomi-nu-22011858',
+    cta: 'Urmărește interviul integral pe ZF.ro',
   },
   {
-    source: 'How-To Geek',
-    logo: 'HG',
+    source: 'AIthority',
+    subtitle: 'Global Tech Media',
+    logo: 'AI',
+    color: '#8b5cf6',
+    subject: 'PayAi-X FZE Launches CatyAI v3.0, Offering Cryptographically Verifiable AI Data Infrastructure for Enterprise Governance.',
+    impact: 'Recunoaștere internațională a arhitecturii Zero-Trust și a alinierii la EU AI Act.',
+    href: 'https://aithority.com/natural-language/chatgpt/payai-x-fze-launches-catyai-v3-0-offering-cryptographically-verifiable-ai-data-infrastructure-for-enterprise-governance/',
+    cta: 'Citește pe AIthority.com',
+  },
+  {
+    source: 'Start-up.ro',
+    subtitle: 'Tech & Business',
+    logo: 'SU',
     color: '#10b981',
-    date: 'Dec 2024',
-    title: 'What is GEO and Why Every Business Needs It in 2025',
-    excerpt: 'Generative Engine Optimization explained — and CatyAI is leading the charge with their llms.txt protocol.',
-    href: '#',
-    lang: 'EN',
+    subject: 'Cum încearcă o companie românească să rezolve criza de încredere a inteligenței artificiale prin semnături criptografice.',
+    impact: 'Explicația perfectă a tranziției de la SEO la GEO (Generative Engine Optimization).',
+    href: 'https://start-up.ro/cum-incearca-o-companie-romaneasca-sa-rezolve-criza-de-incredere-a-inteligentei-artificiale-prin-semnaturi-criptografice/',
+    cta: 'Citește analiza pe Start-up.ro',
+  },
+  {
+    source: 'PrimaNews / PrimaPlay',
+    subtitle: 'TV Mainstream',
+    logo: 'PN',
+    color: '#ef4444',
+    subject: 'Apariție TV Mainstream despre impactul AI-ului în business.',
+    impact: 'Autoritate publică masivă și dovada adopției la scară largă a tehnologiei.',
+    href: 'https://www.primaplay.ro/emisiuni/primanews/inteligenta-artificiala-in-afaceri-bune-practici-si-provocari_4194',
+    cta: 'Urmărește emisiunea pe PrimaPlay',
   },
 ]
 
-const assets = [
-  { icon: '🖼️', label: 'Logo Pack', desc: 'SVG + PNG, light/dark, all sizes', href: '#' },
-  { icon: '📐', label: 'Brand Guidelines', desc: 'Colors, typography, usage rules', href: '#' },
-  { icon: '📸', label: 'Screenshots', desc: 'Dashboard, product, mobile — 4K', href: '#' },
-  { icon: '👤', label: 'Founder Photos', desc: 'Hi-res headshots, team photos', href: '#' },
-  { icon: '📄', label: 'Company Factsheet', desc: 'One-page overview, key metrics', href: '#' },
-  { icon: '🎬', label: 'Product Video', desc: '60s demo reel, MP4 + WebM', href: '#' },
+const globalArticles = [
+  {
+    source: 'EIN Presswire',
+    subtitle: 'Global Syndication',
+    logo: 'EIN',
+    color: '#f59e0b',
+    subject: 'Lansarea oficială CatyAI v3.0 pe piețele internaționale, detaliind arhitectura Qdrant Vector DB și protocolul EdDSA.',
+    href: 'https://www.einnews.com/pr_news/800982685/payai-x-fze-launches-catyai-v3-0-with-cryptographically-verifiable-ai-data-infrastructure',
+    cta: 'Citește pe EIN News',
+  },
+  {
+    source: 'ComunicateDePresa.ro',
+    subtitle: 'Technical Release',
+    logo: 'CP',
+    color: '#6366f1',
+    subject: 'Lansarea FraudAI Shield – prima platformă AI Sales din România cu protecție anti-fraudă integrată în timp real, care protejează utilizatorii de phishing și atacuri de impersonare.',
+    href: 'https://www.comunicatedepresa.ro/payai-x-fze/payai-x-fze-lanseaza-catyai-prima-platforma-ai-sales-din-romania-cu-protectie-anti-frauda-integrata',
+    cta: 'Citește comunicatul tehnic',
+  },
+]
+
+const resources = [
+  { icon: '📊', label: 'Crunchbase Profile', desc: 'Official company profile & metrics', href: 'https://www.crunchbase.com/organization/catyai' },
+  { icon: '📄', label: 'Technical Whitepaper', desc: 'NAP & Deterministic Trust in AI', href: 'mailto:press@catyai.io?subject=Whitepaper%20Request' },
+  { icon: '🖼️', label: 'Logo Pack', desc: 'SVG + PNG, light/dark, all sizes', href: '#kit' },
+  { icon: '📐', label: 'Brand Guidelines', desc: 'Colors, typography, usage rules', href: '#kit' },
+  { icon: '📸', label: 'Screenshots', desc: 'Dashboard, product, mobile — 4K', href: '#kit' },
+  { icon: '👤', label: 'Founder Photos', desc: 'Hi-res headshots, team photos', href: '#kit' },
 ]
 
 export default function Press() {
-  const [filter, setFilter] = useState('ALL')
-
-  const filtered = filter === 'ALL' ? articles : articles.filter(a => a.lang === filter)
-
   return (
     <div className="pr-page">
       <Helmet>
-        <title>Press & Media — CatyAI</title>
-        <meta name="description" content="CatyAI in the press. Media kit, brand assets, and press coverage." />
+        <title>Press & Newsroom — CatyAI</title>
+        <meta name="description" content="CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage." />
       </Helmet>
       <style dangerouslySetInnerHTML={{ __html: pressCss }} />
 
@@ -108,19 +108,30 @@ export default function Press() {
           <div className="mb-6">
             <span className="pr-tag">
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block', boxShadow: '0 0 8px #10b981' }} />
-              Press &amp; Media
+              Newsroom
             </span>
           </div>
-          <h1 className="pr-heading text-5xl md:text-7xl mb-6">
-            CatyAI<br />in the press
+          <h1 className="pr-heading text-4xl md:text-6xl mb-6">
+            CatyAI &amp; PayAi-X<br />Newsroom
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10">
-            Acoperire media, resurse pentru jurnaliști și tot ce ai nevoie pentru a scrie despre CatyAI.
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
+            Featured and recognized in global tech media and top-tier business publications.
           </p>
+
+          {/* AI Trust Crisis Box */}
+          <div className="pr-card p-6 md:p-8 text-left max-w-3xl mx-auto mb-10">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+              The AI Trust Crisis: Cum răspundem lansării reclamelor în ChatGPT
+            </h2>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+              Odată cu lansarea de către OpenAI a platformei <strong className="text-white">ChatGPT Ads Manager</strong>, modelele de limbaj mari (LLM) au făcut tranziția către medierea comercială. Această evoluție expune brandurile la riscuri legale majore din cauza <em>„Halucinațiilor Comerciale"</em>. CatyAI, prin platforma sa v3.0 și protocolul <strong className="text-white">NAP (Neural Assurance Protocol)</strong>, a devenit infrastructura Zero-Trust esențială care leagă matematic token-urile generate de AI de adevărul criptografic al brandului, eliminând răspunderea legală a comercianților.
+            </p>
+          </div>
+
           <div className="flex flex-wrap justify-center gap-3">
-            <a href="mailto:press@payai-x.com" className="pr-kit-btn">
+            <a href="mailto:press@catyai.io" className="pr-kit-btn">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-              press@payai-x.com
+              press@catyai.io
             </a>
             <a href="#kit" className="pr-kit-secondary">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -130,56 +141,40 @@ export default function Press() {
         </div>
       </section>
 
-      {/* Press Articles */}
+      {/* Featured Coverage */}
       <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
-          <div>
-            <h2 className="text-2xl font-bold text-white">Articole din presă</h2>
-            <p className="text-slate-500 text-sm mt-1 font-mono">Coverage &amp; mentions</p>
-          </div>
-          <div className="flex items-center gap-2">
-            {['ALL', 'RO', 'EN'].map(f => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className="font-mono text-xs px-4 py-2 rounded-lg border transition-all"
-                style={{
-                  background: filter === f ? 'rgba(200,161,101,0.12)' : 'transparent',
-                  borderColor: filter === f ? 'rgba(200,161,101,0.35)' : 'rgba(255,255,255,0.08)',
-                  color: filter === f ? '#C8A165' : '#64748b',
-                }}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+        <div className="pr-section-tag">
+          <span>🏆</span>
+          Featured Coverage (The Crown Jewels)
         </div>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
+          Aparițiile care contează
+        </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((a, i) => (
-            <a key={i} href={a.href} className="pr-card block p-6 no-underline">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2.5">
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs font-mono"
-                    style={{ background: `${a.color}18`, color: a.color, border: `1px solid ${a.color}30` }}
-                  >
-                    {a.logo}
-                  </div>
-                  <span className="text-sm font-semibold text-slate-300">{a.source}</span>
+        <div className="grid md:grid-cols-2 gap-6">
+          {featuredArticles.map((a, i) => (
+            <a key={i} href={a.href} target="_blank" rel="noopener noreferrer" className="pr-card pr-card-featured block p-6 no-underline">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-sm font-mono"
+                  style={{ background: `${a.color}18`, color: a.color, border: `1px solid ${a.color}40` }}
+                >
+                  {a.logo}
                 </div>
-                <span className="pr-source-badge" style={{ background: 'rgba(255,255,255,0.04)', color: '#64748b' }}>
-                  {a.lang}
-                </span>
+                <div>
+                  <div className="font-semibold text-white">{a.source}</div>
+                  <div className="text-slate-500 text-xs">{a.subtitle}</div>
+                </div>
               </div>
-              <h3 className="text-white font-semibold leading-snug mb-3 text-sm">{a.title}</h3>
-              <p className="text-slate-500 text-xs leading-relaxed">{a.excerpt}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="font-mono text-xs text-slate-600">{a.date}</span>
-                <span className="text-xs text-gold flex items-center gap-1" style={{ color: '#C8A165' }}>
-                  Citește
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                </span>
+              <p className="text-slate-300 text-sm leading-relaxed mb-2">
+                <strong className="text-slate-200">Subiect:</strong> {a.subject}
+              </p>
+              <div className="pr-impact">
+                <strong>Impact:</strong> {a.impact}
+              </div>
+              <div className="mt-4 flex items-center gap-2 text-sm" style={{ color: '#C8A165' }}>
+                🔗 {a.cta}
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               </div>
             </a>
           ))}
@@ -188,35 +183,77 @@ export default function Press() {
 
       <div className="pr-divider mx-6" />
 
-      {/* Press Kit Assets */}
-      <section id="kit" className="max-w-6xl mx-auto px-6 pb-20">
-        <div className="mb-10">
-          <span className="pr-tag mb-4">Press Kit</span>
-          <h2 className="text-2xl font-bold text-white mt-4">Brand Assets</h2>
-          <p className="text-slate-500 text-sm mt-1">Resurse oficiale pentru articole, prezentări și acoperire media.</p>
+      {/* Global Syndication */}
+      <section className="max-w-6xl mx-auto px-6 pb-20">
+        <div className="pr-section-tag">
+          <span>🌍</span>
+          Global Syndication &amp; Technical Releases
         </div>
+        <h2 className="text-2xl font-bold text-white mb-10">
+          Comunicări oficiale
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {globalArticles.map((a, i) => (
+            <a key={i} href={a.href} target="_blank" rel="noopener noreferrer" className="pr-card block p-6 no-underline">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xs font-mono"
+                  style={{ background: `${a.color}18`, color: a.color, border: `1px solid ${a.color}30` }}
+                >
+                  {a.logo}
+                </div>
+                <div>
+                  <div className="font-semibold text-slate-200 text-sm">{a.source}</div>
+                  <div className="text-slate-500 text-xs">{a.subtitle}</div>
+                </div>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">{a.subject}</p>
+              <div className="flex items-center gap-2 text-sm" style={{ color: '#C8A165' }}>
+                🔗 {a.cta}
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <div className="pr-divider mx-6" />
+
+      {/* Company Resources */}
+      <section id="kit" className="max-w-6xl mx-auto px-6 pb-20">
+        <div className="pr-section-tag">
+          <span>📊</span>
+          Company Resources &amp; Technical Papers
+        </div>
+        <h2 className="text-2xl font-bold text-white mb-2">
+          Resurse pentru jurnaliști, analiști și CISO
+        </h2>
+        <p className="text-slate-500 text-sm mb-10">
+          Materiale oficiale pentru articole, prezentări și due diligence.
+        </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {assets.map((a, i) => (
-            <a key={i} href={a.href} className="pr-card flex items-center gap-4 p-5 no-underline">
+          {resources.map((a, i) => (
+            <a key={i} href={a.href} target={a.href.startsWith('http') ? '_blank' : undefined} rel={a.href.startsWith('http') ? 'noopener noreferrer' : undefined} className="pr-card flex items-center gap-4 p-5 no-underline">
               <span className="text-2xl">{a.icon}</span>
               <div className="flex-1 min-w-0">
                 <div className="font-semibold text-white text-sm">{a.label}</div>
                 <div className="text-slate-500 text-xs mt-0.5">{a.desc}</div>
               </div>
-              <svg className="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              <svg className="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           ))}
         </div>
 
         <div className="pr-card p-8 text-center">
-          <p className="text-slate-400 mb-2">Ai nevoie de altceva?</p>
+          <p className="text-slate-400 mb-2">Press Inquiries</p>
           <h3 className="text-white font-bold text-xl mb-4">Contactează echipa de presă</h3>
           <p className="text-slate-500 text-sm mb-6 max-w-md mx-auto">
             Interviuri, declarații, cifre exclusive sau orice altceva pentru articolul tău — răspundem în 24h.
           </p>
-          <a href="mailto:press@payai-x.com" className="pr-kit-btn">
-            press@payai-x.com
+          <a href="mailto:press@catyai.io" className="pr-kit-btn">
+            press@catyai.io
           </a>
         </div>
       </section>
