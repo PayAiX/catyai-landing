@@ -155,7 +155,7 @@ export default function ExposedFooter() {
         <div className="md:col-span-2">
           <h4 className="footer-col-title">Companie</h4>
           <ul className="space-y-3 text-sm">
-            <li><FooterLink to="/about">Despre</FooterLink></li>
+            <li><FooterLink to="/contact">Despre</FooterLink></li>
             <li><FooterLink to="/contact">Contact</FooterLink></li>
             <li><FooterLink href="mailto:press@payai-x.com">Press Kit</FooterLink></li>
           </ul>
