@@ -97,6 +97,11 @@ async function prerenderWithPuppeteer(route, browser) {
       ''
     );
 
+    html = html.replace(/<div id="caty-widget-container"[\s\S]*?<\/div>\s*$/m, '');
+    html = html.replace(/<div id="caty-widget-container"[\s\S]*?(?=<script|<\/body>)/g, '');
+    html = html.replace(/<style id="caty-widget-styles"[\s\S]*?<\/style>/g, '');
+    html = html.replace(/<div class="caty-overlay"[^>]*>[\s\S]*?<\/div>/g, '');
+
     const segments = route.path.split('/').filter(Boolean);
     const dir = path.join(distDir, ...segments);
     fs.mkdirSync(dir, { recursive: true });
