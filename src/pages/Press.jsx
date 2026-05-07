@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import GlobalHeader from '../components/GlobalHeader'
+import FooterV9 from '../components/FooterV9'
 
 const pressCss = `
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -94,6 +97,8 @@ const resources = [
 ]
 
 export default function Press() {
+  const [lang, setLang] = useState('ro')
+
   return (
     <div className="pr-page">
       <Helmet>
@@ -101,6 +106,8 @@ export default function Press() {
         <meta name="description" content="CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage." />
       </Helmet>
       <style dangerouslySetInnerHTML={{ __html: pressCss }} />
+
+      <GlobalHeader lang={lang} setLang={setLang} />
 
       {/* Hero */}
       <section className="pr-hero pt-24 pb-20 px-6">
@@ -258,6 +265,7 @@ export default function Press() {
         </div>
       </section>
 
+      <FooterV9 lang={lang} />
     </div>
   )
 }
