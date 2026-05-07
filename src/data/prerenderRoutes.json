@@ -8,6 +8,12 @@
     "name": "Blog"
   },
   {
+    "path": "/press",
+    "name": "Press & Newsroom",
+    "title": "Press & Newsroom — CatyAI",
+    "description": "CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage."
+  },
+  {
     "path": "/blog/chatgpt-ads-manager-nap-obligatoriu",
     "name": "Blog: ChatGPT Ads Manager - NAP Obligatoriu"
   },
