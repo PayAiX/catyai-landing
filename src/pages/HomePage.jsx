@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import GlobalHeader from '../components/GlobalHeader';
 import FooterV9 from '../components/FooterV9';
 
@@ -388,39 +389,20 @@ function LanguageSelector({ lang, setLang }) {
 }
 
 export default function HomePage() {
-  const [scanState, setScanState] = useState('idle'); // 'idle' | 'loading' | 'result'
+  const navigate = useNavigate();
   const [scannedUrl, setScannedUrl] = useState('');
-  const [loadingText, setLoadingText] = useState('Initiating Neural Scan...');
 
   const stackContainerRef = useRef(null);
 
   const [lang, setLang] = useState(localStorage.getItem('caty-lang') || 'ro');
   const t = translations[lang] || translations.ro;
 
-  // Initialize Lucide icons after every render
+  // Initialize Lucide icons after mount
   useEffect(() => {
     if (window.lucide) {
       window.lucide.createIcons();
     }
-  }, [scanState]);
-
-  // Loading text cycle
-  useEffect(() => {
-    if (scanState !== 'loading') return;
-    const phrases = [
-      'Initiating Neural Scan...',
-      'Bypassing Client-Side JavaScript...',
-      'Analyzing NAP Structure...',
-      'Verifying Ed25519 Signatures...',
-      'Calculating GEO Trust Score...'
-    ];
-    let i = 0;
-    const interval = setInterval(() => {
-      i = (i + 1) % phrases.length;
-      setLoadingText(phrases[i]);
-    }, 800);
-    return () => clearInterval(interval);
-  }, [scanState]);
+  }, []);
 
   // Stacking cards scroll handler
   useEffect(() => {
@@ -468,9 +450,8 @@ export default function HomePage() {
 
   const handleScan = (e) => {
     e.preventDefault();
-    if (!scannedUrl) return;
-    setScanState('loading');
-    setTimeout(() => setScanState('result'), 4000);
+    if (!scannedUrl.trim()) return;
+    navigate(`/check?url=${encodeURIComponent(scannedUrl.trim())}`);
   };
 
   return (
@@ -1280,7 +1261,6 @@ body {
                           <div className="relative z-20 rounded-xl p-2 border border-white/10 shadow-2xl"
                                style={{background: 'rgba(1, 10, 31, 0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)'}}>
 
-                              {scanState === 'idle' && (
                                 <form onSubmit={handleScan} className="flex flex-col sm:flex-row gap-2 relative">
                                     <div className="relative flex-grow">
                                         <i data-lucide="globe" className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" />
@@ -1291,54 +1271,6 @@ body {
                                         {t.heroBtn} <i data-lucide="arrow-up-right" className="w-4 h-4" />
                                     </button>
                                 </form>
-                              )}
-
-                              {scanState === 'loading' && (
-                                <div className="py-8 px-4 flex flex-col items-center justify-center">
-                                    <i data-lucide="scan" className="w-10 h-10 text-gold animate-pulse mb-4" />
-                                    <div className="font-mono text-sm text-gold mb-2">{loadingText}</div>
-                                    <div className="w-full h-0.5 bg-white/10 rounded-full overflow-hidden relative">
-                                        <div className="absolute h-full bg-gold rounded-full" style={{width: '30%', animation: 'loading 2s ease-in-out infinite'}}></div>
-                                    </div>
-                                </div>
-                              )}
-
-                              {scanState === 'result' && (
-                                <div className="py-6 px-6 text-left">
-                                    <div className="flex items-start justify-between border-b border-white/10 pb-4 mb-4">
-                                        <div>
-                                            <h3 className="text-white font-bold text-lg flex items-center gap-2">
-                                                <i data-lucide="alert-triangle" className="text-red-500 w-5 h-5" />
-                                                {t.scanCritical}
-                                            </h3>
-                                            <p className="text-slate-400 text-sm mt-1 font-mono">target: {scannedUrl}</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <div className="text-3xl font-extrabold text-red-500">12%</div>
-                                            <div className="text-xs text-slate-500 uppercase tracking-widest">GEO Score</div>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-3 mb-6">
-                                        <div className="flex items-center justify-between text-sm">
-                                            <span className="text-slate-400">{t.scanLlm}</span>
-                                            <span className="text-red-400 font-mono">{t.scanLlmFail}</span>
-                                        </div>
-                                        <div className="flex items-center justify-between text-sm">
-                                            <span className="text-slate-400">{t.scanHalluc}</span>
-                                            <span className="text-red-400 font-mono">{t.scanHallucVal}</span>
-                                        </div>
-                                        <div className="flex items-center justify-between text-sm">
-                                            <span className="text-slate-400">{t.scanSig}</span>
-                                            <span className="text-red-400 font-mono">{t.scanSigVal}</span>
-                                        </div>
-                                    </div>
-
-                                    <a href="#cum" className="w-full bg-white/5 hover:bg-white/10 border border-red-500/30 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2 transition-all">
-                                        {t.scanRepair} <i data-lucide="shield-check" className="w-4 h-4 text-gold" />
-                                    </a>
-                                </div>
-                              )}
                           </div>
                           <div className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-transparent blur-xl z-0 opacity-50"></div>
                       </div>
