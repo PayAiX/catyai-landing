@@ -1343,6 +1343,23 @@ body {
                           <div className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-transparent blur-xl z-0 opacity-50"></div>
                       </div>
 
+                      <a href="/check" style={{
+                          display:        'inline-flex',
+                          alignItems:     'center',
+                          gap:            '6px',
+                          marginTop:      '1rem',
+                          padding:        '10px 22px',
+                          borderRadius:   '10px',
+                          background:     'transparent',
+                          color:          '#F8F6F0',
+                          border:         '1px solid #3A4557',
+                          fontWeight:     600,
+                          fontSize:       '14px',
+                          textDecoration: 'none',
+                      }}>
+                          Check your website →
+                      </a>
+
                       <p className="mt-8 text-sm text-slate-300 flex items-center gap-2 font-medium" style={{textShadow: '0 1px 8px rgba(0,0,0,0.6)'}}>
                           <i data-lucide="shield-check" className="w-4 h-4 text-emerald-400" />
                           {t.socialProof}
