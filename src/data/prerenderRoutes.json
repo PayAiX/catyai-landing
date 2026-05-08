@@ -464,5 +464,11 @@
   {
     "path": "/check",
     "title": "Check Your Website \u2014 AI Visibility Audit | CatyAI"
+  },
+  {
+    "path": "/investor-relations",
+    "name": "Investor Relations \u2014 PayAi-X FZE",
+    "title": "Investor Relations \u2014 PayAi-X FZE | Zero-Trust AI Infrastructure",
+    "description": "PayAi-X FZE is defining the Zero-Trust standard for the AI economy. Access our technical whitepaper, pitch deck, and corporate data room."
   }
 ]
