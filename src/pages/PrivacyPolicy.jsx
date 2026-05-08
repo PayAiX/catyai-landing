@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 
 function PrivacyPolicy() {
   useEffect(() => {
@@ -6,7 +7,13 @@ function PrivacyPolicy() {
   }, [])
 
   return (
-    <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="Privacy Policy"
+        description="CatyAI Privacy Policy — how we collect, process, and protect your personal data. GDPR compliant. PayAi-X FZE, Dubai, UAE."
+        url="https://catyai.io/privacy"
+      />
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Privacy Policy</h1>

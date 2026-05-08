@@ -104,6 +104,15 @@ export default function Press() {
       <Helmet>
         <title>Press & Newsroom — CatyAI</title>
         <meta name="description" content="CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage." />
+        <meta property="og:title" content="Press & Newsroom — CatyAI" />
+        <meta property="og:description" content="CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage." />
+        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:url" content="https://catyai.io/press" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://catyai.io/press" />
       </Helmet>
       <style dangerouslySetInnerHTML={{ __html: pressCss }} />
 

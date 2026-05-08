@@ -11,8 +11,8 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       <SEO
-        title="Blog - E-commerce AI Insights & Tutorials"
-        description="Learn how to boost your e-commerce sales with AI chatbots. Tutorials, case studies, and conversion optimization strategies."
+        title="Blog — AI Visibility, GEO Optimization & Business Insights"
+        description="CatyAI Blog: how to make your business visible to ChatGPT, Perplexity, and Gemini. GEO optimization guides, NAP Protocol tutorials, AI citation strategies."
         url="https://catyai.io/blog"
       />
       {/* Hero Section */}
