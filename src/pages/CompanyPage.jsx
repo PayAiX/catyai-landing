@@ -297,8 +297,8 @@ export default function CompanyPage() {
                 Security, compliance, and transparency are embedded at the core of our neural architecture.
               </p>
               <div className="co-cta-row">
-                <a href="mailto:contact@payai-x.com?subject=Security Whitepaper Request" className="co-cta-primary">
-                  Read our Security Whitepaper
+                <a href="https://vawohwlmicgalwpuainm.supabase.co/storage/v1/object/public/ENTERPRISE%20BRIEFING/Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="co-cta-primary">
+                  Read our Whitepaper
                 </a>
                 <Link to="/trust-center" className="co-cta-secondary">Trust Center →</Link>
               </div>
@@ -532,8 +532,8 @@ export default function CompanyPage() {
           <h2 className="co-cta-title">Read our Security Whitepaper</h2>
           <p className="co-cta-sub">Full technical documentation of our security architecture, compliance posture, and data handling practices.</p>
           <div className="co-cta-row" style={{ justifyContent: 'center' }}>
-            <a href="mailto:contact@payai-x.com?subject=Security Whitepaper Request" className="co-cta-primary">
-              Request Whitepaper
+            <a href="https://vawohwlmicgalwpuainm.supabase.co/storage/v1/object/public/ENTERPRISE%20BRIEFING/Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="co-cta-primary">
+              Read our Whitepaper
             </a>
             <a href="mailto:contact@payai-x.com" className="co-cta-secondary">Contact Us</a>
           </div>
