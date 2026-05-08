@@ -3273,7 +3273,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en']
   const isStandalonePage = standalonePages.includes(location.pathname)
 
   // Track referral code from URL
@@ -3368,7 +3368,6 @@ function AppContent() {
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/company" element={<CompanyPage />} />
-            <Route path="/investor-relations" element={<Investors />} />
             <Route path="/protocol" element={<ProtocolPage />} />
             <Route path="/trust-center" element={<TrustCenter />} />
             <Route path="/white-label" element={<WhiteLabelPage />} />
