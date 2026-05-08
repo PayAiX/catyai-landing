@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 const CHECK_LABELS = {
   robots_txt:        { label: 'robots.txt',          desc: 'Indexable by AI crawlers' },
@@ -46,7 +47,9 @@ function normalizeUrl(input) {
 }
 
 export default function AiVisibilityCheck() {
-  const [url, setUrl]         = useState('')
+  const [searchParams] = useSearchParams()
+  const initialUrl = searchParams.get('url') || ''
+  const [url, setUrl]         = useState(initialUrl)
   const [loading, setLoading] = useState(false)
   const [result, setResult]   = useState(null)
   const [error, setError]     = useState(null)
@@ -91,6 +94,10 @@ export default function AiVisibilityCheck() {
   const handleKey = e => {
     if (e.key === 'Enter' && !loading) runAudit()
   }
+
+  useEffect(() => {
+    if (initialUrl) runAudit()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", color: '#F8F6F0', maxWidth: '780px', margin: '0 auto' }}>
