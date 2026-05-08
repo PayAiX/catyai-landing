@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import GlobalHeader from '../components/GlobalHeader';
+import FooterV9 from '../components/FooterV9';
 
 // Import blog articles from synced JSON (Vite handles JSON imports natively)
 import syncedArticles from '../data/blogArticles.json';
@@ -8,8 +11,20 @@ import syncedArticles from '../data/blogArticles.json';
 export const blogArticles = syncedArticles;
 
 export default function Blog() {
+  const [lang, setLang] = useState(() => localStorage.getItem('caty-lang') || 'en');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('caty-lang');
+    if (stored) setLang(stored);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+      <GlobalHeader lang={lang} setLang={setLang} scrolled={scrolled} />
       <SEO
         title="Blog — AI Visibility, GEO Optimization & Business Insights"
         description="CatyAI Blog: how to make your business visible to ChatGPT, Perplexity, and Gemini. GEO optimization guides, NAP Protocol tutorials, AI citation strategies."
@@ -126,6 +141,7 @@ export default function Blog() {
           </div>
         </div>
       </section>
+      <FooterV9 lang={lang} />
     </div>
   );
 }

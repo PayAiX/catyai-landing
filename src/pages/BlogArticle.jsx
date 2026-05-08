@@ -1,12 +1,26 @@
+import { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { blogArticles } from './Blog';
 import SEO from '../components/SEO';
+import GlobalHeader from '../components/GlobalHeader';
+import FooterV9 from '../components/FooterV9';
 
 // Import article content from synced JSON
 import articleContent from '../data/articleContent.json';
 
 export default function BlogArticle() {
   const { slug } = useParams();
+  const [lang, setLang] = useState(() => localStorage.getItem('caty-lang') || 'en');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('caty-lang');
+    if (stored) setLang(stored);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const article = blogArticles.find(a => a.slug === slug);
   const content = articleContent[slug];
 
@@ -23,6 +37,7 @@ export default function BlogArticle() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+      <GlobalHeader lang={lang} setLang={setLang} scrolled={scrolled} />
       <SEO
         title={article.title}
         description={content?.metaDescription || article.excerpt}
@@ -169,6 +184,7 @@ export default function BlogArticle() {
           </div>
         </section>
       )}
+      <FooterV9 lang={lang} />
     </div>
   );
 }

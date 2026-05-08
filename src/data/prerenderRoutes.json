@@ -22,6 +22,12 @@
     "description": "OpenAI's programmatic Ads Manager creates a billion-dollar liability gap for commercial hallucinations. Cryptographic infrastructure built on Ed25519 signatures and verifiable JWKS endpoints is the only legally defensible path."
   },
   {
+    "path": "/blog/is-ai-blind-to-your-business",
+    "name": "Blog: Is AI blind to your business?",
+    "title": "Is AI blind to your business? De ce SEO clasic nu mai este suficient — CatyAI Blog",
+    "description": "If AI can't read your site, you don't exist. Cum să îți optimizezi afacerea pentru GPTBot, ClaudeBot și Perplexity prin Generative Engine Optimization (GEO)."
+  },
+  {
     "path": "/blog/chatgpt-ads-manager-nap-obligatoriu",
     "name": "Blog: ChatGPT Ads Manager - NAP Obligatoriu"
   },
