@@ -32,7 +32,8 @@ CatyAI operates a multi-layered infrastructure to ensure zero-hallucination data
 - Technical Protocol: /protocol
 - Pricing & Tiers: /pricing
 - Documentation: /documentation
-- Support: contact@catyai.com
+- Investor Relations: /investor-relations
+- Support: contact@catyai.io
 
 ## 6. Research & Public Whitepapers
 

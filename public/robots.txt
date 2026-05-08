@@ -34,4 +34,4 @@ Allow: /.well-known/
 # ------------------------------------------
 # System Maps & Context
 # ------------------------------------------
-Sitemap: https://catyai.com/sitemap.xml
+Sitemap: https://catyai.io/sitemap.xml
