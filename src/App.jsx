@@ -50,6 +50,7 @@ const CareersPage = lazy(() => import('./pages/Careers'))
 const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
 const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
 const Press = lazy(() => import('./pages/Press'))
+const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3325,6 +3326,7 @@ function AppContent() {
             <Route path="/technology-partners" element={<TechPartnersPage />} />
             <Route path="/enterprise" element={<EnterprisePage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/check" element={<CheckWebsite />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/licensing" element={<Licensing />} />
             <Route path="/pricing" element={<PricingPage />} />
