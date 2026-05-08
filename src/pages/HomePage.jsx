@@ -490,7 +490,7 @@ export default function HomePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="CatyAI - AI Sales Platform - 8 AI Agents that sell for you 24/7" />
+        <meta property="og:image:alt" content="CatyAI — cryptographic infrastructure that prevents AI assistants from inventing claims about your business" />
         <meta property="og:site_name" content="CatyAI" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="ro_RO" />
