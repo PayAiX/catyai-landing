@@ -651,6 +651,7 @@ function PrivacyPolicy() {
           </div>
         </div>
       </section>
+    </>
   )
 }
 
