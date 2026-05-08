@@ -205,6 +205,7 @@ export default function FooterV9({ lang = 'en' }) {
             <ul className="space-y-3 text-sm">
               <li><a href="/contact" className="fv9-link">{t.about} <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/press" className="fv9-link">Press Kit <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/investor-relations" className="fv9-link">Investor Relations <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/contact" className="fv9-link">Contact <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>

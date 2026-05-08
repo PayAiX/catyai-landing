@@ -38,6 +38,7 @@ const PlatformPage = lazy(() => import('./pages/PlatformPage'))
 const SolutionsPage = lazy(() => import('./pages/SolutionsPage'))
 const PartnersPage = lazy(() => import('./pages/PartnersPage'))
 const CompanyPage = lazy(() => import('./pages/CompanyPage'))
+const Investors = lazy(() => import('./pages/Investors'))
 const ProtocolPage = lazy(() => import('./pages/ProtocolPage'))
 const TrustCenter = lazy(() => import('./pages/TrustCenter'))
 const WhiteLabelPage = lazy(() => import('./pages/WhiteLabelPage'))
@@ -3319,6 +3320,7 @@ function AppContent() {
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/company" element={<CompanyPage />} />
+            <Route path="/investor-relations" element={<Investors />} />
             <Route path="/protocol" element={<ProtocolPage />} />
             <Route path="/trust-center" element={<TrustCenter />} />
             <Route path="/white-label" element={<WhiteLabelPage />} />
@@ -3366,6 +3368,7 @@ function AppContent() {
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/company" element={<CompanyPage />} />
+            <Route path="/investor-relations" element={<Investors />} />
             <Route path="/protocol" element={<ProtocolPage />} />
             <Route path="/trust-center" element={<TrustCenter />} />
             <Route path="/white-label" element={<WhiteLabelPage />} />
