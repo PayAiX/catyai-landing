@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 
 function TermsOfService() {
   useEffect(() => {
@@ -6,7 +7,13 @@ function TermsOfService() {
   }, [])
 
   return (
-    <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="Terms of Service"
+        description="CatyAI Terms of Service — the rules governing your use of CatyAI, AI chatbot widgets, dashboard, and APIs. PayAi-X FZE, Dubai, UAE."
+        url="https://catyai.io/terms"
+      />
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Terms of Service</h1>
@@ -813,6 +820,7 @@ function TermsOfService() {
           </div>
         </div>
       </section>
+    </>
   )
 }
 

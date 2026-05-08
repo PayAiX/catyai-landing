@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 
 const defaultMeta = {
-  title: 'Cea Mai Sigura Solutie AI Sales din Romania | CatyAI + FraudAI Shield',
-  description: 'CatyAI: singura platforma AI Sales din Romania cu 8 agenti AI specializati si FraudAI Shield anti-frauda. Arhitectura multi-agent unica: Sales, Support, Scheduler, DocGen, Fraud Detection, Lead Scoring. Protectie completa + conversii automate.',
+  title: 'Stop AI From Lying About Your Business | CatyAI',
+  description: 'CatyAI gives your business cryptographic infrastructure so AI assistants like ChatGPT, Perplexity, and Gemini cite verified facts — not hallucinations. GEO Gateway, NAP Protocol, SENTINEL monitoring.',
   image: 'https://catyai.io/og-image.png',
   url: 'https://catyai.io',
-  keywords: 'AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania, arhitectura multi-agent',
+  keywords: 'AI visibility, GEO optimization, stop AI hallucinations, AI citations, NAP Protocol, llms.txt, ChatGPT business listing, Perplexity AI visibility, AI search optimization, CatyAI, FraudAI Shield, SENTINEL monitoring, AI factual accuracy',
 };
 
 export default function SEO({

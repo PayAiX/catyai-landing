@@ -118,6 +118,14 @@ export default function FeaturesPage() {
           name="description"
           content="SAG Pipeline cu 10 agenți specializați, GEO Gateway 6 layere, FraudAI Shield, WhatsApp Zero Meta, QR-First, Universal Brain. Fără cod. De la €0/lună."
         />
+        <meta property="og:title" content="CatyAI Features — 10 Agenți AI, GEO Gateway, FraudAI Shield | 14 Limbi" />
+        <meta property="og:description" content="SAG Pipeline cu 10 agenți specializați, GEO Gateway 6 layere, FraudAI Shield, WhatsApp Zero Meta, QR-First, Universal Brain. Fără cod. De la €0/lună." />
+        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:url" content="https://catyai.io/features" />
+        <meta property="og:type" content="website" />
         <link rel="canonical" href="https://catyai.io/features" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>

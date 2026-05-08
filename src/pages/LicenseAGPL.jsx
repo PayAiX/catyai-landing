@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 
 function LicenseAGPL() {
   useEffect(() => {
@@ -6,7 +7,13 @@ function LicenseAGPL() {
   }, [])
 
   return (
-    <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="License"
+        description="CatyAI proprietary software license terms. PayAi-X FZE, Dubai, UAE. All rights reserved."
+        url="https://catyai.io/license"
+      />
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-12">
@@ -262,6 +269,7 @@ function LicenseAGPL() {
         </div>
       </div>
     </section>
+    </>
   )
 }
 

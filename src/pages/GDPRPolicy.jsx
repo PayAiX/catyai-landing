@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import SEO from '../components/SEO'
 
 function GDPRPolicy() {
   useEffect(() => {
@@ -6,7 +7,13 @@ function GDPRPolicy() {
   }, [])
 
   return (
-    <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <>
+      <SEO
+        title="GDPR Compliance Policy"
+        description="CatyAI GDPR Compliance Policy — how we process and protect personal data of EU residents. Lawful bases, data subject rights, DPA contacts. PayAi-X FZE."
+        url="https://catyai.io/gdpr"
+      />
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-4">
@@ -920,6 +927,7 @@ function GDPRPolicy() {
           </div>
         </div>
       </section>
+    </>
   )
 }
 

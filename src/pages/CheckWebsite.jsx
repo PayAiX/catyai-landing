@@ -10,6 +10,11 @@ export default function CheckWebsite() {
         <meta property="og:title" content="Check Your Website — AI Visibility Audit | CatyAI" />
         <meta property="og:description" content="Free AI visibility audit. See exactly how AI assistants read your website — 7 measurable checks, score 0-100, actionable fixes." />
         <meta property="og:url" content="https://catyai.io/check" />
+        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Check Your Website — AI Visibility Audit" />
         <meta name="twitter:description" content="See exactly how AI assistants read your website. Free, no signup." />
