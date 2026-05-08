@@ -486,7 +486,7 @@ export default function HomePage() {
         <meta property="og:url" content="https://catyai.io/" />
         <meta property="og:title" content="CatyAI — Stop AI From Lying About Your Business" />
         <meta property="og:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
-        <meta property="og:image" content="https://catyai.io/og-image.png" />
+        <meta property="og:image" content="https://catyai.io/og-image.png?v=20260508" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
