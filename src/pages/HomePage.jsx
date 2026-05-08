@@ -79,8 +79,8 @@ const translations = {
     navLogin: 'Login', navCta: 'Audit Visibility',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
     badge: '🔴 SCANNING: 90% OF WEBSITES ARE INVISIBLE TO AI',
-    heroLine1: 'Is AI blind to', heroAccent: 'your business?',
-    heroSubtitle: "If AI can't read your site, you don't exist. Check in 30 seconds if GPTBot, ClaudeBot and Perplexity can read your business — or if they're inventing your prices and services.",
+    heroLine1: 'AI invents prices, hours, and policies for your business.', heroAccent: 'We make it impossible.',
+    heroSubtitle: "CatyAI cryptographically signs your business data. AI assistants can only repeat what you've authorized. Verifiable by anyone. Live in production.",
     heroPlaceholder: 'https://your-website.com', heroBtn: 'Analyze',
     socialProof: '300+ companies use CatyAI · ZF IT Generation 2025 · Free, no credit card',
     scanCritical: 'Critical vulnerability detected',
@@ -477,14 +477,14 @@ export default function HomePage() {
     <>
       <Helmet>
         <html lang="en" />
-        <title>CatyAI — Neural Infrastructure for AI Visibility | România</title>
-        <meta name="description" content="If AI can't read your site, you don't exist. CatyAI is the neural infrastructure that guarantees your visibility in the next generation of AI search." />
+        <title>CatyAI — Stop AI From Lying About Your Business</title>
+        <meta name="description" content="AI assistants invent prices, hours, and policies your business never approved. CatyAI signs your data so AI can only say what's true — verifiable, live in production." />
         <meta name="keywords" content="AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania" />
         <meta name="author" content="PayAi-X FZE" />
         <link rel="canonical" href="https://catyai.io/" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://catyai.io/" />
-        <meta property="og:title" content="CatyAI — Neural Infrastructure for AI Visibility | România" />
+        <meta property="og:title" content="CatyAI — Stop AI From Lying About Your Business" />
         <meta property="og:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
         <meta property="og:image" content="https://catyai.io/og-image.png" />
         <meta property="og:image:width" content="1200" />
@@ -497,8 +497,8 @@ export default function HomePage() {
         <meta property="fb:app_id" content="1532216557847516" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://catyai.io/" />
-        <meta name="twitter:title" content="CatyAI — Neural Infrastructure for AI Visibility" />
-        <meta name="twitter:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
+        <meta name="twitter:title" content="CatyAI — Stop AI From Lying About Your Business" />
+        <meta name="twitter:description" content="AI invents prices and policies your business never approved. CatyAI cryptographically signs your data — AI can only say what you authorized. Live in production." />
         <meta name="twitter:image" content="https://catyai.io/og-image.png" />
       </Helmet>
       <style>{`
