@@ -39,7 +39,7 @@ const NAV_ITEMS = [
     items: [
       { label: 'About', desc: 'PayAi-X FZE · Dubai, UAE', href: '/company', icon: 'info' },
       { label: 'Trust Center', desc: 'Security, SLA & compliance docs', href: '/trust-center', icon: 'lock' },
-      { label: 'Investor Relations', desc: 'C-Corp structure & deck', href: '/company', icon: 'bar-chart-2' },
+      { label: 'Investor Relations', desc: 'C-Corp structure & deck', href: '/investor-relations', icon: 'bar-chart-2' },
       { label: 'Legal', desc: 'Terms, privacy & licensing', href: '/licensing', icon: 'file-text' },
     ],
   },
