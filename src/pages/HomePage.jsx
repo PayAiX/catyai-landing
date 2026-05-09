@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import GlobalHeader from '../components/GlobalHeader';
 import FooterV9 from '../components/FooterV9';
 
@@ -456,31 +457,39 @@ export default function HomePage() {
 
   return (
     <>
+      <SEO
+        url="https://catyai.io/"
+        description="AI assistants invent prices, hours, and policies your business never approved. CatyAI signs your data so AI can only say what's true — verifiable, live in production."
+        image="https://catyai.io/og-image.png?v=20260508"
+        service={{
+          name: 'CatyAI Platform',
+          description: 'Cryptographic infrastructure that prevents AI assistants from inventing claims about your business. Ed25519 signed responses, JWKS public key verification, NAP Zero-Trust architecture, EU AI Act aligned.',
+          features: [
+            'Ed25519 cryptographic signatures (RFC 8032)',
+            'JWKS public key verification (RFC 7517)',
+            'RFC 8785 JCS canonicalization',
+            'EU AI Act compliance (Articles 10, 50, 52)',
+            'Live verifiable production endpoint at api.catyai.io'
+          ]
+        }}
+      />
       <Helmet>
-        <html lang="en" />
         <title>CatyAI — Stop AI From Lying About Your Business</title>
-        <meta name="description" content="AI assistants invent prices, hours, and policies your business never approved. CatyAI signs your data so AI can only say what's true — verifiable, live in production." />
-        <meta name="keywords" content="AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania" />
+        <html lang="en" />
         <meta name="author" content="PayAi-X FZE" />
-        <link rel="canonical" href="https://catyai.io/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://catyai.io/" />
+        <meta name="keywords" content="AI sales romania, FraudAI Shield, chatbot securizat, protectie frauda AI, multi-agent AI, 8 agenti AI, CatyAI, WhatsApp AI securizat, AI anti-phishing, chatbot sigur romania, fraud detection AI, lead scoring AI, AI sales agent romania" />
         <meta property="og:title" content="CatyAI — Stop AI From Lying About Your Business" />
         <meta property="og:description" content="If AI can't read your business, you no longer exist. CatyAI transforms your digital presence into a cryptographically verified Neural Node." />
-        <meta property="og:image" content="https://catyai.io/og-image.png?v=20260508" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="CatyAI — cryptographic infrastructure that prevents AI assistants from inventing claims about your business" />
-        <meta property="og:site_name" content="CatyAI" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="ro_RO" />
         <meta property="fb:app_id" content="1532216557847516" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://catyai.io/" />
         <meta name="twitter:title" content="CatyAI — Stop AI From Lying About Your Business" />
         <meta name="twitter:description" content="AI invents prices and policies your business never approved. CatyAI cryptographically signs your data — AI can only say what you authorized. Live in production." />
-        <meta name="twitter:image" content="https://catyai.io/og-image.png" />
       </Helmet>
       <style>{`
 body {
