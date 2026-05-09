@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import GlobalHeader from '../components/GlobalHeader'
 import AiVisibilityCheck from '../components/AiVisibilityCheck'
 import FooterV9 from '../components/FooterV9'
@@ -9,21 +10,29 @@ export default function CheckWebsite() {
 
   return (
     <>
+      <SEO
+        url="https://catyai.io/check"
+        title="AI Visibility Check"
+        description="Free 30-second audit. Test if GPTBot, ClaudeBot, and Perplexity can read your business. Seven measurable checks. No signup."
+        image="https://catyai.io/og-image.png"
+        service={{
+          name: 'AI Visibility Audit',
+          description: 'Real HTTP probe — no JavaScript rendering, no marketing fluff. Runs the same checks AI crawlers (GPTBot, ClaudeBot, PerplexityBot) execute when indexing for answer engines.',
+          features: [
+            'robots.txt indexability',
+            'llms.txt directive file',
+            'sitemap.xml discovery feed',
+            'AI crawler access (GPTBot, ClaudeBot, PerplexityBot)',
+            'JSON-LD / schema.org structured data',
+            'Canonical URL declaration',
+            'Weighted scoring (0-100, Grade A-F)'
+          ]
+        }}
+      />
       <Helmet>
-        <title>Check Your Website — AI Visibility Audit | CatyAI</title>
-        <meta name="description" content="Free AI visibility audit. See exactly how AI assistants like ChatGPT, Claude, and Perplexity read your website. 7 measurable checks, score 0-100, actionable recommendations." />
-        <meta property="og:title" content="Check Your Website — AI Visibility Audit | CatyAI" />
-        <meta property="og:description" content="Free AI visibility audit. See exactly how AI assistants read your website — 7 measurable checks, score 0-100, actionable fixes." />
-        <meta property="og:url" content="https://catyai.io/check" />
-        <meta property="og:image" content="https://catyai.io/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Check Your Website — AI Visibility Audit" />
-        <meta name="twitter:description" content="See exactly how AI assistants read your website. Free, no signup." />
-        <link rel="canonical" href="https://catyai.io/check" />
       </Helmet>
 
       <GlobalHeader lang={lang} setLang={setLang} />
