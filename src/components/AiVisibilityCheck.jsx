@@ -283,14 +283,9 @@ export default function AiVisibilityCheck() {
                     border:       '1px solid #1A2A3F',
                     borderLeft:   `3px solid ${SEVERITY_COLOR[r.severity] || SEVERITY_COLOR.medium}`,
                   }}>
-                    <div style={{ fontSize: '14px', fontWeight: 600, color: '#F8F6F0', marginBottom: '4px' }}>
-                      {r.title || r.message}
+                    <div style={{ fontSize: '14px', color: '#9BA8B8', lineHeight: 1.5 }}>
+                      {r.text}
                     </div>
-                    {r.description && (
-                      <div style={{ fontSize: '13px', color: '#9BA8B8', lineHeight: 1.5 }}>
-                        {r.description}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>

@@ -1,8 +1,12 @@
+import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import GlobalHeader from '../components/GlobalHeader'
 import AiVisibilityCheck from '../components/AiVisibilityCheck'
 import FooterV9 from '../components/FooterV9'
 
 export default function CheckWebsite() {
+  const [lang, setLang] = useState(localStorage.getItem('caty-lang') || 'en')
+
   return (
     <>
       <Helmet>
@@ -22,7 +26,9 @@ export default function CheckWebsite() {
         <link rel="canonical" href="https://catyai.io/check" />
       </Helmet>
 
-      <main style={{ background: '#010A1F', minHeight: '100vh', paddingTop: '40px', paddingBottom: '80px' }}>
+      <GlobalHeader lang={lang} setLang={setLang} />
+
+      <main style={{ background: '#010A1F', minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px', fontFamily: "'DM Sans', sans-serif" }}>
 
           {/* Header */}
