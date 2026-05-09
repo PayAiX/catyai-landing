@@ -3274,7 +3274,7 @@ function AppContent() {
 
   // Pages with their own layout (no shared Header/Footer)
   const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en']
-  const isStandalonePage = standalonePages.includes(location.pathname)
+  const isStandalonePage = standalonePages.includes(location.pathname) || location.pathname.startsWith('/blog')
 
   // Track referral code from URL
   useEffect(() => {
@@ -3335,6 +3335,8 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/press" element={<Press />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
           </Routes>
         </Suspense>
       </div>
@@ -3359,8 +3361,6 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/press" element={<Press />} />
             <Route path="/commerce" element={<CommerceDemo />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogArticle />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/infrastructura" element={<InfrastructurePage />} />
