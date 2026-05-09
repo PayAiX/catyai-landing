@@ -140,7 +140,7 @@ console.log('content hash:', answer.meta.content_hash);
 
 const curlSnippet = `curl -s -X POST https://api.catyai.io/geo/v2/answer \\
   -H "Content-Type: application/json" \\
-  -H "User-Agent: GPTBot/1.0" \\
+  -H "X-API-Key: caty_61ce701f9a055750ea5b81f1ae05b3e3" \\
   -d '{"widget_id":"7e750a95-4d72-4c82-8eae-bb37a89194c8","question":"What services do you offer?","lang":"en"}'`;
 
 export default function ZeroTrustAiAdsEn() {
@@ -155,7 +155,7 @@ export default function ZeroTrustAiAdsEn() {
       const t0 = performance.now();
       const res = await fetch('https://api.catyai.io/geo/v2/answer', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-API-Key': 'caty_61ce701f9a055750ea5b81f1ae05b3e3' },
         body: JSON.stringify({
           widget_id: '7e750a95-4d72-4c82-8eae-bb37a89194c8',
           question: 'What services do you offer?',
