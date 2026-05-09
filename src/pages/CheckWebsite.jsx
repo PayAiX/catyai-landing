@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import AiVisibilityCheck from '../components/AiVisibilityCheck'
+import FooterV9 from '../components/FooterV9'
 
 export default function CheckWebsite() {
   return (
@@ -21,7 +22,7 @@ export default function CheckWebsite() {
         <link rel="canonical" href="https://catyai.io/check" />
       </Helmet>
 
-      <main style={{ background: '#010A1F', minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px' }}>
+      <main style={{ background: '#010A1F', minHeight: '100vh', paddingTop: '40px', paddingBottom: '80px' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px', fontFamily: "'DM Sans', sans-serif" }}>
 
           {/* Header */}
@@ -88,6 +89,7 @@ export default function CheckWebsite() {
 
         </div>
       </main>
+      <FooterV9 lang="en" />
     </>
   )
 }
