@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Design system reference snapshots (recovered from 641c17c)
+# Static HTML previews using Tailwind CDN + Lucide, untracked intentionally.
+# Source preserved in git history; gitignored to keep working tree clean.
+reference/
