@@ -44,7 +44,7 @@ export default function ConfirmView({ payload }) {
             </button>
             <button
               style={s.btnSecondary}
-              onClick={() => window.close()}
+              onClick={() => { window.location.href = 'whatsapp://'; }}
               disabled={status === 'loading'}
             >
               Anulează

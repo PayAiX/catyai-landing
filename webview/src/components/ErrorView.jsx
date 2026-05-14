@@ -22,8 +22,8 @@ export default function ErrorView({ message }) {
           ref={btnRef}
           style={s.btn}
           onClick={() => {
-            if (window.history.length > 1) window.history.back();
-            else window.close();
+            // Try WhatsApp deep link first — opens WhatsApp app directly
+            window.location.href = 'whatsapp://';
           }}
         >
           Înapoi la WhatsApp
