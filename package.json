@@ -14,6 +14,7 @@
     "deploy": "npm run build && aws s3 sync dist/ s3://catyai-landing --delete --exclude 'cdn/*' && aws s3 sync dist/cdn/ s3://catyai-landing/cdn/ && aws cloudfront create-invalidation --distribution-id E3EB3UPK5D8B1L --paths '/*'",
     "deploy:seo": "npm run build:seo && aws s3 sync dist/ s3://catyai-landing --delete --exclude 'cdn/*' && aws s3 sync dist/cdn/ s3://catyai-landing/cdn/ && aws cloudfront create-invalidation --distribution-id E3EB3UPK5D8B1L --paths '/*'",
     "deploy:full": "npm run sync-blog && npm run deploy:seo",
+    "build:webview": "vite build --config webview/vite.config.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
