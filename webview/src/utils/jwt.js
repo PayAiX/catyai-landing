@@ -4,9 +4,13 @@
  */
 export function decodeJWT(token) {
   try {
-    const parts = token.split('.');
+    // Strip any trailing garbage WhatsApp may append to URL
+    const cleanToken = token.split('&')[0].split('#')[0].trim();
+    const parts = cleanToken.split('.');
     if (parts.length !== 3) return null;
-    const payload = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    // Fix base64url → base64 + add padding
+    let payload = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (payload.length % 4 !== 0) payload += '=';
     return JSON.parse(atob(payload));
   } catch {
     return null;
