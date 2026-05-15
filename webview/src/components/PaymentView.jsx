@@ -1,17 +1,24 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { D } from '../utils/design.js';
 import { useMagnetic } from '../hooks/useMagnetic.js';
 import { submitAction } from '../utils/api.js';
 
-export default function PaymentView({ payload }) {
+export default function PaymentView({ payload, token }) {
   const [status, setStatus] = useState('idle');
   const btnRef = useRef(null);
   useMagnetic(btnRef);
 
+  useEffect(() => {
+    if (status === 'success') {
+      const t = setTimeout(() => { window.location.href = 'whatsapp://'; }, 2500);
+      return () => clearTimeout(t);
+    }
+  }, [status]);
+
   async function handleConfirm() {
     setStatus('loading');
     try {
-      await submitAction('payment', payload);
+      await submitAction('payment', payload, token);
       setStatus('success');
     } catch {
       setStatus('error');
@@ -41,7 +48,13 @@ export default function PaymentView({ payload }) {
 
       <div className="fade-up-4">
         {status === 'success' ? (
-          <p style={s.success}>✓ Plată confirmată cu succes!</p>
+          <>
+            <p style={s.success}>✓ Plată confirmată cu succes!</p>
+            <p style={s.redirectMsg}>Te redirecționăm la WhatsApp...</p>
+            <button style={s.btnSecondary} onClick={() => { window.location.href = 'whatsapp://'; }}>
+              Înapoi la WhatsApp
+            </button>
+          </>
         ) : (
           <>
             {status === 'error' && (
@@ -54,6 +67,13 @@ export default function PaymentView({ payload }) {
               disabled={status === 'loading'}
             >
               {status === 'loading' ? 'Se procesează...' : 'Confirmă plata'}
+            </button>
+            <button
+              type="button"
+              style={s.btnSecondary}
+              onClick={() => { window.location.href = 'whatsapp://'; }}
+            >
+              Înapoi la WhatsApp
             </button>
             <p style={s.badge}>🔒 Link securizat · expiră în 15 min</p>
           </>
@@ -129,6 +149,27 @@ const s = {
     cursor: 'pointer',
     marginBottom: 16,
     display: 'block',
+  },
+  btnSecondary: {
+    background: 'transparent',
+    color: D.text,
+    fontFamily: "'Syne', sans-serif",
+    fontWeight: 600,
+    fontSize: 14,
+    border: `1px solid ${D.border}`,
+    borderRadius: D.radius,
+    padding: '12px 24px',
+    width: '100%',
+    cursor: 'pointer',
+    marginBottom: 16,
+    display: 'block',
+  },
+  redirectMsg: {
+    fontFamily: "'JetBrains Mono', monospace",
+    color: D.textDim,
+    fontSize: 12,
+    textAlign: 'center',
+    marginBottom: 20,
   },
   success: {
     fontFamily: "'Syne', sans-serif",
