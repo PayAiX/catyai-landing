@@ -18,7 +18,13 @@ export default function PaymentView({ payload, token }) {
   async function handleConfirm() {
     setStatus('loading');
     try {
-      await submitAction('payment', payload, token);
+      const response = await submitAction('payment', payload, token);
+
+      if (response?.redirect_url) {
+        window.location.href = response.redirect_url;
+        return;
+      }
+
       setStatus('success');
     } catch {
       setStatus('error');
