@@ -9,7 +9,7 @@ const DEFAULT_FIELDS = [
   { name: 'message', label: 'Mesaj',   type: 'textarea', required: false },
 ];
 
-export default function FormView({ payload }) {
+export default function FormView({ payload, token }) {
   const d = payload?.payload ?? payload ?? {};
   const fields = d.fields?.length ? d.fields : DEFAULT_FIELDS;
   const title = d.title ?? 'Completează formularul';
@@ -29,8 +29,9 @@ export default function FormView({ payload }) {
     e.preventDefault();
     setStatus('loading');
     try {
-      await submitAction('form', formData);
+      await submitAction('form', formData, token);
       setStatus('success');
+      setTimeout(() => { window.location.href = 'whatsapp://'; }, 2500);
     } catch {
       setStatus('error');
     }
@@ -41,7 +42,13 @@ export default function FormView({ payload }) {
       <h1 className="fade-up" style={s.title}>{title}</h1>
 
       {status === 'success' ? (
-        <p style={s.success}>✓ Trimis cu succes!</p>
+        <>
+          <p style={s.success}>✓ Trimis cu succes!</p>
+          <p style={s.redirectMsg}>Te redirecționăm la WhatsApp...</p>
+          <button style={s.btnSecondary} onClick={() => { window.location.href = 'whatsapp://'; }}>
+            Înapoi la WhatsApp
+          </button>
+        </>
       ) : (
         <form onSubmit={handleSubmit} style={s.form}>
           {fields.map((field, i) => (
@@ -86,6 +93,13 @@ export default function FormView({ payload }) {
               disabled={status === 'loading'}
             >
               {status === 'loading' ? 'Se trimite...' : 'Trimite'}
+            </button>
+            <button
+              type="button"
+              style={s.btnSecondary}
+              onClick={() => { window.location.href = 'whatsapp://'; }}
+            >
+              Înapoi la WhatsApp
             </button>
             <p style={s.badge}>🔒 Link securizat · expiră în 15 min</p>
           </div>
@@ -136,11 +150,15 @@ const s = {
     borderRadius: '10px',
     color: D.text,
     padding: '12px 14px',
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: "'Syne', sans-serif",
     width: '100%',
     outline: 'none',
     transition: 'border-color 0.2s, box-shadow 0.2s',
+    WebkitAppearance: 'none',
+    touchAction: 'manipulation',
+    userSelect: 'text',
+    WebkitUserSelect: 'text',
   },
   textarea: {
     resize: 'vertical',
@@ -161,13 +179,34 @@ const s = {
     marginBottom: 16,
     display: 'block',
   },
+  btnSecondary: {
+    background: 'transparent',
+    color: D.text,
+    fontFamily: "'Syne', sans-serif",
+    fontWeight: 600,
+    fontSize: 14,
+    border: `1px solid ${D.border}`,
+    borderRadius: D.radius,
+    padding: '12px 24px',
+    width: '100%',
+    cursor: 'pointer',
+    marginBottom: 16,
+    display: 'block',
+  },
   success: {
     fontFamily: "'Syne', sans-serif",
     color: D.success,
-    fontWeight: 600,
-    fontSize: 16,
+    fontWeight: 700,
+    fontSize: 18,
     textAlign: 'center',
-    padding: '16px 0',
+    padding: '12px 0 4px',
+  },
+  redirectMsg: {
+    fontFamily: "'JetBrains Mono', monospace",
+    color: D.textDim,
+    fontSize: 12,
+    textAlign: 'center',
+    marginBottom: 20,
   },
   errMsg: {
     fontFamily: "'Syne', sans-serif",
