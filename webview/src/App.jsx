@@ -1,36 +1,51 @@
-import { useMemo } from 'react';
-import { decodeJWT, isExpired } from './utils/jwt.js';
+import { useState, useEffect } from 'react';
+import { isExpired } from './utils/jwt.js';
 import { D } from './utils/design.js';
 import PaymentView from './components/PaymentView.jsx';
 import BookingView from './components/BookingView.jsx';
 import ConfirmView from './components/ConfirmView.jsx';
 import FormView from './components/FormView.jsx';
+import ProductCards from './components/ProductCards.jsx';
 import ExpiredView from './components/ExpiredView.jsx';
 import ErrorView from './components/ErrorView.jsx';
 
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`;
 
 export default function App() {
-  const { payload, expired, error } = useMemo(() => {
-    const token = new URLSearchParams(window.location.search).get('t');
-    if (!token) return { error: 'Link invalid.' };
-    const decoded = decodeJWT(token);
-    if (!decoded) return { error: 'Token corupt.' };
-    if (isExpired(decoded)) return { expired: true };
-    return { payload: decoded };
+  const [state, setState] = useState({ loading: true, payload: null, token: null, expired: false, error: null });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sid = params.get('sid');
+    if (!sid) {
+      setState({ loading: false, error: 'Link invalid.' });
+      return;
+    }
+    fetch(`https://api.catyai.io/api/webview/resolve/${sid}`)
+      .then((r) => r.json())
+      .then(({ token, payload, error: apiErr }) => {
+        if (apiErr || !token) { setState({ loading: false, error: apiErr || 'Link invalid.' }); return; }
+        if (isExpired(payload)) { setState({ loading: false, expired: true }); return; }
+        setState({ loading: false, payload, token });
+      })
+      .catch(() => setState({ loading: false, error: 'Eroare de rețea.' }));
   }, []);
 
+  const { loading, payload, token, expired, error } = state;
+
   function renderContent() {
+    if (loading) return <div style={{ color: D.textDim, textAlign: 'center', marginTop: 60 }}>Se încarcă...</div>;
     if (error) return <ErrorView message={error} />;
     if (expired) return <ExpiredView />;
     if (!payload) return <ErrorView message="Token lipsă." />;
 
     switch (payload.action) {
-      case 'payment': return <PaymentView payload={payload} />;
-      case 'booking': return <BookingView payload={payload} />;
-      case 'confirm': return <ConfirmView payload={payload} />;
-      case 'form':    return <FormView payload={payload} />;
-      default:        return <ErrorView message="Acțiune necunoscută." />;
+      case 'payment':           return <PaymentView payload={payload} token={token} />;
+      case 'booking':           return <BookingView payload={payload} token={token} />;
+      case 'confirm':           return <ConfirmView payload={payload} token={token} />;
+      case 'form':              return <FormView payload={payload} token={token} />;
+      case 'product_selection': return <ProductCards payload={payload} token={token} />;
+      default:                  return <ErrorView message="Acțiune necunoscută." />;
     }
   }
 
