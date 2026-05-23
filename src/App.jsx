@@ -50,7 +50,6 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const CareersPage = lazy(() => import('./pages/Careers'))
 const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
 const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
-const CeEsteCatyaiAkl = lazy(() => import('./pages/research/ce-este-catyai-akl'))
 const Press = lazy(() => import('./pages/Press'))
 const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 
@@ -3274,7 +3273,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/research/ce-este-catyai-akl', '/check']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check']
   const isStandalonePage = standalonePages.includes(location.pathname) || location.pathname.startsWith('/blog')
 
   // Track referral code from URL
@@ -3336,7 +3335,6 @@ function AppContent() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/press" element={<Press />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
-            <Route path="/research/ce-este-catyai-akl" element={<CeEsteCatyaiAkl />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
           </Routes>
