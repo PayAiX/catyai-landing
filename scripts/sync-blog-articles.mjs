@@ -228,8 +228,6 @@ function generateSitemap(articles) {
     { path: '/gdpr', priority: '0.3' },
     { path: '/licensing', priority: '0.4' },
     { path: '/careers', priority: '0.5' },
-    { path: '/research/zero-trust-ai-ads-en', priority: '0.8' },
-    { path: '/research/ce-este-catyai-akl', priority: '0.8' },
   ];
 
   staticPages.forEach(page => {
