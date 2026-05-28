@@ -3798,6 +3798,66 @@
   }
 
   // ============================================
+  // Chat-Only Mode (walking_robot: false)
+  // ============================================
+
+  function initChatOnlyMode() {
+    // If widget.js is already present it handles the chat — no duplicate FAB
+    if (document.querySelector('script[src*="widget.js"]') ||
+        window.CatyWidget || window.Caty) {
+      console.log('[CatyCommerce] Chat-only mode: widget.js detected, deferring to it');
+      return;
+    }
+
+    const primary = CONFIG.primaryColor || '#3b82f6';
+
+    // Inject all styles (chat-window, header, etc. are inside the shared styles const)
+    injectStyles();
+
+    // Add FAB-specific styles
+    const fabStyle = document.createElement('style');
+    fabStyle.textContent = `
+      .caty-fab {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: ${primary};
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        z-index: 2147483644;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s, filter 0.2s;
+      }
+      .caty-fab:hover { transform: scale(1.1); filter: brightness(1.1); }
+      .caty-fab svg { width: 28px; height: 28px; fill: #fff; }
+      @media (max-width: 480px) {
+        .caty-fab { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+      }
+    `;
+    document.head.appendChild(fabStyle);
+
+    const fab = document.createElement('button');
+    fab.className = 'caty-fab';
+    fab.setAttribute('aria-label', `Chat cu ${getPersonaName()}`);
+    fab.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>`;
+    fab.addEventListener('click', () => {
+      if (!state.supportChatOpen) {
+        fab.style.display = 'none';
+        openSupportChat();
+      }
+    });
+    document.body.appendChild(fab);
+    state._chatFab = fab;
+  }
+
+  // ============================================
   // MODUL 3: Support Chat
   // ============================================
 
@@ -3841,10 +3901,10 @@
     chatWindow.innerHTML = `
       <div class="caty-chat-header">
         <div class="caty-chat-header-avatar">
-          <img src="${AVATARS.talk}" alt="Caty">
+          <img src="${CONFIG._customAvatar || AVATARS.talk}" alt="${getPersonaName()}">
         </div>
         <div class="caty-chat-header-info">
-          <div class="caty-chat-header-title">${t.support.title}</div>
+          <div class="caty-chat-header-title">${getPersonaName()}</div>
           <div class="caty-chat-header-status">Online</div>
         </div>
         <button class="caty-chat-close">&times;</button>
@@ -3888,13 +3948,15 @@
     state.supportCategory = null;
     state.supportHumanMode = false;
     setAvatarState('idle');
+    if (state._chatFab) state._chatFab.style.display = 'flex';
   }
 
   function renderSupportCategories(chatWindow) {
     const container = chatWindow.querySelector('#caty-chat-categories');
     if (!container) return;
 
-    let html = `<div class="caty-chat-message bot">${t.support.subtitle}</div>`;
+    const greet = CONFIG._greetingMessage || t.support.subtitle;
+    let html = `<div class="caty-chat-message bot">${greet}</div>`;
 
     t.support.categories.forEach(cat => {
       html += `
@@ -4428,9 +4490,10 @@ ${message}
     // Step 2: Load dynamic config from API (WhatsApp, industry, etc.)
     await loadWidgetConfig();
 
-    // Step 2b: If walking robot is disabled, abort initialization completely
+    // Step 2b: If walking robot is disabled, show chat-only FAB with full persona
     if (CONFIG._robotDisabled) {
-      console.log('[CatyCommerce] Robot disabled - aborting initialization');
+      console.log('[CatyCommerce] Robot disabled - switching to chat-only mode');
+      initChatOnlyMode();
       return;
     }
 
