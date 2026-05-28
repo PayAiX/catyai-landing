@@ -1450,6 +1450,12 @@
   function setSessionId(id) {
     // Use localStorage instead of sessionStorage to persist across page navigation
     localStorage.setItem('caty_session_id', id);
+    localStorage.setItem('caty_session_ts', Date.now().toString());
+  }
+
+  function getSessionTimestamp() {
+    const ts = localStorage.getItem('caty_session_ts');
+    return ts ? parseInt(ts, 10) : null;
   }
 
   // Utility: Save messages to localStorage for persistence
@@ -1810,11 +1816,10 @@
 
       const data = await response.json();
       state.sessionId = data.session_id;
-      setSessionId(data.session_id);
+      try { setSessionId(data.session_id); } catch(e) { console.warn('[Caty] storage unavailable', e); }
       return data;
     } catch (error) {
       console.error('[Caty Widget] Failed to create session:', error);
-      throw error;
     }
   }
 
@@ -1888,7 +1893,12 @@
             console.warn('[Caty Widget] Session expired or invalid, creating new session...');
             localStorage.removeItem('caty_session_id');
             state.sessionId = null;
-            await createSession();
+            try {
+              await createSession();
+            } catch (sessionError) {
+              console.error('[Caty Widget] Failed to recreate session on retry:', sessionError);
+              throw new Error('Failed to initialize session');
+            }
             // Retry the message with new session (only once)
             if (state.sessionId && !state._retryingSend) {
               state._retryingSend = true;
@@ -6707,6 +6717,16 @@
     const isMobile = window.innerWidth <= 768;
     if (isMobile && proactiveConfig.mobile_enabled === false) {
       return;
+    }
+
+    // Invalidate stale session (older than 24h)
+    if (state.sessionId) {
+      const age = Date.now() - (getSessionTimestamp() || 0);
+      if (age > 86400000) {
+        console.warn('[Caty Widget] Stale session detected, clearing');
+        localStorage.removeItem('caty_session_id');
+        state.sessionId = null;
+      }
     }
 
     // Create session if needed
