@@ -4052,6 +4052,24 @@
       body.scrollTop = body.scrollHeight;
     }
 
+    // ── Session creation (required by /chat/message) ─────────────────────
+    async function ensureSession() {
+      if (state._csSessionId) return state._csSessionId;
+      const resp = await fetch(`${CONFIG.baseUrl}/api/widget/session`, {
+        method: 'POST',
+        headers: { 'X-API-Key': CONFIG.apiKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          visitor_id: getSessionId(),
+          device: { user_agent: navigator.userAgent, language: navigator.language },
+          source: { page_url: window.location.href, referrer: document.referrer },
+          context: { page_url: window.location.href, language: CONFIG.language || 'ro' },
+        }),
+      });
+      const data = await resp.json();
+      state._csSessionId = data.session_id;
+      return state._csSessionId;
+    }
+
     // ── Real AI call ──────────────────────────────────────────────────────
     async function sendMsg(text) {
       if (!text.trim()) return;
@@ -4067,11 +4085,12 @@
       body.scrollTop = body.scrollHeight;
 
       try {
+        const sessionId = await ensureSession();
         const resp = await fetch(`${CONFIG.baseUrl}/api/widget/chat/message`, {
           method: 'POST',
           headers: { 'X-API-Key': CONFIG.apiKey, 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            session_id: getSessionId(),
+            session_id: sessionId,
             message: text,
             language: CONFIG.language || 'ro',
             context: {
