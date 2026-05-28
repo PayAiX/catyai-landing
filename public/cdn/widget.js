@@ -8,6 +8,9 @@
 (function() {
   'use strict';
 
+  // Singleton guard — prevent double initialization if script is included twice
+  if (window.Caty) return;
+
   // Configuration from script tag data attributes
   // Prefer currentScript if it has data-api-key, otherwise fall back to querySelector
   const currentScriptTag = document.currentScript;
@@ -21,6 +24,7 @@
     primaryColor: scriptTag?.getAttribute('data-primary-color') || '#6366f1',
     greeting: scriptTag?.getAttribute('data-greeting') || null,
     theme: scriptTag?.getAttribute('data-theme') || 'dark', // Changed default to dark
+    sidebarMode: window.CatyAI?.sidebarMode ?? true,
   };
 
   // ============================================
@@ -516,6 +520,7 @@
     config: null,
     unreadCount: 0,
     proactiveBubble: null,
+    proactiveSent: false,
     behaviorTracker: null,
     triggerEngine: null,
     leadCaptured: false,
@@ -973,6 +978,8 @@
 
       // Fetch proactive message from server
       try {
+        if (state.proactiveSent) return;
+        state.proactiveSent = true;
         const response = await fetch(`${CONFIG.baseUrl}/api/widget/proactive`, {
           method: 'POST',
           headers: {
@@ -1249,8 +1256,8 @@
       if (state.responsive && state.responsive[breakpoint]) {
         const config = state.responsive[breakpoint];
 
-        // Apply widget size (only on desktop/tablet, mobile uses full screen)
-        if (breakpoint !== 'mobile' && config.widget_size) {
+        // Apply widget size (only on desktop/tablet, non-sidebar, mobile uses full screen)
+        if (breakpoint !== 'mobile' && config.widget_size && !CONFIG.sidebarMode) {
           chatWindow.style.width = `${config.widget_size.width}px`;
           chatWindow.style.height = `${config.widget_size.height}px`;
         }
@@ -1458,6 +1465,9 @@
       const data = {
         messages: state.messages,
         sessionId: state.sessionId,
+        lastProducts: state.lastProducts || null,
+        lastLiquidItems: state.lastLiquidItems || null,
+        wasOpen: state.isOpen || false,
         timestamp: Date.now()
       };
       localStorage.setItem(key, JSON.stringify(data));
@@ -1503,9 +1513,23 @@
       user_agent: navigator.userAgent,
       screen_width: window.screen.width,
       screen_height: window.screen.height,
-      language: i18n.currentLang, // Use detected website language instead of browser language
+      language: i18n.currentLang,
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     };
+  }
+
+  function getUtmParams() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const utm = {};
+      ['source', 'medium', 'campaign', 'term', 'content'].forEach(k => {
+        const v = params.get(`utm_${k}`);
+        if (v) utm[k] = v;
+      });
+      return Object.keys(utm).length ? utm : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   /**
@@ -1776,7 +1800,8 @@
           source: {
             page_url: pageInfo.page_url,
             page_title: pageInfo.page_title,
-            referrer: pageInfo.referrer
+            referrer: pageInfo.referrer,
+            utm: getUtmParams()
           },
           context: {
             page_url: pageInfo.page_url,
@@ -1895,6 +1920,25 @@
       state.conversationLanguage = data.language || detectResponseLanguage(data.content);
       console.log('[Caty Widget] Conversation language:', state.conversationLanguage);
 
+      // Parse trailing "- text" lines → convert to quick reply chips
+      (function() {
+        const lines = (data.content || '').split('\n');
+        const qrActions = [];
+        let cutIdx = lines.length;
+        for (let i = lines.length - 1; i >= 0; i--) {
+          const t = lines[i].trim();
+          if (t === '') { cutIdx = i; continue; }
+          if (/^-\s+\S.{1,70}$/.test(t) && !t.startsWith('- **')) {
+            qrActions.unshift({ action: 'quick_reply', label: t.replace(/^-\s+/, '').trim() });
+            cutIdx = i;
+          } else { break; }
+        }
+        if (qrActions.length > 0) {
+          data.content = lines.slice(0, cutIdx).join('\n').trimEnd();
+          data.suggested_actions = [...(data.suggested_actions || []), ...qrActions];
+        }
+      })();
+
       // Add assistant message to UI
       addMessage('assistant', data.content);
 
@@ -1918,7 +1962,17 @@
 
       // Render quick replies if available
       if (data.suggested_actions && data.suggested_actions.length > 0) {
-        renderQuickReplies(data.suggested_actions);
+        const slotPickerAction = data.suggested_actions.find(a => a.action === 'slot_picker');
+        const carouselAction = data.suggested_actions.find(a => a.action === 'product_carousel');
+        if (slotPickerAction) {
+          renderSlotPicker(slotPickerAction);
+        } else if (carouselAction) {
+          renderLiquidProductCards(carouselAction.payload?.items || []);
+          const otherActions = data.suggested_actions.filter(a => a.action !== 'product_carousel');
+          if (otherActions.length > 0) renderQuickReplies(otherActions);
+        } else {
+          renderQuickReplies(data.suggested_actions);
+        }
       }
 
       // Render product cards if available
@@ -2041,12 +2095,198 @@
       --user-text-color: ${CONFIG.userTextColor || '#ffffff'};
       --assistant-text-color: ${themeColors.assistantTextColor};
       --input-text-color: ${CONFIG.inputTextColor || themeColors.textColor};
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --catyai-host-bg: #ffffff;
+      --catyai-host-text: #1f2937;
+      font-family: inherit !important;
       position: fixed;
       z-index: 999999;
       font-size: 14px;
       line-height: 1.5;
     }
+
+    /* ── NOISE TEXTURE OVERLAY ───────────────────────────── */
+    .caty-sidebar-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    body.caty-sidebar-active {
+      margin-right: 30vw !important;
+      overflow-x: hidden !important;
+      transition: margin-right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── HEADER 70/30: fixed headers respect sidebar ─────── */
+    body.caty-sidebar-active header,
+    body.caty-sidebar-active [role="banner"],
+    body.caty-sidebar-active nav.site-header,
+    body.caty-sidebar-active .site-header,
+    body.caty-sidebar-active #site-header {
+      right: 30vw !important;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .caty-sidebar-active-left header,
+    .caty-sidebar-active-left [role="banner"],
+    .caty-sidebar-active-left nav.site-header,
+    .caty-sidebar-active-left .site-header,
+    .caty-sidebar-active-left #site-header {
+      left: 30vw !important;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    /* ── SIDEBAR 70/30 LAYOUT + PREMIUM BACKDROP ─────────── */
+    .caty-sidebar-panel {
+      position: fixed !important;
+      right: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      width: 30vw !important;
+      min-width: 320px !important;
+      max-width: 480px !important;
+      height: 100vh !important;
+      max-height: 100vh !important;
+      min-height: 100vh !important;
+      border-radius: 0 !important;
+      box-shadow: -4px 0 32px rgba(0, 0, 0, 0.12) !important;
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transform: translateX(0) !important;
+      background: var(--catyai-host-bg) !important;
+      color: var(--catyai-host-text) !important;
+      backdrop-filter: blur(32px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+      border: none !important;
+      border-left: 0.5px solid rgba(128, 128, 128, 0.2) !important;
+      box-shadow: -8px 0 48px rgba(0, 0, 0, 0.10), -2px 0 12px rgba(0,0,0,0.06) !important;
+    }
+
+    .caty-sidebar-panel.caty-panel-hidden {
+      transform: translateX(100%) !important;
+    }
+
+
+    /* ── LEFT SIDEBAR: push 70/30 ───────────────────────────── */
+    .caty-sidebar-active-left {
+      margin-left: 30vw !important;
+      max-width: 70vw !important;
+      overflow-x: hidden !important;
+      transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Fix Elementor stretched/full-width sections so they reflow within 70vw */
+    .caty-sidebar-active-left .elementor-section-stretched,
+    .caty-sidebar-active-left .elementor-section.elementor-section-full_width,
+    .caty-sidebar-active-left .e-con--full-width,
+    .caty-sidebar-active-left .elementor-top-section {
+      width: 100% !important;
+      max-width: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .caty-sidebar-active-left .caty-sidebar-panel {
+      left: 0 !important;
+      right: auto !important;
+      border-left: none !important;
+      border-right: 0.5px solid rgba(128, 128, 128, 0.2) !important;
+      box-shadow: 8px 0 48px rgba(0, 0, 0, 0.10), 2px 0 12px rgba(0,0,0,0.06) !important;
+    }
+
+    .caty-widget-message-bubble {
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    @media (max-width: 768px) {
+      body.caty-sidebar-active { margin-right: 0 !important; }
+      .caty-sidebar-panel {
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+    }
+
+    /* ── FONT HIERARCHY ──────────────────────────────────── */
+    .caty-bubble-assistant .caty-bubble-text strong,
+    .caty-bubble-bot strong,
+    .bubble-bot strong,
+    [class*="assistant"] strong {
+      font-family: inherit !important;
+      font-style: italic;
+      letter-spacing: -0.2px;
+    }
+
+    .caty-chat-header [class*="name"],
+    .caty-widget-header [class*="title"] {
+      font-family: inherit !important;
+      letter-spacing: -0.3px;
+    }
+
+    /* ── LASER-LINE POP ANIMATION ─────────────────────────── */
+    @keyframes caty-laser-in {
+      0% {
+        clip-path: inset(46% 2% 46% 2% round 8px);
+        opacity: 0.5;
+        transform: scaleX(0.85);
+      }
+      65% {
+        clip-path: inset(0% 0% 0% 0% round 8px);
+        opacity: 1;
+        transform: scaleX(1.025);
+      }
+      100% {
+        clip-path: inset(0% 0% 0% 0% round 8px);
+        transform: scaleX(1);
+      }
+    }
+
+    .caty-widget-quick-reply {
+      animation: none;
+      opacity: 1;
+      transform: scaleX(1);
+      transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+                  background 0.2s ease,
+                  box-shadow 0.2s ease;
+      will-change: transform, clip-path;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .caty-widget-quick-reply.caty-chip-ready {
+      animation: caty-laser-in 0.55s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+      opacity: 1;
+    }
+
+    .caty-widget-quick-reply::after {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+
+    .caty-widget-quick-reply:hover::after {
+      left: 150%;
+    }
+
+    .caty-widget-quick-reply:hover {
+      transform: translateX(5px) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
 
     .caty-widget-launcher {
       position: fixed;
@@ -2318,11 +2558,10 @@
     }
 
     .caty-widget-message.assistant .caty-widget-message-bubble {
-      background: var(--assistant-msg-bg);
-      color: var(--assistant-text-color);
+      background: rgba(128, 128, 128, 0.1);
+      color: var(--catyai-host-text);
       border-bottom-left-radius: 4px;
-      /* Force text visibility */
-      -webkit-text-fill-color: var(--assistant-text-color);
+      -webkit-text-fill-color: var(--catyai-host-text);
     }
 
     .caty-widget-message.user .caty-widget-message-bubble {
@@ -2338,7 +2577,7 @@
       align-items: center;
       gap: 8px;
       padding: 10px 14px;
-      background: var(--assistant-msg-bg);
+      background: rgba(128, 128, 128, 0.1);
       border-radius: 12px;
       width: fit-content;
       margin-left: 40px;
@@ -2352,7 +2591,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #9ca3af;
+      background: currentColor;
+      opacity: 0.4;
       animation: caty-typing 1.4s infinite;
     }
 
@@ -2369,13 +2609,14 @@
       flex-direction: column;
       gap: 6px;
       padding: 8px 16px 12px 16px;
-      background: var(--bg-color);
+      background: transparent;
     }
 
     /* Action button base - compact neuromarketing design */
     .caty-widget-quick-reply {
+      opacity: 1 !important;
       background: var(--primary-color) !important;
-      border: 1px solid var(--primary-color) !important;
+      border: none !important;
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
       padding: 10px 14px;
@@ -2383,6 +2624,7 @@
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
+      font-family: inherit !important;
       transition: all 0.2s;
       text-align: left;
       display: flex;
@@ -2437,6 +2679,59 @@
       background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
     }
 
+    /* ───── Liquid UI: Slot Picker ───── */
+    .caty-slot-picker {
+      width: 100%;
+      padding: 12px;
+      background: rgba(128, 128, 128, 0.06);
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+    .caty-slot-picker-header {
+      font-size: 13px;
+      font-weight: 600;
+      color: inherit;
+      margin-bottom: 10px;
+      font-family: inherit !important;
+    }
+    .caty-slot-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 8px;
+    }
+    .caty-slot-card {
+      padding: 10px 8px;
+      background: transparent;
+      border: 1px solid currentColor;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
+      font-family: inherit !important;
+      opacity: 0.75;
+    }
+    .caty-slot-card:hover {
+      border-color: var(--primary-color);
+      opacity: 1;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(128, 128, 128, 0.15);
+    }
+    .caty-slot-card.selected {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #ffffff;
+      opacity: 1;
+    }
+    .caty-slot-time {
+      font-size: 14px;
+      font-weight: 600;
+      color: inherit;
+      font-family: inherit !important;
+    }
+    .caty-slot-card.selected .caty-slot-time {
+      color: #ffffff;
+    }
+
     /* Inline link buttons in messages */
     .caty-message-content {
       white-space: pre-wrap;
@@ -2447,13 +2742,40 @@
 
     /* Ensure message text is always visible */
     .caty-widget-message.assistant .caty-message-content {
-      color: var(--assistant-text-color) !important;
-      -webkit-text-fill-color: var(--assistant-text-color) !important;
+      color: var(--catyai-host-text) !important;
+      -webkit-text-fill-color: var(--catyai-host-text) !important;
     }
 
     .caty-widget-message.user .caty-message-content {
       color: var(--user-text-color) !important;
       -webkit-text-fill-color: var(--user-text-color) !important;
+    }
+
+    .caty-recommendation {
+      font-family: inherit !important;
+      font-style: italic;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: inherit;
+      display: block;
+      margin-top: 6px;
+    }
+
+    .caty-message-content strong {
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .caty-message-content em {
+      font-style: italic;
+    }
+
+    .caty-message-content code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      background: rgba(0,0,0,0.06);
+      padding: 1px 5px;
+      border-radius: 3px;
     }
 
     .caty-inline-link-btn {
@@ -2565,7 +2887,7 @@
 
     .caty-widget-input-container {
       padding: 16px 20px;
-      border-top: 1px solid var(--border-color);
+      border-top: 0.5px solid rgba(0, 0, 0, 0.06) !important;
       background: var(--bg-color);
       flex-shrink: 0;
       overflow: visible;
@@ -2580,24 +2902,26 @@
     .caty-widget-input {
       flex: 1;
       min-width: 0;
-      border: 1px solid var(--border-color);
+      border: 1px solid currentColor;
       border-radius: 20px;
       padding: 10px 16px;
       font-size: 14px;
-      font-family: inherit;
+      font-family: inherit !important;
       resize: none;
       max-height: 100px;
       min-height: 40px;
       outline: none;
       transition: border-color 0.2s;
-      background: #1f2937;
-      color: var(--input-text-color, #ffffff) !important;
-      -webkit-text-fill-color: var(--input-text-color, #ffffff) !important;
+      background: transparent;
+      color: inherit !important;
+      -webkit-text-fill-color: inherit !important;
+      opacity: 0.9;
     }
 
     .caty-widget-input::placeholder {
-      color: #9ca3af;
-      -webkit-text-fill-color: #9ca3af;
+      color: inherit;
+      -webkit-text-fill-color: inherit;
+      opacity: 0.4;
     }
 
     .caty-widget-input:focus {
@@ -2617,6 +2941,7 @@
       cursor: pointer;
       transition: all 0.2s;
       flex-shrink: 0;
+      font-family: inherit !important;
     }
 
     .caty-widget-send:hover:not(:disabled) {
@@ -2663,7 +2988,7 @@
 
     .caty-widget-file-preview {
       padding: 12px 20px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.06) !important;
       background: var(--bg-color);
     }
 
@@ -2672,9 +2997,10 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      background: #1f2937;
+      background: rgba(128, 128, 128, 0.1);
       border-radius: 8px;
-      border: 1px solid var(--border-color);
+      border: 1px solid currentColor;
+      opacity: 0.8;
     }
 
     .caty-widget-file-item svg {
@@ -2721,7 +3047,7 @@
       text-align: center;
       font-size: 11px;
       color: #6b7280;
-      border-top: 1px solid var(--border-color);
+      border-top: 0.5px solid rgba(0, 0, 0, 0.06) !important;
       background: var(--bg-color);
     }
 
@@ -2884,6 +3210,35 @@
       overflow: hidden;
     }
 
+    .caty-badge-marketing {
+      background: var(--primary-color);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      z-index: 2;
+    }
+    .caty-badge-promo {
+      display: inline-block;
+      background: #ff6b35;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+    .caty-badge-delivery {
+      color: var(--primary-color);
+      font-size: 11px;
+      font-weight: 600;
+    }
     .caty-product-card::before {
       content: '';
       position: absolute;
@@ -3034,7 +3389,7 @@
       padding: 12px 18px;
       font-size: 14px;
       font-weight: 600;
-      background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+      background: var(--primary-color) !important;
       color: #ffffff !important;
       border: none;
       border-radius: 10px;
@@ -3048,9 +3403,9 @@
     }
 
     .caty-product-btn-full:hover {
-      background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+      filter: brightness(0.88);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
     }
 
     .caty-product-actions-single {
@@ -3717,10 +4072,27 @@
 
   // Inject styles
   function injectStyles() {
+    if (document.getElementById('caty-widget-styles')) return;
     const styleEl = document.createElement('style');
     styleEl.id = 'caty-widget-styles';
     styleEl.textContent = getStyles();
     document.head.appendChild(styleEl);
+  }
+
+  function extractHostTheme(containerEl) {
+    try {
+      const cs = window.getComputedStyle(document.body);
+      const bg = cs.backgroundColor;
+      const text = cs.color;
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        containerEl.style.setProperty('--catyai-host-bg', bg);
+      }
+      if (text) {
+        containerEl.style.setProperty('--catyai-host-text', text);
+      }
+    } catch (e) {
+      // silently keep defaults
+    }
   }
 
   // Create launcher button
@@ -4048,98 +4420,42 @@
     const container = document.createElement('div');
     container.className = 'caty-message-content';
 
-    // Patterns to match
-    const patterns = [
-      // Markdown links: [text](url)
-      { regex: /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, type: 'link' },
-      // Phone numbers: tel:xxx or formatted phone
-      { regex: /(?:tel:|📞\s*)?((?:\+?40|0)[0-9]{9,10})/g, type: 'phone' },
-      // Special action tags: [ACTION:type:label:url]
-      { regex: /\[ACTION:(\w+):([^:]+):([^\]]+)\]/g, type: 'action' }
-    ];
+    // Process markdown → safe HTML (only allowed tags)
+    // Normalize newlines: single \n → space, double \n\n → paragraph break
+    content = content
+      .replace(/\r\n/g, '\n')
+      .replace(/\n\n+/g, '§§PARA§§')
+      .replace(/\n/g, ' ')
+      .replace(/§§PARA§§/g, '\n\n');
 
-    // Split content by patterns and create elements
-    let processedContent = content;
-    const elements = [];
+    let processed = content
+      // **bold**
+      .replace(/\*\*([^*\n]{1,200})\*\*/g, '<strong>$1</strong>')
+      // *italic* (single asterisk, not touching **)
+      .replace(/(?<!\*)\*([^*\n]{1,200})\*(?!\*)/g, '<em>$1</em>')
+      // `code`
+      .replace(/`([^`\n]{1,100})`/g, '<code>$1</code>')
+      // Bullet points: lines starting with - or •
+      .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+      // Wrap consecutive <li> in <ul>
+      .replace(/(<li>.*<\/li>(\n|$))+/g, m => `<ul style="padding-left:16px;margin:6px 0">${m}</ul>`)
+      // Line breaks
+      .replace(/\n/g, '<br>');
 
-    // First, extract all matches with their positions
-    const allMatches = [];
+    // Wrap personal recommendation sentences in Playfair italic
+    processed = processed.replace(
+      /((?:îți recomand|recomand|vă recomand|recommend)[^<]{5,300}(?:\.|!|\?))/gi,
+      '<span class="caty-recommendation">$1</span>'
+    );
 
-    // Markdown links
-    const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
-    let match;
-    while ((match = linkRegex.exec(content)) !== null) {
-      allMatches.push({
-        start: match.index,
-        end: match.index + match[0].length,
-        type: 'link',
-        text: match[1],
-        url: match[2],
-        original: match[0]
-      });
-    }
-
-    // Phone numbers (standalone, not already in a link)
-    const phoneRegex = /(?:^|\s)((?:\+?40|0)[0-9\s]{9,12})(?:\s|$|[,.])/g;
-    while ((match = phoneRegex.exec(content)) !== null) {
-      const phone = match[1].replace(/\s/g, '');
-      // Check if this phone is already inside a link match
-      const isInsideLink = allMatches.some(m => m.type === 'link' && match.index >= m.start && match.index < m.end);
-      if (!isInsideLink && phone.length >= 10) {
-        allMatches.push({
-          start: match.index + (match[0].startsWith(' ') ? 1 : 0),
-          end: match.index + match[0].length - (match[0].endsWith(' ') || match[0].endsWith(',') || match[0].endsWith('.') ? 1 : 0),
-          type: 'phone',
-          phone: phone,
-          original: phone
-        });
-      }
-    }
-
-    // Sort matches by position
-    allMatches.sort((a, b) => a.start - b.start);
-
-    // Build content with elements
-    let lastIndex = 0;
-    allMatches.forEach(m => {
-      // Add text before this match
-      if (m.start > lastIndex) {
-        const textNode = document.createTextNode(content.substring(lastIndex, m.start));
-        container.appendChild(textNode);
-      }
-
-      if (m.type === 'link') {
-        // Create link button
-        const linkBtn = document.createElement('a');
-        linkBtn.href = sanitizeUrl(m.url);
-        linkBtn.target = '_blank';
-        linkBtn.rel = 'noopener noreferrer';
-        linkBtn.className = 'caty-inline-link-btn';
-        linkBtn.textContent = m.text;
-        container.appendChild(linkBtn);
-      } else if (m.type === 'phone') {
-        // Create phone call button
-        const phoneBtn = document.createElement('a');
-        phoneBtn.href = `tel:${m.phone}`;
-        phoneBtn.className = 'caty-phone-btn';
-        phoneBtn.innerHTML = `📞 ${m.phone}`;
-        container.appendChild(phoneBtn);
-      }
-
-      lastIndex = m.end;
+    // Sanitize: allow only safe tags
+    const allowed = /^(strong|em|code|span|ul|li|br)$/i;
+    const sanitized = processed.replace(/<\/?([a-z][a-z0-9]*)[^>]*>/gi, (tag, name) => {
+      if (allowed.test(name)) return tag;
+      return '';
     });
 
-    // Add remaining text
-    if (lastIndex < content.length) {
-      const textNode = document.createTextNode(content.substring(lastIndex));
-      container.appendChild(textNode);
-    }
-
-    // If no matches, just add the text
-    if (allMatches.length === 0) {
-      container.textContent = content;
-    }
-
+    container.innerHTML = sanitized;
     return container;
   }
 
@@ -4174,6 +4490,10 @@
 
     // Stock status - default to in stock
     const inStock = product.inStock !== false;
+    // Badge-uri de marketing din backend (render-product-cards.js)
+    const safeMarketingLabel = product.marketing_label ? escapeHtml(product.marketing_label) : '';
+    const safeBadgePromo = product.badge_promo ? escapeHtml(product.badge_promo) : '';
+    const safeBadgeDelivery = product.badge_delivery ? escapeHtml(product.badge_delivery) : '';
 
     // Different layout for services vs products
     let actionsHTML;
@@ -4208,6 +4528,7 @@
         ${safeImage ? `<img src="${safeImage}" alt="${safeName}" loading="lazy" />` : '<div class="caty-product-no-image">📦</div>'}
         ${discountPercent > 0 ? `<div class="caty-product-badge caty-badge-sale">-${discountPercent}%</div>` : ''}
         ${!inStock ? `<div class="caty-product-badge caty-badge-out">Stoc epuizat</div>` : ''}
+        ${safeMarketingLabel ? `<div class="caty-product-badge caty-badge-marketing">${safeMarketingLabel}</div>` : ''}
       </div>
       <div class="caty-product-info">
         <div class="caty-product-name" title="${safeName}">${safeName}</div>
@@ -4218,11 +4539,12 @@
             <span class="caty-rating-num">(${safeRating.toFixed(1)})</span>
           </div>
         ` : ''}
+        ${safeBadgePromo ? `<div class="caty-badge-promo">${safeBadgePromo}</div>` : ''}
         <div class="caty-product-price">
           <span class="caty-product-price-current">${safePrice} Lei</span>
           ${safeOriginalPrice ? `<span class="caty-product-price-original">${safeOriginalPrice} Lei</span>` : ''}
         </div>
-        ${inStock ? '<div class="caty-product-stock"><span class="caty-stock-dot"></span> În stoc</div>' : ''}
+        ${inStock ? `<div class="caty-product-stock"><span class="caty-stock-dot"></span> În stoc${safeBadgeDelivery ? ` · <span class="caty-badge-delivery">⚡ ${safeBadgeDelivery}</span>` : ''}</div>` : ''}
         ${actionsHTML}
       </div>
     `;
@@ -4251,15 +4573,29 @@
     } else {
       // Products: two buttons
       const viewBtn = card.querySelector('.caty-product-view');
-      if (viewBtn && safeUrl) {
-        viewBtn.addEventListener('click', () => window.open(safeUrl, '_blank', 'noopener,noreferrer'));
+      if (viewBtn) {
+        viewBtn.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('caty:productView', { detail: safeProduct }));
+          const isMobile = (state.mobileAdapter && state.mobileAdapter.isMobile) || window.innerWidth <= 768;
+          if (isMobile) {
+            sendMessage(`Spune-mi mai multe despre: ${safeProduct.name}`);
+          } else if (safeUrl) {
+            window.open(safeUrl, '_blank', 'noopener,noreferrer');
+          }
+        });
       }
 
       const cartBtn = card.querySelector('.caty-product-cart');
-      if (cartBtn && safeUrl) {
+      if (cartBtn) {
         cartBtn.addEventListener('click', () => {
           window.dispatchEvent(new CustomEvent('caty:addToCart', { detail: safeProduct }));
-          window.open(safeUrl, '_blank', 'noopener,noreferrer');
+          const isMobile = (state.mobileAdapter && state.mobileAdapter.isMobile) || window.innerWidth <= 768;
+          if (isMobile) {
+            state.pendingOrderProduct = safeProduct;
+            sendMessage(`Vreau să comand: ${safeProduct.name}`);
+          } else if (safeUrl) {
+            window.open(safeUrl, '_blank', 'noopener,noreferrer');
+          }
         });
       }
     }
@@ -4310,11 +4646,49 @@
     const typingIndicator = messagesContainer.querySelector('.caty-widget-typing');
     messagesContainer.insertBefore(container, typingIndicator);
 
+    // Persist so cards survive page navigation and sidebar reopen
+    state.lastProducts = products;
+    state.lastLiquidItems = null;
+    saveMessages();
+
     // Scroll to show products
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
     // Emit event
     emit('products', { products });
+  }
+
+  // Render product cards from MCP Liquid UI tool (items already normalized)
+  function renderLiquidProductCards(items) {
+    if (!items || items.length === 0) return;
+
+    const messagesContainer = document.getElementById('caty-messages');
+    if (!messagesContainer) return;
+
+    const container = document.createElement('div');
+    container.className = 'caty-products-container';
+    container.innerHTML = `
+      <div class="caty-products-header">
+        <span class="caty-products-icon">🛍️</span>
+        <span>${i18n.t('productsFound') || 'Produse relevante:'}</span>
+      </div>
+      <div class="caty-products-grid"></div>
+    `;
+
+    const grid = container.querySelector('.caty-products-grid');
+    items.forEach(item => grid.appendChild(createProductCard(item)));
+
+    const typingIndicator = messagesContainer.querySelector('.caty-widget-typing');
+    messagesContainer.insertBefore(container, typingIndicator);
+
+    // Persist so cards survive page navigation and sidebar reopen
+    state.lastLiquidItems = items;
+    state.lastProducts = null;
+    saveMessages();
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    emit('products', { products: items });
   }
 
   // Add message to chat
@@ -5656,6 +6030,20 @@
             if (msg) sendMessage(msg);
             break;
 
+          case 'order':
+          case 'buy': {
+            // Trigger order collection flow with product context
+            const productName = action.payload?.product_name ||
+              (state.pendingOrderProduct?.name) ||
+              (state.lastProducts?.length === 1 ? state.lastProducts[0].name : null);
+            const orderMsg = productName
+              ? `Vreau să comand: ${productName}`
+              : (action.payload?.message || action.label || 'Vreau să plasez o comandă');
+            if (productName) state.pendingOrderProduct = { name: productName };
+            sendMessage(orderMsg);
+            break;
+          }
+
           case 'quick_reply':
           default:
             // Send as chat message
@@ -5669,6 +6057,147 @@
 
       container.appendChild(button);
     });
+
+    // Stagger laser-line: middle chip pops first, then outward
+    const allChips = container.querySelectorAll('.caty-widget-quick-reply');
+    const total = allChips.length;
+    if (total > 0) {
+      const mid = Math.floor(total / 2);
+      const order = [];
+      order.push(mid);
+      for (let i = 1; i <= Math.max(mid, total - 1 - mid); i++) {
+        if (mid - i >= 0) order.push(mid - i);
+        if (mid + i < total) order.push(mid + i);
+      }
+      order.forEach((idx, step) => {
+        setTimeout(() => {
+          allChips[idx].classList.add('caty-chip-ready');
+        }, step * 90);
+      });
+    }
+
+    // Magnetic button effect (power3.out feel)
+    allChips.forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.14;
+        const y = (e.clientY - r.top - r.height / 2) * 0.18;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+        btn.style.transition = 'transform 0.1s ease';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+        btn.style.transition = 'transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)';
+      });
+    });
+  }
+
+  // ─── Liquid UI: renderSlotPicker (replaces Markdown table of times) ───
+  function renderSlotPicker(action) {
+    const container = document.getElementById('caty-quick-replies');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const payload = action.payload || {};
+    const slots = payload.slots || [];
+    const date = payload.date || '';
+
+    if (slots.length === 0) {
+      renderQuickReplies([{ label: action.label || 'Schedule', action: 'schedule' }]);
+      return;
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'caty-slot-picker';
+
+    const header = document.createElement('div');
+    header.className = 'caty-slot-picker-header';
+    header.textContent = `${action.label || 'Choose a time'} — ${formatSlotDate(date)}`;
+    wrapper.appendChild(header);
+
+    const grid = document.createElement('div');
+    grid.className = 'caty-slot-picker-grid';
+
+    slots.forEach((slot) => {
+      const btn = document.createElement('button');
+      btn.className = 'caty-slot-card';
+      btn.type = 'button';
+      btn.dataset.date = date;
+      btn.dataset.time = slot.label;
+      btn.dataset.start = slot.start || '';
+      btn.innerHTML = `<span class="caty-slot-time">${slot.label}</span>`;
+      btn.addEventListener('click', () => handleSlotPick(btn, date, slot));
+      grid.appendChild(btn);
+    });
+
+    wrapper.appendChild(grid);
+    container.appendChild(wrapper);
+  }
+
+  function formatSlotDate(isoDate) {
+    try {
+      const d = new Date(isoDate);
+      const dayNames = ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'];
+      const monthNames = ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]}`;
+    } catch (e) { return isoDate; }
+  }
+
+  function handleSlotPick(btn, date, slot) {
+    // Visual feedback
+    document.querySelectorAll('.caty-slot-card.selected').forEach(el => el.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    // Open existing schedule form (which triggers WhatsApp + email notifications on submit)
+    if (typeof showScheduleForm !== 'function') {
+      console.error('[Caty Widget] showScheduleForm not available');
+      return;
+    }
+
+    showScheduleForm();
+
+    // Prefill date + time after DOM render (50ms is safe for shadow DOM rendering)
+    setTimeout(() => {
+      const dateSelect = document.getElementById('caty-schedule-date');
+      const timeSelect = document.getElementById('caty-schedule-time');
+
+      if (!dateSelect || !timeSelect) {
+        console.warn('[Caty Widget] Schedule form selects not found after render');
+        return;
+      }
+
+      // Step 1: Set date — trigger change event to fetch slots from API
+      dateSelect.value = date;
+      dateSelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+      // Step 2: When slots finish loading (select becomes enabled), set time value
+      // Poll every 100ms, max 3 seconds (slots fetch typically takes 200-500ms)
+      let attempts = 0;
+      const maxAttempts = 30;
+      const trySetTime = () => {
+        attempts++;
+        if (!timeSelect.disabled && timeSelect.options.length > 1) {
+          // Slots loaded — set time
+          timeSelect.value = slot.label;
+
+          // If slot.label is not in options (Google Calendar gave different slots),
+          // inject it as a new option
+          if (timeSelect.value !== slot.label) {
+            const opt = document.createElement('option');
+            opt.value = slot.label;
+            opt.textContent = slot.label;
+            timeSelect.appendChild(opt);
+            timeSelect.value = slot.label;
+          }
+          console.log(`[Caty Widget] Slot prefilled: ${date} ${slot.label}`);
+        } else if (attempts < maxAttempts) {
+          setTimeout(trySetTime, 100);
+        } else {
+          console.warn('[Caty Widget] Slot prefill timeout — user must select time manually');
+        }
+      };
+      setTimeout(trySetTime, 200);
+    }, 50);
   }
 
   // Update unread badge
@@ -5684,6 +6213,53 @@
     }
   }
 
+  // Adjust fixed headers to respect sidebar 70/30 layout
+  function adjustFixedHeaders(side) {
+    const SIDEBAR_WIDTH = '30vw';
+    const TRANSITION = 'right 0.35s cubic-bezier(0.4,0,0.2,1), left 0.35s cubic-bezier(0.4,0,0.2,1), width 0.35s cubic-bezier(0.4,0,0.2,1)';
+    const selectors = ['header', '[role="banner"]', 'nav'];
+
+    // Collect all eligible elements first, then skip descendants to avoid double-applying.
+    // A nav inside a sticky header would otherwise get width: calc(100% - 30vw) twice (~49vw).
+    const candidates = [];
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if (el.closest('#caty-widget-container')) return;
+        const cs = window.getComputedStyle(el);
+        if (cs.position !== 'fixed' && cs.position !== 'sticky') return;
+        candidates.push(el);
+      });
+    });
+    const outermost = candidates.filter(el => !candidates.some(p => p !== el && p.contains(el)));
+
+    outermost.forEach(el => {
+      el.dataset.catyOrigRight = el.style.right;
+      el.dataset.catyOrigLeft = el.style.left;
+      el.dataset.catyOrigWidth = el.style.width;
+      el.dataset.catyOrigTransition = el.style.transition;
+      el.style.transition = TRANSITION;
+      if (side === 'right') {
+        el.style.right = SIDEBAR_WIDTH;
+      } else {
+        el.style.left = SIDEBAR_WIDTH;
+      }
+      el.style.width = `calc(100% - ${SIDEBAR_WIDTH})`;
+    });
+  }
+
+  function resetFixedHeaders() {
+    document.querySelectorAll('[data-caty-orig-right], [data-caty-orig-left]').forEach(el => {
+      el.style.right = el.dataset.catyOrigRight || '';
+      el.style.left = el.dataset.catyOrigLeft || '';
+      el.style.width = el.dataset.catyOrigWidth || '';
+      el.style.transition = el.dataset.catyOrigTransition || '';
+      delete el.dataset.catyOrigRight;
+      delete el.dataset.catyOrigLeft;
+      delete el.dataset.catyOrigWidth;
+      delete el.dataset.catyOrigTransition;
+    });
+  }
+
   // Open chat window
   function open() {
     if (state.isOpen) return;
@@ -5695,6 +6271,28 @@
       window.classList.add('open');
       launcher.classList.add('open');
       state.isOpen = true;
+      saveMessages(); // persist wasOpen=true so auto-reopen fires after page navigation
+
+      if (CONFIG.sidebarMode) {
+        window.classList.add('caty-sidebar-panel');
+        window.classList.remove('caty-panel-hidden');
+        const isLeftPosition = !CONFIG.position.includes('right');
+        if (isLeftPosition) {
+          document.body.classList.add('caty-sidebar-active-left');
+          document.documentElement.style.overflowX = 'hidden';
+          window.style.left = '0';
+          window.style.right = 'auto';
+          adjustFixedHeaders('left');
+        } else {
+          document.body.classList.add('caty-sidebar-active');
+          document.documentElement.style.overflowX = 'hidden';
+          window.style.left = 'auto';
+          window.style.right = '0';
+          adjustFixedHeaders('right');
+        }
+        launcher.style.display = 'none';
+      }
+
       state.unreadCount = 0;
       updateBadge();
 
@@ -5740,6 +6338,16 @@
           const typingIndicator = messagesContainer.querySelector('.caty-widget-typing');
           messagesContainer.insertBefore(messageEl, typingIndicator);
         });
+
+        // Re-render product cards if they were shown but DOM is gone (e.g. page navigation)
+        if (!messagesContainer.querySelector('.caty-products-container')) {
+          if (state.lastProducts && state.lastProducts.length > 0) {
+            renderProductCards(state.lastProducts);
+          } else if (state.lastLiquidItems && state.lastLiquidItems.length > 0) {
+            renderLiquidProductCards(state.lastLiquidItems);
+          }
+        }
+
         // Scroll to bottom
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
       } else if (state.messages.length === 0 && !state.greetingSent) {
@@ -5791,6 +6399,16 @@
       window.classList.remove('open');
       launcher.classList.remove('open');
       state.isOpen = false;
+      saveMessages(); // persist wasOpen=false so auto-reopen doesn't fire after explicit close
+
+      if (CONFIG.sidebarMode) {
+        window.classList.add('caty-panel-hidden');
+        setTimeout(() => window.classList.remove('caty-sidebar-panel', 'caty-panel-hidden'), 350);
+        document.body.classList.remove('caty-sidebar-active', 'caty-sidebar-active-left');
+        document.documentElement.style.overflowX = '';
+        resetFixedHeaders();
+        launcher.style.display = '';
+      }
 
       // Hide overlay on mobile
       if (state.overlay) {
@@ -5910,6 +6528,9 @@
           state.sessionId = savedData.sessionId;
           setSessionId(savedData.sessionId);
         }
+        // Restore product card data so cards can be re-rendered on open()
+        if (savedData.lastProducts) state.lastProducts = savedData.lastProducts;
+        if (savedData.lastLiquidItems) state.lastLiquidItems = savedData.lastLiquidItems;
         console.log('[Caty Widget] Restored', state.messages.length, 'messages from previous session');
       }
 
@@ -5926,6 +6547,9 @@
       const container = document.createElement('div');
       container.id = 'caty-widget-container';
       container.className = 'caty-widget';
+
+      // Chameleon: extract host site colors and inject as CSS vars
+      extractHostTheme(container);
 
       // Create and append launcher
       const launcher = createLauncher();
@@ -5965,7 +6589,89 @@
       // Show greeting bubble if enabled
       showGreetingBubble();
 
+      // Auto-reopen sidebar if user navigated away while it was open (mobile window.open navigation)
+      if (CONFIG.sidebarMode && savedData?.wasOpen && state.messages.length > 0) {
+        setTimeout(() => open(), 400);
+      }
+
       state.isLoaded = true;
+
+      // NAP v3 — Layer 4: industry JSON-LD + GEO endpoint meta
+      function injectAgenticTruthLayer(config) {
+        if (!config) return;
+        const domain = window.location.hostname;
+        if (!domain || domain === 'localhost') return;
+
+        // Industry-specific JSON-LD (generated by DeepSeek via Cameleon)
+        const schema = config.business?.industry_schema_json || config.industry_schema_json;
+        if (schema && !document.querySelector('meta[name="catyai-geo-endpoint"]')) {
+          // Only inject if not already present (idempotent)
+          const existing = Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
+            .some(s => { try { return JSON.parse(s.textContent)?.['@type'] && JSON.parse(s.textContent)?.['_catyai']; } catch { return false; } });
+          if (!existing) {
+            const schemaObj = typeof schema === 'string' ? JSON.parse(schema) : schema;
+            schemaObj['_catyai'] = true; // marker to avoid double-inject
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.text = JSON.stringify(schemaObj);
+            document.head.appendChild(script);
+          }
+        }
+
+        // GEO endpoint meta — tells AI crawlers where to query this widget
+        if (!document.querySelector('meta[name="catyai-geo-endpoint"]')) {
+          const widgetId = config.widget_id || config.widgetId;
+          if (widgetId) {
+            const geoMeta = document.createElement('meta');
+            geoMeta.name = 'catyai-geo-endpoint';
+            geoMeta.content = `https://api.catyai.io/geo/v2/answer?widget_id=${widgetId}`;
+            document.head.appendChild(geoMeta);
+          }
+        }
+      }
+
+      // NAP v3 — Layer 2B: inject AI context tag for LLM crawlers
+      try {
+        const hostname = window.location.hostname;
+        if (hostname && hostname !== 'localhost' && !document.querySelector('script[type="application/ai-context+json"]')) {
+          const aiCtx = document.createElement('script');
+          aiCtx.type = 'application/ai-context+json';
+          aiCtx.textContent = JSON.stringify({
+            catalog_url: `https://api.catyai.io/geo/v2/catalog?domain=${hostname}&preview=true`,
+            enforcement: 'strict',
+            provider: 'catyai-nap-v3'
+          });
+          document.head.appendChild(aiCtx);
+        }
+      } catch (_) { /* non-critical */ }
+
+      // NAP v3 — Layer 3: inject discoverable head tags for AI crawlers
+      try {
+        const domain = window.location.hostname;
+        if (domain && domain !== 'localhost') {
+          const napMeta = [
+            ['link', { rel: 'ai-instructions', href: `https://api.catyai.io/geo/v2/llms.txt?domain=${domain}` }],
+            ['meta', { name: 'ai-catalog', content: `https://api.catyai.io/geo/v2/catalog?domain=${domain}&preview=true` }],
+            ['meta', { name: 'ai-enforcement', content: 'strict' }],
+            ['meta', { name: 'ai-provider', content: 'catyai-nap-v3' }]
+          ];
+          napMeta.forEach(([tag, attrs]) => {
+            const selector = tag === 'link'
+              ? `link[rel="${attrs.rel}"]`
+              : `meta[name="${attrs.name}"]`;
+            if (!document.head.querySelector(selector)) {
+              const el = document.createElement(tag);
+              Object.assign(el, attrs);
+              document.head.appendChild(el);
+            }
+          });
+        }
+      } catch (_) { /* non-critical */ }
+
+      // NAP v3 — Layer 4: inject industry-specific JSON-LD + GEO endpoint meta (Cameleon Shape-Shifter)
+      try {
+        injectAgenticTruthLayer(state.config);
+      } catch (_) { /* non-critical */ }
 
       console.log('[Caty Widget] Initialized successfully with language:', i18n.currentLang);
     } catch (error) {

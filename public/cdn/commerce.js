@@ -3798,63 +3798,313 @@
   }
 
   // ============================================
-  // Chat-Only Mode (walking_robot: false)
+  // Chat-Only Mode (walking_robot: false) — Premium 70/30 Cameleon Sidebar
   // ============================================
 
   function initChatOnlyMode() {
-    // If widget.js is already present it handles the chat — no duplicate FAB
+    // Defer to widget.js if already present — it owns the sidebar
     if (document.querySelector('script[src*="widget.js"]') ||
         window.CatyWidget || window.Caty) {
-      console.log('[CatyCommerce] Chat-only mode: widget.js detected, deferring to it');
+      console.log('[CatyCommerce] Chat-only: widget.js present, deferring');
       return;
     }
 
     const primary = CONFIG.primaryColor || '#3b82f6';
+    const personaName = getPersonaName();
+    const avatarSrc = CONFIG._customAvatar || AVATARS.talk;
+    const industry = (CONFIG._industry || '').toLowerCase();
 
-    // Inject all styles (chat-window, header, etc. are inside the shared styles const)
-    injectStyles();
+    // Extract host page colors for glassmorphism context
+    const bodyStyles = window.getComputedStyle(document.body);
+    const hostBg = bodyStyles.backgroundColor || 'rgba(255,255,255,0.95)';
+    const hostText = bodyStyles.color || '#1f2937';
 
-    // Add FAB-specific styles
-    const fabStyle = document.createElement('style');
-    fabStyle.textContent = `
-      .caty-fab {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+    // ── Premium 70/30 sidebar CSS ─────────────────────────────────────────
+    const style = document.createElement('style');
+    style.textContent = `
+      body.caty-cs-active {
+        margin-right: 30vw !important;
+        overflow-x: hidden !important;
+        transition: margin-right 0.35s cubic-bezier(0.4,0,0.2,1);
+      }
+      .caty-cs-panel {
+        position: fixed !important;
+        right: 0 !important; top: 0 !important; bottom: 0 !important;
+        width: 30vw !important;
+        min-width: 320px !important;
+        max-width: 480px !important;
+        height: 100vh !important;
+        background: ${hostBg} !important;
+        color: ${hostText} !important;
+        backdrop-filter: blur(32px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+        border-left: 0.5px solid rgba(128,128,128,0.2) !important;
+        box-shadow: -8px 0 48px rgba(0,0,0,0.10),-2px 0 12px rgba(0,0,0,0.06) !important;
+        z-index: 2147483647;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transform: translateX(0);
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      }
+      .caty-cs-panel.caty-cs-hidden { transform: translateX(110%); }
+      /* ── Header ── */
+      .caty-cs-header {
         background: ${primary};
         color: #fff;
-        border: none;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-        z-index: 2147483644;
+        padding: 16px 20px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        transition: transform 0.2s, filter 0.2s;
+        gap: 12px;
+        flex-shrink: 0;
       }
-      .caty-fab:hover { transform: scale(1.1); filter: brightness(1.1); }
-      .caty-fab svg { width: 28px; height: 28px; fill: #fff; }
-      @media (max-width: 480px) {
-        .caty-fab { bottom: 16px; right: 16px; width: 52px; height: 52px; }
+      .caty-cs-avatar {
+        width: 44px; height: 44px; border-radius: 50%;
+        background: rgba(255,255,255,0.2); overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .caty-cs-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+      .caty-cs-name { font-weight: 700; font-size: 15px; line-height: 1.2; }
+      .caty-cs-status {
+        font-size: 11px; opacity: 0.85;
+        display: flex; align-items: center; gap: 4px; margin-top: 2px;
+      }
+      .caty-cs-status::before {
+        content:''; width:7px; height:7px;
+        background:#22c55e; border-radius:50%; display:inline-block;
+      }
+      .caty-cs-close {
+        background:none; border:none; color:#fff; font-size:22px;
+        cursor:pointer; margin-left:auto; padding:0 4px; line-height:1;
+      }
+      /* ── Body ── */
+      .caty-cs-body {
+        flex:1; overflow-y:auto; padding:16px;
+        display:flex; flex-direction:column; gap:10px;
+      }
+      .caty-cs-msg {
+        max-width:85%; padding:10px 14px; border-radius:14px;
+        font-size:14px; line-height:1.5; word-break:break-word;
+      }
+      .caty-cs-msg.bot {
+        background:rgba(0,0,0,0.06); color:inherit;
+        align-self:flex-start; border-radius:4px 14px 14px 14px;
+      }
+      .caty-cs-msg.user {
+        background:${primary}; color:#fff;
+        align-self:flex-end; border-radius:14px 14px 4px 14px;
+      }
+      /* ── Chips (vertical-adaptive) ── */
+      .caty-cs-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+      .caty-cs-chip {
+        background:rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.12);
+        color:inherit; border-radius:20px; padding:6px 14px;
+        font-size:13px; cursor:pointer;
+        transition:background 0.2s,color 0.2s,border-color 0.2s;
+        white-space:nowrap;
+      }
+      .caty-cs-chip:hover { background:${primary}; color:#fff; border-color:${primary}; }
+      /* ── Typing ── */
+      .caty-cs-typing {
+        display:flex; gap:4px; padding:10px 14px;
+        align-self:flex-start;
+      }
+      .caty-cs-typing span {
+        width:7px; height:7px; background:${primary};
+        border-radius:50%; opacity:0.4;
+        animation:catyCSPulse 1.2s infinite;
+      }
+      .caty-cs-typing span:nth-child(2){animation-delay:0.2s}
+      .caty-cs-typing span:nth-child(3){animation-delay:0.4s}
+      @keyframes catyCSPulse{0%,80%,100%{opacity:0.4;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}
+      /* ── Footer ── */
+      .caty-cs-footer {
+        padding:12px 16px; border-top:1px solid rgba(0,0,0,0.08);
+        display:flex; gap:8px; flex-shrink:0;
+      }
+      .caty-cs-input {
+        flex:1; border:1px solid rgba(0,0,0,0.15); border-radius:24px;
+        padding:10px 16px; font-size:14px; outline:none;
+        background:rgba(255,255,255,0.8); font-family:inherit;
+      }
+      .caty-cs-input:focus { border-color:${primary}; box-shadow:0 0 0 2px ${primary}22; }
+      .caty-cs-send {
+        background:${primary}; color:#fff; border:none; border-radius:50%;
+        width:40px; height:40px; font-size:16px; cursor:pointer;
+        display:flex; align-items:center; justify-content:center; flex-shrink:0;
+        transition:filter 0.2s;
+      }
+      .caty-cs-send:hover { filter:brightness(1.1); }
+      /* ── FAB launcher ── */
+      .caty-cs-fab {
+        position:fixed; bottom:24px; right:24px;
+        width:60px; height:60px; border-radius:50%;
+        background:${primary}; color:#fff; border:none; cursor:pointer;
+        box-shadow:0 4px 20px rgba(0,0,0,0.25);
+        z-index:2147483644;
+        display:flex; align-items:center; justify-content:center;
+        transition:transform 0.2s,filter 0.2s;
+      }
+      .caty-cs-fab:hover { transform:scale(1.1); filter:brightness(1.1); }
+      .caty-cs-fab svg { width:28px; height:28px; fill:#fff; }
+      @media (max-width:768px) {
+        body.caty-cs-active { margin-right:0 !important; }
+        .caty-cs-panel { width:100vw !important; max-width:100vw !important; }
+        .caty-cs-fab { bottom:16px; right:16px; width:52px; height:52px; }
       }
     `;
-    document.head.appendChild(fabStyle);
+    document.head.appendChild(style);
 
+    // ── Build sidebar panel ───────────────────────────────────────────────
+    const panel = document.createElement('div');
+    panel.className = 'caty-cs-panel caty-cs-hidden';
+    panel.innerHTML = `
+      <div class="caty-cs-header">
+        <div class="caty-cs-avatar"><img src="${avatarSrc}" alt="${personaName}"></div>
+        <div>
+          <div class="caty-cs-name">${personaName}</div>
+          <div class="caty-cs-status">Online</div>
+        </div>
+        <button class="caty-cs-close" aria-label="Închide">&times;</button>
+      </div>
+      <div class="caty-cs-body" id="caty-cs-body"></div>
+      <div class="caty-cs-footer">
+        <input class="caty-cs-input" id="caty-cs-input" type="text"
+          placeholder="${t.support?.inputPlaceholder || 'Scrieți un mesaj...'}"
+          autocomplete="off">
+        <button class="caty-cs-send" id="caty-cs-send" aria-label="Trimite">&#10148;</button>
+      </div>
+    `;
+    document.body.appendChild(panel);
+
+    // ── FAB launcher ─────────────────────────────────────────────────────
     const fab = document.createElement('button');
-    fab.className = 'caty-fab';
-    fab.setAttribute('aria-label', `Chat cu ${getPersonaName()}`);
-    fab.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>`;
-    fab.addEventListener('click', () => {
-      if (!state.supportChatOpen) {
-        fab.style.display = 'none';
-        openSupportChat();
-      }
-    });
+    fab.className = 'caty-cs-fab';
+    fab.setAttribute('aria-label', `Chat cu ${personaName}`);
+    fab.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+    </svg>`;
     document.body.appendChild(fab);
     state._chatFab = fab;
+
+    // ── Open / Close ──────────────────────────────────────────────────────
+    function openSidebar() {
+      panel.classList.remove('caty-cs-hidden');
+      document.body.classList.add('caty-cs-active');
+      fab.style.display = 'none';
+      const input = panel.querySelector('#caty-cs-input');
+      if (input) input.focus();
+
+      if (!state._csGreeted) {
+        state._csGreeted = true;
+        const greeting = CONFIG._greetingMessage || t.greeting;
+        addMsg('bot', greeting);
+        const chips = getVerticalChips();
+        if (chips.length) addChips(chips);
+      }
+    }
+
+    function closeSidebar() {
+      panel.classList.add('caty-cs-hidden');
+      document.body.classList.remove('caty-cs-active');
+      fab.style.display = 'flex';
+    }
+
+    // ── Vertical-adaptive chips ───────────────────────────────────────────
+    function getVerticalChips() {
+      const lang = CONFIG.language || 'ro';
+      const isRetail = ['fashion','retail','ecommerce','clothing','apparel','shop','store','magazin','produse']
+        .some(k => industry.includes(k));
+      if (isRetail) {
+        return lang === 'ro'
+          ? ['Recomandă-mi produse', 'Caut un cadou', 'Ce e în trend?', 'Ajutor comandă']
+          : ['Recommend products', 'Looking for a gift', "What's trending?", 'Order help'];
+      }
+      return lang === 'ro'
+        ? ['Am o întrebare', 'Ajutor produs', 'Returnare', 'Status comandă']
+        : ['I have a question', 'Product help', 'Returns', 'Order status'];
+    }
+
+    // ── DOM helpers ───────────────────────────────────────────────────────
+    function addMsg(role, text) {
+      const body = panel.querySelector('#caty-cs-body');
+      if (!body) return;
+      const el = document.createElement('div');
+      el.className = `caty-cs-msg ${role}`;
+      el.textContent = text;
+      body.appendChild(el);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function addChips(labels) {
+      const body = panel.querySelector('#caty-cs-body');
+      if (!body) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'caty-cs-chips';
+      labels.forEach(label => {
+        const btn = document.createElement('button');
+        btn.className = 'caty-cs-chip';
+        btn.textContent = label;
+        btn.addEventListener('click', () => { wrap.remove(); sendMsg(label); });
+        wrap.appendChild(btn);
+      });
+      body.appendChild(wrap);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    // ── Real AI call ──────────────────────────────────────────────────────
+    async function sendMsg(text) {
+      if (!text.trim()) return;
+      addMsg('user', text);
+      const input = panel.querySelector('#caty-cs-input');
+      if (input) input.value = '';
+
+      const body = panel.querySelector('#caty-cs-body');
+      const typing = document.createElement('div');
+      typing.className = 'caty-cs-typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(typing);
+      body.scrollTop = body.scrollHeight;
+
+      try {
+        const resp = await fetch(`${CONFIG.baseUrl}/api/widget/chat/message`, {
+          method: 'POST',
+          headers: { 'X-API-Key': CONFIG.apiKey, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: getSessionId(),
+            message: text,
+            language: CONFIG.language || 'ro',
+            context: {
+              page_url: window.location.href,
+              vertical: CONFIG._industry || '',
+              platform: CONFIG._platform || 'generic',
+            },
+          }),
+        });
+        const data = await resp.json();
+        typing.remove();
+        addMsg('bot', data.response || data.message || '...');
+      } catch (_) {
+        typing.remove();
+        addMsg('bot', CONFIG.language === 'en'
+          ? 'Sorry, something went wrong. Please try again.'
+          : 'Ne pare rău, a apărut o eroare. Încercați din nou.');
+      }
+    }
+
+    // ── Wire events ───────────────────────────────────────────────────────
+    fab.addEventListener('click', openSidebar);
+    panel.querySelector('.caty-cs-close').addEventListener('click', closeSidebar);
+    const sendBtn = panel.querySelector('#caty-cs-send');
+    const input = panel.querySelector('#caty-cs-input');
+    sendBtn.addEventListener('click', () => sendMsg(input.value));
+    input.addEventListener('keypress', e => { if (e.key === 'Enter') sendMsg(input.value); });
+
+    trackCommerceEvent('widget_loaded', {
+      mode: 'sidebar_only',
+      language: CONFIG.language,
+      vertical: CONFIG._industry || 'unknown',
+    });
   }
 
   // ============================================
