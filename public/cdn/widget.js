@@ -4156,45 +4156,63 @@
       console.warn('[CatyAI] Font extraction fallback');
     }
 
-    // ── 2. GLASSMORPHISM COLORS ────────────────────────────────
+    // ── 2. DETECT HOST BACKGROUND (not primary_color!) ─────────
+    let hostBg = null;
+    let hostIsDark = false;
+    try {
+      const cs = window.getComputedStyle(document.body);
+      hostBg = cs.backgroundColor;
+      if (!hostBg || hostBg === 'rgba(0, 0, 0, 0)' || hostBg === 'transparent') {
+        hostBg = window.getComputedStyle(document.documentElement).backgroundColor;
+      }
+      if (hostBg && hostBg !== 'rgba(0, 0, 0, 0)' && hostBg !== 'transparent') {
+        hostIsDark = _rgbLuminance(hostBg) < 0.5;
+      } else {
+        hostIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+    } catch(e) {
+      hostIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    // ── 3. PRIMARY COLOR FOR GLASS TINT ────────────────────────
     const themeHex = config?.appearance?.primary_color || config?.primaryColor || '#191c24';
     const rgb = hexToRgbValues(themeHex) || { r: 25, g: 28, b: 36 };
-    const luminance = (0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b) / 255;
-    const isDark = luminance < 0.5;
 
-    // ── 3. INJECT CSS VARIABLES ────────────────────────────────
+    // ── 4. INJECT CSS VARIABLES ────────────────────────────────
     const root = document.documentElement;
 
     // Font
     root.style.setProperty('--catyai-host-font', hostFont);
 
-    // Glass background
+    // Glass background (based on primary color for tint)
     root.style.setProperty('--catyai-glass-bg',
-      `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)`);
+      hostIsDark ? `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)` : `rgba(255,255,255,0.85)`);
     root.style.setProperty('--catyai-glass-bg-solid',
-      `rgba(${rgb.r},${rgb.g},${rgb.b},0.96)`);
+      hostIsDark ? `rgba(${rgb.r},${rgb.g},${rgb.b},0.96)` : `rgba(255,255,255,0.98)`);
     root.style.setProperty('--catyai-glass-border',
-      isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)');
+      hostIsDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)');
 
-    // Text — SOLID garantat, niciodată inherit
+    // Text — based on HOST background, not primary color
     root.style.setProperty('--catyai-text-primary',
-      isDark ? '#f1f5f9' : '#1e293b');
+      hostIsDark ? '#f1f5f9' : '#1e293b');
     root.style.setProperty('--catyai-text-secondary',
-      isDark ? '#94a3b8' : '#64748b');
+      hostIsDark ? '#94a3b8' : '#64748b');
 
-    // Bule
+    // Assistant bubbles — ALWAYS high contrast, solid backgrounds
     root.style.setProperty('--assistant-msg-bg',
-      isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)');
+      hostIsDark ? '#1e293b' : '#f1f5f9');
     root.style.setProperty('--assistant-text-color',
-      isDark ? '#f1f5f9' : '#1e293b');
+      hostIsDark ? '#f8fafc' : '#0f172a');
+
+    // User bubbles — primary color with white text
     root.style.setProperty('--user-msg-bg', themeHex);
     root.style.setProperty('--user-text-color', '#ffffff');
 
     // Legacy compat
-    root.style.setProperty('--catyai-host-bg', isDark ? '#111827' : '#ffffff');
-    root.style.setProperty('--catyai-host-text', isDark ? '#f1f5f9' : '#1e293b');
-    root.style.setProperty('--caty-bot-bubble-bg', isDark ? '#1e293b' : '#ffffff');
-    root.style.setProperty('--caty-bot-bubble-text', isDark ? '#f8fafc' : '#0f172a');
+    root.style.setProperty('--catyai-host-bg', hostIsDark ? '#111827' : '#ffffff');
+    root.style.setProperty('--catyai-host-text', hostIsDark ? '#f1f5f9' : '#1e293b');
+    root.style.setProperty('--caty-bot-bubble-bg', hostIsDark ? '#1e293b' : '#ffffff');
+    root.style.setProperty('--caty-bot-bubble-text', hostIsDark ? '#f8fafc' : '#0f172a');
   }
 
   // Create launcher button
