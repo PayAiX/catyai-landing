@@ -2099,7 +2099,13 @@
       --catyai-host-text: #1f2937;
       --caty-bot-bubble-bg: #ffffff;
       --caty-bot-bubble-text: #0f172a;
-      font-family: inherit !important;
+      --catyai-host-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --catyai-glass-bg: rgba(25,28,36,0.45);
+      --catyai-glass-bg-solid: rgba(25,28,36,0.96);
+      --catyai-glass-border: rgba(255,255,255,0.1);
+      --catyai-text-primary: #f1f5f9;
+      --catyai-text-secondary: #94a3b8;
+      font-family: var(--catyai-host-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
       position: fixed;
       z-index: 999999;
       font-size: 14px;
@@ -2143,7 +2149,7 @@
       transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
-    /* ── SIDEBAR 70/30 LAYOUT + PREMIUM BACKDROP ─────────── */
+    /* ── SIDEBAR 70/30 LAYOUT + GLASSMORPHISM ─────────────── */
     .caty-sidebar-panel {
       position: fixed !important;
       right: 0 !important;
@@ -2156,20 +2162,18 @@
       max-height: 100vh !important;
       min-height: 100vh !important;
       border-radius: 0 !important;
-      box-shadow: -4px 0 32px rgba(0, 0, 0, 0.12) !important;
-      border-left: 1px solid rgba(0, 0, 0, 0.08);
       display: flex !important;
       flex-direction: column !important;
       overflow: hidden !important;
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
       transform: translateX(0) !important;
-      background: var(--catyai-host-bg) !important;
-      color: var(--catyai-host-text) !important;
-      backdrop-filter: blur(32px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+      background: var(--catyai-glass-bg, rgba(25,28,36,0.45)) !important;
+      color: var(--catyai-text-primary, #f1f5f9) !important;
+      backdrop-filter: blur(24px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
       border: none !important;
-      border-left: 0.5px solid rgba(128, 128, 128, 0.2) !important;
-      box-shadow: -8px 0 48px rgba(0, 0, 0, 0.10), -2px 0 12px rgba(0,0,0,0.06) !important;
+      border-left: 1px solid var(--catyai-glass-border, rgba(255,255,255,0.1)) !important;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.15) !important;
     }
 
     .caty-sidebar-panel.caty-panel-hidden {
@@ -2211,29 +2215,70 @@
 
     @media (max-width: 768px) {
       body.caty-sidebar-active { margin-right: 0 !important; }
-      .caty-sidebar-panel {
+      .caty-sidebar-panel,
+      .caty-mobile-overlay {
         width: 100vw !important;
         max-width: 100vw !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: var(--catyai-host-bg, #ffffff) !important;
+        background: var(--catyai-glass-bg-solid, rgba(25,28,36,0.96)) !important;
+        backdrop-filter: blur(16px) saturate(140%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
       }
     }
 
-    /* ── FONT HIERARCHY ──────────────────────────────────── */
+    /* ── FONT HIJACKING GLOBAL ──────────────────────────────── */
+    .caty-sidebar-panel,
+    .caty-sidebar-panel *,
+    .caty-widget-container,
+    .caty-widget-container *,
+    .caty-widget,
+    .caty-widget *,
+    .caty-sidebar-panel input,
+    .caty-sidebar-panel textarea,
+    .caty-sidebar-panel button,
+    .caty-sidebar-panel select {
+      font-family: var(--catyai-host-font,
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif) !important;
+    }
+
     .caty-bubble-assistant .caty-bubble-text strong,
     .caty-bubble-bot strong,
     .bubble-bot strong,
     [class*="assistant"] strong {
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       font-style: italic;
       letter-spacing: -0.2px;
     }
 
     .caty-chat-header [class*="name"],
     .caty-widget-header [class*="title"] {
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       letter-spacing: -0.3px;
+    }
+
+    /* ── TEXTE SOLIDE ─────────────────────────────────────── */
+    .caty-widget-message,
+    .caty-bubble-text {
+      color: var(--catyai-text-primary, #f1f5f9) !important;
+    }
+    .caty-widget-message.assistant,
+    .caty-bubble-assistant {
+      background: var(--assistant-msg-bg, rgba(255,255,255,0.08)) !important;
+      color: var(--assistant-text-color, #f1f5f9) !important;
+    }
+    .caty-widget-message.user,
+    .caty-bubble-user {
+      background: var(--user-msg-bg) !important;
+      color: var(--user-text-color, #ffffff) !important;
+    }
+    .caty-widget-input,
+    .caty-input-field {
+      background: rgba(255,255,255,0.08) !important;
+      color: var(--catyai-text-primary, #f1f5f9) !important;
+      border: 1px solid var(--catyai-glass-border, rgba(255,255,255,0.1)) !important;
+    }
+    .caty-widget-input::placeholder,
+    .caty-input-field::placeholder {
+      color: var(--catyai-text-secondary, #94a3b8) !important;
     }
 
     /* ── LASER-LINE POP ANIMATION ─────────────────────────── */
@@ -2630,7 +2675,7 @@
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       transition: all 0.2s;
       text-align: left;
       display: flex;
@@ -2698,7 +2743,7 @@
       font-weight: 600;
       color: inherit;
       margin-bottom: 10px;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
     }
     .caty-slot-picker-grid {
       display: grid;
@@ -2713,7 +2758,7 @@
       cursor: pointer;
       transition: all 0.18s ease;
       text-align: center;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       opacity: 0.75;
     }
     .caty-slot-card:hover {
@@ -2732,7 +2777,7 @@
       font-size: 14px;
       font-weight: 600;
       color: inherit;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
     }
     .caty-slot-card.selected .caty-slot-time {
       color: #ffffff;
@@ -2758,7 +2803,7 @@
     }
 
     .caty-recommendation {
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       font-style: italic;
       font-size: 13.5px;
       line-height: 1.65;
@@ -2912,7 +2957,7 @@
       border-radius: 20px;
       padding: 10px 16px;
       font-size: 14px;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
       resize: none;
       max-height: 100px;
       min-height: 40px;
@@ -2947,7 +2992,7 @@
       cursor: pointer;
       transition: all 0.2s;
       flex-shrink: 0;
-      font-family: inherit !important;
+      font-family: var(--catyai-host-font, inherit) !important;
     }
 
     .caty-widget-send:hover:not(:disabled) {
@@ -3916,7 +3961,7 @@
       border: 1px solid var(--border-color);
       border-radius: 8px;
       font-size: 14px;
-      font-family: inherit;
+      font-family: var(--catyai-host-font, inherit);
       background: #ffffff !important;
       background-color: #ffffff !important;
       color: #1f2937 !important;
@@ -3954,7 +3999,7 @@
       resize: vertical;
       min-height: 80px;
       max-height: 150px;
-      font-family: inherit;
+      font-family: var(--catyai-host-font, inherit);
       line-height: 1.5;
     }
 
@@ -4091,34 +4136,65 @@
     return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255;
   }
 
-  function extractHostTheme(containerEl) {
+  function hexToRgbValues(hex) {
+    const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return r ? {
+      r: parseInt(r[1], 16),
+      g: parseInt(r[2], 16),
+      b: parseInt(r[3], 16)
+    } : null;
+  }
+
+  function applyWidgetTheme(config) {
+    // ── 1. FONT HIJACKING ──────────────────────────────────────
+    let hostFont = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     try {
-      const cs = window.getComputedStyle(document.body);
-      let bg = cs.backgroundColor;
-      const text = cs.color;
-
-      // Fallback: body is transparent → check html element
-      if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') {
-        bg = window.getComputedStyle(document.documentElement).backgroundColor;
-      }
-
-      const bgValid = bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent';
-      if (bgValid) {
-        containerEl.style.setProperty('--catyai-host-bg', bg);
-      }
-      if (text) {
-        containerEl.style.setProperty('--catyai-host-text', text);
-      }
-
-      // Smart bubble contrast: solid colors that always have high contrast
-      const hostIsDark = bgValid
-        ? _rgbLuminance(bg) < 0.5
-        : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      containerEl.style.setProperty('--caty-bot-bubble-bg', hostIsDark ? '#1e293b' : '#ffffff');
-      containerEl.style.setProperty('--caty-bot-bubble-text', hostIsDark ? '#f8fafc' : '#0f172a');
-    } catch (e) {
-      // silently keep defaults
+      const ref = document.querySelector('h1, h2, p') || document.body;
+      const extracted = window.getComputedStyle(ref).getPropertyValue('font-family');
+      if (extracted && extracted.trim()) hostFont = extracted.trim();
+    } catch(e) {
+      console.warn('[CatyAI] Font extraction fallback');
     }
+
+    // ── 2. GLASSMORPHISM COLORS ────────────────────────────────
+    const themeHex = config?.appearance?.primary_color || config?.primaryColor || '#191c24';
+    const rgb = hexToRgbValues(themeHex) || { r: 25, g: 28, b: 36 };
+    const luminance = (0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b) / 255;
+    const isDark = luminance < 0.5;
+
+    // ── 3. INJECT CSS VARIABLES ────────────────────────────────
+    const root = document.documentElement;
+
+    // Font
+    root.style.setProperty('--catyai-host-font', hostFont);
+
+    // Glass background
+    root.style.setProperty('--catyai-glass-bg',
+      `rgba(${rgb.r},${rgb.g},${rgb.b},0.45)`);
+    root.style.setProperty('--catyai-glass-bg-solid',
+      `rgba(${rgb.r},${rgb.g},${rgb.b},0.96)`);
+    root.style.setProperty('--catyai-glass-border',
+      isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)');
+
+    // Text — SOLID garantat, niciodată inherit
+    root.style.setProperty('--catyai-text-primary',
+      isDark ? '#f1f5f9' : '#1e293b');
+    root.style.setProperty('--catyai-text-secondary',
+      isDark ? '#94a3b8' : '#64748b');
+
+    // Bule
+    root.style.setProperty('--assistant-msg-bg',
+      isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)');
+    root.style.setProperty('--assistant-text-color',
+      isDark ? '#f1f5f9' : '#1e293b');
+    root.style.setProperty('--user-msg-bg', themeHex);
+    root.style.setProperty('--user-text-color', '#ffffff');
+
+    // Legacy compat
+    root.style.setProperty('--catyai-host-bg', isDark ? '#111827' : '#ffffff');
+    root.style.setProperty('--catyai-host-text', isDark ? '#f1f5f9' : '#1e293b');
+    root.style.setProperty('--caty-bot-bubble-bg', isDark ? '#1e293b' : '#ffffff');
+    root.style.setProperty('--caty-bot-bubble-text', isDark ? '#f8fafc' : '#0f172a');
   }
 
   // Create launcher button
@@ -6574,8 +6650,8 @@
       container.id = 'caty-widget-container';
       container.className = 'caty-widget';
 
-      // Chameleon: extract host site colors and inject as CSS vars
-      extractHostTheme(container);
+      // Chameleon v2: glassmorphism + font hijacking
+      applyWidgetTheme(state.config);
 
       // Create and append launcher
       const launcher = createLauncher();
