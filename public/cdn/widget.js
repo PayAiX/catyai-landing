@@ -2255,20 +2255,18 @@
       letter-spacing: -0.3px;
     }
 
-    /* ── TEXTE SOLIDE ─────────────────────────────────────── */
-    .caty-widget-message,
-    .caty-bubble-text {
-      color: var(--catyai-text-primary, #f1f5f9) !important;
-    }
-    .caty-widget-message.assistant,
+    /* ── TEXTE SOLIDE — TARGET BUBBLE, nu ROW-UL ─────────── */
+    .caty-widget-message.assistant .caty-widget-message-bubble,
     .caty-bubble-assistant {
       background: var(--assistant-msg-bg, rgba(255,255,255,0.08)) !important;
       color: var(--assistant-text-color, #f1f5f9) !important;
+      -webkit-text-fill-color: var(--assistant-text-color, #f1f5f9) !important;
     }
-    .caty-widget-message.user,
+    .caty-widget-message.user .caty-widget-message-bubble,
     .caty-bubble-user {
       background: var(--user-msg-bg) !important;
       color: var(--user-text-color, #ffffff) !important;
+      -webkit-text-fill-color: var(--user-text-color, #ffffff) !important;
     }
     .caty-widget-input,
     .caty-input-field {
