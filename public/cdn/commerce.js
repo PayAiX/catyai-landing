@@ -3816,8 +3816,23 @@
 
     // Extract host page colors for glassmorphism context
     const bodyStyles = window.getComputedStyle(document.body);
-    const hostBg = bodyStyles.backgroundColor || 'rgba(255,255,255,0.95)';
+    let hostBg = bodyStyles.backgroundColor;
+    // Fallback: body transparent → try html element
+    if (!hostBg || hostBg === 'rgba(0, 0, 0, 0)' || hostBg === 'transparent') {
+      hostBg = window.getComputedStyle(document.documentElement).backgroundColor;
+    }
+    if (!hostBg || hostBg === 'rgba(0, 0, 0, 0)' || hostBg === 'transparent') {
+      hostBg = 'rgb(255,255,255)';
+    }
     const hostText = bodyStyles.color || '#1f2937';
+    // Detect if host is dark to derive safe bubble contrast
+    const _csLum = (function(rgb) {
+      const m = rgb.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      return m ? (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255 : 1;
+    })(hostBg);
+    const _hostIsDark = _csLum < 0.5;
+    const botBubbleBg = _hostIsDark ? '#1e293b' : '#ffffff';
+    const botBubbleText = _hostIsDark ? '#f8fafc' : '#0f172a';
 
     // ── Premium 70/30 sidebar CSS ─────────────────────────────────────────
     const style = document.createElement('style');
@@ -3887,18 +3902,22 @@
         font-size:14px; line-height:1.5; word-break:break-word;
       }
       .caty-cs-msg.bot {
-        background:rgba(0,0,0,0.06); color:inherit;
+        background:${botBubbleBg}; color:${botBubbleText};
+        -webkit-text-fill-color:${botBubbleText};
+        border:1px solid rgba(128,128,128,0.12);
         align-self:flex-start; border-radius:4px 14px 14px 14px;
       }
       .caty-cs-msg.user {
         background:${primary}; color:#fff;
+        -webkit-text-fill-color:#fff;
         align-self:flex-end; border-radius:14px 14px 4px 14px;
       }
       /* ── Chips (vertical-adaptive) ── */
       .caty-cs-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
       .caty-cs-chip {
-        background:rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.12);
-        color:inherit; border-radius:20px; padding:6px 14px;
+        background:${botBubbleBg}; border:1px solid rgba(128,128,128,0.2);
+        color:${botBubbleText}; -webkit-text-fill-color:${botBubbleText};
+        border-radius:20px; padding:6px 14px;
         font-size:13px; cursor:pointer;
         transition:background 0.2s,color 0.2s,border-color 0.2s;
         white-space:nowrap;
@@ -3923,9 +3942,11 @@
         display:flex; gap:8px; flex-shrink:0;
       }
       .caty-cs-input {
-        flex:1; border:1px solid rgba(0,0,0,0.15); border-radius:24px;
+        flex:1; border:1px solid rgba(128,128,128,0.25); border-radius:24px;
         padding:10px 16px; font-size:14px; outline:none;
-        background:rgba(255,255,255,0.8); font-family:inherit;
+        background:${botBubbleBg}; color:${botBubbleText};
+        -webkit-text-fill-color:${botBubbleText};
+        font-family:inherit; color-scheme:light;
       }
       .caty-cs-input:focus { border-color:${primary}; box-shadow:0 0 0 2px ${primary}22; }
       .caty-cs-send {
@@ -3949,7 +3970,11 @@
       .caty-cs-fab svg { width:28px; height:28px; fill:#fff; }
       @media (max-width:768px) {
         body.caty-cs-active { margin-right:0 !important; }
-        .caty-cs-panel { width:100vw !important; max-width:100vw !important; }
+        .caty-cs-panel {
+          width:100vw !important; max-width:100vw !important;
+          backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+          background:${hostBg} !important;
+        }
         .caty-cs-fab { bottom:16px; right:16px; width:52px; height:52px; }
       }
     `;

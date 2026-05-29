@@ -2097,6 +2097,8 @@
       --input-text-color: ${CONFIG.inputTextColor || themeColors.textColor};
       --catyai-host-bg: #ffffff;
       --catyai-host-text: #1f2937;
+      --caty-bot-bubble-bg: #ffffff;
+      --caty-bot-bubble-text: #0f172a;
       font-family: inherit !important;
       position: fixed;
       z-index: 999999;
@@ -2212,6 +2214,9 @@
       .caty-sidebar-panel {
         width: 100vw !important;
         max-width: 100vw !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: var(--catyai-host-bg, #ffffff) !important;
       }
     }
 
@@ -2558,10 +2563,11 @@
     }
 
     .caty-widget-message.assistant .caty-widget-message-bubble {
-      background: rgba(128, 128, 128, 0.1);
-      color: var(--catyai-host-text);
+      background: var(--caty-bot-bubble-bg) !important;
+      color: var(--caty-bot-bubble-text) !important;
       border-bottom-left-radius: 4px;
-      -webkit-text-fill-color: var(--catyai-host-text);
+      -webkit-text-fill-color: var(--caty-bot-bubble-text) !important;
+      border: 1px solid rgba(128, 128, 128, 0.12);
     }
 
     .caty-widget-message.user .caty-widget-message-bubble {
@@ -2742,8 +2748,8 @@
 
     /* Ensure message text is always visible */
     .caty-widget-message.assistant .caty-message-content {
-      color: var(--catyai-host-text) !important;
-      -webkit-text-fill-color: var(--catyai-host-text) !important;
+      color: var(--caty-bot-bubble-text) !important;
+      -webkit-text-fill-color: var(--caty-bot-bubble-text) !important;
     }
 
     .caty-widget-message.user .caty-message-content {
@@ -2902,7 +2908,7 @@
     .caty-widget-input {
       flex: 1;
       min-width: 0;
-      border: 1px solid currentColor;
+      border: 1px solid rgba(128,128,128,0.25);
       border-radius: 20px;
       padding: 10px 16px;
       font-size: 14px;
@@ -2912,16 +2918,16 @@
       min-height: 40px;
       outline: none;
       transition: border-color 0.2s;
-      background: transparent;
-      color: inherit !important;
-      -webkit-text-fill-color: inherit !important;
-      opacity: 0.9;
+      background: var(--caty-bot-bubble-bg) !important;
+      color: var(--caty-bot-bubble-text) !important;
+      -webkit-text-fill-color: var(--caty-bot-bubble-text) !important;
+      color-scheme: light;
     }
 
     .caty-widget-input::placeholder {
-      color: inherit;
-      -webkit-text-fill-color: inherit;
-      opacity: 0.4;
+      color: var(--caty-bot-bubble-text);
+      -webkit-text-fill-color: var(--caty-bot-bubble-text);
+      opacity: 0.45;
     }
 
     .caty-widget-input:focus {
@@ -4079,17 +4085,37 @@
     document.head.appendChild(styleEl);
   }
 
+  function _rgbLuminance(rgb) {
+    const m = rgb.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (!m) return 1;
+    return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255;
+  }
+
   function extractHostTheme(containerEl) {
     try {
       const cs = window.getComputedStyle(document.body);
-      const bg = cs.backgroundColor;
+      let bg = cs.backgroundColor;
       const text = cs.color;
-      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+
+      // Fallback: body is transparent → check html element
+      if (!bg || bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') {
+        bg = window.getComputedStyle(document.documentElement).backgroundColor;
+      }
+
+      const bgValid = bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent';
+      if (bgValid) {
         containerEl.style.setProperty('--catyai-host-bg', bg);
       }
       if (text) {
         containerEl.style.setProperty('--catyai-host-text', text);
       }
+
+      // Smart bubble contrast: solid colors that always have high contrast
+      const hostIsDark = bgValid
+        ? _rgbLuminance(bg) < 0.5
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      containerEl.style.setProperty('--caty-bot-bubble-bg', hostIsDark ? '#1e293b' : '#ffffff');
+      containerEl.style.setProperty('--caty-bot-bubble-text', hostIsDark ? '#f8fafc' : '#0f172a');
     } catch (e) {
       // silently keep defaults
     }
