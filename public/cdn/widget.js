@@ -2302,13 +2302,13 @@
     .caty-widget-quick-reply {
       animation: none;
       opacity: 1;
-      transform: scaleX(1);
-      transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+      transform: translateY(0);
+      transition: transform 0.2s ease,
                   background 0.2s ease,
-                  box-shadow 0.2s ease;
-      will-change: transform, clip-path;
+                  box-shadow 0.2s ease,
+                  filter 0.2s ease;
+      will-change: transform;
       position: relative;
-      overflow: hidden;
     }
 
     .caty-widget-quick-reply.caty-chip-ready {
@@ -2326,15 +2326,11 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
       transform: skewX(-20deg);
       transition: left 0.5s ease;
+      pointer-events: none;
     }
 
     .caty-widget-quick-reply:hover::after {
       left: 150%;
-    }
-
-    .caty-widget-quick-reply:hover {
-      transform: translateX(5px) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
 
@@ -2655,38 +2651,53 @@
       animation-delay: 0.4s;
     }
 
+    /* ── CHIP BAR: horizontal scroll ─────────────────────────── */
     .caty-widget-quick-replies {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 8px 16px 12px 16px;
+      flex-direction: row;
+      gap: 8px;
+      padding: 10px 15px;
       background: transparent;
+      overflow-x: auto;
+      overflow-y: visible;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
-    /* Action button base - compact neuromarketing design */
+    .caty-widget-quick-replies::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ── CHIP BASE: premium pill ──────────────────────────────── */
     .caty-widget-quick-reply {
       opacity: 1 !important;
       background: var(--primary-color) !important;
       border: none !important;
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 8px 14px;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
       font-family: var(--catyai-host-font, inherit) !important;
       transition: all 0.2s;
-      text-align: left;
-      display: flex;
+      text-align: center;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-shrink: 0;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .caty-widget-quick-reply:hover {
-      border-color: var(--primary-color) !important;
-      transform: translateX(4px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      filter: brightness(0.88);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     }
 
     /* Neuromarketing: GREEN for lead capture (action/conversion) */
@@ -2700,7 +2711,7 @@
 
     .caty-widget-quick-reply.caty-action-lead:hover {
       background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-      transform: translateX(4px) scale(1.02);
+      transform: translateY(-2px) scale(1.02);
     }
 
     /* Neuromarketing: BLUE for schedule (trust/commitment) */
@@ -2714,7 +2725,7 @@
 
     .caty-widget-quick-reply.caty-action-schedule:hover {
       background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
-      transform: translateX(4px) scale(1.02);
+      transform: translateY(-2px) scale(1.02);
     }
 
     /* Neuromarketing: ORANGE for urgency actions */
