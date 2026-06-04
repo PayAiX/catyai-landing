@@ -10,68 +10,29 @@ const TOOL_CATEGORIES = [
     icon: '🔐',
     title: 'Trust & Visibility',
     count: 8,
-    tools: [
-      { name: 'caty_geo_answer', desc: 'AI-ready geographic answers with verified NAP data' },
-      { name: 'caty_llms_txt', desc: 'Generate and serve dynamic llms.txt for AI crawlers' },
-      { name: 'caty_jwks', desc: 'Expose JWKS endpoint for EdDSA signature verification' },
-      { name: 'caty_ai_visibility', desc: 'Score and report AI visibility across major LLMs' },
-      { name: 'caty_nap_verify', desc: 'Verify Name, Address, Phone consistency for AI' },
-      { name: 'caty_zero_trust_verify', desc: 'Cryptographic verification of business identity claims' },
-      { name: 'caty_knowledge_json', desc: 'Build machine-readable knowledge graph from business data' },
-      { name: 'caty_tso_build', desc: 'Temporal semantic object builder for AI context windows' },
-    ],
+    tools: 'caty_geo_answer · caty_nap_verify · caty_zero_trust_verify · caty_knowledge_json · caty_llms_txt · caty_jwks · caty_ai_visibility · caty_tso_build',
+    desc: 'Cryptographic data signing, EdDSA verification, and AI crawler discovery. The only MCP with Zero-Trust commerce.',
   },
   {
     icon: '🛒',
     title: 'E-commerce & Fraud',
     count: 10,
-    tools: [
-      { name: 'caty_order_shield', desc: 'Real-time fraud detection on incoming e-commerce orders' },
-      { name: 'caty_fraud_dna', desc: 'Behavioral fingerprint analysis for fraud risk scoring' },
-      { name: 'caty_catalog_rebuild', desc: 'AI-enhanced product catalog structuring and enrichment' },
-      { name: 'caty_intent_detect', desc: 'Detect buyer intent from conversation signals' },
-      { name: 'caty_render_product_cards', desc: 'Generate rich product cards for AI responses' },
-      { name: 'caty_get_order_status', desc: 'Real-time order status lookup via natural language' },
-      { name: 'caty_create_gomag_order', desc: 'Create orders directly in GoMag stores via Claude' },
-      { name: 'caty_check_availability', desc: 'Check product availability in real-time inventory' },
-      { name: 'caty_request_callback', desc: 'Schedule customer callbacks through AI conversation' },
-      { name: 'caty_liquid_ui', desc: 'Render dynamic liquid UI components inside chat' },
-    ],
+    tools: 'caty_order_shield · caty_fraud_dna · caty_catalog_rebuild · caty_intent_detect · caty_render_product_cards · caty_get_order_status · caty_create_gomag_order · caty_check_availability · caty_request_callback · caty_liquid_ui',
+    desc: 'COD fraud scoring unique to CEE/MENA markets. Real-time catalog enrichment and order management.',
   },
   {
     icon: '🧠',
     title: 'Semantic & Semiotic',
     count: 10,
-    tools: [
-      { name: 'caty_semantic_enrich', desc: 'Enrich product descriptions with semantic metadata' },
-      { name: 'caty_auto_keywords', desc: 'Auto-generate SEO and AI-optimized keywords' },
-      { name: 'caty_semantic_signal', desc: 'Detect market signals from semantic content patterns' },
-      { name: 'caty_industry_schema', desc: 'Map business data to industry-specific schema.org types' },
-      { name: 'caty_market_intel_report', desc: 'Generate competitive market intelligence reports' },
-      { name: 'caty_competitor_alert', desc: 'Monitor competitor mentions and strategy shifts via AI' },
-      { name: 'caty_kb_reindex', desc: 'Trigger full re-indexing of business knowledge base' },
-      { name: 'caty_kb_learn', desc: 'Teach new facts to the AI knowledge base in real-time' },
-      { name: 'caty_crawl_trigger', desc: 'Initiate web crawl for knowledge base data refresh' },
-      { name: 'caty_auto_brain', desc: 'Autonomous knowledge synthesis and gap detection' },
-    ],
+    tools: 'caty_semantic_enrich · caty_auto_keywords · caty_semantic_signal · caty_industry_schema · caty_market_intel_report · caty_competitor_alert · caty_kb_reindex · caty_kb_learn · caty_crawl_trigger · caty_auto_brain',
+    desc: '15-layer DeepSeek enrichment, semiotic market signals, and autonomous knowledge base management.',
   },
   {
     icon: '⚡',
     title: 'Ahauros SAG Agents',
     count: 11,
-    tools: [
-      { name: 'caty_ahauros_pricing', desc: 'Dynamic pricing optimization for CEE markets' },
-      { name: 'caty_ahauros_forecast', desc: 'AI-powered sales and demand forecasting' },
-      { name: 'caty_ahauros_fraud', desc: 'Advanced fraud detection with behavioral biometrics' },
-      { name: 'caty_ahauros_supplier', desc: 'Supplier evaluation and procurement intelligence' },
-      { name: 'caty_ahauros_profit', desc: 'Margin optimization and profitability analysis' },
-      { name: 'caty_ahauros_courier', desc: 'Courier selection and logistics cost optimization' },
-      { name: 'caty_ahauros_neuromarketing', desc: 'Neuromarketing pattern analysis for campaigns' },
-      { name: 'caty_ahauros_growth', desc: 'Growth strategy recommendations for e-commerce' },
-      { name: 'caty_ahauros_mentor', desc: 'AI business mentor for SMEs in Eastern Europe' },
-      { name: 'caty_ahauros_cee_certify', desc: 'CEE compliance certification and documentation' },
-      { name: 'caty_ahauros_health', desc: 'Business health monitoring and alert system' },
-    ],
+    tools: 'caty_ahauros_pricing · caty_ahauros_forecast · caty_ahauros_fraud · caty_ahauros_supplier · caty_ahauros_profit · caty_ahauros_courier · caty_ahauros_neuromarketing · caty_ahauros_growth · caty_ahauros_mentor · caty_ahauros_cee_certify · caty_ahauros_health',
+    desc: 'Deterministic SAG agents for pricing, logistics, and business intelligence. Zero LLM calls — zero hallucinations.',
   },
 ]
 
@@ -120,24 +81,27 @@ const PLANS = [
       'Custom integrations',
     ],
     cta: 'Contact Sales',
-    href: 'https://app.catyai.io/mcp/checkout?plan=mcp_enterprise',
+    href: 'mailto:contact@catyai.io',
   },
 ]
 
 const STEPS = [
-  { num: '01', title: 'Subscribe', desc: 'Choose a plan and receive your API key instantly.' },
+  { num: '01', title: 'Subscribe', desc: 'Choose your plan and get your API key instantly.' },
   { num: '02', title: 'Add config', desc: 'Paste the JSON snippet into claude_desktop_config.json.' },
-  { num: '03', title: 'Use 45 tools', desc: 'Claude can invoke all production tools immediately.' },
+  { num: '03', title: 'Use 45 tools', desc: 'Claude has access to all production tools immediately.' },
 ]
 
 const CONFIG_SNIPPET = `{
   "mcpServers": {
     "catyai": {
       "command": "npx",
-      "args": ["-y", "mcp-remote@latest",
-               "https://api.catyai.io/api/mcp"],
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://api.catyai.io/api/mcp"
+      ],
       "headers": {
-        "x-api-key": "YOUR_MCP_API_KEY"
+        "x-api-key": "YOUR_API_KEY"
       }
     }
   }
@@ -147,8 +111,10 @@ const SOFTWARE_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'CatyAI MCP Server',
+  description: 'Extend Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence.',
   url: 'https://catyai.io/mcp',
   applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'macOS, Windows, Linux',
   offers: [
     { '@type': 'Offer', price: '299', priceCurrency: 'EUR', name: 'Agency' },
     { '@type': 'Offer', price: '599', priceCurrency: 'EUR', name: 'Studio' },
@@ -191,9 +157,9 @@ export default function McpPage() {
   return (
     <>
       <SEO
-        title="CatyAI MCP Server — 45 Tools for Claude AI"
-        description="Extend Claude with 45 production-ready MCP tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
-        url="https://catyai.io/mcp"
+        title="CatyAI MCP Server — 45 AI Commerce Tools for Claude"
+        description="Extend Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence. Official Anthropic partner. From €299/month."
+        canonical="https://catyai.io/mcp"
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(SOFTWARE_SCHEMA)}</script>
@@ -201,7 +167,7 @@ export default function McpPage() {
       <style>{`
         .mcp-page { background: #010A1F; color: #f1f5f9; font-family: 'Inter', sans-serif; }
 
-        /* ── Hero ─────────────────────────────── */
+        /* Hero */
         .mcp-hero {
           min-height: 92vh;
           background: #010A1F;
@@ -256,8 +222,8 @@ export default function McpPage() {
 
         .mcp-hero-title {
           font-weight: 800;
-          font-size: clamp(2.4rem, 5vw, 4.6rem);
-          line-height: 1.06;
+          font-size: clamp(2.4rem, 5vw, 4.2rem);
+          line-height: 1.08;
           letter-spacing: -0.03em;
           color: #f1f5f9;
           margin-bottom: 1.5rem;
@@ -270,6 +236,12 @@ export default function McpPage() {
           max-width: 520px;
           margin-bottom: 2.5rem;
           font-weight: 300;
+        }
+        .mcp-hero-note {
+          font-size: 0.8rem;
+          color: #64748b;
+          margin-top: 1.2rem;
+          font-weight: 400;
         }
         .mcp-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
         .mcp-cta-primary {
@@ -296,7 +268,7 @@ export default function McpPage() {
         }
         .mcp-cta-secondary:hover { border-color: #818cf8; background: rgba(99,102,241,0.06); }
 
-        /* Code block (hero right) */
+        /* Code block */
         .mcp-code-block {
           background: #020C1B;
           border: 1px solid rgba(255,255,255,0.08);
@@ -341,10 +313,8 @@ export default function McpPage() {
           white-space: pre;
           overflow-x: auto;
         }
-        .mcp-code-body .json-key { color: #818cf8; }
-        .mcp-code-body .json-str { color: #86efac; }
 
-        /* ── Tools Grid ───────────────────────── */
+        /* Tools Grid */
         .mcp-tools {
           padding: 6rem 1.5rem;
           background: #010A1F;
@@ -378,7 +348,7 @@ export default function McpPage() {
           display: flex;
           align-items: center;
           gap: 0.75rem;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
         }
         .mcp-category-icon { font-size: 1.3rem; }
         .mcp-category-name {
@@ -397,31 +367,61 @@ export default function McpPage() {
           font-weight: 600;
           letter-spacing: 0.04em;
         }
-        .mcp-tool-list { display: flex; flex-direction: column; gap: 0.7rem; }
-        .mcp-tool-item {
-          display: grid;
-          grid-template-columns: auto 1fr;
-          gap: 0.75rem;
-          align-items: start;
-        }
-        .mcp-tool-name {
+        .mcp-category-tools {
           font-family: 'Courier New', monospace;
           font-size: 0.72rem;
-          font-weight: 600;
           color: #818cf8;
-          white-space: nowrap;
-          padding-top: 0.05rem;
+          line-height: 1.8;
+          margin-bottom: 1rem;
+          word-break: break-word;
         }
-        .mcp-tool-desc {
-          font-size: 0.78rem;
+        .mcp-category-desc {
+          font-size: 0.88rem;
           color: #64748b;
-          line-height: 1.5;
+          line-height: 1.6;
+          font-weight: 300;
         }
 
-        /* ── Pricing ─────────────────────────── */
-        .mcp-pricing {
+        /* How It Works */
+        .mcp-how {
           padding: 6rem 1.5rem;
           background: #030D26;
+          border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .mcp-steps {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+          margin-top: 3.5rem;
+        }
+        .mcp-step {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .mcp-step-num {
+          font-size: 3.5rem;
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          color: rgba(129,140,248,0.18);
+          line-height: 1;
+        }
+        .mcp-step-title {
+          font-weight: 700;
+          font-size: 1.1rem;
+          color: #e2e8f0;
+        }
+        .mcp-step-desc {
+          font-size: 0.9rem;
+          color: #64748b;
+          line-height: 1.65;
+          font-weight: 300;
+        }
+
+        /* Pricing */
+        .mcp-pricing {
+          padding: 6rem 1.5rem;
+          background: #010A1F;
           border-top: 1px solid rgba(255,255,255,0.05);
         }
         .mcp-pricing-grid {
@@ -523,44 +523,8 @@ export default function McpPage() {
         }
         .mcp-plan-cta-outline:hover { border-color: #818cf8; background: rgba(99,102,241,0.06); }
 
-        /* ── How It Works ─────────────────────── */
-        .mcp-how {
-          padding: 6rem 1.5rem;
-          background: #010A1F;
-          border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        .mcp-steps {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2.5rem;
-          margin-top: 3.5rem;
-        }
-        .mcp-step {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .mcp-step-num {
-          font-size: 3.5rem;
-          font-weight: 900;
-          letter-spacing: -0.04em;
-          color: rgba(129,140,248,0.18);
-          line-height: 1;
-        }
-        .mcp-step-title {
-          font-weight: 700;
-          font-size: 1.1rem;
-          color: #e2e8f0;
-        }
-        .mcp-step-desc {
-          font-size: 0.9rem;
-          color: #64748b;
-          line-height: 1.65;
-          font-weight: 300;
-        }
-
-        /* ── Live Endpoint ─────────────────────── */
-        .mcp-endpoint {
+        /* Live Status */
+        .mcp-status {
           padding: 4rem 1.5rem;
           background: #030D26;
           border-top: 1px solid rgba(99,102,241,0.12);
@@ -593,46 +557,29 @@ export default function McpPage() {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.8); }
         }
-        .mcp-endpoint-meta {
+        .mcp-status-meta {
           font-size: 0.85rem;
           color: #475569;
           font-family: monospace;
           letter-spacing: 0.04em;
         }
 
-        /* ── Anthropic Partner ─────────────────── */
-        .mcp-partner {
-          padding: 6rem 1.5rem;
+        /* Footer Trust */
+        .mcp-trust {
+          padding: 4rem 1.5rem 2rem;
           background: #010A1F;
           border-top: 1px solid rgba(255,255,255,0.05);
           text-align: center;
         }
-        .mcp-partner-inner { max-width: 680px; margin: 0 auto; }
-        .mcp-partner-label {
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: #818cf8;
-          margin-bottom: 1.5rem;
-        }
-        .mcp-partner-title {
-          font-weight: 800;
-          font-size: clamp(1.6rem, 3vw, 2.4rem);
-          letter-spacing: -0.025em;
-          color: #f1f5f9;
-          line-height: 1.2;
-          margin-bottom: 1rem;
-        }
-        .mcp-partner-sub {
-          font-size: 1rem;
-          color: #64748b;
-          line-height: 1.75;
-          margin-bottom: 2.5rem;
-          font-weight: 300;
+        .mcp-trust-text {
+          font-size: 0.85rem;
+          color: #475569;
+          line-height: 1.7;
+          max-width: 600px;
+          margin: 0 auto 2rem;
         }
 
-        /* ── Responsive ─────────────────────────── */
+        /* Responsive */
         @media (max-width: 1024px) {
           .mcp-categories-grid { grid-template-columns: 1fr; }
           .mcp-pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -650,28 +597,38 @@ export default function McpPage() {
       <div className="mcp-page">
         <GlobalHeader lang={lang} setLang={setLang} scrolled={scrolled} />
 
-        {/* ── Hero ───────────────────────────────── */}
+        {/* Hero */}
         <section className="mcp-hero">
           <div className="mcp-hero-inner">
             <div>
               <div className="mcp-badge-row">
-                <span className="mcp-badge">⬡ MCP Server</span>
+                <span className="mcp-badge">MCP Server</span>
                 <span className="mcp-badge">45 Tools</span>
-                <span className="mcp-badge mcp-badge-gold">✦ Anthropic Claude Partner Network — Official</span>
+                <span className="mcp-badge mcp-badge-gold">Production Ready</span>
               </div>
               <h1 className="mcp-hero-title">
-                Extend Claude with<br />
-                <span>45 Production Tools</span>
+                Add 45 AI Commerce Tools<br />
+                <span>to Claude in 60 seconds.</span>
               </h1>
               <p className="mcp-hero-sub">
-                The only MCP server with cryptographic data signing, semiotic market intelligence, and Zero-Trust commerce. Connect in 60 seconds.
+                CatyAI MCP extends Claude Desktop and Claude Code with fraud detection, semantic enrichment, Zero-Trust commerce, and real-time market intelligence. Built for agencies and developers. Ready for production.
               </p>
               <div className="mcp-cta-row">
-                <a href="https://app.catyai.io/mcp/pricing" className="mcp-cta-primary">
+                <a href="https://app.catyai.io/mcp/checkout?plan=mcp_agency" className="mcp-cta-primary">
                   Subscribe — from €299/month
                 </a>
-                <Link to="/contact" className="mcp-cta-secondary">Talk to Sales →</Link>
+                <a
+                  href="https://api.catyai.io/.well-known/ai-context"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mcp-cta-secondary"
+                >
+                  View Live Endpoint ↗
+                </a>
               </div>
+              <p className="mcp-hero-note">
+                Works with Claude Desktop · Claude Code · Any MCP client
+              </p>
             </div>
 
             {/* Code block */}
@@ -692,11 +649,11 @@ export default function McpPage() {
           </div>
         </section>
 
-        {/* ── Tools Grid ─────────────────────────── */}
+        {/* Tools Grid */}
         <section className="mcp-tools">
           <div className="mcp-section-inner">
             <h2 className="mcp-section-title">45 Tools. 4 Categories.</h2>
-            <p className="mcp-section-sub">Production-ready tools for Trust, Commerce, Semantics, and Autonomous Agents.</p>
+            <p className="mcp-section-sub">Production-ready tools for Trust, Commerce, Intelligence, and Autonomy.</p>
             <div className="mcp-categories-grid">
               {TOOL_CATEGORIES.map((cat) => (
                 <div key={cat.title} className="mcp-category-card">
@@ -705,21 +662,32 @@ export default function McpPage() {
                     <span className="mcp-category-name">{cat.title}</span>
                     <span className="mcp-category-count">{cat.count} tools</span>
                   </div>
-                  <div className="mcp-tool-list">
-                    {cat.tools.map((tool) => (
-                      <div key={tool.name} className="mcp-tool-item">
-                        <span className="mcp-tool-name">{tool.name}</span>
-                        <span className="mcp-tool-desc">{tool.desc}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="mcp-category-tools">{cat.tools}</div>
+                  <div className="mcp-category-desc">{cat.desc}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Pricing ────────────────────────────── */}
+        {/* How It Works */}
+        <section id="how-it-works" className="mcp-how">
+          <div className="mcp-section-inner">
+            <h2 className="mcp-section-title">Up and running in 3 steps.</h2>
+            <p className="mcp-section-sub">No local server, no Docker, no configuration overhead.</p>
+            <div className="mcp-steps">
+              {STEPS.map((step) => (
+                <div key={step.num} className="mcp-step">
+                  <div className="mcp-step-num">{step.num}</div>
+                  <div className="mcp-step-title">{step.title}</div>
+                  <div className="mcp-step-desc">{step.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
         <section className="mcp-pricing">
           <div className="mcp-section-inner">
             <h2 className="mcp-section-title">Simple Pricing. Serious Tools.</h2>
@@ -738,8 +706,6 @@ export default function McpPage() {
                   </ul>
                   <a
                     href={plan.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className={`mcp-plan-cta ${plan.highlight ? 'mcp-plan-cta-primary' : 'mcp-plan-cta-outline'}`}
                   >
                     {plan.cta}
@@ -750,27 +716,10 @@ export default function McpPage() {
           </div>
         </section>
 
-        {/* ── How It Works ───────────────────────── */}
-        <section className="mcp-how">
-          <div className="mcp-section-inner">
-            <h2 className="mcp-section-title">Up and running in 3 steps.</h2>
-            <p className="mcp-section-sub">No local server, no Docker, no configuration overhead.</p>
-            <div className="mcp-steps">
-              {STEPS.map((step) => (
-                <div key={step.num} className="mcp-step">
-                  <div className="mcp-step-num">{step.num}</div>
-                  <div className="mcp-step-title">{step.title}</div>
-                  <div className="mcp-step-desc">{step.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Live Endpoint ──────────────────────── */}
-        <section className="mcp-endpoint">
+        {/* Live Status */}
+        <section className="mcp-status">
           <a
-            href="https://api.catyai.io/.well-known/ai-context"
+            href="https://api.catyai.io/api/mcp"
             target="_blank"
             rel="noopener noreferrer"
             className="mcp-live-badge"
@@ -778,28 +727,16 @@ export default function McpPage() {
             <span className="mcp-live-dot" />
             Live · api.catyai.io/api/mcp
           </a>
-          <div className="mcp-endpoint-meta">
+          <div className="mcp-status-meta">
             45 tools active · NAP V3 · EdDSA signed · EU AI Act compliant
           </div>
         </section>
 
-        {/* ── Anthropic Partner ──────────────────── */}
-        <section className="mcp-partner">
-          <div className="mcp-partner-inner">
-            <div className="mcp-partner-label">Anthropic Claude Partner Network</div>
-            <h2 className="mcp-partner-title">
-              Built by the first Anthropic Claude Partner in Romania
-            </h2>
-            <p className="mcp-partner-sub">
-              One of 100 firms globally accepted into the Claude Partner Network Services Track. CatyAI's MCP server is built on the same cryptographic infrastructure that powers NAP V3 — the only production MCP with EdDSA-signed payloads and Zero-Trust verification.
-            </p>
-            <div className="mcp-cta-row" style={{ justifyContent: 'center' }}>
-              <a href="https://app.catyai.io/mcp/pricing" className="mcp-cta-primary">
-                Subscribe — from €299/month
-              </a>
-              <Link to="/protocol" className="mcp-cta-secondary">Read NAP V3 Protocol →</Link>
-            </div>
-          </div>
+        {/* Footer Trust */}
+        <section className="mcp-trust">
+          <p className="mcp-trust-text">
+            Built with Anthropic technology · NAP V3 Protocol · EU AI Act compliant · PayAi-X FZE
+          </p>
         </section>
 
         <FooterV9 lang={lang} />
