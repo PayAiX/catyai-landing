@@ -200,6 +200,7 @@ export default function FooterV9({ lang = 'en' }) {
               <li><a href="https://docs.catyai.io/api/overview.html" className="fv9-link" target="_blank" rel="noopener noreferrer">API Reference <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><Link to="/protocol" className="fv9-link">NAP V3 Protocol <ArrowUpRight className="w-3 h-3" /></Link></li>
               <li><Link to="/nap" className="fv9-link">AKL v2 Docs <ArrowUpRight className="w-3 h-3" /></Link></li>
+              <li><Link to="/mcp" className="fv9-link">MCP Server <ArrowUpRight className="w-3 h-3" /></Link></li>
             </ul>
           </div>
 
