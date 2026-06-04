@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowUpRight, Mail, Globe } from 'lucide-react'
 
 const translations = {
@@ -197,6 +198,8 @@ export default function FooterV9({ lang = 'en' }) {
               <li><a href="/blog" className="fv9-link">Blog <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="https://docs.catyai.io" className="fv9-link" target="_blank" rel="noopener noreferrer">{t.docs} <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="https://docs.catyai.io/api/overview.html" className="fv9-link" target="_blank" rel="noopener noreferrer">API Reference <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><Link to="/protocol" className="fv9-link">NAP V3 Protocol <ArrowUpRight className="w-3 h-3" /></Link></li>
+              <li><Link to="/nap" className="fv9-link">AKL v2 Docs <ArrowUpRight className="w-3 h-3" /></Link></li>
             </ul>
           </div>
 
