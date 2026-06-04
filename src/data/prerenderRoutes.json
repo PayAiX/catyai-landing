@@ -477,5 +477,17 @@
     "name": "Investor Relations \u2014 PayAi-X FZE",
     "title": "Investor Relations \u2014 PayAi-X FZE | Zero-Trust AI Infrastructure",
     "description": "PayAi-X FZE is defining the Zero-Trust standard for the AI economy. Access our technical whitepaper, pitch deck, and corporate data room."
+  },
+  {
+    "path": "/protocol",
+    "name": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
+    "title": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
+    "description": "Open protocol for AI crawler discovery. NAP V3 + AKL v2 transforms your business data into cryptographically signed, AI-native endpoints indexed by GPT, Gemini, Claude, and Perplexity."
+  },
+  {
+    "path": "/nap",
+    "name": "NAP V3 Protocol \u2014 Native AI Protocol (alias)",
+    "title": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
+    "description": "Open protocol for AI crawler discovery. NAP V3 + AKL v2 transforms your business data into cryptographically signed, AI-native endpoints indexed by GPT, Gemini, Claude, and Perplexity."
   }
 ]
