@@ -450,6 +450,37 @@ export default function McpPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Stacking cards scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll('.stack-card')
+      const total = cards.length
+      cards.forEach((card, idx) => {
+        const inner = card.querySelector('.stack-card-inner')
+        if (!inner) return
+        const rect = card.getBoundingClientRect()
+        const stickyTopPx = window.innerHeight * 0.10
+        const distance = stickyTopPx - rect.top
+        const threshold = window.innerHeight * 0.5
+        const baseScale = 1 - (idx * 0.03)
+        if (distance > 0 && idx < total - 1) {
+          const progress = Math.min(distance / threshold, 1)
+          const scale = baseScale - (progress * 0.05)
+          inner.style.transform = `scale(${scale})`
+        } else {
+          inner.style.transform = `scale(${baseScale})`
+        }
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
   function handleCopy() {
     navigator.clipboard.writeText(CONFIG_SNIPPET).then(() => {
       setCopied(true)
@@ -487,7 +518,7 @@ export default function McpPage() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(ellipse 60% 50% at 65% 5%, rgba(99,102,241,0.14) 0%, transparent 65%),
+            radial-gradient(ellipse 60% 50% at 65% 5%, rgba(200,161,101,0.13) 0%, transparent 65%),
             radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,161,101,0.09) 0%, transparent 60%);
           pointer-events: none;
         }
@@ -508,9 +539,9 @@ export default function McpPage() {
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
-          background: rgba(99,102,241,0.1);
-          border: 1px solid rgba(99,102,241,0.28);
-          color: #818cf8;
+          background: rgba(200,161,101,0.1);
+          border: 1px solid rgba(200,161,101,0.28);
+          color: #C8A165;
           font-size: 0.72rem;
           font-weight: 600;
           letter-spacing: 0.10em;
@@ -518,10 +549,10 @@ export default function McpPage() {
           padding: 0.35rem 0.85rem;
           border-radius: 100px;
         }
-        .mcp-badge-gold {
-          background: rgba(200,161,101,0.1);
-          border: 1px solid rgba(200,161,101,0.28);
-          color: #C8A165;
+        .mcp-badge-accent {
+          background: rgba(200,161,101,0.15);
+          border: 1px solid rgba(200,161,101,0.4);
+          color: #D4B57A;
         }
 
         .mcp-hero-title {
@@ -532,7 +563,7 @@ export default function McpPage() {
           color: #f1f5f9;
           margin-bottom: 1.5rem;
         }
-        .mcp-hero-title span { color: #818cf8; }
+        .mcp-hero-title span { color: #C8A165; }
         .mcp-hero-sub {
           font-size: clamp(1rem, 1.4vw, 1.15rem);
           color: #94a3b8;
@@ -548,7 +579,7 @@ export default function McpPage() {
         }
         .mcp-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
         .mcp-cta-primary {
-          background: #818cf8;
+          background: #C8A165;
           color: #010A1F;
           font-weight: 700;
           font-size: 0.95rem;
@@ -557,7 +588,7 @@ export default function McpPage() {
           text-decoration: none;
           transition: background 0.2s;
         }
-        .mcp-cta-primary:hover { background: #a5b4fc; }
+        .mcp-cta-primary:hover { background: #D4B57A; }
         .mcp-cta-secondary {
           background: transparent;
           border: 1px solid rgba(255,255,255,0.18);
@@ -569,7 +600,7 @@ export default function McpPage() {
           text-decoration: none;
           transition: border-color 0.2s, background 0.2s;
         }
-        .mcp-cta-secondary:hover { border-color: #818cf8; background: rgba(99,102,241,0.06); }
+        .mcp-cta-secondary:hover { border-color: #C8A165; background: rgba(200,161,101,0.06); }
 
         /* Code block */
         .mcp-code-block {
@@ -595,9 +626,9 @@ export default function McpPage() {
           letter-spacing: 0.08em;
         }
         .mcp-copy-btn {
-          background: rgba(129,140,248,0.12);
-          border: 1px solid rgba(129,140,248,0.25);
-          color: #818cf8;
+          background: rgba(200,161,101,0.12);
+          border: 1px solid rgba(200,161,101,0.25);
+          color: #C8A165;
           font-size: 0.7rem;
           font-weight: 600;
           padding: 0.25rem 0.75rem;
@@ -606,7 +637,7 @@ export default function McpPage() {
           transition: background 0.15s;
           letter-spacing: 0.04em;
         }
-        .mcp-copy-btn:hover { background: rgba(129,140,248,0.22); }
+        .mcp-copy-btn:hover { background: rgba(200,161,101,0.22); }
         .mcp-code-body {
           padding: 1.5rem 1.4rem;
           font-family: 'Courier New', monospace;
@@ -617,8 +648,8 @@ export default function McpPage() {
           overflow-x: auto;
         }
 
-        /* Categories */
-        .mcp-tools { padding: 6rem 1.5rem; background: #010A1F; }
+        /* Categories Section */
+        .mcp-tools { padding: 6rem 1.5rem 0; background: #010A1F; }
         .mcp-section-inner { max-width: 1200px; margin: 0 auto; }
         .mcp-section-title {
           font-weight: 800;
@@ -630,82 +661,130 @@ export default function McpPage() {
         .mcp-section-sub {
           font-size: 1rem;
           color: #64748b;
-          margin-bottom: 3.5rem;
+          margin-bottom: 2rem;
           font-weight: 300;
         }
-        .mcp-categories-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-        }
 
-        /* Category Card (GeoGateway style) */
-        .mcp-card {
+        /* Stacking Cards — identical to HomePage */
+        .stacking-section { position: relative; }
+        .stack-card {
+          position: sticky;
+          top: 10vh;
+          margin-bottom: 20vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem 1.5rem;
+          will-change: transform;
+          isolation: isolate;
+        }
+        .stack-card::before {
+          content: '';
+          position: absolute;
+          inset: 1rem;
+          border-radius: 28px;
+          background: radial-gradient(
+            ellipse at 50% 50%,
+            rgba(200, 161, 101, 0.15) 0%,
+            rgba(200, 161, 101, 0.05) 40%,
+            transparent 75%
+          );
+          filter: blur(40px);
+          opacity: 0.6;
+          z-index: -1;
+          pointer-events: none;
+        }
+        .stack-card-inner {
+          width: 100%;
+          max-width: 1100px;
+          border-radius: 28px;
+          background: linear-gradient(180deg, rgba(10, 27, 61, 0.97) 0%, rgba(1, 10, 31, 0.99) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow:
+            0 30px 80px -20px rgba(0, 0, 0, 0.8),
+            0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+          padding: 3rem 3rem;
+          backdrop-filter: blur(30px);
+          -webkit-backdrop-filter: blur(30px);
+          transform-origin: 50% 0%;
+          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
-          background: linear-gradient(145deg, rgba(10,27,61,0.6) 0%, rgba(1,10,31,0.8) 100%);
-          border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 20px;
-          padding: 2rem;
-          backdrop-filter: blur(12px);
-          transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
           overflow: hidden;
         }
-        .mcp-card::before {
+        .stack-card-inner::before {
           content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(129,140,248,0.35), transparent);
-          opacity: 0;
-          transition: opacity 0.3s;
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(200, 161, 101, 0.4), transparent);
         }
-        .mcp-card:hover {
-          border-color: rgba(129,140,248,0.35);
-          transform: translateY(-3px);
-          box-shadow: 0 24px 60px -16px rgba(0,0,0,0.7), 0 0 40px -10px rgba(129,140,248,0.12);
-        }
-        .mcp-card:hover::before { opacity: 1; }
+        .stack-card[data-index="0"] .stack-card-inner { transform: scale(1); }
+        .stack-card[data-index="1"] .stack-card-inner { transform: scale(0.97); }
+        .stack-card[data-index="2"] .stack-card-inner { transform: scale(0.94); }
+        .stack-card[data-index="3"] .stack-card-inner { transform: scale(0.91); }
 
-        .mcp-card-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
-        .mcp-card-tag {
-          display: inline-flex;
-          padding: 0.25rem 0.7rem;
-          border-radius: 999px;
-          background: rgba(129,140,248,0.08);
-          border: 1px solid rgba(129,140,248,0.2);
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.65rem;
-          color: #818cf8;
-          letter-spacing: 0.05em;
-          margin-bottom: 0.75rem;
-        }
-        .mcp-card-title {
-          font-size: 1.15rem;
+        .stack-card-inner h3 {
+          font-size: clamp(2rem, 4vw, 3.5rem);
           font-weight: 700;
+          letter-spacing: -0.04em;
+          line-height: 0.95;
           color: #f8fafc;
           margin-bottom: 0.5rem;
         }
-        .mcp-card-tagline {
-          font-size: 0.95rem;
-          font-weight: 500;
-          color: #818cf8;
-          margin-bottom: 0.75rem;
-          line-height: 1.4;
+        .card-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.4rem 0.9rem;
+          border-radius: 999px;
+          background: rgba(200, 161, 101, 0.08);
+          border: 1px solid rgba(200, 161, 101, 0.2);
+          color: #D4B57A;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.7rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 1.5rem;
         }
-        .mcp-card-body {
-          font-size: 0.875rem;
+        .layer-tagline {
+          font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+          color: #C8A165;
+          font-weight: 500;
+          margin-top: 1rem;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.01em;
+        }
+        .layer-body {
+          font-size: 1.05rem;
           color: #94a3b8;
           line-height: 1.65;
-          margin-bottom: 1rem;
+          max-width: 90%;
         }
-        .mcp-card-pill {
+        .compliance-pill {
           display: inline-flex;
-          padding: 0.4rem 0.75rem;
-          border-radius: 8px;
-          background: rgba(129,140,248,0.05);
-          border: 1px solid rgba(129,140,248,0.15);
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 1.5rem;
+          padding: 0.75rem 1rem;
+          border-radius: 10px;
+          background: rgba(200, 161, 101, 0.06);
+          border: 1px solid rgba(200, 161, 101, 0.18);
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.65rem;
-          color: #a5b4fc;
+          font-size: 0.78rem;
+          color: #D4B57A;
           line-height: 1.5;
+        }
+        .stack-card-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          display: block;
+        }
+
+        @media (max-width: 768px) {
+          .stack-card-inner { padding: 2rem; border-radius: 20px; }
+          .stack-card { padding: 1rem; margin-bottom: 10vh; }
+          .stack-card-inner h3 { font-size: 1.8rem; }
+          .layer-body { max-width: 100%; }
         }
 
         /* How It Works */
@@ -725,7 +804,7 @@ export default function McpPage() {
           font-size: 3.5rem;
           font-weight: 900;
           letter-spacing: -0.04em;
-          color: rgba(129,140,248,0.18);
+          color: rgba(200,161,101,0.18);
           line-height: 1;
         }
         .mcp-step-title { font-weight: 700; font-size: 1.1rem; color: #e2e8f0; }
@@ -751,17 +830,17 @@ export default function McpPage() {
           position: relative;
           transition: border-color 0.2s;
         }
-        .mcp-plan:hover { border-color: rgba(129,140,248,0.25); }
+        .mcp-plan:hover { border-color: rgba(200,161,101,0.25); }
         .mcp-plan-popular {
-          border-color: rgba(129,140,248,0.35);
-          background: rgba(99,102,241,0.06);
+          border-color: rgba(200,161,101,0.35);
+          background: rgba(200,161,101,0.06);
         }
         .mcp-popular-badge {
           position: absolute;
           top: -0.7rem;
           left: 50%;
           transform: translateX(-50%);
-          background: #818cf8;
+          background: #C8A165;
           color: #010A1F;
           font-size: 0.65rem;
           font-weight: 700;
@@ -809,7 +888,7 @@ export default function McpPage() {
         }
         .mcp-plan-features li::before {
           content: '✓';
-          color: #818cf8;
+          color: #C8A165;
           font-weight: 700;
           font-size: 0.8rem;
           flex-shrink: 0;
@@ -824,20 +903,20 @@ export default function McpPage() {
           text-decoration: none;
           transition: all 0.2s;
         }
-        .mcp-plan-cta-primary { background: #818cf8; color: #010A1F; }
-        .mcp-plan-cta-primary:hover { background: #a5b4fc; }
+        .mcp-plan-cta-primary { background: #C8A165; color: #010A1F; }
+        .mcp-plan-cta-primary:hover { background: #D4B57A; }
         .mcp-plan-cta-outline {
           background: transparent;
           border: 1px solid rgba(255,255,255,0.15);
           color: #f1f5f9;
         }
-        .mcp-plan-cta-outline:hover { border-color: #818cf8; background: rgba(99,102,241,0.06); }
+        .mcp-plan-cta-outline:hover { border-color: #C8A165; background: rgba(200,161,101,0.06); }
 
         /* Live Status */
         .mcp-status {
           padding: 4rem 1.5rem;
           background: #030D26;
-          border-top: 1px solid rgba(99,102,241,0.12);
+          border-top: 1px solid rgba(200,161,101,0.15);
           text-align: center;
         }
         .mcp-live-badge {
@@ -889,7 +968,6 @@ export default function McpPage() {
 
         /* Responsive */
         @media (max-width: 1024px) {
-          .mcp-categories-grid { grid-template-columns: 1fr; }
           .mcp-pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
           .mcp-steps { grid-template-columns: 1fr; gap: 2rem; }
         }
@@ -899,7 +977,6 @@ export default function McpPage() {
         }
         @media (max-width: 600px) {
           .mcp-pricing-grid { grid-template-columns: 1fr; }
-          .mcp-card { padding: 1.5rem; }
         }
       `}</style>
 
@@ -913,7 +990,7 @@ export default function McpPage() {
               <div className="mcp-badge-row">
                 <span className="mcp-badge">{t.badge1}</span>
                 <span className="mcp-badge">{t.badge2}</span>
-                <span className="mcp-badge mcp-badge-gold">{t.badge3}</span>
+                <span className="mcp-badge mcp-badge-accent">{t.badge3}</span>
               </div>
               <h1 className="mcp-hero-title">
                 {t.heroTitle}<br />
@@ -954,24 +1031,25 @@ export default function McpPage() {
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="mcp-tools">
-          <div className="mcp-section-inner">
+        {/* Categories — Stacking Cards */}
+        <section className="mcp-tools stacking-section">
+          <div className="mcp-section-inner" style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 className="mcp-section-title">{t.toolsTitle}</h2>
             <p className="mcp-section-sub">{t.toolsSub}</p>
-            <div className="mcp-categories-grid">
-              {t.categories.map((cat, i) => (
-                <div key={i} className="mcp-card">
-                  <span className="mcp-card-icon">{cat.icon}</span>
-                  <span className="mcp-card-tag">{cat.tag}</span>
-                  <div className="mcp-card-title">{cat.title}</div>
-                  <div className="mcp-card-tagline">{cat.tagline}</div>
-                  <div className="mcp-card-body">{cat.body}</div>
-                  <span className="mcp-card-pill">{cat.pill}</span>
-                </div>
-              ))}
-            </div>
           </div>
+
+          {t.categories.map((cat, i) => (
+            <div key={i} className="stack-card" data-index={i}>
+              <div className="stack-card-inner">
+                <span className="stack-card-icon">{cat.icon}</span>
+                <span className="card-tag">{cat.tag}</span>
+                <h3>{cat.title}</h3>
+                <p className="layer-tagline">{cat.tagline}</p>
+                <p className="layer-body">{cat.body}</p>
+                <div className="compliance-pill">{cat.pill}</div>
+              </div>
+            </div>
+          ))}
         </section>
 
         {/* How It Works */}
