@@ -489,5 +489,11 @@
     "name": "NAP V3 Protocol \u2014 Native AI Protocol (alias)",
     "title": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
     "description": "Open protocol for AI crawler discovery. NAP V3 + AKL v2 transforms your business data into cryptographically signed, AI-native endpoints indexed by GPT, Gemini, Claude, and Perplexity."
+  },
+  {
+    "path": "/mcp",
+    "name": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
+    "title": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
+    "description": "Extend Claude with 45 production-ready MCP tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
   }
 ]
