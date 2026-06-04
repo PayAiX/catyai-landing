@@ -89,7 +89,7 @@ const PLANS = [
       'Email support',
     ],
     cta: 'Start Agency',
-    href: '/api/admin/billing-mcp/checkout?plan=mcp_agency',
+    href: 'https://app.catyai.io/mcp/checkout?plan=mcp_agency',
   },
   {
     id: 'mcp_studio',
@@ -104,7 +104,7 @@ const PLANS = [
       'Usage analytics',
     ],
     cta: 'Start Studio',
-    href: '/api/admin/billing-mcp/checkout?plan=mcp_studio',
+    href: 'https://app.catyai.io/mcp/checkout?plan=mcp_studio',
   },
   {
     id: 'mcp_enterprise',
@@ -120,7 +120,7 @@ const PLANS = [
       'Custom integrations',
     ],
     cta: 'Contact Sales',
-    href: 'mailto:contact@catyai.io',
+    href: 'https://app.catyai.io/mcp/checkout?plan=mcp_enterprise',
   },
 ]
 
@@ -738,6 +738,8 @@ export default function McpPage() {
                   </ul>
                   <a
                     href={plan.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`mcp-plan-cta ${plan.highlight ? 'mcp-plan-cta-primary' : 'mcp-plan-cta-outline'}`}
                   >
                     {plan.cta}
