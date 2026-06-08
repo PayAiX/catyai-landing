@@ -39,6 +39,14 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} --delete
 
+      - name: Fix content-type for .well-known/ucp
+        run: |
+          aws s3 cp s3://${{ secrets.S3_BUCKET }}/.well-known/ucp \
+            s3://${{ secrets.S3_BUCKET }}/.well-known/ucp \
+            --content-type "application/json" \
+            --metadata-directive REPLACE \
+            --cache-control "public, max-age=3600"
+
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
