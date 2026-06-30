@@ -493,8 +493,8 @@ export default function McpPage() {
   return (
     <>
       <SEO
-        title="CatyAI MCP Server — 45 AI Commerce Tools for Claude"
-        description="Extend Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence. Official Anthropic partner. From €299/month."
+        title="Model Context Protocol (MCP) Server — 45 AI Commerce Tools for Claude | CatyAI"
+        description="CatyAI's Model Context Protocol (MCP) server extends Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence. Official Anthropic partner. From €299/month."
         canonical="https://catyai.io/mcp"
       />
       <Helmet>
