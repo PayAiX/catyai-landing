@@ -16,6 +16,7 @@ const NAV_ITEMS = [
       { label: 'Neural Node', desc: 'LLM visibility protocol', href: '/protocol', icon: 'cpu' },
       { label: 'FraudAI Shield', desc: 'Anti-phishing & scam detection', href: '/fraud-shield', icon: 'shield-check' },
       { label: 'Zero-Trust AI Ads', desc: 'Cryptographic ad verification', href: '/research/zero-trust-ai-ads-en', icon: 'fingerprint' },
+      { label: 'Agentic Marketplace', desc: 'AI-to-AI verified commerce', href: '/agentic-marketplace', icon: 'store' },
     ],
   },
   {
