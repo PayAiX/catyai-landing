@@ -495,5 +495,11 @@
     "name": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
     "title": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
     "description": "Extend Claude with 45 production-ready MCP tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
+  },
+  {
+    "path": "/agentic-marketplace",
+    "name": "Agentic Marketplace",
+    "title": "Agentic Marketplace \u2014 comer\u021b AI-to-AI verificat | CatyAI",
+    "description": "CatyAI face produsele comercian\u021bilor reali descoperibile \u015fi recomandabile de agen\u021bii AI (ChatGPT, Claude, Perplexity, Gemini): catalog semnat criptografic, validare determinst\u0103, redirect la comerciant. F\u0103r\u0103 cripto, f\u0103r\u0103 API, f\u0103r\u0103 a atinge banii sau datele clientului."
   }
 ]
