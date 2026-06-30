@@ -247,14 +247,25 @@ function generateSitemap(articles) {
 function generatePrerenderRoutes(articles) {
   const routes = [
     { path: '/', name: 'Homepage' },
-    { path: '/blog', name: 'Blog' },
+    {
+      path: '/blog',
+      name: 'Blog',
+      title: 'Blog — CatyAI',
+      description: 'Insights on AI customer service, GEO (Generative Engine Optimization), and e-commerce automation from the CatyAI team.',
+    },
   ];
 
   // Add all blog articles
-  articles.forEach((article, index) => {
+  // NOTE: title/description are required here — prerender.mjs routes any entry
+  // missing either field through the cheap meta-only fallback (raw homepage HTML,
+  // no per-article content), instead of the real Puppeteer render. Omitting them
+  // silently produced ~75 blog pages with no unique <title>/content (fixed 2026-07-01).
+  articles.forEach((article) => {
     routes.push({
       path: `/blog/${article.slug}`,
-      name: `Blog: ${article.title.substring(0, 40)}...`
+      name: `Blog: ${article.title.substring(0, 40)}...`,
+      title: `${article.title} — CatyAI Blog`,
+      description: article.excerpt || article.title,
     });
   });
 

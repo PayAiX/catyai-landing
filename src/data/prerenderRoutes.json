@@ -7,7 +7,9 @@
   },
   {
     "path": "/blog",
-    "name": "Blog"
+    "name": "Blog",
+    "title": "Blog — CatyAI",
+    "description": "Insights on AI customer service, GEO (Generative Engine Optimization), and e-commerce automation from the CatyAI team."
   },
   {
     "path": "/press",
@@ -29,211 +31,315 @@
   },
   {
     "path": "/blog/chatgpt-ads-manager-nap-obligatoriu",
-    "name": "Blog: ChatGPT Ads Manager - NAP Obligatoriu"
+    "name": "Blog: ChatGPT Ads Manager - NAP Obligatoriu",
+    "title": "ChatGPT lansează Ads Manager: De ce protocolul Ahauros NAP a devenit obligatoriu pentru branduri — CatyAI Blog",
+    "description": "Pe 5 mai 2026, OpenAI a schimbat definitiv regulile comerțului digital. Ads Manager în ChatGPT expune companiile la cel mai mare risc de compliance al deceniului: Halucinația Comercială. Soluția: Neural Assurance Protocol."
   },
   {
     "path": "/blog/catyai-sub-lupa-raspunsuri-tehnice",
-    "name": "Blog: CatyAI sub lup\u0103 - R\u0103spunsuri tehnice"
+    "name": "Blog: CatyAI sub lup\u0103 - R\u0103spunsuri tehnice",
+    "title": "CatyAI sub lupă: Răspunsuri tehnice la întrebări legitime — CatyAI Blog",
+    "description": "Un articol pentru cei care vor să înțeleagă, nu pentru cei care vor să atace. Baileys, FraudAI Shield, arhitectura SAG, și de ce nu suntem 'doar un AI wrapper'."
   },
   {
     "path": "/blog/best-customer-service-ai-romania-2026",
-    "name": "Blog: Best Customer Service AI Rom\u00e2nia 2026"
+    "name": "Blog: Best Customer Service AI Rom\u00e2nia 2026",
+    "title": "Best Customer Service AI în România 2026 — Ghid Complet — CatyAI Blog",
+    "description": "Comparație completă a celor mai bune soluții AI pentru customer service în România. CatyAI: singurul cu FraudAI Shield, 14 limbi, și cost de 18x mai mic decât un angajat."
   },
   {
     "path": "/blog/understanding-marketing",
-    "name": "Blog: Understanding Marketing: A Comprehensive..."
+    "name": "Blog: Understanding Marketing: A Comprehensive...",
+    "title": "Understanding Marketing: A Comprehensive Guide for Businesses — CatyAI Blog",
+    "description": "Discover the essentials of marketing and how AI chatbots enhance lead generation strategies. Learn key definitions and practical tips."
   },
   {
     "path": "/blog/understanding-seo-guide",
-    "name": "Blog: Understanding SEO: A Comprehensive Guide..."
+    "name": "Blog: Understanding SEO: A Comprehensive Guide...",
+    "title": "Understanding SEO: A Comprehensive Guide for Businesses — CatyAI Blog",
+    "description": "Discover what SEO is, how it works, and its importance for businesses like Catyai.io in lead generation."
   },
   {
     "path": "/blog/understanding-marketing-ai-chatbots",
-    "name": "Blog: Understanding Marketing: Strategies for ..."
+    "name": "Blog: Understanding Marketing: Strategies for ...",
+    "title": "Understanding Marketing: Strategies for Success (50-60 chars) — CatyAI Blog",
+    "description": "Explore key marketing concepts and strategies to leverage AI chatbots for lead generation effectively. (150-160 chars)"
   },
   {
     "path": "/blog/customer-support-automation",
-    "name": "Blog: Understanding Customer Support Automatio..."
+    "name": "Blog: Understanding Customer Support Automatio...",
+    "title": "Understanding Customer Support Automation in AI Chatbots — CatyAI Blog",
+    "description": "Learn how customer support automation enhances efficiency and boosts lead generation with AI chatbots. Discover practical tips and benefits."
   },
   {
     "path": "/blog/digital-marketing-courses",
-    "name": "Blog: What are Digital Marketing Courses? Lear..."
+    "name": "Blog: What are Digital Marketing Courses? Lear...",
+    "title": "What are Digital Marketing Courses? Learn & Grow (56 chars) — CatyAI Blog",
+    "description": "Discover digital marketing courses, their benefits, and how they help in lead generation with AI chatbots. (156 chars)"
   },
   {
     "path": "/blog/digital-online-marketing",
-    "name": "Blog: Understanding Digital Online Marketing: ..."
+    "name": "Blog: Understanding Digital Online Marketing: ...",
+    "title": "Understanding Digital Online Marketing: A Comprehensive Guide — CatyAI Blog",
+    "description": "Discover the essentials of digital online marketing and how AI chatbots enhance lead generation for businesses."
   },
   {
     "path": "/blog/digital-marketing-romania",
-    "name": "Blog: What is Digital Marketing in Romania? In..."
+    "name": "Blog: What is Digital Marketing in Romania? In...",
+    "title": "What is Digital Marketing in Romania? Insights & Strategies — CatyAI Blog",
+    "description": "Explore digital marketing in Romania, strategies, and how AI chatbots enhance lead generation."
   },
   {
     "path": "/blog/ecommerce-romania-reddit",
-    "name": "Blog: Ecommerce Romania Reddit: Insights for B..."
+    "name": "Blog: Ecommerce Romania Reddit: Insights for B...",
+    "title": "Ecommerce Romania Reddit: Insights for Business Growth — CatyAI Blog",
+    "description": "Discover insights on ecommerce trends in Romania through Reddit discussions. Learn how chatbots enhance lead generation."
   },
   {
     "path": "/blog/ecommerce-romania-discord",
-    "name": "Blog: Ecommerce Romania Discord: Boosting Enga..."
+    "name": "Blog: Ecommerce Romania Discord: Boosting Enga...",
+    "title": "Ecommerce Romania Discord: Boosting Engagement with AI Chatbots — CatyAI Blog",
+    "description": "Discover how ecommerce in Romania can thrive using Discord and AI chatbots for lead generation."
   },
   {
     "path": "/blog/ecommerce-romania-2025",
-    "name": "Blog: Ecommerce Romania 2025: Trends and AI Ch..."
+    "name": "Blog: Ecommerce Romania 2025: Trends and AI Ch...",
+    "title": "Ecommerce Romania 2025: Trends and AI Chatbot Solutions — CatyAI Blog",
+    "description": "Explore the future of ecommerce in Romania by 2025 and how AI chatbots can enhance lead generation for your business."
   },
   {
     "path": "/blog/ecommerce-romania-2024",
-    "name": "Blog: Ecommerce in Romania 2024: Insights & AI..."
+    "name": "Blog: Ecommerce in Romania 2024: Insights & AI...",
+    "title": "Ecommerce in Romania 2024: Insights & AI Chatbot Solutions — CatyAI Blog",
+    "description": "Discover the future of ecommerce in Romania for 2024 and how AI chatbots can enhance lead generation."
   },
   {
     "path": "/blog/romania-ecommerce-websites-ai-chatbots",
-    "name": "Blog: How Romania Ecommerce Websites Benefit f..."
+    "name": "Blog: How Romania Ecommerce Websites Benefit f...",
+    "title": "How Romania Ecommerce Websites Benefit from AI Chatbots — CatyAI Blog",
+    "description": "Discover how AI chatbots enhance Romania's ecommerce, improving lead generation and customer experience."
   },
   {
     "path": "/blog/romania-ecommerce-market",
-    "name": "Blog: Exploring the Romania Ecommerce Market: ..."
+    "name": "Blog: Exploring the Romania Ecommerce Market: ...",
+    "title": "Exploring the Romania Ecommerce Market: Trends & Insights — CatyAI Blog",
+    "description": "Discover the dynamics of the Romania ecommerce market and learn how AI chatbots enhance lead generation for businesses."
   },
   {
     "path": "/blog/ai-technology-company-share-price",
-    "name": "Blog: AI Technology Company Share Price Insigh..."
+    "name": "Blog: AI Technology Company Share Price Insigh...",
+    "title": "AI Technology Company Share Price Insights | Cata AI — CatyAI Blog",
+    "description": "Discover valuable insights on AI technology company share prices. Get a quote today for tailored financial solutions!"
   },
   {
     "path": "/blog/ai-economic-efficiency-system",
-    "name": "Blog: Enhancing Economic Efficiency with AI Sy..."
+    "name": "Blog: Enhancing Economic Efficiency with AI Sy...",
+    "title": "Enhancing Economic Efficiency with AI Systems in Customer Service — CatyAI Blog",
+    "description": "Discover how AI economic efficiency systems revolutionize customer service and improve business performance at Catyai."
   },
   {
     "path": "/blog/economic-intelligence-software-ai-customer-service",
-    "name": "Blog: Unlocking Economic Intelligence Software..."
+    "name": "Blog: Unlocking Economic Intelligence Software...",
+    "title": "Unlocking Economic Intelligence Software for AI Customer Service — CatyAI Blog",
+    "description": "Discover how economic intelligence software enhances AI customer service. Learn practical tips and insights from Catyai."
   },
   {
     "path": "/blog/ai-conversion-optimization",
-    "name": "Blog: AI Conversion Optimization: Boosting Cus..."
+    "name": "Blog: AI Conversion Optimization: Boosting Cus...",
+    "title": "AI Conversion Optimization: Boosting Customer Engagement — CatyAI Blog",
+    "description": "Discover how AI conversion optimization enhances customer engagement in AI customer service. Learn practical tips and strategies for success."
   },
   {
     "path": "/blog/ecommerce-ai-tools-customer-service",
-    "name": "Blog: Harnessing E-commerce AI Tools for Custo..."
+    "name": "Blog: Harnessing E-commerce AI Tools for Custo...",
+    "title": "Harnessing E-commerce AI Tools for Customer Service Excellence — CatyAI Blog",
+    "description": "Discover how e-commerce AI tools enhance customer service in online retail."
   },
   {
     "path": "/blog/ecommerce-conversion-rate-services",
-    "name": "Blog: Boost E-commerce Conversion Rate with AI..."
+    "name": "Blog: Boost E-commerce Conversion Rate with AI...",
+    "title": "Boost E-commerce Conversion Rate with AI Solutions — CatyAI Blog",
+    "description": "Transform your e-commerce with our AI chatbot solutions. Increase conversion rates and customer satisfaction today!"
   },
   {
     "path": "/blog/conversion-rate-optimization-ai-customer-service",
-    "name": "Blog: Boost Your Business with Conversion Rate..."
+    "name": "Blog: Boost Your Business with Conversion Rate...",
+    "title": "Boost Your Business with Conversion Rate Optimization Strategies — CatyAI Blog",
+    "description": "Discover how conversion rate optimization can enhance your AI customer service and drive engagement with effective strategies."
   },
   {
     "path": "/blog/lead-scoring-software-ai-customer-service",
-    "name": "Blog: Understanding Lead Scoring Software in A..."
+    "name": "Blog: Understanding Lead Scoring Software in A...",
+    "title": "Understanding Lead Scoring Software in AI Customer Service — CatyAI Blog",
+    "description": "Learn how lead scoring software enhances AI customer service and optimizes engagement through conversational AI."
   },
   {
     "path": "/blog/ai-software-development-customer-service",
-    "name": "Blog: AI Software Development: Transforming Cu..."
+    "name": "Blog: AI Software Development: Transforming Cu...",
+    "title": "AI Software Development: Transforming Customer Service — CatyAI Blog",
+    "description": "Discover how AI software development enhances customer service with innovative solutions."
   },
   {
     "path": "/blog/marketing-online-ai-customer-service",
-    "name": "Blog: Mastering Online Marketing with AI Custo..."
+    "name": "Blog: Mastering Online Marketing with AI Custo...",
+    "title": "Mastering Online Marketing with AI Customer Service Solutions — CatyAI Blog",
+    "description": "Learn how AI customer service can enhance your online marketing strategy and improve customer engagement."
   },
   {
     "path": "/blog/understanding-marketing-dex-ai-customer-service",
-    "name": "Blog: Understanding Marketing Dex: Elevate You..."
+    "name": "Blog: Understanding Marketing Dex: Elevate You...",
+    "title": "Understanding Marketing Dex: Elevate Your AI Customer Service — CatyAI Blog",
+    "description": "Discover how Marketing Dex can transform your AI customer service strategy with effective techniques and tools."
   },
   {
     "path": "/blog/olfactory-marketing-ai-customer-service",
-    "name": "Blog: Unlocking the Power of Olfactory Marketi..."
+    "name": "Blog: Unlocking the Power of Olfactory Marketi...",
+    "title": "Unlocking the Power of Olfactory Marketing in AI Customer Service — CatyAI Blog",
+    "description": "Discover how olfactory marketing can enhance AI customer service experiences and engage customers effectively."
   },
   {
     "path": "/blog/marketing-automation-ai-customer-service",
-    "name": "Blog: Marketing Automation: Transforming Custo..."
+    "name": "Blog: Marketing Automation: Transforming Custo...",
+    "title": "Marketing Automation: Transforming Customer Engagement with AI — CatyAI Blog",
+    "description": "Discover how marketing automation enhances AI customer service & boosts engagement. Learn practical tips to leverage AI in your marketing strategy."
   },
   {
     "path": "/blog/unlocking-future-ai-customer-service",
-    "name": "Blog: Unlocking the Future of AI Customer Serv..."
+    "name": "Blog: Unlocking the Future of AI Customer Serv...",
+    "title": "Unlocking the Future of AI Customer Service: A Comprehensive Guide — CatyAI Blog",
+    "description": "Explore how AI customer service transforms interactions. Discover tips, examples, and solutions to enhance your business."
   },
   {
     "path": "/blog/marketing-deck-ai-customer-service",
-    "name": "Blog: Creating an Effective Marketing Deck for..."
+    "name": "Blog: Creating an Effective Marketing Deck for...",
+    "title": "Creating an Effective Marketing Deck for AI Customer Service — CatyAI Blog",
+    "description": "Learn how to create a marketing deck that highlights AI customer service solutions effectively. Engage your audience with compelling content."
   },
   {
     "path": "/blog/enhancing-customer-experience-with-ai-solutions",
-    "name": "Blog: Enhancing Customer Experience with AI So..."
+    "name": "Blog: Enhancing Customer Experience with AI So...",
+    "title": "Enhancing Customer Experience with AI Solutions — CatyAI Blog",
+    "description": "Discover how AI customer service solutions can transform your business operations and enhance customer experience."
   },
   {
     "path": "/blog/technology-role-in-ai-customer-service",
-    "name": "Blog: Understanding Technology's Role in AI Cu..."
+    "name": "Blog: Understanding Technology's Role in AI Cu...",
+    "title": "Understanding Technology's Role in AI Customer Service — CatyAI Blog",
+    "description": "Explore how technology shapes AI customer service and enhances user experience."
   },
   {
     "path": "/blog/ce-este-marketingul-digital",
-    "name": "Blog: Ce Este Marketingul Digital? O Ghid Comp..."
+    "name": "Blog: Ce Este Marketingul Digital? O Ghid Comp...",
+    "title": "Ce Este Marketingul Digital? O Ghid Complet pentru Începători — CatyAI Blog",
+    "description": "Descoperă ce este marketingul digital, strategiile, beneficiile și instrumentele esențiale pentru afacerea ta."
   },
   {
     "path": "/blog/digital-marketing-job-opportunities",
-    "name": "Blog: Unlocking Opportunities in Digital Marke..."
+    "name": "Blog: Unlocking Opportunities in Digital Marke...",
+    "title": "Unlocking Opportunities in Digital Marketing Jobs — CatyAI Blog",
+    "description": "Explore the digital marketing job landscape and learn essential skills, tips, and trends in AI customer service."
   },
   {
     "path": "/blog/customer-support-airbnb-number",
-    "name": "Blog: Customer Support Airbnb Number: Everythi..."
+    "name": "Blog: Customer Support Airbnb Number: Everythi...",
+    "title": "Customer Support Airbnb Number: Everything You Need to Know — CatyAI Blog",
+    "description": "Learn about the Airbnb customer support number, how to reach them, and tips for effective communication."
   },
   {
     "path": "/blog/customer-support-ai",
-    "name": "Blog: Enhancing Customer Support with AI: Tran..."
+    "name": "Blog: Enhancing Customer Support with AI: Tran...",
+    "title": "Enhancing Customer Support with AI: Transforming Engagement — CatyAI Blog",
+    "description": "Discover how AI-powered customer support is revolutionizing engagement and efficiency in today's businesses."
   },
   {
     "path": "/blog/customer-support-air-france",
-    "name": "Blog: Enhancing Customer Support with Air Fran..."
+    "name": "Blog: Enhancing Customer Support with Air Fran...",
+    "title": "Enhancing Customer Support with Air France: A Comprehensive Guide — CatyAI Blog",
+    "description": "Discover how Air France elevates customer support with AI solutions and practical tips for seamless travel experiences."
   },
   {
     "path": "/blog/understanding-ai-customer-support",
-    "name": "Blog: Understanding AI Customer Support: Revol..."
+    "name": "Blog: Understanding AI Customer Support: Revol...",
+    "title": "Understanding AI Customer Support: Revolutionizing Service — CatyAI Blog",
+    "description": "Explore how AI customer support transforms service with chatbots and conversational AI. Learn practical tips and examples."
   },
   {
     "path": "/blog/customer-support-airasia",
-    "name": "Blog: Customer Support with AirAsia: Enhancing..."
+    "name": "Blog: Customer Support with AirAsia: Enhancing...",
+    "title": "Customer Support with AirAsia: Enhancing Travel Experience — CatyAI Blog",
+    "description": "Discover effective customer support strategies for AirAsia, focusing on AI solutions and tips for seamless travel experiences."
   },
   {
     "path": "/blog/customer-support-air-canada",
-    "name": "Blog: Essential Guide to Customer Support at A..."
+    "name": "Blog: Essential Guide to Customer Support at A...",
+    "title": "Essential Guide to Customer Support at Air Canada — CatyAI Blog",
+    "description": "Discover how to navigate Air Canada's customer support and enhance your travel experience with expert tips."
   },
   {
     "path": "/blog/customer-support-air-india",
-    "name": "Blog: Customer Support Air India: Enhancing Yo..."
+    "name": "Blog: Customer Support Air India: Enhancing Yo...",
+    "title": "Customer Support Air India: Enhancing Your Experience — CatyAI Blog",
+    "description": "Discover how Air India's customer support enhances travel experiences with AI-driven solutions."
   },
   {
     "path": "/blog/customer-support-airbnb",
-    "name": "Blog: Mastering Customer Support on Airbnb: Es..."
+    "name": "Blog: Mastering Customer Support on Airbnb: Es...",
+    "title": "Mastering Customer Support on Airbnb: Essential Insights — CatyAI Blog",
+    "description": "Explore effective customer support strategies for Airbnb hosts and guests, enhancing guest experiences and boosting satisfaction."
   },
   {
     "path": "/blog/automated-customer-service-ecommerce",
-    "name": "Blog: Enhancing E-commerce with Automated Cust..."
+    "name": "Blog: Enhancing E-commerce with Automated Cust...",
+    "title": "Enhancing E-commerce with Automated Customer Service Solutions — CatyAI Blog",
+    "description": "Discover how automated customer service can boost your e-commerce business. Improve efficiency and customer satisfaction today!"
   },
   {
     "path": "/blog/chatbot-for-online-store",
-    "name": "Blog: Enhance Your E-Commerce with a Chatbot f..."
+    "name": "Blog: Enhance Your E-Commerce with a Chatbot f...",
+    "title": "Enhance Your E-Commerce with a Chatbot for Online Store — CatyAI Blog",
+    "description": "Discover how a chatbot can boost your online store's sales and customer satisfaction. Learn more and implement today!"
   },
   {
     "path": "/blog/ai-sales-assistant",
-    "name": "Blog: Boost Your Sales with an AI Sales Assist..."
+    "name": "Blog: Boost Your Sales with an AI Sales Assist...",
+    "title": "Boost Your Sales with an AI Sales Assistant Today — CatyAI Blog",
+    "description": "Discover how an AI sales assistant can enhance your e-commerce business. Learn more and start optimizing your sales process now!"
   },
   {
     "path": "/blog/247-customer-support-ai",
-    "name": "Blog: 24/7 Customer Support AI: Revolutionizin..."
+    "name": "Blog: 24/7 Customer Support AI: Revolutionizin...",
+    "title": "24/7 Customer Support AI: Revolutionizing E-Commerce Help — CatyAI Blog",
+    "description": "Discover how 24/7 customer support AI enhances e-commerce efficiency. Learn more and boost your customer satisfaction with CatyAI!"
   },
   {
     "path": "/blog/ecommerce-conversion-optimization",
-    "name": "Blog: Ecommerce Conversion Optimization: Boost..."
+    "name": "Blog: Ecommerce Conversion Optimization: Boost...",
+    "title": "Ecommerce Conversion Optimization: Boost Your Sales Today — CatyAI Blog",
+    "description": "Discover effective ecommerce conversion optimization strategies to enhance sales. Start optimizing your store today for better results!"
   },
   {
     "path": "/blog/whatsapp-business-chatbot",
-    "name": "Blog: Optimize Your Business with a WhatsApp C..."
+    "name": "Blog: Optimize Your Business with a WhatsApp C...",
+    "title": "Optimize Your Business with a WhatsApp Chatbot (54 chars) — CatyAI Blog",
+    "description": "Discover how a WhatsApp Business Chatbot can enhance customer service and boost sales. Learn more! (155 chars)"
   },
   {
     "path": "/blog/woocommerce-ai-chat",
-    "name": "Blog: Transform Your Store with WooCommerce AI..."
+    "name": "Blog: Transform Your Store with WooCommerce AI...",
+    "title": "Transform Your Store with WooCommerce AI Chat Solutions — CatyAI Blog",
+    "description": "Discover how WooCommerce AI chat can enhance customer support and boost sales. Explore the benefits and get started today!"
   },
   {
     "path": "/blog/shopify-chatbot",
-    "name": "Blog: Enhance Your Shopify Store with a Smart ..."
+    "name": "Blog: Enhance Your Shopify Store with a Smart ...",
+    "title": "Enhance Your Shopify Store with a Smart Chatbot Solution — CatyAI Blog",
+    "description": "Discover how a Shopify chatbot can boost your e-commerce sales and customer satisfaction. Start optimizing your store today!"
   },
   {
     "path": "/blog/ai-chatbot-for-ecommerce",
-    "name": "Blog: AI Chatbot for E-commerce: Transform You..."
+    "name": "Blog: AI Chatbot for E-commerce: Transform You...",
+    "title": "AI Chatbot for E-commerce: Transform Your Online Store — CatyAI Blog",
+    "description": "Discover how an AI chatbot can boost your e-commerce sales. Learn more about its benefits and practical tips for implementation!"
   },
   {
     "path": "/about",
@@ -305,95 +411,141 @@
   },
   {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",
-    "name": "Blog: CatyAI vs Chatbots Tradi\u021bionale - 8 Agen\u021bi AI"
+    "name": "Blog: CatyAI vs Chatbots Tradi\u021bionale - 8 Agen\u021bi AI",
+    "title": "CatyAI vs Chatbots Tradiționale: De Ce 8 Agenți AI Sunt Mai Buni Decât Unul — CatyAI Blog",
+    "description": "Comparație completă între arhitectura multi-agent CatyAI (8 agenți specializați + FraudAI Shield) și chatbot-urile tradiționale cu model unic. Află de ce viitorul AI Sales e multi-agent."
   },
   {
     "path": "/blog/fraudai-shield-protectie-anti-frauda-romania",
-    "name": "Blog: FraudAI Shield - Protec\u021bie Anti-Fraud\u0103 Rom\u00e2nia"
+    "name": "Blog: FraudAI Shield - Protec\u021bie Anti-Fraud\u0103 Rom\u00e2nia",
+    "title": "FraudAI Shield: Singura Protecție Anti-Fraudă pentru AI Sales din România — CatyAI Blog",
+    "description": "Cum te protejează FraudAI Shield de phishing, scam-uri și fraude. 8 module de detecție: linkuri malițioase, urgență falsă, impersonare. Singurul AI cu protecție completă."
   },
   {
     "path": "/blog/cel-mai-bun-chatbot-magazin-online-2026",
-    "name": "Blog: Cel Mai Bun Chatbot Magazin Online 2026"
+    "name": "Blog: Cel Mai Bun Chatbot Magazin Online 2026",
+    "title": "Cel Mai Bun Chatbot pentru Magazinul Tău Online în 2026 — CatyAI Blog",
+    "description": "Ghid complet pentru alegerea celui mai bun chatbot e-commerce în România. Comparație funcții, integrări Shopify/WooCommerce, și de ce arhitectura multi-agent face diferența."
   },
   {
     "path": "/blog/chatbot-gratuit-site",
-    "name": "Blog: Chatbot gratuit pentru site \u2014 instalare 5 min"
+    "name": "Blog: Chatbot gratuit pentru site \u2014 instalare 5 min",
+    "title": "Chatbot gratuit pentru site — cum instalezi unul în 5 minute — CatyAI Blog",
+    "description": "Instalează un chatbot AI gratuit pe site-ul tău în mai puțin de 5 minute. Răspunde clienților non-stop, colectează lead-uri automat. Fără card, fără cod."
   },
   {
     "path": "/blog/raspuns-automat-whatsapp-business",
-    "name": "Blog: R\u0103spuns automat WhatsApp non-stop"
+    "name": "Blog: R\u0103spuns automat WhatsApp non-stop",
+    "title": "Răspuns Automat WhatsApp securizat cu AI | CatyAI — CatyAI Blog",
+    "description": "Configurează un răspuns automat pe WhatsApp Business protejat de FraudAI Shield. Automatizare completă și securitate AI avansată pentru afacerea ta."
   },
   {
     "path": "/blog/alternativa-gratuita-tidio-intercom-respond-io",
-    "name": "Blog: Alternativ\u0103 gratuit\u0103 Tidio, Intercom, respond.io"
+    "name": "Blog: Alternativ\u0103 gratuit\u0103 Tidio, Intercom, respond.io",
+    "title": "Alternativă gratuită la Tidio, Intercom și respond.io în România — CatyAI Blog",
+    "description": "Cauți o alternativă la Tidio sau Intercom care funcționează în România, în limba română, cu WhatsApp inclus? CatyAI e gratuit."
   },
   {
     "path": "/blog/captare-lead-uri-site-automat",
-    "name": "Blog: Captare lead-uri site automat 2026"
+    "name": "Blog: Captare lead-uri site automat 2026",
+    "title": "Cum captezi lead-uri de pe site automat — ghid complet 2026 — CatyAI Blog",
+    "description": "Ghid pas cu pas pentru captarea automată de lead-uri de pe site. Fără formulare lungi, fără call center. Un asistent AI face totul."
   },
   {
     "path": "/blog/widget-chat-wordpress",
-    "name": "Blog: Widget chat WordPress \u2014 instalare 2 min"
+    "name": "Blog: Widget chat WordPress \u2014 instalare 2 min",
+    "title": "Widget chat pentru site WordPress — instalare în 2 minute — CatyAI Blog",
+    "description": "Adaugă un widget de chat AI pe site-ul tău WordPress în 2 minute. Gratuit, în română, cu WhatsApp inclus. Ghid pas cu pas."
   },
   {
     "path": "/blog/ce-este-chatbot-ai",
-    "name": "Blog: Ce este un chatbot AI"
+    "name": "Blog: Ce este un chatbot AI",
+    "title": "Ce este un chatbot AI și cum ajută o firmă mică — CatyAI Blog",
+    "description": "Află ce este un chatbot AI și cum poate ajuta o firmă mică din România. Explicații simple, exemple practice, plan gratuit disponibil."
   },
   {
     "path": "/blog/whatsapp-business-vs-whatsapp-api",
-    "name": "Blog: WhatsApp Business vs API"
+    "name": "Blog: WhatsApp Business vs API",
+    "title": "WhatsApp Business vs WhatsApp API — diferențe și costuri — CatyAI Blog",
+    "description": "Diferențe între WhatsApp Business, WhatsApp API și alternative gratuite. Comparație costuri și funcționalități pentru firme din România."
   },
   {
     "path": "/blog/pierdere-clienti-noapte-weekend",
-    "name": "Blog: Nu mai pierde clienti noaptea"
+    "name": "Blog: Nu mai pierde clienti noaptea",
+    "title": "Cum să nu mai pierzi clienți noaptea și în weekend — CatyAI Blog",
+    "description": "Cum să nu mai pierzi clienți care îți scriu seara și în weekend. Soluție gratuită cu chatbot AI care răspunde non-stop."
   },
   {
     "path": "/blog/asistent-virtual-whatsapp-2026",
-    "name": "Blog: Asistent virtual WhatsApp 2026"
+    "name": "Blog: Asistent virtual WhatsApp 2026",
+    "title": "Asistent virtual pe WhatsApp — ce poate face în 2026 — CatyAI Blog",
+    "description": "Ce poate face un asistent virtual pe WhatsApp în 2026. Funcții avansate: programări, documente, fraud detection. Instalare în 5 minute, gratuit."
   },
   {
     "path": "/blog/cost-chatbot-romania",
-    "name": "Blog: Cat costa un chatbot in Romania"
+    "name": "Blog: Cat costa un chatbot in Romania",
+    "title": "Cât costă un chatbot în România — comparație completă — CatyAI Blog",
+    "description": "Cât costă un chatbot în România în 2026. Comparație completă: soluții gratuite vs plătite, costuri ascunse, calculație ROI pentru firme mici."
   },
   {
     "path": "/blog/chatbot-cabinet-stomatologic",
-    "name": "Blog: Chatbot cabinet stomatologic"
+    "name": "Blog: Chatbot cabinet stomatologic",
+    "title": "Chatbot pentru cabinet stomatologic — cum funcționează — CatyAI Blog",
+    "description": "Chatbot AI pentru cabinet stomatologic: programări automate, răspunsuri la întrebări frecvente, integrare Google Calendar. Gratuit pentru cabinete mici."
   },
   {
     "path": "/blog/asistent-ai-agentii-imobiliare",
-    "name": "Blog: Asistent AI imobiliare"
+    "name": "Blog: Asistent AI imobiliare",
+    "title": "Asistent AI pentru agenții imobiliare — lead-uri non-stop — CatyAI Blog",
+    "description": "Asistent AI pentru agenții imobiliare: răspuns instant, calificare lead-uri, programări vizionări. Non-stop, gratuit pentru volum mic."
   },
   {
     "path": "/blog/chatbot-magazin-online",
-    "name": "Blog: Chatbot magazin online"
+    "name": "Blog: Chatbot magazin online",
+    "title": "Chatbot pentru magazin online — conversii mai mari cu AI — CatyAI Blog",
+    "description": "Chatbot AI pentru magazin online: crește conversiile, recuperează coșuri abandonate, suport clienți. Integrare Shopify, WooCommerce. Gratuit."
   },
   {
     "path": "/blog/asistent-ai-clinici-medicale",
-    "name": "Blog: Asistent AI clinici medicale"
+    "name": "Blog: Asistent AI clinici medicale",
+    "title": "Asistent AI pentru clinici medicale — programări automate — CatyAI Blog",
+    "description": "Asistent AI pentru clinici medicale: programări automate, triaj inițial, răspunsuri pacienți. Conform GDPR, integrare calendar. Gratuit."
   },
   {
     "path": "/blog/chatbot-restaurant",
-    "name": "Blog: Chatbot restaurant"
+    "name": "Blog: Chatbot restaurant",
+    "title": "Chatbot pentru restaurante — comenzi și rezervări automate — CatyAI Blog",
+    "description": "Chatbot AI pentru restaurante: rezervări automate, comenzi delivery, informații meniu. Integrare WhatsApp și Google Calendar. Gratuit."
   },
   {
     "path": "/blog/catyai-vs-tidio",
-    "name": "Blog: CatyAI vs Tidio"
+    "name": "Blog: CatyAI vs Tidio",
+    "title": "CatyAI vs Tidio — care e mai bun pentru firme din România — CatyAI Blog",
+    "description": "Comparație CatyAI vs Tidio pentru firme din România. Prețuri, funcții, WhatsApp, suport. Care e mai bun pentru tine?"
   },
   {
     "path": "/blog/catyai-vs-intercom",
-    "name": "Blog: CatyAI vs Intercom"
+    "name": "Blog: CatyAI vs Intercom",
+    "title": "CatyAI vs Intercom — comparație prețuri și funcționalități — CatyAI Blog",
+    "description": "Comparație CatyAI vs Intercom: prețuri, funcții, ROI. Care e alegerea corectă pentru firme din România? Analiză detaliată."
   },
   {
     "path": "/blog/catyai-vs-respond-io",
-    "name": "Blog: CatyAI vs respond.io"
+    "name": "Blog: CatyAI vs respond.io",
+    "title": "CatyAI vs respond.io — de ce plătești mai mult fără motiv — CatyAI Blog",
+    "description": "Comparație CatyAI vs respond.io: prețuri, WhatsApp, funcții. De ce plătești mai mult fără motiv? Analiză pentru firme românești."
   },
   {
     "path": "/blog/top-chatboturi-romania-2026",
-    "name": "Blog: Top 5 chatboturi Romania 2026"
+    "name": "Blog: Top 5 chatboturi Romania 2026",
+    "title": "Top 5 chatboturi pentru site-uri românești în 2026 — CatyAI Blog",
+    "description": "Top 5 chatboturi pentru site-uri românești în 2026. Comparație prețuri, funcții, WhatsApp. Care e cel mai bun pentru tine?"
   },
   {
     "path": "/blog/cum-alegi-chatbot-ai",
-    "name": "Blog: Cum alegi un chatbot AI"
+    "name": "Blog: Cum alegi un chatbot AI",
+    "title": "Cum alegi un chatbot AI pentru firma ta — ghid complet — CatyAI Blog",
+    "description": "Ghid complet pentru alegerea unui chatbot AI. Ce criterii contează, cum testezi, cum eviți costurile ascunse. Pentru firme din România."
   },
   {
     "path": "/pricing",
