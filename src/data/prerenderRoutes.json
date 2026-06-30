@@ -644,9 +644,9 @@
   },
   {
     "path": "/mcp",
-    "name": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
-    "title": "CatyAI MCP Server \u2014 45 Tools for Claude AI",
-    "description": "Extend Claude with 45 production-ready MCP tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
+    "name": "Model Context Protocol (MCP) Server \u2014 45 Tools for Claude AI",
+    "title": "Model Context Protocol (MCP) Server \u2014 45 AI Commerce Tools for Claude | CatyAI",
+    "description": "CatyAI's Model Context Protocol (MCP) server extends Claude with 45 production-ready tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
   },
   {
     "path": "/agentic-marketplace",

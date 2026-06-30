@@ -20,8 +20,12 @@ export default function SEO({
   service = null,  // { name, description, price, features }
   product = null   // { name, description, price, rating }
 }) {
+  // Some pages already bake "| CatyAI" into their own title string (per-page or
+  // per-language). Appending it again here produced "... | CatyAI | CatyAI" live
+  // on /pricing, /whatsapp, /agentic-marketplace, /geo-gateway and others.
+  const titleHasBrand = title && /catyai/i.test(title);
   const seo = {
-    title: title ? `${title} | CatyAI` : defaultMeta.title,
+    title: title ? (titleHasBrand ? title : `${title} | CatyAI`) : defaultMeta.title,
     description: description || defaultMeta.description,
     image: image || defaultMeta.image,
     url: url || defaultMeta.url,
