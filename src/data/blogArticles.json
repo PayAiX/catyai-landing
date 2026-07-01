@@ -1,5 +1,80 @@
 [
   {
+    "slug": "checklist-agentic-commerce-magazin-online",
+    "title": "Ești pregătit pentru Agentic Commerce? Checklist practic pentru magazinul tău online",
+    "excerpt": "Checklist-ul complet ca să știi dacă magazinul tău participă sau nu la comerțul agentic în 2026: descoperire, infrastructură tehnică, tranzacție, încredere și măsurare.",
+    "date": "July 1, 2026",
+    "readTime": "5 min read",
+    "category": "GEO",
+    "image": "/images/checklist-agentic-commerce-magazin-online.png",
+    "keywords": [
+      "Agentic Commerce checklist",
+      "GEO checklist",
+      "MCP",
+      "UCP",
+      "AI shopping agents",
+      "e-commerce AI readiness",
+      "CatyAI"
+    ]
+  },
+  {
+    "slug": "ucp-acp-ap2-protocoale-agentice",
+    "title": "UCP, ACP, AP2: noile protocoale care decid dacă vinzi sau nu în ChatGPT/Gemini",
+    "excerpt": "Google, OpenAI, Stripe și peste 20 de companii mari au lansat deja standardele care definesc cum un agent AI descoperă, cumpără și plătește produsul tău. Dacă magazinul tău nu e compatibil, nu participă la tranzacție.",
+    "date": "July 1, 2026",
+    "readTime": "7 min read",
+    "category": "GEO",
+    "image": "/images/ucp-acp-ap2-protocoale-agentice.png",
+    "keywords": [
+      "UCP",
+      "Universal Commerce Protocol",
+      "ACP",
+      "Agentic Commerce Protocol",
+      "AP2",
+      "Agent Payments Protocol",
+      "Google",
+      "OpenAI",
+      "Stripe",
+      "CatyAI"
+    ]
+  },
+  {
+    "slug": "mcp-explicat-magazin-online",
+    "title": "MCP explicat pe înțelesul oricărui om de business",
+    "excerpt": "Model Context Protocol (Anthropic) este \"priza universală\" dintre AI și datele reale ale magazinului tău — stoc, prețuri, comenzi — în timp real, nu din date crawluite și învechite.",
+    "date": "July 1, 2026",
+    "readTime": "5 min read",
+    "category": "GEO",
+    "image": "/images/mcp-explicat-magazin-online.png",
+    "keywords": [
+      "MCP",
+      "Model Context Protocol",
+      "Anthropic",
+      "AI agents e-commerce",
+      "Shopify MCP",
+      "WooCommerce MCP",
+      "CatyAI"
+    ]
+  },
+  {
+    "slug": "seo-vs-geo-agentic-commerce",
+    "title": "SEO clasic nu mai e suficient. Ești pregătit pentru era Agentic Commerce?",
+    "excerpt": "eMarketer estimează 20,9 miliarde $ vânzări retail prin platforme AI în 2026 — bani care nu mai trec prin niciun rezultat Google. De ce SEO singur nu mai acoperă tot canalul de cumpărare.",
+    "date": "July 1, 2026",
+    "readTime": "6 min read",
+    "category": "GEO",
+    "image": "/images/seo-vs-geo-agentic-commerce.png",
+    "keywords": [
+      "SEO vs GEO",
+      "Agentic Commerce",
+      "Generative Engine Optimization",
+      "ChatGPT shopping",
+      "Gemini",
+      "Claude",
+      "CatyAI"
+    ]
+  },
+  {
     "slug": "is-ai-blind-to-your-business",
     "title": "Is AI blind to your business? De ce SEO clasic nu mai este suficient",
     "excerpt": "If AI can't read your site, you don't exist. Cum să îți optimizezi afacerea pentru GPTBot, ClaudeBot și Perplexity prin Generative Engine Optimization (GEO).",
