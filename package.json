@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run copy-cdn && node scripts/prerender.mjs",
-    "build:seo": "vite build && npm run copy-cdn && npm run prerender",
+    "build": "node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && node scripts/prerender.mjs",
+    "build:seo": "node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && npm run prerender",
     "copy-cdn": "mkdir -p dist/cdn && (cp ../src/widget/caty-widget.js dist/cdn/widget.js 2>/dev/null || true) && (cp ../src/widget/caty-commerce.js dist/cdn/commerce.js 2>/dev/null || true) && (cp ../src/widget/caty-leads-widget.js dist/cdn/leads.js 2>/dev/null || true) && (cp ../src/widget/caty-loader.js dist/cdn/loader.js 2>/dev/null || true)",
     "prerender": "node scripts/prerender.mjs",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
     "sync-blog": "node scripts/sync-blog-articles.mjs",
     "build:full": "npm run sync-blog && npm run build:seo",
     "deploy": "npm run build && aws s3 sync dist/ s3://catyai-landing --delete --exclude 'cdn/*' && aws s3 sync dist/cdn/ s3://catyai-landing/cdn/ && aws cloudfront create-invalidation --distribution-id E3EB3UPK5D8B1L --paths '/*'",

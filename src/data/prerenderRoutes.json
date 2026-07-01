@@ -653,5 +653,65 @@
     "name": "Agentic Marketplace",
     "title": "Agentic Marketplace \u2014 comer\u021b AI-to-AI verificat | CatyAI",
     "description": "CatyAI face produsele comercian\u021bilor reali descoperibile \u015fi recomandabile de agen\u021bii AI (ChatGPT, Claude, Perplexity, Gemini): catalog semnat criptografic, validare determinst\u0103, redirect la comerciant. F\u0103r\u0103 cripto, f\u0103r\u0103 API, f\u0103r\u0103 a atinge banii sau datele clientului."
+  },
+  {
+    "path": "/company",
+    "name": "Company",
+    "title": "Company — Engineered for Absolute Trust | CatyAI",
+    "description": "Built by PayAi-X FZE in Dubai, CatyAI is the enterprise AI infrastructure engineered for absolute trust. SOC2, GDPR, and EU AI Act ready from day one."
+  },
+  {
+    "path": "/enterprise",
+    "name": "Enterprise",
+    "title": "Enterprise Deployments. Fortress-Grade AI. | CatyAI",
+    "description": "SOC2-ready GEO infrastructure for global enterprises. Secure your AI visibility with private vector clusters, Ed25519 signatures, and custom SLAs."
+  },
+  {
+    "path": "/ecommerce",
+    "name": "E-commerce",
+    "title": "E-commerce AI — The Zero-Click Storefront | CatyAI",
+    "description": "Transform your e-commerce into an AI-readable storefront. Sync inventory natively to ChatGPT and Gemini to capture buyers in the Zero-Click era."
+  },
+  {
+    "path": "/healthcare",
+    "name": "Healthcare",
+    "title": "Healthcare AI — GDPR-Compliant Neural Infrastructure | CatyAI",
+    "description": "Deploy GDPR-compliant Neural Infrastructure for healthcare. Automate patient scheduling with our Zero-Hallucination SLA and absolute data isolation."
+  },
+  {
+    "path": "/license-agpl",
+    "name": "License",
+    "title": "License | CatyAI",
+    "description": "CatyAI proprietary software license terms. PayAi-X FZE, Dubai, UAE. All rights reserved."
+  },
+  {
+    "path": "/partners",
+    "name": "Partners",
+    "title": "Partner Program — White-Label & Reseller | CatyAI",
+    "description": "Own the GEO standard in your market. White-label CatyAI for your agency, resell AI infrastructure, or build native integrations through our Technology Partner program."
+  },
+  {
+    "path": "/platform",
+    "name": "Platform",
+    "title": "Platform — The GEO Architecture | CatyAI",
+    "description": "CatyAI's three-layer infrastructure: NAP Protocol for verified business data, AI-native geographic routing, and real-time fraud detection. Built for enterprise scale."
+  },
+  {
+    "path": "/solutions",
+    "name": "Solutions",
+    "title": "Solutions — Built for Your Industry | CatyAI",
+    "description": "AI infrastructure tailored for Healthcare, Enterprise SaaS, and E-commerce. GDPR-compliant, SOC2-ready, and built for scale."
+  },
+  {
+    "path": "/trust-center",
+    "name": "Trust Center",
+    "title": "Trust Center — Security & Compliance | CatyAI",
+    "description": "Enterprise-grade security is not an add-on. SOC2 Type II, GDPR, EU AI Act Article 52, ISO 27001 — CatyAI's complete security and compliance documentation."
+  },
+  {
+    "path": "/api-reference",
+    "name": "API Reference",
+    "title": "API Reference — CatyAI Developer Documentation",
+    "description": "Full API reference for CatyAI. REST endpoints for conversations, knowledge base, GEO Gateway, FraudAI Shield, and analytics."
   }
 ]
