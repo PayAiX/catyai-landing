@@ -459,7 +459,7 @@ export default function HomePage() {
     <>
       <SEO
         url="https://catyai.io/"
-        description="AI assistants invent prices, hours, and policies your business never approved. CatyAI signs your data so AI can only say what's true — verifiable, live in production."
+        description="The first native Agentic Marketplace. CatyAI's engines transform e-commerce catalogs so any AI assistant can read and transact with them directly."
         image="https://catyai.io/og-image.png?v=20260508"
         service={{
           name: 'CatyAI Platform',
