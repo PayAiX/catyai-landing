@@ -713,5 +713,29 @@
     "name": "API Reference",
     "title": "API Reference — CatyAI Developer Documentation",
     "description": "Full API reference for CatyAI. REST endpoints for conversations, knowledge base, GEO Gateway, FraudAI Shield, and analytics."
+  },
+  {
+    "path": "/blog/checklist-agentic-commerce-magazin-online",
+    "name": "Blog: E\u0219ti preg\u0103tit pentru Agentic Commerce? C...",
+    "title": "E\u0219ti preg\u0103tit pentru Agentic Commerce? Checklist practic pentru magazinul t\u0103u online \u2014 CatyAI Blog",
+    "description": "Checklist-ul complet ca s\u0103 \u0219tii dac\u0103 magazinul t\u0103u particip\u0103 sau nu la comer\u021bul agentic \u00een 2026: descoperire, infrastructur\u0103 tehnic\u0103, tranzac\u021bie, \u00eencredere \u0219i m\u0103surare."
+  },
+  {
+    "path": "/blog/ucp-acp-ap2-protocoale-agentice",
+    "name": "Blog: UCP, ACP, AP2: noile protocoale care dec...",
+    "title": "UCP, ACP, AP2: noile protocoale care decid dac\u0103 vinzi sau nu \u00een ChatGPT/Gemini \u2014 CatyAI Blog",
+    "description": "Google, OpenAI, Stripe \u0219i peste 20 de companii mari au lansat deja standardele care definesc cum un agent AI descoper\u0103, cump\u0103r\u0103 \u0219i pl\u0103te\u0219te produsul t\u0103u. Dac\u0103 magazinul t\u0103u nu e compatibil, nu particip\u0103 la tranzac\u021bie."
+  },
+  {
+    "path": "/blog/mcp-explicat-magazin-online",
+    "name": "Blog: MCP explicat pe \u00een\u021belesul oric\u0103rui om de...",
+    "title": "MCP explicat pe \u00een\u021belesul oric\u0103rui om de business \u2014 CatyAI Blog",
+    "description": "Model Context Protocol (Anthropic) este \"priza universal\u0103\" dintre AI \u0219i datele reale ale magazinului t\u0103u \u2014 stoc, pre\u021buri, comenzi \u2014 \u00een timp real, nu din date crawluite \u0219i \u00eenvechite."
+  },
+  {
+    "path": "/blog/seo-vs-geo-agentic-commerce",
+    "name": "Blog: SEO clasic nu mai e suficient. E\u0219ti preg...",
+    "title": "SEO clasic nu mai e suficient. E\u0219ti preg\u0103tit pentru era Agentic Commerce? \u2014 CatyAI Blog",
+    "description": "eMarketer estimeaz\u0103 20,9 miliarde $ v\u00e2nz\u0103ri retail prin platforme AI \u00een 2026 \u2014 bani care nu mai trec prin niciun rezultat Google. De ce SEO singur nu mai acoper\u0103 tot canalul de cump\u0103rare."
   }
 ]

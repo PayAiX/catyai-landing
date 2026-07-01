@@ -2923,5 +2923,213 @@
         }
       ]
     }
+  },
+  "seo-vs-geo-agentic-commerce": {
+    "content": "<p class=\"text-xl text-gray-300 mb-8\"><em>Până acum, \"a fi găsit online\" însemna un singur lucru: să apari sus în Google. Din 2025-2026, un al doilea canal de descoperire a devenit real și măsurabil.</em></p>\n<p>Asistenții AI — ChatGPT, Gemini, Claude, Perplexity — cumpără sau recomandă produse direct în conversație, fără ca utilizatorul să mai deschidă un site. eMarketer estima în decembrie 2025 că platformele AI vor genera <strong>20,9 miliarde de dolari</strong> în vânzări retail în 2026 — bani care nu mai trec prin niciun rezultat Google clasic.</p>\n<p>Acest canal nou nu se optimizează cu tehnicile de SEO pe care le știi. Are nevoie de <strong>GEO — Generative Engine Optimization</strong>.</p>\n<h2>De ce SEO singur nu mai acoperă tot traficul de cumpărare</h2>\n<p>SEO optimizează pentru un singur consumator final: crawler-ul Google, care produce un rezultat pe care un <strong>om</strong> îl citește și decide să dea click. Fluxul e neschimbat de 20 de ani: căutare → listă de linkuri → click → website → decizie.</p>\n<p>Fluxul agentic e diferit structural: utilizator → asistent AI → agentul caută/compară/cumpără → utilizatorul confirmă. Nu mai există pasul \"click pe un link albastru\". Dacă produsul tău nu e \"lizibil\" pentru agent, pur și simplu nu există în acea conversație, indiferent cât de bine rankezi în Google.</p>\n<h2>SEO și GEO răspund la întrebări diferite</h2>\n<table class=\"w-full border-collapse my-6\"><thead><tr class=\"bg-gray-800\"><th class=\"border border-gray-700 px-4 py-2 text-left\"></th><th class=\"border border-gray-700 px-4 py-2 text-left\">SEO clasic</th><th class=\"border border-gray-700 px-4 py-2 text-left\">GEO</th></tr></thead><tbody>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">Cine consumă conținutul</td><td class=\"border border-gray-700 px-4 py-2\">Om, după click</td><td class=\"border border-gray-700 px-4 py-2\">Agent AI, direct din răspuns</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">Obiectiv</td><td class=\"border border-gray-700 px-4 py-2\">Poziție #1 în SERP</td><td class=\"border border-gray-700 px-4 py-2\">Să fii citat/recomandat de agent</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">Metrică</td><td class=\"border border-gray-700 px-4 py-2\">Ranking, CTR, trafic organic</td><td class=\"border border-gray-700 px-4 py-2\">Rata de citare, prezență în răspunsuri AI</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">Motor</td><td class=\"border border-gray-700 px-4 py-2\">Googlebot</td><td class=\"border border-gray-700 px-4 py-2\">GPTBot, ClaudeBot, PerplexityBot + protocoale agentice</td></tr>\n</tbody></table>\n<p>Cele două nu se exclud — se completează. Dar dacă investești doar în SEO clasic în 2026, optimizezi pentru jumătate din canalul real de descoperire.</p>\n<h2>Ce înseamnă concret pentru un magazin online</h2>\n<p>Un asistent AI nu \"vizitează\" magazinul tău așa cum o face un om. Are nevoie de:</p>\n<ul>\n<li><strong>Un catalog pe care îl poate înțelege programatic</strong> — nu doar text de vânzare, ci atribute, caracteristici, cazuri de utilizare, ce problemă rezolvă fiecare produs.</li>\n<li><strong>Semnale de încredere verificabile</strong> — cine ești, ce vinzi, că informația e curentă și corectă.</li>\n<li><strong>Acces tehnic</strong> — fie prin conținut crawl-abil clasic, fie prin protocoale noi construite special pentru agenți.</li>\n</ul>\n<p>Fără aceste trei, produsele tale pot fi perfect optimizate SEO și complet invizibile pentru un agent AI care caută recomandări în numele unui utilizator.</p>\n<h2>De ce e o oportunitate, nu doar o amenințare</h2>\n<p>Competiția pe acest canal e mult mai mică decât în Google Ads sau SEO clasic — pur și simplu pentru că majoritatea magazinelor încă nu și-au pregătit catalogul pentru agenți AI. Cine face pasul acum câștigă un canal de achiziție fără licitație de cuvinte cheie, fără CPC în creștere.</p>\n<blockquote>Uzinele CatyAI transformă cataloagele magazinelor online într-un format optimizat exclusiv pentru era AI, astfel încât produsele și serviciile tale să poată fi înțelese, recomandate și prezentate direct de ChatGPT, Gemini și Claude.</blockquote>\n<p><em>Următorul articol din serie: <a href=\"/blog/mcp-explicat-magazin-online\">MCP explicat pe înțelesul oricărui om de business</a>.</em></p>",
+    "metaDescription": "De ce SEO clasic nu mai acoperă tot canalul de cumpărare în 2026. GEO (Generative Engine Optimization) explicat pentru proprietari de magazine online.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "SEO clasic nu mai e suficient. Ești pregătit pentru era Agentic Commerce?",
+      "author": {
+        "@type": "Organization",
+        "name": "CatyAI"
+      },
+      "datePublished": "2026-07-01",
+      "articleSection": "GEO",
+      "image": "https://catyai.io/images/is-ai-blind-to-your-business.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CatyAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://catyai.io/images/caty-logo.png"
+        }
+      }
+    },
+    "faqSchema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ce este GEO (Generative Engine Optimization)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO este optimizarea unei afaceri pentru a fi înțeleasă, citată și recomandată de asistenți AI precum ChatGPT, Gemini și Claude, spre deosebire de SEO clasic care optimizează pentru ranking în Google."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "De ce nu mai e suficient SEO clasic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pentru că un procent tot mai mare din deciziile de cumpărare trec direct prin conversații cu asistenți AI, fără pasul de căutare Google și click pe un link. eMarketer estimează 20,9 miliarde $ vânzări retail prin platforme AI în 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cum știu dacă magazinul meu online e vizibil pentru agenții AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Verifici dacă produsele au atribute structurate, date curente și semnale de încredere verificabile, accesibile crawlerelor AI (GPTBot, ClaudeBot, PerplexityBot). Uzinele CatyAI automatizează acest proces."
+          }
+        }
+      ]
+    }
+  },
+  "mcp-explicat-magazin-online": {
+    "content": "<p class=\"text-xl text-gray-300 mb-8\"><em>MCP (Model Context Protocol) este standardul deschis, creat de Anthropic, prin care un asistent AI se conectează la datele reale ale unui magazin — stoc, prețuri, comenzi — în loc să ghicească pe baza unor informații învățate cu luni în urmă.</em></p>\n<h2>Problema pe care o rezolvă MCP</h2>\n<p>Fără MCP, un AI care recomandă produse lucrează din date <strong>crawluite</strong>, posibil vechi de ore sau zile. Un produs afișat \"în stoc\" în răspunsul agentului poate fi deja epuizat până ajunge cumpărătorul la finalizarea comenzii. Pentru un magazin, asta înseamnă recomandări greșite, clienți frustrați, vânzări pierdute pe ceva ce oricum nu mai există.</p>\n<p>MCP schimbă asta: agentul se conectează live la sursa de adevăr — baza ta de date de produse, inventar, comenzi — și primește informația exactă, în momentul cererii.</p>\n<h2>Cum arată în practică, azi (2026)</h2>\n<ul>\n<li><strong>Shopify</strong> livrează patru servere MCP oficiale, active implicit, pentru fiecare magazin de pe platformă.</li>\n<li><strong>WooCommerce</strong> are un MCP funcțional, folosit activ de magazine cu fluxuri asistate de AI.</li>\n<li>Un asistent conectat prin MCP poate răspunde la starea unei comenzi, poate identifica SKU-uri cu stoc redus, poate genera descrieri de produs din atribute reale și poate semnala inconsistențe de preț — fără niciun export manual de date.</li>\n</ul>\n<h2>MCP nu e protocolul de plată — e \"instalația\" de date</h2>\n<p>Un punct de confuzie frecvent: MCP nu procesează plăți și nu finalizează comenzi. E stratul care alimentează agentul cu informație de produs în timp real. Finalizarea tranzacției e responsabilitatea altor protocoale complementare:</p>\n<ul>\n<li><strong>UCP (Universal Commerce Protocol)</strong> — Google, co-dezvoltat cu Shopify, Etsy, Wayfair, Target, Walmart — gestionează căutare în catalog, coș, checkout, comenzi.</li>\n<li><strong>ACP (Agentic Commerce Protocol)</strong> — OpenAI + Stripe — standardul din spatele Instant Checkout din ChatGPT.</li>\n<li><strong>AP2 (Agent Payments Protocol)</strong> — Google, donat către FIDO Alliance — răspunde la \"cum dovedește un comerciant că plata a fost autorizată real de om\".</li>\n</ul>\n<p>MCP, UCP, ACP și AP2 nu sunt concurenți — sunt straturi complementare ale aceluiași stack agentic.</p>\n<h2>De ce contează pentru magazinul tău, chiar dacă nu ești tehnic</h2>\n<p>Nu trebuie să înțelegi implementarea MCP ca să beneficiezi de el. Trebuie să știi un singur lucru: <strong>dacă datele produselor tale nu sunt expuse corect către agenții AI, ești invizibil pentru acest canal</strong>, indiferent cât de bun e produsul sau cât de optimizat e site-ul pentru Google.</p>\n<blockquote>Uzinele CatyAI fac exact acest pas pentru tine: transformă catalogul magazinului tău într-un format pe care asistenții AI îl pot citi, înțelege și recomanda direct — fără să fie nevoie să construiești sau să întreții singur o infrastructură MCP.</blockquote>\n<p><em>Următorul articol din serie: <a href=\"/blog/ucp-acp-ap2-protocoale-agentice\">UCP, ACP, AP2 — noile protocoale care decid dacă vinzi sau nu în ChatGPT/Gemini</a>.</em></p>",
+    "metaDescription": "Ce este MCP (Model Context Protocol) explicat non-tehnic pentru proprietari de magazine online, și cum se leagă de UCP, ACP și AP2.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "MCP explicat pe înțelesul oricărui om de business",
+      "author": {
+        "@type": "Organization",
+        "name": "CatyAI"
+      },
+      "datePublished": "2026-07-01",
+      "articleSection": "GEO",
+      "image": "https://catyai.io/images/is-ai-blind-to-your-business.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CatyAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://catyai.io/images/caty-logo.png"
+        }
+      }
+    },
+    "faqSchema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ce este Model Context Protocol (MCP)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP este standardul deschis creat de Anthropic prin care un asistent AI se conectează live la datele reale ale unui magazin — stoc, prețuri, comenzi — în loc să lucreze din date crawluite și învechite."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MCP procesează plăți?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nu. MCP alimentează agentul cu date de produs în timp real. Finalizarea tranzacției e responsabilitatea altor protocoale precum UCP, ACP și AP2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Am nevoie de cunoștințe tehnice ca să beneficiez de MCP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nu. Servicii precum Uzinele CatyAI automatizează expunerea catalogului tău către agenți AI, fără să fie nevoie să construiești sau să întreții singur o infrastructură MCP."
+          }
+        }
+      ]
+    }
+  },
+  "ucp-acp-ap2-protocoale-agentice": {
+    "content": "<p class=\"text-xl text-gray-300 mb-8\"><em>În mai puțin de un an, marii jucători din tehnologie și plăți au construit — și au și lansat — trei protocoale deschise care definesc exact cum un agent AI descoperă produsul tău, îl adaugă în coș și plătește în numele unui client.</em></p>\n<h2>UCP — Universal Commerce Protocol (Google)</h2>\n<p><strong>Ce e:</strong> standardul deschis prin care agenții AI, aplicațiile și procesatorii de plăți comunică fără integrări custom pentru fiecare pereche magazin-asistent.</p>\n<p><strong>Ce face concret:</strong> căutare în catalog, construire coș, legare de identitate, checkout, gestiune comenzi.</p>\n<p><strong>Cine e în spate:</strong> co-dezvoltat cu Shopify, Etsy, Wayfair, Target, Walmart; susținut de peste 20 de companii — Adyen, American Express, Best Buy, Flipkart, Macy's, Mastercard, Stripe, Home Depot, Visa, Zalando.</p>\n<p><strong>De reținut:</strong> UCP poate rula peste transport REST, MCP sau A2A — nu e o alternativă la MCP, ci un strat construit deasupra lui, dedicat exclusiv tranzacției comerciale.</p>\n<h2>ACP — Agentic Commerce Protocol (OpenAI + Stripe)</h2>\n<p><strong>Ce e:</strong> protocolul din spatele funcției Instant Checkout din ChatGPT, care permite cumpărare directă în conversație.</p>\n<p><strong>Cum funcționează:</strong> Stripe emite un Shared Payment Token (SPT) — un instrument de plată care permite aplicației (ChatGPT) să inițieze o plată fără să vadă sau să stocheze datele cardului cumpărătorului.</p>\n<p><strong>Status 2026:</strong> a pornit cu Etsy și integrări Shopify (Glossier, SKIMS, Spanx, Vuori); în martie 2026 OpenAI a redirecționat strategia de checkout nativ către Apps, dar protocolul ACP rămâne standardul deschis, menținut acum de comunitate pe GitHub.</p>\n<h2>AP2 — Agent Payments Protocol (Google)</h2>\n<p><strong>Ce e:</strong> protocolul de încredere și autorizare — nu mută bani, ci răspunde la întrebarea critică: cum dovedește un comerciant că o achiziție făcută de un agent AI a fost cu adevărat autorizată de un om?</p>\n<p><strong>Cum:</strong> printr-un Mandate semnat digital, care certifică intenția reală a utilizatorului.</p>\n<p><strong>Cine e în spate:</strong> lansat septembrie 2025, cu peste 60 de parteneri (Mastercard, American Express, PayPal, Adyen, Coinbase). În aprilie 2026, Google a donat protocolul către FIDO Alliance pentru guvernanță comunitară.</p>\n<h2>Cum se leagă cele trei (plus MCP) într-un singur stack</h2>\n<table class=\"w-full border-collapse my-6\"><thead><tr class=\"bg-gray-800\"><th class=\"border border-gray-700 px-4 py-2 text-left\">Protocol</th><th class=\"border border-gray-700 px-4 py-2 text-left\">Rol</th><th class=\"border border-gray-700 px-4 py-2 text-left\">Cine</th></tr></thead><tbody>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">MCP</td><td class=\"border border-gray-700 px-4 py-2\">Agentul \"vede\" catalogul, stocul, prețurile în timp real</td><td class=\"border border-gray-700 px-4 py-2\">Anthropic</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">UCP</td><td class=\"border border-gray-700 px-4 py-2\">Agentul caută, construiește coș, inițiază checkout</td><td class=\"border border-gray-700 px-4 py-2\">Google + retaileri</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">ACP</td><td class=\"border border-gray-700 px-4 py-2\">Agentul finalizează plata în ChatGPT via Stripe</td><td class=\"border border-gray-700 px-4 py-2\">OpenAI + Stripe</td></tr>\n<tr><td class=\"border border-gray-700 px-4 py-2 font-semibold text-primary-400\">AP2</td><td class=\"border border-gray-700 px-4 py-2\">Dovada că un om a autorizat plata, indiferent de canal</td><td class=\"border border-gray-700 px-4 py-2\">Google + FIDO</td></tr>\n</tbody></table>\n<p>Nu sunt patru sisteme concurente pe care trebuie să le alegi. Sunt patru straturi ale aceluiași stack agentic, susținute în mare parte de aceiași parteneri mari — semn că industria converge spre un standard comun, nu spre fragmentare.</p>\n<h2>Ce înseamnă pentru magazinul tău</h2>\n<blockquote>Niciunul dintre aceste protocoale nu funcționează dacă produsele tale nu sunt expuse corect din start — catalog structurat, atribute clare, semnale de încredere verificabile. Asta e exact ce automatizează Uzinele CatyAI.</blockquote>\n<p><em>Următorul articol din serie: <a href=\"/blog/checklist-agentic-commerce-magazin-online\">Ești pregătit pentru Agentic Commerce? Checklist practic pentru magazinul tău online</a>.</em></p>",
+    "metaDescription": "UCP (Google), ACP (OpenAI + Stripe) și AP2 (Google/FIDO) explicate: protocoalele reale de comerț agentic din 2026 și ce înseamnă pentru magazinul tău online.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "UCP, ACP, AP2: noile protocoale care decid dacă vinzi sau nu în ChatGPT/Gemini",
+      "author": {
+        "@type": "Organization",
+        "name": "CatyAI"
+      },
+      "datePublished": "2026-07-01",
+      "articleSection": "GEO",
+      "image": "https://catyai.io/images/is-ai-blind-to-your-business.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CatyAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://catyai.io/images/caty-logo.png"
+        }
+      }
+    },
+    "faqSchema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ce este UCP (Universal Commerce Protocol)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "UCP este standardul deschis al Google, co-dezvoltat cu Shopify, Etsy, Wayfair, Target și Walmart, prin care agenții AI caută în catalog, construiesc coșul și finalizează checkout-ul fără integrări custom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce este ACP (Agentic Commerce Protocol)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ACP este protocolul creat de OpenAI împreună cu Stripe, care stă la baza funcției Instant Checkout din ChatGPT, folosind un Shared Payment Token pentru plăți fără expunerea datelor cardului."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce este AP2 (Agent Payments Protocol)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AP2 este protocolul Google de încredere și autorizare a plăților făcute de agenți AI, printr-un Mandate semnat digital care certifică autorizarea reală a unui om. A fost donat către FIDO Alliance în 2026."
+          }
+        }
+      ]
+    }
+  },
+  "checklist-agentic-commerce-magazin-online": {
+    "content": "<p class=\"text-xl text-gray-300 mb-8\"><em>Acesta e checklist-ul: ce verifici concret ca să știi dacă magazinul tău participă sau nu la comerțul agentic în 2026.</em></p>\n<h2>1. Descoperire — te poate \"vedea\" un agent AI?</h2>\n<ul>\n<li>Catalogul de produse are atribute structurate (nu doar poză + preț + titlu de vânzare)</li>\n<li>Fiecare produs are o descriere care răspunde la \"ce problemă rezolvă\", nu doar \"ce este\"</li>\n<li>Site-ul are date structurate (schema.org Product/ItemList) complete, nu parțiale</li>\n<li>Robots.txt permite acces crawlerelor AI relevante (GPTBot, ClaudeBot, PerplexityBot)</li>\n<li>Conținutul e curent — un agent nu recomandă informație veche sau contradictorie</li>\n</ul>\n<h2>2. Infrastructură tehnică — poate un agent \"intra\" în date reale?</h2>\n<ul>\n<li>Ai (sau platforma ta oferă) un server MCP care expune produse/stoc/preț în timp real</li>\n<li>Dacă ești pe Shopify: servere MCP oficiale sunt active implicit — verifică dacă sunt configurate corect</li>\n<li>Dacă ești pe WooCommerce: MCP e disponibil, dar necesită monitorizare pe măsură ce evoluează</li>\n<li>Datele de stoc expuse către agent sunt aceleași cu stocul real, nu un export cu întârziere</li>\n</ul>\n<h2>3. Tranzacție — poate un agent finaliza o comandă?</h2>\n<ul>\n<li>Procesatorul tău de plăți e compatibil sau evoluează spre ACP/AP2</li>\n<li>Ai un plan pentru UCP dacă vinzi pe/prin platforme mari (Shopify, Google Shopping)</li>\n<li>Înțelegi diferența dintre \"agent recomandă\" (GEO) și \"agent cumpără\" (UCP/ACP/AP2) — și unde ești tu azi pe acest spectru</li>\n</ul>\n<h2>4. Încredere — de ce te-ar recomanda un agent pe tine, nu concurentul?</h2>\n<ul>\n<li>Informația despre brand e consistentă pe toate sursele publice (nume, adresă, politici, contact)</li>\n<li>Ai semnale verificabile de autenticitate (recenzii reale, politici clare de retur/livrare)</li>\n<li>Catalogul nu conține conținut duplicat sau generic reciclat de la producător</li>\n</ul>\n<h2>5. Măsurare — cum știi dacă funcționează?</h2>\n<ul>\n<li>Ai un mecanism de a detecta trafic/vânzări provenite din surse AI (parametri UTM dedicați, tracking pe referral)</li>\n<li>Monitorizezi dacă brandul tău apare în răspunsuri ChatGPT/Gemini/Claude/Perplexity pentru interogările relevante categoriei tale</li>\n<li>Compari rata de citare față de concurenții direcți</li>\n</ul>\n<h2>Ce faci dacă ai bifat sub jumătate</h2>\n<p>Nu ești în urmă ireversibil — majoritatea magazinelor sunt exact aici în 2026. Dar fiecare lună în care catalogul rămâne neexpus corect pentru agenți e o lună de trafic agentic care merge automat la concurentul care a făcut deja pasul.</p>\n<blockquote>Uzinele CatyAI automatizează cea mai mare parte din acest checklist dintr-un singur pas: transformă catalogul magazinului tău într-un format optimizat exclusiv pentru era AI — structurat, semnat, verificabil.</blockquote>\n<p><strong>Fii cu un pas înaintea pieței.</strong> Magazinul tău e gata să fie recomandat de Inteligența Artificială?</p>",
+    "metaDescription": "Checklist practic 2026: descoperire, infrastructură MCP, tranzacție UCP/ACP/AP2, încredere și măsurare — verifică dacă magazinul tău participă la comerțul agentic.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Ești pregătit pentru Agentic Commerce? Checklist practic pentru magazinul tău online",
+      "author": {
+        "@type": "Organization",
+        "name": "CatyAI"
+      },
+      "datePublished": "2026-07-01",
+      "articleSection": "GEO",
+      "image": "https://catyai.io/images/is-ai-blind-to-your-business.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CatyAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://catyai.io/images/caty-logo.png"
+        }
+      }
+    },
+    "faqSchema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Cum verific dacă magazinul meu e pregătit pentru Agentic Commerce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Parcurgi 5 zone: descoperire (catalog structurat), infrastructură tehnică (MCP), tranzacție (compatibilitate UCP/ACP/AP2), încredere (consistență brand) și măsurare (tracking trafic AI)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce fac dacă magazinul meu nu bifează majoritatea punctelor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Majoritatea magazinelor sunt în aceeași situație în 2026. Uzinele CatyAI automatizează cea mai mare parte a pregătirii catalogului pentru agenți AI, fără să fie nevoie de implementare tehnică proprie."
+          }
+        }
+      ]
+    }
   }
 }
