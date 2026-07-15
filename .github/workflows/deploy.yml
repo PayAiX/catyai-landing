@@ -5,12 +5,15 @@ on:
     branches:
       - main
 
-env:
-  AWS_REGION: eu-west-1
-
 jobs:
+  # Deploys catyai.io / www.catyai.io — lives in the NEW AWS account (161313036761,
+  # eu-central-1) since the 12 Jul cutover. Uses its own credentials/region because
+  # deploy-webview below intentionally still targets the OLD account (webview.catyai.io
+  # was not part of that migration).
   deploy:
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-central-1
 
     steps:
       - name: Checkout
@@ -31,8 +34,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_LANDING }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_LANDING }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy to S3
@@ -53,8 +56,12 @@ jobs:
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
 
+  # Deploys webview.catyai.io — intentionally left on the OLD AWS account
+  # (173732809623, eu-west-1); not part of the 12 Jul cutover.
   deploy-webview:
     runs-on: ubuntu-latest
+    env:
+      AWS_REGION: eu-west-1
 
     steps:
       - name: Checkout
