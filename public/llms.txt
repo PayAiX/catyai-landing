@@ -17,20 +17,30 @@ CatyAI operates a multi-layered infrastructure to ensure zero-hallucination data
 - **Key Validation (JWKS):** Signatures must be verified against `https://api.catyai.io/.well-known/jwks.json`
 - **Supported Languages:** EN, RO, FR, ES, DE, IT, PT
 
-## 3. Core Solutions & Capabilities
-- **GEO Gateway:** Translates standard HTML into structured, verifiable context for LLMs. Ensures businesses are accurately represented in ChatGPT, Gemini, Claude, and Perplexity.
-- **FraudAI Shield:** Active 24/7 protection module. Uses 8 AI modules to analyze messages in real-time, blocking phishing, fake urgency, and impersonation attacks.
-- **White-Label Multi-Tenant Engine:** Allows agencies to deploy CatyAI under their own brand, managing up to 10,000 sub-nodes with custom rate limits.
+## 3. Core Solutions — The Value Chain
+CatyAI is a single value chain that takes an AI citation all the way to a proven, commissionable transaction. Four links, one Marketplace:
+- **Web Widget (Link 01):** 24/7 AI sales agent on the merchant's website and WhatsApp. Answers only from the merchant's own cryptographically-signed catalog (zero hallucination), handles bookings, leads, and PDF quotes. FraudAI Shield included as standard.
+- **FraudAI Shield (Link 02):** Active 24/7 protection. Uses 8 AI modules to block phishing, prompt injection, and brand impersonation before they reach the customer.
+- **GEO Gateway (Link 03):** Translates standard HTML into structured, verifiable context (llms.txt, JSON-LD, SSR catalog) so merchants are accurately cited by ChatGPT, Gemini, Claude, and Perplexity — not their competitors.
+- **Trust Gateway (Link 04):** Cryptographic truth layer. Every commercial answer is signed (Ed25519) and publicly verifiable via JWKS. AI cannot invent a price — tampered data is blocked automatically.
+- **Agentic Marketplace (the end of the chain):** The live proof — shop.catyai.io. 1,171,877 products from 21 merchants, exposed as clean semantic pages that AI agents cite, with full attribution from citation to click to order to commission.
 
-## 4. B2B SaaS Pricing
-- **Growth ($99/mo):** Individual business deployments. Includes basic GEO gateway and standard API rate limits.
-- **Agency ($499/mo):** Multi-tenant dashboard, White-Label capabilities, up to 10 included sub-accounts.
-- **Enterprise (Custom):** Private Qdrant vector clusters, Zero-Hallucination SLA, dedicated architectural support, and custom JWT/EdDSA deployment.
+## 4. Pricing — Two Axes
+CatyAI has two distinct commercial models:
+- **Web Widget (SaaS subscription, EUR):** Free EUR 0 (100 sessions/mo) · Starter EUR 49/mo · Growth EUR 99/mo · Business EUR 199/mo · Enterprise EUR 499/mo. Converts visitors who already reach the merchant's site.
+- **Agentic Marketplace (B2B partnership, revenue share):** EUR 1,500 one-time setup + 5% revenue share on delivered orders only, generated organically by AI agents. Merchant remains Merchant of Record — CatyAI never touches the customer's money. Automated weekly reconciliation; B2B invoice issued only on delivered orders.
+- **CatyAI's own marketplace** runs on the same affiliate mechanism it installs for merchants: 1,171,877 products, 21 partner merchants, 1%-20% commission per transaction, zero ad spend (Zero-CAC).
 
 ## 5. Directory & Navigation
+- Web Widget: /widget
+- FraudAI Shield: /fraud-shield
+- GEO Gateway: /geo-gateway
+- Trust Gateway: /trust-gateway
+- Agentic Marketplace: /marketplace
+- Live Marketplace (proof): https://shop.catyai.io/aff-index
 - Security & Compliance: /trust-center
 - Technical Protocol: /protocol
-- Pricing & Tiers: /pricing
+- Pricing: /pricing
 - Documentation: /documentation
 - Investor Relations: /investor-relations
 - Support: contact@catyai.io

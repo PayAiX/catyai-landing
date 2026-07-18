@@ -4,99 +4,139 @@ import SEO from '../components/SEO'
 import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
 
-const TIERS = [
+// ─────────────────────────────────────────────────────────────────────────────
+// AXA 1 — WEB WIDGET (SaaS, abonament lunar, EUR)
+// Self-service: instalezi widget-ul pe site, AI-ul vinde 24/7. Crești când ai trafic.
+// ─────────────────────────────────────────────────────────────────────────────
+const WIDGET_TIERS = [
   {
-    name: 'Growth',
-    price: '$99',
-    period: '/month',
-    desc: 'The complete GEO stack for growing businesses. Everything you need to become visible to AI engines.',
+    name: 'Starter',
+    price: '€49',
+    period: '/lună',
+    desc: 'Pentru magazine care vor să convertească vizitatorii în clienți.',
     badge: null,
     highlighted: false,
     features: [
-      '5,000 AI sessions/month',
-      'GEO Gateway — full 6-layer stack',
-      'NAP Protocol v2.0',
-      'FraudAI Shield',
-      'WhatsApp AI integration',
-      '3 website widgets',
-      'Knowledge base (50 documents)',
-      'API access',
-      'Priority email support',
+      '1.000 sesiuni AI/lună',
+      'Web + WhatsApp, aceeași logică de vânzare',
+      'Programări + captare lead-uri',
+      'Documente PDF cu link de plată',
+      'Tracking comportamental + mesaje proactive',
     ],
-    cta: 'Start Growth',
+    cta: 'Pornește Starter',
+    ctaLink: 'https://app.catyai.io/register?plan=starter',
+    external: true,
+  },
+  {
+    name: 'Growth',
+    price: '€99',
+    period: '/lună',
+    desc: 'Pentru magazine în creștere, cu integrări CRM și handoff către echipă.',
+    badge: 'Cel mai ales',
+    highlighted: true,
+    features: [
+      '5.000 sesiuni AI/lună',
+      'Integrări CRM native (HubSpot, Pipedrive, Salesforce)',
+      'Live handoff către operator uman',
+      'Lead scoring automat',
+      'Suport prioritar pe email',
+    ],
+    cta: 'Pornește Growth',
     ctaLink: 'https://app.catyai.io/register?plan=growth',
     external: true,
   },
   {
-    name: 'Agency',
-    price: '$499',
-    period: '/month',
-    desc: 'Multi-tenant infrastructure for agencies managing AI visibility for multiple client businesses.',
-    badge: 'Most Popular',
-    highlighted: true,
+    name: 'Business',
+    price: '€199',
+    period: '/lună',
+    desc: 'Volum mare, acces API și account manager dedicat.',
+    badge: null,
+    highlighted: false,
     features: [
-      'Unlimited AI sessions',
-      'Up to 25 client accounts',
-      'White-label dashboard option',
-      'Full GEO Gateway suite',
-      'NAP Protocol v2.0 + multi-location',
-      'FraudAI Shield + SENTINEL',
-      'WhatsApp + omnichannel',
-      'Unlimited widgets',
-      'Unlimited knowledge base',
-      'SSO / SAML',
-      'Dedicated onboarding call',
-      'SLA-backed support',
+      '20.000 sesiuni AI/lună',
+      'API access complet',
+      'Widget-uri nelimitate',
+      'Knowledge base extinsă',
+      'Account manager',
     ],
-    cta: 'Start Agency',
-    ctaLink: 'https://app.catyai.io/register?plan=agency',
+    cta: 'Pornește Business',
+    ctaLink: 'https://app.catyai.io/register?plan=business',
     external: true,
   },
   {
     name: 'Enterprise',
-    price: 'Custom',
-    period: 'pricing',
-    desc: 'Dedicated infrastructure, custom compliance requirements, and a named account manager for large organizations.',
+    price: '€499',
+    period: '/lună',
+    desc: 'Sesiuni nelimitate, white-label și SLA contractual.',
     badge: null,
     highlighted: false,
     features: [
-      'Dedicated VPC / data residency',
-      'Unlimited client accounts',
-      'Full white-label deployment',
-      'Custom AI model fine-tuning',
-      'SOC2 / GDPR compliance docs',
-      'EU AI Act alignment review',
-      'Custom API & integrations',
-      'SLA with financial penalties',
-      'Named account manager',
-      'Quarterly business reviews',
+      'Sesiuni AI nelimitate',
+      'White-label complet',
+      'SSO / SAML + SLA garantat',
+      'Infrastructură dedicată (VPC)',
+      'Onboarding dedicat + suport SLA',
     ],
-    cta: 'Contact Sales',
+    cta: 'Discută cu echipa',
     ctaLink: '/contact?plan=enterprise',
     external: false,
   },
 ]
 
+// ─────────────────────────────────────────────────────────────────────────────
+// AXA 2 — AGENTIC MARKETPLACE (Parteneriat B2B, revenue share)
+// Nu e abonament: plătești setup o dată, apoi câștigăm doar când vinzi tu.
+// ─────────────────────────────────────────────────────────────────────────────
+const MARKETPLACE = {
+  name: 'Agentic Marketplace',
+  model: 'Parteneriat B2B · Revenue Share',
+  setupPrice: '€1.500',
+  setupLabel: 'taxă de setup, o singură dată',
+  revshare: '+5%',
+  revshareLabel: 'revenue share — doar din comenzile livrate, generate organic de agenții AI',
+  desc: 'Îți rescriem catalogul prin Fabrica Semantică și îl expunem agenților AI ca sursă de adevăr semnată. Tu rămâi Merchant of Record — noi nu atingem niciodată banii clientului tău.',
+  features: [
+    'GEO Gateway — catalog citibil de ChatGPT, Perplexity, Gemini',
+    'Trust Gateway — prețuri și stoc semnate criptografic, imposibil de halucinat',
+    'Pagini SSR de produs pe shop.catyai.io, cu atribuire completă',
+    'Reconciliere automată săptămânală · factură B2B doar la livrare',
+    'Dashboard: citări, clickuri din AI, comision — în bani',
+  ],
+  alignNote: 'Aliniere totală: dacă tu nu vinzi, noi nu câștigăm nimic.',
+  cta: 'Programează o discuție de parteneriat',
+  ctaLink: '/contact?plan=marketplace',
+}
+
+// Banda de transparență: noi câștigăm din același mecanism pe care ți-l instalăm.
+const EARN_PROOF = {
+  title: 'De ce poți avea încredere în model: noi câștigăm din exact același mecanism.',
+  body: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: 1.171.877 produse · 21 comercianți parteneri · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
+}
+
 const FAQS = [
   {
-    q: 'Can I change plans at any time?',
-    a: 'Yes. Upgrades take effect immediately with prorated billing. Downgrades apply at the start of your next billing cycle. No lock-in contracts on Growth or Agency.',
+    q: 'Care e diferența dintre Web Widget și Agentic Marketplace?',
+    a: 'Web Widget e un abonament SaaS (€0–€499/lună): instalezi agentul AI pe site și WhatsApp ca să convertești vizitatorii care ajung deja la tine. Agentic Marketplace e un parteneriat B2B (€1.500 setup + 5% la livrare): îți facem catalogul citibil de ChatGPT/Perplexity/Gemini și îți aducem clienți noi din AI, cu atribuire completă până la comandă.',
   },
   {
-    q: 'What happens when I reach the session limit?',
-    a: 'You\'ll receive an email notification at 80% usage. If you hit the limit, AI responses pause until the next billing cycle. You can upgrade at any time to restore service immediately.',
+    q: 'Cum funcționează comisionul de 5% la Marketplace?',
+    a: 'Plătești 5% doar din comenzile livrate cu succes, generate organic de agenții AI. Tu rămâi Merchant of Record — noi nu atingem banii clientului. Reconcilierea e automată săptămânal, iar factura B2B se emite doar pentru comenzile livrate. Fără vânzare, fără comision.',
   },
   {
-    q: 'Is there a free trial?',
-    a: 'Yes. All plans include a 14-day free trial. No credit card required to start. Growth and Agency trials include the full feature set.',
+    q: 'Pot schimba planul de Widget oricând?',
+    a: 'Da. Upgrade-urile au efect imediat, cu facturare proporțională. Downgrade-urile se aplică de la începutul următorului ciclu de facturare. Fără contracte de lock-in.',
   },
   {
-    q: 'What is a "session"?',
-    a: 'One session equals one complete conversation with a user — from first message to conversation close or 30 minutes of inactivity, whichever comes first. Background API calls for NAP sync and GEO crawling do not consume sessions.',
+    q: 'Ce se întâmplă când ating limita de sesiuni?',
+    a: 'Primești notificare la 80% din utilizare. Dacă atingi limita, răspunsurile AI se opresc până la următorul ciclu — sau poți face upgrade oricând ca să reiei instant serviciul.',
   },
   {
-    q: 'Do you offer annual billing discounts?',
-    a: 'Yes. Annual billing saves 20% on Growth and Agency plans. Enterprise agreements are negotiated separately and typically include multi-year pricing with custom terms.',
+    q: 'Există perioadă de probă?',
+    a: 'Da — 14 zile gratuit pe orice plan Widget, fără card. Pentru Marketplace, setup-ul include o sesiune de onboarding dedicată.',
+  },
+  {
+    q: 'Ce este o „sesiune"?',
+    a: 'O sesiune = o conversație completă cu un utilizator — de la primul mesaj până la închiderea conversației sau 30 de minute de inactivitate. Apelurile API de fundal (sincronizare NAP, crawling GEO) nu consumă sesiuni.',
   },
 ]
 
@@ -105,14 +145,27 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'SoftwareApplication',
-      name: 'CatyAI',
+      name: 'CatyAI Web Widget',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       offers: [
-        { '@type': 'Offer', name: 'Growth', price: '99', priceCurrency: 'USD', description: 'Complete GEO stack for growing businesses' },
-        { '@type': 'Offer', name: 'Agency', price: '499', priceCurrency: 'USD', description: 'Multi-tenant AI infrastructure for agencies' },
-        { '@type': 'Offer', name: 'Enterprise', price: '0', priceCurrency: 'USD', description: 'Dedicated infrastructure for large organizations' },
+        { '@type': 'Offer', name: 'Starter', price: '49', priceCurrency: 'EUR', description: '1.000 sesiuni, Web + WhatsApp, lead capture' },
+        { '@type': 'Offer', name: 'Growth', price: '99', priceCurrency: 'EUR', description: '5.000 sesiuni, integrări CRM, live handoff' },
+        { '@type': 'Offer', name: 'Business', price: '199', priceCurrency: 'EUR', description: '20.000 sesiuni, API access, account manager' },
+        { '@type': 'Offer', name: 'Enterprise', price: '499', priceCurrency: 'EUR', description: 'Sesiuni nelimitate, white-label, SLA' },
       ],
+    },
+    {
+      '@type': 'Service',
+      name: 'CatyAI Agentic Marketplace',
+      serviceType: 'B2B Revenue-Share Partnership',
+      description: 'Parteneriat B2B: catalog rescris semantic, semnat criptografic și expus agenților AI, cu comision 5% doar la comenzi livrate.',
+      offers: {
+        '@type': 'Offer',
+        price: '1500',
+        priceCurrency: 'EUR',
+        description: 'Taxă de setup (o singură dată) + 5% revenue share din comenzile livrate generate de AI',
+      },
     },
     {
       '@type': 'FAQPage',
@@ -141,8 +194,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Pricing — Growth $99 · Agency $499 · Enterprise | CatyAI"
-        description="Simple, transparent pricing for AI infrastructure. Growth $99/month, Agency $499/month, Enterprise custom. 14-day free trial. No credit card required."
+        title="Prețuri — Web Widget €49–€499/lună · Agentic Marketplace €1.500 + 5% | CatyAI"
+        description="Două produse, două modele: Web Widget (abonament SaaS, €49–€499/lună) și Agentic Marketplace (parteneriat B2B, €1.500 setup + 5% doar la livrare). 14 zile gratuit, fără card."
         canonical="https://catyai.io/pricing"
         jsonLd={jsonLd}
       />
@@ -201,19 +254,179 @@ export default function PricingPage() {
         }
         .pri-trial-note span { color: #6ee7b7; }
 
+        /* Axis heads (Widget / Marketplace) */
+        .pri-axis-head { text-align: center; margin-bottom: 3rem; }
+        .pri-axis-tag {
+          display: inline-block;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.7rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #94a3b8;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 100px;
+          padding: 0.35rem 1rem;
+          margin-bottom: 1.25rem;
+        }
+        .pri-axis-tag.gold { color: #C8A165; border-color: rgba(200,161,101,0.35); }
+        .pri-axis-title {
+          font-family: 'Inter', sans-serif;
+          font-weight: 800;
+          font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+          color: #f1f5f9;
+          letter-spacing: -0.025em;
+          margin-bottom: 0.75rem;
+        }
+        .pri-axis-sub { color: #94a3b8; font-size: 1.02rem; max-width: 560px; margin: 0 auto; }
+
         /* Tiers */
-        .pri-tiers-section { padding: 0 1.5rem 6rem; }
+        .pri-tiers-section { padding: 0 1.5rem 5rem; }
         .pri-tiers-grid {
           max-width: 1060px;
           margin: 0 auto;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
-          align-items: start;
+          align-items: stretch;
+        }
+        .pri-tiers-grid-5 {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.1rem;
+          max-width: 1100px;
+        }
+        @media (max-width: 1100px) {
+          .pri-tiers-grid-5 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+          .pri-tiers-grid-5 { grid-template-columns: 1fr; max-width: 480px; }
         }
         @media (max-width: 900px) {
           .pri-tiers-grid { grid-template-columns: 1fr; max-width: 480px; }
         }
+
+        /* Marketplace (parteneriat) */
+        .pri-marketplace-section { padding: 2rem 1.5rem 6rem; }
+        .pri-marketplace-card {
+          max-width: 860px;
+          margin: 0 auto;
+          background: linear-gradient(180deg, rgba(200,161,101,0.07), rgba(255,255,255,0.02));
+          border: 1px solid rgba(200,161,101,0.32);
+          border-radius: 22px;
+          padding: 2.75rem 2.75rem 2.5rem;
+          position: relative;
+        }
+        .pri-marketplace-badge {
+          position: absolute;
+          top: -14px;
+          left: 2.5rem;
+          background: linear-gradient(90deg, #C8A165, #D4B57A);
+          color: #010A1F;
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 0.4rem 1rem;
+          border-radius: 100px;
+        }
+        .pri-marketplace-pricing {
+          display: flex;
+          gap: 2.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.75rem;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .pri-marketplace-amount {
+          font-family: 'Inter', sans-serif;
+          font-weight: 800;
+          font-size: 3rem;
+          color: #f1f5f9;
+          letter-spacing: -0.04em;
+          line-height: 1;
+        }
+        .pri-marketplace-amount-label { color: #64748b; font-size: 0.85rem; margin-top: 0.4rem; }
+        .pri-marketplace-rev {
+          display: flex;
+          align-items: center;
+          gap: 0.9rem;
+          background: rgba(200,161,101,0.08);
+          border: 1px solid rgba(200,161,101,0.28);
+          border-radius: 14px;
+          padding: 0.9rem 1.2rem;
+        }
+        .pri-marketplace-rev-num {
+          font-family: 'Inter', sans-serif;
+          font-weight: 800;
+          font-size: 2rem;
+          color: #C8A165;
+          line-height: 1;
+        }
+        .pri-marketplace-rev-label { color: #94a3b8; font-size: 0.82rem; max-width: 220px; line-height: 1.4; }
+        .pri-marketplace-desc { color: #94a3b8; font-size: 0.95rem; line-height: 1.65; margin-bottom: 1.5rem; }
+        .pri-marketplace-features {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1.5rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.7rem 1.5rem;
+        }
+        @media (max-width: 640px) { .pri-marketplace-features { grid-template-columns: 1fr; } }
+        .pri-marketplace-features li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.6rem;
+          font-size: 0.9rem;
+          color: #cbd5e1;
+          line-height: 1.5;
+        }
+        .pri-marketplace-features li::before { content: '✓'; color: #C8A165; font-weight: 700; flex-shrink: 0; }
+        .pri-marketplace-align {
+          color: #C8A165;
+          font-weight: 600;
+          font-size: 0.9rem;
+          margin-bottom: 1.75rem;
+        }
+        .pri-marketplace-cta {
+          display: block;
+          text-align: center;
+          background: linear-gradient(90deg, #C8A165, #D4B57A);
+          color: #010A1F;
+          font-weight: 700;
+          font-size: 1rem;
+          padding: 1rem;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: opacity 0.2s;
+        }
+        .pri-marketplace-cta:hover { opacity: 0.92; }
+
+        /* Earn transparency band */
+        .pri-earn-band {
+          max-width: 860px;
+          margin: 1.5rem auto 0;
+          background: rgba(255,255,255,0.02);
+          border: 1px dashed rgba(200,161,101,0.3);
+          border-radius: 16px;
+          padding: 1.75rem 2rem;
+          display: flex;
+          gap: 1.25rem;
+          align-items: flex-start;
+        }
+        .pri-earn-icon {
+          width: 44px; height: 44px;
+          border-radius: 12px;
+          background: rgba(200,161,101,0.1);
+          border: 1px solid rgba(200,161,101,0.25);
+          display: grid;
+          place-items: center;
+          font-size: 1.25rem;
+          flex-shrink: 0;
+        }
+        .pri-earn-title { color: #f1f5f9; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .pri-earn-body { color: #94a3b8; font-size: 0.86rem; line-height: 1.6; margin: 0; }
+        @media (max-width: 640px) { .pri-earn-band { flex-direction: column; } }
         .pri-tier {
           background: rgba(255,255,255,0.03);
           border: 1px solid rgba(255,255,255,0.08);
@@ -434,18 +647,23 @@ export default function PricingPage() {
 
         {/* Hero */}
         <section className="pri-hero">
-          <div className="pri-badge">💎 Simple, Transparent Pricing</div>
-          <h1 className="pri-hero-title">Plans that grow<br />with your business.</h1>
+          <div className="pri-badge">💎 Două produse, două modele — un singur lanț</div>
+          <h1 className="pri-hero-title">Widget-ul e abonament.<br />Marketplace-ul e parteneriat.</h1>
           <p className="pri-hero-sub">
-            One stack. Three plans. Full GEO infrastructure, NAP Protocol, and FraudAI Shield included in every tier.
+            Nu îți vindem „încă un tool". Pe Widget plătești un abonament simplu; pe Marketplace câștigăm doar când vinzi tu.
           </p>
-          <p className="pri-trial-note"><span>14-day free trial</span> · No credit card required · Cancel anytime</p>
+          <p className="pri-trial-note"><span>14 zile gratuit</span> · Fără card · Anulare oricând</p>
         </section>
 
-        {/* Tiers */}
+        {/* ── AXA 1: WEB WIDGET (SaaS) ── */}
         <section className="pri-tiers-section">
-          <div className="pri-tiers-grid">
-            {TIERS.map((tier) => (
+          <div className="pri-axis-head">
+            <span className="pri-axis-tag">Axa SaaS · Abonament lunar</span>
+            <h2 className="pri-axis-title">Web Widget</h2>
+            <p className="pri-axis-sub">Agentul tău de vânzări AI pe site și WhatsApp. Începi simplu, crești când ai trafic.</p>
+          </div>
+          <div className="pri-tiers-grid pri-tiers-grid-5">
+            {WIDGET_TIERS.map((tier) => (
               <div key={tier.name} className={`pri-tier${tier.highlighted ? ' highlighted' : ''}`}>
                 {tier.badge && <div className="pri-tier-badge">⭐ {tier.badge}</div>}
                 <div className="pri-tier-name">{tier.name}</div>
@@ -476,15 +694,55 @@ export default function PricingPage() {
             ))}
           </div>
           <p className="pri-compare-note" style={{ marginTop: '2rem' }}>
-            All plans include GEO Gateway, NAP Protocol v2.0, and FraudAI Shield.&nbsp;
-            <a href="https://docs.catyai.io/pricing" target="_blank" rel="noopener noreferrer">Full feature comparison →</a>
+            Toate planurile de Widget includ FraudAI Shield și răspunsuri ancorate în catalogul tău semnat.&nbsp;
+            <a href="https://docs.catyai.io/pricing" target="_blank" rel="noopener noreferrer">Comparație completă →</a>
           </p>
+        </section>
+
+        {/* ── AXA 2: AGENTIC MARKETPLACE (Parteneriat B2B) ── */}
+        <section className="pri-marketplace-section">
+          <div className="pri-axis-head">
+            <span className="pri-axis-tag gold">Axa Marketplace · Revenue Share</span>
+            <h2 className="pri-axis-title">Agentic Marketplace</h2>
+            <p className="pri-axis-sub">Nu e abonament — e parteneriat. Plătești setup o dată, apoi câștigăm doar când vinzi tu.</p>
+          </div>
+
+          <div className="pri-marketplace-card">
+            <div className="pri-marketplace-badge">🤝 {MARKETPLACE.model}</div>
+            <div className="pri-marketplace-pricing">
+              <div className="pri-marketplace-setup">
+                <div className="pri-marketplace-amount">{MARKETPLACE.setupPrice}</div>
+                <div className="pri-marketplace-amount-label">{MARKETPLACE.setupLabel}</div>
+              </div>
+              <div className="pri-marketplace-rev">
+                <div className="pri-marketplace-rev-num">{MARKETPLACE.revshare}</div>
+                <div className="pri-marketplace-rev-label">{MARKETPLACE.revshareLabel}</div>
+              </div>
+            </div>
+            <p className="pri-marketplace-desc">{MARKETPLACE.desc}</p>
+            <ul className="pri-marketplace-features">
+              {MARKETPLACE.features.map((f) => <li key={f}>{f}</li>)}
+            </ul>
+            <div className="pri-marketplace-align">{MARKETPLACE.alignNote}</div>
+            <Link to={MARKETPLACE.ctaLink} className="pri-marketplace-cta">
+              {MARKETPLACE.cta} →
+            </Link>
+          </div>
+
+          {/* Transparența: câștigăm din același mecanism */}
+          <div className="pri-earn-band">
+            <div className="pri-earn-icon">🔁</div>
+            <div>
+              <h3 className="pri-earn-title">{EARN_PROOF.title}</h3>
+              <p className="pri-earn-body">{EARN_PROOF.body}</p>
+            </div>
+          </div>
         </section>
 
         {/* FAQ */}
         <section className="pri-faq-section">
           <div className="pri-faq-container">
-            <h2 className="pri-faq-title">Frequently Asked Questions</h2>
+            <h2 className="pri-faq-title">Întrebări frecvente</h2>
             {FAQS.map((faq, i) => (
               <div
                 key={i}
@@ -508,8 +766,8 @@ export default function PricingPage() {
 
         {/* CTA */}
         <section className="pri-cta-section">
-          <h2 className="pri-cta-title">Ready to get started?</h2>
-          <p className="pri-cta-sub">Start your 14-day free trial. No credit card required.</p>
+          <h2 className="pri-cta-title">Începe cu ce ai nevoie acum.</h2>
+          <p className="pri-cta-sub">14 zile gratuit pe Widget. Sau discută cu noi despre parteneriatul Marketplace.</p>
           <div className="pri-cta-row">
             <a
               href="https://app.catyai.io/register"
@@ -517,9 +775,9 @@ export default function PricingPage() {
               rel="noopener noreferrer"
               className="pri-cta-btn-a"
             >
-              Start Free Trial
+              Instalează Widget-ul
             </a>
-            <Link to="/contact" className="pri-cta-btn-b">Talk to Sales</Link>
+            <Link to="/contact?plan=marketplace" className="pri-cta-btn-b">Discută despre Marketplace</Link>
           </div>
         </section>
 
