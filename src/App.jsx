@@ -54,6 +54,8 @@ const Press = lazy(() => import('./pages/Press'))
 const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
+const TrustGateway = lazy(() => import('./pages/TrustGateway'))
+const Marketplace = lazy(() => import('./pages/Marketplace'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3275,7 +3277,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace']
   const isStandalonePage = standalonePages.includes(location.pathname) || location.pathname.startsWith('/blog')
 
   // Track referral code from URL
@@ -3339,6 +3341,8 @@ function AppContent() {
             <Route path="/press" element={<Press />} />
             <Route path="/mcp" element={<McpPage />} />
             <Route path="/agentic-marketplace" element={<AgenticMarketplace />} />
+            <Route path="/trust-gateway" element={<TrustGateway />} />
+            <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />

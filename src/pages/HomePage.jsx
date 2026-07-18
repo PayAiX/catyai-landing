@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+import { MessageSquare, ShieldCheck, RadioTower, Lock } from 'lucide-react';
 import SEO from '../components/SEO';
 import GlobalHeader from '../components/GlobalHeader';
 import FooterV9 from '../components/FooterV9';
@@ -12,19 +13,24 @@ const translations = {
   ro: {
     navLogin: 'Login', navCta: 'Audit Vizibilitate',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Prețuri',
-    badge: '🔴 SCANARE: 90% DIN SITE-URI SUNT INVIZIBILE PENTRU AI',
-    heroLine1: 'AI este orb față de', heroAccent: 'afacerea ta?',
-    heroSubtitle: 'Dacă AI-ul nu poate citi site-ul tău, nu exiști. Verifică în 30 de secunde dacă GPTBot, ClaudeBot și Perplexity te pot citi — sau dacă inventează prețurile și serviciile tale.',
-    heroPlaceholder: 'https://site-ul-tau.ro', heroBtn: 'Analizează',
-    socialProof: '300+ companii folosesc CatyAI · ZF IT Generation 2025 · Gratuit, fără card',
+    badge: '🔴 LIVE ÎN PRODUCȚIE: 1.171.877 PRODUSE INDEXATE DE AI',
+    heroLine1: 'AI-ul vinde. Noi ne asigurăm că', heroAccent: 'vinde adevărul tău.',
+    heroSubtitle: 'CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini, blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic — și transformă fiecare citare într-o tranzacție măsurabilă.',
+    heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
+    socialProof: '1,1M produse · 21 comercianți live · comision doar la livrare · Gratuit, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
     scanLlm: 'Extracție date LLM:', scanLlmFail: 'Eșuat (JS blocat)',
     scanHalluc: 'Risc halucinații:', scanHallucVal: 'Extrem (>85%)',
     scanSig: 'Signature Ed25519:', scanSigVal: 'Lipsește', scanRepair: 'Repară cu CatyAI',
     crawlersLabel: 'Optimizat pentru',
-    productsLabel: 'One AI · Four Products',
-    productsTitle: 'Alege soluția', productsTitleAccent: 'potrivită pentru business-ul tău',
-    howLabel: 'Cum funcționează', howTitle: 'Patru layere.', howAccent: 'protocol neural',
+    productsLabel: 'Un lanț, nu patru produse',
+    productsTitle: 'De la întrebarea clientului', productsTitleAccent: 'la comisionul din contul tău.',
+    productsSub: 'Fiecare verigă rezolvă o parte. Separat, sunt unelte. Împreună, sunt singura infrastructură care duce o citare AI până la o tranzacție dovedită.',
+    chainLinkLabel: 'Veriga',
+    chainEndTitle: 'Și totul se termină în bani:', chainEndAccent: 'Agentic Marketplace',
+    chainEndBody: 'Click atribuit, comandă dovedită, comision facturat automat la livrare. 1,1M produse live chiar acum.',
+    chainEndCta: 'Deschide marketplace-ul',
+    howLabel: 'Cum funcționează', howTitle: 'Trei pași.', howAccent: 'proces fără tehnic.',
     layer1Tag: 'Layer 01 · Antena', layer1Title: 'Vizibilitate AI',
     layer1Tagline: 'Fă-ți business-ul lizibil pentru roboți.',
     layer1Body: 'ChatGPT și Gemini nu „văd" site-ul tău ca pe o poză. Instalăm antena care le livrează datele tale oficiale direct în creier — eliminând ghicitul și halucinațiile.',
@@ -72,27 +78,36 @@ const translations = {
     footerProduct: 'Produs', footerResources: 'Resurse', footerCompany: 'Companie', footerLegal: 'Legal',
     footerPricing: 'Prețuri', footerDocs: 'Documentație', footerAbout: 'Despre',
     footerCareers: 'Cariere', footerTerms: 'Termeni', footerSecurity: 'Securitate',
-    prod1Tagline: 'Fără site? Nicio problemă.', prod1F1: 'Cod QR pentru WhatsApp', prod1F2: 'AI răspunde 24/7', prod1F3: 'Programări automate', prod1F4: 'Zero costuri hosting', prod1Cta: 'Începe cu €10',
-    prod2Tagline: 'AI pe site-ul tău', prod2F1: 'Widget chat embed', prod2F2: 'Auto-Crawl site', prod2F3: 'Captare lead-uri', prod2F4: 'Analiză completă', prod2Cta: 'Adaugă pe site',
-    prod3Tagline: 'Protecție anti-fraudă', prod3F1: '8 module de detectare', prod3F2: 'Blochează phishing', prod3F3: 'Alertă în timp real', prod3F4: 'Zero fals pozitive', prod3Cta: 'Activează Gratuit',
-    prod4Tagline: 'Rutare geografică inteligentă', prod4F1: '180+ țări', prod4F2: 'Detectare limbă AI', prod4F3: 'Rutare cu fusul orar', prod4F4: 'Generare LLMs.txt', prod4Cta: 'Explorează GEO',
+    prod1Name: 'Web Widget', prod1Tagline: 'Clientul întreabă. AI-ul vinde.',
+    prod1F1: 'Conversație 24/7 pe site și WhatsApp', prod1F2: 'Răspunde cu date reale din catalogul tău', prod1F3: 'Programări, lead-uri, oferte PDF', prod1F4: 'FraudAI Shield inclus standard', prod1Cta: 'Detalii Widget',
+    prod2Name: 'FraudAI Shield', prod2Tagline: 'Scam-ul nu ajunge la client.',
+    prod2F1: '8 module de detecție anti-phishing', prod2F2: 'Blochează prompt injection', prod2F3: 'Oprește impersonarea brandului', prod2F4: 'Conversații curate, brand intact', prod2Cta: 'Detalii FraudAI',
+    prod3Name: 'GEO Gateway', prod3Tagline: 'Devii răspunsul, nu nota de subsol.',
+    prod3F1: 'llms.txt + JSON-LD + catalog SSR', prod3F2: 'Citit de GPTBot, ClaudeBot, Perplexity', prod3F3: 'AI-ul te citează pe tine, nu competitorul', prod3F4: 'Vizibilitate măsurabilă în dashboard', prod3Cta: 'Detalii GEO',
+    prod4Name: 'Trust Gateway', prod4Tagline: 'AI-ul nu poate inventa prețul tău.',
+    prod4F1: 'Fiecare răspuns semnat criptografic', prod4F2: 'Verificabil public, gratuit (JWKS)', prod4F3: 'Blocare automată la manipulare', prod4F4: 'Matematică, nu promisiune', prod4Cta: 'Detalii Trust',
   },
   en: {
     navLogin: 'Login', navCta: 'Audit Visibility',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
-    badge: '🔴 SCANNING: 90% OF WEBSITES ARE INVISIBLE TO AI',
-    heroLine1: 'Is AI blind to', heroAccent: 'your business?',
-    heroSubtitle: "If AI can't read your site, you don't exist. Check in 30 seconds if GPTBot, ClaudeBot and Perplexity can read your business — or if they're inventing your prices and services.",
-    heroPlaceholder: 'https://your-website.com', heroBtn: 'Analyze',
-    socialProof: '300+ companies use CatyAI · ZF IT Generation 2025 · Free, no credit card',
+    badge: '🔴 LIVE IN PRODUCTION: 1,171,877 PRODUCTS INDEXED BY AI',
+    heroLine1: 'AI sells. We make sure it sells', heroAccent: 'your truth.',
+    heroSubtitle: 'CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini, locks your real prices cryptographically — so AI invents nothing — and turns every citation into a measurable transaction.',
+    heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
+    socialProof: '1.1M products · 21 live merchants · commission on delivery only · Free, no credit card',
     scanCritical: 'Critical vulnerability detected',
     scanLlm: 'LLM data extraction:', scanLlmFail: 'Failed (JS blocked)',
     scanHalluc: 'Hallucination risk:', scanHallucVal: 'Extreme (>85%)',
     scanSig: 'Ed25519 Signature:', scanSigVal: 'Missing', scanRepair: 'Fix with CatyAI',
     crawlersLabel: 'Optimized for',
-    productsLabel: 'One AI · Four Products',
-    productsTitle: 'Choose the right', productsTitleAccent: 'solution for your business',
-    howLabel: 'How it works', howTitle: 'Four layers.', howAccent: 'neural protocol',
+    productsLabel: 'One chain, not four products',
+    productsTitle: "From the customer's question", productsTitleAccent: 'to the commission in your account.',
+    productsSub: 'Each link solves one part. Apart, they are tools. Together, they are the only infrastructure that takes an AI citation all the way to a proven transaction.',
+    chainLinkLabel: 'Link',
+    chainEndTitle: 'And it all ends in money:', chainEndAccent: 'Agentic Marketplace',
+    chainEndBody: 'Attributed click, proven order, commission invoiced automatically on delivery. 1.1M products live right now.',
+    chainEndCta: 'Open the marketplace',
+    howLabel: 'How it works', howTitle: 'Three steps.', howAccent: 'no-code process.',
     layer1Tag: 'Layer 01 · Antenna', layer1Title: 'AI Visibility',
     layer1Tagline: 'Make your business readable by robots.',
     layer1Body: "ChatGPT and Gemini don't \"see\" your website like a picture. We install the antenna that delivers your official data directly to their brain — eliminating guessing and hallucinations.",
@@ -140,27 +155,36 @@ const translations = {
     footerProduct: 'Product', footerResources: 'Resources', footerCompany: 'Company', footerLegal: 'Legal',
     footerPricing: 'Pricing', footerDocs: 'Documentation', footerAbout: 'About',
     footerCareers: 'Careers', footerTerms: 'Terms', footerSecurity: 'Security',
-    prod1Tagline: 'No website? No problem.', prod1F1: 'QR code for WhatsApp', prod1F2: 'AI responds 24/7', prod1F3: 'Automatic appointments', prod1F4: 'Zero hosting costs', prod1Cta: 'Start with €10',
-    prod2Tagline: 'AI on your website', prod2F1: 'Embed chat widget', prod2F2: 'Auto-Crawl site', prod2F3: 'Lead capture', prod2F4: 'Complete analytics', prod2Cta: 'Add to site',
-    prod3Tagline: 'Anti-scam protection', prod3F1: '8 detection modules', prod3F2: 'Blocks phishing', prod3F3: 'Real-time alert', prod3F4: 'Zero false positives', prod3Cta: 'Activate Free',
-    prod4Tagline: 'Intelligent geographic routing', prod4F1: '180+ countries', prod4F2: 'AI language detection', prod4F3: 'Timezone-aware routing', prod4F4: 'LLMs.txt generation', prod4Cta: 'Explore GEO',
+    prod1Name: 'Web Widget', prod1Tagline: 'The customer asks. AI sells.',
+    prod1F1: '24/7 conversation on site & WhatsApp', prod1F2: 'Answers with real data from your catalog', prod1F3: 'Bookings, leads, PDF quotes', prod1F4: 'FraudAI Shield included as standard', prod1Cta: 'Widget details',
+    prod2Name: 'FraudAI Shield', prod2Tagline: 'Scams never reach the customer.',
+    prod2F1: '8 anti-phishing detection modules', prod2F2: 'Blocks prompt injection', prod2F3: 'Stops brand impersonation', prod2F4: 'Clean conversations, intact brand', prod2Cta: 'FraudAI details',
+    prod3Name: 'GEO Gateway', prod3Tagline: 'Become the answer, not the footnote.',
+    prod3F1: 'llms.txt + JSON-LD + SSR catalog', prod3F2: 'Read by GPTBot, ClaudeBot, Perplexity', prod3F3: 'AI cites you, not your competitor', prod3F4: 'Measurable visibility in the dashboard', prod3Cta: 'GEO details',
+    prod4Name: 'Trust Gateway', prod4Tagline: 'AI cannot invent your price.',
+    prod4F1: 'Every answer cryptographically signed', prod4F2: 'Publicly verifiable, free (JWKS)', prod4F3: 'Automatic blocking on tampering', prod4F4: 'Math, not promises', prod4Cta: 'Trust details',
   },
   es: {
     navLogin: 'Iniciar sesión', navCta: 'Auditar Visibilidad',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Precios',
-    badge: '🔴 ESCANEANDO: EL 90% DE SITIOS WEB SON INVISIBLES PARA LA IA',
-    heroLine1: '¿Está la IA ciega ante', heroAccent: 'tu negocio?',
-    heroSubtitle: 'Si la IA no puede leer tu sitio, no existes. Verifica en 30 segundos si GPTBot, ClaudeBot y Perplexity pueden leerte — o si están inventando tus precios y servicios.',
-    heroPlaceholder: 'https://tu-sitio-web.com', heroBtn: 'Analizar',
-    socialProof: '300+ empresas usan CatyAI · ZF IT Generation 2025 · Gratis, sin tarjeta',
+    badge: '🔴 EN PRODUCCIÓN: 1.171.877 PRODUCTOS INDEXADOS POR LA IA',
+    heroLine1: 'La IA vende. Nosotros nos aseguramos de que venda', heroAccent: 'tu verdad.',
+    heroSubtitle: 'CatyAI hace tu catálogo legible por ChatGPT, Perplexity y Gemini, bloquea tus precios reales criptográficamente — para que la IA no invente nada — y convierte cada cita en una transacción medible.',
+    heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
+    socialProof: '1,1M productos · 21 comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
     scanLlm: 'Extracción datos LLM:', scanLlmFail: 'Fallido (JS bloqueado)',
     scanHalluc: 'Riesgo de alucinaciones:', scanHallucVal: 'Extremo (>85%)',
     scanSig: 'Firma Ed25519:', scanSigVal: 'Ausente', scanRepair: 'Reparar con CatyAI',
     crawlersLabel: 'Optimizado para',
-    productsLabel: 'Una IA · Cuatro Productos',
-    productsTitle: 'Elige la', productsTitleAccent: 'solución para tu negocio',
-    howLabel: 'Cómo funciona', howTitle: 'Cuatro capas.', howAccent: 'protocolo neural',
+    productsLabel: 'Una cadena, no cuatro productos',
+    productsTitle: 'De la pregunta del cliente', productsTitleAccent: 'a la comisión en tu cuenta.',
+    productsSub: 'Cada eslabón resuelve una parte. Por separado, son herramientas. Juntos, son la única infraestructura que lleva una cita de IA hasta una transacción probada.',
+    chainLinkLabel: 'Eslabón',
+    chainEndTitle: 'Y todo termina en dinero:', chainEndAccent: 'Agentic Marketplace',
+    chainEndBody: 'Click atribuido, pedido probado, comisión facturada automáticamente al entregar. 1,1M productos en vivo ahora mismo.',
+    chainEndCta: 'Abrir el marketplace',
+    howLabel: 'Cómo funciona', howTitle: 'Tres pasos.', howAccent: 'proceso sin código.',
     layer1Tag: 'Capa 01 · Antena', layer1Title: 'Visibilidad IA',
     layer1Tagline: 'Haz tu negocio legible para robots.',
     layer1Body: 'ChatGPT y Gemini no "ven" tu sitio web como una foto. Instalamos la antena que entrega tus datos oficiales directamente a su cerebro — eliminando suposiciones y alucinaciones.',
@@ -208,27 +232,36 @@ const translations = {
     footerProduct: 'Producto', footerResources: 'Recursos', footerCompany: 'Empresa', footerLegal: 'Legal',
     footerPricing: 'Precios', footerDocs: 'Documentación', footerAbout: 'Acerca de',
     footerCareers: 'Empleo', footerTerms: 'Términos', footerSecurity: 'Seguridad',
-    prod1Tagline: '¿Sin sitio web? Sin problema.', prod1F1: 'Código QR para WhatsApp', prod1F2: 'IA responde 24/7', prod1F3: 'Citas automáticas', prod1F4: 'Sin costos de hosting', prod1Cta: 'Empieza con €10',
-    prod2Tagline: 'IA en tu sitio web', prod2F1: 'Widget de chat embed', prod2F2: 'Auto-Crawl del sitio', prod2F3: 'Captación de leads', prod2F4: 'Análisis completo', prod2Cta: 'Añadir al sitio',
-    prod3Tagline: 'Protección anti-fraude', prod3F1: '8 módulos de detección', prod3F2: 'Bloquea phishing', prod3F3: 'Alerta en tiempo real', prod3F4: 'Cero falsos positivos', prod3Cta: 'Activar Gratis',
-    prod4Tagline: 'Enrutamiento geográfico inteligente', prod4F1: '180+ países', prod4F2: 'Detección de idioma IA', prod4F3: 'Enrutamiento por zona horaria', prod4F4: 'Generación LLMs.txt', prod4Cta: 'Explorar GEO',
+    prod1Name: 'Web Widget', prod1Tagline: 'El cliente pregunta. La IA vende.',
+    prod1F1: 'Conversación 24/7 en sitio y WhatsApp', prod1F2: 'Responde con datos reales de tu catálogo', prod1F3: 'Reservas, leads, presupuestos PDF', prod1F4: 'FraudAI Shield incluido estándar', prod1Cta: 'Detalles Widget',
+    prod2Name: 'FraudAI Shield', prod2Tagline: 'Las estafas no llegan al cliente.',
+    prod2F1: '8 módulos de detección anti-phishing', prod2F2: 'Bloquea prompt injection', prod2F3: 'Detiene la suplantación de marca', prod2F4: 'Conversaciones limpias, marca intacta', prod2Cta: 'Detalles FraudAI',
+    prod3Name: 'GEO Gateway', prod3Tagline: 'Conviértete en la respuesta, no en la nota.',
+    prod3F1: 'llms.txt + JSON-LD + catálogo SSR', prod3F2: 'Leído por GPTBot, ClaudeBot, Perplexity', prod3F3: 'La IA te cita a ti, no al competidor', prod3F4: 'Visibilidad medible en el panel', prod3Cta: 'Detalles GEO',
+    prod4Name: 'Trust Gateway', prod4Tagline: 'La IA no puede inventar tu precio.',
+    prod4F1: 'Cada respuesta firmada criptográficamente', prod4F2: 'Verificable públicamente, gratis (JWKS)', prod4F3: 'Bloqueo automático ante manipulación', prod4F4: 'Matemáticas, no promesas', prod4Cta: 'Detalles Trust',
   },
   pt: {
     navLogin: 'Entrar', navCta: 'Auditar Visibilidade',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Preços',
-    badge: '🔴 ESCANEANDO: 90% DOS SITES SÃO INVISÍVEIS PARA A IA',
-    heroLine1: 'A IA está cega para', heroAccent: 'o seu negócio?',
-    heroSubtitle: 'Se a IA não consegue ler seu site, você não existe. Verifique em 30 segundos se GPTBot, ClaudeBot e Perplexity conseguem ler seu negócio — ou se estão inventando seus preços e serviços.',
-    heroPlaceholder: 'https://seu-site.com.br', heroBtn: 'Analisar',
-    socialProof: '300+ empresas usam CatyAI · ZF IT Generation 2025 · Grátis, sem cartão',
+    badge: '🔴 EM PRODUÇÃO: 1.171.877 PRODUTOS INDEXADOS PELA IA',
+    heroLine1: 'A IA vende. Nós garantimos que ela vende', heroAccent: 'a sua verdade.',
+    heroSubtitle: 'A CatyAI torna o seu catálogo legível pelo ChatGPT, Perplexity e Gemini, bloqueia os seus preços reais criptograficamente — para que a IA não invente nada — e transforma cada citação numa transação mensurável.',
+    heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
+    socialProof: '1,1M produtos · 21 comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
     scanLlm: 'Extração de dados LLM:', scanLlmFail: 'Falhou (JS bloqueado)',
     scanHalluc: 'Risco de alucinações:', scanHallucVal: 'Extremo (>85%)',
     scanSig: 'Assinatura Ed25519:', scanSigVal: 'Ausente', scanRepair: 'Reparar com CatyAI',
     crawlersLabel: 'Otimizado para',
-    productsLabel: 'Uma IA · Quatro Produtos',
-    productsTitle: 'Escolha a', productsTitleAccent: 'solução certa para seu negócio',
-    howLabel: 'Como funciona', howTitle: 'Quatro camadas.', howAccent: 'protocolo neural',
+    productsLabel: 'Uma cadeia, não quatro produtos',
+    productsTitle: 'Da pergunta do cliente', productsTitleAccent: 'à comissão na sua conta.',
+    productsSub: 'Cada elo resolve uma parte. Separados, são ferramentas. Juntos, são a única infraestrutura que leva uma citação de IA até uma transação comprovada.',
+    chainLinkLabel: 'Elo',
+    chainEndTitle: 'E tudo termina em dinheiro:', chainEndAccent: 'Agentic Marketplace',
+    chainEndBody: 'Clique atribuído, pedido comprovado, comissão faturada automaticamente na entrega. 1,1M produtos ao vivo agora mesmo.',
+    chainEndCta: 'Abrir o marketplace',
+    howLabel: 'Como funciona', howTitle: 'Três passos.', howAccent: 'processo sem código.',
     layer1Tag: 'Camada 01 · Antena', layer1Title: 'Visibilidade IA',
     layer1Tagline: 'Torne seu negócio legível para robôs.',
     layer1Body: 'ChatGPT e Gemini não "veem" seu site como uma foto. Instalamos a antena que entrega seus dados oficiais diretamente no cérebro deles — eliminando suposições e alucinações.',
@@ -276,27 +309,36 @@ const translations = {
     footerProduct: 'Produto', footerResources: 'Recursos', footerCompany: 'Empresa', footerLegal: 'Legal',
     footerPricing: 'Preços', footerDocs: 'Documentação', footerAbout: 'Sobre',
     footerCareers: 'Carreiras', footerTerms: 'Termos', footerSecurity: 'Segurança',
-    prod1Tagline: 'Sem site? Sem problema.', prod1F1: 'Código QR para WhatsApp', prod1F2: 'IA responde 24/7', prod1F3: 'Agendamentos automáticos', prod1F4: 'Zero custos de hosting', prod1Cta: 'Começar com €10',
-    prod2Tagline: 'IA no seu site', prod2F1: 'Widget de chat embed', prod2F2: 'Auto-Crawl do site', prod2F3: 'Captura de leads', prod2F4: 'Análise completa', prod2Cta: 'Adicionar ao site',
-    prod3Tagline: 'Proteção anti-fraude', prod3F1: '8 módulos de detecção', prod3F2: 'Bloqueia phishing', prod3F3: 'Alerta em tempo real', prod3F4: 'Zero falsos positivos', prod3Cta: 'Ativar Grátis',
-    prod4Tagline: 'Roteamento geográfico inteligente', prod4F1: '180+ países', prod4F2: 'Detecção de idioma IA', prod4F3: 'Roteamento por fuso horário', prod4F4: 'Geração LLMs.txt', prod4Cta: 'Explorar GEO',
+    prod1Name: 'Web Widget', prod1Tagline: 'O cliente pergunta. A IA vende.',
+    prod1F1: 'Conversa 24/7 no site e WhatsApp', prod1F2: 'Responde com dados reais do seu catálogo', prod1F3: 'Agendamentos, leads, orçamentos PDF', prod1F4: 'FraudAI Shield incluído padrão', prod1Cta: 'Detalhes Widget',
+    prod2Name: 'FraudAI Shield', prod2Tagline: 'Os golpes não chegam ao cliente.',
+    prod2F1: '8 módulos de detecção anti-phishing', prod2F2: 'Bloqueia prompt injection', prod2F3: 'Impede a personificação da marca', prod2F4: 'Conversas limpas, marca intacta', prod2Cta: 'Detalhes FraudAI',
+    prod3Name: 'GEO Gateway', prod3Tagline: 'Torne-se a resposta, não a nota de rodapé.',
+    prod3F1: 'llms.txt + JSON-LD + catálogo SSR', prod3F2: 'Lido por GPTBot, ClaudeBot, Perplexity', prod3F3: 'A IA cita você, não o concorrente', prod3F4: 'Visibilidade mensurável no painel', prod3Cta: 'Detalhes GEO',
+    prod4Name: 'Trust Gateway', prod4Tagline: 'A IA não pode inventar o seu preço.',
+    prod4F1: 'Cada resposta assinada criptograficamente', prod4F2: 'Verificável publicamente, grátis (JWKS)', prod4F3: 'Bloqueio automático em manipulação', prod4F4: 'Matemática, não promessas', prod4Cta: 'Detalhes Trust',
   },
   fr: {
     navLogin: 'Connexion', navCta: "Auditer la Visibilité",
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocole', navPricing: 'Tarifs',
-    badge: "🔴 SCAN EN COURS : 90% DES SITES SONT INVISIBLES POUR L'IA",
-    heroLine1: "L'IA est-elle aveugle à", heroAccent: 'votre entreprise ?',
-    heroSubtitle: "Si l'IA ne peut pas lire votre site, vous n'existez pas. Vérifiez en 30 secondes si GPTBot, ClaudeBot et Perplexity peuvent vous lire — ou s'ils inventent vos prix et services.",
-    heroPlaceholder: 'https://votre-site.fr', heroBtn: 'Analyser',
-    socialProof: '300+ entreprises utilisent CatyAI · ZF IT Generation 2025 · Gratuit, sans carte',
+    badge: "🔴 EN PRODUCTION : 1 171 877 PRODUITS INDEXÉS PAR L'IA",
+    heroLine1: "L'IA vend. Nous veillons à ce qu'elle vende", heroAccent: 'votre vérité.',
+    heroSubtitle: "CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini, verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien — et transforme chaque citation en transaction mesurable.",
+    heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
+    socialProof: "1,1M produits · 21 marchands actifs · commission à la livraison seulement · Gratuit, sans carte",
     scanCritical: 'Vulnérabilité critique détectée',
     scanLlm: 'Extraction données LLM :', scanLlmFail: 'Échoué (JS bloqué)',
     scanHalluc: "Risque d'hallucinations :", scanHallucVal: 'Extrême (>85%)',
     scanSig: 'Signature Ed25519 :', scanSigVal: 'Manquante', scanRepair: 'Réparer avec CatyAI',
     crawlersLabel: 'Optimisé pour',
-    productsLabel: 'Une IA · Quatre Produits',
-    productsTitle: 'Choisissez la', productsTitleAccent: 'solution adaptée à votre entreprise',
-    howLabel: 'Comment ça fonctionne', howTitle: 'Quatre couches.', howAccent: 'protocole neural',
+    productsLabel: 'Une chaîne, pas quatre produits',
+    productsTitle: 'De la question du client', productsTitleAccent: 'à la commission sur votre compte.',
+    productsSub: "Chaque maillon résout une partie. Séparés, ce sont des outils. Ensemble, c'est la seule infrastructure qui mène une citation IA jusqu'à une transaction prouvée.",
+    chainLinkLabel: 'Maillon',
+    chainEndTitle: "Et tout se termine en argent :", chainEndAccent: 'Agentic Marketplace',
+    chainEndBody: "Clic attribué, commande prouvée, commission facturée automatiquement à la livraison. 1,1M produits en direct en ce moment.",
+    chainEndCta: 'Ouvrir le marketplace',
+    howLabel: 'Comment ça fonctionne', howTitle: 'Trois étapes.', howAccent: 'processus sans code.',
     layer1Tag: 'Couche 01 · Antenne', layer1Title: 'Visibilité IA',
     layer1Tagline: 'Rendez votre entreprise lisible par les robots.',
     layer1Body: "ChatGPT et Gemini ne \"voient\" pas votre site comme une photo. Nous installons l'antenne qui leur livre vos données officielles directement dans le cerveau — éliminant les suppositions et les hallucinations.",
@@ -344,10 +386,14 @@ const translations = {
     footerProduct: 'Produit', footerResources: 'Ressources', footerCompany: 'Entreprise', footerLegal: 'Légal',
     footerPricing: 'Tarifs', footerDocs: 'Documentation', footerAbout: 'À propos',
     footerCareers: 'Carrières', footerTerms: 'Conditions', footerSecurity: 'Sécurité',
-    prod1Tagline: 'Sans site ? Pas de problème.', prod1F1: 'QR code pour WhatsApp', prod1F2: "L'IA répond 24/7", prod1F3: 'Rendez-vous automatiques', prod1F4: 'Zéro frais d\'hébergement', prod1Cta: 'Commencer à 10€',
-    prod2Tagline: "L'IA sur votre site", prod2F1: 'Widget chat intégré', prod2F2: 'Auto-Crawl du site', prod2F3: 'Capture de leads', prod2F4: 'Analyse complète', prod2Cta: 'Ajouter au site',
-    prod3Tagline: 'Protection anti-fraude', prod3F1: '8 modules de détection', prod3F2: 'Bloque le phishing', prod3F3: 'Alerte en temps réel', prod3F4: 'Zéro faux positifs', prod3Cta: 'Activer Gratuitement',
-    prod4Tagline: 'Routage géographique intelligent', prod4F1: '180+ pays', prod4F2: "Détection de langue IA", prod4F3: 'Routage par fuseau horaire', prod4F4: 'Génération LLMs.txt', prod4Cta: 'Explorer GEO',
+    prod1Name: 'Web Widget', prod1Tagline: "Le client demande. L'IA vend.",
+    prod1F1: "Conversation 24/7 sur site et WhatsApp", prod1F2: 'Répond avec les données réelles de votre catalogue', prod1F3: 'Réservations, leads, devis PDF', prod1F4: 'FraudAI Shield inclus en standard', prod1Cta: 'Détails Widget',
+    prod2Name: 'FraudAI Shield', prod2Tagline: "Les arnaques n'atteignent pas le client.",
+    prod2F1: '8 modules de détection anti-phishing', prod2F2: 'Bloque le prompt injection', prod2F3: "Stoppe l'usurpation de marque", prod2F4: 'Conversations propres, marque intacte', prod2Cta: 'Détails FraudAI',
+    prod3Name: 'GEO Gateway', prod3Tagline: 'Devenez la réponse, pas la note de bas de page.',
+    prod3F1: 'llms.txt + JSON-LD + catalogue SSR', prod3F2: 'Lu par GPTBot, ClaudeBot, Perplexity', prod3F3: "L'IA vous cite, pas votre concurrent", prod3F4: 'Visibilité mesurable dans le tableau de bord', prod3Cta: 'Détails GEO',
+    prod4Name: 'Trust Gateway', prod4Tagline: "L'IA ne peut pas inventer votre prix.",
+    prod4F1: 'Chaque réponse signée cryptographiquement', prod4F2: 'Vérifiable publiquement, gratuit (JWKS)', prod4F3: 'Blocage automatique en cas de manipulation', prod4F4: "Des maths, pas des promesses", prod4Cta: 'Détails Trust',
   },
 };
 
@@ -966,6 +1012,32 @@ body {
         }
 
         /* ================ PRODUCT CARDS — 4 COLUMNS ================ */
+        .card-chain-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #C8A165;
+            margin-bottom: 0.9rem;
+            opacity: 0.9;
+        }
+        .card-marketplace {
+            background: linear-gradient(135deg, rgba(200, 161, 101, 0.12), rgba(200, 161, 101, 0.03));
+            border: 1px solid rgba(200, 161, 101, 0.28);
+            border-radius: 18px;
+            padding: 2.25rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-marketplace:hover {
+            border-color: rgba(200, 161, 101, 0.45);
+            box-shadow: 0 20px 50px -15px rgba(200, 161, 101, 0.2);
+        }
+        .card-marketplace-text { flex: 1; min-width: 280px; }
         .card-product {
             position: relative;
             background: rgba(10, 27, 61, 0.4);
@@ -1284,23 +1356,6 @@ body {
                           <div className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-transparent blur-xl z-0 opacity-50"></div>
                       </div>
 
-                      <a href="/check" style={{
-                          display:        'inline-flex',
-                          alignItems:     'center',
-                          gap:            '6px',
-                          marginTop:      '1rem',
-                          padding:        '10px 22px',
-                          borderRadius:   '10px',
-                          background:     'transparent',
-                          color:          '#F8F6F0',
-                          border:         '1px solid #3A4557',
-                          fontWeight:     600,
-                          fontSize:       '14px',
-                          textDecoration: 'none',
-                      }}>
-                          Check your website →
-                      </a>
-
                       <p className="mt-8 text-sm text-slate-300 flex items-center gap-2 font-medium" style={{textShadow: '0 1px 8px rgba(0,0,0,0.6)'}}>
                           <i data-lucide="shield-check" className="w-4 h-4 text-emerald-400" />
                           {t.socialProof}
@@ -1425,99 +1480,102 @@ body {
                   <h2 className="text-4xl md:text-6xl font-bold text-white mt-4 tracking-tighter leading-tight">
                       {t.productsTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">{t.productsTitleAccent}</span>
                   </h2>
+                  <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">{t.productsSub}</p>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                   <div className="card-product reveal">
-                      <div className="card-product-icon" style={{background: 'rgba(34, 197, 94, 0.08)', borderColor: 'rgba(34, 197, 94, 0.25)'}}>
-                          <i data-lucide="qr-code" className="w-6 h-6" style={{color: '#22c55e'}} />
+                      <div className="card-chain-num">{t.chainLinkLabel} 01</div>
+                      <div className="card-product-icon" style={{background: 'rgba(200, 161, 101, 0.10)', borderColor: 'rgba(200, 161, 101, 0.35)'}}>
+                          <MessageSquare className="w-6 h-6 text-gold" />
                       </div>
-                      <h3 className="card-product-title">QR-First</h3>
-                      <p className="card-product-tagline">{t.prod1Tagline}</p>
-                      <div className="card-product-price">
-                          <span className="price-amount">€10</span>
-                          <span className="price-period">/month</span>
-                      </div>
+                      <h3 className="card-product-title">{t.prod1Name}</h3>
+                      <p className="card-product-tagline text-gold" style={{color: '#D4B57A', fontWeight: 600}}>{t.prod1Tagline}</p>
                       <ul className="card-product-features">
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F1}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F2}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F3}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod1F4}</li>
                       </ul>
-                      <a href="https://catyai.io/no-website" className="card-product-cta">
+                      <a href="/widget" className="card-product-cta">
                           {t.prod1Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
 
-                  <div className="card-product card-product-popular reveal">
-                      <span className="card-product-badge">★ POPULAR</span>
-                      <div className="card-product-icon" style={{background: 'rgba(200, 161, 101, 0.10)', borderColor: 'rgba(200, 161, 101, 0.35)'}}>
-                          <i data-lucide="globe" className="w-6 h-6 text-gold" />
+                  <div className="card-product reveal">
+                      <div className="card-chain-num">{t.chainLinkLabel} 02</div>
+                      <div className="card-product-icon" style={{background: 'rgba(239, 68, 68, 0.08)', borderColor: 'rgba(239, 68, 68, 0.25)'}}>
+                          <ShieldCheck className="w-6 h-6" style={{color: '#ef4444'}} />
                       </div>
-                      <h3 className="card-product-title">Web Widget</h3>
-                      <p className="card-product-tagline">{t.prod2Tagline}</p>
-                      <div className="card-product-price">
-                          <span className="price-amount">€49</span>
-                          <span className="price-period">/month</span>
-                      </div>
+                      <h3 className="card-product-title">{t.prod2Name}</h3>
+                      <p className="card-product-tagline" style={{color: '#D4B57A', fontWeight: 600}}>{t.prod2Tagline}</p>
                       <ul className="card-product-features">
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F1}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F2}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F3}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod2F4}</li>
                       </ul>
-                      <a href="https://catyai.io/widget" className="card-product-cta card-product-cta-primary">
+                      <a href="/fraud-shield" className="card-product-cta">
                           {t.prod2Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
 
                   <div className="card-product reveal">
-                      <div className="card-product-icon" style={{background: 'rgba(239, 68, 68, 0.08)', borderColor: 'rgba(239, 68, 68, 0.25)'}}>
-                          <i data-lucide="shield-check" className="w-6 h-6" style={{color: '#ef4444'}} />
+                      <div className="card-chain-num">{t.chainLinkLabel} 03</div>
+                      <div className="card-product-icon" style={{background: 'rgba(59, 130, 246, 0.08)', borderColor: 'rgba(59, 130, 246, 0.25)'}}>
+                          <RadioTower className="w-6 h-6" style={{color: '#3b82f6'}} />
                       </div>
-                      <h3 className="card-product-title">FraudAI</h3>
-                      <p className="card-product-tagline">{t.prod3Tagline}</p>
-                      <div className="card-product-price">
-                          <span className="price-amount-free">FREE</span>
-                          <span className="price-period">forever</span>
-                      </div>
+                      <h3 className="card-product-title">{t.prod3Name}</h3>
+                      <p className="card-product-tagline" style={{color: '#D4B57A', fontWeight: 600}}>{t.prod3Tagline}</p>
                       <ul className="card-product-features">
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F1}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F2}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F3}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod3F4}</li>
                       </ul>
-                      <a href="https://catyai.io/fraud-shield" className="card-product-cta">
+                      <a href="/geo-gateway" className="card-product-cta">
                           {t.prod3Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
 
                   <div className="card-product reveal">
-                      <div className="card-product-icon" style={{background: 'rgba(59, 130, 246, 0.08)', borderColor: 'rgba(59, 130, 246, 0.25)'}}>
-                          <i data-lucide="globe-2" className="w-6 h-6" style={{color: '#3b82f6'}} />
+                      <div className="card-chain-num">{t.chainLinkLabel} 04</div>
+                      <div className="card-product-icon" style={{background: 'rgba(16, 185, 129, 0.08)', borderColor: 'rgba(16, 185, 129, 0.25)'}}>
+                          <Lock className="w-6 h-6" style={{color: '#10b981'}} />
                       </div>
-                      <h3 className="card-product-title">GEO Gateway</h3>
-                      <p className="card-product-tagline">{t.prod4Tagline}</p>
-                      <div className="card-product-price">
-                          <span className="price-amount-pro">Pro+</span>
-                          <span className="price-period">plans</span>
-                      </div>
+                      <h3 className="card-product-title">{t.prod4Name}</h3>
+                      <p className="card-product-tagline" style={{color: '#D4B57A', fontWeight: 600}}>{t.prod4Tagline}</p>
                       <ul className="card-product-features">
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F1}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F2}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F3}</li>
                           <li><i data-lucide="check" className="w-4 h-4 text-gold flex-shrink-0" /> {t.prod4F4}</li>
                       </ul>
-                      <a href="https://catyai.io/geo-gateway" className="card-product-cta">
+                      <a href="/trust-gateway" className="card-product-cta">
                           {t.prod4Cta}
                           <i data-lucide="arrow-right" className="w-4 h-4" />
                       </a>
                   </div>
 
+              </div>
+
+              {/* Marketplace — capătul lanțului, în bani */}
+              <div className="mt-6 reveal">
+                  <div className="card-marketplace">
+                      <div className="card-marketplace-text">
+                          <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                              {t.chainEndTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">{t.chainEndAccent}</span>
+                          </h3>
+                          <p className="text-slate-400 mt-3 max-w-xl">{t.chainEndBody}</p>
+                      </div>
+                      <a href="https://shop.catyai.io/aff-index" target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-4 rounded-lg font-bold flex items-center gap-2 whitespace-nowrap">
+                          {t.chainEndCta} <i data-lucide="arrow-up-right" className="w-4 h-4" />
+                      </a>
+                  </div>
               </div>
           </section>
 
