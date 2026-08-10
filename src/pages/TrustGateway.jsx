@@ -65,7 +65,7 @@ const translations = {
     prevLabel: 'Veriga anterioară',
     prevTitle: 'GEO Gateway — devii răspunsul AI-ului',
     nextLabel: 'Capătul lanțului',
-    nextTitle: 'Agentic Marketplace — totul se termină în bani',
+    nextTitle: 'Commerce Distribution — catalogul tău, distribuit pe Google și în AI',
   },
   en: {
     badge: 'Link 04 · Trust Gateway',
@@ -119,7 +119,7 @@ const translations = {
     prevLabel: 'Previous link',
     prevTitle: 'GEO Gateway — become the AI answer',
     nextLabel: 'End of the chain',
-    nextTitle: 'Agentic Marketplace — it all ends in money',
+    nextTitle: 'Commerce Distribution — your catalog, distributed on Google and in AI',
   },
 }
 
@@ -350,7 +350,7 @@ export default function TrustGateway() {
                 <div className="lbl">{t.prevLabel}</div>
                 <div className="t">{t.prevTitle} →</div>
               </Link>
-              <Link to="/marketplace" className="tg-navcard next">
+              <Link to="/agentic-marketplace" className="tg-navcard next">
                 <div className="lbl">{t.nextLabel}</div>
                 <div className="t">{t.nextTitle} →</div>
               </Link>

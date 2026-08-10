@@ -28,7 +28,7 @@ CatyAI is a single value chain that takes an AI citation all the way to a proven
 ## 4. Pricing — Two Axes
 CatyAI has two distinct commercial models:
 - **Web Widget (SaaS subscription, EUR):** Free EUR 0 (100 sessions/mo) · Starter EUR 49/mo · Growth EUR 99/mo · Business EUR 199/mo · Enterprise EUR 499/mo. Converts visitors who already reach the merchant's site.
-- **Agentic Marketplace (B2B partnership, revenue share):** EUR 1,500 one-time setup + 5% revenue share on delivered orders only, generated organically by AI agents. Merchant remains Merchant of Record — CatyAI never touches the customer's money. Automated weekly reconciliation; B2B invoice issued only on delivered orders.
+- **Commerce Distribution (B2B partnership):** one-time setup from EUR 1,000 + monthly subscription from EUR 250/mo, priced by catalog size (Entry up to 1,000 products: EUR 1,000 setup + EUR 250/mo · Starter 1–2k: EUR 1,500 + EUR 300/mo · Growth 2–10k: EUR 3,000 + EUR 600/mo · Pro 10–50k: EUR 6,000 + EUR 1,200/mo · Enterprise 50k+: custom) + 3–5% of ad spend, applied only when Shopping campaigns run through the CatyAI CSS account (~20% more bidding power at the same budget). Includes catalog engineering (dedup, golden records, AI enrichment, GMC feed), presence in the CatyAI marketplace with Google free listings, and AI-GEO visibility (semantic indexing, llms.txt, structured data, monthly AI visibility report). Merchant remains Merchant of Record — CatyAI never touches the customer's money. Minimum 6-month contract for Entry and Starter; no free trial.
 - **CatyAI's own marketplace** runs on the same affiliate mechanism it installs for merchants: 1,171,877 products, 21 partner merchants, 1%-20% commission per transaction, zero ad spend (Zero-CAC).
 
 ## 5. Directory & Navigation
@@ -36,7 +36,7 @@ CatyAI has two distinct commercial models:
 - FraudAI Shield: /fraud-shield
 - GEO Gateway: /geo-gateway
 - Trust Gateway: /trust-gateway
-- Agentic Marketplace: /marketplace
+- Commerce Distribution: /agentic-marketplace
 - Live Marketplace (proof): https://shop.catyai.io/aff-index
 - Security & Compliance: /trust-center
 - Technical Protocol: /protocol
