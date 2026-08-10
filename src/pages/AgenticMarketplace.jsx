@@ -28,6 +28,17 @@ const T = {
       ['Opens new channels', 'No — only optimizes budget on the old ones', 'Yes — CSS, free listings, GEO/AI'],
       ['Your data stays yours if you leave', 'No — labels die with the subscription', 'Yes — the rebuilt catalog remains'],
     ],
+    labelsTitle: 'Smart catalog labels',
+    labelsHeadline: 'We know your price versus the market — because we see the market, not just your ad account.',
+    labels: [
+      { h: 'Price benchmark', p: 'The real position of each product versus the other offers on the market, computed from our cross-merchant catalog.' },
+      { h: 'Hero / Toxic', p: 'The products that sell vs. the ones that drain, from real sales data, not ad impressions.' },
+      { h: 'Price band', p: 'Automatic segmentation into price ranges.' },
+      { h: 'Discount', p: 'Products with a real reduction (price vs sale_price).' },
+      { h: 'New products', p: 'Detected automatically at re-ingest.' },
+      { h: 'Stock', p: 'Availability level, updated daily.' },
+    ],
+    labelsFootnote: 'Labels are written into your feed (custom_label) and used directly in campaign segmentation — or delivered in the monthly report.',
     problemTitle: 'The problem: AI Blindness',
     problemSub: 'LLM-oriented crawlers read raw HTML and ignore JavaScript executed in the browser. Stores built as dynamic apps appear to agents as nearly empty pages. The product exists, but for AI it\'s invisible.',
     problemCards: [
@@ -123,6 +134,17 @@ const T = {
       ['Deschide canale noi', 'Nu — doar optimizează bugetul pe cele vechi', 'Da — CSS, free listings, GEO/AI'],
       ['Datele rămân ale tale dacă pleci', 'Nu — label-urile mor cu abonamentul', 'Da — catalogul reconstruit rămâne'],
     ],
+    labelsTitle: 'Label-uri inteligente pe catalog',
+    labelsHeadline: 'Știm prețul tău față de piață — pentru că vedem piața, nu doar contul tău de reclame.',
+    labels: [
+      { h: 'Benchmark de preț', p: 'Poziția reală a fiecărui produs față de celelalte oferte din piață, calculată din catalogul nostru cross-merchant.' },
+      { h: 'Hero / Toxic', p: 'Produsele care vând vs. cele care consumă, din date reale de vânzări, nu din impresii de ads.' },
+      { h: 'Bandă de preț', p: 'Segmentare automată pe intervale de preț.' },
+      { h: 'Discount', p: 'Produsele cu reducere reală (price vs sale_price).' },
+      { h: 'Produse noi', p: 'Detectate automat la re-ingest.' },
+      { h: 'Stoc', p: 'Nivel de disponibilitate, actualizat zilnic.' },
+    ],
+    labelsFootnote: 'Label-urile se scriu în feed-ul tău (custom_label) și le folosești direct în segmentarea campaniilor — sau le primești în raportul lunar.',
     problemTitle: 'Problema: AI Blindness',
     problemSub: 'Crawlerele orientate spre modele de limbaj citesc HTML brut și ignoră JavaScript-ul executat în browser. Magazinele construite ca aplicații dinamice le apar agenților ca pagini aproape goale. Produsul există, dar pentru AI e invizibil.',
     problemCards: [
@@ -218,6 +240,17 @@ const T = {
       ['Abre canales nuevos', 'No — solo optimiza el presupuesto en los viejos', 'Sí — CSS, free listings, GEO/IA'],
       ['Tus datos siguen siendo tuyos si te vas', 'No — las etiquetas mueren con la suscripción', 'Sí — el catálogo reconstruido permanece'],
     ],
+    labelsTitle: 'Etiquetas inteligentes del catálogo',
+    labelsHeadline: 'Sabemos tu precio frente al mercado — porque vemos el mercado, no solo tu cuenta de anuncios.',
+    labels: [
+      { h: 'Benchmark de precio', p: 'La posición real de cada producto frente a las demás ofertas del mercado, calculada desde nuestro catálogo cross-merchant.' },
+      { h: 'Hero / Toxic', p: 'Los productos que venden vs. los que consumen, con datos reales de ventas, no impresiones de ads.' },
+      { h: 'Banda de precio', p: 'Segmentación automática por rangos de precio.' },
+      { h: 'Descuento', p: 'Productos con reducción real (price vs sale_price).' },
+      { h: 'Productos nuevos', p: 'Detectados automáticamente en la re-ingesta.' },
+      { h: 'Stock', p: 'Nivel de disponibilidad, actualizado a diario.' },
+    ],
+    labelsFootnote: 'Las etiquetas se escriben en tu feed (custom_label) y las usas directamente en la segmentación de campañas — o las recibes en el informe mensual.',
     problemTitle: 'El problema: AI Blindness',
     problemSub: 'Los crawlers orientados a LLM leen HTML bruto e ignoran el JavaScript ejecutado en el navegador. Las tiendas construidas como apps dinámicas aparecen ante los agentes como páginas casi vacías.',
     problemCards: [
@@ -313,6 +346,17 @@ const T = {
       ['Abre canais novos', 'Não — apenas otimiza o orçamento nos antigos', 'Sim — CSS, free listings, GEO/IA'],
       ['Os seus dados continuam seus se você sair', 'Não — as etiquetas morrem com a assinatura', 'Sim — o catálogo reconstruído permanece'],
     ],
+    labelsTitle: 'Etiquetas inteligentes do catálogo',
+    labelsHeadline: 'Sabemos o seu preço face ao mercado — porque vemos o mercado, não apenas a sua conta de anúncios.',
+    labels: [
+      { h: 'Benchmark de preço', p: 'A posição real de cada produto face às outras ofertas do mercado, calculada a partir do nosso catálogo cross-merchant.' },
+      { h: 'Hero / Toxic', p: 'Os produtos que vendem vs. os que consomem, com dados reais de vendas, não impressões de ads.' },
+      { h: 'Faixa de preço', p: 'Segmentação automática por intervalos de preço.' },
+      { h: 'Desconto', p: 'Produtos com redução real (price vs sale_price).' },
+      { h: 'Produtos novos', p: 'Detetados automaticamente na re-ingestão.' },
+      { h: 'Stock', p: 'Nível de disponibilidade, atualizado diariamente.' },
+    ],
+    labelsFootnote: 'As etiquetas são escritas no seu feed (custom_label) e usa-as diretamente na segmentação das campanhas — ou recebe-as no relatório mensal.',
     problemTitle: 'O problema: AI Blindness',
     problemSub: 'Os crawlers orientados para LLM leem HTML bruto e ignoram o JavaScript executado no navegador. As lojas construídas como apps dinâmicos aparecem para os agentes como páginas quase vazias.',
     problemCards: [
@@ -408,6 +452,17 @@ const T = {
       ['Ouvre de nouveaux canaux', 'Non — optimise seulement le budget sur les anciens', 'Oui — CSS, free listings, GEO/IA'],
       ['Vos données restent à vous si vous partez', 'Non — les labels meurent avec l\'abonnement', 'Oui — le catalogue reconstruit reste'],
     ],
+    labelsTitle: 'Labels intelligents du catalogue',
+    labelsHeadline: 'Nous connaissons votre prix par rapport au marché — parce que nous voyons le marché, pas seulement votre compte publicitaire.',
+    labels: [
+      { h: 'Benchmark de prix', p: 'La position réelle de chaque produit par rapport aux autres offres du marché, calculée depuis notre catalogue cross-merchant.' },
+      { h: 'Hero / Toxic', p: 'Les produits qui vendent vs. ceux qui consomment, sur données de ventes réelles, pas d\'impressions pubs.' },
+      { h: 'Bande de prix', p: 'Segmentation automatique par tranches de prix.' },
+      { h: 'Discount', p: 'Produits avec réduction réelle (price vs sale_price).' },
+      { h: 'Produits nouveaux', p: 'Détectés automatiquement à la ré-ingestion.' },
+      { h: 'Stock', p: 'Niveau de disponibilité, mis à jour quotidiennement.' },
+    ],
+    labelsFootnote: 'Les labels sont écrits dans votre flux (custom_label) et s\'utilisent directement dans la segmentation des campagnes — ou livrés dans le rapport mensuel.',
     problemTitle: 'Le problème : AI Blindness',
     problemSub: 'Les crawlers orientés LLM lisent du HTML brut et ignorent le JavaScript exécuté dans le navigateur. Les boutiques construites comme des apps dynamiques apparaissent aux agents comme des pages presque vides.',
     problemCards: [
@@ -643,6 +698,24 @@ export default function AgenticMarketplace() {
                   </tbody>
                 </table>
               </div>
+            </div>
+          </section>
+
+          {/* SMART LABELS */}
+          <section className="border-t border-[#1f293f]">
+            <div className="max-w-6xl mx-auto px-6 py-20">
+              <Rule />
+              <h2 className="font-extrabold tracking-tight text-2xl sm:text-3xl text-white">{t.labelsTitle}</h2>
+              <p className="text-[17px] text-[#e7cfa3] font-semibold leading-relaxed mt-6 max-w-3xl">{t.labelsHeadline}</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {t.labels.map((l) => (
+                  <div key={l.h} className="bg-[#111a2c] border border-[#1f293f] rounded-xl p-6">
+                    <div className="font-bold text-white">{l.h}</div>
+                    <p className="text-sm text-[#8b96ab] mt-2 leading-relaxed">{l.p}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[13px] text-[#5c6883] mt-8 max-w-3xl leading-relaxed">{t.labelsFootnote}</p>
             </div>
           </section>
 

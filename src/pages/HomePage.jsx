@@ -14,8 +14,8 @@ const translations = {
     navLogin: 'Login', navCta: 'Audit Vizibilitate',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Prețuri',
     badge: '🔴 LIVE ÎN PRODUCȚIE: 1.171.877 PRODUSE INDEXATE DE AI',
-    heroLine1: 'AI-ul vinde. Noi ne asigurăm că', heroAccent: 'vinde adevărul tău.',
-    heroSubtitle: 'CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini, blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic — și transformă fiecare citare într-o tranzacție măsurabilă.',
+    heroLine1: 'Produsele tale, găsite pe Google și', heroAccent: 'citate de agenții AI.',
+    heroSubtitle: 'Inginerie de catalog, distribuție CSS și vizibilitate AI. CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini și blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic.',
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
     socialProof: '1,1M produse · 21 comercianți live · Widget gratuit 14 zile, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
@@ -24,12 +24,13 @@ const translations = {
     scanSig: 'Signature Ed25519:', scanSigVal: 'Lipsește', scanRepair: 'Repară cu CatyAI',
     crawlersLabel: 'Optimizat pentru',
     productsLabel: 'Un lanț, nu patru produse',
-    productsTitle: 'De la întrebarea clientului', productsTitleAccent: 'la comisionul din contul tău.',
+    productsTitle: 'De la întrebarea clientului', productsTitleAccent: 'la vânzarea dovedită.',
     productsSub: 'Fiecare verigă rezolvă o parte. Separat, sunt unelte. Împreună, sunt singura infrastructură care duce o citare AI până la o tranzacție dovedită.',
     chainLinkLabel: 'Veriga',
-    chainEndTitle: 'Și totul se termină în bani:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Click atribuit, comandă dovedită, vânzare finalizată la comerciant. 1,1M produse live chiar acum.',
-    chainEndCta: 'Deschide marketplace-ul',
+    chainEndTitle: 'Oferta principală:', chainEndAccent: 'Commerce Distribution',
+    chainEndBody: 'Produsele tale, găsite pe Google și citate de agenții AI — inginerie de catalog, distribuție CSS, vizibilitate AI. Setup unic + abonament lunar, grilă transparentă.',
+    chainEndCta: 'Vezi oferta completă',
+    chainEndCta2: 'Marketplace-ul live ↗',
     howLabel: 'Cum funcționează', howTitle: 'Trei pași.', howAccent: 'proces fără tehnic.',
     layer1Tag: 'Layer 01 · Antena', layer1Title: 'Vizibilitate AI',
     layer1Tagline: 'Fă-ți business-ul lizibil pentru roboți.',
@@ -91,8 +92,8 @@ const translations = {
     navLogin: 'Login', navCta: 'Audit Visibility',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
     badge: '🔴 LIVE IN PRODUCTION: 1,171,877 PRODUCTS INDEXED BY AI',
-    heroLine1: 'AI sells. We make sure it sells', heroAccent: 'your truth.',
-    heroSubtitle: 'CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini, locks your real prices cryptographically — so AI invents nothing — and turns every citation into a measurable transaction.',
+    heroLine1: 'Your products, found on Google and', heroAccent: 'cited by AI agents.',
+    heroSubtitle: 'Catalog engineering, CSS distribution and AI visibility. CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini and locks your real prices cryptographically — so AI invents nothing.',
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
     socialProof: '1.1M products · 21 live merchants · Widget free for 14 days, no credit card',
     scanCritical: 'Critical vulnerability detected',
@@ -101,12 +102,13 @@ const translations = {
     scanSig: 'Ed25519 Signature:', scanSigVal: 'Missing', scanRepair: 'Fix with CatyAI',
     crawlersLabel: 'Optimized for',
     productsLabel: 'One chain, not four products',
-    productsTitle: "From the customer's question", productsTitleAccent: 'to the commission in your account.',
+    productsTitle: "From the customer's question", productsTitleAccent: 'to the proven sale.',
     productsSub: 'Each link solves one part. Apart, they are tools. Together, they are the only infrastructure that takes an AI citation all the way to a proven transaction.',
     chainLinkLabel: 'Link',
-    chainEndTitle: 'And it all ends in money:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Attributed click, proven order, sale completed at the merchant. 1.1M products live right now.',
-    chainEndCta: 'Open the marketplace',
+    chainEndTitle: 'The main offer:', chainEndAccent: 'Commerce Distribution',
+    chainEndBody: 'Your products, found on Google and cited by AI agents — catalog engineering, CSS distribution, AI visibility. One-time setup + monthly subscription, transparent pricing.',
+    chainEndCta: 'See the full offer',
+    chainEndCta2: 'The live marketplace ↗',
     howLabel: 'How it works', howTitle: 'Three steps.', howAccent: 'no-code process.',
     layer1Tag: 'Layer 01 · Antenna', layer1Title: 'AI Visibility',
     layer1Tagline: 'Make your business readable by robots.',
@@ -322,8 +324,8 @@ const translations = {
     navLogin: 'Connexion', navCta: "Auditer la Visibilité",
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocole', navPricing: 'Tarifs',
     badge: "🔴 EN PRODUCTION : 1 171 877 PRODUITS INDEXÉS PAR L'IA",
-    heroLine1: "L'IA vend. Nous veillons à ce qu'elle vende", heroAccent: 'votre vérité.',
-    heroSubtitle: "CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini, verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien — et transforme chaque citation en transaction mesurable.",
+    heroLine1: 'Vos produits, trouvés sur Google et', heroAccent: 'cités par les agents IA.',
+    heroSubtitle: "Ingénierie de catalogue, distribution CSS et visibilité IA. CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini et verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien.",
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
     socialProof: "1,1M produits · 21 marchands actifs · Widget gratuit 14 jours, sans carte",
     scanCritical: 'Vulnérabilité critique détectée',
@@ -332,12 +334,13 @@ const translations = {
     scanSig: 'Signature Ed25519 :', scanSigVal: 'Manquante', scanRepair: 'Réparer avec CatyAI',
     crawlersLabel: 'Optimisé pour',
     productsLabel: 'Une chaîne, pas quatre produits',
-    productsTitle: 'De la question du client', productsTitleAccent: 'à la commission sur votre compte.',
+    productsTitle: 'De la question du client', productsTitleAccent: 'à la vente prouvée.',
     productsSub: "Chaque maillon résout une partie. Séparés, ce sont des outils. Ensemble, c'est la seule infrastructure qui mène une citation IA jusqu'à une transaction prouvée.",
     chainLinkLabel: 'Maillon',
-    chainEndTitle: "Et tout se termine en argent :", chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: "Clic attribué, commande prouvée, vente finalisée chez le commerçant. 1,1M produits en direct en ce moment.",
-    chainEndCta: 'Ouvrir le marketplace',
+    chainEndTitle: "L'offre principale :", chainEndAccent: 'Commerce Distribution',
+    chainEndBody: 'Vos produits, trouvés sur Google et cités par les agents IA — ingénierie de catalogue, distribution CSS, visibilité IA. Setup unique + abonnement mensuel, grille transparente.',
+    chainEndCta: "Voir l'offre complète",
+    chainEndCta2: 'Le marketplace live ↗',
     howLabel: 'Comment ça fonctionne', howTitle: 'Trois étapes.', howAccent: 'processus sans code.',
     layer1Tag: 'Couche 01 · Antenne', layer1Title: 'Visibilité IA',
     layer1Tagline: 'Rendez votre entreprise lisible par les robots.',
@@ -1483,6 +1486,26 @@ body {
                   <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-lg">{t.productsSub}</p>
               </div>
 
+              {/* Commerce Distribution — oferta principală */}
+              <div className="mb-10 reveal">
+                  <div className="card-marketplace">
+                      <div className="card-marketplace-text">
+                          <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                              {t.chainEndTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">{t.chainEndAccent}</span>
+                          </h3>
+                          <p className="text-slate-400 mt-3 max-w-xl">{t.chainEndBody}</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-3">
+                          <a href="/agentic-marketplace" className="btn-primary px-8 py-4 rounded-lg font-bold flex items-center gap-2 whitespace-nowrap">
+                              {t.chainEndCta} <i data-lucide="arrow-right" className="w-4 h-4" />
+                          </a>
+                          <a href="https://shop.catyai.io/aff-index" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-gold transition-colors whitespace-nowrap">
+                              {t.chainEndCta2 || 'shop.catyai.io ↗'}
+                          </a>
+                      </div>
+                  </div>
+              </div>
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
                   <div className="card-product reveal">
@@ -1561,21 +1584,6 @@ body {
                       </a>
                   </div>
 
-              </div>
-
-              {/* Marketplace — capătul lanțului, în bani */}
-              <div className="mt-6 reveal">
-                  <div className="card-marketplace">
-                      <div className="card-marketplace-text">
-                          <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                              {t.chainEndTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-amber-200">{t.chainEndAccent}</span>
-                          </h3>
-                          <p className="text-slate-400 mt-3 max-w-xl">{t.chainEndBody}</p>
-                      </div>
-                      <a href="https://shop.catyai.io/aff-index" target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-4 rounded-lg font-bold flex items-center gap-2 whitespace-nowrap">
-                          {t.chainEndCta} <i data-lucide="arrow-up-right" className="w-4 h-4" />
-                      </a>
-                  </div>
               </div>
           </section>
 
