@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo, createContext, useContext, lazy, Suspense } from 'react'
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom'
 import SEO from './components/SEO'
 import FooterComponent from './components/Footer'
 import Testimonials from './components/Testimonials'
@@ -55,7 +55,6 @@ const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
 const TrustGateway = lazy(() => import('./pages/TrustGateway'))
-const Marketplace = lazy(() => import('./pages/Marketplace'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3342,7 +3341,7 @@ function AppContent() {
             <Route path="/mcp" element={<McpPage />} />
             <Route path="/agentic-marketplace" element={<AgenticMarketplace />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
-            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/marketplace" element={<Navigate to="/agentic-marketplace" replace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
