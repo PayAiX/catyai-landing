@@ -84,27 +84,31 @@ const WIDGET_TIERS = [
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
-// AXA 2 — AGENTIC MARKETPLACE (Parteneriat B2B, revenue share)
-// Nu e abonament: plătești setup o dată, apoi câștigăm doar când vinzi tu.
+// AXA 2 — COMMERCE DISTRIBUTION (Parteneriat B2B: setup + abonament + % ad spend)
+// Grila completă (5 pachete, pe dimensiunea catalogului) e pe /agentic-marketplace.
 // ─────────────────────────────────────────────────────────────────────────────
 const MARKETPLACE = {
-  name: 'Agentic Marketplace',
-  model: 'Parteneriat B2B · Revenue Share',
-  setupPrice: '€1.500',
-  setupLabel: 'taxă de setup, o singură dată',
-  revshare: '+5%',
-  revshareLabel: 'revenue share — doar din comenzile livrate, generate organic de agenții AI',
-  desc: 'Îți rescriem catalogul prin Fabrica Semantică și îl expunem agenților AI ca sursă de adevăr semnată. Tu rămâi Merchant of Record — noi nu atingem niciodată banii clientului tău.',
+  name: 'Commerce Distribution',
+  model: 'Parteneriat B2B · Setup + abonament + % ad spend',
+  setupPrice: 'de la 1.000 €',
+  setupLabel: 'taxă de setup, o singură dată — achitată integral la semnare',
+  monthly: 'de la 250 €/lună',
+  monthlyLabel: 'abonament lunar, din prima lună — grilă pe dimensiunea catalogului',
+  revshare: '+3–5%',
+  revshareLabel: 'din ad spend — doar când rulezi campanii Shopping prin contul nostru CSS',
+  desc: 'Inginerie de catalog (ingest, deduplicare, golden records, enrichment AI, feed GMC), distribuție prin marketplace-ul CatyAI și contul nostru CSS, plus vizibilitate AI-GEO. Tu rămâi Merchant of Record — noi nu atingem niciodată banii clientului tău.',
   features: [
-    'GEO Gateway — catalog citibil de ChatGPT, Perplexity, Gemini',
-    'Trust Gateway — prețuri și stoc semnate criptografic, imposibil de halucinat',
-    'Pagini SSR de produs pe shop.catyai.io, cu atribuire completă',
-    'Reconciliere automată săptămânală · factură B2B doar la livrare',
-    'Dashboard: citări, clickuri din AI, comision — în bani',
+    'Pipeline complet: ingest → deduplicare → golden records → enrichment AI → feed GMC',
+    'Free listings Google + campanii Shopping cu ~20% mai multă putere de licitație prin CSS',
+    'Vizibilitate AI: indexare semantică, llms.txt, date structurate, raport lunar GEO',
+    'Raport lunar: produse live, sănătatea feed-ului, trafic, ROI campanii',
+    'Contract minim 6 luni pentru Entry și Starter · fără trial gratuit',
   ],
-  alignNote: 'Aliniere totală: dacă tu nu vinzi, noi nu câștigăm nimic.',
-  cta: 'Programează o discuție de parteneriat',
-  ctaLink: '/contact?plan=marketplace',
+  alignNote: 'La un ad spend de 2.000 €/lună, economia CSS acoperă singură abonamentul.',
+  cta: 'Vezi grila completă de prețuri',
+  ctaLink: '/agentic-marketplace',
+  ctaAlt: 'sau programează o discuție de parteneriat →',
+  ctaAltLink: '/contact?plan=marketplace',
 }
 
 // Banda de transparență: noi câștigăm din același mecanism pe care ți-l instalăm.
@@ -115,12 +119,12 @@ const EARN_PROOF = {
 
 const FAQS = [
   {
-    q: 'Care e diferența dintre Web Widget și Agentic Marketplace?',
-    a: 'Web Widget e un abonament SaaS (€0–€499/lună): instalezi agentul AI pe site și WhatsApp ca să convertești vizitatorii care ajung deja la tine. Agentic Marketplace e un parteneriat B2B (€1.500 setup + 5% la livrare): îți facem catalogul citibil de ChatGPT/Perplexity/Gemini și îți aducem clienți noi din AI, cu atribuire completă până la comandă.',
+    q: 'Care e diferența dintre Web Widget și Commerce Distribution?',
+    a: 'Web Widget e un abonament SaaS (€49–€499/lună): instalezi agentul AI pe site și WhatsApp ca să convertești vizitatorii care ajung deja la tine. Commerce Distribution e un parteneriat B2B (setup unic + abonament lunar, pe dimensiunea catalogului): îți reconstruim catalogul, îl distribuim pe Google prin marketplace-ul nostru și contul CSS și îl facem citibil de ChatGPT/Perplexity/Gemini.',
   },
   {
-    q: 'Cum funcționează comisionul de 5% la Marketplace?',
-    a: 'Plătești 5% doar din comenzile livrate cu succes, generate organic de agenții AI. Tu rămâi Merchant of Record — noi nu atingem banii clientului. Reconcilierea e automată săptămânal, iar factura B2B se emite doar pentru comenzile livrate. Fără vânzare, fără comision.',
+    q: 'Cum funcționează procentul de 3–5% la Commerce Distribution?',
+    a: 'Procentul se aplică doar ad spend-ului rulat prin contul nostru CSS — nu vânzărilor tale organice. Bugetul de ads e al tău, separat, transparent în Google Ads. Prin CSS, licitațiile Shopping au ~20% mai multă putere la același buget, deci la un ad spend de 2.000 €/lună economia acoperă singură abonamentul.',
   },
   {
     q: 'Pot schimba planul de Widget oricând?',
@@ -132,7 +136,7 @@ const FAQS = [
   },
   {
     q: 'Există perioadă de probă?',
-    a: 'Da — 14 zile gratuit pe orice plan Widget, fără card. Pentru Marketplace, setup-ul include o sesiune de onboarding dedicată.',
+    a: 'Da — 14 zile gratuit pe orice plan Widget, fără card. Pentru Commerce Distribution nu există perioadă de trial gratuit; setup-ul include o sesiune de onboarding dedicată.',
   },
   {
     q: 'Ce este o „sesiune"?',
@@ -157,14 +161,14 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
-      name: 'CatyAI Agentic Marketplace',
-      serviceType: 'B2B Revenue-Share Partnership',
-      description: 'Parteneriat B2B: catalog rescris semantic, semnat criptografic și expus agenților AI, cu comision 5% doar la comenzi livrate.',
+      name: 'CatyAI Commerce Distribution',
+      serviceType: 'B2B Commerce Distribution Partnership',
+      description: 'Parteneriat B2B: inginerie de catalog (golden records, enrichment AI, feed GMC), distribuție CSS pe Google și vizibilitate AI-GEO. Setup unic + abonament lunar + 3–5% din ad spend.',
       offers: {
         '@type': 'Offer',
-        price: '1500',
+        price: '1000',
         priceCurrency: 'EUR',
-        description: 'Taxă de setup (o singură dată) + 5% revenue share din comenzile livrate generate de AI',
+        description: 'Setup de la 1.000 € (o singură dată) + abonament lunar de la 250 € + 3–5% din ad spend-ul rulat prin contul CSS CatyAI',
       },
     },
     {
@@ -194,8 +198,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Prețuri — Web Widget €49–€499/lună · Agentic Marketplace €1.500 + 5% | CatyAI"
-        description="Două produse, două modele: Web Widget (abonament SaaS, €49–€499/lună) și Agentic Marketplace (parteneriat B2B, €1.500 setup + 5% doar la livrare). 14 zile gratuit, fără card."
+        title="Prețuri — Web Widget €49–€499/lună · Commerce Distribution de la 1.000 € setup | CatyAI"
+        description="Două produse, două modele: Web Widget (abonament SaaS, €49–€499/lună) și Commerce Distribution (parteneriat B2B: setup de la 1.000 € + abonament de la 250 €/lună + 3–5% din ad spend). 14 zile gratuit pe Widget, fără card."
         canonical="https://catyai.io/pricing"
         jsonLd={jsonLd}
       />
@@ -650,7 +654,7 @@ export default function PricingPage() {
           <div className="pri-badge">💎 Două produse, două modele — un singur lanț</div>
           <h1 className="pri-hero-title">Widget-ul e abonament.<br />Marketplace-ul e parteneriat.</h1>
           <p className="pri-hero-sub">
-            Nu îți vindem „încă un tool". Pe Widget plătești un abonament simplu; pe Marketplace câștigăm doar când vinzi tu.
+            Nu îți vindem „încă un tool". Pe Widget plătești un abonament simplu; pe Commerce Distribution îți reconstruim catalogul și îl distribuim pe Google și în AI — setup unic, abonament lunar și procent doar din ad spend.
           </p>
           <p className="pri-trial-note"><span>14 zile gratuit</span> · Fără card · Anulare oricând</p>
         </section>
@@ -699,20 +703,24 @@ export default function PricingPage() {
           </p>
         </section>
 
-        {/* ── AXA 2: AGENTIC MARKETPLACE (Parteneriat B2B) ── */}
+        {/* ── AXA 2: COMMERCE DISTRIBUTION (Parteneriat B2B) ── */}
         <section className="pri-marketplace-section">
           <div className="pri-axis-head">
-            <span className="pri-axis-tag gold">Axa Marketplace · Revenue Share</span>
-            <h2 className="pri-axis-title">Agentic Marketplace</h2>
-            <p className="pri-axis-sub">Nu e abonament — e parteneriat. Plătești setup o dată, apoi câștigăm doar când vinzi tu.</p>
+            <span className="pri-axis-tag gold">Axa Marketplace · Parteneriat B2B</span>
+            <h2 className="pri-axis-title">Commerce Distribution</h2>
+            <p className="pri-axis-sub">Inginerie de catalog, distribuție CSS pe Google și vizibilitate AI. Setup unic + abonament lunar + procent doar din ad spend-ul rulat prin noi.</p>
           </div>
 
           <div className="pri-marketplace-card">
             <div className="pri-marketplace-badge">🤝 {MARKETPLACE.model}</div>
             <div className="pri-marketplace-pricing">
               <div className="pri-marketplace-setup">
-                <div className="pri-marketplace-amount">{MARKETPLACE.setupPrice}</div>
+                <div className="pri-marketplace-amount" style={{ fontSize: '2.1rem' }}>{MARKETPLACE.setupPrice}</div>
                 <div className="pri-marketplace-amount-label">{MARKETPLACE.setupLabel}</div>
+              </div>
+              <div className="pri-marketplace-setup">
+                <div className="pri-marketplace-amount" style={{ fontSize: '2.1rem' }}>{MARKETPLACE.monthly}</div>
+                <div className="pri-marketplace-amount-label">{MARKETPLACE.monthlyLabel}</div>
               </div>
               <div className="pri-marketplace-rev">
                 <div className="pri-marketplace-rev-num">{MARKETPLACE.revshare}</div>
@@ -727,6 +735,11 @@ export default function PricingPage() {
             <Link to={MARKETPLACE.ctaLink} className="pri-marketplace-cta">
               {MARKETPLACE.cta} →
             </Link>
+            <p style={{ textAlign: 'center', marginTop: '1rem', marginBottom: 0 }}>
+              <Link to={MARKETPLACE.ctaAltLink} style={{ color: '#C8A165', fontSize: '0.9rem', textDecoration: 'none' }}>
+                {MARKETPLACE.ctaAlt}
+              </Link>
+            </p>
           </div>
 
           {/* Transparența: câștigăm din același mecanism */}
