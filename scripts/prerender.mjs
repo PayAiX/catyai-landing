@@ -58,6 +58,20 @@ function startServer() {
   });
 }
 
+// Canonical per rută, aplicat o singură dată în pipeline (nu per pagină).
+// Paginile care nu trimit `url` explicit către <SEO> moștenesc default-ul
+// din SEO.jsx (homepage) — paginile prerandate serveau toate canonical către
+// https://catyai.io. Rescriem pe baza route.path: eliminăm orice canonical
+// existent și injectăm cel self-referencing al rutei.
+function applyRouteCanonical(html, routePath) {
+  const canonicalUrl = `https://catyai.io${routePath === '/' ? '/' : routePath}`;
+  const stripped = html.replace(/<link rel="canonical"[^>]*>/gi, '');
+  return stripped.replace(
+    '</head>',
+    `    <link rel="canonical" href="${canonicalUrl}">\n  </head>`
+  );
+}
+
 async function prerenderWithPuppeteer(route, browser) {
   const page = await browser.newPage();
 
@@ -135,6 +149,8 @@ async function prerenderWithPuppeteer(route, browser) {
       ''
     );
 
+    html = applyRouteCanonical(html, route.path);
+
     const segments = route.path.split('/').filter(Boolean);
     const dir = path.join(distDir, ...segments);
     fs.mkdirSync(dir, { recursive: true });
@@ -169,6 +185,8 @@ function prerenderMetaOnly(route) {
       `$1${route.description}$2`
     );
   }
+
+  html = applyRouteCanonical(html, route.path);
 
   const segments = route.path.split('/').filter(Boolean);
   const dir = path.join(distDir, ...segments);
