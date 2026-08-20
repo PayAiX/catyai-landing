@@ -17,6 +17,8 @@ const NAV_ITEMS = [
       { label: 'FraudAI Shield', desc: 'Anti-phishing & scam detection', href: '/fraud-shield', icon: 'shield-check' },
       { label: 'Zero-Trust AI Ads', desc: 'Cryptographic ad verification', href: '/research/zero-trust-ai-ads-en', icon: 'fingerprint' },
       { label: 'Agentic Marketplace', desc: 'AI-to-AI verified commerce', href: '/agentic-marketplace', icon: 'store' },
+      { label: 'Google Shopping Feed', desc: 'Feed data-quality pipeline', href: '/google-shopping-feed', icon: 'search-check' },
+      { label: 'Facebook & Instagram Feed', desc: 'Meta-ready product catalogs', href: '/facebook-instagram-feed', icon: 'share-2' },
     ],
   },
   {

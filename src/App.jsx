@@ -55,6 +55,8 @@ const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
 const TrustGateway = lazy(() => import('./pages/TrustGateway'))
+const GoogleShoppingFeed = lazy(() => import('./pages/GoogleShoppingFeed'))
+const FacebookInstagramFeed = lazy(() => import('./pages/FacebookInstagramFeed'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3276,7 +3278,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed']
   const isStandalonePage = standalonePages.includes(location.pathname) || location.pathname.startsWith('/blog')
 
   // Track referral code from URL
@@ -3340,6 +3342,8 @@ function AppContent() {
             <Route path="/press" element={<Press />} />
             <Route path="/mcp" element={<McpPage />} />
             <Route path="/agentic-marketplace" element={<AgenticMarketplace />} />
+            <Route path="/google-shopping-feed" element={<GoogleShoppingFeed />} />
+            <Route path="/facebook-instagram-feed" element={<FacebookInstagramFeed />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
             <Route path="/marketplace" element={<Navigate to="/agentic-marketplace" replace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
