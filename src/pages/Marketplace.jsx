@@ -46,7 +46,7 @@ const translations = {
     modelCta: 'Programează o discuție de parteneriat',
     // earn transparency
     earnTitle: 'De ce poți avea încredere în model: noi câștigăm din exact același mecanism.',
-    earnBody: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: 3.500.000+ produse · 190 de clienți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
+    earnBody: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: 3.500.000+ produse · 190 de comercianți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
     // faq
     faqTag: 'Întrebări frecvente',
     faq1Q: 'Cum funcționează comisionul de 5%?',
@@ -105,7 +105,7 @@ const translations = {
     modelAlign: 'Full alignment: if you don\'t sell, we earn nothing.',
     modelCta: 'Book a partnership call',
     earnTitle: 'Why you can trust the model: we earn from the exact same mechanism.',
-    earnBody: 'Our own marketplace — shop.catyai.io — runs on the same affiliate commissions your catalog will generate: 3,500,000+ products · 190 active clients · 1% to 20% commission per transaction, brought organically by AI agents, with zero ad spend (Zero-CAC). We install for you the very infrastructure we run ourselves, in production, every day.',
+    earnBody: 'Our own marketplace — shop.catyai.io — runs on the same affiliate commissions your catalog will generate: 3,500,000+ products · 190 active merchants · 1% to 20% commission per transaction, brought organically by AI agents, with zero ad spend (Zero-CAC). We install for you the very infrastructure we run ourselves, in production, every day.',
     faqTag: 'Frequently asked questions',
     faq1Q: 'How does the 5% commission work?',
     faq1A: 'You pay 5% only on successfully delivered orders generated organically by AI agents. You remain Merchant of Record — the customer\'s money goes straight to you. Reconciliation is automated weekly, and the B2B invoice is issued only for delivered orders. No sale, no commission.',
