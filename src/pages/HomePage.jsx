@@ -13,11 +13,10 @@ const translations = {
   ro: {
     navLogin: 'Login', navCta: 'Audit Vizibilitate',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Prețuri',
-    badge: '🔴 LIVE ÎN PRODUCȚIE: 1.171.877 PRODUSE INDEXATE DE AI',
     heroLine1: 'Produsele tale, găsite pe Google și', heroAccent: 'citate de agenții AI.',
     heroSubtitle: 'Inginerie de catalog, distribuție CSS și vizibilitate AI. CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini și blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic.',
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
-    socialProof: '1,1M produse · 21 comercianți live · Widget gratuit 14 zile, fără card',
+    socialProof: '3,5M produse · 190 de clienți activi · Widget gratuit 14 zile, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
     scanLlm: 'Extracție date LLM:', scanLlmFail: 'Eșuat (JS blocat)',
     scanHalluc: 'Risc halucinații:', scanHallucVal: 'Extrem (>85%)',
@@ -91,11 +90,10 @@ const translations = {
   en: {
     navLogin: 'Login', navCta: 'Audit Visibility',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
-    badge: '🔴 LIVE IN PRODUCTION: 1,171,877 PRODUCTS INDEXED BY AI',
     heroLine1: 'Your products, found on Google and', heroAccent: 'cited by AI agents.',
     heroSubtitle: 'Catalog engineering, CSS distribution and AI visibility. CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini and locks your real prices cryptographically — so AI invents nothing.',
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
-    socialProof: '1.1M products · 21 live merchants · Widget free for 14 days, no credit card',
+    socialProof: '3.5M products · 190 active clients · Widget free for 14 days, no credit card',
     scanCritical: 'Critical vulnerability detected',
     scanLlm: 'LLM data extraction:', scanLlmFail: 'Failed (JS blocked)',
     scanHalluc: 'Hallucination risk:', scanHallucVal: 'Extreme (>85%)',
@@ -169,11 +167,10 @@ const translations = {
   es: {
     navLogin: 'Iniciar sesión', navCta: 'Auditar Visibilidad',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Precios',
-    badge: '🔴 EN PRODUCCIÓN: 1.171.877 PRODUCTOS INDEXADOS POR LA IA',
     heroLine1: 'La IA vende. Nosotros nos aseguramos de que venda', heroAccent: 'tu verdad.',
     heroSubtitle: 'CatyAI hace tu catálogo legible por ChatGPT, Perplexity y Gemini, bloquea tus precios reales criptográficamente — para que la IA no invente nada — y convierte cada cita en una transacción medible.',
     heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
-    socialProof: '1,1M productos · 21 comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
+    socialProof: '3,5M productos · 190 clientes activos · comisión solo al entregar · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
     scanLlm: 'Extracción datos LLM:', scanLlmFail: 'Fallido (JS bloqueado)',
     scanHalluc: 'Riesgo de alucinaciones:', scanHallucVal: 'Extremo (>85%)',
@@ -184,7 +181,7 @@ const translations = {
     productsSub: 'Cada eslabón resuelve una parte. Por separado, son herramientas. Juntos, son la única infraestructura que lleva una cita de IA hasta una transacción probada.',
     chainLinkLabel: 'Eslabón',
     chainEndTitle: 'Y todo termina en dinero:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Click atribuido, pedido probado, comisión facturada automáticamente al entregar. 1,1M productos en vivo ahora mismo.',
+    chainEndBody: 'Click atribuido, pedido probado, comisión facturada automáticamente al entregar. 3,5M productos en vivo ahora mismo.',
     chainEndCta: 'Abrir el marketplace',
     howLabel: 'Cómo funciona', howTitle: 'Tres pasos.', howAccent: 'proceso sin código.',
     layer1Tag: 'Capa 01 · Antena', layer1Title: 'Visibilidad IA',
@@ -246,11 +243,10 @@ const translations = {
   pt: {
     navLogin: 'Entrar', navCta: 'Auditar Visibilidade',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Preços',
-    badge: '🔴 EM PRODUÇÃO: 1.171.877 PRODUTOS INDEXADOS PELA IA',
     heroLine1: 'A IA vende. Nós garantimos que ela vende', heroAccent: 'a sua verdade.',
     heroSubtitle: 'A CatyAI torna o seu catálogo legível pelo ChatGPT, Perplexity e Gemini, bloqueia os seus preços reais criptograficamente — para que a IA não invente nada — e transforma cada citação numa transação mensurável.',
     heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
-    socialProof: '1,1M produtos · 21 comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
+    socialProof: '3,5M produtos · 190 clientes ativos · comissão só na entrega · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
     scanLlm: 'Extração de dados LLM:', scanLlmFail: 'Falhou (JS bloqueado)',
     scanHalluc: 'Risco de alucinações:', scanHallucVal: 'Extremo (>85%)',
@@ -261,7 +257,7 @@ const translations = {
     productsSub: 'Cada elo resolve uma parte. Separados, são ferramentas. Juntos, são a única infraestrutura que leva uma citação de IA até uma transação comprovada.',
     chainLinkLabel: 'Elo',
     chainEndTitle: 'E tudo termina em dinheiro:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Clique atribuído, pedido comprovado, comissão faturada automaticamente na entrega. 1,1M produtos ao vivo agora mesmo.',
+    chainEndBody: 'Clique atribuído, pedido comprovado, comissão faturada automaticamente na entrega. 3,5M produtos ao vivo agora mesmo.',
     chainEndCta: 'Abrir o marketplace',
     howLabel: 'Como funciona', howTitle: 'Três passos.', howAccent: 'processo sem código.',
     layer1Tag: 'Camada 01 · Antena', layer1Title: 'Visibilidade IA',
@@ -323,11 +319,10 @@ const translations = {
   fr: {
     navLogin: 'Connexion', navCta: "Auditer la Visibilité",
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocole', navPricing: 'Tarifs',
-    badge: "🔴 EN PRODUCTION : 1 171 877 PRODUITS INDEXÉS PAR L'IA",
     heroLine1: 'Vos produits, trouvés sur Google et', heroAccent: 'cités par les agents IA.',
     heroSubtitle: "Ingénierie de catalogue, distribution CSS et visibilité IA. CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini et verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien.",
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
-    socialProof: "1,1M produits · 21 marchands actifs · Widget gratuit 14 jours, sans carte",
+    socialProof: "3,5M produits · 190 clients actifs · Widget gratuit 14 jours, sans carte",
     scanCritical: 'Vulnérabilité critique détectée',
     scanLlm: 'Extraction données LLM :', scanLlmFail: 'Échoué (JS bloqué)',
     scanHalluc: "Risque d'hallucinations :", scanHallucVal: 'Extrême (>85%)',
@@ -1324,14 +1319,6 @@ body {
 
               <div className="hero-content">
                   <div className="hero-content-inner">
-                      <div className="badge-glow rounded-full px-4 py-1.5 mb-5 inline-flex items-center gap-2 text-xs font-medium text-gold">
-                          <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-                          </span>
-                          {t.badge}
-                      </div>
-
                       <h1 className="hero-title mb-6">
                           <span className="hero-title-line-1">{t.heroLine1}</span>
                           <span className="hero-title-accent">{t.heroAccent}</span>
