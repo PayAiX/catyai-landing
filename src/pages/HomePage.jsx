@@ -13,7 +13,6 @@ const translations = {
   ro: {
     navLogin: 'Login', navCta: 'Audit Vizibilitate',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Prețuri',
-    badge: '🔴 LIVE ÎN PRODUCȚIE: 1.171.877 PRODUSE INDEXATE DE AI',
     heroLine1: 'Produsele tale, găsite pe Google și', heroAccent: 'citate de agenții AI.',
     heroSubtitle: 'Inginerie de catalog, distribuție CSS și vizibilitate AI. CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini și blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic.',
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
@@ -91,7 +90,6 @@ const translations = {
   en: {
     navLogin: 'Login', navCta: 'Audit Visibility',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocol', navPricing: 'Pricing',
-    badge: '🔴 LIVE IN PRODUCTION: 1,171,877 PRODUCTS INDEXED BY AI',
     heroLine1: 'Your products, found on Google and', heroAccent: 'cited by AI agents.',
     heroSubtitle: 'Catalog engineering, CSS distribution and AI visibility. CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini and locks your real prices cryptographically — so AI invents nothing.',
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
@@ -169,7 +167,6 @@ const translations = {
   es: {
     navLogin: 'Iniciar sesión', navCta: 'Auditar Visibilidad',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Precios',
-    badge: '🔴 EN PRODUCCIÓN: 1.171.877 PRODUCTOS INDEXADOS POR LA IA',
     heroLine1: 'La IA vende. Nosotros nos aseguramos de que venda', heroAccent: 'tu verdad.',
     heroSubtitle: 'CatyAI hace tu catálogo legible por ChatGPT, Perplexity y Gemini, bloquea tus precios reales criptográficamente — para que la IA no invente nada — y convierte cada cita en una transacción medible.',
     heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
@@ -246,7 +243,6 @@ const translations = {
   pt: {
     navLogin: 'Entrar', navCta: 'Auditar Visibilidade',
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocolo', navPricing: 'Preços',
-    badge: '🔴 EM PRODUÇÃO: 1.171.877 PRODUTOS INDEXADOS PELA IA',
     heroLine1: 'A IA vende. Nós garantimos que ela vende', heroAccent: 'a sua verdade.',
     heroSubtitle: 'A CatyAI torna o seu catálogo legível pelo ChatGPT, Perplexity e Gemini, bloqueia os seus preços reais criptograficamente — para que a IA não invente nada — e transforma cada citação numa transação mensurável.',
     heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
@@ -323,7 +319,6 @@ const translations = {
   fr: {
     navLogin: 'Connexion', navCta: "Auditer la Visibilité",
     navTrustBenchmark: 'Trust Benchmark', navProtocol: 'Protocole', navPricing: 'Tarifs',
-    badge: "🔴 EN PRODUCTION : 1 171 877 PRODUITS INDEXÉS PAR L'IA",
     heroLine1: 'Vos produits, trouvés sur Google et', heroAccent: 'cités par les agents IA.',
     heroSubtitle: "Ingénierie de catalogue, distribution CSS et visibilité IA. CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini et verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien.",
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
@@ -1324,14 +1319,6 @@ body {
 
               <div className="hero-content">
                   <div className="hero-content-inner">
-                      <div className="badge-glow rounded-full px-4 py-1.5 mb-5 inline-flex items-center gap-2 text-xs font-medium text-gold">
-                          <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
-                          </span>
-                          {t.badge}
-                      </div>
-
                       <h1 className="hero-title mb-6">
                           <span className="hero-title-line-1">{t.heroLine1}</span>
                           <span className="hero-title-accent">{t.heroAccent}</span>
