@@ -655,6 +655,18 @@
     "description": "Inginerie de catalog, distribuție prin Comparison Shopping Service (CSS) și vizibilitate AI-GEO: produsele tale găsite pe Google și citate de ChatGPT, Claude, Perplexity. Setup unic + abonament lunar, grilă transparentă."
   },
   {
+    "path": "/google-shopping-feed",
+    "name": "Google Shopping Feed Optimisation",
+    "title": "Google Shopping Feed Optimisation \u2014 data-quality pipeline | CatyAI",
+    "description": "Most merchant feeds are structurally broken: placeholder prices, wrong identifiers, stale availability. CatyAI fixes the data itself \u2014 AI enrichment, versioned validation, golden records \u2014 before it reaches Google Shopping."
+  },
+  {
+    "path": "/facebook-instagram-feed",
+    "name": "Facebook & Instagram Shopping Feed Optimisation",
+    "title": "Facebook & Instagram Shopping Feed Optimisation | CatyAI",
+    "description": "Meta catalogs fail for the same reason Google feeds do: placeholder prices, stale availability, missing attributes. CatyAI's channel-agnostic data-quality pipeline produces Meta-ready catalogs from one clean, validated source."
+  },
+  {
     "path": "/company",
     "name": "Company",
     "title": "Company — Engineered for Absolute Trust | CatyAI",
