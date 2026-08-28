@@ -3,6 +3,16 @@ import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
+import PartnerBadges from '../components/PartnerBadges'
+import { MERCHANT_COUNT, productsShortM } from '../lib/catalogStats'
+
+// Cifrele din sursa unică (src/lib/catalogStats.js, actualizată la build din
+// /api/public/catalog-stats — aceeași interogare ca aff-llms.txt). Nu hardcoda.
+const N_MERCHANTS = String(MERCHANT_COUNT)
+const M_DOT = productsShortM('en')      // ex. „3.4M" — locale cu punct zecimal
+const M_COMMA = productsShortM('ro')    // ex. „3,4M" — locale cu virgulă
+const MIL_DOT = M_DOT.slice(0, -1)
+const MIL_COMMA = M_COMMA.slice(0, -1)
 
 const T = {
   en: {
@@ -13,9 +23,9 @@ const T = {
     heroCta: 'Book a partnership call',
     heroCtaAlt: 'Facebook & Instagram feeds →',
     stats: [
-      { v: '3.5M+', l: 'products processed' },
+      { v: M_DOT + '+', l: 'products processed' },
       { v: '~95%', l: 'measured acceptance rate' },
-      { v: '190', l: 'merchants in the network' },
+      { v: N_MERCHANTS, l: 'merchants in the network' },
     ],
     problemTitle: 'The problem with merchant feeds',
     problemIntro: 'Most product feeds are broken at the source. Not slightly imperfect — structurally broken. Across the affiliate and merchant feeds we process, we routinely find:',
@@ -30,7 +40,7 @@ const T = {
     pipeTitle: 'What CatyAI actually does',
     pipeSub: 'CatyAI is a data-quality pipeline for product feeds. Not a labeling tool on top of campaign metrics — a system that fixes the data itself, at scale, before it reaches Google.',
     steps: [
-      { n: '01', h: 'AI enrichment at scale', p: 'We process raw merchant feeds through an AI enrichment pipeline that rewrites and completes product data: clean titles with correct regional characters, structured attributes, accurate categorization, normalized brands. Over 3.5 million products processed to date, with a measured acceptance rate of ~95% against our validation rules.' },
+      { n: '01', h: 'AI enrichment at scale', p: 'We process raw merchant feeds through an AI enrichment pipeline that rewrites and completes product data: clean titles with correct regional characters, structured attributes, accurate categorization, normalized brands. Over ' + MIL_DOT + ' million products processed to date, with a measured acceptance rate of ~95% against our validation rules.' },
       { n: '02', h: 'Validation, not trust', p: 'Every enriched product passes through a versioned rules engine. Products that fail — hallucinated attributes, invalid structure, regional mismatches — are rejected or flagged, never silently published. Rules are versioned, so re-eligibility is deterministic: when a rule changes, affected products are automatically re-evaluated.' },
       { n: '03', h: 'Golden records and deduplication', p: 'Products from multiple merchants are matched into single golden records. This is what makes real price comparison possible — and it requires the cleaning steps above, because matching on dirty identifiers produces garbage.' },
       { n: '04', h: 'Feed hygiene at ingest', p: 'Placeholder prices, missing images, out-of-stock listings and non-creditable offers are filtered at ingestion, not patched later. A product that cannot be honestly listed does not enter the feed.' },
@@ -43,7 +53,7 @@ const T = {
       { h: 'Comparison readiness', p: 'Clean golden records are the prerequisite for any real price-comparison experience.' },
     ],
     whoTitle: 'Who builds this',
-    whoText: ['CatyAI is operated by the team behind PayAI-x, operating a Google-approved Comparison Shopping Service serving a network of ', '190 merchants', '. The pipeline was built to solve our own feed-quality problems first — the tooling is the byproduct of operating a CSS, not the other way around.'],
+    whoText: ['CatyAI is operated by the team behind PayAI-x, operating a Google-approved Comparison Shopping Service serving a network of ', N_MERCHANTS + ' merchants', '. The pipeline was built to solve our own feed-quality problems first — the tooling is the byproduct of operating a CSS, not the other way around.'],
     crossTitle: 'Same pipeline, more channels',
     crossText: 'The clean source of truth that produces Google-ready feeds also produces Meta-ready catalogs — Facebook dynamic ads, Advantage+ and Instagram Shopping, from the same validated data.',
     crossCta: 'Facebook & Instagram Shopping Feed Optimisation →',
@@ -63,9 +73,9 @@ const T = {
     heroCta: 'Programează o discuție de parteneriat',
     heroCtaAlt: 'Feed-uri Facebook & Instagram →',
     stats: [
-      { v: '3,5M+', l: 'produse procesate' },
+      { v: M_COMMA + '+', l: 'produse procesate' },
       { v: '~95%', l: 'rată de acceptare măsurată' },
-      { v: '190', l: 'comercianți în rețea' },
+      { v: N_MERCHANTS, l: 'comercianți în rețea' },
     ],
     problemTitle: 'Problema cu feed-urile comercianților',
     problemIntro: 'Majoritatea feed-urilor de produse sunt defecte la sursă. Nu ușor imperfecte — structural defecte. În feed-urile de afiliere și de comerciant pe care le procesăm, găsim constant:',
@@ -80,7 +90,7 @@ const T = {
     pipeTitle: 'Ce face CatyAI de fapt',
     pipeSub: 'CatyAI este un pipeline de calitate a datelor pentru feed-uri de produse. Nu un tool de etichetare peste metricile de campanie — un sistem care repară datele în sine, la scară, înainte să ajungă la Google.',
     steps: [
-      { n: '01', h: 'Enrichment AI la scară', p: 'Procesăm feed-uri brute de comerciant printr-un pipeline de enrichment AI care rescrie și completează datele de produs: titluri curate cu caractere regionale corecte, atribute structurate, categorisire precisă, branduri normalizate. Peste 3,5 milioane de produse procesate până acum, cu o rată de acceptare măsurată de ~95% față de regulile noastre de validare.' },
+      { n: '01', h: 'Enrichment AI la scară', p: 'Procesăm feed-uri brute de comerciant printr-un pipeline de enrichment AI care rescrie și completează datele de produs: titluri curate cu caractere regionale corecte, atribute structurate, categorisire precisă, branduri normalizate. Peste ' + MIL_COMMA + ' milioane de produse procesate până acum, cu o rată de acceptare măsurată de ~95% față de regulile noastre de validare.' },
       { n: '02', h: 'Validare, nu încredere', p: 'Fiecare produs enrichat trece printr-un motor de reguli versionat. Produsele care pică — atribute halucinate, structură invalidă, nepotriviri regionale — sunt respinse sau marcate, niciodată publicate pe furiș. Regulile sunt versionate, deci re-eligibilitatea e deterministică: când o regulă se schimbă, produsele afectate sunt re-evaluate automat.' },
       { n: '03', h: 'Golden records și deduplicare', p: 'Produsele de la mai mulți comercianți sunt grupate în golden records unice. Asta face posibilă comparația reală de prețuri — și necesită pașii de curățare de mai sus, pentru că matchingul pe identificatori murdari produce gunoi.' },
       { n: '04', h: 'Igiena feed-ului la ingest', p: 'Prețurile placeholder, imaginile lipsă, listările fără stoc și ofertele necreditabile sunt filtrate la ingest, nu peticite mai târziu. Un produs care nu poate fi listat onest nu intră în feed.' },
@@ -93,7 +103,7 @@ const T = {
       { h: 'Pregătire pentru comparație', p: 'Golden records curate sunt prerechizitul oricărei experiențe reale de comparație de prețuri.' },
     ],
     whoTitle: 'Cine construiește asta',
-    whoText: ['CatyAI este operat de echipa din spatele PayAI-x, care operează un serviciu de comparare prețuri (CSS) aprobat de Google, deservind o rețea de ', '190 de comercianți', '. Pipeline-ul a fost construit mai întâi pentru a ne rezolva propriile probleme de calitate a feed-ului — toolingul este un produs secundar al operării unui CSS, nu invers.'],
+    whoText: ['CatyAI este operat de echipa din spatele PayAI-x, care operează un serviciu de comparare prețuri (CSS) aprobat de Google, deservind o rețea de ', N_MERCHANTS + ' de comercianți', '. Pipeline-ul a fost construit mai întâi pentru a ne rezolva propriile probleme de calitate a feed-ului — toolingul este un produs secundar al operării unui CSS, nu invers.'],
     crossTitle: 'Același pipeline, mai multe canale',
     crossText: 'Sursa curată de adevăr care produce feed-uri gata de Google produce și cataloage gata de Meta — reclame dinamice Facebook, Advantage+ și Instagram Shopping, din aceleași date validate.',
     crossCta: 'Optimizarea feed-ului Facebook & Instagram Shopping →',
@@ -113,9 +123,9 @@ const T = {
     heroCta: 'Programa una llamada de colaboración',
     heroCtaAlt: 'Feeds de Facebook e Instagram →',
     stats: [
-      { v: '3,5M+', l: 'productos procesados' },
+      { v: M_COMMA + '+', l: 'productos procesados' },
       { v: '~95%', l: 'tasa de aceptación medida' },
-      { v: '190', l: 'comerciantes en la red' },
+      { v: N_MERCHANTS, l: 'comerciantes en la red' },
     ],
     problemTitle: 'El problema con los feeds de los comerciantes',
     problemIntro: 'La mayoría de los feeds de productos están rotos en el origen. No ligeramente imperfectos — estructuralmente rotos. En los feeds de afiliación y de comerciantes que procesamos, encontramos constantemente:',
@@ -130,7 +140,7 @@ const T = {
     pipeTitle: 'Lo que CatyAI hace realmente',
     pipeSub: 'CatyAI es un pipeline de calidad de datos para feeds de productos. No una herramienta de etiquetado sobre métricas de campaña — un sistema que repara los datos en sí, a escala, antes de que lleguen a Google.',
     steps: [
-      { n: '01', h: 'Enriquecimiento con IA a escala', p: 'Procesamos feeds brutos de comerciantes a través de un pipeline de enriquecimiento con IA que reescribe y completa los datos del producto: títulos limpios con caracteres regionales correctos, atributos estructurados, categorización precisa, marcas normalizadas. Más de 3,5 millones de productos procesados hasta la fecha, con una tasa de aceptación medida de ~95% según nuestras reglas de validación.' },
+      { n: '01', h: 'Enriquecimiento con IA a escala', p: 'Procesamos feeds brutos de comerciantes a través de un pipeline de enriquecimiento con IA que reescribe y completa los datos del producto: títulos limpios con caracteres regionales correctos, atributos estructurados, categorización precisa, marcas normalizadas. Más de ' + MIL_COMMA + ' millones de productos procesados hasta la fecha, con una tasa de aceptación medida de ~95% según nuestras reglas de validación.' },
       { n: '02', h: 'Validación, no confianza', p: 'Cada producto enriquecido pasa por un motor de reglas versionado. Los productos que fallan — atributos alucinados, estructura inválida, discrepancias regionales — son rechazados o marcados, nunca publicados silenciosamente. Las reglas están versionadas, por lo que la re-elegibilidad es determinista: cuando una regla cambia, los productos afectados se reevalúan automáticamente.' },
       { n: '03', h: 'Golden records y deduplicación', p: 'Los productos de múltiples comerciantes se agrupan en golden records únicos. Esto hace posible la comparación real de precios — y requiere los pasos de limpieza anteriores, porque el matching sobre identificadores sucios produce basura.' },
       { n: '04', h: 'Higiene del feed en la ingesta', p: 'Los precios placeholder, las imágenes ausentes, los listados sin stock y las ofertas no acreditables se filtran en la ingesta, no se parchean después. Un producto que no puede listarse honestamente no entra en el feed.' },
@@ -143,7 +153,7 @@ const T = {
       { h: 'Preparación para la comparación', p: 'Los golden records limpios son el prerrequisito de cualquier experiencia real de comparación de precios.' },
     ],
     whoTitle: 'Quién construye esto',
-    whoText: ['CatyAI es operado por el equipo detrás de PayAI-x, que opera un servicio de comparación de precios (CSS) aprobado por Google, sirviendo a una red de ', '190 comerciantes', '. El pipeline se construyó primero para resolver nuestros propios problemas de calidad de feed — la herramienta es un subproducto de operar un CSS, no al revés.'],
+    whoText: ['CatyAI es operado por el equipo detrás de PayAI-x, que opera un servicio de comparación de precios (CSS) aprobado por Google, sirviendo a una red de ', N_MERCHANTS + ' comerciantes', '. El pipeline se construyó primero para resolver nuestros propios problemas de calidad de feed — la herramienta es un subproducto de operar un CSS, no al revés.'],
     crossTitle: 'El mismo pipeline, más canales',
     crossText: 'La fuente limpia de verdad que produce feeds listos para Google también produce catálogos listos para Meta — anuncios dinámicos de Facebook, Advantage+ e Instagram Shopping, desde los mismos datos validados.',
     crossCta: 'Optimización del feed de Facebook e Instagram Shopping →',
@@ -163,9 +173,9 @@ const T = {
     heroCta: 'Agende uma conversa de parceria',
     heroCtaAlt: 'Feeds do Facebook e Instagram →',
     stats: [
-      { v: '3,5M+', l: 'produtos processados' },
+      { v: M_COMMA + '+', l: 'produtos processados' },
       { v: '~95%', l: 'taxa de aceitação medida' },
-      { v: '190', l: 'comerciantes na rede' },
+      { v: N_MERCHANTS, l: 'comerciantes na rede' },
     ],
     problemTitle: 'O problema com os feeds dos comerciantes',
     problemIntro: 'A maioria dos feeds de produtos está quebrada na origem. Não ligeiramente imperfeita — estruturalmente quebrada. Nos feeds de afiliação e de comerciantes que processamos, encontramos constantemente:',
@@ -180,7 +190,7 @@ const T = {
     pipeTitle: 'O que a CatyAI faz realmente',
     pipeSub: 'A CatyAI é um pipeline de qualidade de dados para feeds de produtos. Não uma ferramenta de rotulagem sobre métricas de campanha — um sistema que corrige os próprios dados, em escala, antes de chegarem ao Google.',
     steps: [
-      { n: '01', h: 'Enriquecimento com IA em escala', p: 'Processamos feeds brutos de comerciantes através de um pipeline de enriquecimento com IA que reescreve e completa os dados do produto: títulos limpos com caracteres regionais corretos, atributos estruturados, categorização precisa, marcas normalizadas. Mais de 3,5 milhões de produtos processados até à data, com uma taxa de aceitação medida de ~95% face às nossas regras de validação.' },
+      { n: '01', h: 'Enriquecimento com IA em escala', p: 'Processamos feeds brutos de comerciantes através de um pipeline de enriquecimento com IA que reescreve e completa os dados do produto: títulos limpos com caracteres regionais corretos, atributos estruturados, categorização precisa, marcas normalizadas. Mais de ' + MIL_COMMA + ' milhões de produtos processados até à data, com uma taxa de aceitação medida de ~95% face às nossas regras de validação.' },
       { n: '02', h: 'Validação, não confiança', p: 'Cada produto enriquecido passa por um motor de regras versionado. Produtos que falham — atributos alucinados, estrutura inválida, discrepâncias regionais — são rejeitados ou sinalizados, nunca publicados silenciosamente. As regras são versionadas, pelo que a reelegibilidade é determinística: quando uma regra muda, os produtos afetados são automaticamente reavaliados.' },
       { n: '03', h: 'Golden records e deduplicação', p: 'Produtos de múltiplos comerciantes são agrupados em golden records únicos. Isto torna possível a comparação real de preços — e requer os passos de limpeza acima, porque o matching sobre identificadores sujos produz lixo.' },
       { n: '04', h: 'Higiene do feed na ingestão', p: 'Preços placeholder, imagens em falta, listagens sem stock e ofertas não creditáveis são filtrados na ingestão, não corrigidos depois. Um produto que não pode ser listado honestamente não entra no feed.' },
@@ -193,7 +203,7 @@ const T = {
       { h: 'Prontidão para comparação', p: 'Golden records limpos são o pré-requisito de qualquer experiência real de comparação de preços.' },
     ],
     whoTitle: 'Quem constrói isto',
-    whoText: ['A CatyAI é operada pela equipa por trás da PayAI-x, que opera um serviço de comparação de preços (CSS) aprovado pela Google, servindo uma rede de ', '190 comerciantes', '. O pipeline foi construído primeiro para resolver os nossos próprios problemas de qualidade de feed — a ferramenta é um subproduto de operar um CSS, não o contrário.'],
+    whoText: ['A CatyAI é operada pela equipa por trás da PayAI-x, que opera um serviço de comparação de preços (CSS) aprovado pela Google, servindo uma rede de ', N_MERCHANTS + ' comerciantes', '. O pipeline foi construído primeiro para resolver os nossos próprios problemas de qualidade de feed — a ferramenta é um subproduto de operar um CSS, não o contrário.'],
     crossTitle: 'O mesmo pipeline, mais canais',
     crossText: 'A fonte limpa de verdade que produz feeds prontos para Google também produz catálogos prontos para Meta — anúncios dinâmicos do Facebook, Advantage+ e Instagram Shopping, a partir dos mesmos dados validados.',
     crossCta: 'Otimização do feed do Facebook e Instagram Shopping →',
@@ -213,9 +223,9 @@ const T = {
     heroCta: 'Planifiez un échange partenariat',
     heroCtaAlt: 'Flux Facebook & Instagram →',
     stats: [
-      { v: '3,5M+', l: 'produits traités' },
+      { v: M_COMMA + '+', l: 'produits traités' },
       { v: '~95%', l: 'taux d\'acceptation mesuré' },
-      { v: '190', l: 'marchands dans le réseau' },
+      { v: N_MERCHANTS, l: 'marchands dans le réseau' },
     ],
     problemTitle: 'Le problème des flux marchands',
     problemIntro: 'La plupart des flux produits sont cassés à la source. Pas légèrement imparfaits — structurellement cassés. Dans les flux d\'affiliation et de marchands que nous traitons, nous trouvons constamment :',
@@ -230,7 +240,7 @@ const T = {
     pipeTitle: 'Ce que CatyAI fait réellement',
     pipeSub: 'CatyAI est un pipeline de qualité de données pour flux produits. Pas un outil d\'étiquetage par-dessus des métriques de campagne — un système qui répare les données elles-mêmes, à grande échelle, avant qu\'elles n\'atteignent Google.',
     steps: [
-      { n: '01', h: 'Enrichissement IA à grande échelle', p: 'Nous traitons les flux bruts des marchands via un pipeline d\'enrichissement IA qui réécrit et complète les données produit : titres propres avec caractères régionaux corrects, attributs structurés, catégorisation précise, marques normalisées. Plus de 3,5 millions de produits traités à ce jour, avec un taux d\'acceptation mesuré de ~95 % selon nos règles de validation.' },
+      { n: '01', h: 'Enrichissement IA à grande échelle', p: 'Nous traitons les flux bruts des marchands via un pipeline d\'enrichissement IA qui réécrit et complète les données produit : titres propres avec caractères régionaux corrects, attributs structurés, catégorisation précise, marques normalisées. Plus de ' + MIL_COMMA + ' millions de produits traités à ce jour, avec un taux d\'acceptation mesuré de ~95 % selon nos règles de validation.' },
       { n: '02', h: 'Validation, pas confiance', p: 'Chaque produit enrichi passe par un moteur de règles versionné. Les produits qui échouent — attributs hallucinés, structure invalide, incohérences régionales — sont rejetés ou signalés, jamais publiés silencieusement. Les règles sont versionnées, donc la rééligibilité est déterministe : quand une règle change, les produits affectés sont automatiquement réévalués.' },
       { n: '03', h: 'Golden records et déduplication', p: 'Les produits de plusieurs marchands sont regroupés en golden records uniques. C\'est ce qui rend possible la comparaison réelle des prix — et cela exige les étapes de nettoyage ci-dessus, car le matching sur des identifiants sales produit des déchets.' },
       { n: '04', h: 'Hygiène du flux à l\'ingestion', p: 'Les prix placeholder, les images manquantes, les annonces sans stock et les offres non créditables sont filtrés à l\'ingestion, pas corrigés plus tard. Un produit qui ne peut pas être listé honnêtement n\'entre pas dans le flux.' },
@@ -243,7 +253,7 @@ const T = {
       { h: 'Préparation à la comparaison', p: 'Des golden records propres sont le prérequis de toute expérience réelle de comparaison de prix.' },
     ],
     whoTitle: 'Qui construit cela',
-    whoText: ['CatyAI est opéré par l\'équipe derrière PayAI-x, qui exploite un service de comparaison de prix (CSS) approuvé par Google, au service d\'un réseau de ', '190 marchands', '. Le pipeline a d\'abord été construit pour résoudre nos propres problèmes de qualité de flux — l\'outil est un sous-produit de l\'exploitation d\'un CSS, pas l\'inverse.'],
+    whoText: ['CatyAI est opéré par l\'équipe derrière PayAI-x, qui exploite un service de comparaison de prix (CSS) approuvé par Google, au service d\'un réseau de ', N_MERCHANTS + ' marchands', '. Le pipeline a d\'abord été construit pour résoudre nos propres problèmes de qualité de flux — l\'outil est un sous-produit de l\'exploitation d\'un CSS, pas l\'inverse.'],
     crossTitle: 'Le même pipeline, plus de canaux',
     crossText: 'La source de vérité propre qui produit des flux prêts pour Google produit aussi des catalogues prêts pour Meta — publicités dynamiques Facebook, Advantage+ et Instagram Shopping, depuis les mêmes données validées.',
     crossCta: 'Optimisation du flux Facebook & Instagram Shopping →',
@@ -261,7 +271,7 @@ const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'Organization', name: 'CatyAI', url: 'https://catyai.io', description: 'Data-quality pipeline for product feeds: AI enrichment, versioned validation, golden records and feed hygiene for Google Shopping.', parentOrganization: { '@type': 'Organization', name: 'PayAi-X FZE' } },
-    { '@type': 'Service', name: 'Google Shopping Feed Optimisation', serviceType: 'Product feed data-quality pipeline', provider: { '@type': 'Organization', name: 'CatyAI' }, areaServed: 'EU', description: 'AI enrichment at scale, versioned validation rules, golden records and deduplication, feed hygiene at ingest and continuous quality measurement — over 3.5 million products processed with a ~95% measured acceptance rate, operated by the team behind the PayAI-x CSS, a Google-approved Comparison Shopping Service serving a network of 190 merchants.' },
+    { '@type': 'Service', name: 'Google Shopping Feed Optimisation', serviceType: 'Product feed data-quality pipeline', provider: { '@type': 'Organization', name: 'CatyAI' }, areaServed: 'EU', description: 'AI enrichment at scale, versioned validation rules, golden records and deduplication, feed hygiene at ingest and continuous quality measurement — over ' + MIL_DOT + ' million products processed with a ~95% measured acceptance rate, operated by the team behind the PayAI-x CSS, a Google-approved Comparison Shopping Service serving a network of ' + N_MERCHANTS + ' merchants.' },
   ],
 }
 
@@ -362,6 +372,7 @@ export default function GoogleShoppingFeed() {
                   <a href="#contact" className="font-bold px-6 py-3 rounded-lg transition bg-[#d4b07a] text-[#0a0f1c] hover:bg-[#e7cfa3]" style={{ boxShadow: '0 8px 30px -10px rgba(212,176,122,.5)' }}>{t.heroCta}</a>
                   <a href="/facebook-instagram-feed" className="font-semibold border border-[#1f293f] bg-[#111a2c] px-6 py-3 rounded-lg text-white hover:border-[#5c6883] transition">{t.heroCtaAlt}</a>
                 </div>
+                <PartnerBadges locale={lang} className="mt-6" />
                 <div className="mt-10 grid grid-cols-3 gap-4 max-w-lg">
                   {t.stats.map((s) => (
                     <div key={s.l}>

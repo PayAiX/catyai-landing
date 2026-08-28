@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
+import { MERCHANT_COUNT, productsFull } from '../lib/catalogStats'
+
+// Cifrele din sursa unică (actualizate la build). Nu hardcoda.
+const N_M = String(MERCHANT_COUNT)
+const P_RO = productsFull('ro')
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AXA 1 — WEB WIDGET (SaaS, abonament lunar, EUR)
@@ -114,7 +119,7 @@ const MARKETPLACE = {
 // Banda de transparență: noi câștigăm din același mecanism pe care ți-l instalăm.
 const EARN_PROOF = {
   title: 'De ce poți avea încredere în model: noi câștigăm din exact același mecanism.',
-  body: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: 3.500.000+ produse · 190 de comercianți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
+  body: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: ' + P_RO + '+ produse · ' + N_M + ' de comercianți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
 }
 
 const FAQS = [

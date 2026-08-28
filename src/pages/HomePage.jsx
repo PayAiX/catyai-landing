@@ -5,6 +5,13 @@ import { MessageSquare, ShieldCheck, RadioTower, Lock } from 'lucide-react';
 import SEO from '../components/SEO';
 import GlobalHeader from '../components/GlobalHeader';
 import FooterV9 from '../components/FooterV9';
+import PartnerBadges from '../components/PartnerBadges';
+import { MERCHANT_COUNT, productsShortM } from '../lib/catalogStats';
+
+// Cifrele din sursa unică (actualizate la build din /api/public/catalog-stats). Nu hardcoda.
+const N_M = String(MERCHANT_COUNT);
+const M_DOT = productsShortM('en');
+const M_COMMA = productsShortM('ro');
 
 // Note: Lucide icons are loaded via CDN script in index.html (already added by previous PR).
 // CatyAI Homepage V9 — full design with inline CSS, no Tailwind v4 utility class dependency.
@@ -16,7 +23,7 @@ const translations = {
     heroLine1: 'Produsele tale, găsite pe Google și', heroAccent: 'citate de agenții AI.',
     heroSubtitle: 'Inginerie de catalog, distribuție CSS și vizibilitate AI. CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini și blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic.',
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
-    socialProof: '3,5M produse · 190 de comercianți activi · Widget gratuit 14 zile, fără card',
+    socialProof: M_COMMA + ' produse · ' + N_M + ' de comercianți activi · Widget gratuit 14 zile, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
     scanLlm: 'Extracție date LLM:', scanLlmFail: 'Eșuat (JS blocat)',
     scanHalluc: 'Risc halucinații:', scanHallucVal: 'Extrem (>85%)',
@@ -93,7 +100,7 @@ const translations = {
     heroLine1: 'Your products, found on Google and', heroAccent: 'cited by AI agents.',
     heroSubtitle: 'Catalog engineering, CSS distribution and AI visibility. CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini and locks your real prices cryptographically — so AI invents nothing.',
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
-    socialProof: '3.5M products · 190 active merchants · Widget free for 14 days, no credit card',
+    socialProof: M_DOT + ' products · ' + N_M + ' active merchants · Widget free for 14 days, no credit card',
     scanCritical: 'Critical vulnerability detected',
     scanLlm: 'LLM data extraction:', scanLlmFail: 'Failed (JS blocked)',
     scanHalluc: 'Hallucination risk:', scanHallucVal: 'Extreme (>85%)',
@@ -170,7 +177,7 @@ const translations = {
     heroLine1: 'La IA vende. Nosotros nos aseguramos de que venda', heroAccent: 'tu verdad.',
     heroSubtitle: 'CatyAI hace tu catálogo legible por ChatGPT, Perplexity y Gemini, bloquea tus precios reales criptográficamente — para que la IA no invente nada — y convierte cada cita en una transacción medible.',
     heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
-    socialProof: '3,5M productos · 190 comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
+    socialProof: M_COMMA + ' productos · ' + N_M + ' comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
     scanLlm: 'Extracción datos LLM:', scanLlmFail: 'Fallido (JS bloqueado)',
     scanHalluc: 'Riesgo de alucinaciones:', scanHallucVal: 'Extremo (>85%)',
@@ -181,7 +188,7 @@ const translations = {
     productsSub: 'Cada eslabón resuelve una parte. Por separado, son herramientas. Juntos, son la única infraestructura que lleva una cita de IA hasta una transacción probada.',
     chainLinkLabel: 'Eslabón',
     chainEndTitle: 'Y todo termina en dinero:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Click atribuido, pedido probado, comisión facturada automáticamente al entregar. 3,5M productos en vivo ahora mismo.',
+    chainEndBody: 'Click atribuido, pedido probado, comisión facturada automáticamente al entregar. ' + M_COMMA + ' productos en vivo ahora mismo.',
     chainEndCta: 'Abrir el marketplace',
     howLabel: 'Cómo funciona', howTitle: 'Tres pasos.', howAccent: 'proceso sin código.',
     layer1Tag: 'Capa 01 · Antena', layer1Title: 'Visibilidad IA',
@@ -246,7 +253,7 @@ const translations = {
     heroLine1: 'A IA vende. Nós garantimos que ela vende', heroAccent: 'a sua verdade.',
     heroSubtitle: 'A CatyAI torna o seu catálogo legível pelo ChatGPT, Perplexity e Gemini, bloqueia os seus preços reais criptograficamente — para que a IA não invente nada — e transforma cada citação numa transação mensurável.',
     heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
-    socialProof: '3,5M produtos · 190 comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
+    socialProof: M_COMMA + ' produtos · ' + N_M + ' comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
     scanLlm: 'Extração de dados LLM:', scanLlmFail: 'Falhou (JS bloqueado)',
     scanHalluc: 'Risco de alucinações:', scanHallucVal: 'Extremo (>85%)',
@@ -257,7 +264,7 @@ const translations = {
     productsSub: 'Cada elo resolve uma parte. Separados, são ferramentas. Juntos, são a única infraestrutura que leva uma citação de IA até uma transação comprovada.',
     chainLinkLabel: 'Elo',
     chainEndTitle: 'E tudo termina em dinheiro:', chainEndAccent: 'Agentic Marketplace',
-    chainEndBody: 'Clique atribuído, pedido comprovado, comissão faturada automaticamente na entrega. 3,5M produtos ao vivo agora mesmo.',
+    chainEndBody: 'Clique atribuído, pedido comprovado, comissão faturada automaticamente na entrega. ' + M_COMMA + ' produtos ao vivo agora mesmo.',
     chainEndCta: 'Abrir o marketplace',
     howLabel: 'Como funciona', howTitle: 'Três passos.', howAccent: 'processo sem código.',
     layer1Tag: 'Camada 01 · Antena', layer1Title: 'Visibilidade IA',
@@ -322,7 +329,7 @@ const translations = {
     heroLine1: 'Vos produits, trouvés sur Google et', heroAccent: 'cités par les agents IA.',
     heroSubtitle: "Ingénierie de catalogue, distribution CSS et visibilité IA. CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini et verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien.",
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
-    socialProof: "3,5M produits · 190 marchands actifs · Widget gratuit 14 jours, sans carte",
+    socialProof: M_COMMA + ' produits · ' + N_M + ' marchands actifs · Widget gratuit 14 jours, sans carte',
     scanCritical: 'Vulnérabilité critique détectée',
     scanLlm: 'Extraction données LLM :', scanLlmFail: 'Échoué (JS bloqué)',
     scanHalluc: "Risque d'hallucinations :", scanHallucVal: 'Extrême (>85%)',
@@ -1350,6 +1357,7 @@ body {
                           <i data-lucide="shield-check" className="w-4 h-4 text-emerald-400" />
                           {t.socialProof}
                       </p>
+                      <PartnerBadges locale={lang} className="mt-4" />
                   </div>
               </div>
 

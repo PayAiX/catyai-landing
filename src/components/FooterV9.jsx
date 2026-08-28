@@ -1,6 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, Mail, Globe } from 'lucide-react'
+import { MERCHANT_COUNT, productsShortM } from '../lib/catalogStats';
+
+// Cifrele din sursa unică (actualizate la build). Nu hardcoda.
+const N_M = String(MERCHANT_COUNT);
+const M_DOT = productsShortM('en');
+const M_COMMA = productsShortM('ro');
 
 const translations = {
   en: {
@@ -11,7 +17,7 @@ const translations = {
     product: 'Product', resources: 'Resources', company: 'Company', legal: 'Legal',
     pricing: 'Pricing', docs: 'Documentation', about: 'About',
     careers: 'Careers', terms: 'Terms', security: 'Security',
-    liveStats: 'Live in production: 3.5M+ products indexed by AI · 190 active merchants',
+    liveStats: 'Live in production: ' + M_DOT + '+ products indexed by AI · ' + N_M + ' active merchants',
   },
   ro: {
     tagline: 'GEO intel săptămânal,\nînainte de concurență.',
@@ -21,7 +27,7 @@ const translations = {
     product: 'Produs', resources: 'Resurse', company: 'Companie', legal: 'Legal',
     pricing: 'Prețuri', docs: 'Documentație', about: 'Despre',
     careers: 'Cariere', terms: 'Termeni', security: 'Securitate',
-    liveStats: 'Live în producție: 3,5M+ produse indexate de AI · 190 de comercianți activi',
+    liveStats: 'Live în producție: ' + M_COMMA + '+ produse indexate de AI · ' + N_M + ' de comercianți activi',
   },
   es: {
     tagline: 'Inteligencia GEO semanal,\nantes que la competencia.',
@@ -31,7 +37,7 @@ const translations = {
     product: 'Producto', resources: 'Recursos', company: 'Empresa', legal: 'Legal',
     pricing: 'Precios', docs: 'Documentación', about: 'Acerca de',
     careers: 'Empleos', terms: 'Términos', security: 'Seguridad',
-    liveStats: 'En producción: 3,5M+ productos indexados por IA · 190 comerciantes activos',
+    liveStats: 'En producción: ' + M_COMMA + '+ productos indexados por IA · ' + N_M + ' comerciantes activos',
   },
   pt: {
     tagline: 'Inteligência GEO semanal,\nantes da concorrência.',
@@ -41,7 +47,7 @@ const translations = {
     product: 'Produto', resources: 'Recursos', company: 'Empresa', legal: 'Legal',
     pricing: 'Preços', docs: 'Documentação', about: 'Sobre',
     careers: 'Carreiras', terms: 'Termos', security: 'Segurança',
-    liveStats: 'Em produção: 3,5M+ produtos indexados por IA · 190 comerciantes ativos',
+    liveStats: 'Em produção: ' + M_COMMA + '+ produtos indexados por IA · ' + N_M + ' comerciantes ativos',
   },
   fr: {
     tagline: 'Veille GEO hebdomadaire,\navant la concurrence.',
@@ -51,7 +57,7 @@ const translations = {
     product: 'Produit', resources: 'Ressources', company: 'Entreprise', legal: 'Légal',
     pricing: 'Tarifs', docs: 'Documentation', about: 'À propos',
     careers: 'Carrières', terms: 'Conditions', security: 'Sécurité',
-    liveStats: "En production : 3,5M+ produits indexés par l'IA · 190 marchands actifs",
+    liveStats: 'En production : ' + M_COMMA + "+ produits indexés par l'IA · " + N_M + ' marchands actifs',
   },
 }
 

@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import GlobalHeader from '../components/GlobalHeader'
 import FooterV9 from '../components/FooterV9'
+import { MERCHANT_COUNT, productsFull, productsShortM } from '../lib/catalogStats'
+
+// Cifrele din sursa unică (actualizate la build). Nu hardcoda.
+const N_M = String(MERCHANT_COUNT)
+const P_RO = productsFull('ro')
+const P_EN = productsFull('en')
+const M_DOT = productsShortM('en')
+const M_COMMA = productsShortM('ro')
 
 const translations = {
   ro: {
@@ -15,7 +23,7 @@ const translations = {
     // live proof
     liveTag: 'Dovada vie — nu promitem, arătăm',
     liveH2: 'Funcționează deja. În bani, nu în sliduri.',
-    stat1N: '3.500.000+', stat1L: 'produse indexate în Agentic Marketplace', stat1T: 'LIVE pe shop.catyai.io',
+    stat1N: P_RO + '+', stat1L: 'produse indexate în Agentic Marketplace', stat1T: 'LIVE pe shop.catyai.io',
     stat2N: '21', stat2L: 'comercianți conectați prin feed-uri semnate', stat2T: 'Feed-uri Ed25519 · livrare <3s',
     stat3N: '5%', stat3L: 'comision doar la comandă livrată — nu plătești vizibilitate, plătești rezultat', stat3T: 'Facturare B2B automată',
     stat4N: '#80179', stat4L: 'comandă reală atribuită end-to-end: citare → click → comandă → comision', stat4T: 'IPB · lanț dovedit în producție',
@@ -46,7 +54,7 @@ const translations = {
     modelCta: 'Programează o discuție de parteneriat',
     // earn transparency
     earnTitle: 'De ce poți avea încredere în model: noi câștigăm din exact același mecanism.',
-    earnBody: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: 3.500.000+ produse · 190 de comercianți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
+    earnBody: 'Marketplace-ul nostru propriu — shop.catyai.io — trăiește din aceleași comisioane de afiliere pe care le va genera și catalogul tău: ' + P_RO + '+ produse · ' + N_M + ' de comercianți activi · comisioane de la 1% la 20% per tranzacție, aduse organic de agenții AI, cu zero buget de reclame (Zero-CAC). Îți instalăm infrastructura pe care o folosim noi înșine, în producție, în fiecare zi.',
     // faq
     faqTag: 'Întrebări frecvente',
     faq1Q: 'Cum funcționează comisionul de 5%?',
@@ -61,7 +69,7 @@ const translations = {
     faq5A: 'Fiecare citare, click și comandă poartă o referință unică de atribuire, înregistrată și auditabilă. Vezi în dashboard întregul lanț, de la citarea AI până la comanda livrată — nu e o estimare, e un lanț dovedit.',
     // final
     finalH2: 'Vrei catalogul tău aici?',
-    finalSub: 'Vezi marketplace-ul live cu 3,5M produse, sau programează direct o discuție de parteneriat.',
+    finalSub: 'Vezi marketplace-ul live cu ' + M_COMMA + ' produse, sau programează direct o discuție de parteneriat.',
     finalCta1: 'Deschide shop.catyai.io',
     finalCta2: 'Discută cu noi',
     // prev
@@ -77,7 +85,7 @@ const translations = {
     ctaSecondary: 'Book a call',
     liveTag: 'Live proof — we don\'t promise, we show',
     liveH2: 'It already works. In money, not in slides.',
-    stat1N: '3,500,000+', stat1L: 'products indexed in the Agentic Marketplace', stat1T: 'LIVE on shop.catyai.io',
+    stat1N: P_EN + '+', stat1L: 'products indexed in the Agentic Marketplace', stat1T: 'LIVE on shop.catyai.io',
     stat2N: '21', stat2L: 'merchants connected via signed feeds', stat2T: 'Ed25519 feeds · <3s delivery',
     stat3N: '5%', stat3L: 'commission on delivered orders only — you pay for results, not visibility', stat3T: 'Automated B2B invoicing',
     stat4N: '#80179', stat4L: 'real order attributed end-to-end: citation → click → order → commission', stat4T: 'IPB · chain proven in production',
@@ -105,7 +113,7 @@ const translations = {
     modelAlign: 'Full alignment: if you don\'t sell, we earn nothing.',
     modelCta: 'Book a partnership call',
     earnTitle: 'Why you can trust the model: we earn from the exact same mechanism.',
-    earnBody: 'Our own marketplace — shop.catyai.io — runs on the same affiliate commissions your catalog will generate: 3,500,000+ products · 190 active merchants · 1% to 20% commission per transaction, brought organically by AI agents, with zero ad spend (Zero-CAC). We install for you the very infrastructure we run ourselves, in production, every day.',
+    earnBody: 'Our own marketplace — shop.catyai.io — runs on the same affiliate commissions your catalog will generate: ' + P_EN + '+ products · ' + N_M + ' active merchants · 1% to 20% commission per transaction, brought organically by AI agents, with zero ad spend (Zero-CAC). We install for you the very infrastructure we run ourselves, in production, every day.',
     faqTag: 'Frequently asked questions',
     faq1Q: 'How does the 5% commission work?',
     faq1A: 'You pay 5% only on successfully delivered orders generated organically by AI agents. You remain Merchant of Record — the customer\'s money goes straight to you. Reconciliation is automated weekly, and the B2B invoice is issued only for delivered orders. No sale, no commission.',
@@ -118,7 +126,7 @@ const translations = {
     faq5Q: 'How do I know the attribution is accurate?',
     faq5A: 'Every citation, click and order carries a unique attribution reference, logged and auditable. You see the full chain in the dashboard, from AI citation to delivered order — it is not an estimate, it is a proven chain.',
     finalH2: 'Want your catalog here?',
-    finalSub: 'See the live marketplace with 3.5M products, or book a partnership call directly.',
+    finalSub: 'See the live marketplace with ' + M_DOT + ' products, or book a partnership call directly.',
     finalCta1: 'Open shop.catyai.io',
     finalCta2: 'Talk to us',
     prevLabel: 'Previous link',

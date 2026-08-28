@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && node scripts/prerender.mjs",
-    "build:seo": "node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && npm run prerender",
+    "build": "node scripts/fetch-catalog-stats.mjs && node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && node scripts/prerender.mjs",
+    "build:seo": "node scripts/fetch-catalog-stats.mjs && node scripts/generate-sitemap.mjs && vite build && npm run copy-cdn && npm run prerender",
     "copy-cdn": "mkdir -p dist/cdn && (cp ../src/widget/caty-widget.js dist/cdn/widget.js 2>/dev/null || true) && (cp ../src/widget/caty-commerce.js dist/cdn/commerce.js 2>/dev/null || true) && (cp ../src/widget/caty-leads-widget.js dist/cdn/leads.js 2>/dev/null || true) && (cp ../src/widget/caty-loader.js dist/cdn/loader.js 2>/dev/null || true)",
     "prerender": "node scripts/prerender.mjs",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
