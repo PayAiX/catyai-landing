@@ -3,6 +3,12 @@ import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
+import PartnerBadges from '../components/PartnerBadges'
+import { productsShortM } from '../lib/catalogStats'
+
+// Cifra din sursa unică (src/lib/catalogStats.js, actualizată la build). Nu hardcoda.
+const MIL_DOT = productsShortM('en').slice(0, -1)
+const MIL_COMMA = productsShortM('ro').slice(0, -1)
 
 const T = {
   en: {
@@ -33,7 +39,7 @@ const T = {
     notTitle: 'What we do not claim',
     notText: 'We do not run your Meta campaigns and we do not label products based on your ad performance. We fix the data. Campaign structure, bidding and creative remain yours — they simply stop being sabotaged by a dirty catalog.',
     crossTitle: 'One pipeline, every channel',
-    crossText: 'The enrichment, validation and golden-record layers behind this page are the same ones producing Google-ready feeds — over 3.5 million products processed, measured against versioned validation rules.',
+    crossText: 'The enrichment, validation and golden-record layers behind this page are the same ones producing Google-ready feeds — over ' + MIL_DOT + ' million products processed, measured against versioned validation rules.',
     crossCta: 'Google Shopping Feed Optimisation →',
     ctaTitle: 'Book a partnership call',
     ctaSub: 'Write to us at contact@catyai.io or call +40 756 730 193 — we\'ll discuss your catalog and the right package.',
@@ -72,7 +78,7 @@ const T = {
     notTitle: 'Ce NU pretindem',
     notText: 'Nu îți rulăm campaniile Meta și nu etichetăm produse pe baza performanței tale din ads. Noi reparăm datele. Structura de campanie, biddingul și creația rămân ale tale — doar că nu mai sunt sabotate de un catalog murdar.',
     crossTitle: 'Un pipeline, toate canalele',
-    crossText: 'Straturile de enrichment, validare și golden records din spatele acestei pagini sunt aceleași care produc feed-uri gata de Google — peste 3,5 milioane de produse procesate, măsurate contra regulilor de validare versionate.',
+    crossText: 'Straturile de enrichment, validare și golden records din spatele acestei pagini sunt aceleași care produc feed-uri gata de Google — peste ' + MIL_COMMA + ' milioane de produse procesate, măsurate contra regulilor de validare versionate.',
     crossCta: 'Optimizarea feed-ului Google Shopping →',
     ctaTitle: 'Programează o discuție de parteneriat',
     ctaSub: 'Scrie-ne la contact@catyai.io sau sună la +40 756 730 193 — discutăm catalogul tău și pachetul potrivit.',
@@ -111,7 +117,7 @@ const T = {
     notTitle: 'Lo que NO afirmamos',
     notText: 'No gestionamos tus campañas de Meta ni etiquetamos productos según tu rendimiento publicitario. Nosotros reparamos los datos. La estructura de campaña, las pujas y la creatividad siguen siendo tuyas — simplemente dejan de ser saboteadas por un catálogo sucio.',
     crossTitle: 'Un pipeline, todos los canales',
-    crossText: 'Las capas de enriquecimiento, validación y golden records detrás de esta página son las mismas que producen feeds listos para Google — más de 3,5 millones de productos procesados, medidos según reglas de validación versionadas.',
+    crossText: 'Las capas de enriquecimiento, validación y golden records detrás de esta página son las mismas que producen feeds listos para Google — más de ' + MIL_COMMA + ' millones de productos procesados, medidos según reglas de validación versionadas.',
     crossCta: 'Optimización del feed de Google Shopping →',
     ctaTitle: 'Programa una llamada de colaboración',
     ctaSub: 'Escríbenos a contact@catyai.io o llama al +40 756 730 193 — hablamos de tu catálogo y del paquete adecuado.',
@@ -150,7 +156,7 @@ const T = {
     notTitle: 'O que NÃO afirmamos',
     notText: 'Não gerimos as suas campanhas Meta nem rotulamos produtos com base no seu desempenho publicitário. Nós corrigimos os dados. A estrutura de campanha, os lances e a criatividade continuam seus — simplesmente deixam de ser sabotados por um catálogo sujo.',
     crossTitle: 'Um pipeline, todos os canais',
-    crossText: 'As camadas de enriquecimento, validação e golden records por trás desta página são as mesmas que produzem feeds prontos para Google — mais de 3,5 milhões de produtos processados, medidos face a regras de validação versionadas.',
+    crossText: 'As camadas de enriquecimento, validação e golden records por trás desta página são as mesmas que produzem feeds prontos para Google — mais de ' + MIL_COMMA + ' milhões de produtos processados, medidos face a regras de validação versionadas.',
     crossCta: 'Otimização do feed do Google Shopping →',
     ctaTitle: 'Agende uma conversa de parceria',
     ctaSub: 'Escreva-nos para contact@catyai.io ou ligue +40 756 730 193 — falamos do seu catálogo e do pacote certo.',
@@ -189,7 +195,7 @@ const T = {
     notTitle: 'Ce que nous ne prétendons PAS',
     notText: 'Nous ne gérons pas vos campagnes Meta et nous n\'étiquetons pas les produits selon vos performances publicitaires. Nous réparons les données. La structure de campagne, les enchères et la création restent vôtres — elles cessent simplement d\'être sabotées par un catalogue sale.',
     crossTitle: 'Un pipeline, tous les canaux',
-    crossText: 'Les couches d\'enrichissement, de validation et de golden records derrière cette page sont les mêmes qui produisent des flux prêts pour Google — plus de 3,5 millions de produits traités, mesurés selon des règles de validation versionnées.',
+    crossText: 'Les couches d\'enrichissement, de validation et de golden records derrière cette page sont les mêmes qui produisent des flux prêts pour Google — plus de ' + MIL_COMMA + ' millions de produits traités, mesurés selon des règles de validation versionnées.',
     crossCta: 'Optimisation du flux Google Shopping →',
     ctaTitle: 'Planifiez un échange partenariat',
     ctaSub: 'Écrivez-nous à contact@catyai.io ou appelez le +40 756 730 193 — nous parlons de votre catalogue et de l\'offre adaptée.',
@@ -303,6 +309,7 @@ export default function FacebookInstagramFeed() {
                   <a href="#contact" className="font-bold px-6 py-3 rounded-lg transition bg-[#d4b07a] text-[#0a0f1c] hover:bg-[#e7cfa3]" style={{ boxShadow: '0 8px 30px -10px rgba(212,176,122,.5)' }}>{t.heroCta}</a>
                   <a href="/google-shopping-feed" className="font-semibold border border-[#1f293f] bg-[#111a2c] px-6 py-3 rounded-lg text-white hover:border-[#5c6883] transition">{t.heroCtaAlt}</a>
                 </div>
+                <PartnerBadges locale={lang} className="mt-6" />
                 <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[13px] text-[#8b96ab]">
                   {t.heroBadges.map((b) => (
                     <span key={b} className="flex items-center gap-2"><Dot /> {b}</span>
