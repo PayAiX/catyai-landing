@@ -15,7 +15,7 @@ const T = {
     stats: [
       { v: '3.5M+', l: 'products processed' },
       { v: '~95%', l: 'measured acceptance rate' },
-      { v: '190', l: 'merchants with live campaigns' },
+      { v: '190', l: 'merchants in the network' },
     ],
     problemTitle: 'The problem with merchant feeds',
     problemIntro: 'Most product feeds are broken at the source. Not slightly imperfect — structurally broken. Across the affiliate and merchant feeds we process, we routinely find:',
@@ -43,7 +43,7 @@ const T = {
       { h: 'Comparison readiness', p: 'Clean golden records are the prerequisite for any real price-comparison experience.' },
     ],
     whoTitle: 'Who builds this',
-    whoText: ['CatyAI is operated by the team behind the PayAI-x Comparison Shopping Service, running live Google Shopping campaigns for ', '190 merchants', '. The pipeline was built to solve our own feed-quality problems first — the tooling is the byproduct of operating a CSS, not the other way around.'],
+    whoText: ['CatyAI is operated by the team behind PayAI-x, operating a Google-approved Comparison Shopping Service serving a network of ', '190 merchants', '. The pipeline was built to solve our own feed-quality problems first — the tooling is the byproduct of operating a CSS, not the other way around.'],
     crossTitle: 'Same pipeline, more channels',
     crossText: 'The clean source of truth that produces Google-ready feeds also produces Meta-ready catalogs — Facebook dynamic ads, Advantage+ and Instagram Shopping, from the same validated data.',
     crossCta: 'Facebook & Instagram Shopping Feed Optimisation →',
@@ -65,7 +65,7 @@ const T = {
     stats: [
       { v: '3,5M+', l: 'produse procesate' },
       { v: '~95%', l: 'rată de acceptare măsurată' },
-      { v: '190', l: 'comercianți cu campanii live' },
+      { v: '190', l: 'comercianți în rețea' },
     ],
     problemTitle: 'Problema cu feed-urile comercianților',
     problemIntro: 'Majoritatea feed-urilor de produse sunt defecte la sursă. Nu ușor imperfecte — structural defecte. În feed-urile de afiliere și de comerciant pe care le procesăm, găsim constant:',
@@ -93,7 +93,7 @@ const T = {
       { h: 'Pregătire pentru comparație', p: 'Golden records curate sunt prerechizitul oricărei experiențe reale de comparație de prețuri.' },
     ],
     whoTitle: 'Cine construiește asta',
-    whoText: ['CatyAI este operat de echipa din spatele serviciului de comparare prețuri (CSS) PayAI-x, cu campanii Google Shopping live pentru ', '190 de comercianți', '. Pipeline-ul a fost construit mai întâi pentru a ne rezolva propriile probleme de calitate a feed-ului — toolingul este un produs secundar al operării unui CSS, nu invers.'],
+    whoText: ['CatyAI este operat de echipa din spatele PayAI-x, care operează un serviciu de comparare prețuri (CSS) aprobat de Google, deservind o rețea de ', '190 de comercianți', '. Pipeline-ul a fost construit mai întâi pentru a ne rezolva propriile probleme de calitate a feed-ului — toolingul este un produs secundar al operării unui CSS, nu invers.'],
     crossTitle: 'Același pipeline, mai multe canale',
     crossText: 'Sursa curată de adevăr care produce feed-uri gata de Google produce și cataloage gata de Meta — reclame dinamice Facebook, Advantage+ și Instagram Shopping, din aceleași date validate.',
     crossCta: 'Optimizarea feed-ului Facebook & Instagram Shopping →',
@@ -115,7 +115,7 @@ const T = {
     stats: [
       { v: '3,5M+', l: 'productos procesados' },
       { v: '~95%', l: 'tasa de aceptación medida' },
-      { v: '190', l: 'comerciantes con campañas activas' },
+      { v: '190', l: 'comerciantes en la red' },
     ],
     problemTitle: 'El problema con los feeds de los comerciantes',
     problemIntro: 'La mayoría de los feeds de productos están rotos en el origen. No ligeramente imperfectos — estructuralmente rotos. En los feeds de afiliación y de comerciantes que procesamos, encontramos constantemente:',
@@ -143,7 +143,7 @@ const T = {
       { h: 'Preparación para la comparación', p: 'Los golden records limpios son el prerrequisito de cualquier experiencia real de comparación de precios.' },
     ],
     whoTitle: 'Quién construye esto',
-    whoText: ['CatyAI es operado por el equipo detrás del servicio de comparación de precios (CSS) PayAI-x, con campañas activas de Google Shopping para ', '190 comerciantes', '. El pipeline se construyó primero para resolver nuestros propios problemas de calidad de feed — la herramienta es un subproducto de operar un CSS, no al revés.'],
+    whoText: ['CatyAI es operado por el equipo detrás de PayAI-x, que opera un servicio de comparación de precios (CSS) aprobado por Google, sirviendo a una red de ', '190 comerciantes', '. El pipeline se construyó primero para resolver nuestros propios problemas de calidad de feed — la herramienta es un subproducto de operar un CSS, no al revés.'],
     crossTitle: 'El mismo pipeline, más canales',
     crossText: 'La fuente limpia de verdad que produce feeds listos para Google también produce catálogos listos para Meta — anuncios dinámicos de Facebook, Advantage+ e Instagram Shopping, desde los mismos datos validados.',
     crossCta: 'Optimización del feed de Facebook e Instagram Shopping →',
@@ -165,7 +165,7 @@ const T = {
     stats: [
       { v: '3,5M+', l: 'produtos processados' },
       { v: '~95%', l: 'taxa de aceitação medida' },
-      { v: '190', l: 'comerciantes com campanhas ativas' },
+      { v: '190', l: 'comerciantes na rede' },
     ],
     problemTitle: 'O problema com os feeds dos comerciantes',
     problemIntro: 'A maioria dos feeds de produtos está quebrada na origem. Não ligeiramente imperfeita — estruturalmente quebrada. Nos feeds de afiliação e de comerciantes que processamos, encontramos constantemente:',
@@ -193,7 +193,7 @@ const T = {
       { h: 'Prontidão para comparação', p: 'Golden records limpos são o pré-requisito de qualquer experiência real de comparação de preços.' },
     ],
     whoTitle: 'Quem constrói isto',
-    whoText: ['A CatyAI é operada pela equipa por trás do serviço de comparação de preços (CSS) PayAI-x, com campanhas ativas de Google Shopping para ', '190 comerciantes', '. O pipeline foi construído primeiro para resolver os nossos próprios problemas de qualidade de feed — a ferramenta é um subproduto de operar um CSS, não o contrário.'],
+    whoText: ['A CatyAI é operada pela equipa por trás da PayAI-x, que opera um serviço de comparação de preços (CSS) aprovado pela Google, servindo uma rede de ', '190 comerciantes', '. O pipeline foi construído primeiro para resolver os nossos próprios problemas de qualidade de feed — a ferramenta é um subproduto de operar um CSS, não o contrário.'],
     crossTitle: 'O mesmo pipeline, mais canais',
     crossText: 'A fonte limpa de verdade que produz feeds prontos para Google também produz catálogos prontos para Meta — anúncios dinâmicos do Facebook, Advantage+ e Instagram Shopping, a partir dos mesmos dados validados.',
     crossCta: 'Otimização do feed do Facebook e Instagram Shopping →',
@@ -215,7 +215,7 @@ const T = {
     stats: [
       { v: '3,5M+', l: 'produits traités' },
       { v: '~95%', l: 'taux d\'acceptation mesuré' },
-      { v: '190', l: 'marchands avec campagnes actives' },
+      { v: '190', l: 'marchands dans le réseau' },
     ],
     problemTitle: 'Le problème des flux marchands',
     problemIntro: 'La plupart des flux produits sont cassés à la source. Pas légèrement imparfaits — structurellement cassés. Dans les flux d\'affiliation et de marchands que nous traitons, nous trouvons constamment :',
@@ -243,7 +243,7 @@ const T = {
       { h: 'Préparation à la comparaison', p: 'Des golden records propres sont le prérequis de toute expérience réelle de comparaison de prix.' },
     ],
     whoTitle: 'Qui construit cela',
-    whoText: ['CatyAI est opéré par l\'équipe derrière le service de comparaison de prix (CSS) PayAI-x, avec des campagnes Google Shopping actives pour ', '190 marchands', '. Le pipeline a d\'abord été construit pour résoudre nos propres problèmes de qualité de flux — l\'outil est un sous-produit de l\'exploitation d\'un CSS, pas l\'inverse.'],
+    whoText: ['CatyAI est opéré par l\'équipe derrière PayAI-x, qui exploite un service de comparaison de prix (CSS) approuvé par Google, au service d\'un réseau de ', '190 marchands', '. Le pipeline a d\'abord été construit pour résoudre nos propres problèmes de qualité de flux — l\'outil est un sous-produit de l\'exploitation d\'un CSS, pas l\'inverse.'],
     crossTitle: 'Le même pipeline, plus de canaux',
     crossText: 'La source de vérité propre qui produit des flux prêts pour Google produit aussi des catalogues prêts pour Meta — publicités dynamiques Facebook, Advantage+ et Instagram Shopping, depuis les mêmes données validées.',
     crossCta: 'Optimisation du flux Facebook & Instagram Shopping →',
@@ -261,7 +261,7 @@ const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'Organization', name: 'CatyAI', url: 'https://catyai.io', description: 'Data-quality pipeline for product feeds: AI enrichment, versioned validation, golden records and feed hygiene for Google Shopping.', parentOrganization: { '@type': 'Organization', name: 'PayAi-X FZE' } },
-    { '@type': 'Service', name: 'Google Shopping Feed Optimisation', serviceType: 'Product feed data-quality pipeline', provider: { '@type': 'Organization', name: 'CatyAI' }, areaServed: 'EU', description: 'AI enrichment at scale, versioned validation rules, golden records and deduplication, feed hygiene at ingest and continuous quality measurement — over 3.5 million products processed with a ~95% measured acceptance rate, operated by the team behind the PayAI-x CSS with live campaigns for 190 merchants.' },
+    { '@type': 'Service', name: 'Google Shopping Feed Optimisation', serviceType: 'Product feed data-quality pipeline', provider: { '@type': 'Organization', name: 'CatyAI' }, areaServed: 'EU', description: 'AI enrichment at scale, versioned validation rules, golden records and deduplication, feed hygiene at ingest and continuous quality measurement — over 3.5 million products processed with a ~95% measured acceptance rate, operated by the team behind the PayAI-x CSS, a Google-approved Comparison Shopping Service serving a network of 190 merchants.' },
   ],
 }
 
