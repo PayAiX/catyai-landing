@@ -2,7 +2,7 @@
   {
     "path": "/",
     "name": "Homepage",
-    "title": "CatyAI \u2014 Neural Infrastructure for AI Visibility | Rom\u00e2nia",
+    "title": "CatyAI — Neural Infrastructure for AI Visibility | România",
     "description": "If AI can't read your site, you don't exist. CatyAI is the neural infrastructure that guarantees your visibility in the next generation of AI search."
   },
   {
@@ -14,13 +14,13 @@
   {
     "path": "/press",
     "name": "Press & Newsroom",
-    "title": "Press & Newsroom \u2014 CatyAI",
+    "title": "Press & Newsroom — CatyAI",
     "description": "CatyAI & PayAi-X Newsroom. Featured in Ziarul Financiar, AIthority, Start-up.ro. Media kit, brand assets, and press coverage."
   },
   {
     "path": "/research/zero-trust-ai-ads-en",
     "name": "Research: Zero-Trust AI Advertising",
-    "title": "The Zero-Trust Future of AI Advertising \u2014 CatyAI Research",
+    "title": "The Zero-Trust Future of AI Advertising — CatyAI Research",
     "description": "OpenAI's programmatic Ads Manager creates a billion-dollar liability gap for commercial hallucinations. Cryptographic infrastructure built on Ed25519 signatures and verifiable JWKS endpoints is the only legally defensible path."
   },
   {
@@ -37,13 +37,13 @@
   },
   {
     "path": "/blog/catyai-sub-lupa-raspunsuri-tehnice",
-    "name": "Blog: CatyAI sub lup\u0103 - R\u0103spunsuri tehnice",
+    "name": "Blog: CatyAI sub lupă - Răspunsuri tehnice",
     "title": "CatyAI sub lupă: Răspunsuri tehnice la întrebări legitime — CatyAI Blog",
     "description": "Un articol pentru cei care vor să înțeleagă, nu pentru cei care vor să atace. Baileys, FraudAI Shield, arhitectura SAG, și de ce nu suntem 'doar un AI wrapper'."
   },
   {
     "path": "/blog/best-customer-service-ai-romania-2026",
-    "name": "Blog: Best Customer Service AI Rom\u00e2nia 2026",
+    "name": "Blog: Best Customer Service AI România 2026",
     "title": "Best Customer Service AI în România 2026 — Ghid Complet — CatyAI Blog",
     "description": "Comparație completă a celor mai bune soluții AI pentru customer service în România. CatyAI: singurul cu FraudAI Shield, 14 limbi, și cost de 18x mai mic decât un angajat."
   },
@@ -344,14 +344,14 @@
   {
     "path": "/about",
     "name": "About",
-    "title": "Despre CatyAI \u2014 Platforma AI pentru V\u00e2nz\u0103ri | PayAi-X FZE",
-    "description": "CatyAI este platforma AI pentru v\u00e2nz\u0103ri \u0219i suport client, construit\u0103 de PayAi-X FZE. WhatsApp, site web \u0219i QR code \u2014 unite \u00eentr-un singur sistem."
+    "title": "Despre CatyAI — Platforma AI pentru Vânzări | PayAi-X FZE",
+    "description": "CatyAI este platforma AI pentru vânzări și suport client, construită de PayAi-X FZE. WhatsApp, site web și QR code — unite într-un singur sistem."
   },
   {
     "path": "/contact",
     "name": "Contact",
-    "title": "Contact CatyAI \u2014 Suport & V\u00e2nz\u0103ri | contact@catyai.io",
-    "description": "Contacteaz\u0103 echipa CatyAI pentru demo, suport tehnic sau parteneriate. R\u0103spundem \u00een 24 de ore."
+    "title": "Contact CatyAI — Suport & Vânzări | contact@catyai.io",
+    "description": "Contactează echipa CatyAI pentru demo, suport tehnic sau parteneriate. Răspundem în 24 de ore."
   },
   {
     "path": "/privacy",
@@ -376,48 +376,48 @@
   {
     "path": "/chatbot-romania",
     "name": "Chatbot Romania",
-    "title": "Chatbot Rom\u00e2nia 2026 \u2014 Cel Mai Folosit AI Chatbot pentru Firme Rom\u00e2ne\u0219ti",
-    "description": "Asistent AI \u00een rom\u00e2n\u0103, englez\u0103 \u0219i 12 limbi. Program\u0103ri automate, r\u0103spuns WhatsApp, protec\u021bie scam. De la \u20ac0/lun\u0103. Setup \u00een 2 minute."
+    "title": "Chatbot România 2026 — Cel Mai Folosit AI Chatbot pentru Firme Românești",
+    "description": "Asistent AI în română, engleză și 12 limbi. Programări automate, răspuns WhatsApp, protecție scam. De la €0/lună. Setup în 2 minute."
   },
   {
     "path": "/whatsapp",
     "name": "WhatsApp AI",
-    "title": "CatyAI WhatsApp \u2014 R\u0103spuns Automat WhatsApp Business | F\u0103r\u0103 Meta API",
-    "description": "Asistent AI pe WhatsApp f\u0103r\u0103 Meta API. R\u0103spunde automat la mesaje, calific\u0103 lead-uri \u0219i trimite campanii broadcast. Func\u021bioneaz\u0103 cu num\u0103rul t\u0103u actual."
+    "title": "CatyAI WhatsApp — Răspuns Automat WhatsApp Business | Fără Meta API",
+    "description": "Asistent AI pe WhatsApp fără Meta API. Răspunde automat la mesaje, califică lead-uri și trimite campanii broadcast. Funcționează cu numărul tău actual."
   },
   {
     "path": "/fraud-shield",
     "name": "FraudAI Shield",
-    "title": "FraudAI Shield \u2014 Protec\u021bie Anti-Fraud AI | Scam & Spam Detection",
-    "description": "Sistemul de detec\u021bie fraud cu 4 niveluri: LOW, MEDIUM, HIGH, BLOCKED. Opre\u0219te scam-ul \u0219i phishing-ul \u00eenainte s\u0103 consume tokeni sau resurse financiare."
+    "title": "FraudAI Shield — Protecție Anti-Fraud AI | Scam & Spam Detection",
+    "description": "Sistemul de detecție fraud cu 4 niveluri: LOW, MEDIUM, HIGH, BLOCKED. Oprește scam-ul și phishing-ul înainte să consume tokeni sau resurse financiare."
   },
   {
     "path": "/no-website",
     "name": "QR-First - No Website Needed",
-    "title": "CatyAI QR-First \u2014 AI pentru Afaceri F\u0103r\u0103 Site Web | QR Code Direct",
-    "description": "Nu ai site? Nicio problem\u0103. QR code unic \u2192 WhatsApp \u2192 CatyAI. Clien\u021bii t\u0103i scaneaz\u0103 \u0219i primesc r\u0103spunsuri instant. Restaurante, cabinete, freelanceri."
+    "title": "CatyAI QR-First — AI pentru Afaceri Fără Site Web | QR Code Direct",
+    "description": "Nu ai site? Nicio problemă. QR code unic → WhatsApp → CatyAI. Clienții tăi scanează și primesc răspunsuri instant. Restaurante, cabinete, freelanceri."
   },
   {
     "path": "/compare",
     "name": "CatyAI vs Tidio vs Intercom",
-    "title": "CatyAI vs Tidio vs Intercom \u2014 Compara\u021bie Chatbo\u021bi AI 2026 | Rom\u00e2nia",
-    "description": "Compara\u021bie complet\u0103: func\u021bionalit\u0103\u021bi, pre\u021buri \u0219i integr\u0103ri. De ce CatyAI este alternativa optim\u0103 pentru pia\u021ba rom\u00e2neasc\u0103 fa\u021b\u0103 de Tidio \u0219i Intercom."
+    "title": "CatyAI vs Tidio vs Intercom — Comparație Chatboți AI 2026 | România",
+    "description": "Comparație completă: funcționalități, prețuri și integrări. De ce CatyAI este alternativa optimă pentru piața românească față de Tidio și Intercom."
   },
   {
     "path": "/widget",
     "name": "Caty Widget - AI Sales Agent for Websites",
-    "title": "CatyAI Widget \u2014 AI pe Site-ul T\u0103u \u00een 5 Minute | Chatbot Embed",
-    "description": "Instalezi un r\u00e2nd de cod. CatyAI r\u0103spunde instant vizitatorilor t\u0103i \u2014 pre\u021buri, disponibilitate, program\u0103ri. Leads colectate automat \u00een dashboard."
+    "title": "CatyAI Widget — AI pe Site-ul Tău în 5 Minute | Chatbot Embed",
+    "description": "Instalezi un rând de cod. CatyAI răspunde instant vizitatorilor tăi — prețuri, disponibilitate, programări. Leads colectate automat în dashboard."
   },
   {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",
-    "name": "Blog: CatyAI vs Chatbots Tradi\u021bionale - 8 Agen\u021bi AI",
+    "name": "Blog: CatyAI vs Chatbots Tradiționale - 8 Agenți AI",
     "title": "CatyAI vs Chatbots Tradiționale: De Ce 8 Agenți AI Sunt Mai Buni Decât Unul — CatyAI Blog",
     "description": "Comparație completă între arhitectura multi-agent CatyAI (8 agenți specializați + FraudAI Shield) și chatbot-urile tradiționale cu model unic. Află de ce viitorul AI Sales e multi-agent."
   },
   {
     "path": "/blog/fraudai-shield-protectie-anti-frauda-romania",
-    "name": "Blog: FraudAI Shield - Protec\u021bie Anti-Fraud\u0103 Rom\u00e2nia",
+    "name": "Blog: FraudAI Shield - Protecție Anti-Fraudă România",
     "title": "FraudAI Shield: Singura Protecție Anti-Fraudă pentru AI Sales din România — CatyAI Blog",
     "description": "Cum te protejează FraudAI Shield de phishing, scam-uri și fraude. 8 module de detecție: linkuri malițioase, urgență falsă, impersonare. Singurul AI cu protecție completă."
   },
@@ -429,19 +429,19 @@
   },
   {
     "path": "/blog/chatbot-gratuit-site",
-    "name": "Blog: Chatbot gratuit pentru site \u2014 instalare 5 min",
+    "name": "Blog: Chatbot gratuit pentru site — instalare 5 min",
     "title": "Chatbot gratuit pentru site — cum instalezi unul în 5 minute — CatyAI Blog",
     "description": "Instalează un chatbot AI gratuit pe site-ul tău în mai puțin de 5 minute. Răspunde clienților non-stop, colectează lead-uri automat. Fără card, fără cod."
   },
   {
     "path": "/blog/raspuns-automat-whatsapp-business",
-    "name": "Blog: R\u0103spuns automat WhatsApp non-stop",
+    "name": "Blog: Răspuns automat WhatsApp non-stop",
     "title": "Răspuns Automat WhatsApp securizat cu AI | CatyAI — CatyAI Blog",
     "description": "Configurează un răspuns automat pe WhatsApp Business protejat de FraudAI Shield. Automatizare completă și securitate AI avansată pentru afacerea ta."
   },
   {
     "path": "/blog/alternativa-gratuita-tidio-intercom-respond-io",
-    "name": "Blog: Alternativ\u0103 gratuit\u0103 Tidio, Intercom, respond.io",
+    "name": "Blog: Alternativă gratuită Tidio, Intercom, respond.io",
     "title": "Alternativă gratuită la Tidio, Intercom și respond.io în România — CatyAI Blog",
     "description": "Cauți o alternativă la Tidio sau Intercom care funcționează în România, în limba română, cu WhatsApp inclus? CatyAI e gratuit."
   },
@@ -453,7 +453,7 @@
   },
   {
     "path": "/blog/widget-chat-wordpress",
-    "name": "Blog: Widget chat WordPress \u2014 instalare 2 min",
+    "name": "Blog: Widget chat WordPress — instalare 2 min",
     "title": "Widget chat pentru site WordPress — instalare în 2 minute — CatyAI Blog",
     "description": "Adaugă un widget de chat AI pe site-ul tău WordPress în 2 minute. Gratuit, în română, cu WhatsApp inclus. Ghid pas cu pas."
   },
@@ -555,69 +555,69 @@
   },
   {
     "path": "/features",
-    "name": "Features CatyAI \u2014 Toate capabilit\u0103\u021bile",
-    "title": "CatyAI Features \u2014 10 Agen\u021bi AI, GEO Gateway, FraudAI Shield | 14 Limbi",
-    "description": "SAG Pipeline cu 10 agen\u021bi specializa\u021bi, GEO Gateway 6 layere, FraudAI Shield, WhatsApp Zero Meta, QR-First, Universal Brain. F\u0103r\u0103 cod. De la \u20ac0/lun\u0103."
+    "name": "Features CatyAI — Toate capabilitățile",
+    "title": "CatyAI Features — 10 Agenți AI, GEO Gateway, FraudAI Shield | 14 Limbi",
+    "description": "SAG Pipeline cu 10 agenți specializați, GEO Gateway 6 layere, FraudAI Shield, WhatsApp Zero Meta, QR-First, Universal Brain. Fără cod. De la €0/lună."
   },
   {
     "path": "/infrastructura",
-    "name": "Infrastructur\u0103 Neural\u0103 Activ\u0103 \u2014 CatyAI",
-    "title": "CatyAI Infrastructur\u0103 \u2014 GEO SENTINEL, NAP Protocol, FraudAI | Standard AI 2026",
-    "description": "SENTINEL monitorizeaz\u0103 vizibilitatea \u00een ChatGPT \u0219i Claude la 6 ore. NAP semneaz\u0103 datele Ed25519. GEO genereaz\u0103 llms.txt dinamic. Infrastructur\u0103 neural\u0103 activ\u0103."
+    "name": "Infrastructură Neurală Activă — CatyAI",
+    "title": "CatyAI Infrastructură — GEO SENTINEL, NAP Protocol, FraudAI | Standard AI 2026",
+    "description": "SENTINEL monitorizează vizibilitatea în ChatGPT și Claude la 6 ore. NAP semnează datele Ed25519. GEO generează llms.txt dinamic. Infrastructură neurală activă."
   },
   {
     "path": "/geo-gateway",
-    "name": "GEO Gateway \u2014 AI Visibility in ChatGPT, Claude, Perplexity",
-    "title": "CatyAI GEO Gateway \u2014 Vizibilitate AI \u00een ChatGPT, Claude & Perplexity",
-    "description": "GEO Gateway face site-ul t\u0103u vizibil pentru motoarele de c\u0103utare AI. 6 layere: llms.txt dinamic, detec\u021bie crawlere, portal /answer, beacon activ, SENTINEL."
+    "name": "GEO Gateway — AI Visibility in ChatGPT, Claude, Perplexity",
+    "title": "CatyAI GEO Gateway — Vizibilitate AI în ChatGPT, Claude & Perplexity",
+    "description": "GEO Gateway face site-ul tău vizibil pentru motoarele de căutare AI. 6 layere: llms.txt dinamic, detecție crawlere, portal /answer, beacon activ, SENTINEL."
   },
   {
     "path": "/solutii/clinici-medicale",
-    "name": "CatyAI pentru Clinici Medicale \u2014 Program\u0103ri automate",
-    "title": "CatyAI pentru Clinici Medicale \u2014 Program\u0103ri Automate AI 24/7 | Rom\u00e2nia",
-    "description": "Asistentul AI care preia program\u0103rile \u0219i r\u0103spunde la \u00eentreb\u0103ri despre servicii \u0219i asigur\u0103ri \u2014 non-stop. F\u0103r\u0103 angajat dedicat la recep\u021bie."
+    "name": "CatyAI pentru Clinici Medicale — Programări automate",
+    "title": "CatyAI pentru Clinici Medicale — Programări Automate AI 24/7 | România",
+    "description": "Asistentul AI care preia programările și răspunde la întrebări despre servicii și asigurări — non-stop. Fără angajat dedicat la recepție."
   },
   {
     "path": "/solutii/agentii-imobiliare",
-    "name": "CatyAI pentru Agen\u021bii Imobiliare \u2014 Calificarea lead-urilor",
-    "title": "CatyAI pentru Agen\u021bii Imobiliare \u2014 Calific\u0103 Lead-uri cu AI | WhatsApp + Web",
-    "description": "Agentul AI care calific\u0103 clien\u021bii, r\u0103spunde 24/7 la \u00eentreb\u0103ri despre propriet\u0103\u021bi \u0219i programeaz\u0103 vizion\u0103ri automat. F\u0103r\u0103 efort manual."
+    "name": "CatyAI pentru Agenții Imobiliare — Calificarea lead-urilor",
+    "title": "CatyAI pentru Agenții Imobiliare — Califică Lead-uri cu AI | WhatsApp + Web",
+    "description": "Agentul AI care califică clienții, răspunde 24/7 la întrebări despre proprietăți și programează vizionări automat. Fără efort manual."
   },
   {
     "path": "/solutii/restaurante",
-    "name": "CatyAI pentru Restaurante \u2014 Rezerv\u0103ri \u0219i comenzi automate",
-    "title": "CatyAI pentru Restaurante \u2014 Rezerv\u0103ri \u0219i Meniu AI 24/7 | QR-First",
-    "description": "QR la mas\u0103 \u2192 clien\u021bii scaneaz\u0103 \u2192 CatyAI r\u0103spunde cu meniu, alergeni, disponibilitate \u0219i face rezerv\u0103ri automat. F\u0103r\u0103 recep\u021bioner."
+    "name": "CatyAI pentru Restaurante — Rezervări și comenzi automate",
+    "title": "CatyAI pentru Restaurante — Rezervări și Meniu AI 24/7 | QR-First",
+    "description": "QR la masă → clienții scanează → CatyAI răspunde cu meniu, alergeni, disponibilitate și face rezervări automat. Fără recepționer."
   },
   {
     "path": "/solutii/ecommerce",
-    "name": "CatyAI pentru eCommerce \u2014 Recuperare co\u0219 abandonat",
-    "title": "CatyAI pentru Magazine Online \u2014 Cre\u0219te Conversia cu AI | Shopify, WooCommerce",
-    "description": "Asistentul AI care r\u0103spunde la \u00eentreb\u0103ri despre produse, stoc \u0219i livrare \u2014 \u0219i transform\u0103 vizitatorii \u00een cump\u0103r\u0103tori. Compatible cu orice platform\u0103."
+    "name": "CatyAI pentru eCommerce — Recuperare coș abandonat",
+    "title": "CatyAI pentru Magazine Online — Crește Conversia cu AI | Shopify, WooCommerce",
+    "description": "Asistentul AI care răspunde la întrebări despre produse, stoc și livrare — și transformă vizitatorii în cumpărători. Compatible cu orice platformă."
   },
   {
     "path": "/solutii/agentii-marketing",
-    "name": "CatyAI pentru Agen\u021bii de Marketing \u2014 AI Sales Agent White Label",
-    "title": "CatyAI pentru Agen\u021bii de Marketing \u2014 AI pentru Clien\u021bii T\u0103i \u00een 24h",
-    "description": "Ofer\u0103 clien\u021bilor t\u0103i un asistent AI func\u021bional \u00een 24 de ore. Multi-widget, branding personalizat, Analytics exportabil. Model reseller disponibil."
+    "name": "CatyAI pentru Agenții de Marketing — AI Sales Agent White Label",
+    "title": "CatyAI pentru Agenții de Marketing — AI pentru Clienții Tăi în 24h",
+    "description": "Oferă clienților tăi un asistent AI funcțional în 24 de ore. Multi-widget, branding personalizat, Analytics exportabil. Model reseller disponibil."
   },
   {
     "path": "/white-label",
-    "name": "White-Label Program \u2014 CatyAI",
-    "title": "CatyAI White-Label \u2014 Deploy AI sub Brandul T\u0103u | Revenue Share 35%",
-    "description": "Lanseaz\u0103 un produs AI complet sub brandul t\u0103u \u00een 72h. Revenue share 35%, SLA garantat, onboarding dedicat. Program White-Label CatyAI."
+    "name": "White-Label Program — CatyAI",
+    "title": "CatyAI White-Label — Deploy AI sub Brandul Tău | Revenue Share 35%",
+    "description": "Lansează un produs AI complet sub brandul tău în 72h. Revenue share 35%, SLA garantat, onboarding dedicat. Program White-Label CatyAI."
   },
   {
     "path": "/agency-network",
-    "name": "Agency Network \u2014 CatyAI Reseller Tiers",
-    "title": "CatyAI Agency Network \u2014 Program Reseller Silver/Gold/Platinum | Comision 30%",
-    "description": "Devino reseller certificat CatyAI. 3 niveluri: Silver 20%, Gold 25%, Platinum 30% comision. Certificare \u00een 3 pa\u0219i, suport dedicat."
+    "name": "Agency Network — CatyAI Reseller Tiers",
+    "title": "CatyAI Agency Network — Program Reseller Silver/Gold/Platinum | Comision 30%",
+    "description": "Devino reseller certificat CatyAI. 3 niveluri: Silver 20%, Gold 25%, Platinum 30% comision. Certificare în 3 pași, suport dedicat."
   },
   {
     "path": "/technology-partners",
-    "name": "Technology Partners \u2014 CatyAI API Ecosystem",
-    "title": "CatyAI Technology Partners \u2014 Integr\u0103ri API | CRM, WhatsApp, Automatizare",
-    "description": "Integreaz\u0103 CatyAI cu CRM-ul t\u0103u, platforme de comunicare \u0219i sisteme de automatizare. API REST + Webhooks. Ecosistem de parteneri tehnologici."
+    "name": "Technology Partners — CatyAI API Ecosystem",
+    "title": "CatyAI Technology Partners — Integrări API | CRM, WhatsApp, Automatizare",
+    "description": "Integrează CatyAI cu CRM-ul tău, platforme de comunicare și sisteme de automatizare. API REST + Webhooks. Ecosistem de parteneri tehnologici."
   },
   {
     "path": "/check",
@@ -626,26 +626,26 @@
   },
   {
     "path": "/investor-relations",
-    "name": "Investor Relations \u2014 PayAi-X FZE",
-    "title": "Investor Relations \u2014 PayAi-X FZE | Zero-Trust AI Infrastructure",
+    "name": "Investor Relations — PayAi-X FZE",
+    "title": "Investor Relations — PayAi-X FZE | Zero-Trust AI Infrastructure",
     "description": "PayAi-X FZE is defining the Zero-Trust standard for the AI economy. Access our technical whitepaper, pitch deck, and corporate data room."
   },
   {
     "path": "/protocol",
-    "name": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
-    "title": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
+    "name": "NAP V3 Protocol — Native AI Protocol by CatyAI",
+    "title": "NAP V3 Protocol — Native AI Protocol by CatyAI",
     "description": "Open protocol for AI crawler discovery. NAP V3 + AKL v2 transforms your business data into cryptographically signed, AI-native endpoints indexed by GPT, Gemini, Claude, and Perplexity."
   },
   {
     "path": "/nap",
-    "name": "NAP V3 Protocol \u2014 Native AI Protocol (alias)",
-    "title": "NAP V3 Protocol \u2014 Native AI Protocol by CatyAI",
+    "name": "NAP V3 Protocol — Native AI Protocol (alias)",
+    "title": "NAP V3 Protocol — Native AI Protocol by CatyAI",
     "description": "Open protocol for AI crawler discovery. NAP V3 + AKL v2 transforms your business data into cryptographically signed, AI-native endpoints indexed by GPT, Gemini, Claude, and Perplexity."
   },
   {
     "path": "/mcp",
-    "name": "Model Context Protocol (MCP) Server \u2014 45 Tools for Claude AI",
-    "title": "Model Context Protocol (MCP) Server \u2014 45 AI Commerce Tools for Claude | CatyAI",
+    "name": "Model Context Protocol (MCP) Server — 45 Tools for Claude AI",
+    "title": "Model Context Protocol (MCP) Server — 45 AI Commerce Tools for Claude | CatyAI",
     "description": "CatyAI's Model Context Protocol (MCP) server extends Claude with 45 production-ready tools: Zero-Trust commerce, semantic enrichment, fraud detection, and market intelligence. Official Anthropic Partner."
   },
   {
@@ -657,14 +657,20 @@
   {
     "path": "/google-shopping-feed",
     "name": "Google Shopping Feed Optimisation",
-    "title": "Google Shopping Feed Optimisation \u2014 data-quality pipeline | CatyAI",
-    "description": "Most merchant feeds are structurally broken: placeholder prices, wrong identifiers, stale availability. CatyAI fixes the data itself \u2014 AI enrichment, versioned validation, golden records \u2014 before it reaches Google Shopping."
+    "title": "Google Shopping Feed Optimisation — data-quality pipeline | CatyAI",
+    "description": "Most merchant feeds are structurally broken: placeholder prices, wrong identifiers, stale availability. CatyAI fixes the data itself — AI enrichment, versioned validation, golden records — before it reaches Google Shopping."
   },
   {
     "path": "/facebook-instagram-feed",
     "name": "Facebook & Instagram Shopping Feed Optimisation",
     "title": "Facebook & Instagram Shopping Feed Optimisation | CatyAI",
     "description": "Meta catalogs fail for the same reason Google feeds do: placeholder prices, stale availability, missing attributes. CatyAI's channel-agnostic data-quality pipeline produces Meta-ready catalogs from one clean, validated source."
+  },
+  {
+    "path": "/chatgpt-feed",
+    "name": "ChatGPT Product Feeds",
+    "title": "ChatGPT Product Feeds — AI commerce catalog pipeline | CatyAI",
+    "description": "ChatGPT advertising opened across Europe in August 2026 with product-feed campaigns. Most merchant feeds are not ready. CatyAI validates, enriches and signs AI-commerce-ready catalogs."
   },
   {
     "path": "/company",
@@ -728,26 +734,26 @@
   },
   {
     "path": "/blog/checklist-agentic-commerce-magazin-online",
-    "name": "Blog: E\u0219ti preg\u0103tit pentru Agentic Commerce? C...",
-    "title": "E\u0219ti preg\u0103tit pentru Agentic Commerce? Checklist practic pentru magazinul t\u0103u online \u2014 CatyAI Blog",
-    "description": "Checklist-ul complet ca s\u0103 \u0219tii dac\u0103 magazinul t\u0103u particip\u0103 sau nu la comer\u021bul agentic \u00een 2026: descoperire, infrastructur\u0103 tehnic\u0103, tranzac\u021bie, \u00eencredere \u0219i m\u0103surare."
+    "name": "Blog: Ești pregătit pentru Agentic Commerce? C...",
+    "title": "Ești pregătit pentru Agentic Commerce? Checklist practic pentru magazinul tău online — CatyAI Blog",
+    "description": "Checklist-ul complet ca să știi dacă magazinul tău participă sau nu la comerțul agentic în 2026: descoperire, infrastructură tehnică, tranzacție, încredere și măsurare."
   },
   {
     "path": "/blog/ucp-acp-ap2-protocoale-agentice",
     "name": "Blog: UCP, ACP, AP2: noile protocoale care dec...",
-    "title": "UCP, ACP, AP2: noile protocoale care decid dac\u0103 vinzi sau nu \u00een ChatGPT/Gemini \u2014 CatyAI Blog",
-    "description": "Google, OpenAI, Stripe \u0219i peste 20 de companii mari au lansat deja standardele care definesc cum un agent AI descoper\u0103, cump\u0103r\u0103 \u0219i pl\u0103te\u0219te produsul t\u0103u. Dac\u0103 magazinul t\u0103u nu e compatibil, nu particip\u0103 la tranzac\u021bie."
+    "title": "UCP, ACP, AP2: noile protocoale care decid dacă vinzi sau nu în ChatGPT/Gemini — CatyAI Blog",
+    "description": "Google, OpenAI, Stripe și peste 20 de companii mari au lansat deja standardele care definesc cum un agent AI descoperă, cumpără și plătește produsul tău. Dacă magazinul tău nu e compatibil, nu participă la tranzacție."
   },
   {
     "path": "/blog/mcp-explicat-magazin-online",
-    "name": "Blog: MCP explicat pe \u00een\u021belesul oric\u0103rui om de...",
-    "title": "MCP explicat pe \u00een\u021belesul oric\u0103rui om de business \u2014 CatyAI Blog",
-    "description": "Model Context Protocol (Anthropic) este \"priza universal\u0103\" dintre AI \u0219i datele reale ale magazinului t\u0103u \u2014 stoc, pre\u021buri, comenzi \u2014 \u00een timp real, nu din date crawluite \u0219i \u00eenvechite."
+    "name": "Blog: MCP explicat pe înțelesul oricărui om de...",
+    "title": "MCP explicat pe înțelesul oricărui om de business — CatyAI Blog",
+    "description": "Model Context Protocol (Anthropic) este \"priza universală\" dintre AI și datele reale ale magazinului tău — stoc, prețuri, comenzi — în timp real, nu din date crawluite și învechite."
   },
   {
     "path": "/blog/seo-vs-geo-agentic-commerce",
-    "name": "Blog: SEO clasic nu mai e suficient. E\u0219ti preg...",
-    "title": "SEO clasic nu mai e suficient. E\u0219ti preg\u0103tit pentru era Agentic Commerce? \u2014 CatyAI Blog",
-    "description": "eMarketer estimeaz\u0103 20,9 miliarde $ v\u00e2nz\u0103ri retail prin platforme AI \u00een 2026 \u2014 bani care nu mai trec prin niciun rezultat Google. De ce SEO singur nu mai acoper\u0103 tot canalul de cump\u0103rare."
+    "name": "Blog: SEO clasic nu mai e suficient. Ești preg...",
+    "title": "SEO clasic nu mai e suficient. Ești pregătit pentru era Agentic Commerce? — CatyAI Blog",
+    "description": "eMarketer estimează 20,9 miliarde $ vânzări retail prin platforme AI în 2026 — bani care nu mai trec prin niciun rezultat Google. De ce SEO singur nu mai acoperă tot canalul de cumpărare."
   }
 ]
