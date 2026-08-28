@@ -202,6 +202,7 @@ export default function FooterV9({ lang = 'en' }) {
               <li><a href="/geo-gateway" className="fv9-link">GEO Gateway <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/google-shopping-feed" className="fv9-link">Google Shopping Feed <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/facebook-instagram-feed" className="fv9-link">Facebook & IG Feed <ArrowUpRight className="w-3 h-3" /></a></li>
+              <li><a href="/chatgpt-feed" className="fv9-link">ChatGPT Product Feeds <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/pricing" className="fv9-link">{t.pricing} <ArrowUpRight className="w-3 h-3" /></a></li>
             </ul>
           </div>
