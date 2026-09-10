@@ -1,4 +1,4 @@
-# feed-audit — PR-1 (C1+C2) + PR-2 (C3) + PR-3 (C5) din SPEC MVP „Audit Feed Public"
+# feed-audit — PR-1 (C1+C2) + PR-2 (C3) + PR-3 (C5) + PR-4 (C6+C7+C8+C9) din SPEC MVP „Audit Feed Public"
 
 Cod Lambda (Node.js 20, CommonJS, **zero dependențe externe** — doar builtin-uri:
 `http/https`, `zlib`, `stream`, `dns`, `url`, `node:test`). Nu intră în bundle-ul
@@ -15,7 +15,22 @@ vite; se va deploya ca Lambda + Function URL (decizia §8.6 din spec).
 | `validators/engine.js` + `validators/rules-{google,meta,chatgpt}.json` | C3 — motor de validatoare spec 100% declarativ (lecția planului: motor generic, nu cod hardcodat per regulă). Tipuri de check: `required`, `format` (regex), `max_length`/`min_length`, `enum` (cu `aliases`: fără `alias_severity` = acceptat silențios; cu `alias_severity` = warning de mapping; cu `suggest` = error + sugestie de corectare), `gtin_checkdigit` (GS1, 8/12/13/14 cifre), `all_caps`, `promo_text`, `sale_price_logic` (0 e valoare reală invalidă, nu „lipsă" — lecția parsePrice), `duplicate_id` (feed-level, nu afectează scorul), `at_least_n_of` (2-din-3 brand+GTIN+MPN), `currency_code`, `contains_html`. Scor = % produse fără `error` (warning nu scade scorul); `problems` sortate după count desc, cu rânduri-exemplu (max `example_limit`, default 3); severitatea problemei = severitatea maximă întâlnită (alias warning vs valoare necunoscută error). Reguli validate structural la startup (fail fast). Fiecare rezultat include `disclaimer`: „Evaluare pe baza specurilor publice; nu este o certificare oficială Google/Meta/OpenAI." (§5). |
 | `comparator.js` | C5 — comparatorul „peste piață" (moat-ul ganchoului): match GTIN-only prin interfață injectabilă (`lookupGtins: async (gtin[]) => Map<gtin, {price, merchant_count, title}>`), zero DB wiring în modul. GTIN-urile trebuie să aibă check-digit GS1 valid (reutilizează `validGtin` din engine). Preț propriu: `price_numeric`, fallback `sale_price_numeric`. Output: `{matched, competitors, above_market, below_market, median_delta_pct, examples_above, examples_below, hidden}` — dacă `matched < minMatches` (default 20) → `{hidden: true, matched}` (§7 risc 4: nu afișăm cifre pe zgomot). Fără `lookupGtins` → `{skipped: true}`. |
 | `db-adapter.js` | C5 — adaptor subțire FIȚIER DE INTERFAȚĂ pentru wiring-ul Mongo de la deploy (PR-4): `createGoldenRecordsLookup({collection})` peste o colecție cu interfață Mongo-like. Colecția țintă: **`retail_product_offers`** (numele corect din spec — NU caty_*; golden records e motor de dedup, nu sursă). DOAR citiri indexate (index pe gtin), read-only, zero scrieri (contract fabrici). Nu se rulează fără DB. |
+| `rate-limit.js` | C7 — rate-limit anti-abuz, obligatoriu la lansare (§0, §8.4). Limite default: **3 audite/zi/IP** (`fa:ip:{ip}:{yyyy-mm-dd}`, TTL 24h), **1 job concurent/domeniu** (`fa:lock:domain:{host}`, TTL 1h, release compare-and-match ca să nu eliberăm lock-ul altui job), **cap global 500/zi** (`fa:global:{yyyy-mm-dd}`, frâna de cost compute). La depășirea limitei/IP se marchează `fa:ts:{ip}` (TTL 7 zile); cu `TURNSTILE_SECRET` configurat și token `x-turnstile-token` lipsă → 429 cu `turnstile_required: true` (verificarea reală a tokenului = la deploy). Store injectabil: `memoryStore()` (local/test) / `redisStore({client})` (thin wrapper ioredis-like, **Valkey — NU Upstash**; `delIfMatch` via Lua compare-and-delete). Fără store → `noopLimiter()` (rate-limit dezactivat explicit — doar local/test). **Endpointul NU intră în nicio allow-list** (§8.1) — catyai.io nu stă în spatele caty-shop-waf; rate-limit-ul la aplicație e singura apărare. |
+| `notify.js` | C8 — notificare best-effort către canalul nostru (Slack/email via webhook — Zapier/SES): POST JSON cu fetch global (Node 20) + AbortController 10s. `NOTIFY_WEBHOOK_URL` din env; fără URL → no-op cu log. Nu aruncă niciodată — notificarea nu poate rupe jobul. Fără stocare lead structurată, fără billing. |
+| `telemetry.js` | C9 — telemetrie per audit în colecția `feed_audits` (query-abilă manual, fără dashboard): `{audit_id, domain, created_at, sample_size, scores, top_problems (slice 15 = 5/spec×3), comparator}`. **ZERO PII**: doar domeniu, niciodată IP/email/URL complet. Interfață injectabilă Mongo-like (`insertOne`); fără colecție → skip cu log. Bonus strategic: generează singură harta „comercianți cu feeduri rupte" (input outbound). |
 | `local.js` | (Opțional) server local peste handler: `node api/feed-audit/local.js` → `http://localhost:3001/api/feed-audit`. Atenție: validatorul real respinge 127.0.0.1 (privat). |
+
+## Pagina de rezultat (C6)
+
+`src/pages/FeedAuditResult.jsx` — rută `/feed-audit/:auditId` (lazy în `src/App.jsx`,
+în ambele blocuri `<Routes>`). Poll la 2s cât status e `queued`/`running`; afișează
+cele 3 scoruri + disclaimer-urile din răspunsul API, top 10 probleme/spec
+(count + exemple), comparatorul (mesaj onest „eșantion insuficient" când
+`hidden: true`), notice-ul de eșantion 5000 la `stats.truncated`, și CTA
+„Solicită refacerea feedului" → `/contact?subject=refacere-feed`. noindex dublu:
+`<meta name="robots" content="noindex">` în Helmet + headerul `x-robots-tag:
+noindex` din API (headerul real la edge vine la deploy CloudFront/Lambda).
+API URL: `import.meta.env.VITE_FEED_AUDIT_API || '/api/feed-audit'`.
 
 ## Cum rulezi testele
 
@@ -45,9 +60,17 @@ prin validatorul real (vezi testul „capcana /img-proxy").
   octet, perechea intactă; un text care începe chiar pe o jumătate de pair e
   marginea acceptată.
 - Joburile trăiesc în memoria containerului warm — un cold start pierde joburile
-  în zbor. Persistența (72h, URL secret) vine în C6.
-- Rate limită / anti-abuz (C7) NU e în acest PR — dar fără el endpointul nu se
-  lansează (§0, §8.4).
+  în zbor. Persistența reală (Mongo) nu e inclusă în acest lanț de PR-uri —
+  rămâne la deploy (interfața e pregătită: `collection` pentru `feed_audits`).
+- Rate limită / anti-abuz (C7): implementat în PR-4 cu store injectabil; la
+  deploy se injectează **Valkey** prin `redisStore({client})` + `TURNSTILE_SECRET`
+  (verificarea tokenului Cloudflare Turnstile e la deploy, nu în acest cod).
+  Până la deploy rămâne `noopLimiter()` — endpointul NU se expune public fără
+  store real (§0: fără rate-limit endpointul nu se lansează).
+- **Deploy-ul Lambda NU e inclus** în acest lanț de PR-uri — doar interfețe
+  injectabile + fallback-uri sigure. Wire real la deploy: Mongo (`feed_audits`,
+  `retail_product_offers` read-only), Valkey (rate-limit), Turnstile, webhook
+  `NOTIFY_WEBHOOK_URL` — toate prin env vars, fără modificare de cod.
 - Decizii de clasificare C3 (documentate onest): `availability` non-standard la
   Google (ex. `in stock`, `available`, `pre_order`) = **warning** cu maparea
   recomandată, nu error — feedurile reale folosesc variantele astea masiv;
@@ -68,5 +91,6 @@ prin validatorul real (vezi testul „capcana /img-proxy").
 ## Rollback
 
 Directorul `api/feed-audit/` e complet izolat: ștergerea lui nu atinge `src/`,
-vite config sau orice alt cod. Ruta `/api/feed-audit` nu e înregistrată nicăieri
-în SPA încă (vine cu C6).
+vite config sau orice alt cod. Ruta frontend `/feed-audit/:auditId` dispare odată
+cu ștergerea lazy importului + celor două `<Route>` din `src/App.jsx` (o singură
+linie fiecare, grupate vizual lângă rutele adiacente).
