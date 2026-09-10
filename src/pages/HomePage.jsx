@@ -16,6 +16,8 @@ const M_COMMA = productsShortM('ro');
 // Note: Lucide icons are loaded via CDN script in index.html (already added by previous PR).
 // CatyAI Homepage V9 — full design with inline CSS, no Tailwind v4 utility class dependency.
 
+const FEED_AUDIT_API = import.meta.env.VITE_FEED_AUDIT_API || '/api/feed-audit';
+
 const translations = {
   ro: {
     navLogin: 'Login', navCta: 'Audit Vizibilitate',
@@ -23,6 +25,8 @@ const translations = {
     heroLine1: 'Produsele tale, găsite pe Google și', heroAccent: 'citate de agenții AI.',
     heroSubtitle: 'Inginerie de catalog, distribuție CSS și vizibilitate AI. CatyAI face catalogul tău citibil de ChatGPT, Perplexity și Gemini și blochează prețurile reale criptografic — ca AI-ul să nu inventeze nimic.',
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
+    scanLoading: 'Se verifică…', scanError: 'Nu am putut porni auditul — verifică URL-ul feedului.',
+    scanLimit: 'Limita zilnică de audituri a fost atinsă — revino mâine.',
     socialProof: M_COMMA + ' produse · ' + N_M + ' de comercianți activi · Widget gratuit 14 zile, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
     scanLlm: 'Extracție date LLM:', scanLlmFail: 'Eșuat (JS blocat)',
@@ -100,6 +104,8 @@ const translations = {
     heroLine1: 'Your products, found on Google and', heroAccent: 'cited by AI agents.',
     heroSubtitle: 'Catalog engineering, CSS distribution and AI visibility. CatyAI makes your catalog readable by ChatGPT, Perplexity and Gemini and locks your real prices cryptographically — so AI invents nothing.',
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
+    scanLoading: 'Checking…', scanError: 'Could not start the audit — check the feed URL.',
+    scanLimit: 'Daily audit limit reached — come back tomorrow.',
     socialProof: M_DOT + ' products · ' + N_M + ' active merchants · Widget free for 14 days, no credit card',
     scanCritical: 'Critical vulnerability detected',
     scanLlm: 'LLM data extraction:', scanLlmFail: 'Failed (JS blocked)',
@@ -177,6 +183,8 @@ const translations = {
     heroLine1: 'La IA vende. Nosotros nos aseguramos de que venda', heroAccent: 'tu verdad.',
     heroSubtitle: 'CatyAI hace tu catálogo legible por ChatGPT, Perplexity y Gemini, bloquea tus precios reales criptográficamente — para que la IA no invente nada — y convierte cada cita en una transacción medible.',
     heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
+    scanLoading: 'Verificando…', scanError: 'No se pudo iniciar la auditoría — revisa la URL del feed.',
+    scanLimit: 'Límite diario de auditorías alcanzado — vuelve mañana.',
     socialProof: M_COMMA + ' productos · ' + N_M + ' comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
     scanLlm: 'Extracción datos LLM:', scanLlmFail: 'Fallido (JS bloqueado)',
@@ -253,6 +261,8 @@ const translations = {
     heroLine1: 'A IA vende. Nós garantimos que ela vende', heroAccent: 'a sua verdade.',
     heroSubtitle: 'A CatyAI torna o seu catálogo legível pelo ChatGPT, Perplexity e Gemini, bloqueia os seus preços reais criptograficamente — para que a IA não invente nada — e transforma cada citação numa transação mensurável.',
     heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
+    scanLoading: 'A verificar…', scanError: 'Não foi possível iniciar a auditoria — verifica o URL do feed.',
+    scanLimit: 'Limite diário de auditorias atingido — volta amanhã.',
     socialProof: M_COMMA + ' produtos · ' + N_M + ' comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
     scanLlm: 'Extração de dados LLM:', scanLlmFail: 'Falhou (JS bloqueado)',
@@ -329,6 +339,8 @@ const translations = {
     heroLine1: 'Vos produits, trouvés sur Google et', heroAccent: 'cités par les agents IA.',
     heroSubtitle: "Ingénierie de catalogue, distribution CSS et visibilité IA. CatyAI rend votre catalogue lisible par ChatGPT, Perplexity et Gemini et verrouille vos prix réels cryptographiquement — pour que l'IA n'invente rien.",
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
+    scanLoading: 'Vérification…', scanError: "Impossible de lancer l'audit — vérifiez l'URL du flux.",
+    scanLimit: 'Limite quotidienne d\'audits atteinte — revenez demain.',
     socialProof: M_COMMA + ' produits · ' + N_M + ' marchands actifs · Widget gratuit 14 jours, sans carte',
     scanCritical: 'Vulnérabilité critique détectée',
     scanLlm: 'Extraction données LLM :', scanLlmFail: 'Échoué (JS bloqué)',
@@ -443,6 +455,7 @@ function LanguageSelector({ lang, setLang }) {
 export default function HomePage() {
   const navigate = useNavigate();
   const [scannedUrl, setScannedUrl] = useState('');
+  const [scanState, setScanState] = useState({ loading: false, error: '' });
 
   const stackContainerRef = useRef(null);
 
@@ -500,10 +513,34 @@ export default function HomePage() {
     return () => observer.disconnect();
   }, []);
 
-  const handleScan = (e) => {
+  const handleScan = async (e) => {
     e.preventDefault();
-    if (!scannedUrl.trim()) return;
-    navigate(`/check?url=${encodeURIComponent(scannedUrl.trim())}`);
+    const url = scannedUrl.trim();
+    if (!url || scanState.loading) return;
+    setScanState({ loading: true, error: '' });
+    try {
+      const res = await fetch(FEED_AUDIT_API, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+      if (res.status === 429) {
+        setScanState({ loading: false, error: t.scanLimit });
+        return;
+      }
+      if (!res.ok) {
+        setScanState({ loading: false, error: t.scanError });
+        return;
+      }
+      const data = await res.json();
+      if (data.audit_id) {
+        navigate(`/feed-audit/${data.audit_id}`);
+        return;
+      }
+      setScanState({ loading: false, error: t.scanError });
+    } catch (_) {
+      setScanState({ loading: false, error: t.scanError });
+    }
   };
 
   return (
@@ -1345,10 +1382,13 @@ body {
                                         <input type="url" value={scannedUrl} onChange={(e) => setScannedUrl(e.target.value)} placeholder={t.heroPlaceholder} required
                                             className="w-full bg-navy/50 border border-transparent text-white placeholder-slate-500 rounded-lg pl-12 pr-4 py-4 focus:outline-none focus:ring-1 focus:ring-gold/50 transition-all font-mono text-sm" />
                                     </div>
-                                    <button type="submit" className="btn-primary px-6 py-4 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap font-bold">
-                                        {t.heroBtn} <i data-lucide="arrow-up-right" className="w-4 h-4" />
+                                    <button type="submit" disabled={scanState.loading} className="btn-primary px-6 py-4 rounded-lg flex items-center justify-center gap-2 whitespace-nowrap font-bold disabled:opacity-60 disabled:cursor-not-allowed">
+                                        {scanState.loading ? t.scanLoading : t.heroBtn} <i data-lucide="arrow-up-right" className="w-4 h-4" />
                                     </button>
                                 </form>
+                                {scanState.error && (
+                                    <p className="mt-3 text-sm text-amber-400 font-medium" role="alert">{scanState.error}</p>
+                                )}
                           </div>
                           <div className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-transparent blur-xl z-0 opacity-50"></div>
                       </div>
