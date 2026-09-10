@@ -259,6 +259,7 @@ const translations = {
       licensing: 'Licensing',
       docs: 'Documentation',
       dashboard: 'Dashboard',
+      feedAudit: 'Free feed audit',
       copyright: 'PayAi-X FZE (Caty.AI). All rights reserved.'
     },
     floatingIndicator: 'Try me!',
@@ -551,6 +552,7 @@ const translations = {
       licensing: 'Licențiere',
       docs: 'Documentație',
       dashboard: 'Dashboard',
+      feedAudit: 'Audit feed gratuit',
       copyright: 'PayAi-X FZE (Caty.AI). Toate drepturile rezervate.'
     },
     floatingIndicator: 'Încearcă-mă!',
@@ -843,6 +845,7 @@ const translations = {
       licensing: 'Licencias',
       docs: 'Documentación',
       dashboard: 'Dashboard',
+      feedAudit: 'Auditoría de feed gratuita',
       copyright: 'PayAi-X FZE (Caty.AI). Todos los derechos reservados.'
     },
     floatingIndicator: '¡Pruébame!',
@@ -1135,6 +1138,7 @@ const translations = {
       licensing: 'Licenciamento',
       docs: 'Documentação',
       dashboard: 'Dashboard',
+      feedAudit: 'Auditoria de feed gratuita',
       copyright: 'PayAi-X FZE (Caty.AI). Todos os direitos reservados.'
     },
     floatingIndicator: 'Experimente!',
@@ -1427,6 +1431,7 @@ const translations = {
       licensing: 'Licences',
       docs: 'Documentation',
       dashboard: 'Dashboard',
+      feedAudit: 'Audit de flux gratuit',
       copyright: 'PayAi-X FZE (Caty.AI). Tous droits réservés.'
     },
     floatingIndicator: 'Essayez-moi!',
