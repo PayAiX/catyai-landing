@@ -51,6 +51,7 @@ const CareersPage = lazy(() => import('./pages/Careers'))
 const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
 const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
 const Press = lazy(() => import('./pages/Press'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
 const TrustGateway = lazy(() => import('./pages/TrustGateway'))
@@ -3392,6 +3393,7 @@ function AppContent() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
