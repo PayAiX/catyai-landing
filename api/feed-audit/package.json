@@ -1,0 +1,14 @@
+{
+  "name": "feed-audit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Audit feed public (SPEC MVP 2026-09-09, PR-1: C1+C2) — cod Lambda, CommonJS, zero dependențe externe",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "start": "node local.js"
+  }
+}
