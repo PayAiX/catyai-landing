@@ -986,8 +986,8 @@ body {
             font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
             font-style: normal;
             font-weight: 800;
-            font-size: clamp(3rem, 6.5vw, 6.5rem);
-            line-height: 1.05;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.08;
             letter-spacing: -0.03em;
             text-transform: none;
             text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
@@ -1044,6 +1044,11 @@ body {
         }
 
         @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.12;
+                letter-spacing: -0.02em;
+            }
             .hero-bg-overlay {
                 background: linear-gradient(180deg,
                     rgba(1, 10, 31, 0.7) 0%,
