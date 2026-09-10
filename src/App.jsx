@@ -52,6 +52,7 @@ const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
 const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
 const Press = lazy(() => import('./pages/Press'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
 const TrustGateway = lazy(() => import('./pages/TrustGateway'))
@@ -3341,6 +3342,7 @@ function AppContent() {
             <Route path="/technology-partners" element={<TechPartnersPage />} />
             <Route path="/enterprise" element={<EnterprisePage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/check" element={<CheckWebsite />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/licensing" element={<Licensing />} />
             <Route path="/pricing" element={<PricingPage />} />

@@ -28,6 +28,7 @@ const translations = {
     scanLoading: 'Se verifică…', scanError: 'Nu am putut porni auditul — verifică URL-ul feedului.',
     scanLimit: 'Limita zilnică de audituri a fost atinsă — revino mâine.',
     heroAuditNote: 'Audit gratuit al feedului de produse — găsim erorile care blochează produsele în Google Shopping. Raport în câteva minute, fără card.',
+    heroAiVisibilityBtn: 'Verifică vizibilitatea în AI',
     auditChecksLabel: 'Audit feed · Gratuit',
     auditChecksTitle: 'Ce verifică auditul',
     auditCheck1: 'Toate câmpurile obligatorii și recomandate din specificația Google Merchant Center',
@@ -115,6 +116,7 @@ const translations = {
     scanLoading: 'Checking…', scanError: 'Could not start the audit — check the feed URL.',
     scanLimit: 'Daily audit limit reached — come back tomorrow.',
     heroAuditNote: 'Free product feed audit — we find the errors that get your products blocked in Google Shopping. Report in minutes, no card required.',
+    heroAiVisibilityBtn: 'Check your AI visibility',
     auditChecksLabel: 'Feed audit · Free',
     auditChecksTitle: 'What the audit checks',
     auditCheck1: 'All required and recommended fields from the Google Merchant Center specification',
@@ -202,6 +204,7 @@ const translations = {
     scanLoading: 'Verificando…', scanError: 'No se pudo iniciar la auditoría — revisa la URL del feed.',
     scanLimit: 'Límite diario de auditorías alcanzado — vuelve mañana.',
     heroAuditNote: 'Auditoría gratuita del feed de productos — encontramos los errores que bloquean tus productos en Google Shopping. Informe en minutos, sin tarjeta.',
+    heroAiVisibilityBtn: 'Comprueba tu visibilidad en IA',
     auditChecksLabel: 'Auditoría feed · Gratis',
     auditChecksTitle: 'Qué verifica la auditoría',
     auditCheck1: 'Todos los campos obligatorios y recomendados de la especificación de Google Merchant Center',
@@ -288,6 +291,7 @@ const translations = {
     scanLoading: 'A verificar…', scanError: 'Não foi possível iniciar a auditoria — verifica o URL do feed.',
     scanLimit: 'Limite diário de auditorias atingido — volta amanhã.',
     heroAuditNote: 'Auditoria gratuita do feed de produtos — encontramos os erros que bloqueiam os teus produtos no Google Shopping. Relatório em minutos, sem cartão.',
+    heroAiVisibilityBtn: 'Verifica a tua visibilidade em IA',
     auditChecksLabel: 'Auditoria feed · Grátis',
     auditChecksTitle: 'O que a auditoria verifica',
     auditCheck1: 'Todos os campos obrigatórios e recomendados da especificação do Google Merchant Center',
@@ -374,6 +378,7 @@ const translations = {
     scanLoading: 'Vérification…', scanError: "Impossible de lancer l'audit — vérifiez l'URL du flux.",
     scanLimit: 'Limite quotidienne d\'audits atteinte — revenez demain.',
     heroAuditNote: 'Audit gratuit du flux de produits — nous trouvons les erreurs qui bloquent vos produits dans Google Shopping. Rapport en quelques minutes, sans carte.',
+    heroAiVisibilityBtn: 'Vérifiez votre visibilité IA',
     auditChecksLabel: 'Audit flux · Gratuit',
     auditChecksTitle: 'Ce que vérifie l\'audit',
     auditCheck1: 'Tous les champs obligatoires et recommandés de la spécification Google Merchant Center',
@@ -1443,6 +1448,9 @@ body {
                           <i data-lucide="shield-check" className="w-4 h-4 text-emerald-400" />
                           {t.socialProof}
                       </p>
+                      <a href="/check" className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gold/40 text-gold hover:bg-gold/10 transition-all font-bold text-sm">
+                          {t.heroAiVisibilityBtn} <i data-lucide="arrow-up-right" className="w-4 h-4" />
+                      </a>
                       <PartnerBadges locale={lang} className="mt-4" />
                   </div>
               </div>
