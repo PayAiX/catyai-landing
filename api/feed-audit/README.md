@@ -1,4 +1,4 @@
-# feed-audit — PR-1 (C1+C2) + PR-2 (C3) din SPEC MVP „Audit Feed Public"
+# feed-audit — PR-1 (C1+C2) + PR-2 (C3) + PR-3 (C5) din SPEC MVP „Audit Feed Public"
 
 Cod Lambda (Node.js 20, CommonJS, **zero dependențe externe** — doar builtin-uri:
 `http/https`, `zlib`, `stream`, `dns`, `url`, `node:test`). Nu intră în bundle-ul
@@ -13,6 +13,8 @@ vite; se va deploya ca Lambda + Function URL (decizia §8.6 din spec).
 | `parse-feed.js` | Parser streaming multi-format: detectare encoding (BOM utf-8/utf-16le/utf-16be + sniff NUL-uri — capcana utf-16le+TSV), XML RSS/Atom prin tokenizer pe `<item>`/`<entry>` (prefix namespace acceptat, `<!DOCTYPE>` tăiat din prolog, doar entități built-in + `&#NN;` — fără XXE), CSV/TSV cu sniff delimiter (tab > ; > ,), header obligatoriu, cap 1MB/rând. Normalizare la forma internă `{ id, title, link, image, price, sale_price, availability, brand, gtin, mpn, description, category }` cu aliasuri (`g:*`, `url`/`product_url`, `ean`/`upc`→gtin etc.); `price` brut + `price_numeric` minimal (parseFloat pe primul număr). Cutoff 5000 iteme → `truncated:true` + destroy curat; rândurile invalide se numără în `stats.invalid_rows`, erorile de conținut devin `stats.error`, nu crash. |
 | `index.js` | Handler Lambda minimal (zilele 1–2 din plan): `POST /api/feed-audit {url}` → validare → `202 {audit_id, status_url}`; job async în același warm container (Map module-level, TTL 72h ca să nu crească la infinit; persistența reală = ziua 4/C6). `GET ?audit_id=…` → `{status, result?}` cu `result = { sample_size, stats, specs: {google, meta, chatgpt}, top_fields_missing }` — C3 (PR-2) calculează scorurile spec în același job, imediat după parsing. Feed >5000 → `result.notice` „auditul gratuit acoperă un eșantion de 5000 produse". Testabil fără Lambda: `createHandler({ validateUrl, fetcher })`. Loghează doar domeniul, niciodată URL-ul complet. |
 | `validators/engine.js` + `validators/rules-{google,meta,chatgpt}.json` | C3 — motor de validatoare spec 100% declarativ (lecția planului: motor generic, nu cod hardcodat per regulă). Tipuri de check: `required`, `format` (regex), `max_length`/`min_length`, `enum` (cu `aliases`: fără `alias_severity` = acceptat silențios; cu `alias_severity` = warning de mapping; cu `suggest` = error + sugestie de corectare), `gtin_checkdigit` (GS1, 8/12/13/14 cifre), `all_caps`, `promo_text`, `sale_price_logic` (0 e valoare reală invalidă, nu „lipsă" — lecția parsePrice), `duplicate_id` (feed-level, nu afectează scorul), `at_least_n_of` (2-din-3 brand+GTIN+MPN), `currency_code`, `contains_html`. Scor = % produse fără `error` (warning nu scade scorul); `problems` sortate după count desc, cu rânduri-exemplu (max `example_limit`, default 3); severitatea problemei = severitatea maximă întâlnită (alias warning vs valoare necunoscută error). Reguli validate structural la startup (fail fast). Fiecare rezultat include `disclaimer`: „Evaluare pe baza specurilor publice; nu este o certificare oficială Google/Meta/OpenAI." (§5). |
+| `comparator.js` | C5 — comparatorul „peste piață" (moat-ul ganchoului): match GTIN-only prin interfață injectabilă (`lookupGtins: async (gtin[]) => Map<gtin, {price, merchant_count, title}>`), zero DB wiring în modul. GTIN-urile trebuie să aibă check-digit GS1 valid (reutilizează `validGtin` din engine). Preț propriu: `price_numeric`, fallback `sale_price_numeric`. Output: `{matched, competitors, above_market, below_market, median_delta_pct, examples_above, examples_below, hidden}` — dacă `matched < minMatches` (default 20) → `{hidden: true, matched}` (§7 risc 4: nu afișăm cifre pe zgomot). Fără `lookupGtins` → `{skipped: true}`. |
+| `db-adapter.js` | C5 — adaptor subțire FIȚIER DE INTERFAȚĂ pentru wiring-ul Mongo de la deploy (PR-4): `createGoldenRecordsLookup({collection})` peste o colecție cu interfață Mongo-like. Colecția țintă: **`retail_product_offers`** (numele corect din spec — NU caty_*; golden records e motor de dedup, nu sursă). DOAR citiri indexate (index pe gtin), read-only, zero scrieri (contract fabrici). Nu se rulează fără DB. |
 | `local.js` | (Opțional) server local peste handler: `node api/feed-audit/local.js` → `http://localhost:3001/api/feed-audit`. Atenție: validatorul real respinge 127.0.0.1 (privat). |
 
 ## Cum rulezi testele
@@ -54,6 +56,14 @@ prin validatorul real (vezi testul „capcana /img-proxy").
   `sale_price=0` cu `price>0` = error la Google (valoare reală invalidă, nu
   „câmp lipsă"), warning la Meta; lipsa monedei la preț = warning Meta, error
   ChatGPT; `duplicate_id` e feed-level și nu afectează scorul per-produs.
+- Decizii C5 (comparator): mediană de piață e calculată de adaptorul de date
+  (`db-adapter.js` / query pe `retail_product_offers`), NU în comparator —
+  comparatorul primește `price` ca preț de piață final; `matched` numără
+  produsele cu GTIN găsit chiar dacă prețul propriu lipsește (delta doar când
+  există preț de comparat); itemele cu `price` lipsă dar `sale_price` valid se
+  compară la `sale_price`; comparatorul e defensiv în job — o eroare de lookup
+  nu rupe auditul (rămâne `{skipped: true}`); la Lambda fără DB injectat
+  secțiunea e `{skipped: true}` până la wiring-ul din PR-4.
 
 ## Rollback
 
