@@ -17,6 +17,7 @@ const { validateSafeUrl, HttpError } = require('./validate-url');
 const { fetchFeed } = require('./fetch-feed');
 const { parseFeed } = require('./parse-feed');
 const { loadRules, runAll } = require('./validators/engine');
+const { compareToMarket } = require('./comparator');
 
 // Reguli declarative C3 — încărcate și validate structural la startup (fail fast).
 const RULES = loadRules(path.join(__dirname, 'validators'));
@@ -61,6 +62,18 @@ function makeJob(url) {
   };
 }
 
+// C5: comparatorul de piață e defensiv — orice eroare de lookup nu trebuie să
+// rupă jobul (rămâne secțiunea „skipped"), iar fără lookup injectat nu rulează deloc.
+async function runComparator(items, deps) {
+  if (typeof deps.lookupGtins !== 'function') return { skipped: true };
+  try {
+    return await compareToMarket(items, { lookupGtins: deps.lookupGtins });
+  } catch (err) {
+    console.log(`[feed-audit] comparator eșuat: ${err.message}`);
+    return { skipped: true };
+  }
+}
+
 async function processJob(job, deps) {
   job.status = 'running';
   try {
@@ -82,6 +95,9 @@ async function processJob(job, deps) {
       // C3: scorurile spec (google/meta/chatgpt) se calculează în același job,
       // imediat după parsing; motor declarativ — validators/rules-*.json
       specs: runAll(items, RULES),
+      // C5: comparator „peste piață" (GTIN-only). Fără lookupGtins injectat
+      // (Lambda fără DB wiring până la PR-4) secțiunea se sare onest.
+      comparator: await runComparator(items, deps),
       top_fields_missing: computeTopFieldsMissing(items),
     };
     if (stats.truncated || feedTruncated) result.notice = SAMPLE_NOTICE;
