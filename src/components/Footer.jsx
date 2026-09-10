@@ -23,6 +23,7 @@ export default function Footer({ t }) {
             <ul className="space-y-2 text-gray-300 text-sm">
               <li><Link to="/features" className="hover:text-white transition-colors block py-1">{t.nav.features}</Link></li>
               <li><Link to="/pricing" className="hover:text-white transition-colors block py-1">{t.nav.pricing}</Link></li>
+              <li><Link to="/#feed-audit" className="hover:text-white transition-colors block py-1">{t.footer.feedAudit}</Link></li>
               <li><a href="https://app.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.dashboard}</a></li>
               <li><a href="https://docs.catyai.io" className="hover:text-white transition-colors block py-1">{t.footer.docs}</a></li>
             </ul>

@@ -591,7 +591,7 @@ export default function GlobalHeader({ lang, setLang }) {
           <div className="gh-actions">
             <LangSelector lang={lang} setLang={setLang} />
             <a href="https://app.catyai.io/login" className="gh-login">Log in</a>
-            <a href="/check" className="gh-cta" onClick={(e) => { const heroInput = document.querySelector('#hero input'); if (heroInput) { e.preventDefault(); heroInput.focus(); } }}>
+            <a href="/#feed-audit" className="gh-cta" onClick={(e) => { const heroInput = document.querySelector('#feed-audit input'); if (heroInput) { e.preventDefault(); heroInput.focus(); } }}>
               <i data-lucide="scan-search" className="w-4 h-4" />
               Run Diagnostics
             </a>
@@ -637,7 +637,7 @@ export default function GlobalHeader({ lang, setLang }) {
           <a href="/pricing" className="gh-mobile-pricing" onClick={() => setMobileOpen(false)}>Pricing</a>
 
           <div className="gh-mobile-bottom">
-            <a href="/check" className="gh-mobile-cta" onClick={(e) => { const heroInput = document.querySelector('#hero input'); setMobileOpen(false); if (heroInput) { e.preventDefault(); setTimeout(() => heroInput.focus(), 300); } }}>
+            <a href="/#feed-audit" className="gh-mobile-cta" onClick={(e) => { const heroInput = document.querySelector('#hero input'); setMobileOpen(false); if (heroInput) { e.preventDefault(); setTimeout(() => heroInput.focus(), 300); } }}>
               <i data-lucide="scan-search" className="w-5 h-5" />
               Run Diagnostics
             </a>

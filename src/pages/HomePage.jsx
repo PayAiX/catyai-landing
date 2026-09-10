@@ -27,6 +27,14 @@ const translations = {
     heroPlaceholder: 'https://magazinul-tau.ro', heroBtn: 'Verifică gratuit',
     scanLoading: 'Se verifică…', scanError: 'Nu am putut porni auditul — verifică URL-ul feedului.',
     scanLimit: 'Limita zilnică de audituri a fost atinsă — revino mâine.',
+    heroAuditNote: 'Audit gratuit al feedului de produse — găsim erorile care blochează produsele în Google Shopping. Raport în câteva minute, fără card.',
+    auditChecksLabel: 'Audit feed · Gratuit',
+    auditChecksTitle: 'Ce verifică auditul',
+    auditCheck1: 'Toate câmpurile obligatorii și recomandate din specificația Google Merchant Center',
+    auditCheck2: 'Produsele cu risc de respingere pe politici (categorii restricționate, atribute lipsă) — înainte să le respingă Google',
+    auditCheck3: 'Coerența feed ↔ pagină de produs: preț, disponibilitate',
+    auditCheck4: 'Analiză semantică: duplicate de produse, coerența titlu ↔ descriere ↔ categorie',
+    auditResultNote: 'Primești raportul pe severități, cu cauza și fixul pentru fiecare eroare — link privat, valabil 72 de ore.',
     socialProof: M_COMMA + ' produse · ' + N_M + ' de comercianți activi · Widget gratuit 14 zile, fără card',
     scanCritical: 'Vulnerabilitate critică detectată',
     scanLlm: 'Extracție date LLM:', scanLlmFail: 'Eșuat (JS blocat)',
@@ -106,6 +114,14 @@ const translations = {
     heroPlaceholder: 'https://your-store.com', heroBtn: 'Check free',
     scanLoading: 'Checking…', scanError: 'Could not start the audit — check the feed URL.',
     scanLimit: 'Daily audit limit reached — come back tomorrow.',
+    heroAuditNote: 'Free product feed audit — we find the errors that get your products blocked in Google Shopping. Report in minutes, no card required.',
+    auditChecksLabel: 'Feed audit · Free',
+    auditChecksTitle: 'What the audit checks',
+    auditCheck1: 'All required and recommended fields from the Google Merchant Center specification',
+    auditCheck2: 'Products at risk of policy disapproval (restricted categories, missing attributes) — before Google rejects them',
+    auditCheck3: 'Feed ↔ product page consistency: price, availability',
+    auditCheck4: 'Semantic analysis: duplicate products, title ↔ description ↔ category coherence',
+    auditResultNote: 'You get the report by severity, with the cause and fix for each error — private link, valid for 72 hours.',
     socialProof: M_DOT + ' products · ' + N_M + ' active merchants · Widget free for 14 days, no credit card',
     scanCritical: 'Critical vulnerability detected',
     scanLlm: 'LLM data extraction:', scanLlmFail: 'Failed (JS blocked)',
@@ -185,6 +201,14 @@ const translations = {
     heroPlaceholder: 'https://tu-tienda.com', heroBtn: 'Verificar gratis',
     scanLoading: 'Verificando…', scanError: 'No se pudo iniciar la auditoría — revisa la URL del feed.',
     scanLimit: 'Límite diario de auditorías alcanzado — vuelve mañana.',
+    heroAuditNote: 'Auditoría gratuita del feed de productos — encontramos los errores que bloquean tus productos en Google Shopping. Informe en minutos, sin tarjeta.',
+    auditChecksLabel: 'Auditoría feed · Gratis',
+    auditChecksTitle: 'Qué verifica la auditoría',
+    auditCheck1: 'Todos los campos obligatorios y recomendados de la especificación de Google Merchant Center',
+    auditCheck2: 'Productos con riesgo de rechazo por políticas (categorías restringidas, atributos faltantes) — antes de que Google los rechace',
+    auditCheck3: 'Coherencia feed ↔ página de producto: precio, disponibilidad',
+    auditCheck4: 'Análisis semántico: productos duplicados, coherencia título ↔ descripción ↔ categoría',
+    auditResultNote: 'Recibes el informe por severidades, con la causa y la solución para cada error — enlace privado, válido por 72 horas.',
     socialProof: M_COMMA + ' productos · ' + N_M + ' comerciantes activos · comisión solo al entregar · Gratis, sin tarjeta',
     scanCritical: 'Vulnerabilidad crítica detectada',
     scanLlm: 'Extracción datos LLM:', scanLlmFail: 'Fallido (JS bloqueado)',
@@ -263,6 +287,14 @@ const translations = {
     heroPlaceholder: 'https://sua-loja.com', heroBtn: 'Verificar grátis',
     scanLoading: 'A verificar…', scanError: 'Não foi possível iniciar a auditoria — verifica o URL do feed.',
     scanLimit: 'Limite diário de auditorias atingido — volta amanhã.',
+    heroAuditNote: 'Auditoria gratuita do feed de produtos — encontramos os erros que bloqueiam os teus produtos no Google Shopping. Relatório em minutos, sem cartão.',
+    auditChecksLabel: 'Auditoria feed · Grátis',
+    auditChecksTitle: 'O que a auditoria verifica',
+    auditCheck1: 'Todos os campos obrigatórios e recomendados da especificação do Google Merchant Center',
+    auditCheck2: 'Produtos com risco de rejeição por políticas (categorias restritas, atributos em falta) — antes de o Google os rejeitar',
+    auditCheck3: 'Coerência feed ↔ página de produto: preço, disponibilidade',
+    auditCheck4: 'Análise semântica: produtos duplicados, coerência título ↔ descrição ↔ categoria',
+    auditResultNote: 'Recebes o relatório por severidades, com a causa e a correção para cada erro — ligação privada, válida por 72 horas.',
     socialProof: M_COMMA + ' produtos · ' + N_M + ' comerciantes ativos · comissão só na entrega · Grátis, sem cartão',
     scanCritical: 'Vulnerabilidade crítica detectada',
     scanLlm: 'Extração de dados LLM:', scanLlmFail: 'Falhou (JS bloqueado)',
@@ -341,6 +373,14 @@ const translations = {
     heroPlaceholder: 'https://votre-boutique.fr', heroBtn: 'Vérifier gratuitement',
     scanLoading: 'Vérification…', scanError: "Impossible de lancer l'audit — vérifiez l'URL du flux.",
     scanLimit: 'Limite quotidienne d\'audits atteinte — revenez demain.',
+    heroAuditNote: 'Audit gratuit du flux de produits — nous trouvons les erreurs qui bloquent vos produits dans Google Shopping. Rapport en quelques minutes, sans carte.',
+    auditChecksLabel: 'Audit flux · Gratuit',
+    auditChecksTitle: 'Ce que vérifie l\'audit',
+    auditCheck1: 'Tous les champs obligatoires et recommandés de la spécification Google Merchant Center',
+    auditCheck2: 'Produits à risque de rejet pour politiques (catégories restreintes, attributs manquants) — avant que Google ne les rejette',
+    auditCheck3: 'Cohérence flux ↔ page produit : prix, disponibilité',
+    auditCheck4: 'Analyse sémantique : produits en double, cohérence titre ↔ description ↔ catégorie',
+    auditResultNote: 'Vous recevez le rapport par sévérités, avec la cause et la correction pour chaque erreur — lien privé, valable 72 heures.',
     socialProof: M_COMMA + ' produits · ' + N_M + ' marchands actifs · Widget gratuit 14 jours, sans carte',
     scanCritical: 'Vulnérabilité critique détectée',
     scanLlm: 'Extraction données LLM :', scanLlmFail: 'Échoué (JS bloqué)',
@@ -1381,7 +1421,7 @@ body {
                           <div className="relative z-20 rounded-xl p-2 border border-white/10 shadow-2xl"
                                style={{background: 'rgba(1, 10, 31, 0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)'}}>
 
-                                <form onSubmit={handleScan} className="flex flex-col sm:flex-row gap-2 relative">
+                                <form id="feed-audit" onSubmit={handleScan} className="flex flex-col sm:flex-row gap-2 relative scroll-mt-24">
                                     <div className="relative flex-grow">
                                         <i data-lucide="globe" className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" />
                                         <input type="url" value={scannedUrl} onChange={(e) => setScannedUrl(e.target.value)} placeholder={t.heroPlaceholder} required
@@ -1391,6 +1431,7 @@ body {
                                         {scanState.loading ? t.scanLoading : t.heroBtn} <i data-lucide="arrow-up-right" className="w-4 h-4" />
                                     </button>
                                 </form>
+                                <p className="mt-3 text-xs text-slate-400">{t.heroAuditNote}</p>
                                 {scanState.error && (
                                     <p className="mt-3 text-sm text-amber-400 font-medium" role="alert">{scanState.error}</p>
                                 )}
@@ -1411,6 +1452,25 @@ body {
                   Neural Node · Live
               </div>
 
+          </section>
+
+          <section id="audit-checks" className="max-w-6xl mx-auto px-6 mt-32">
+              <div className="text-center mb-10">
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-500 font-mono mb-3">{t.auditChecksLabel}</p>
+                  <h3 className="text-4xl md:text-6xl font-bold text-white mt-4 tracking-tighter leading-tight">{t.auditChecksTitle}</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[t.auditCheck1, t.auditCheck2, t.auditCheck3, t.auditCheck4].map((check, i) => (
+                      <div key={i} className="bg-navy/40 border border-gold/20 rounded-xl p-6 flex items-start gap-4">
+                          <span className="font-mono text-gold text-sm shrink-0 mt-0.5">0{i + 1}</span>
+                          <p className="text-slate-300 text-sm leading-relaxed">{check}</p>
+                      </div>
+                  ))}
+              </div>
+              <p className="mt-8 text-center text-slate-400 text-sm border-t border-gold/20 pt-6">
+                  <i data-lucide="file-check-2" className="w-4 h-4 inline-block mr-2 text-gold align-[-2px]"></i>
+                  {t.auditResultNote}
+              </p>
           </section>
 
           <section className="ai-crawlers-section max-w-6xl mx-auto px-6 mt-32">
