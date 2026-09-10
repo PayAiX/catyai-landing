@@ -18,6 +18,9 @@ const { fetchFeed } = require('./fetch-feed');
 const { parseFeed } = require('./parse-feed');
 const { loadRules, runAll } = require('./validators/engine');
 const { compareToMarket } = require('./comparator');
+const { createRateLimiter, noopLimiter, RateLimitError } = require('./rate-limit');
+const { createNotifier } = require('./notify');
+const { createTelemetry } = require('./telemetry');
 
 // Reguli declarative C3 — încărcate și validate structural la startup (fail fast).
 const RULES = loadRules(path.join(__dirname, 'validators'));
@@ -103,6 +106,7 @@ async function processJob(job, deps) {
     if (stats.truncated || feedTruncated) result.notice = SAMPLE_NOTICE;
     job.result = result;
     job.status = 'done';
+    await report(job, result, deps);
   } catch (err) {
     job.status = 'failed';
     // fără scurgeri de URL-uri private în răspuns: doar mesajele 400/502 controlate
@@ -112,10 +116,44 @@ async function processJob(job, deps) {
   console.log(`[feed-audit] job ${job.id} status=${job.status} domain=${job.domain}`);
 }
 
-function json(statusCode, body) {
+// C9 telemetrie (zero PII: doar domeniu/scoruri) + C8 notificare best-effort.
+// Niciuna nu trebuie să poată rupe jobul.
+async function report(job, result, deps) {
+  try {
+    await deps.telemetry({
+      audit_id: job.id,
+      domain: job.domain,
+      sample_size: result.sample_size,
+      scores: Object.fromEntries(Object.entries(result.specs).map(([spec, s]) => [spec, s.score])),
+      top_problems: Object.entries(result.specs).flatMap(([spec, s]) =>
+        s.problems.slice(0, 5).map((p) => ({ spec, rule_id: p.rule_id, count: p.count }))
+      ),
+      comparator:
+        result.comparator && typeof result.comparator.hidden === 'boolean'
+          ? { matched: result.comparator.matched ?? 0, hidden: result.comparator.hidden }
+          : { skipped: true },
+    });
+  } catch (err) {
+    console.warn(`[feed-audit] telemetrie eșuată pentru job ${job.id}: ${err.message}`);
+  }
+  try {
+    await deps.notifier({
+      event: 'audit_completed',
+      email: null,
+      feed_url: job.url,
+      domain: job.domain,
+      audit_id: job.id,
+      scores: Object.fromEntries(Object.entries(result.specs).map(([spec, s]) => [spec, s.score])),
+    });
+  } catch (err) {
+    console.warn(`[feed-audit] notificare eșuată pentru job ${job.id}: ${err.message}`);
+  }
+}
+
+function json(statusCode, body, extraHeaders = {}) {
   return {
     statusCode,
-    headers: { 'content-type': 'application/json; charset=utf-8' },
+    headers: { 'content-type': 'application/json; charset=utf-8', ...extraHeaders },
     body: JSON.stringify(body),
   };
 }
@@ -123,6 +161,14 @@ function json(statusCode, body) {
 function createHandler(deps = {}) {
   const d = { validateUrl: validateSafeUrl, fetcher: fetchFeed, ...deps };
   const jobs = new Map();
+  // C7: rate-limit real doar cu store injectat; fără store → dezactivat explicit
+  // (local/test). La deploy: Valkey prin redisStore({client}) — NU Upstash.
+  const limiter = d.store
+    ? createRateLimiter({ store: d.store, limits: d.limits, turnstileSecret: d.turnstileSecret })
+    : noopLimiter();
+  // C9 / C8 — ambele no-op safe fără configurare
+  const telemetry = createTelemetry({ collection: d.collection });
+  const notifier = d.notifier || createNotifier({ webhookUrl: d.notifyWebhookUrl });
 
   async function handler(event = {}) {
     const method = String(event.httpMethod || event.requestContext?.http?.method || 'GET').toUpperCase();
@@ -130,22 +176,51 @@ function createHandler(deps = {}) {
     const params = event.queryStringParameters || {};
 
     if (method === 'POST' && /\/api\/feed-audit\/?$/.test(path)) {
+      // C7 (§8.1): endpointul NU intră în NICIO allow-list de feeds/AI-surfaces —
+      // catyai.io nu stă în spatele caty-shop-waf; rate-limit la aplicație e
+      // singura apărare. Fără el, endpointul NU se lansează (§0).
       let body = {};
       try {
         body = JSON.parse(event.body || '{}');
       } catch {
         return json(400, { error: 'Body invalid: se așteaptă JSON' });
       }
+      let validatedDomain;
       try {
-        await d.validateUrl(body.url);
+        const u = await d.validateUrl(body.url);
+        validatedDomain = u.hostname;
       } catch (err) {
         return json(err.statusCode || 400, { error: err.message });
       }
+
+      const ip = event.requestContext?.http?.sourceIp || event.requestContext?.identity?.sourceIp || 'unknown';
+      const headers = event.headers || {};
+      const turnstileToken = headers['x-turnstile-token'] || headers['X-Turnstile-Token'] || null;
       const job = makeJob(body.url);
+      try {
+        await limiter.checkIp(ip, { turnstileToken });
+        await limiter.checkGlobal();
+        await limiter.acquireDomain(validatedDomain, job.id);
+      } catch (err) {
+        if (err instanceof RateLimitError || err.statusCode === 429) {
+          return json(
+            429,
+            {
+              error: err.message,
+              retry_after_sec: err.retryAfterSec,
+              ...(err.turnstileRequired ? { turnstile_required: true } : {}),
+            },
+            { 'retry-after': String(err.retryAfterSec) }
+          );
+        }
+        throw err;
+      }
       jobs.set(job.id, job);
       console.log(`[feed-audit] job start id=${job.id} domain=${job.domain}`);
-      // job async în același warm container; TTL 72h ca să nu crească Map-ul la infinit
-      processJob(job, d).finally(() => {
+      // job async în același warm container; TTL 72h ca să nu crească Map-ul la infinit;
+      // lock-ul per domeniu se eliberează întotdeauna în finally
+      processJob(job, { ...d, telemetry, notifier }).finally(() => {
+        limiter.releaseDomain(validatedDomain, job.id);
         setTimeout(() => jobs.delete(job.id), 72 * 3600 * 1000).unref?.();
       });
       return json(202, { audit_id: job.id, status_url: `/api/feed-audit?audit_id=${job.id}` });
@@ -155,11 +230,12 @@ function createHandler(deps = {}) {
       const id = params.audit_id;
       if (!id) return json(400, { error: 'Parametrul audit_id lipsește' });
       const job = jobs.get(id);
-      if (!job) return json(404, { error: 'Audit negăsit (ID greșit sau expirat după 72h)' });
+      if (!job) return json(404, { error: 'Audit negăsit (ID greșit sau expirat după 72h)' }, { 'x-robots-tag': 'noindex' });
       const out = { audit_id: job.id, status: job.status };
       if (job.status === 'done') out.result = job.result;
       if (job.status === 'failed') out.error = job.error;
-      return json(200, out);
+      // §8.2: paginile de rezultat se servesc noindex (header real la deploy CloudFront/Lambda)
+      return json(200, out, { 'x-robots-tag': 'noindex' });
     }
 
     return json(404, { error: 'Rută negăsită' });

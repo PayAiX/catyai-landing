@@ -56,6 +56,7 @@ const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
 const TrustGateway = lazy(() => import('./pages/TrustGateway'))
 const GoogleShoppingFeed = lazy(() => import('./pages/GoogleShoppingFeed'))
 const ChatGPTFeed = lazy(() => import('./pages/ChatGPTFeed'))
+const FeedAuditResult = lazy(() => import('./pages/FeedAuditResult'))
 const FacebookInstagramFeed = lazy(() => import('./pages/FacebookInstagramFeed'))
 
 // Loading fallback component
@@ -3344,6 +3345,7 @@ function AppContent() {
             <Route path="/google-shopping-feed" element={<GoogleShoppingFeed />} />
             <Route path="/facebook-instagram-feed" element={<FacebookInstagramFeed />} />
             <Route path="/chatgpt-feed" element={<ChatGPTFeed />} />
+            <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
             <Route path="/marketplace" element={<Navigate to="/agentic-marketplace" replace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
@@ -3389,6 +3391,7 @@ function AppContent() {
             <Route path="/technology-partners" element={<TechPartnersPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
+            <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
           </Routes>
         </Suspense>
       </main>
