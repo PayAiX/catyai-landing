@@ -1,0 +1,127 @@
+[
+  {
+    "id": "c.req.id",
+    "title": "ID produs lipsă",
+    "severity": "error",
+    "description": "ID-ul de produs este obligatoriu în catalogul ChatGPT Ads.",
+    "check": { "type": "required", "field": "id" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.title",
+    "title": "Titlu lipsă",
+    "severity": "error",
+    "description": "Titlul este obligatoriu.",
+    "check": { "type": "required", "field": "title" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.link",
+    "title": "Link produs lipsă",
+    "severity": "error",
+    "description": "Link-ul către pagina de produs este obligatoriu.",
+    "check": { "type": "required", "field": "link" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.image",
+    "title": "Imagine lipsă",
+    "severity": "error",
+    "description": "Link-ul de imagine este obligatoriu.",
+    "check": { "type": "required", "field": "image" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.price",
+    "title": "Preț lipsă",
+    "severity": "error",
+    "description": "Prețul este obligatoriu.",
+    "check": { "type": "required", "field": "price" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.availability",
+    "title": "Availability lipsă",
+    "severity": "error",
+    "description": "Availability este obligatoriu.",
+    "check": { "type": "required", "field": "availability" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.req.description",
+    "title": "Descriere lipsă",
+    "severity": "error",
+    "description": "Descrierea este obligatorie în ChatGPT Ads.",
+    "check": { "type": "required", "field": "description" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.availability.enum",
+    "title": "Availability în afara enum-ului strict ChatGPT",
+    "severity": "error",
+    "description": "ChatGPT Ads acceptă STRICT in_stock / out_of_stock / preorder / backorder. \"pre_order\" (cu underscore) e respins — sugestia de corectare e inclusă în exemplu. \"unknown\" e respins. Spre deosebire de Google/Meta, nu acceptăm aliasuri — enum strict conform spec C3.",
+    "check": {
+      "type": "enum",
+      "field": "availability",
+      "values": ["in_stock", "out_of_stock", "preorder", "backorder"],
+      "suggest": { "pre_order": "preorder", "pre-order": "preorder", "pre order": "preorder", "in stock": "in_stock", "out of stock": "out_of_stock" }
+    },
+    "example_limit": 3
+  },
+  {
+    "id": "c.title.max150",
+    "title": "Titlu peste 150 de caractere",
+    "severity": "warning",
+    "description": "Limita de titlu în ChatGPT Ads este 150 de caractere.",
+    "check": { "type": "max_length", "field": "title", "value": 150 },
+    "example_limit": 3
+  },
+  {
+    "id": "c.price.format",
+    "title": "Preț cu format invalid",
+    "severity": "error",
+    "description": "Prețul trebuie să fie decimal (maxim 2 zecimale).",
+    "check": { "type": "format", "field": "price_numeric", "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.price.currency",
+    "title": "Preț fără monedă ISO (3 litere)",
+    "severity": "error",
+    "description": "ChatGPT Ads cere preț cu monedă în format 3 litere (ex. 299 RON, 49.99 USD) — lipsa monedei e eroare, nu warning.",
+    "check": { "type": "currency_code", "field": "price" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.gtin.checkdigit",
+    "title": "GTIN cu cifră de control (check-digit) invalidă",
+    "severity": "error",
+    "description": "GTIN trebuie să aibă 8/12/13/14 cifre și cifra de control GS1 validă.",
+    "check": { "type": "gtin_checkdigit", "field": "gtin" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.desc.max5000",
+    "title": "Descriere peste 5000 de caractere",
+    "severity": "warning",
+    "description": "Limita de descriere în ChatGPT Ads este 5000 de caractere (plain text).",
+    "check": { "type": "max_length", "field": "description", "value": 5000 },
+    "example_limit": 3
+  },
+  {
+    "id": "c.desc.html",
+    "title": "Descriere cu taguri HTML",
+    "severity": "warning",
+    "description": "Descrierea trebuie să fie plain text — tagurile HTML sunt ignorate sau trunchiate.",
+    "check": { "type": "contains_html", "field": "description" },
+    "example_limit": 3
+  },
+  {
+    "id": "c.id.duplicate",
+    "title": "ID-uri duplicate în feed",
+    "severity": "error",
+    "description": "ID-ile trebuie să fie unice în feed. Regulă la nivel de feed: nu afectează scorul per-produs.",
+    "check": { "type": "duplicate_id", "field": "id" },
+    "example_limit": 3
+  }
+]

@@ -94,6 +94,13 @@ function normalizeFields(raw) {
   } else {
     item.price_numeric = null;
   }
+  if (item.sale_price != null) {
+    // necesar pentru sale_price_logic în C3 (0 e valoare reală, nu "lipsă")
+    const m = String(item.sale_price).match(/-?\d[\d.,]*/);
+    item.sale_price_numeric = m ? parseFloat(m[0]) : null;
+  } else {
+    item.sale_price_numeric = null;
+  }
   return item;
 }
 

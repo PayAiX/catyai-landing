@@ -1,0 +1,161 @@
+[
+  {
+    "id": "g.req.id",
+    "title": "ID produs lipsă",
+    "severity": "error",
+    "description": "Fiecare produs trebuie să aibă un ID (g:id) unic și stabil în feed.",
+    "check": { "type": "required", "field": "id" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.req.title",
+    "title": "Titlu lipsă",
+    "severity": "error",
+    "description": "Titlul (g:title) este obligatoriu în Google Merchant Center.",
+    "check": { "type": "required", "field": "title" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.req.link",
+    "title": "Link produs lipsă",
+    "severity": "error",
+    "description": "Link (g:link) către pagina de produs este obligatoriu.",
+    "check": { "type": "required", "field": "link" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.req.image",
+    "title": "Imagine lipsă",
+    "severity": "error",
+    "description": "g:image_link este obligatoriu în Google Merchant Center.",
+    "check": { "type": "required", "field": "image" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.req.price",
+    "title": "Preț lipsă",
+    "severity": "error",
+    "description": "g:price este obligatoriu.",
+    "check": { "type": "required", "field": "price" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.req.availability",
+    "title": "Availability lipsă",
+    "severity": "error",
+    "description": "g:availability este obligatoriu.",
+    "check": { "type": "required", "field": "availability" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.availability.enum",
+    "title": "Availability în afara enum-ului Google",
+    "severity": "error",
+    "description": "Google acceptă doar in_stock / out_of_stock / preorder / backorder. Valorile uzuale dar non-standard (ex. \"in stock\", \"available\", \"pre_order\") sunt marcate warning cu maparea recomandată — nu opresc scorul, dar trebuie normalizate la feed.",
+    "check": {
+      "type": "enum",
+      "field": "availability",
+      "values": ["in_stock", "out_of_stock", "preorder", "backorder"],
+      "aliases": {
+        "in stock": "in_stock",
+        "instock": "in_stock",
+        "in-stock": "in_stock",
+        "available": "in_stock",
+        "available for order": "in_stock",
+        "yes": "in_stock",
+        "1": "in_stock",
+        "true": "in_stock",
+        "unavailable": "out_of_stock",
+        "out of stock": "out_of_stock",
+        "out-of-stock": "out_of_stock",
+        "no": "out_of_stock",
+        "0": "out_of_stock",
+        "false": "out_of_stock",
+        "pre order": "preorder",
+        "pre-order": "preorder",
+        "pre_order": "preorder",
+        "back order": "backorder",
+        "back-order": "backorder",
+        "on backorder": "backorder"
+      },
+      "alias_severity": "warning"
+    },
+    "example_limit": 3
+  },
+  {
+    "id": "g.idents.2of3",
+    "title": "Lipsesc 2 din 3 identificatori (brand / GTIN / MPN)",
+    "severity": "error",
+    "description": "Google cere cel puțin 2 din 3: brand, GTIN, MPN. Fără ele produsul poate fi dezaprobat.",
+    "check": { "type": "at_least_n_of", "fields": ["brand", "gtin", "mpn"], "n": 2 },
+    "example_limit": 3
+  },
+  {
+    "id": "g.title.max150",
+    "title": "Titlu peste 150 de caractere",
+    "severity": "warning",
+    "description": "Google poate trunchia titlurile peste ~150 caractere.",
+    "check": { "type": "max_length", "field": "title", "value": 150 },
+    "example_limit": 3
+  },
+  {
+    "id": "g.title.allcaps",
+    "title": "Titlu complet cu majuscule",
+    "severity": "warning",
+    "description": "Titlurile ALL CAPS arată spammy și pot fi penalizate calitativ.",
+    "check": { "type": "all_caps", "field": "title" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.title.promo",
+    "title": "Titlu cu text promoțional",
+    "severity": "warning",
+    "description": "Google respinge titlurile cu text promoțional (transport gratuit, reducere, prețuri în titlu etc.).",
+    "check": {
+      "type": "promo_text",
+      "field": "title",
+      "pattern": "(transport\\s+gratuit|gratis|reducere|ofert[aă]|promo[tț]ie|discount|\\d+\\s*%|\\d+\\s*(lei|ron|€|eur)\\b|la\\s+doar|stoc\\s+limitat)"
+    },
+    "example_limit": 3
+  },
+  {
+    "id": "g.price.format",
+    "title": "Preț cu format invalid",
+    "severity": "error",
+    "description": "Prețul trebuie să fie numeric cu maximum 2 zecimale (ex. 299.99).",
+    "check": { "type": "format", "field": "price_numeric", "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.sale_price.format",
+    "title": "sale_price cu format invalid",
+    "severity": "error",
+    "description": "sale_price (g:sale_price) trebuie să fie numeric cu maximum 2 zecimale.",
+    "check": { "type": "format", "field": "sale_price_numeric", "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.sale_price.logic",
+    "title": "sale_price logic invalid (0 sau ≥ price)",
+    "severity": "error",
+    "description": "sale_price trebuie să fie > 0 și strict mai mic decât price. sale_price=0 cu price>0 e o valoare reală invalidă, NU un câmp lipsă (lecția parsePrice).",
+    "check": { "type": "sale_price_logic", "price_field": "price", "sale_field": "sale_price" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.gtin.checkdigit",
+    "title": "GTIN cu cifră de control (check-digit) invalidă",
+    "severity": "error",
+    "description": "GTIN trebuie să aibă 8/12/13/14 cifre și cifra de control GS1 validă.",
+    "check": { "type": "gtin_checkdigit", "field": "gtin" },
+    "example_limit": 3
+  },
+  {
+    "id": "g.id.duplicate",
+    "title": "ID-uri duplicate în feed",
+    "severity": "error",
+    "description": "ID-ile trebuie să fie unice în feed. Regulă la nivel de feed: nu afectează scorul per-produs, dar e raportată ca problemă.",
+    "check": { "type": "duplicate_id", "field": "id" },
+    "example_limit": 3
+  }
+]

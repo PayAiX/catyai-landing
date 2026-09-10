@@ -1,0 +1,111 @@
+[
+  {
+    "id": "m.req.id",
+    "title": "ID produs lipsă",
+    "severity": "error",
+    "description": "Schema de catalog Meta (facebook.com/products) cere id per produs.",
+    "check": { "type": "required", "field": "id" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.title",
+    "title": "Titlu lipsă",
+    "severity": "error",
+    "description": "Titlul este obligatoriu în catalogul Meta.",
+    "check": { "type": "required", "field": "title" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.description",
+    "title": "Descriere lipsă",
+    "severity": "error",
+    "description": "Descrierea este obligatorie în schema de catalog Meta.",
+    "check": { "type": "required", "field": "description" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.availability",
+    "title": "Availability lipsă",
+    "severity": "error",
+    "description": "Availability este obligatoriu în schema de catalog Meta.",
+    "check": { "type": "required", "field": "availability" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.price",
+    "title": "Preț lipsă",
+    "severity": "error",
+    "description": "Prețul este obligatoriu în schema de catalog Meta.",
+    "check": { "type": "required", "field": "price" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.link",
+    "title": "Link produs lipsă",
+    "severity": "error",
+    "description": "Link-ul către pagina de produs este obligatoriu.",
+    "check": { "type": "required", "field": "link" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.req.image",
+    "title": "Imagine lipsă",
+    "severity": "error",
+    "description": "Link-ul de imagine (image_link) este obligatoriu.",
+    "check": { "type": "required", "field": "image" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.availability.enum",
+    "title": "Availability în afara enum-ului Meta",
+    "severity": "error",
+    "description": "Meta folosește \"in stock / available for order / out of stock / discontinued\". Variantele snake_case (in_stock, out_of_stock, available_for_order) sunt acceptate silențios ca alias — nu sunt marcate ca problemă.",
+    "check": {
+      "type": "enum",
+      "field": "availability",
+      "values": ["in stock", "available for order", "out of stock", "discontinued"],
+      "aliases": {
+        "in_stock": "in stock",
+        "available_for_order": "available for order",
+        "out_of_stock": "out of stock",
+        "pre_order": "available for order",
+        "preorder": "available for order",
+        "instock": "in stock",
+        "available": "in stock"
+      }
+    },
+    "example_limit": 3
+  },
+  {
+    "id": "m.title.max150",
+    "title": "Titlu peste 150 de caractere",
+    "severity": "warning",
+    "description": "Titlurile lungi sunt trunchiate în afișările Meta.",
+    "check": { "type": "max_length", "field": "title", "value": 150 },
+    "example_limit": 3
+  },
+  {
+    "id": "m.price.currency",
+    "title": "Preț fără monedă",
+    "severity": "warning",
+    "description": "Meta recomandă preț cu monedă (ex. \"299 RON\"); fără monedă maparea poate fi greșită.",
+    "check": { "type": "currency_code", "field": "price" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.sale_price.logic",
+    "title": "sale_price logic invalid (0 sau ≥ price)",
+    "severity": "warning",
+    "description": "sale_price trebuie să fie > 0 și strict mai mic decât price. La Meta e warning (nu blochează produsul), dar de obicei indică un bug de export.",
+    "check": { "type": "sale_price_logic", "price_field": "price", "sale_field": "sale_price" },
+    "example_limit": 3
+  },
+  {
+    "id": "m.id.duplicate",
+    "title": "ID-uri duplicate în feed",
+    "severity": "error",
+    "description": "ID-ile trebuie să fie unice în catalog. Regulă la nivel de feed: nu afectează scorul per-produs.",
+    "check": { "type": "duplicate_id", "field": "id" },
+    "example_limit": 3
+  }
+]

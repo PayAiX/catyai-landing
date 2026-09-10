@@ -1,19 +1,25 @@
 'use strict';
 
-// PR-1 (C1+C2) — handler Lambda minimal pentru audit feed public (ziua 1 din
-// planul SPEC §3: job async în același warm container, Map module-level;
-// persistența 72h = ziua 4 / C6).
+// PR-1 (C1+C2) + PR-2 (C3) — handler Lambda minimal pentru audit feed public
+// (ziua 1–2 din planul SPEC §3: job async în același warm container, Map
+// module-level; persistența 72h = ziua 4 / C6).
 //
 // POST /api/feed-audit {url} → validare SSRF (400 la URL privat) → 202 {audit_id, status_url}
-// GET  /api/feed-audit?audit_id=… → {status: queued|running|done|failed, result?}
+// GET  /api/feed-audit?audit_id=… → {status, result?} cu result = {
+//   sample_size, stats, specs: {google, meta, chatgpt}, top_fields_missing }
 //
 // Testabil fără Lambda: createHandler(deps) primește dependențe injectabile
 // (validator, fetcher). Wrapper-ul de jos e cel pe care îl apelează AWS.
 
 const crypto = require('crypto');
+const path = require('path');
 const { validateSafeUrl, HttpError } = require('./validate-url');
 const { fetchFeed } = require('./fetch-feed');
 const { parseFeed } = require('./parse-feed');
+const { loadRules, runAll } = require('./validators/engine');
+
+// Reguli declarative C3 — încărcate și validate structural la startup (fail fast).
+const RULES = loadRules(path.join(__dirname, 'validators'));
 
 const SAMPLE_LIMIT = 5000;
 const SAMPLE_NOTICE =
@@ -73,6 +79,9 @@ async function processJob(job, deps) {
         encoding: stats.encoding,
         ...(stats.error ? { error: stats.error } : {}),
       },
+      // C3: scorurile spec (google/meta/chatgpt) se calculează în același job,
+      // imediat după parsing; motor declarativ — validators/rules-*.json
+      specs: runAll(items, RULES),
       top_fields_missing: computeTopFieldsMissing(items),
     };
     if (stats.truncated || feedTruncated) result.notice = SAMPLE_NOTICE;
