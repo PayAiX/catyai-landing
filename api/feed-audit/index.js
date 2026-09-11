@@ -202,9 +202,12 @@ function createHandler(deps = {}) {
         await limiter.checkGlobal();
         await limiter.acquireDomain(validatedDomain, job.id);
       } catch (err) {
-        if (err instanceof RateLimitError || err.statusCode === 429) {
+        // 429 = limită depășită (RateLimitError); 503 = store-ul limiterului
+        // indisponibil (StoreUnavailableError) — ambele au retry_after_sec.
+        // Ambele refuză crearea auditului; 503 NU înseamnă „audit creat".
+        if (err instanceof RateLimitError || err.statusCode === 429 || err.statusCode === 503) {
           return json(
-            429,
+            err.statusCode === 503 ? 503 : 429,
             {
               error: err.message,
               retry_after_sec: err.retryAfterSec,

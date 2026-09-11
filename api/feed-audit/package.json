@@ -2,7 +2,7 @@
   "name": "feed-audit",
   "private": true,
   "version": "0.1.0",
-  "description": "Audit feed public (SPEC MVP 2026-09-09, PR-1: C1+C2) — cod Lambda, CommonJS, zero dependențe externe",
+  "description": "Audit feed public (SPEC MVP 2026-09-09, PR-1: C1+C2) — cod Lambda, CommonJS. Modulele de bază au ZERO dependențe externe (doar builtin-uri); singurul fișier cu dependențe este lambda-entry.js (wire de deploy: ioredis, mongodb, @aws-sdk/client-secrets-manager — se bundled în zip-ul Lambda)",
   "type": "commonjs",
   "engines": {
     "node": ">=20"
@@ -10,5 +10,10 @@
   "scripts": {
     "test": "node --test test/",
     "start": "node local.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.985.0",
+    "ioredis": "^5.3.2",
+    "mongodb": "^6.20.0"
   }
 }
