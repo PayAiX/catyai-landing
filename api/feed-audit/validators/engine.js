@@ -95,6 +95,12 @@ function validateRuleset(rules, specName = '(anonim)') {
       if (!Array.isArray(check.fields) || check.fields.length === 0 || !Number.isInteger(check.n)) {
         throw new Error(`${prefix}: ${rule.id} at_least_n_of fields/n invalide`);
       }
+      if (check.exempt_when !== undefined
+        && (typeof check.exempt_when !== 'object' || check.exempt_when === null
+          || typeof check.exempt_when.field !== 'string'
+          || check.exempt_when.equals === undefined)) {
+        throw new Error(`${prefix}: ${rule.id} exempt_when cere {field, equals}`);
+      }
     }
     if (check.type === 'sale_price_logic') {
       if (typeof check.price_field !== 'string' || typeof check.sale_field !== 'string') {
@@ -228,6 +234,14 @@ function evalCheck(check, item) {
     }
 
     case 'at_least_n_of': {
+      // Scutire declarativă: unele specuri acceptă explicit lipsa identificatorilor
+      // dacă produsul o DECLARĂ (Google: `identifier_exists=no`). Clauza stă în
+      // JSON, nu în motor — motorul rămâne generic, fără cunoștințe de spec.
+      if (check.exempt_when
+        && String(item[check.exempt_when.field] ?? '').trim().toLowerCase()
+           === String(check.exempt_when.equals).toLowerCase()) {
+        return { v: false };
+      }
       const present = check.fields.filter((f) => !isEmpty(item[f]));
       if (present.length >= check.n) return { v: false };
       return {

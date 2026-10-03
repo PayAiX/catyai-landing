@@ -81,6 +81,38 @@ test('item fără gtin/mpn/brand → error la 2-din-3 doar la Google', () => {
   assert.equal(specs.chatgpt.score, 100);
 });
 
+// Produsele fără identificatori de fabricant (handmade, mărfuri generice) sunt
+// conforme la Google DACĂ o declară explicit. Fără scutirea asta, auditul pe
+// care îl vindem raporta eroare pe un feed corect — fals pozitiv măsurat pe
+// feedul gotrendy (28 sept 2026): 32 din 360 produse.
+test('identifier_exists=no scutește regula 2-din-3 (declarația e conformă la Google)', () => {
+  const item = validItem({ gtin: undefined, mpn: undefined, identifier_exists: 'no' });
+  const specs = runAll([item], RULES);
+  assert.equal(specs.google.score, 100);
+  assert.equal(specs.google.problems.find((p) => p.rule_id === 'g.idents.2of3'), undefined);
+});
+
+test('scutirea e insensibilă la majuscule și spații în declarație', () => {
+  for (const decl of ['no', 'NO', ' No ']) {
+    const specs = runAll([validItem({ gtin: undefined, mpn: undefined, identifier_exists: decl })], RULES);
+    assert.equal(specs.google.score, 100, `declarația ${JSON.stringify(decl)} trebuia să scutească`);
+  }
+});
+
+test('identifier_exists=yes NU scutește — lipsa identificatorilor rămâne eroare', () => {
+  const specs = runAll([validItem({ gtin: undefined, mpn: undefined, identifier_exists: 'yes' })], RULES);
+  assert.equal(specs.google.score, 0);
+  assert.ok(specs.google.problems.find((p) => p.rule_id === 'g.idents.2of3'));
+});
+
+test('exempt_when invalid e respins la validarea rulesetului', () => {
+  const bad = [{
+    id: 'x.bad', title: 'x', severity: 'error', description: 'x',
+    check: { type: 'at_least_n_of', fields: ['brand', 'gtin'], n: 2, exempt_when: { field: 'a' } },
+  }];
+  assert.throws(() => validateRuleset(bad, 'test'), /exempt_when cere \{field, equals\}/);
+});
+
 test('gtin cu check-digit greșit → eroare doar la specurile cu gtin_checkdigit', () => {
   const item = validItem({ gtin: '5901234123456' }); // cifră de control greșită
   const specs = runAll([item], RULES);
