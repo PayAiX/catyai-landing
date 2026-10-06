@@ -3287,7 +3287,12 @@ function AppContent() {
 
   // Pages with their own layout (no shared Header/Footer)
   const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed']
-  const isStandalonePage = standalonePages.includes(location.pathname) || location.pathname.startsWith('/blog')
+  // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
+  // iar potrivirea exactă pe '/pagina/' pică: paginile noi (chatgpt-feed, mcp,
+  // geo-gateway, google-shopping-feed, facebook-instagram-feed, trust-gateway)
+  // ajungeau în arborele vechi de rute și randau NotFound (6 oct 2026).
+  const currentPath = location.pathname.replace(/\/+$/, '') || '/'
+  const isStandalonePage = standalonePages.includes(currentPath) || currentPath.startsWith('/blog')
 
   // Track referral code from URL
   useEffect(() => {
