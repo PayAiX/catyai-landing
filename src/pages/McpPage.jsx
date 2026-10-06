@@ -4,9 +4,17 @@ import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'mcp'
 
 const T = {
   en: {
+    meta: {
+      title: 'Model Context Protocol (MCP) Server — 45 AI Commerce Tools for Claude | CatyAI',
+      desc: "CatyAI's Model Context Protocol (MCP) server extends Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence. Official Anthropic partner. From €299/month.",
+    },
+    ui: { popular: 'Most Popular', perMonth: '/month', copy: 'Copy', copied: 'Copied!' },
     badge1: 'MCP Server',
     badge2: '45 Tools',
     badge3: 'Production Ready',
@@ -71,6 +79,11 @@ const T = {
     trustText: 'Built with Anthropic technology · NAP V3 Protocol · EU AI Act compliant · PayAi-X FZE',
   },
   ro: {
+    meta: {
+      title: 'Server Model Context Protocol (MCP) — 45 unelte AI Commerce pentru Claude | CatyAI',
+      desc: 'Serverul MCP CatyAI extinde Claude Desktop și Claude Code cu 45 de unelte de producție: detecție fraude, comerț Zero-Trust, îmbogățire semantică și inteligență de piață. Partener oficial Anthropic. De la €299/lună.',
+    },
+    ui: { popular: 'Cel mai popular', perMonth: '/lună', copy: 'Copiază', copied: 'Copiat!' },
     badge1: 'Server MCP',
     badge2: '45 Unelte',
     badge3: 'Gata de Producție',
@@ -430,19 +443,21 @@ const SOFTWARE_SCHEMA = {
   provider: { '@type': 'Organization', name: 'PayAi-X FZE', url: 'https://catyai.io' },
 }
 
-export default function McpPage() {
-  const [lang, setLang] = useState('en')
+// `locale` vine din rută: /ro/mcp → 'ro' (fixat de URL, nu de localStorage).
+export default function McpPage({ locale }) {
+  const [lang, setLang] = useState(locale || 'en')
   const [scrolled, setScrolled] = useState(false)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
+    if (locale) return
     const saved = localStorage.getItem('catyai_lang')
     if (saved && T[saved]) setLang(saved)
-  }, [])
+  }, [locale])
 
   useEffect(() => {
-    localStorage.setItem('catyai_lang', lang)
-  }, [lang])
+    if (!locale) localStorage.setItem('catyai_lang', lang)
+  }, [lang, locale])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -489,13 +504,17 @@ export default function McpPage() {
   }
 
   const t = T[lang] || T.en
+  const meta = t.meta || T.en.meta
+  const ui = t.ui || T.en.ui
 
   return (
     <>
       <SEO
-        title="Model Context Protocol (MCP) Server — 45 AI Commerce Tools for Claude | CatyAI"
-        description="CatyAI's Model Context Protocol (MCP) server extends Claude Desktop and Claude Code with 45 production tools: fraud detection, Zero-Trust commerce, semantic enrichment, and market intelligence. Official Anthropic partner. From €299/month."
-        canonical="https://catyai.io/mcp"
+        title={meta.title}
+        description={meta.desc}
+        url={pageUrl(SLUG, locale)}
+        lang={lang}
+        alternates={alternatesFor(SLUG)}
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(SOFTWARE_SCHEMA)}</script>
@@ -1023,7 +1042,7 @@ export default function McpPage() {
                 </div>
                 <span className="mcp-code-title">claude_desktop_config.json</span>
                 <button className="mcp-copy-btn" onClick={handleCopy} type="button">
-                  {copied ? 'Copied!' : 'Copy'}
+                  {copied ? ui.copied : ui.copy}
                 </button>
               </div>
               <div className="mcp-code-body">{CONFIG_SNIPPET}</div>
@@ -1077,11 +1096,11 @@ export default function McpPage() {
             <div className="mcp-pricing-grid">
               {t.plans.map((plan) => (
                 <div key={plan.name} className={`mcp-plan${plan.popular ? ' mcp-plan-popular' : ''}`}>
-                  {plan.popular && <span className="mcp-popular-badge">Most Popular</span>}
+                  {plan.popular && <span className="mcp-popular-badge">{ui.popular}</span>}
                   <div className="mcp-plan-name">{plan.name}</div>
                   <div>
                     <span className="mcp-plan-price">{plan.price}</span>
-                    <span className="mcp-plan-period">/month</span>
+                    <span className="mcp-plan-period">{ui.perMonth}</span>
                   </div>
                   <ul className="mcp-plan-features">
                     {plan.features.map((f) => <li key={f}>{f}</li>)}

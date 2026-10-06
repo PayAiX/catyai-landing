@@ -5,6 +5,9 @@ import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
 import PartnerBadges from '../components/PartnerBadges'
 import { MERCHANT_COUNT, productsShortM } from '../lib/catalogStats'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'google-shopping-feed'
 
 // Cifrele din sursa unică (src/lib/catalogStats.js, actualizată la build din
 // /api/public/catalog-stats — aceeași interogare ca aff-llms.txt). Nu hardcoda.
@@ -329,16 +332,19 @@ function FeedPanel({ t }) {
   )
 }
 
-export default function GoogleShoppingFeed() {
-  const [lang, setLang] = useState('en')
+// `locale` vine din rută: /ro/google-shopping-feed → 'ro' (limba e fixată de URL,
+// nu de localStorage); /google-shopping-feed → undefined (comportamentul vechi).
+export default function GoogleShoppingFeed({ locale }) {
+  const [lang, setLang] = useState(locale || 'en')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
+    if (locale) return
     const saved = localStorage.getItem('catyai_lang')
     if (saved && T[saved]) setLang(saved)
-  }, [])
+  }, [locale])
 
-  useEffect(() => { localStorage.setItem('catyai_lang', lang) }, [lang])
+  useEffect(() => { if (!locale) localStorage.setItem('catyai_lang', lang) }, [lang, locale])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -350,7 +356,7 @@ export default function GoogleShoppingFeed() {
 
   return (
     <>
-      <SEO title={t.meta.title} description={t.meta.desc} url="https://catyai.io/google-shopping-feed" />
+      <SEO title={t.meta.title} description={t.meta.desc} url={pageUrl(SLUG, locale)} lang={lang} alternates={alternatesFor(SLUG)} />
       <Helmet><script type="application/ld+json">{JSON.stringify(JSON_LD)}</script></Helmet>
 
       <div className="min-h-screen bg-[#0a0f1c] text-[#c7d0e0] font-sans antialiased">

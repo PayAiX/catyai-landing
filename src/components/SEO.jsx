@@ -18,7 +18,10 @@ export default function SEO({
   breadcrumbs = null,
   faq = null,
   service = null,  // { name, description, price, features }
-  product = null   // { name, description, price, rating }
+  product = null,  // { name, description, price, rating }
+  jsonLd = null,   // obiect JSON-LD arbitrar al paginii
+  lang = 'en',     // limba paginii → <html lang>
+  alternates = null // { en: url, ro: url } → perechi hreflang (x-default = en)
 }) {
   // Some pages already bake "| CatyAI" into their own title string (per-page or
   // per-language). Appending it again here produced "... | CatyAI | CatyAI" live
@@ -170,11 +173,15 @@ export default function SEO({
   };
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang }}>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={defaultMeta.keywords} />
       <link rel="canonical" href={seo.url} />
+      {alternates && Object.entries(alternates).map(([hl, href]) => (
+        <link key={hl} rel="alternate" hrefLang={hl} href={href} />
+      ))}
+      {alternates?.en && <link rel="alternate" hrefLang="x-default" href={alternates.en} />}
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
@@ -225,6 +232,11 @@ export default function SEO({
       {productSchema && (
         <script type="application/ld+json">
           {JSON.stringify(productSchema)}
+        </script>
+      )}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
         </script>
       )}
       {/* WebPage schema always included */}

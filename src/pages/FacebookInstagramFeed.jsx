@@ -5,6 +5,9 @@ import FooterV9 from '../components/FooterV9'
 import GlobalHeader from '../components/GlobalHeader'
 import PartnerBadges from '../components/PartnerBadges'
 import { productsShortM } from '../lib/catalogStats'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'facebook-instagram-feed'
 
 // Cifra din sursa unică (src/lib/catalogStats.js, actualizată la build). Nu hardcoda.
 const MIL_DOT = productsShortM('en').slice(0, -1)
@@ -266,16 +269,18 @@ function ChannelDiagram({ t }) {
   )
 }
 
-export default function FacebookInstagramFeed() {
-  const [lang, setLang] = useState('en')
+// `locale` vine din rută: /ro/facebook-instagram-feed → 'ro' (fixat de URL).
+export default function FacebookInstagramFeed({ locale }) {
+  const [lang, setLang] = useState(locale || 'en')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
+    if (locale) return
     const saved = localStorage.getItem('catyai_lang')
     if (saved && T[saved]) setLang(saved)
-  }, [])
+  }, [locale])
 
-  useEffect(() => { localStorage.setItem('catyai_lang', lang) }, [lang])
+  useEffect(() => { if (!locale) localStorage.setItem('catyai_lang', lang) }, [lang, locale])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -287,7 +292,7 @@ export default function FacebookInstagramFeed() {
 
   return (
     <>
-      <SEO title={t.meta.title} description={t.meta.desc} url="https://catyai.io/facebook-instagram-feed" />
+      <SEO title={t.meta.title} description={t.meta.desc} url={pageUrl(SLUG, locale)} lang={lang} alternates={alternatesFor(SLUG)} />
       <Helmet><script type="application/ld+json">{JSON.stringify(JSON_LD)}</script></Helmet>
 
       <div className="min-h-screen bg-[#0a0f1c] text-[#c7d0e0] font-sans antialiased">

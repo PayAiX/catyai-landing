@@ -21,13 +21,23 @@ function startServer() {
     const server = createServer((req, res) => {
       let filePath = path.join(distDir, req.url === '/' ? 'index.html' : req.url);
 
+      // Fallback SPA = shell-ul ORIGINAL (indexHtml citit la pornire), nu
+      // dist/index.html de pe disc: ruta '/' e prerandată prima și suprascrie
+      // dist/index.html cu <html lang="en" data-rh="lang">; paginile randate
+      // după ea moșteneau marcajul Helmet și pierdeau atributul lang
+      // (/solutii/* ieșeau cu <html> gol) — 6 oct 2026.
       if (!fs.existsSync(filePath)) {
-        filePath = path.join(distDir, 'index.html');
+        filePath = null;
       } else if (fs.statSync(filePath).isDirectory()) {
         filePath = path.join(filePath, 'index.html');
         if (!fs.existsSync(filePath)) {
-          filePath = path.join(distDir, 'index.html');
+          filePath = null;
         }
+      }
+      if (filePath === null || filePath === path.join(distDir, 'index.html')) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(indexHtml);
+        return;
       }
 
       const ext = path.extname(filePath);
