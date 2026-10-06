@@ -3428,6 +3428,13 @@ function AppContent() {
             <Route path="/solutii/restaurante" element={<ForRestaurants />} />
             <Route path="/solutii/ecommerce" element={<ForEcommerce />} />
             <Route path="/solutii/agentii-marketing" element={<ForAgencies />} />
+            {/* Versiunile RO (copy Kimi, 6 oct 2026) — același layout comun ca perechile EN */}
+            <Route path="/ro/compare" element={<Compare locale="ro" />} />
+            <Route path="/ro/solutii/clinici-medicale" element={<ForClinics locale="ro" />} />
+            <Route path="/ro/solutii/agentii-imobiliare" element={<ForRealEstate locale="ro" />} />
+            <Route path="/ro/solutii/restaurante" element={<ForRestaurants locale="ro" />} />
+            <Route path="/ro/solutii/ecommerce" element={<ForEcommerce locale="ro" />} />
+            <Route path="/ro/solutii/agentii-marketing" element={<ForAgencies locale="ro" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

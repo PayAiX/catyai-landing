@@ -45,28 +45,28 @@ export default function ChatbotRomania() {
       icon: "🦷",
       problem: "Recepția nu poate răspunde în afara programului",
       solution: "CatyAI răspunde 24/7, face programări automate, trimite confirmări pe WhatsApp",
-      result: "+40% programări, -80% apeluri pierdute"
+      result: "pacienții primesc răspuns la orice oră, iar fiecare programare ajunge în dashboard cu toate datele"
     },
     {
       industry: "Saloane de Frumusețe",
       icon: "💇",
       problem: "Mesaje pe Instagram, WhatsApp, Facebook - imposibil de gestionat",
       solution: "CatyAI centralizează totul, răspunde instant, sincronizează cu calendarul",
-      result: "+60% rezervări online, 0 ore overtime pentru recepție"
+      result: "toate mesajele din Instagram, WhatsApp și Facebook într-o singură căsuță, cu răspuns instant și sincronizare cu calendarul"
     },
     {
       industry: "Agenții Imobiliare",
       icon: "🏠",
       problem: "Lead-uri pierdute în weekend când agenții nu răspund",
       solution: "CatyAI califică lead-urile, colectează cerințele, programează vizionări",
-      result: "+35% lead-uri convertite, răspuns în <30 secunde"
+      result: "leaduri calificate automat (buget, zonă, orizont de timp) și răspuns instant, inclusiv în weekend"
     },
     {
       industry: "Restaurant & HoReCa",
       icon: "🍽️",
       problem: "Telefon ocupat în timpul rush-ului, rezervări pierdute",
       solution: "CatyAI preia rezervările pe WhatsApp, confirmă automat, trimite reminder",
-      result: "+25% rezervări, -50% no-shows"
+      result: "rezervări preluate pe WhatsApp la orice oră, cu confirmare și reminder automat pentru oaspeți"
     }
   ]
 
@@ -388,7 +388,7 @@ export default function ChatbotRomania() {
                       <p className="text-gray-600">{uc.solution}</p>
                     </div>
                     <div className="pt-3 border-t border-gray-200">
-                      <span className="text-sm font-medium text-green-600">Rezultat:</span>
+                      <span className="text-sm font-medium text-green-600">Ce primești:</span>
                       <p className="text-gray-900 font-semibold">{uc.result}</p>
                     </div>
                   </div>

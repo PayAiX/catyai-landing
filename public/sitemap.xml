@@ -410,6 +410,9 @@
   </url>
   <url>
     <loc>https://catyai.io/compare</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/compare"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/compare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/compare"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -587,30 +590,45 @@
   </url>
   <url>
     <loc>https://catyai.io/solutii/clinici-medicale</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/clinici-medicale"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/clinici-medicale"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/clinici-medicale"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://catyai.io/solutii/agentii-imobiliare</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/agentii-imobiliare"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/agentii-imobiliare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/agentii-imobiliare"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://catyai.io/solutii/restaurante</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/restaurante"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/restaurante"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/restaurante"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://catyai.io/solutii/ecommerce</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/ecommerce"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://catyai.io/solutii/agentii-marketing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/agentii-marketing"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/agentii-marketing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/agentii-marketing"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -842,6 +860,60 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/trust-gateway"/>
     <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/trust-gateway"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/trust-gateway"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/compare</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/compare"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/compare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/compare"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/solutii/ecommerce</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/ecommerce"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/ecommerce"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/solutii/clinici-medicale</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/clinici-medicale"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/clinici-medicale"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/clinici-medicale"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/solutii/agentii-imobiliare</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/agentii-imobiliare"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/agentii-imobiliare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/agentii-imobiliare"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/solutii/restaurante</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/restaurante"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/restaurante"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/restaurante"/>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/solutii/agentii-marketing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/solutii/agentii-marketing"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/solutii/agentii-marketing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/solutii/agentii-marketing"/>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

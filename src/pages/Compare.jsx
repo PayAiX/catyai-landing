@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import Footer from '../components/Footer'
 import { useLanguage } from '../App'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'compare'
+
+// Meta per limbă (RO = copy Kimi 6 oct 2026); celelalte limbi cad pe EN.
+const META = {
+  en: { title: 'CatyAI vs Tidio vs Intercom - Honest Comparison | CatyAI', desc: 'Compare CatyAI with Tidio and Intercom. See the real costs, features included, and why CatyAI offers better value with AI, WhatsApp, and FraudAI all included.' },
+  ro: { title: 'CatyAI vs Tidio vs Intercom — Comparație onestă | CatyAI', desc: 'La competitori, prețul de pe site e doar începutul: AI, automatizări și integrări se plătesc separat. La CatyAI totul e inclus, la un singur preț.' },
+}
 
 const translations = {
   en: {
@@ -55,30 +64,31 @@ const translations = {
     }
   },
   ro: {
-    badge: 'Comparație Onestă',
+    badge: 'Comparație onestă',
     heroTitle1: 'De ce CatyAI și nu',
     heroTitle2: 'Tidio sau Intercom?',
-    heroSubtitle: 'La competitori, prețul de pe site e doar începutul. AI-ul, automatizările și integrările sunt add-on-uri separate. La CatyAI, totul e inclus.',
-    heroCta: 'Începe Gratuit',
-    heroCtaSecondary: 'Vezi Prețuri',
+    heroSubtitle: 'La competitori, prețul afișat e doar începutul. AI-ul, automatizările și integrările sunt add-on-uri separate. La CatyAI, totul e inclus.',
+    heroCta: 'Începe gratuit',
+    heroCtaSecondary: 'Vezi prețurile',
     trustBadge1: 'Fără costuri ascunse',
     trustBadge2: 'AI inclus',
     trustBadge3: 'Anulezi oricând',
-    feature: 'Funcție',
+    feature: 'Caracteristică',
+    hdrCaty: '€49/lună', hdrTidio: '€149+/lună', hdrIntercom: '$39+/loc',
     total: 'TOTAL',
     calloutTitle: 'La CatyAI, AI-ul e inclus. Nu e add-on.',
-    calloutDesc: 'Plătești un preț, primești totul: AI, WhatsApp, FraudAI, documente, automatizări.',
-    cta: 'Începe Gratuit →',
-    source: '* Prețuri verificate pe site-urile oficiale Tidio și Intercom, Martie 2026. Tidio Lyro: €32.50/lună pentru 50 conv. Tidio Flows: €24.17/lună.',
+    calloutDesc: 'Plătești un singur preț și primești totul: AI, WhatsApp, FraudAI, documente, automatizări.',
+    cta: 'Începe gratuit →',
+    source: '* Prețuri orientative, preluate de pe site-urile oficiale Tidio și Intercom în martie 2026 (Tidio Lyro: €32,50/lună pentru 50 conv.; Tidio Flows: €24,17/lună) — verifică oferta curentă.',
     features: [
-      { name: 'Preț lunar', caty: '€49', tidio: '€149 + add-ons', intercom: '$39/seat + fees' },
-      { name: 'AI conversațional', caty: '✓ Inclus', tidio: '+€32/lună (Lyro)', intercom: '+$0.99/rezoluție' },
+      { name: 'Preț lunar', caty: '€49', tidio: '€149 + add-on-uri', intercom: '$39/loc + taxe' },
+      { name: 'AI conversațional', caty: '✓ Inclus', tidio: '+€32/lună (Lyro)', intercom: '+$0,99/rezolvare' },
       { name: 'Automatizări', caty: '✓ Inclus', tidio: '+€24/lună (Flows)', intercom: '✓ Limitat' },
       { name: 'WhatsApp nativ', caty: '✓ Inclus', tidio: '✗ Nu', intercom: '✗ Nu' },
-      { name: 'FraudAI (anti-scam)', caty: '✓ Inclus', tidio: '✗ Nu există', intercom: '✗ Nu există' },
+      { name: 'FraudAI (anti-fraudă)', caty: '✓ Inclus', tidio: '✗ Nu există', intercom: '✗ Nu există' },
       { name: 'Generare documente', caty: '✓ Inclus', tidio: '✗ Nu există', intercom: '✗ Nu există' },
-      { name: 'Setup QR în 2 min', caty: '✓ Da', tidio: '✗ Nu', intercom: '✗ Nu' },
-      { name: 'Cost REAL/lună', caty: '€49', tidio: '€205+', intercom: '$500+' }
+      { name: 'Setup QR în 2 minute', caty: '✓ Da', tidio: '✗ Nu', intercom: '✗ Nu' },
+      { name: 'Cost real/lună', caty: '€49', tidio: '€205+', intercom: '$500+' }
     ],
     nav: {
       features: 'Funcții',
@@ -256,16 +266,21 @@ const translations = {
   }
 }
 
-export default function Compare() {
+// `locale` vine din rută: /ro/compare → 'ro' (fixat de URL); /compare → limba site-ului (useLanguage).
+export default function Compare({ locale }) {
   const { language } = useLanguage()
-  const t = translations[language] || translations.en
+  const lang = locale || language
+  const t = translations[lang] || translations.en
+  const meta = META[lang] || META.en
 
   return (
     <div className="min-h-screen bg-gray-950">
       <SEO
-        title="CatyAI vs Tidio vs Intercom - Honest Comparison | CatyAI"
-        description="Compare CatyAI with Tidio and Intercom. See the real costs, features included, and why CatyAI offers better value with AI, WhatsApp, and FraudAI all included."
-        canonical="https://catyai.io/compare"
+        title={meta.title}
+        description={meta.desc}
+        url={pageUrl(SLUG, locale)}
+        lang={lang}
+        alternates={alternatesFor(SLUG)}
       />
 
       {/* Navigation */}
@@ -351,15 +366,15 @@ export default function Compare() {
               <div className="p-4 text-gray-400 text-sm font-medium">{t.feature}</div>
               <div className="p-4 text-center">
                 <div className="text-gold font-bold text-lg">CatyAI</div>
-                <div className="text-gray-500 text-xs">€49/mo</div>
+                <div className="text-gray-500 text-xs">{t.hdrCaty || '€49/mo'}</div>
               </div>
               <div className="p-4 text-center">
                 <div className="text-gray-300 font-medium">Tidio</div>
-                <div className="text-gray-500 text-xs">€149+ /mo</div>
+                <div className="text-gray-500 text-xs">{t.hdrTidio || '€149+ /mo'}</div>
               </div>
               <div className="p-4 text-center">
                 <div className="text-gray-300 font-medium">Intercom</div>
-                <div className="text-gray-500 text-xs">$39+ /seat</div>
+                <div className="text-gray-500 text-xs">{t.hdrIntercom || '$39+ /seat'}</div>
               </div>
             </div>
 

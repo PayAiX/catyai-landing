@@ -1,169 +1,88 @@
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import SolutionPage from './SolutionPage'
 
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": ["FoodEstablishment", "SoftwareApplication"],
-  "name": "CatyAI for Restaurants",
-  "applicationCategory": "BusinessApplication",
-  "description": "AI assistant for reservations and menu inquiries 24/7. QR at the table, no receptionist needed.",
-  "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR" },
-  "availableChannel": {
-    "@type": "ServiceChannel",
-    "serviceUrl": "https://catyai.io/solutii/restaurante",
-    "serviceType": "AI Restaurant Reservation Assistant"
+  '@context': 'https://schema.org',
+  '@type': ['FoodEstablishment', 'SoftwareApplication'],
+  name: 'CatyAI for Restaurants',
+  applicationCategory: 'BusinessApplication',
+  description: 'AI assistant for reservations and menu inquiries 24/7. QR at the table, no receptionist needed.',
+  offers: { '@type': 'Offer', price: '49', priceCurrency: 'EUR' },
+  availableChannel: { '@type': 'ServiceChannel', serviceUrl: 'https://catyai.io/solutii/restaurante', serviceType: 'AI Restaurant Reservation Assistant' },
+  provider: { '@type': 'Organization', name: 'PayAi-X FZE', url: 'https://catyai.io' },
+}
+
+const T = {
+  en: {
+    meta: { title: 'CatyAI for Restaurants — AI Reservations & Menu 24/7 | QR-First', desc: 'QR at the table — guests scan, CatyAI answers menu questions, allergens, availability and books reservations automatically. No receptionist needed.' },
+    badge: '🍽️ Solution for Restaurants',
+    h1Prefix: 'CatyAI for', h1Accent: 'Restaurants',
+    heroLead: 'Reservations and menu AI — guests scan QR, get answers, and book a table. No app download, no receptionist.',
+    heroSub: 'CatyAI handles inquiries about menu, allergens, and availability — then confirms reservations on WhatsApp. Works 24/7, including weekends.',
+    ctaPrimary: 'Start free — 2 minute setup →',
+    ctaSecondary: { label: 'How QR-First works', to: '/no-website' },
+    painsTitle: 'Problems costing you reservations every week',
+    painsSub: 'Common HoReCa challenges — CatyAI solves all of them.',
+    pains: [
+      { icon: '📞', title: 'Calls at impossible hours', desc: 'Guests call Sunday at 10 PM to book for Friday. CatyAI takes the request instantly and confirms automatically.' },
+      { icon: '🌍', title: "Tourists who don't speak the local language", desc: 'CatyAI responds in 14 languages — English, German, Italian, and more — without multilingual staff.' },
+      { icon: '🌙', title: 'Reservations lost overnight', desc: 'Without a night receptionist, your restaurant loses bookings. CatyAI is active 24/7 — weekends included.' },
+    ],
+    stepsTitle: 'How it works for your restaurant',
+    steps: [
+      { title: 'Guest scans QR code on the table or entrance door', desc: "They're redirected to WhatsApp where CatyAI greets them with the menu and daily specials." },
+      { title: 'CatyAI answers questions about menu, allergens, availability', desc: 'Information is pulled from your knowledge base — updated anytime from the dashboard.' },
+      { title: 'Reservation confirmed with date, time, and party size', desc: 'Your team gets a notification. The guest gets confirmation on WhatsApp with all details.' },
+    ],
+    featuresTitle: 'Features built for restaurants',
+    features: [
+      { icon: '📱', text: 'Branded QR code — no website needed. Guests scan and chat.' },
+      { icon: '🍴', text: 'Digital menu updatable from dashboard — prices, dishes, specials.' },
+      { icon: '🌐', text: '14 languages automatic — perfect for tourist areas.' },
+      { icon: '🔔', text: 'Real-time reservation notifications to your team.' },
+      { icon: '💬', text: 'WhatsApp Business without Meta API — zero BSP costs.' },
+      { icon: '🛡️', text: 'FraudAI Shield — blocks fake reservations before they reach staff.' },
+    ],
+    finalTitle: 'Your restaurant open for reservations 24/7',
+    finalSub: 'One QR code replaces the night receptionist. Setup in 30 minutes.',
+    finalPrimary: 'Start free →',
+    finalSecondary: { label: 'See pricing', to: '/pricing' },
   },
-  "provider": { "@type": "Organization", "name": "PayAi-X FZE", "url": "https://catyai.io" }
-};
-
-function PainCard({ icon, title, desc }) {
-  return (
-    <div className="bg-[#0A1628]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#1a2744]/50 hover:border-gold/50 transition-all duration-300">
-      <div className="text-3xl mb-4">{icon}</div>
-      <h3 className="font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
-    </div>
-  );
+  ro: {
+    meta: { title: 'CatyAI pentru restaurante — Rezervări și meniu AI 24/7 | QR-First', desc: 'Oaspeții scanează QR-ul, primesc răspunsuri și rezervă masă. Fără aplicație, fără recepționer de noapte.' },
+    badge: '🍽️ Soluție pentru restaurante',
+    h1Prefix: 'CatyAI pentru', h1Accent: 'restaurante',
+    heroLead: 'Rezervări și meniu AI — oaspeții scanează QR-ul, primesc răspunsuri și rezervă masă. Fără descărcat aplicații, fără recepționer.',
+    heroSub: 'CatyAI răspunde la întrebări despre meniu, alergeni și disponibilitate — apoi confirmă rezervările pe WhatsApp. Funcționează 24/7, inclusiv în weekend.',
+    ctaPrimary: 'Începe gratuit — setup în 2 minute →',
+    ctaSecondary: { label: 'Cum funcționează QR-First', to: '/no-website' },
+    painsTitle: 'Probleme care te costă rezervări săptămânal',
+    pains: [
+      { icon: '📞', title: 'Apeluri la ore imposibile.', desc: 'Oaspeții sună duminică la 22:00 pentru vineri. CatyAI preia cererea instant și confirmă automat.' },
+      { icon: '🌍', title: 'Turiști care nu vorbesc limba.', desc: 'CatyAI răspunde în 14 limbi — engleză, germană, italiană și altele — fără personal multilingv.' },
+      { icon: '🌙', title: 'Rezervări pierdute peste noapte.', desc: 'Fără recepționer de noapte, restaurantul pierde rezervări. CatyAI e activ 24/7 — weekend inclus.' },
+    ],
+    stepsTitle: 'Cum funcționează pentru restaurantul tău',
+    steps: [
+      { title: 'Oaspetele scanează QR-ul de pe masă sau de la intrare.', desc: 'Ajunge direct pe WhatsApp, unde CatyAI îl întâmpină cu meniul și specialitățile zilei.' },
+      { title: 'CatyAI răspunde la întrebări despre meniu, alergeni, disponibilitate.', desc: 'Informațiile vin din baza ta de cunoștințe — actualizabilă oricând din dashboard.' },
+      { title: 'Rezervarea se confirmă cu dată, oră și număr de persoane.', desc: 'Echipa ta primește notificare. Oaspetele primește confirmarea pe WhatsApp, cu toate detaliile.' },
+    ],
+    featuresTitle: 'Funcții construite pentru restaurante',
+    features: [
+      { icon: '📱', text: 'QR code cu brandul tău — nici măcar site nu-ți trebuie. Oaspeții scanează și vorbesc.' },
+      { icon: '🍴', text: 'Meniu digital actualizabil din dashboard — prețuri, preparate, specialități.' },
+      { icon: '🌐', text: '14 limbi automate — perfect pentru zone turistice.' },
+      { icon: '🔔', text: 'Notificări de rezervare în timp real pentru echipă.' },
+      { icon: '💬', text: 'WhatsApp Business fără Meta API — zero costuri BSP.' },
+      { icon: '🛡️', text: 'FraudAI Shield — blochează rezervările false înainte să ajungă la personal.' },
+    ],
+    finalTitle: 'Restaurantul tău deschis pentru rezervări 24/7.',
+    finalSub: 'Un QR code înlocuiește recepționerul de noapte. Setup în 30 de minute.',
+    finalPrimary: 'Începe gratuit →',
+    finalSecondary: { label: 'Vezi prețurile', to: '/pricing' },
+  },
 }
 
-function StepCard({ step, title, desc }) {
-  return (
-    <div className="flex gap-4">
-      <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-sm font-bold flex-shrink-0 mt-1">
-        {step}
-      </div>
-      <div>
-        <h3 className="font-bold text-white mb-1">{title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
-      </div>
-    </div>
-  );
-}
-
-function FeatureItem({ icon, text }) {
-  return (
-    <div className="flex items-start gap-3 p-4 bg-[#010A1F]/50 rounded-xl border border-[#1a2744]/50">
-      <span className="text-xl flex-shrink-0">{icon}</span>
-      <span className="text-gray-300 text-sm leading-relaxed">{text}</span>
-    </div>
-  );
-}
-
-export default function ForRestaurants() {
-  return (
-    <>
-      <Helmet>
-        <title>CatyAI for Restaurants — AI Reservations & Menu 24/7 | QR-First</title>
-        <meta name="description" content="QR at the table — guests scan, CatyAI answers menu questions, allergens, availability and books reservations automatically. No receptionist needed." />
-        <link rel="canonical" href="https://catyai.io/solutii/restaurante" />
-        <meta property="og:title" content="CatyAI for Restaurants — 24/7 AI Reservations" />
-        <meta property="og:description" content="QR code replaces the night receptionist. Reservations confirmed automatically." />
-        <meta property="og:url" content="https://catyai.io/solutii/restaurante" />
-        <meta property="og:image" content="https://catyai.io/og-image.png" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
-
-      <div className="bg-[#010A1F] min-h-screen pt-24">
-
-        {/* HERO */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm mb-6">
-              🍽️ Solution for Restaurants
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              CatyAI for{' '}
-              <span className="bg-gradient-to-r from-gold to-[#D4B57A] bg-clip-text text-transparent">
-                Restaurants
-              </span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
-              Reservations and menu AI — guests scan QR, get answers,
-              and book a table. No app download, no receptionist.
-            </p>
-            <p className="text-gray-400 max-w-xl mx-auto mb-8">
-              CatyAI handles inquiries about menu, allergens, and availability —
-              then confirms reservations on WhatsApp. Works 24/7, including weekends.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://app.catyai.io/register"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-bold rounded-xl transition-all shadow-lg">
-                Start free — 2 minute setup →
-              </a>
-              <Link to="/no-website"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold/10 border border-gold/30 rounded-xl text-gold hover:bg-gold/20 transition-colors">
-                How QR-First works
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* PAIN POINTS */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-3 text-center">Problems costing you reservations every week</h2>
-            <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto">Common HoReCa challenges — CatyAI solves all of them.</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <PainCard icon="📞" title="Calls at impossible hours"
-                desc="Guests call Sunday at 10 PM to book for Friday. CatyAI takes the request instantly and confirms automatically." />
-              <PainCard icon="🌍" title="Tourists who don't speak the local language"
-                desc="CatyAI responds in 14 languages — English, German, Italian, and more — without multilingual staff." />
-              <PainCard icon="🌙" title="Reservations lost overnight"
-                desc="Without a night receptionist, your restaurant loses bookings. CatyAI is active 24/7 — weekends included." />
-            </div>
-          </div>
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-10 text-center">How it works for your restaurant</h2>
-            <div className="space-y-8">
-              <StepCard step="1" title="Guest scans QR code on the table or entrance door"
-                desc="They're redirected to WhatsApp where CatyAI greets them with the menu and daily specials." />
-              <StepCard step="2" title="CatyAI answers questions about menu, allergens, availability"
-                desc="Information is pulled from your knowledge base — updated anytime from the dashboard." />
-              <StepCard step="3" title="Reservation confirmed with date, time, and party size"
-                desc="Your team gets a notification. The guest gets confirmation on WhatsApp with all details." />
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-[#1a2744]/50">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-10 text-center">Features built for restaurants</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <FeatureItem icon="📱" text="Branded QR code — no website needed. Guests scan and chat." />
-              <FeatureItem icon="🍴" text="Digital menu updatable from dashboard — prices, dishes, specials." />
-              <FeatureItem icon="🌐" text="14 languages automatic — perfect for tourist areas." />
-              <FeatureItem icon="🔔" text="Real-time reservation notifications to your team." />
-              <FeatureItem icon="💬" text="WhatsApp Business without Meta API — zero BSP costs." />
-              <FeatureItem icon="🛡️" text="FraudAI Shield — blocks fake reservations before they reach staff." />
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 text-center border-t border-[#1a2744]/50">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-white mb-4">Your restaurant open for reservations 24/7</h2>
-            <p className="text-gray-400 mb-8">One QR code replaces the night receptionist. Setup in 30 minutes.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://app.catyai.io/register"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-800 font-bold rounded-xl transition-all shadow-lg">
-                Start free →
-              </a>
-              <Link to="/pricing"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold/10 border border-gold/30 rounded-xl text-gold hover:bg-gold/20 transition-colors">
-                See pricing
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
-    </>
-  );
+export default function ForRestaurants({ locale }) {
+  return <SolutionPage slug="restaurante" locale={locale} t={T[locale] || T.en} jsonLd={jsonLd} />
 }
