@@ -86,8 +86,8 @@
     "id": "g.idents.2of3",
     "title": "Lipsesc 2 din 3 identificatori (brand / GTIN / MPN)",
     "severity": "error",
-    "description": "Google cere cel puțin 2 din 3: brand, GTIN, MPN. Fără ele produsul poate fi dezaprobat.",
-    "check": { "type": "at_least_n_of", "fields": ["brand", "gtin", "mpn"], "n": 2 },
+    "description": "Google cere cel puțin 2 din 3: brand, GTIN, MPN — cu excepția produselor care declară explicit identifier_exists=no (produse fără identificatori de fabricant, ex. handmade). Fără ele produsul poate fi dezaprobat.",
+    "check": { "type": "at_least_n_of", "fields": ["brand", "gtin", "mpn"], "n": 2, "exempt_when": { "field": "identifier_exists", "equals": "no" } },
     "example_limit": 3
   },
   {

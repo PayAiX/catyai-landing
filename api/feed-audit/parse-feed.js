@@ -25,6 +25,11 @@ const ALIASES = {
   brand: ['g:brand', 'brand', 'brand_name', 'manufacturer', 'vendor'],
   gtin: ['g:gtin', 'gtin', 'gtin8', 'gtin12', 'gtin13', 'gtin14', 'ean', 'upc', 'isbn', 'barcode'],
   mpn: ['g:mpn', 'mpn', 'part_number', 'partno', 'model'],
+  // Declarația „produsul nu are identificatori de fabricant". Fără ea, regula
+  // „2 din 3 identificatori" raporta eroare pe produse perfect conforme, care
+  // declarau corect `identifier_exists=no` (fals pozitiv măsurat pe feedul
+  // gotrendy, 28 sept 2026: 32 produse).
+  identifier_exists: ['g:identifier_exists', 'identifier_exists'],
   description: ['g:description', 'description', 'desc', 'short_description', 'summary'],
   category: ['g:product_category', 'g:google_product_category', 'product_category', 'category', 'product_type', 'category_path'],
 };
