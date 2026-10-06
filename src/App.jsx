@@ -52,6 +52,14 @@ const ApiReferencePage = lazy(() => import('./pages/ApiReference'))
 const ZeroTrustAiAdsEn = lazy(() => import('./pages/research/ZeroTrustAiAdsEn'))
 const Press = lazy(() => import('./pages/Press'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+// Paginile RO din sitemap (/compare, /solutii/*) și-au pierdut rutele la
+// commitul 7b285e9 („recover stashed infra") → randau NotFound (6 oct 2026).
+const Compare = lazy(() => import('./pages/Compare'))
+const ForClinics = lazy(() => import('./pages/solutii/ForClinics'))
+const ForRealEstate = lazy(() => import('./pages/solutii/ForRealEstate'))
+const ForRestaurants = lazy(() => import('./pages/solutii/ForRestaurants'))
+const ForEcommerce = lazy(() => import('./pages/solutii/ForEcommerce'))
+const ForAgencies = lazy(() => import('./pages/solutii/ForAgencies'))
 const CheckWebsite = lazy(() => import('./pages/CheckWebsite'))
 const McpPage = lazy(() => import('./pages/McpPage'))
 const AgenticMarketplace = lazy(() => import('./pages/AgenticMarketplace'))
@@ -3286,7 +3294,9 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed']
+  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed',
+    // versiunile RO (6 oct 2026) — listă explicită, ca /ro/<altceva> să ajungă la NotFound
+    '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway']
   // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
   // iar potrivirea exactă pe '/pagina/' pică: paginile noi (chatgpt-feed, mcp,
   // geo-gateway, google-shopping-feed, facebook-instagram-feed, trust-gateway)
@@ -3328,7 +3338,6 @@ function AppContent() {
             <Route path="/" element={<HomePage />} />
             <Route path="/whatsapp" element={<WhatsAppAI />} />
             <Route path="/fraud-shield" element={<FraudAI />} />
-            <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/no-website" element={<NoWebsite />} />
             <Route path="/widget" element={<CatyWidget />} />
             <Route path="/geo-gateway" element={<GeoGateway />} />
@@ -3360,6 +3369,13 @@ function AppContent() {
             <Route path="/chatgpt-feed" element={<ChatGPTFeed />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
+            {/* Versiunile RO (hreflang ro) ale paginilor EN de mai sus */}
+            <Route path="/ro/chatgpt-feed" element={<ChatGPTFeed locale="ro" />} />
+            <Route path="/ro/google-shopping-feed" element={<GoogleShoppingFeed locale="ro" />} />
+            <Route path="/ro/facebook-instagram-feed" element={<FacebookInstagramFeed locale="ro" />} />
+            <Route path="/ro/mcp" element={<McpPage locale="ro" />} />
+            <Route path="/ro/geo-gateway" element={<GeoGateway locale="ro" />} />
+            <Route path="/ro/trust-gateway" element={<TrustGateway locale="ro" />} />
             <Route path="/marketplace" element={<Navigate to="/agentic-marketplace" replace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
             <Route path="/blog" element={<Blog />} />
@@ -3405,6 +3421,13 @@ function AppContent() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
+            <Route path="/chatbot-romania" element={<ChatbotRomania />} />
+            <Route path="/compare" element={<Compare />} />
+            <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
+            <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />
+            <Route path="/solutii/restaurante" element={<ForRestaurants />} />
+            <Route path="/solutii/ecommerce" element={<ForEcommerce />} />
+            <Route path="/solutii/agentii-marketing" element={<ForAgencies />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

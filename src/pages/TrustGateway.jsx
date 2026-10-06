@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import GlobalHeader from '../components/GlobalHeader'
 import FooterV9 from '../components/FooterV9'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'trust-gateway'
+
+// Meta per limbă: EN este adaptarea 1:1 a textului RO existent (aceleași afirmații).
+const META = {
+  ro: {
+    title: 'Trust Gateway — AI-ul nu poate inventa prețul tău | CatyAI',
+    desc: 'Fiecare răspuns comercial e semnat criptografic (Ed25519) și verificabil public prin JWKS. Dacă datele sunt modificate, sistemul blochează automat răspunsul.',
+  },
+  en: {
+    title: 'Trust Gateway — AI cannot invent your price | CatyAI',
+    desc: 'Every commercial answer is cryptographically signed (Ed25519) and publicly verifiable via JWKS. If the data is tampered with, the system automatically blocks the answer.',
+  },
+}
 
 const translations = {
   ro: {
@@ -132,29 +147,35 @@ const jsonLd = {
   provider: { '@type': 'Organization', name: 'CatyAI', url: 'https://catyai.io' },
 }
 
-export default function TrustGateway() {
-  const [lang, setLang] = useState('ro')
+// `locale` vine din rută: /ro/trust-gateway → 'ro'; /trust-gateway → EN (canonicalul
+// EN nu mai pornește în RO — versiunea RO are URL propriu, cu hreflang).
+export default function TrustGateway({ locale }) {
+  const [lang, setLang] = useState(locale || 'en')
 
   useEffect(() => {
+    if (locale) return
     const saved = localStorage.getItem('catyai_lang')
     if (saved && translations[saved]) setLang(saved)
-  }, [])
+  }, [locale])
 
   useEffect(() => {
-    localStorage.setItem('catyai_lang', lang)
-  }, [lang])
+    if (!locale) localStorage.setItem('catyai_lang', lang)
+  }, [lang, locale])
 
-  const t = translations[lang] || translations.ro
+  const t = translations[lang] || translations.en
+  const meta = META[lang] || META.en
 
   return (
     <>
       <SEO
-        title="Trust Gateway — AI nu poate inventa prețul tău | CatyAI"
-        description="Fiecare răspuns comercial e semnat criptografic (Ed25519) și verificabil public prin JWKS. Dacă datele sunt modificate, sistemul blochează automat. Matematică, nu promisiune."
-        canonical="https://catyai.io/trust-gateway"
+        title={meta.title}
+        description={meta.desc}
+        url={pageUrl(SLUG, locale)}
+        lang={lang}
+        alternates={alternatesFor(SLUG)}
         jsonLd={jsonLd}
       />
-      <GlobalHeader />
+      <GlobalHeader lang={lang} setLang={setLang} />
       <style>{`
         .tg-page { background: #010A1F; min-height: 100vh; color: #f1f5f9; font-family: 'Inter', sans-serif; }
         .tg-page * { box-sizing: border-box; }

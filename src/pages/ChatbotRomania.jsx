@@ -76,6 +76,7 @@ export default function ChatbotRomania() {
         title="Cea Mai Sigură Soluție AI Sales din România | 8 Agenți AI + FraudAI Shield"
         description="CatyAI: singura platformă AI din România cu arhitectură multi-agent (8 agenți specializați) și FraudAI Shield anti-fraudă. Sales Agent, Support, Scheduler, DocGen, Fraud Detection, Lead Scoring. Protecție completă + conversii."
         url="https://catyai.io/chatbot-romania"
+        lang="ro"
         faq={faqItems}
       />
 

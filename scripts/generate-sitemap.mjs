@@ -31,18 +31,34 @@ function priorityFor(routePath) {
   return { priority: '0.6', changefreq: 'monthly' };
 }
 
+// Perechi EN/RO: /ro/<slug> este versiunea RO a lui /<slug>. Ambele URL-uri
+// primesc xhtml:link hreflang (en, ro, x-default=en) ca să nu fie tratate
+// drept duplicate.
+const routePaths = new Set(routes.map((r) => r.path));
+function alternatesFor(routePath) {
+  const isRo = routePath.startsWith('/ro/');
+  const enPath = isRo ? routePath.slice(3) : routePath;
+  const roPath = isRo ? routePath : `/ro${routePath}`;
+  if (!routePaths.has(enPath) || !routePaths.has(roPath)) return '';
+  return [
+    `    <xhtml:link rel="alternate" hreflang="en" href="${SITE}${enPath}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="ro" href="${SITE}${roPath}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${enPath}"/>`,
+  ].join('\n') + '\n';
+}
+
 const urls = routes.map((route) => {
   const { priority, changefreq } = priorityFor(route.path);
   return `  <url>
     <loc>${SITE}${route.path}</loc>
-    <lastmod>${today}</lastmod>
+${alternatesFor(route.path)}    <lastmod>${today}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
 });
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}
 </urlset>
 `;

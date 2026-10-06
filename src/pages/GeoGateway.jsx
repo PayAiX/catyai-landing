@@ -4,6 +4,13 @@ import GlobalHeader from '../components/GlobalHeader'
 import FooterV9 from '../components/FooterV9'
 import SEO from '../components/SEO'
 import GeoAuditWidget from '../components/GeoAuditWidget'
+import { pageUrl, alternatesFor } from '../lib/localeUrls'
+
+const SLUG = 'geo-gateway'
+const META_DESC = {
+  en: 'Deploy the 6-layer GEO Gateway. Stop being invisible to ChatGPT, Gemini, and Claude. Transform your business into structured AI-to-AI communication.',
+  ro: 'Instalează GEO Gateway, sistemul pe 6 straturi. Nu mai fi invizibil pentru ChatGPT, Gemini și Claude. Transformă-ți afacerea în comunicare structurată AI-către-AI.',
+}
 
 const T = {
   en: {
@@ -260,12 +267,14 @@ const CRAWLERS = [
   { name: 'Meta AI', engine: 'Meta AI / Llama', icon: '📘' },
 ]
 
-export default function GeoGateway() {
-  const [lang, setLang] = useState(() => localStorage.getItem('caty-lang') || 'en')
+// `locale` vine din rută: /ro/geo-gateway → 'ro' (fixat de URL, nu de localStorage).
+export default function GeoGateway({ locale }) {
+  const [lang, setLang] = useState(() => locale || localStorage.getItem('caty-lang') || 'en')
   const [scrolled, setScrolled] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
 
   useEffect(() => {
+    if (locale) return undefined
     const stored = localStorage.getItem('caty-lang')
     if (stored && T[stored]) setLang(stored)
     const id = setInterval(() => {
@@ -273,7 +282,7 @@ export default function GeoGateway() {
       if (l && T[l] && l !== lang) setLang(l)
     }, 500)
     return () => clearInterval(id)
-  }, [lang])
+  }, [lang, locale])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -602,7 +611,10 @@ export default function GeoGateway() {
         title={lang === 'ro'
           ? 'GEO Gateway — Vizibilitate AI pentru Afacerea Ta | CatyAI'
           : 'GEO Gateway — The AI-to-AI Conduit | CatyAI'}
-        description="Deploy the 6-layer GEO Gateway. Stop being invisible to ChatGPT, Gemini, and Claude. Transform your business into structured AI-to-AI communication."
+        description={META_DESC[lang] || META_DESC.en}
+        url={pageUrl(SLUG, locale)}
+        lang={lang}
+        alternates={alternatesFor(SLUG)}
       />
 
       <GlobalHeader lang={lang} setLang={setLang} scrolled={scrolled} />
