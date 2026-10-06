@@ -755,5 +755,11 @@
     "name": "Blog: SEO clasic nu mai e suficient. Ești preg...",
     "title": "SEO clasic nu mai e suficient. Ești pregătit pentru era Agentic Commerce? — CatyAI Blog",
     "description": "eMarketer estimează 20,9 miliarde $ vânzări retail prin platforme AI în 2026 — bani care nu mai trec prin niciun rezultat Google. De ce SEO singur nu mai acoperă tot canalul de cumpărare."
+  },
+  {
+    "path": "/trust-gateway",
+    "name": "Trust Gateway \u2014 AI nu poate inventa pre\u021bul t\u0103u",
+    "title": "Trust Gateway \u2014 AI nu poate inventa pre\u021bul t\u0103u | CatyAI",
+    "description": "Fiecare r\u0103spuns comercial e semnat criptografic (Ed25519) \u0219i verificabil public prin JWKS. Dac\u0103 datele sunt modificate, sistemul blocheaz\u0103 automat. Matematic\u0103, nu promisiune."
   }
 ]
