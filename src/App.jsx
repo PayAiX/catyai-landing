@@ -5,12 +5,9 @@ import FooterComponent from './components/Footer'
 import Testimonials from './components/Testimonials'
 import PartnersPress from './components/PartnersPress'
 import AurexPromo from './components/AurexPromo'
-import QRFirst from './components/QRFirst'
 import CaseStudies from './components/CaseStudies'
 import ROICalculator from './components/ROICalculator'
-import FraudShield from './components/FraudShield'
 import ComparisonTable from './components/ComparisonTable'
-import WhatsAppSecretary from './components/WhatsAppSecretary'
 
 // Lazy load pages for better performance (code splitting)
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -24,11 +21,6 @@ const Contact = lazy(() => import('./pages/Contact'))
 const CommerceDemo = lazy(() => import('./pages/CommerceDemo'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
-const WhatsAppAI = lazy(() => import('./pages/WhatsAppAI'))
-const FraudAI = lazy(() => import('./pages/FraudAI'))
-const ChatbotRomania = lazy(() => import('./pages/ChatbotRomania'))
-const NoWebsite = lazy(() => import('./pages/NoWebsite'))
-const CatyWidget = lazy(() => import('./pages/CatyWidget'))
 const GeoGateway = lazy(() => import('./pages/GeoGateway'))
 const HealthcarePage = lazy(() => import('./pages/HealthcarePage'))
 const FeaturesPage = lazy(() => import('./pages/Features'))
@@ -1677,35 +1669,6 @@ function Header() {
                   {/* Invisible bridge to cover gap */}
                   <div className="absolute top-full left-0 w-64 h-2" />
                   <div className="absolute top-full left-0 mt-2 w-64 bg-[#010A1F] border border-[#1a2744] rounded-xl shadow-xl overflow-hidden">
-                  <Link to="/widget" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">🌐</span>
-                    <div>
-                      <div className="text-gold font-medium">{t.nav.catyWidget}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.catyWidgetDesc}</div>
-                    </div>
-                  </Link>
-                  <Link to="/no-website" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">📱</span>
-                    <div>
-                      <div className="text-white font-medium">{t.nav.qrFirst}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.qrFirstDesc}</div>
-                    </div>
-                  </Link>
-                  <Link to="/whatsapp" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">💬</span>
-                    <div>
-                      <div className="text-gold font-medium">{t.nav.whatsappSecretary}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.whatsappDesc}</div>
-                    </div>
-                  </Link>
-                  <hr className="border-[#1a2744]" />
-                  <Link to="/fraud-shield" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
-                    <span className="text-2xl">🛡️</span>
-                    <div>
-                      <div className="text-white font-medium">{t.nav.fraudai}</div>
-                      <div className="text-gray-400 text-xs">{t.nav.fraudaiDesc}</div>
-                    </div>
-                  </Link>
                   <Link to="/geo-gateway" className="flex items-center gap-3 px-4 py-3 hover:bg-[#0A1628] transition-colors" onClick={() => setProductsOpen(false)}>
                     <span className="text-2xl">🌍</span>
                     <div>
@@ -1753,10 +1716,6 @@ function Header() {
             <div className="flex flex-col gap-4">
               {/* Mobile Products Section */}
               <div className="text-gray-500 text-xs uppercase tracking-wider">{t.nav.products}</div>
-              <Link to="/widget" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌐 {t.nav.catyWidget}</Link>
-              <Link to="/no-website" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>📱 {t.nav.qrFirst}</Link>
-              <Link to="/whatsapp" className="text-gold hover:text-yellow-300 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>💬 {t.nav.whatsappSecretary}</Link>
-              <Link to="/fraud-shield" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🛡️ {t.nav.fraudai}</Link>
               <Link to="/geo-gateway" className="text-white hover:text-gray-200 font-medium pl-3" onClick={() => setMobileMenuOpen(false)}>🌍 {t.nav.geoGateway}</Link>
 
               <hr className="border-[#1a2744]" />
@@ -3294,7 +3253,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/whatsapp', '/fraud-shield', '/no-website', '/widget', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed',
+  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed',
     // versiunile RO (6 oct 2026) — listă explicită, ca /ro/<altceva> să ajungă la NotFound
     '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway']
   // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
@@ -3336,10 +3295,6 @@ function AppContent() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/whatsapp" element={<WhatsAppAI />} />
-            <Route path="/fraud-shield" element={<FraudAI />} />
-            <Route path="/no-website" element={<NoWebsite />} />
-            <Route path="/widget" element={<CatyWidget />} />
             <Route path="/geo-gateway" element={<GeoGateway />} />
             <Route path="/ecommerce" element={<EcommercePage />} />
             <Route path="/healthcare" element={<HealthcarePage />} />
@@ -3421,7 +3376,6 @@ function AppContent() {
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
-            <Route path="/chatbot-romania" element={<ChatbotRomania />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
             <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />

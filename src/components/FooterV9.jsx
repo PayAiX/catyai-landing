@@ -196,9 +196,6 @@ export default function FooterV9({ lang = 'en' }) {
           <div className="md:col-span-2">
             <h4 className="fv9-col-title">{t.product}</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/no-website" className="fv9-link">QR-First <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="/widget" className="fv9-link">Web Widget <ArrowUpRight className="w-3 h-3" /></a></li>
-              <li><a href="/fraud-shield" className="fv9-link">FraudAI <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/geo-gateway" className="fv9-link">GEO Gateway <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/google-shopping-feed" className="fv9-link">Google Shopping Feed <ArrowUpRight className="w-3 h-3" /></a></li>
               <li><a href="/facebook-instagram-feed" className="fv9-link">Facebook & IG Feed <ArrowUpRight className="w-3 h-3" /></a></li>
