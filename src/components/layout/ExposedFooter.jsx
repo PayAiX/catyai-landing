@@ -133,9 +133,6 @@ export default function ExposedFooter() {
         <div className="md:col-span-2">
           <h4 className="footer-col-title">Produs</h4>
           <ul className="space-y-3 text-sm">
-            <li><FooterLink to="/widget">Widget Chat</FooterLink></li>
-            <li><FooterLink to="/whatsapp">WhatsApp Secretary</FooterLink></li>
-            <li><FooterLink to="/fraud-shield">FraudAI Shield</FooterLink></li>
             <li><FooterLink to="/geo-gateway">GEO Gateway</FooterLink></li>
             <li><FooterLink to="/pricing">Prețuri</FooterLink></li>
           </ul>
