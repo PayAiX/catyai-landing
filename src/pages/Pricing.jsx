@@ -11,79 +11,44 @@ const P_RO = productsFull('ro')
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AXA 1 — WEB WIDGET (SaaS, abonament lunar, EUR)
-// Self-service: instalezi widget-ul pe site, AI-ul vinde 24/7. Crești când ai trafic.
 // ─────────────────────────────────────────────────────────────────────────────
-const WIDGET_TIERS = [
+// AXA 1 — GATEWAY-URI AI (Preț la comandă)
+// Web Widget a fost scos de pe pagină: e deja inclus în Commerce Distribution.
+// În locul lui: GEO Gateway + Trust Gateway, ambele cu preț la comandă.
+// ─────────────────────────────────────────────────────────────────────────────
+const GATEWAYS = [
   {
-    name: 'Starter',
-    price: '€49',
-    period: '/lună',
-    desc: 'Pentru magazine care vor să convertească vizitatorii în clienți.',
+    name: 'GEO Gateway',
+    price: 'Preț la comandă',
+    period: '',
+    desc: 'Devii răspunsul, nu nota de subsol. Catalogul tău, indexat semantic de ChatGPT, Gemini și Perplexity.',
     badge: null,
-    highlighted: false,
-    features: [
-      '1.000 sesiuni AI/lună',
-      'Web + WhatsApp, aceeași logică de vânzare',
-      'Programări + captare lead-uri',
-      'Documente PDF cu link de plată',
-      'Tracking comportamental + mesaje proactive',
-    ],
-    cta: 'Pornește Starter',
-    ctaLink: 'https://app.catyai.io/register?plan=starter',
-    external: true,
-  },
-  {
-    name: 'Growth',
-    price: '€99',
-    period: '/lună',
-    desc: 'Pentru magazine în creștere, cu integrări CRM și handoff către echipă.',
-    badge: 'Cel mai ales',
     highlighted: true,
     features: [
-      '5.000 sesiuni AI/lună',
-      'Integrări CRM native (HubSpot, Pipedrive, Salesforce)',
-      'Live handoff către operator uman',
-      'Lead scoring automat',
-      'Suport prioritar pe email',
+      'llms.txt + documente de descoperire NAP v3',
+      'Indexare semantică în ChatGPT / Gemini / Perplexity',
+      'Date structurate JSON-LD validate pentru AI',
+      'Raport lunar de vizibilitate GEO',
     ],
-    cta: 'Pornește Growth',
-    ctaLink: 'https://app.catyai.io/register?plan=growth',
-    external: true,
+    cta: 'Cere ofertă',
+    ctaLink: '/contact?plan=geo-gateway',
+    external: false,
   },
   {
-    name: 'Business',
-    price: '€199',
-    period: '/lună',
-    desc: 'Volum mare, acces API și account manager dedicat.',
+    name: 'Trust Gateway',
+    price: 'Preț la comandă',
+    period: '',
+    desc: 'AI-ul nu poate inventa prețul tău. Fiecare răspuns AI despre afacerea ta e semnat criptografic.',
     badge: null,
     highlighted: false,
     features: [
-      '20.000 sesiuni AI/lună',
-      'API access complet',
-      'Widget-uri nelimitate',
-      'Knowledge base extinsă',
-      'Account manager',
+      'Fiecare răspuns GEO semnat EdDSA',
+      'Verificabil public, gratuit, prin JWKS',
+      'Blocare automată la orice manipulare a datelor',
+      'Matematică, nu promisiune de marketing',
     ],
-    cta: 'Pornește Business',
-    ctaLink: 'https://app.catyai.io/register?plan=business',
-    external: true,
-  },
-  {
-    name: 'Enterprise',
-    price: '€499',
-    period: '/lună',
-    desc: 'Sesiuni nelimitate, white-label și SLA contractual.',
-    badge: null,
-    highlighted: false,
-    features: [
-      'Sesiuni AI nelimitate',
-      'White-label complet',
-      'SSO / SAML + SLA garantat',
-      'Infrastructură dedicată (VPC)',
-      'Onboarding dedicat + suport SLA',
-    ],
-    cta: 'Discută cu echipa',
-    ctaLink: '/contact?plan=enterprise',
+    cta: 'Cere ofertă',
+    ctaLink: '/contact?plan=trust-gateway',
     external: false,
   },
 ]
@@ -124,28 +89,20 @@ const EARN_PROOF = {
 
 const FAQS = [
   {
-    q: 'Care e diferența dintre Web Widget și Commerce Distribution?',
-    a: 'Web Widget e un abonament SaaS (€49–€499/lună): instalezi agentul AI pe site și WhatsApp ca să convertești vizitatorii care ajung deja la tine. Commerce Distribution e un parteneriat B2B (setup unic + abonament lunar, pe dimensiunea catalogului): îți reconstruim catalogul, îl distribuim pe Google prin marketplace-ul nostru și contul CSS și îl facem citibil de ChatGPT/Perplexity/Gemini.',
+    q: 'Care e diferența dintre GEO Gateway, Trust Gateway și Commerce Distribution?',
+    a: 'GEO Gateway îți face catalogul citibil de ChatGPT, Gemini și Perplexity (indexare semantică, llms.txt, date structurate, raport lunar GEO). Trust Gateway adaugă semnătura criptografică EdDSA pe fiecare răspuns AI despre afacerea ta — prețurile și datele nu pot fi inventate sau manipulate. Commerce Distribution e parteneriatul complet: reconstruim catalogul, îl distribuim pe Google prin contul CSS și include și Web Widget — agentul AI de vânzări de pe site.',
+  },
+  {
+    q: 'Cum se calculează „prețul la comandă" pentru gateway-uri?',
+    a: 'Pe baza auditului feedului: numărul de produse, complexitatea atributelor și volumul de răspunsuri GEO estimate. Primești oferta concretă în maximum 24 de ore lucrătoare după ce trimiți catalogul.',
   },
   {
     q: 'Cum funcționează procentul de 3–5% la Commerce Distribution?',
     a: 'Procentul se aplică doar ad spend-ului rulat prin contul nostru CSS — nu vânzărilor tale organice. Bugetul de ads e al tău, separat, transparent în Google Ads. Prin CSS, licitațiile Shopping au ~20% mai multă putere la același buget, deci la un ad spend de 2.000 €/lună economia acoperă singură abonamentul.',
   },
   {
-    q: 'Pot schimba planul de Widget oricând?',
-    a: 'Da. Upgrade-urile au efect imediat, cu facturare proporțională. Downgrade-urile se aplică de la începutul următorului ciclu de facturare. Fără contracte de lock-in.',
-  },
-  {
-    q: 'Ce se întâmplă când ating limita de sesiuni?',
-    a: 'Primești notificare la 80% din utilizare. Dacă atingi limita, răspunsurile AI se opresc până la următorul ciclu — sau poți face upgrade oricând ca să reiei instant serviciul.',
-  },
-  {
-    q: 'Există perioadă de probă?',
-    a: 'Da — 14 zile gratuit pe orice plan Widget, fără card. Pentru Commerce Distribution nu există perioadă de trial gratuit; setup-ul include o sesiune de onboarding dedicată.',
-  },
-  {
-    q: 'Ce este o „sesiune"?',
-    a: 'O sesiune = o conversație completă cu un utilizator — de la primul mesaj până la închiderea conversației sau 30 de minute de inactivitate. Apelurile API de fundal (sincronizare NAP, crawling GEO) nu consumă sesiuni.',
+    q: 'Pot începe doar cu un gateway și să adaug restul mai târziu?',
+    a: 'Da. Fiecare componentă funcționează standalone — poți începe cu GEO Gateway, adăuga Trust Gateway când vrei verificarea criptografică și trece la Commerce Distribution când ești gata de distribuție completă pe Google.',
   },
 ]
 
@@ -153,16 +110,20 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'SoftwareApplication',
-      name: 'CatyAI Web Widget',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Web',
-      offers: [
-        { '@type': 'Offer', name: 'Starter', price: '49', priceCurrency: 'EUR', description: '1.000 sesiuni, Web + WhatsApp, lead capture' },
-        { '@type': 'Offer', name: 'Growth', price: '99', priceCurrency: 'EUR', description: '5.000 sesiuni, integrări CRM, live handoff' },
-        { '@type': 'Offer', name: 'Business', price: '199', priceCurrency: 'EUR', description: '20.000 sesiuni, API access, account manager' },
-        { '@type': 'Offer', name: 'Enterprise', price: '499', priceCurrency: 'EUR', description: 'Sesiuni nelimitate, white-label, SLA' },
-      ],
+      '@type': 'Service',
+      name: 'CatyAI GEO Gateway',
+      serviceType: 'AI visibility / GEO optimization',
+      description: 'Indexare semantică a catalogului în ChatGPT, Gemini și Perplexity — llms.txt, NAP v3, date structurate JSON-LD, raport lunar GEO. Preț la comandă.',
+      provider: { '@type': 'Organization', name: 'CatyAI', url: 'https://catyai.io' },
+      areaServed: { '@type': 'Country', 'name': 'Romania' },
+    },
+    {
+      '@type': 'Service',
+      name: 'CatyAI Trust Gateway',
+      serviceType: 'Cryptographically signed AI answers',
+      description: 'Fiecare răspuns AI despre afacerea ta, semnat EdDSA și verificabil public prin JWKS. Blocare automată la manipularea datelor. Preț la comandă.',
+      provider: { '@type': 'Organization', name: 'CatyAI', url: 'https://catyai.io' },
+      areaServed: { '@type': 'Country', 'name': 'Romania' },
     },
     {
       '@type': 'Service',
@@ -188,13 +149,8 @@ const jsonLd = {
 }
 
 export default function PricingPage() {
-  const [lang, setLang] = useState('en')
+  const [lang, setLang] = useState(() => localStorage.getItem('catyai_lang') || 'en')
   const [openFaq, setOpenFaq] = useState(null)
-
-  useEffect(() => {
-    const saved = localStorage.getItem('catyai_lang')
-    if (saved) setLang(saved)
-  }, [])
 
   useEffect(() => {
     localStorage.setItem('catyai_lang', lang)
@@ -203,8 +159,8 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Prețuri — Web Widget €49–€499/lună · Commerce Distribution de la 1.000 € setup | CatyAI"
-        description="Două produse, două modele: Web Widget (abonament SaaS, €49–€499/lună) și Commerce Distribution (parteneriat B2B: setup de la 1.000 € + abonament de la 250 €/lună + 3–5% din ad spend). 14 zile gratuit pe Widget, fără card."
+        title="Prețuri — GEO Gateway & Trust Gateway (preț la comandă) · Commerce Distribution de la 1.000 € setup | CatyAI"
+        description="Două gateway-uri AI cu preț la comandă (GEO Gateway pentru vizibilitate în ChatGPT/Gemini/Perplexity, Trust Gateway pentru răspunsuri semnate criptografic) și Commerce Distribution, parteneriatul B2B: setup de la 1.000 € + abonament de la 250 €/lună + 3–5% din ad spend."
         canonical="https://catyai.io/pricing"
         jsonLd={jsonLd}
       />
@@ -656,27 +612,27 @@ export default function PricingPage() {
 
         {/* Hero */}
         <section className="pri-hero">
-          <div className="pri-badge">💎 Două produse, două modele — un singur lanț</div>
-          <h1 className="pri-hero-title">Widget-ul e abonament.<br />Marketplace-ul e parteneriat.</h1>
+          <div className="pri-badge">💎 Două gateway-uri, un singur lanț</div>
+          <h1 className="pri-hero-title">Gateway-uri AI cu preț la comandă.<br />Marketplace-ul e parteneriat.</h1>
           <p className="pri-hero-sub">
-            Nu îți vindem „încă un tool". Pe Widget plătești un abonament simplu; pe Commerce Distribution îți reconstruim catalogul și îl distribuim pe Google și în AI — setup unic, abonament lunar și procent doar din ad spend.
+            GEO Gateway îți face catalogul citibil de ChatGPT, Gemini și Perplexity; Trust Gateway semnează criptografic fiecare răspuns AI, ca nimeni să nu-ți poată inventa prețul. Ambele cu preț calibrat pe catalogul tău. Pe Commerce Distribution îți reconstruim catalogul și îl distribuim pe Google prin contul CSS — setup unic, abonament lunar și procent doar din ad spend.
           </p>
-          <p className="pri-trial-note"><span>14 zile gratuit</span> · Fără card · Anulare oricând</p>
+          <p className="pri-trial-note"><span>Preț la comandă</span> · Analiză tehnică a feedului în 24h lucrătoare · Fără abonamente forțate</p>
         </section>
 
-        {/* ── AXA 1: WEB WIDGET (SaaS) ── */}
+        {/* ── AXA 1: GATEWAY-URI AI (preț la comandă) ── */}
         <section className="pri-tiers-section">
           <div className="pri-axis-head">
-            <span className="pri-axis-tag">Axa SaaS · Abonament lunar</span>
-            <h2 className="pri-axis-title">Web Widget</h2>
-            <p className="pri-axis-sub">Agentul tău de vânzări AI pe site și WhatsApp. Începi simplu, crești când ai trafic.</p>
+            <span className="pri-axis-tag">Axa Gateway · Preț la comandă</span>
+            <h2 className="pri-axis-title">GEO Gateway & Trust Gateway</h2>
+            <p className="pri-axis-sub">Fiecare gateway se calibrează pe mărimea și complexitatea catalogului tău — primești oferta concretă în maximum 24 de ore lucrătoare.</p>
           </div>
-          <div className="pri-tiers-grid pri-tiers-grid-5">
-            {WIDGET_TIERS.map((tier) => (
+          <div className="pri-tiers-grid pri-tiers-grid-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 420px))', justifyContent: 'center' }}>
+            {GATEWAYS.map((tier) => (
               <div key={tier.name} className={`pri-tier${tier.highlighted ? ' highlighted' : ''}`}>
                 {tier.badge && <div className="pri-tier-badge">⭐ {tier.badge}</div>}
                 <div className="pri-tier-name">{tier.name}</div>
-                <div className="pri-tier-price">{tier.price}</div>
+                <div className="pri-tier-price" style={{ fontSize: '1.7rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>{tier.price}</div>
                 <span className="pri-tier-period">{tier.period}</span>
                 <p className="pri-tier-desc">{tier.desc}</p>
                 <ul className="pri-tier-features">
@@ -703,8 +659,8 @@ export default function PricingPage() {
             ))}
           </div>
           <p className="pri-compare-note" style={{ marginTop: '2rem' }}>
-            Toate planurile de Widget includ FraudAI Shield și răspunsuri ancorate în catalogul tău semnat.&nbsp;
-            <a href="https://docs.catyai.io/pricing" target="_blank" rel="noopener noreferrer">Comparație completă →</a>
+            Web Widget (agentul AI de vânzări pe site și WhatsApp) e inclus în parteneriatul Commerce Distribution de mai jos — nu se mai vinde separat.&nbsp;
+            <Link to="/contact" style={{ color: '#C8A165' }}>Cere ofertă pentru un gateway →</Link>
           </p>
         </section>
 
@@ -785,16 +741,14 @@ export default function PricingPage() {
         {/* CTA */}
         <section className="pri-cta-section">
           <h2 className="pri-cta-title">Începe cu ce ai nevoie acum.</h2>
-          <p className="pri-cta-sub">14 zile gratuit pe Widget. Sau discută cu noi despre parteneriatul Marketplace.</p>
+          <p className="pri-cta-sub">Cere ofertă pentru un gateway și primești analiza feedului în 24h. Sau discută cu noi despre parteneriatul Marketplace.</p>
           <div className="pri-cta-row">
-            <a
-              href="https://app.catyai.io/register"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/contact?plan=geo-gateway"
               className="pri-cta-btn-a"
             >
-              Instalează Widget-ul
-            </a>
+              Cere ofertă gateway
+            </Link>
             <Link to="/contact?plan=marketplace" className="pri-cta-btn-b">Discută despre Marketplace</Link>
           </div>
         </section>
