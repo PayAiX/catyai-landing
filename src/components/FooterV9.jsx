@@ -187,7 +187,7 @@ export default function FooterV9({ lang = 'en' }) {
               <a href="https://medium.com/@adrianvitan" className="fv9-social" aria-label="Medium" target="_blank" rel="noopener noreferrer">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
               </a>
-              <a href="mailto:contact@payai-x.com" className="fv9-social" aria-label="Email">
+              <a href="mailto:contact@catyai.io" className="fv9-social" aria-label="Email">
                 <Mail className="w-4 h-4" />
               </a>
             </div>
@@ -249,9 +249,7 @@ export default function FooterV9({ lang = 'en' }) {
         <div className="border-t border-white/5 bg-[#010A1F]">
           <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-600">
             <div className="flex items-center gap-4">
-              <span>© {new Date().getFullYear()} PayAi-X FZE</span>
-              <span className="hidden md:inline">·</span>
-              <span className="hidden md:inline">Built in eu-west-1</span>
+              <span>© {new Date().getFullYear()} PayAi-X S.R.L. · contact@catyai.io</span>
             </div>
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
