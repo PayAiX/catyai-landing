@@ -64,7 +64,7 @@ const translations = {
     heroLine1: 'Facem catalogul tău vizibil',
     heroAccent: 'pe Google Shopping și în ChatGPT',
     heroSubtitle: 'Sincronizăm automat inventarul de produse în Google Merchant Center prin canal CSS direct și structurăm datele pentru motoarele de căutare conversaționale.',
-    heroCtaPrimary: 'Vezi planurile de preț',
+    heroCtaPrimary: 'Vezi prețurile',
     heroCtaSecondary: 'Fă-ți catalogul vizibil',
     heroNote: 'Răspuns tehnic în maximum 24 de ore lucrătoare.',
     termProduct: 'produse',
@@ -132,9 +132,10 @@ const translations = {
       'Configurare conexiune Google Merchant Center & CSS',
       'Validare structură de date JSON-LD pentru AI',
     ],
-    pricingPerMonth: '/ lună',
-    pricingOneTime: 'plată unică',
-    pricingPlaceholderNote: 'Cifrele finale se publică după confirmarea grilei de preț.',
+    pricingMonthlyPrice: 'Preț calibrat după mărimea și complexitatea catalogului',
+    pricingSetupPrice: 'Cost unic, calibrat după complexitatea catalogului',
+    pricingOfferCta: 'Cere ofertă',
+    pricingOfferNote: 'răspuns în 24h lucrătoare',
     formLabel: 'ACTIVEAZĂ FLUXUL',
     formTitle: 'Fă-ți catalogul vizibil în câteva zile',
     formSub: 'Completează datele magazinului tău pentru o analiză tehnică a feedului de produse și o demonstrație live a platformei CatyAI. Fără obligații contractuale.',
@@ -165,7 +166,7 @@ const translations = {
     heroLine1: 'We make your catalog visible',
     heroAccent: 'on Google Shopping and in ChatGPT',
     heroSubtitle: 'We automatically sync your product inventory into Google Merchant Center through a direct CSS channel and structure the data for conversational search engines.',
-    heroCtaPrimary: 'See pricing plans',
+    heroCtaPrimary: 'See pricing',
     heroCtaSecondary: 'Make your catalog visible',
     heroNote: 'Technical reply within 24 business hours.',
     termProduct: 'products',
@@ -233,9 +234,10 @@ const translations = {
       'Google Merchant Center & CSS connection setup',
       'JSON-LD data structure validation for AI',
     ],
-    pricingPerMonth: '/ month',
-    pricingOneTime: 'one-time payment',
-    pricingPlaceholderNote: 'Final figures are published after the pricing grid is confirmed.',
+    pricingMonthlyPrice: 'Price calibrated to the size and complexity of your catalog',
+    pricingSetupPrice: 'One-time cost, calibrated to catalog complexity',
+    pricingOfferCta: 'Request a quote',
+    pricingOfferNote: 'reply within 24 business hours',
     formLabel: 'ACTIVATE THE FEED',
     formTitle: 'Make your catalog visible within days',
     formSub: 'Fill in your store details for a technical analysis of your product feed and a live demo of the CatyAI platform. No contractual obligations.',
@@ -510,11 +512,7 @@ export default function HomePage() {
                 <p className="term-line text-[11px] tracking-[0.2em] text-gold mb-3">{t.pricingMonthlyTag}</p>
                 <h3 className="text-xl font-bold mb-2">{t.pricingMonthlyTitle}</h3>
                 <p className="text-slate-500 text-sm mb-6">{t.pricingMonthlyDesc}</p>
-                <p className="text-5xl font-extrabold tracking-tight mb-1">
-                  <span className="text-gold">{'{{LUNAR}}'}</span>
-                  <span className="text-base font-normal text-slate-500"> {t.pricingPerMonth}</span>
-                </p>
-                <p className="term-line text-[11px] text-slate-600 mb-8">{t.pricingPlaceholderNote}</p>
+                <p className="text-lg font-bold text-gold leading-snug mb-8">{t.pricingMonthlyPrice}</p>
                 <ul className="space-y-3">
                   {t.pricingMonthlyFeatures.map((f, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-300 text-[15px]">
@@ -527,11 +525,7 @@ export default function HomePage() {
                 <p className="term-line text-[11px] tracking-[0.2em] text-slate-500 mb-3">{t.pricingSetupTag}</p>
                 <h3 className="text-xl font-bold mb-2">{t.pricingSetupTitle}</h3>
                 <p className="text-slate-500 text-sm mb-6">{t.pricingSetupDesc}</p>
-                <p className="text-5xl font-extrabold tracking-tight mb-1">
-                  <span className="text-white">{'{{SETUP}}'}</span>
-                  <span className="text-base font-normal text-slate-500"> · {t.pricingOneTime}</span>
-                </p>
-                <p className="term-line text-[11px] text-slate-600 mb-8">{t.pricingPlaceholderNote}</p>
+                <p className="text-lg font-bold text-white leading-snug mb-8">{t.pricingSetupPrice}</p>
                 <ul className="space-y-3">
                   {t.pricingSetupFeatures.map((f, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-300 text-[15px]">
@@ -540,6 +534,12 @@ export default function HomePage() {
                   ))}
                 </ul>
               </article>
+            </div>
+            <div className="reveal text-center mt-12">
+              <a href="#contact" className="btn-primary px-10 py-4 rounded-xl font-bold inline-flex items-center gap-2">
+                {t.pricingOfferCta} <ArrowRight className="w-4 h-4" />
+              </a>
+              <p className="term-line text-xs text-slate-500 mt-4">{t.pricingOfferNote}</p>
             </div>
           </section>
 
