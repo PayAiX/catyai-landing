@@ -374,40 +374,10 @@
     "name": "Careers"
   },
   {
-    "path": "/chatbot-romania",
-    "name": "Chatbot Romania",
-    "title": "Chatbot România 2026 — Cel Mai Folosit AI Chatbot pentru Firme Românești",
-    "description": "Asistent AI în română, engleză și 12 limbi. Programări automate, răspuns WhatsApp, protecție scam. De la €0/lună. Setup în 2 minute."
-  },
-  {
-    "path": "/whatsapp",
-    "name": "WhatsApp AI",
-    "title": "CatyAI WhatsApp — Răspuns Automat WhatsApp Business | Fără Meta API",
-    "description": "Asistent AI pe WhatsApp fără Meta API. Răspunde automat la mesaje, califică lead-uri și trimite campanii broadcast. Funcționează cu numărul tău actual."
-  },
-  {
-    "path": "/fraud-shield",
-    "name": "FraudAI Shield",
-    "title": "FraudAI Shield — Protecție Anti-Fraud AI | Scam & Spam Detection",
-    "description": "Sistemul de detecție fraud cu 4 niveluri: LOW, MEDIUM, HIGH, BLOCKED. Oprește scam-ul și phishing-ul înainte să consume tokeni sau resurse financiare."
-  },
-  {
-    "path": "/no-website",
-    "name": "QR-First - No Website Needed",
-    "title": "CatyAI QR-First — AI pentru Afaceri Fără Site Web | QR Code Direct",
-    "description": "Nu ai site? Nicio problemă. QR code unic → WhatsApp → CatyAI. Clienții tăi scanează și primesc răspunsuri instant. Restaurante, cabinete, freelanceri."
-  },
-  {
     "path": "/compare",
     "name": "CatyAI vs Tidio vs Intercom",
     "title": "CatyAI vs Tidio vs Intercom — Comparație Chatboți AI 2026 | România",
     "description": "Comparație completă: funcționalități, prețuri și integrări. De ce CatyAI este alternativa optimă pentru piața românească față de Tidio și Intercom."
-  },
-  {
-    "path": "/widget",
-    "name": "Caty Widget - AI Sales Agent for Websites",
-    "title": "CatyAI Widget — AI pe Site-ul Tău în 5 Minute | Chatbot Embed",
-    "description": "Instalezi un rând de cod. CatyAI răspunde instant vizitatorilor tăi — prețuri, disponibilitate, programări. Leads colectate automat în dashboard."
   },
   {
     "path": "/blog/catyai-vs-chatbots-traditionale-8-agenti-ai",
