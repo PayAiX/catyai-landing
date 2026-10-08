@@ -105,3 +105,19 @@ contact@catyai.ro · „Cluj-Napoca" · „audit gratuit".
 - `npx eslint src/pages/HomePage.jsx src/components/FooterV9.jsx` → 0 erori.
 - `npm run build` (fetch-catalog-stats → sitemap → vite → prerender 141 rute).
 - Screenshots desktop + mobile în PR.
+
+## 8. Verificări externe (AGENT 77, read-only, 8 oct 2026)
+
+Raport: `docs/audit/AGENT77-verificari-agent89-homepage-2026-10-08.md` (repo Caty.AI).
+
+1. **Endpoint formular CONFIRMAT din cod** (`src/api/leads/catalog-audit.js:106`):
+   `caty_source` e curățat doar la 100 caractere, fără whitelist/enum →
+   `homepage-vizibilitate` e acceptat și salvat în `caty_catalog_audit_leads`,
+   cu log + email de notificare. Trafic: 0 leaduri în ultimele 24 h, niciun
+   POST de test. → punctul 1 din „Ce NU am putut verifica" e REZOLVAT.
+2. **Cifrele catalog CONFIRMATE live**: `GET /api/public/catalog-stats` → 200,
+   `totalMerchants: 191, totalProducts: 3971435` (8 oct 08:51 UTC) — identic
+   cu ce a intrat în build (§4, rândul 1). → punctul 5 parțial rezolvat.
+3. **Rate GMC rămân neverificate** (per 77): nu există endpoint read-only;
+   ar însemna cod nou pe producție cu OAuth Google. Alternativa: Adrian citește
+   în Merchant Center → Produse → Diagnosticare, per cont.
