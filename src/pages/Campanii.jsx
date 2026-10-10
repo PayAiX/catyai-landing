@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
+import GlobalHeader from '../components/GlobalHeader'
+import FooterV9 from '../components/FooterV9'
 
 // Pagina /campanii — campanii Google Shopping prin CSS, comparator de prețuri,
 // vizibilitate AI și grila oficială de prețuri (10.10.2026).
 // Conținut aprobat verbatim de Adrian — NU se reformulează textele/cifrele.
+// Layout: GlobalHeader + FooterV9 (aceleași cu restul paginilor standalone).
 
 const META = {
   title: 'Campanii Google Shopping & Comparator de Prețuri — CatyAI',
@@ -77,6 +80,14 @@ function Eyebrow({ children }) {
 
 export default function Campanii() {
   const [openFaq, setOpenFaq] = useState(0)
+  const [scrolled, setScrolled] = useState(false)
+  const [lang, setLang] = useState('ro')
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
@@ -91,9 +102,14 @@ export default function Campanii() {
         <html lang="ro" />
       </Helmet>
 
+      <div className="min-h-screen bg-[#0a0f1c] text-[#c7d0e0] font-sans antialiased">
+        <GlobalHeader lang={lang} setLang={setLang} scrolled={scrolled} />
+
+        <main>
+
       {/* Secțiunea 1 — Hero */}
       <section className="relative overflow-hidden" style={{ backgroundColor: '#0A1628' }}>
-        <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-40 lg:pb-28 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <Eyebrow>CSS · Comparator de prețuri · Vizibilitate AI</Eyebrow>
             <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-6" style={{ color: '#E9EDF4' }}>
@@ -391,6 +407,10 @@ export default function Campanii() {
           </a>
         </div>
       </section>
+        </main>
+
+        <FooterV9 lang="ro" />
+      </div>
     </>
   )
 }

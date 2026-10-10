@@ -3254,7 +3254,7 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed',
+  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed', '/campanii',
     // versiunile RO (6 oct 2026) — listă explicită, ca /ro/<altceva> să ajungă la NotFound
     '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway']
   // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
@@ -3323,6 +3323,7 @@ function AppContent() {
             <Route path="/google-shopping-feed" element={<GoogleShoppingFeed />} />
             <Route path="/facebook-instagram-feed" element={<FacebookInstagramFeed />} />
             <Route path="/chatgpt-feed" element={<ChatGPTFeed />} />
+            <Route path="/campanii" element={<Campanii />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
             {/* Versiunile RO (hreflang ro) ale paginilor EN de mai sus */}
@@ -3378,7 +3379,6 @@ function AppContent() {
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/compare" element={<Compare />} />
-            <Route path="/campanii" element={<Campanii />} />
             <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
             <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />
             <Route path="/solutii/restaurante" element={<ForRestaurants />} />
