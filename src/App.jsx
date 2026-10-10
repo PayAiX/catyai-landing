@@ -3254,9 +3254,9 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed',
+  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed', '/campanii',
     // versiunile RO (6 oct 2026) — listă explicită, ca /ro/<altceva> să ajungă la NotFound
-    '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway']
+    '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway', '/ro/campanii']
   // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
   // iar potrivirea exactă pe '/pagina/' pică: paginile noi (chatgpt-feed, mcp,
   // geo-gateway, google-shopping-feed, facebook-instagram-feed, trust-gateway)
@@ -3323,6 +3323,7 @@ function AppContent() {
             <Route path="/google-shopping-feed" element={<GoogleShoppingFeed />} />
             <Route path="/facebook-instagram-feed" element={<FacebookInstagramFeed />} />
             <Route path="/chatgpt-feed" element={<ChatGPTFeed />} />
+            <Route path="/campanii" element={<Campanii />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
             {/* Versiunile RO (hreflang ro) ale paginilor EN de mai sus */}
@@ -3332,6 +3333,7 @@ function AppContent() {
             <Route path="/ro/mcp" element={<McpPage locale="ro" />} />
             <Route path="/ro/geo-gateway" element={<GeoGateway locale="ro" />} />
             <Route path="/ro/trust-gateway" element={<TrustGateway locale="ro" />} />
+            <Route path="/ro/campanii" element={<Campanii locale="ro" />} />
             <Route path="/marketplace" element={<Navigate to="/agentic-marketplace" replace />} />
             <Route path="/research/zero-trust-ai-ads-en" element={<ZeroTrustAiAdsEn />} />
             <Route path="/blog" element={<Blog />} />
@@ -3378,7 +3380,6 @@ function AppContent() {
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/compare" element={<Compare />} />
-            <Route path="/campanii" element={<Campanii />} />
             <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
             <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />
             <Route path="/solutii/restaurante" element={<ForRestaurants />} />

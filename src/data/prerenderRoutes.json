@@ -381,7 +381,13 @@
   },
   {
     "path": "/campanii",
-    "name": "Campanii Google Shopping & Comparator de Prețuri",
+    "name": "Google Shopping Campaigns & Price Comparison",
+    "title": "Google Shopping Campaigns & Price Comparison — CatyAI",
+    "description": "CatyAI: Google Shopping campaigns through CSS with up to ~20% savings per click, price comparison with EAN/GTIN semantic engine and visibility in AI search."
+  },
+  {
+    "path": "/ro/campanii",
+    "name": "Campanii Google Shopping & Comparator de Prețuri (RO)",
     "title": "Campanii Google Shopping & Comparator de Prețuri — CatyAI",
     "description": "CatyAI: campanii Google Shopping prin CSS cu până la ~20% economie pe clic, comparator de prețuri cu motor semantic EAN/GTIN și vizibilitate în căutările AI."
   },

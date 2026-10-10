@@ -19,6 +19,7 @@ const NAV_ITEMS = [
       { label: 'Google Shopping Feed', desc: 'Feed data-quality pipeline', href: '/google-shopping-feed', icon: 'search-check' },
       { label: 'Facebook & Instagram Feed', desc: 'Meta-ready product catalogs', href: '/facebook-instagram-feed', icon: 'share-2' },
       { label: 'ChatGPT Product Feeds', desc: 'AI-commerce catalog pipeline', href: '/chatgpt-feed', icon: 'bot' },
+      { label: 'Campanii', desc: 'Google Shopping CSS campaigns & price comparison', href: '/campanii', icon: 'megaphone' },
     ],
   },
   {
