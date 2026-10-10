@@ -60,6 +60,7 @@ const GoogleShoppingFeed = lazy(() => import('./pages/GoogleShoppingFeed'))
 const ChatGPTFeed = lazy(() => import('./pages/ChatGPTFeed'))
 const FeedAuditResult = lazy(() => import('./pages/FeedAuditResult'))
 const FacebookInstagramFeed = lazy(() => import('./pages/FacebookInstagramFeed'))
+const Campanii = lazy(() => import('./pages/Campanii'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3377,6 +3378,7 @@ function AppContent() {
             <Route path="/api-reference" element={<ApiReferencePage />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/compare" element={<Compare />} />
+            <Route path="/campanii" element={<Campanii />} />
             <Route path="/solutii/clinici-medicale" element={<ForClinics />} />
             <Route path="/solutii/agentii-imobiliare" element={<ForRealEstate />} />
             <Route path="/solutii/restaurante" element={<ForRestaurants />} />
