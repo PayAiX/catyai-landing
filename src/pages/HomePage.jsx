@@ -16,6 +16,8 @@ const M_COMMA = productsShortM('ro');
 
 // Endpoint public de lead-uri — același folosit de /chatgpt-feed (api.catyai.io).
 const LEADS_API = 'https://api.catyai.io/api/leads/catalog-audit';
+// Platformele din select — „altă platformă” vine din traducere (t.fieldPlatformOther).
+const PLATFORMS = ['GoMag', 'Shopify', 'WooCommerce', 'MerchantPro'];
 
 // Clienți reali. Fiecare cifră are sursă — vezi docs/audit/AGENT89-homepage-vizibilitate-2026-10-08.md.
 const CLIENTS = [
@@ -149,6 +151,9 @@ const translations = {
     fieldEmail: 'Email',
     fieldPhone: 'Telefon',
     fieldSite: 'Site (URL magazin)',
+    fieldPlatform: 'Platforma magazinului',
+    fieldPlatformPick: 'Alege platforma',
+    fieldPlatformOther: 'Altă platformă',
     formSubmit: 'Trimite',
     formSending: 'Se trimite…',
     formDoneTitle: 'Cerere trimisă',
@@ -156,7 +161,7 @@ const translations = {
     formErrGeneric: 'Nu am putut trimite cererea. Încearcă din nou sau scrie-ne pe contact@catyai.io.',
     formErrRate: 'Prea multe cereri de pe această adresă — revino peste câteva minute.',
     formErrNetwork: 'Problemă de conexiune. Verifică internetul și reîncearcă.',
-    formGdpr: 'Trimițând formularul ești de acord să fii contactat despre analiza feedului. Datele nu pleacă la terți.',
+    formGdpr: 'Sunt de acord să fiu contactat despre analiza feedului. Datele nu pleacă la terți.',
   },
   en: {
     seoTitle: 'We make your catalog visible on Google Shopping and in ChatGPT | CatyAI',
@@ -251,6 +256,9 @@ const translations = {
     fieldEmail: 'Email',
     fieldPhone: 'Phone',
     fieldSite: 'Website (store URL)',
+    fieldPlatform: 'Store platform',
+    fieldPlatformPick: 'Choose a platform',
+    fieldPlatformOther: 'Other platform',
     formSubmit: 'Submit',
     formSending: 'Sending…',
     formDoneTitle: 'Request sent',
@@ -258,7 +266,7 @@ const translations = {
     formErrGeneric: 'Could not send the request. Try again or write to contact@catyai.io.',
     formErrRate: 'Too many requests from this address — come back in a few minutes.',
     formErrNetwork: 'Connection problem. Check your internet and retry.',
-    formGdpr: 'By submitting you agree to be contacted about the feed analysis. Your data is not shared with third parties.',
+    formGdpr: 'I agree to be contacted about the feed analysis. My data is not shared with third parties.',
   },
 };
 
@@ -659,7 +667,19 @@ function LeadForm({ t, lang }) {
       </div>
       <div>
         <label htmlFor="lf-site" className={labelCls}>{t.fieldSite}</label>
-        <input id="lf-site" name="site" type="url" required placeholder="https://" autoComplete="url" className={inputCls} />
+        <input id="lf-site" name="site_url" type="url" required placeholder="https://" autoComplete="url" className={inputCls} />
+      </div>
+      <div>
+        <label htmlFor="lf-platform" className={labelCls}>{t.fieldPlatform}</label>
+        <select id="lf-platform" name="platform" required defaultValue="" className={inputCls}>
+          <option value="" disabled>{t.fieldPlatformPick}</option>
+          {PLATFORMS.map((p) => <option key={p} value={p}>{p}</option>)}
+          <option value="Altă platformă">{t.fieldPlatformOther}</option>
+        </select>
+      </div>
+      {/* Honeypot — invizibil pentru oameni; serverul ignoră silențios trimiterile care îl completează. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <input name="company_website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       {status === 'error' && (
         <p className="text-sm text-red-400" role="alert">{error}</p>
@@ -667,10 +687,11 @@ function LeadForm({ t, lang }) {
       <button type="submit" disabled={status === 'sending'} className="btn-primary w-full py-4 rounded-xl font-bold disabled:opacity-60">
         {status === 'sending' ? t.formSending : t.formSubmit}
       </button>
-      <p className="text-[11px] text-slate-600 leading-relaxed flex items-start gap-2">
-        <Mail className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-        {t.formGdpr}
-      </p>
+      <label className="text-[11px] text-slate-500 leading-relaxed flex items-start gap-2 cursor-pointer">
+        <input type="checkbox" name="gdpr_consent" required className="mt-0.5 accent-[#C8A165]" />
+        <Mail className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" aria-hidden="true" />
+        <span>{t.formGdpr}</span>
+      </label>
     </form>
   );
 }
