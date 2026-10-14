@@ -68,6 +68,7 @@ const translations = {
     heroSubtitle: 'Sincronizăm automat inventarul de produse în Google Merchant Center prin canal CSS direct și structurăm datele pentru motoarele de căutare conversaționale.',
     heroCtaPrimary: 'Vezi prețurile',
     heroCtaSecondary: 'Fă-ți catalogul vizibil',
+    heroCtaAudit: 'Audit gratuit',
     heroNote: 'Răspuns tehnic în maximum 24 de ore lucrătoare.',
     termProduct: 'produse',
     termMerchants: 'comercianți activi',
@@ -173,6 +174,7 @@ const translations = {
     heroSubtitle: 'We automatically sync your product inventory into Google Merchant Center through a direct CSS channel and structure the data for conversational search engines.',
     heroCtaPrimary: 'See pricing',
     heroCtaSecondary: 'Make your catalog visible',
+    heroCtaAudit: 'Free audit',
     heroNote: 'Technical reply within 24 business hours.',
     termProduct: 'products',
     termMerchants: 'active merchants',
@@ -362,6 +364,9 @@ export default function HomePage() {
                   </a>
                   <a href="#contact" className="btn-secondary px-8 py-4 rounded-xl text-base font-semibold inline-flex items-center gap-2">
                     {t.heroCtaSecondary}
+                  </a>
+                  <a href="/audit-gratuit/" className="btn-primary px-8 py-4 rounded-xl text-base font-bold inline-flex items-center gap-2">
+                    {t.heroCtaAudit} <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
                 <p className="term-line text-xs text-slate-500 mt-6">{t.heroNote}</p>
