@@ -20,6 +20,7 @@ const NAV_ITEMS = [
       { label: 'Facebook & Instagram Feed', desc: 'Meta-ready product catalogs', href: '/facebook-instagram-feed', icon: 'share-2' },
       { label: 'ChatGPT Product Feeds', desc: 'AI-commerce catalog pipeline', href: '/chatgpt-feed', icon: 'bot' },
       { label: 'Campanii', desc: 'Google Shopping CSS campaigns & price comparison', href: '/campanii', icon: 'megaphone' },
+      { label: 'Pagina de vânzător', desc: 'Seller page for eMAG & Trendyol sellers without a website', href: '/pentru-vanzatori-marketplace', icon: 'store' },
     ],
   },
   {
