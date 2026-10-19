@@ -410,6 +410,18 @@
   </url>
   <url>
     <loc>https://catyai.io/pentru-vanzatori-marketplace</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/pentru-vanzatori-marketplace"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/pentru-vanzatori-marketplace"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/pentru-vanzatori-marketplace"/>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://catyai.io/ro/pentru-vanzatori-marketplace</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://catyai.io/pentru-vanzatori-marketplace"/>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://catyai.io/ro/pentru-vanzatori-marketplace"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://catyai.io/pentru-vanzatori-marketplace"/>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
