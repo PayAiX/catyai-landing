@@ -62,6 +62,7 @@ const FeedAuditResult = lazy(() => import('./pages/FeedAuditResult'))
 const FacebookInstagramFeed = lazy(() => import('./pages/FacebookInstagramFeed'))
 const Campanii = lazy(() => import('./pages/Campanii'))
 const AuditGratuit = lazy(() => import('./pages/AuditGratuit'))
+const VanzatoriMarketplace = lazy(() => import('./pages/VanzatoriMarketplace'))
 
 // Loading fallback component
 const PageLoader = () => (
@@ -3255,9 +3256,9 @@ function AppContent() {
   const location = useLocation()
 
   // Pages with their own layout (no shared Header/Footer)
-  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed', '/campanii', '/audit-gratuit',
+  const standalonePages = ['/', '/geo-gateway', '/ecommerce', '/healthcare', '/enterprise', '/platform', '/solutions', '/partners', '/company', '/investor-relations', '/protocol', '/nap', '/trust-center', '/white-label', '/agency-network', '/technology-partners', '/careers', '/api-reference', '/licensing', '/pricing', '/contact', '/press', '/research/zero-trust-ai-ads-en', '/check', '/mcp', '/agentic-marketplace', '/trust-gateway', '/marketplace', '/google-shopping-feed', '/facebook-instagram-feed', '/chatgpt-feed', '/campanii', '/audit-gratuit', '/pentru-vanzatori-marketplace',
     // versiunile RO (6 oct 2026) — listă explicită, ca /ro/<altceva> să ajungă la NotFound
-    '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway', '/ro/campanii']
+    '/ro/chatgpt-feed', '/ro/google-shopping-feed', '/ro/facebook-instagram-feed', '/ro/mcp', '/ro/geo-gateway', '/ro/trust-gateway', '/ro/campanii', '/ro/pentru-vanzatori-marketplace']
   // S3 website hosting redirecționează /pagina → /pagina/ (index.html din folder),
   // iar potrivirea exactă pe '/pagina/' pică: paginile noi (chatgpt-feed, mcp,
   // geo-gateway, google-shopping-feed, facebook-instagram-feed, trust-gateway)
@@ -3326,6 +3327,8 @@ function AppContent() {
             <Route path="/chatgpt-feed" element={<ChatGPTFeed />} />
             <Route path="/campanii" element={<Campanii />} />
             <Route path="/audit-gratuit" element={<AuditGratuit />} />
+            <Route path="/pentru-vanzatori-marketplace" element={<VanzatoriMarketplace />} />
+            <Route path="/ro/pentru-vanzatori-marketplace" element={<VanzatoriMarketplace locale="ro" />} />
             <Route path="/feed-audit/:auditId" element={<FeedAuditResult />} />
             <Route path="/trust-gateway" element={<TrustGateway />} />
             {/* Versiunile RO (hreflang ro) ale paginilor EN de mai sus */}

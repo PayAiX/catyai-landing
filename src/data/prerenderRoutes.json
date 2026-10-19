@@ -392,6 +392,18 @@
     "description": "Află de ce ChatGPT și Google nu îți recomandă produsele. Audit gratuit al catalogului: scor din 100, problemele concrete și ce se poate repara. Rezultatul în 24 de ore."
   },
   {
+    "path": "/pentru-vanzatori-marketplace",
+    "name": "Seller page for eMAG & Trendyol sellers without a website",
+    "title": "No website? Your own seller page, visible in Google and ChatGPT — CatyAI",
+    "description": "eMAG and Trendyol sellers without a website: your own seller page with your products, indexed by Google and readable by ChatGPT. Customers still buy from you, on the marketplace. Free catalog audit."
+  },
+  {
+    "path": "/ro/pentru-vanzatori-marketplace",
+    "name": "Pagina de vânzător pentru selleri eMAG și Trendyol fără site",
+    "title": "Nu ai site? Pagina ta de vânzător, vizibilă în Google și în ChatGPT — CatyAI",
+    "description": "Selleri eMAG și Trendyol fără site propriu: pagina ta de vânzător cu produsele tale, indexată în Google și citibilă de ChatGPT. Clientul cumpără tot de la tine, pe marketplace. Audit gratuit de catalog."
+  },
+  {
     "path": "/ro/campanii",
     "name": "Campanii Google Shopping & Comparator de Prețuri (RO)",
     "title": "Campanii Google Shopping & Comparator de Prețuri — CatyAI",
