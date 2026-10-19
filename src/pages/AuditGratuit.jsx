@@ -12,6 +12,9 @@ import FooterV9 from '../components/FooterV9'
 // trebuie să rămână identice cu cele de acolo).
 
 const LEADS_API = 'https://api.catyai.io/api/leads/catalog-audit'
+// Conversia „Cerere audit gratuit - catyai.io" din Google Ads PayAi-X (722-216-8650),
+// singurul obiectiv licitat de campania PMax catyai.io.
+const ADS_AUDIT_CONVERSION = 'AW-18223286697/DT4iCI3vsKIdEKmTxfFD'
 const CATY_SOURCE = 'audit-gratuit'
 const PAGE_URL = 'https://catyai.io/audit-gratuit'
 
@@ -168,6 +171,7 @@ function AuditForm() {
         setStatus('done')
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'generate_lead', { event_category: 'lead', event_label: CATY_SOURCE })
+          window.gtag('event', 'conversion', { send_to: ADS_AUDIT_CONVERSION, value: 1, currency: 'RON' })
         }
       } else {
         setStatus('error')

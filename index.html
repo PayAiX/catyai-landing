@@ -202,8 +202,8 @@
           window.gtag = gtag;
           gtag('js', new Date());
           gtag('config', 'G-D7TM554RRZ');
-          gtag('config', 'AW-8366622390');
-          gtag('config', 'AW-17985598124');
+          // Google Ads PayAi-X S.R.L. — singurul tag Ads; cele două din martie nu erau ale contului nostru.
+          gtag('config', 'AW-18223286697');
         };
 
         // Meta Pixel
@@ -220,7 +220,6 @@
       window.trackCatyConversion = function(eventName, eventParams) {
         if (typeof gtag !== 'undefined') {
           gtag('event', eventName, eventParams || {});
-          gtag('event', 'conversion', {'send_to': 'AW-8366622390/' + eventName, ...(eventParams || {})});
         }
       };
       window.trackSignUp = function() { trackCatyConversion('sign_up', {event_category:'Registration',event_label:'CatyAI Account',value:10}); if(typeof fbq!=='undefined')fbq('track','CompleteRegistration'); };
