@@ -1,6 +1,6 @@
 {
-  "totalMerchants": 191,
-  "totalProducts": 3971435,
-  "fetched_at": "2026-10-08T08:54:15.528Z",
+  "totalMerchants": 192,
+  "totalProducts": 3971567,
+  "fetched_at": "2026-10-19T12:54:58.396Z",
   "source": "https://api.catyai.io/api/public/catalog-stats"
 }
