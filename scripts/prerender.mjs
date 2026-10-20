@@ -82,6 +82,26 @@ function applyRouteCanonical(html, routePath) {
   );
 }
 
+// Analytics (gtag G-D7TM554RRZ + AW-18223286697, Meta Pixel) se încarcă din index.html la
+// evenimentul load. Rulat în Puppeteer, scriptul injecta <script src=...> (inclusiv pixelul
+// doubleclick cu url=localhost:4173 și config Meta cu domain=localhost), care ajungeau în HTML-ul
+// static → la vizitatorul real tagurile se încărcau de două ori. Blocăm cererile în pre-render și
+// scoatem orice <script src> spre aceste domenii din HTML; bootstrap-ul inline din index.html rămâne.
+const TRACKING_HOSTS = [
+  'googletagmanager.com',
+  'google-analytics.com',
+  'googleadservices.com',
+  'doubleclick.net',
+  'connect.facebook.net',
+  'facebook.com/tr',
+];
+
+function stripInjectedTrackingScripts(html) {
+  return html.replace(/<script\b[^>]*\bsrc="([^"]*)"[^>]*>\s*<\/script>/g, (tag, src) =>
+    TRACKING_HOSTS.some((host) => src.includes(host)) ? '' : tag
+  );
+}
+
 async function prerenderWithPuppeteer(route, browser) {
   const page = await browser.newPage();
 
@@ -112,7 +132,9 @@ async function prerenderWithPuppeteer(route, browser) {
 
         url.includes('/cdn/leads.js') ||
 
-        url.includes('api.catyai.io/widget.js')
+        url.includes('api.catyai.io/widget.js') ||
+
+        TRACKING_HOSTS.some((host) => url.includes(host))
 
       ) {
 
@@ -160,6 +182,7 @@ async function prerenderWithPuppeteer(route, browser) {
     );
 
     html = applyRouteCanonical(html, route.path);
+    html = stripInjectedTrackingScripts(html);
 
     const segments = route.path.split('/').filter(Boolean);
     const dir = path.join(distDir, ...segments);
