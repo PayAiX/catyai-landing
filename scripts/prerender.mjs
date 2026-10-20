@@ -154,6 +154,13 @@ async function prerenderWithPuppeteer(route, browser) {
     await page.waitForSelector('main, article, .zta-research, [data-page-ready]', { timeout: 10000 }).catch(() => {});
     await new Promise(r => setTimeout(r, 500));
 
+    // Bannerul de cookie-uri l-a afișat scriptul din index.html (Puppeteer n-are cookie);
+    // în HTML-ul static rămâne ascuns — la vizitator îl decide din nou scriptul, după cookie.
+    await page.evaluate(() => {
+      const banner = document.getElementById('caty-consent-banner');
+      if (banner) banner.style.display = 'none';
+    });
+
     let html = await page.content();
 
     html = html.replace(

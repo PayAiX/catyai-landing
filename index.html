@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="tVyoZDsE2ssgqqzyZs29AQjjLQNmdhAWPZ0y3-MpLiw" />
 
+    <!-- Consent Mode v2: totul refuzat până la alegerea din bannerul de cookie-uri (body).
+         Trebuie să ruleze ÎNAINTE de orice gtag('config') — de aceea stă primul în <head>.
+         Aceeași logică și același cookie (caty_consent) ca bannerul de pe shop.catyai.io (Caty.AI #857/#858),
+         extinsă la semnalele de reclamă (Google Ads AW-18223286697 + Meta Pixel). -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+      (function () {
+        var m = document.cookie.match(/(?:^|; )caty_consent=([^;]*)/);
+        if (m && m[1] === 'granted') {
+          gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' });
+        }
+      })();
+    </script>
+
     <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://api.catyai.io" />
     <link rel="preconnect" href="https://cdn.catyai.io" />
@@ -196,22 +219,19 @@
         gtmScript.async = true;
         document.head.appendChild(gtmScript);
 
-        gtmScript.onload = function() {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', 'G-D7TM554RRZ');
-          // Google Ads PayAi-X S.R.L. — singurul tag Ads; cele două din martie nu erau ale contului nostru.
-          gtag('config', 'AW-18223286697');
-        };
+        // gtag + consent default sunt definite primele în <head>; aici doar config-urile.
+        gtag('js', new Date());
+        gtag('config', 'G-D7TM554RRZ');
+        // Google Ads PayAi-X S.R.L. — singurul tag Ads; cele două din martie nu erau ale contului nostru.
+        gtag('config', 'AW-18223286697');
 
-        // Meta Pixel
+        // Meta Pixel — revocat până la „Accept” (fbq('consent','grant') vine din banner)
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
         n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
         t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
         (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('consent', /(?:^|; )caty_consent=granted/.test(document.cookie) ? 'grant' : 'revoke');
         fbq('init', '25909673122033932');
         fbq('track', 'PageView');
       });
@@ -229,6 +249,44 @@
       window.trackLead = function(d) { trackCatyConversion('lead', {event_category:'Lead',event_label:'Lead Captured',value:15}); if(typeof fbq!=='undefined')fbq('track','Lead',d||{}); };
       window.trackContact = function() { trackCatyConversion('contact', {event_category:'Contact',event_label:'Contact Form',value:5}); if(typeof fbq!=='undefined')fbq('track','Contact'); };
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=25909673122033932&ev=PageView&noscript=1"/></noscript>
+    <!-- Pixelul Meta <noscript> a fost scos: trimitea PageView fără consimțământ (nu poate citi alegerea). -->
+
+    <!-- Banner cookie-uri. În afara #root, ca React să nu-l atingă. Afișarea o decide DOAR scriptul de mai jos,
+         la fiecare încărcare — HTML-ul prerandat (Puppeteer, fără cookie) nu poate lăsa bannerul blocat vizibil. -->
+    <div id="caty-consent-banner" role="dialog" aria-live="polite" aria-label="Cookie-uri" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#010A1F;color:#fff;padding:16px;font:14px/1.5 Inter,system-ui,sans-serif;border-top:1px solid #C8A165;box-shadow:0 -4px 16px rgba(0,0,0,.35)">
+      <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
+        <span>Folosim cookie-uri pentru statistici (Google Analytics) și pentru măsurarea reclamelor (Google Ads, Meta). Poți accepta sau refuza. <a href="/gdpr" style="color:#C8A165;text-decoration:underline">Detalii</a></span>
+        <span style="display:flex;gap:8px;flex-shrink:0">
+          <button type="button" id="caty-consent-reject" style="padding:10px 18px;background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;cursor:pointer;font:inherit">Refuz</button>
+          <button type="button" id="caty-consent-accept" style="padding:10px 18px;background:#C8A165;color:#010A1F;border:none;border-radius:6px;cursor:pointer;font:inherit;font-weight:600">Accept</button>
+        </span>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var NAME = 'caty_consent';
+        var MAX_AGE_DAYS = 180;
+        var banner = document.getElementById('caty-consent-banner');
+        var match = document.cookie.match(/(?:^|; )caty_consent=([^;]*)/);
+        var stored = match ? match[1] : null;
+        if (banner) banner.style.display = stored === 'granted' || stored === 'denied' ? 'none' : 'block';
+
+        function applyConsent(granted) {
+          var v = granted ? 'granted' : 'denied';
+          gtag('consent', 'update', { ad_storage: v, analytics_storage: v, ad_user_data: v, ad_personalization: v });
+          if (typeof fbq === 'function') fbq('consent', granted ? 'grant' : 'revoke');
+        }
+
+        document.addEventListener('click', function (e) {
+          var id = e.target && e.target.id;
+          if (id !== 'caty-consent-accept' && id !== 'caty-consent-reject') return;
+          var granted = id === 'caty-consent-accept';
+          var expires = new Date(Date.now() + MAX_AGE_DAYS * 864e5).toUTCString();
+          document.cookie = NAME + '=' + (granted ? 'granted' : 'denied') + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+          applyConsent(granted);
+          if (banner) banner.style.display = 'none';
+        });
+      })();
+    </script>
   </body>
 </html>
